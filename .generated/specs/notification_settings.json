@@ -1,5 +1,333 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/notification_settings.html",
   "pageName": "Notification settings",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Notification settings API",
+      "description": "Change notification settings using the REST API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Valid notification levels",
+      "description": "If the custom level is used, specific email events can be controlled. Available events are returned by NotificationSetting.email_events. Currently, these events are recognized:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Global notification settings",
+      "description": "Get current notification settings and email address.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/notification_settings"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "level": "participating",
+        "notification_email": "admin@example.com"
+      }
+    },
+    {
+      "name": "Update global notification settings",
+      "description": "Update current notification settings and email address.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/notification_settings"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "level",
+          "type": "string",
+          "required": false,
+          "description": "The global notification level"
+        },
+        {
+          "name": "notification_email",
+          "type": "string",
+          "required": false,
+          "description": "The email address to send notifications"
+        },
+        {
+          "name": "new_note",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "new_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reopen_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "close_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reassign_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "issue_due",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "new_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "push_to_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reopen_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "close_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reassign_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "merge_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "failed_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "fixed_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "success_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "moved_project",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 13.3)"
+        },
+        {
+          "name": "merge_when_pipeline_succeeds",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 13.9)"
+        },
+        {
+          "name": "new_epic",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 11.3)"
+        }
+      ],
+      "response": {
+        "level": "watch",
+        "notification_email": "admin@example.com"
+      }
+    },
+    {
+      "name": "Group / project level notification settings",
+      "description": "Get current group or project notification settings.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/notification_settings"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/notification_settings"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID, or URL-encoded path, of the group or project."
+        }
+      ],
+      "response": {
+        "level": "global"
+      }
+    },
+    {
+      "name": "Update group/project level notification settings",
+      "description": "Users on GitLab Ultimate also see the new_epic parameter:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/notification_settings"
+        },
+        {
+          "method": "PUT",
+          "path": "/projects/:id/notification_settings"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID, or URL-encoded path, of the group or project"
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "required": false,
+          "description": "The global notification level"
+        },
+        {
+          "name": "new_note",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "new_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reopen_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "close_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reassign_issue",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "issue_due",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "new_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "push_to_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reopen_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "close_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "reassign_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "merge_merge_request",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "failed_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "fixed_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "success_pipeline",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification"
+        },
+        {
+          "name": "moved_project",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 13.3)"
+        },
+        {
+          "name": "merge_when_pipeline_succeeds",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 13.9)"
+        },
+        {
+          "name": "new_epic",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable this notification (Introduced in GitLab 11.3)"
+        }
+      ],
+      "response": "{  \"level\": \"custom\",  \"events\": {    \"new_note\": true,    \"new_issue\": false,    \"new_epic\": false,    ...  }}"
+    }
+  ]
 }

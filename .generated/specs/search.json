@@ -1,5 +1,992 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/search.html",
   "pageName": "Search",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Search API",
+      "description": "Every API call to search must be authenticated.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Advanced Search API",
+      "description": "The response depends on the requested scope.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Scope: projects",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": "[  {    \"id\": 6,    \"description\": \"Nobis sed ipsam vero quod cupiditate veritatis hic.\",    \"name\": \"Flight\",    \"name_with_namespace\": \"Twitter / Flight\",    \"path\": \"flight\",    \"path_with_namespace\": \"twitter/flight\",    \"created_at\": \"2017-09-05T07:58:01.621Z\",    \"default_branch\": \"master\",    \"tag_list\":[], //deprecated, use `topics` instead    \"topics\":[],    \"ssh_url_to_repo\": \"ssh://jarka@localhost:2222/twitter/flight.git\",    \"http_url_to_repo\": \"http://localhost:3000/twitter/flight.git\",    \"web_url\": \"http://localhost:3000/twitter/flight\",    \"avatar_url\": null,    \"star_count\": 0,    \"forks_count\": 0,    \"last_activity_at\": \"2018-01-31T09:56:30.902Z\"  }]"
+    },
+    {
+      "name": "Scope: issues",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 83,
+          "iid": 1,
+          "project_id": 12,
+          "title": "Add file",
+          "description": "Add first file",
+          "state": "opened",
+          "created_at": "2018-01-24T06:02:15.514Z",
+          "updated_at": "2018-02-06T12:36:23.263Z",
+          "closed_at": null,
+          "labels": [],
+          "milestone": null,
+          "assignees": [
+            {
+              "id": 20,
+              "name": "Ceola Deckow",
+              "username": "sammy.collier",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+              "web_url": "http://localhost:3000/sammy.collier"
+            }
+          ],
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 20,
+            "name": "Ceola Deckow",
+            "username": "sammy.collier",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+            "web_url": "http://localhost:3000/sammy.collier"
+          },
+          "user_notes_count": 0,
+          "upvotes": 0,
+          "downvotes": 0,
+          "due_date": null,
+          "confidential": false,
+          "discussion_locked": null,
+          "web_url": "http://localhost:3000/h5bp/7bp/subgroup-prj/issues/1",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: merge_requests",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 56,
+          "iid": 8,
+          "project_id": 6,
+          "title": "Add first file",
+          "description": "This is a test MR to add file",
+          "state": "opened",
+          "created_at": "2018-01-22T14:21:50.830Z",
+          "updated_at": "2018-02-06T12:40:33.295Z",
+          "target_branch": "master",
+          "source_branch": "jaja-test",
+          "upvotes": 0,
+          "downvotes": 0,
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 5,
+            "name": "Jacquelyn Kutch",
+            "username": "abigail",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/3138c66095ee4bd11a508c2f7f7772da?s=80&d=identicon",
+            "web_url": "http://localhost:3000/abigail"
+          },
+          "source_project_id": 6,
+          "target_project_id": 6,
+          "labels": [
+            "ruby",
+            "tests"
+          ],
+          "draft": false,
+          "work_in_progress": false,
+          "milestone": {
+            "id": 13,
+            "iid": 3,
+            "project_id": 6,
+            "title": "v2.0",
+            "description": "Qui aut qui eos dolor beatae itaque tempore molestiae.",
+            "state": "active",
+            "created_at": "2017-09-05T07:58:29.099Z",
+            "updated_at": "2017-09-05T07:58:29.099Z",
+            "due_date": null,
+            "start_date": null
+          },
+          "merge_when_pipeline_succeeds": false,
+          "merge_status": "can_be_merged",
+          "sha": "78765a2d5e0a43585945c58e61ba2f822e4d090b",
+          "merge_commit_sha": null,
+          "squash_commit_sha": null,
+          "user_notes_count": 0,
+          "discussion_locked": null,
+          "should_remove_source_branch": null,
+          "force_remove_source_branch": true,
+          "web_url": "http://localhost:3000/twitter/flight/merge_requests/8",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: milestones",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 44,
+          "iid": 1,
+          "project_id": 12,
+          "title": "next release",
+          "description": "Next release milestone",
+          "state": "active",
+          "created_at": "2018-02-06T12:43:39.271Z",
+          "updated_at": "2018-02-06T12:44:01.298Z",
+          "due_date": "2018-04-18",
+          "start_date": "2018-02-04"
+        }
+      ]
+    },
+    {
+      "name": "Scope: snippet_titles",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 50,
+          "title": "Sample file",
+          "file_name": "file.rb",
+          "description": "Simple ruby file",
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "updated_at": "2018-02-06T12:49:29.104Z",
+          "created_at": "2017-11-28T08:20:18.071Z",
+          "project_id": 9,
+          "web_url": "http://localhost:3000/root/jira-test/snippets/50"
+        }
+      ]
+    },
+    {
+      "name": "Scope: wiki_blobs",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "home",
+          "data": "hello\n\nand bye\n\nend",
+          "path": "home.md",
+          "filename": "home.md",
+          "id": null,
+          "ref": "master",
+          "startline": 5,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: commits",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": "4109c2d872d5fdb1ed057400d103766aaea97f98",
+          "short_id": "4109c2d8",
+          "title": "goodbye $.browser",
+          "created_at": "2013-02-18T22:02:54.000Z",
+          "parent_ids": [
+            "59d05353ab575bcc2aa958fe1782e93297de64c9"
+          ],
+          "message": "goodbye $.browser\n",
+          "author_name": "angus croll",
+          "author_email": "anguscroll@gmail.com",
+          "authored_date": "2013-02-18T22:02:54.000Z",
+          "committer_name": "angus croll",
+          "committer_email": "anguscroll@gmail.com",
+          "committed_date": "2013-02-18T22:02:54.000Z",
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: blobs",
+      "description": "You may use wildcards (*) to use glob matching.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "README",
+          "data": "```\n\n## Installation\n\nQuick start using the [pre-built",
+          "path": "README.md",
+          "filename": "README.md",
+          "id": null,
+          "ref": "master",
+          "startline": 46,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: notes",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 191,
+          "body": "Harum maxime consequuntur et et deleniti assumenda facilis.",
+          "attachment": null,
+          "author": {
+            "id": 23,
+            "name": "User 1",
+            "username": "user1",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/111d68d06e2d317b5a59c2c6c5bad808?s=80&d=identicon",
+            "web_url": "http://localhost:3000/user1"
+          },
+          "created_at": "2017-09-05T08:01:32.068Z",
+          "updated_at": "2017-09-05T08:01:32.068Z",
+          "system": false,
+          "noteable_id": 22,
+          "noteable_type": "Issue",
+          "noteable_iid": 2
+        }
+      ]
+    },
+    {
+      "name": "Scope: users",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "name": "John Doe1",
+          "username": "user1",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/c922747a93b40d1ea88262bf1aebee62?s=80&d=identicon",
+          "web_url": "http://localhost/user1"
+        }
+      ]
+    },
+    {
+      "name": "Group Search API",
+      "description": "The response depends on the requested scope.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Scope: projects",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": "[  {    \"id\": 6,    \"description\": \"Nobis sed ipsam vero quod cupiditate veritatis hic.\",    \"name\": \"Flight\",    \"name_with_namespace\": \"Twitter / Flight\",    \"path\": \"flight\",    \"path_with_namespace\": \"twitter/flight\",    \"created_at\": \"2017-09-05T07:58:01.621Z\",    \"default_branch\": \"master\",    \"tag_list\":[], //deprecated, use `topics` instead    \"topics\":[],    \"ssh_url_to_repo\": \"ssh://jarka@localhost:2222/twitter/flight.git\",    \"http_url_to_repo\": \"http://localhost:3000/twitter/flight.git\",    \"web_url\": \"http://localhost:3000/twitter/flight\",    \"avatar_url\": null,    \"star_count\": 0,    \"forks_count\": 0,    \"last_activity_at\": \"2018-01-31T09:56:30.902Z\"  }]"
+    },
+    {
+      "name": "Scope: issues",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 83,
+          "iid": 1,
+          "project_id": 12,
+          "title": "Add file",
+          "description": "Add first file",
+          "state": "opened",
+          "created_at": "2018-01-24T06:02:15.514Z",
+          "updated_at": "2018-02-06T12:36:23.263Z",
+          "closed_at": null,
+          "labels": [],
+          "milestone": null,
+          "assignees": [
+            {
+              "id": 20,
+              "name": "Ceola Deckow",
+              "username": "sammy.collier",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+              "web_url": "http://localhost:3000/sammy.collier"
+            }
+          ],
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 20,
+            "name": "Ceola Deckow",
+            "username": "sammy.collier",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+            "web_url": "http://localhost:3000/sammy.collier"
+          },
+          "user_notes_count": 0,
+          "upvotes": 0,
+          "downvotes": 0,
+          "due_date": null,
+          "confidential": false,
+          "discussion_locked": null,
+          "web_url": "http://localhost:3000/h5bp/7bp/subgroup-prj/issues/1",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: merge_requests",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 56,
+          "iid": 8,
+          "project_id": 6,
+          "title": "Add first file",
+          "description": "This is a test MR to add file",
+          "state": "opened",
+          "created_at": "2018-01-22T14:21:50.830Z",
+          "updated_at": "2018-02-06T12:40:33.295Z",
+          "target_branch": "master",
+          "source_branch": "jaja-test",
+          "upvotes": 0,
+          "downvotes": 0,
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 5,
+            "name": "Jacquelyn Kutch",
+            "username": "abigail",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/3138c66095ee4bd11a508c2f7f7772da?s=80&d=identicon",
+            "web_url": "http://localhost:3000/abigail"
+          },
+          "source_project_id": 6,
+          "target_project_id": 6,
+          "labels": [
+            "ruby",
+            "tests"
+          ],
+          "draft": false,
+          "work_in_progress": false,
+          "milestone": {
+            "id": 13,
+            "iid": 3,
+            "project_id": 6,
+            "title": "v2.0",
+            "description": "Qui aut qui eos dolor beatae itaque tempore molestiae.",
+            "state": "active",
+            "created_at": "2017-09-05T07:58:29.099Z",
+            "updated_at": "2017-09-05T07:58:29.099Z",
+            "due_date": null,
+            "start_date": null
+          },
+          "merge_when_pipeline_succeeds": false,
+          "merge_status": "can_be_merged",
+          "sha": "78765a2d5e0a43585945c58e61ba2f822e4d090b",
+          "merge_commit_sha": null,
+          "squash_commit_sha": null,
+          "user_notes_count": 0,
+          "discussion_locked": null,
+          "should_remove_source_branch": null,
+          "force_remove_source_branch": true,
+          "web_url": "http://localhost:3000/twitter/flight/merge_requests/8",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: milestones",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 44,
+          "iid": 1,
+          "project_id": 12,
+          "title": "next release",
+          "description": "Next release milestone",
+          "state": "active",
+          "created_at": "2018-02-06T12:43:39.271Z",
+          "updated_at": "2018-02-06T12:44:01.298Z",
+          "due_date": "2018-04-18",
+          "start_date": "2018-02-04"
+        }
+      ]
+    },
+    {
+      "name": "Scope: wiki_blobs",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "home",
+          "data": "hello\n\nand bye\n\nend",
+          "path": "home.md",
+          "filename": "home.md",
+          "id": null,
+          "ref": "master",
+          "startline": 5,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: commits",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": "4109c2d872d5fdb1ed057400d103766aaea97f98",
+          "short_id": "4109c2d8",
+          "title": "goodbye $.browser",
+          "created_at": "2013-02-18T22:02:54.000Z",
+          "parent_ids": [
+            "59d05353ab575bcc2aa958fe1782e93297de64c9"
+          ],
+          "message": "goodbye $.browser\n",
+          "author_name": "angus croll",
+          "author_email": "anguscroll@gmail.com",
+          "authored_date": "2013-02-18T22:02:54.000Z",
+          "committer_name": "angus croll",
+          "committer_email": "anguscroll@gmail.com",
+          "committed_date": "2013-02-18T22:02:54.000Z",
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: blobs",
+      "description": "You may use wildcards (*) to use glob matching.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "README",
+          "data": "```\n\n## Installation\n\nQuick start using the [pre-built",
+          "path": "README.md",
+          "filename": "README.md",
+          "id": null,
+          "ref": "master",
+          "startline": 46,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: notes",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 191,
+          "body": "Harum maxime consequuntur et et deleniti assumenda facilis.",
+          "attachment": null,
+          "author": {
+            "id": 23,
+            "name": "User 1",
+            "username": "user1",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/111d68d06e2d317b5a59c2c6c5bad808?s=80&d=identicon",
+            "web_url": "http://localhost:3000/user1"
+          },
+          "created_at": "2017-09-05T08:01:32.068Z",
+          "updated_at": "2017-09-05T08:01:32.068Z",
+          "system": false,
+          "noteable_id": 22,
+          "noteable_type": "Issue",
+          "noteable_iid": 2
+        }
+      ]
+    },
+    {
+      "name": "Scope: users",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "name": "John Doe1",
+          "username": "user1",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/c922747a93b40d1ea88262bf1aebee62?s=80&d=identicon",
+          "web_url": "http://localhost/user1"
+        }
+      ]
+    },
+    {
+      "name": "Project Search API",
+      "description": "The response depends on the requested scope.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": false,
+          "description": "The name of a repository branch or tag to search on. The project’s default branch is used by default. This is only applicable for scopes: commits, blobs, and wiki_blobs."
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Scope: issues",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 83,
+          "iid": 1,
+          "project_id": 12,
+          "title": "Add file",
+          "description": "Add first file",
+          "state": "opened",
+          "created_at": "2018-01-24T06:02:15.514Z",
+          "updated_at": "2018-02-06T12:36:23.263Z",
+          "closed_at": null,
+          "labels": [],
+          "milestone": null,
+          "assignees": [
+            {
+              "id": 20,
+              "name": "Ceola Deckow",
+              "username": "sammy.collier",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+              "web_url": "http://localhost:3000/sammy.collier"
+            }
+          ],
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 20,
+            "name": "Ceola Deckow",
+            "username": "sammy.collier",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/c23d85a4f50e0ea76ab739156c639231?s=80&d=identicon",
+            "web_url": "http://localhost:3000/sammy.collier"
+          },
+          "user_notes_count": 0,
+          "upvotes": 0,
+          "downvotes": 0,
+          "due_date": null,
+          "confidential": false,
+          "discussion_locked": null,
+          "web_url": "http://localhost:3000/h5bp/7bp/subgroup-prj/issues/1",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: merge_requests",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 56,
+          "iid": 8,
+          "project_id": 6,
+          "title": "Add first file",
+          "description": "This is a test MR to add file",
+          "state": "opened",
+          "created_at": "2018-01-22T14:21:50.830Z",
+          "updated_at": "2018-02-06T12:40:33.295Z",
+          "target_branch": "master",
+          "source_branch": "jaja-test",
+          "upvotes": 0,
+          "downvotes": 0,
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://localhost:3000/root"
+          },
+          "assignee": {
+            "id": 5,
+            "name": "Jacquelyn Kutch",
+            "username": "abigail",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/3138c66095ee4bd11a508c2f7f7772da?s=80&d=identicon",
+            "web_url": "http://localhost:3000/abigail"
+          },
+          "source_project_id": 6,
+          "target_project_id": 6,
+          "labels": [
+            "ruby",
+            "tests"
+          ],
+          "draft": false,
+          "work_in_progress": false,
+          "milestone": {
+            "id": 13,
+            "iid": 3,
+            "project_id": 6,
+            "title": "v2.0",
+            "description": "Qui aut qui eos dolor beatae itaque tempore molestiae.",
+            "state": "active",
+            "created_at": "2017-09-05T07:58:29.099Z",
+            "updated_at": "2017-09-05T07:58:29.099Z",
+            "due_date": null,
+            "start_date": null
+          },
+          "merge_when_pipeline_succeeds": false,
+          "merge_status": "can_be_merged",
+          "sha": "78765a2d5e0a43585945c58e61ba2f822e4d090b",
+          "merge_commit_sha": null,
+          "squash_commit_sha": null,
+          "user_notes_count": 0,
+          "discussion_locked": null,
+          "should_remove_source_branch": null,
+          "force_remove_source_branch": true,
+          "web_url": "http://localhost:3000/twitter/flight/merge_requests/8",
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scope: milestones",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 44,
+          "iid": 1,
+          "project_id": 12,
+          "title": "next release",
+          "description": "Next release milestone",
+          "state": "active",
+          "created_at": "2018-02-06T12:43:39.271Z",
+          "updated_at": "2018-02-06T12:44:01.298Z",
+          "due_date": "2018-04-18",
+          "start_date": "2018-02-04"
+        }
+      ]
+    },
+    {
+      "name": "Scope: notes",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 191,
+          "body": "Harum maxime consequuntur et et deleniti assumenda facilis.",
+          "attachment": null,
+          "author": {
+            "id": 23,
+            "name": "User 1",
+            "username": "user1",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/111d68d06e2d317b5a59c2c6c5bad808?s=80&d=identicon",
+            "web_url": "http://localhost:3000/user1"
+          },
+          "created_at": "2017-09-05T08:01:32.068Z",
+          "updated_at": "2017-09-05T08:01:32.068Z",
+          "system": false,
+          "noteable_id": 22,
+          "noteable_type": "Issue",
+          "noteable_iid": 2
+        }
+      ]
+    },
+    {
+      "name": "Scope: wiki_blobs",
+      "description": "Wiki blobs searches are performed on both filenames and contents. Search results:",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "home",
+          "data": "hello\n\nand bye\n\nend",
+          "path": "home.md",
+          "filename": "home.md",
+          "id": null,
+          "ref": "master",
+          "startline": 5,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: commits",
+      "description": "This scope is available only if Elasticsearch is enabled.",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": "4109c2d872d5fdb1ed057400d103766aaea97f98",
+          "short_id": "4109c2d8",
+          "title": "goodbye $.browser",
+          "created_at": "2013-02-18T22:02:54.000Z",
+          "parent_ids": [
+            "59d05353ab575bcc2aa958fe1782e93297de64c9"
+          ],
+          "message": "goodbye $.browser\n",
+          "author_name": "angus croll",
+          "author_email": "anguscroll@gmail.com",
+          "authored_date": "2013-02-18T22:02:54.000Z",
+          "committer_name": "angus croll",
+          "committer_email": "anguscroll@gmail.com",
+          "committed_date": "2013-02-18T22:02:54.000Z",
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: blobs",
+      "description": "Blobs searches are performed on both filenames and contents. Search results:",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "basename": "README",
+          "data": "```\n\n## Installation\n\nQuick start using the [pre-built",
+          "path": "README.md",
+          "filename": "README.md",
+          "id": null,
+          "ref": "master",
+          "startline": 46,
+          "project_id": 6
+        }
+      ]
+    },
+    {
+      "name": "Scope: users",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "name": "John Doe1",
+          "username": "user1",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/c922747a93b40d1ea88262bf1aebee62?s=80&d=identicon",
+          "web_url": "http://localhost/user1"
+        }
+      ]
+    }
+  ]
 }

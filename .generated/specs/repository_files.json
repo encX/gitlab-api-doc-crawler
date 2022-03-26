@@ -1,5 +1,426 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/repository_files.html",
   "pageName": "Repository files",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Repository files API",
+      "description": "You can fetch, create, update, and delete files in your repository with this API. You can also configure rate limits for this API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Available scopes for personal access tokens",
+      "description": "The different scopes available using personal access tokens are depicted in the following table.",
+      "resources": [],
+      "attributes": [
+        {
+          "name": "read_repository",
+          "type": "Allows read-access to the repository files.",
+          "required": false
+        },
+        {
+          "name": "api",
+          "type": "Allows read-write access to the repository files.",
+          "required": false
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Get file from repository",
+      "description": "In addition to the GET method, you can also use HEAD to get just file metadata.",
+      "resources": [
+        {
+          "method": "HTTP/1.1",
+          "path": "200"
+        },
+        {
+          "method": "..."
+        },
+        {
+          "method": "X-Gitlab-Blob-Id:",
+          "path": "79f7bbd25901e8334750839545a9bd021f0e4c83"
+        },
+        {
+          "method": "X-Gitlab-Commit-Id:",
+          "path": "d5a3ff139356ce33e37e73add446f16869741b50"
+        },
+        {
+          "method": "X-Gitlab-Content-Sha256:",
+          "path": "4c294617b60715c1d218e61164a3abd4808a4284cbc30e6728a01ad9aada4481"
+        },
+        {
+          "method": "X-Gitlab-Encoding:",
+          "path": "base64"
+        },
+        {
+          "method": "X-Gitlab-File-Name:",
+          "path": "key.rb"
+        },
+        {
+          "method": "X-Gitlab-File-Path:",
+          "path": "app/models/key.rb"
+        },
+        {
+          "method": "X-Gitlab-Last-Commit-Id:",
+          "path": "570e7b2abdd848b95f2f578043fc23bd6f6fd24d"
+        },
+        {
+          "method": "X-Gitlab-Ref:",
+          "path": "master"
+        },
+        {
+          "method": "X-Gitlab-Size:",
+          "path": "1476"
+        },
+        {
+          "method": "..."
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL encoded full path to new file. Ex. lib%2Fclass%2Erb."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": true,
+          "description": "The name of branch, tag or commit"
+        }
+      ],
+      "response": {
+        "file_name": "key.rb",
+        "file_path": "app/models/key.rb",
+        "size": 1476,
+        "encoding": "base64",
+        "content": "IyA9PSBTY2hlbWEgSW5mb3...",
+        "content_sha256": "4c294617b60715c1d218e61164a3abd4808a4284cbc30e6728a01ad9aada4481",
+        "ref": "master",
+        "blob_id": "79f7bbd25901e8334750839545a9bd021f0e4c83",
+        "commit_id": "d5a3ff139356ce33e37e73add446f16869741b50",
+        "last_commit_id": "570e7b2abdd848b95f2f578043fc23bd6f6fd24d"
+      }
+    },
+    {
+      "name": "Get file blame from repository",
+      "description": "Allows you to receive blame information. Each blame range contains lines and corresponding commit information.",
+      "resources": [
+        {
+          "method": "HTTP/1.1",
+          "path": "200"
+        },
+        {
+          "method": "..."
+        },
+        {
+          "method": "X-Gitlab-Blob-Id:",
+          "path": "79f7bbd25901e8334750839545a9bd021f0e4c83"
+        },
+        {
+          "method": "X-Gitlab-Commit-Id:",
+          "path": "d5a3ff139356ce33e37e73add446f16869741b50"
+        },
+        {
+          "method": "X-Gitlab-Content-Sha256:",
+          "path": "4c294617b60715c1d218e61164a3abd4808a4284cbc30e6728a01ad9aada4481"
+        },
+        {
+          "method": "X-Gitlab-Encoding:",
+          "path": "base64"
+        },
+        {
+          "method": "X-Gitlab-File-Name:",
+          "path": "file.rb"
+        },
+        {
+          "method": "X-Gitlab-File-Path:",
+          "path": "path/to/file.rb"
+        },
+        {
+          "method": "X-Gitlab-Last-Commit-Id:",
+          "path": "570e7b2abdd848b95f2f578043fc23bd6f6fd24d"
+        },
+        {
+          "method": "X-Gitlab-Ref:",
+          "path": "master"
+        },
+        {
+          "method": "X-Gitlab-Size:",
+          "path": "1476"
+        },
+        {
+          "method": "..."
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL encoded full path to new file. Ex. lib%2Fclass%2Erb."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": true,
+          "description": "The name of branch, tag or commit"
+        }
+      ],
+      "response": "[  {    \"commit\": {      \"id\": \"d42409d56517157c48bf3bd97d3f75974dde19fb\",      \"message\": \"Add feature\\n\\nalso fix bug\\n\",      \"parent_ids\": [        \"cc6e14f9328fa6d7b5a0d3c30dc2002a3f2a3822\"      ],      \"authored_date\": \"2015-12-18T08:12:22.000Z\",      \"author_name\": \"John Doe\",      \"author_email\": \"john.doe@example.com\",      \"committed_date\": \"2015-12-18T08:12:22.000Z\",      \"committer_name\": \"John Doe\",      \"committer_email\": \"john.doe@example.com\"    },    \"lines\": [      \"require 'fileutils'\",      \"require 'open3'\",      \"\"    ]  },  ...]"
+    },
+    {
+      "name": "Get raw file from repository",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/repository/files/:file_path/raw"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL encoded full path to new file. Ex. lib%2Fclass%2Erb."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": true,
+          "description": "The name of branch, tag or commit. Default is the HEAD of the project."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Create new file in repository",
+      "description": "This allows you to create a single file. For creating multiple files with a single request see the commits API.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/repository/files/:file_path"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded full path to new file. For example: lib%2Fclass%2Erb."
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "required": true,
+          "description": "Name of the new branch to create. The commit is added to this branch."
+        },
+        {
+          "name": "start_branch",
+          "type": "string",
+          "required": false,
+          "description": "Name of the base branch to create the new branch from."
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "required": false,
+          "description": "Change encoding to base64. Default is text."
+        },
+        {
+          "name": "author_email",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s email address."
+        },
+        {
+          "name": "author_name",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s name."
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true,
+          "description": "The file’s content."
+        },
+        {
+          "name": "commit_message",
+          "type": "string",
+          "required": true,
+          "description": "The commit message."
+        }
+      ],
+      "response": {
+        "file_path": "app/project.rb",
+        "branch": "master"
+      }
+    },
+    {
+      "name": "Update existing file in repository",
+      "description": "GitLab Shell has a boolean return code, preventing GitLab from specifying the error.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/repository/files/:file_path"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded full path to new file. For example: lib%2Fclass%2Erb."
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "required": true,
+          "description": "Name of the new branch to create. The commit is added to this branch."
+        },
+        {
+          "name": "start_branch",
+          "type": "string",
+          "required": false,
+          "description": "Name of the base branch to create the new branch from."
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "required": false,
+          "description": "Change encoding to base64. Default is text."
+        },
+        {
+          "name": "author_email",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s email address."
+        },
+        {
+          "name": "author_name",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s name."
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true,
+          "description": "The file’s content."
+        },
+        {
+          "name": "commit_message",
+          "type": "string",
+          "required": true,
+          "description": "The commit message."
+        },
+        {
+          "name": "last_commit_id",
+          "type": "string",
+          "required": false,
+          "description": "Last known file commit ID."
+        }
+      ],
+      "response": {
+        "file_path": "app/project.rb",
+        "branch": "master"
+      }
+    },
+    {
+      "name": "Delete existing file in repository",
+      "description": "This allows you to delete a single file. For deleting multiple files with a single request, see the commits API.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/repository/files/:file_path"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded full path to new file. For example: lib%2Fclass%2Erb."
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "required": true,
+          "description": "Name of the new branch to create. The commit is added to this branch."
+        },
+        {
+          "name": "start_branch",
+          "type": "string",
+          "required": false,
+          "description": "Name of the base branch to create the new branch from."
+        },
+        {
+          "name": "author_email",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s email address."
+        },
+        {
+          "name": "author_name",
+          "type": "string",
+          "required": false,
+          "description": "The commit author’s name."
+        },
+        {
+          "name": "commit_message",
+          "type": "string",
+          "required": true,
+          "description": "The commit message."
+        },
+        {
+          "name": "last_commit_id",
+          "type": "string",
+          "required": false,
+          "description": "Last known file commit ID."
+        }
+      ],
+      "response": {}
+    }
+  ]
 }

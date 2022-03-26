@@ -1,5 +1,337 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/protected_branches.html",
   "pageName": "Protected branches",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Protected branches API",
+      "description": "The access levels are defined in the ProtectedRefAccess.allowed_access_levels method. Currently, these levels are recognized:",
+      "resources": [
+        {
+          "method": "0",
+          "path": ""
+        },
+        {
+          "method": "30",
+          "path": "=>"
+        },
+        {
+          "method": "40",
+          "path": "=>"
+        },
+        {
+          "method": "60",
+          "path": "=>"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List protected branches",
+      "description": "Users on GitLab Premium or higher also see the user_id and group_id parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_branches"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Name or part of the name of protected branches to be searched for"
+        }
+      ],
+      "response": "[  {    \"id\": 1,    \"name\": \"master\",    \"push_access_levels\": [      {        \"access_level\": 40,        \"user_id\": null,        \"group_id\": null,        \"access_level_description\": \"Maintainers\"      }    ],    \"merge_access_levels\": [      {        \"access_level\": null,        \"user_id\": null,        \"group_id\": 1234,        \"access_level_description\": \"Example Merge Group\"      }    ],    \"allow_force_push\":false,    \"code_owner_approval_required\": false  },  ...]"
+    },
+    {
+      "name": "Get a single protected branch or wildcard protected branch",
+      "description": "Users on GitLab Premium or higher also see the user_id and group_id parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch or wildcard"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "master",
+        "push_access_levels": [
+          {
+            "access_level": 40,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": null,
+            "user_id": null,
+            "group_id": 1234,
+            "access_level_description": "Example Merge Group"
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Protect repository branches",
+      "description": "Users on GitLab Premium or higher also see the user_id and group_id parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/protected_branches"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch or wildcard"
+        },
+        {
+          "name": "push_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to push (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "merge_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to merge (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "unprotect_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to unprotect (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "allow_force_push",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow all users with push access to force push. (default: false)"
+        },
+        {
+          "name": "allowed_to_push",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to push, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "allowed_to_merge",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to merge, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "allowed_to_unprotect",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to unprotect, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "code_owner_approval_required",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "*-stable",
+        "push_access_levels": [
+          {
+            "access_level": 30,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Developers + Maintainers"
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": 30,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Developers + Maintainers"
+          }
+        ],
+        "unprotect_access_levels": [
+          {
+            "access_level": 40,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Example with user / group level access",
+      "description": "Elements in the allowed_to_push / allowed_to_merge / allowed_to_unprotect array should take the form {user_id: integer}, {group_id: integer}, or {access_level: integer}. Each user must have access to the project and each group must have this project shared. These access levels allow more granular control over protected branch access.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "id": 1,
+        "name": "*-stable",
+        "push_access_levels": [
+          {
+            "access_level": null,
+            "user_id": 1,
+            "group_id": null,
+            "access_level_description": "Administrator"
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": 40,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "unprotect_access_levels": [
+          {
+            "access_level": 40,
+            "user_id": null,
+            "group_id": null,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Example with allow to push and allow to merge access",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "id": 5,
+        "name": "master",
+        "push_access_levels": [
+          {
+            "access_level": 30,
+            "access_level_description": "Developers + Maintainers",
+            "user_id": null,
+            "group_id": null
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": 30,
+            "access_level_description": "Developers + Maintainers",
+            "user_id": null,
+            "group_id": null
+          },
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers",
+            "user_id": null,
+            "group_id": null
+          }
+        ],
+        "unprotect_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers",
+            "user_id": null,
+            "group_id": null
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Unprotect repository branches",
+      "description": "Unprotects the given protected branch or wildcard protected branch.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Require code owner approvals for a single branch",
+      "description": "Update the “code owner approval required” option for the given protected branch.",
+      "resources": [
+        {
+          "method": "PATCH",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch"
+        },
+        {
+          "name": "code_owner_approval_required",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)"
+        }
+      ],
+      "response": {}
+    }
+  ]
 }

@@ -1,5 +1,1956 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/groups.html",
   "pageName": "Groups",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Groups API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List groups",
+      "description": "You can filter by custom attributes with:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups?custom_attributes[key]=value&custom_attributes[other_key]=other_value"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "skip_groups",
+          "type": "array of integers",
+          "required": false,
+          "description": "Skip the group IDs passed"
+        },
+        {
+          "name": "all_available",
+          "type": "boolean",
+          "required": false,
+          "description": "Show all the groups you have access to (defaults to false for authenticated users, true for administrators); Attributes owned and min_access_level have precedence"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return the list of authorized groups matching the search criteria"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Order groups by name, path, id, or similarity (if searching, introduced in GitLab 14.1). Default is name"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Order groups in asc or desc order. Default is asc"
+        },
+        {
+          "name": "statistics",
+          "type": "boolean",
+          "required": false,
+          "description": "Include group statistics (administrators only)"
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)"
+        },
+        {
+          "name": "owned",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit to groups explicitly owned by the current user"
+        },
+        {
+          "name": "min_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Limit to groups where current user has at least this access level"
+        },
+        {
+          "name": "top_level_only",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit to top level groups, excluding all subgroups"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "Foobar Group",
+          "path": "foo-bar",
+          "description": "An interesting group",
+          "visibility": "public",
+          "share_with_group_lock": false,
+          "require_two_factor_authentication": false,
+          "two_factor_grace_period": 48,
+          "project_creation_level": "developer",
+          "auto_devops_enabled": null,
+          "subgroup_creation_level": "owner",
+          "emails_disabled": null,
+          "mentions_disabled": null,
+          "lfs_enabled": true,
+          "default_branch_protection": 2,
+          "avatar_url": "http://localhost:3000/uploads/group/avatar/1/foo.jpg",
+          "web_url": "http://localhost:3000/groups/foo-bar",
+          "request_access_enabled": false,
+          "full_name": "Foobar Group",
+          "full_path": "foo-bar",
+          "file_template_project_id": 1,
+          "parent_id": null,
+          "created_at": "2020-01-15T12:36:29.590Z",
+          "statistics": {
+            "storage_size": 363,
+            "repository_size": 33,
+            "wiki_size": 100,
+            "lfs_objects_size": 123,
+            "job_artifacts_size": 57,
+            "pipeline_artifacts_size": 0,
+            "packages_size": 0,
+            "snippets_size": 50,
+            "uploads_size": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "List a group’s subgroups",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/subgroups"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group of the immediate parent group"
+        },
+        {
+          "name": "skip_groups",
+          "type": "array of integers",
+          "required": false,
+          "description": "Skip the group IDs passed"
+        },
+        {
+          "name": "all_available",
+          "type": "boolean",
+          "required": false,
+          "description": "Show all the groups you have access to (defaults to false for authenticated users, true for administrators); Attributes owned and min_access_level have precedence"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return the list of authorized groups matching the search criteria. Only subgroup short paths are searched (not full paths)"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Order groups by name, path or id. Default is name"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Order groups in asc or desc order. Default is asc"
+        },
+        {
+          "name": "statistics",
+          "type": "boolean",
+          "required": false,
+          "description": "Include group statistics (administrators only)"
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)"
+        },
+        {
+          "name": "owned",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit to groups explicitly owned by the current user"
+        },
+        {
+          "name": "min_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Limit to groups where current user has at least this access level"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "Foobar Group",
+          "path": "foo-bar",
+          "description": "An interesting group",
+          "visibility": "public",
+          "share_with_group_lock": false,
+          "require_two_factor_authentication": false,
+          "two_factor_grace_period": 48,
+          "project_creation_level": "developer",
+          "auto_devops_enabled": null,
+          "subgroup_creation_level": "owner",
+          "emails_disabled": null,
+          "mentions_disabled": null,
+          "lfs_enabled": true,
+          "default_branch_protection": 2,
+          "avatar_url": "http://gitlab.example.com/uploads/group/avatar/1/foo.jpg",
+          "web_url": "http://gitlab.example.com/groups/foo-bar",
+          "request_access_enabled": false,
+          "full_name": "Foobar Group",
+          "full_path": "foo-bar",
+          "file_template_project_id": 1,
+          "parent_id": 123,
+          "created_at": "2020-01-15T12:36:29.590Z"
+        }
+      ]
+    },
+    {
+      "name": "List a group’s descendant groups",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/descendant_groups"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group of the immediate parent group"
+        },
+        {
+          "name": "skip_groups",
+          "type": "array of integers",
+          "required": false,
+          "description": "Skip the group IDs passed"
+        },
+        {
+          "name": "all_available",
+          "type": "boolean",
+          "required": false,
+          "description": "Show all the groups you have access to (defaults to false for authenticated users, true for administrators). Attributes owned and min_access_level have precedence"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return the list of authorized groups matching the search criteria. Only descendant group short paths are searched (not full paths)"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Order groups by name, path, or id. Default is name"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Order groups in asc or desc order. Default is asc"
+        },
+        {
+          "name": "statistics",
+          "type": "boolean",
+          "required": false,
+          "description": "Include group statistics (administrators only)"
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)"
+        },
+        {
+          "name": "owned",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit to groups explicitly owned by the current user"
+        },
+        {
+          "name": "min_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Limit to groups where current user has at least this access level"
+        }
+      ],
+      "response": [
+        {
+          "id": 2,
+          "name": "Bar Group",
+          "path": "foo/bar",
+          "description": "A subgroup of Foo Group",
+          "visibility": "public",
+          "share_with_group_lock": false,
+          "require_two_factor_authentication": false,
+          "two_factor_grace_period": 48,
+          "project_creation_level": "developer",
+          "auto_devops_enabled": null,
+          "subgroup_creation_level": "owner",
+          "emails_disabled": null,
+          "mentions_disabled": null,
+          "lfs_enabled": true,
+          "default_branch_protection": 2,
+          "avatar_url": "http://gitlab.example.com/uploads/group/avatar/1/bar.jpg",
+          "web_url": "http://gitlab.example.com/groups/foo/bar",
+          "request_access_enabled": false,
+          "full_name": "Bar Group",
+          "full_path": "foo/bar",
+          "file_template_project_id": 1,
+          "parent_id": 123,
+          "created_at": "2020-01-15T12:36:29.590Z"
+        },
+        {
+          "id": 3,
+          "name": "Baz Group",
+          "path": "foo/bar/baz",
+          "description": "A subgroup of Bar Group",
+          "visibility": "public",
+          "share_with_group_lock": false,
+          "require_two_factor_authentication": false,
+          "two_factor_grace_period": 48,
+          "project_creation_level": "developer",
+          "auto_devops_enabled": null,
+          "subgroup_creation_level": "owner",
+          "emails_disabled": null,
+          "mentions_disabled": null,
+          "lfs_enabled": true,
+          "default_branch_protection": 2,
+          "avatar_url": "http://gitlab.example.com/uploads/group/avatar/1/baz.jpg",
+          "web_url": "http://gitlab.example.com/groups/foo/bar/baz",
+          "request_access_enabled": false,
+          "full_name": "Baz Group",
+          "full_path": "foo/bar/baz",
+          "file_template_project_id": 1,
+          "parent_id": 123,
+          "created_at": "2020-01-15T12:36:29.590Z"
+        }
+      ]
+    },
+    {
+      "name": "List a group’s projects",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/projects"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "archived",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by archived status"
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "Limit by visibility public, internal, or private"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return projects ordered by id, name, path, created_at, updated_at, similarity (1), or last_activity_at fields. Default is created_at"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return projects sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return list of authorized projects matching the search criteria"
+        },
+        {
+          "name": "simple",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only the ID, URL, name, and path of each project"
+        },
+        {
+          "name": "owned",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects owned by the current user"
+        },
+        {
+          "name": "starred",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects starred by the current user"
+        },
+        {
+          "name": "with_issues_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects with issues feature enabled. Default is false"
+        },
+        {
+          "name": "with_merge_requests_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects with merge requests feature enabled. Default is false"
+        },
+        {
+          "name": "with_shared",
+          "type": "boolean",
+          "required": false,
+          "description": "Include projects shared to this group. Default is true"
+        },
+        {
+          "name": "include_subgroups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include projects in subgroups of this group. Default is false"
+        },
+        {
+          "name": "min_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Limit to projects where current user has at least this access level"
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)"
+        },
+        {
+          "name": "with_security_reports",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only projects that have security reports artifacts present in any of their builds. This means “projects with security reports enabled”. Default is false"
+        }
+      ],
+      "response": "[  {    \"id\": 9,    \"description\": \"foo\",    \"default_branch\": \"master\",    \"tag_list\": [], //deprecated, use `topics` instead    \"topics\": [],    \"archived\": false,    \"visibility\": \"internal\",    \"ssh_url_to_repo\": \"git@gitlab.example.com/html5-boilerplate.git\",    \"http_url_to_repo\": \"http://gitlab.example.com/h5bp/html5-boilerplate.git\",    \"web_url\": \"http://gitlab.example.com/h5bp/html5-boilerplate\",    \"name\": \"Html5 Boilerplate\",    \"name_with_namespace\": \"Experimental / Html5 Boilerplate\",    \"path\": \"html5-boilerplate\",    \"path_with_namespace\": \"h5bp/html5-boilerplate\",    \"issues_enabled\": true,    \"merge_requests_enabled\": true,    \"wiki_enabled\": true,    \"jobs_enabled\": true,    \"snippets_enabled\": true,    \"created_at\": \"2016-04-05T21:40:50.169Z\",    \"last_activity_at\": \"2016-04-06T16:52:08.432Z\",    \"shared_runners_enabled\": true,    \"creator_id\": 1,    \"namespace\": {      \"id\": 5,      \"name\": \"Experimental\",      \"path\": \"h5bp\",      \"kind\": \"group\"    },    \"avatar_url\": null,    \"star_count\": 1,    \"forks_count\": 0,    \"open_issues_count\": 3,    \"public_jobs\": true,    \"shared_with_groups\": [],    \"request_access_enabled\": false  }]"
+    },
+    {
+      "name": "List a group’s shared projects",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/projects/shared"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "archived",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by archived status"
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "Limit by visibility public, internal, or private"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return projects ordered by id, name, path, created_at, updated_at, or last_activity_at fields. Default is created_at"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return projects sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return list of authorized projects matching the search criteria"
+        },
+        {
+          "name": "simple",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only the ID, URL, name, and path of each project"
+        },
+        {
+          "name": "starred",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects starred by the current user"
+        },
+        {
+          "name": "with_issues_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects with issues feature enabled. Default is false"
+        },
+        {
+          "name": "with_merge_requests_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by projects with merge requests feature enabled. Default is false"
+        },
+        {
+          "name": "min_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Limit to projects where current user has at least this access level"
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)"
+        }
+      ],
+      "response": "[   {      \"id\":8,      \"description\":\"Shared project for Html5 Boilerplate\",      \"name\":\"Html5 Boilerplate\",      \"name_with_namespace\":\"H5bp / Html5 Boilerplate\",      \"path\":\"html5-boilerplate\",      \"path_with_namespace\":\"h5bp/html5-boilerplate\",      \"created_at\":\"2020-04-27T06:13:22.642Z\",      \"default_branch\":\"master\",      \"tag_list\":[], //deprecated, use `topics` instead      \"topics\":[],      \"ssh_url_to_repo\":\"ssh://git@gitlab.com/h5bp/html5-boilerplate.git\",      \"http_url_to_repo\":\"http://gitlab.com/h5bp/html5-boilerplate.git\",      \"web_url\":\"http://gitlab.com/h5bp/html5-boilerplate\",      \"readme_url\":\"http://gitlab.com/h5bp/html5-boilerplate/-/blob/master/README.md\",      \"avatar_url\":null,      \"star_count\":0,      \"forks_count\":4,      \"last_activity_at\":\"2020-04-27T06:13:22.642Z\",      \"namespace\":{         \"id\":28,         \"name\":\"H5bp\",         \"path\":\"h5bp\",         \"kind\":\"group\",         \"full_path\":\"h5bp\",         \"parent_id\":null,         \"avatar_url\":null,         \"web_url\":\"http://gitlab.com/groups/h5bp\"      },      \"_links\":{         \"self\":\"http://gitlab.com/api/v4/projects/8\",         \"issues\":\"http://gitlab.com/api/v4/projects/8/issues\",         \"merge_requests\":\"http://gitlab.com/api/v4/projects/8/merge_requests\",         \"repo_branches\":\"http://gitlab.com/api/v4/projects/8/repository/branches\",         \"labels\":\"http://gitlab.com/api/v4/projects/8/labels\",         \"events\":\"http://gitlab.com/api/v4/projects/8/events\",         \"members\":\"http://gitlab.com/api/v4/projects/8/members\"      },      \"empty_repo\":false,      \"archived\":false,      \"visibility\":\"public\",      \"resolve_outdated_diff_discussions\":false,      \"container_registry_enabled\":true,      \"container_expiration_policy\":{         \"cadence\":\"7d\",         \"enabled\":true,         \"keep_n\":null,         \"older_than\":null,         \"name_regex\":null,         \"name_regex_keep\":null,         \"next_run_at\":\"2020-05-04T06:13:22.654Z\"      },      \"issues_enabled\":true,      \"merge_requests_enabled\":true,      \"wiki_enabled\":true,      \"jobs_enabled\":true,      \"snippets_enabled\":true,      \"can_create_merge_request_in\":true,      \"issues_access_level\":\"enabled\",      \"repository_access_level\":\"enabled\",      \"merge_requests_access_level\":\"enabled\",      \"forking_access_level\":\"enabled\",      \"wiki_access_level\":\"enabled\",      \"builds_access_level\":\"enabled\",      \"snippets_access_level\":\"enabled\",      \"pages_access_level\":\"enabled\",      \"security_and_compliance_access_level\":\"enabled\",      \"emails_disabled\":null,      \"shared_runners_enabled\":true,      \"lfs_enabled\":true,      \"creator_id\":1,      \"import_status\":\"failed\",      \"open_issues_count\":10,      \"ci_default_git_depth\":50,      \"ci_forward_deployment_enabled\":true,      \"public_jobs\":true,      \"build_timeout\":3600,      \"auto_cancel_pending_pipelines\":\"enabled\",      \"build_coverage_regex\":null,      \"ci_config_path\":null,      \"shared_with_groups\":[         {            \"group_id\":24,            \"group_name\":\"Commit451\",            \"group_full_path\":\"Commit451\",            \"group_access_level\":30,            \"expires_at\":null         }      ],      \"only_allow_merge_if_pipeline_succeeds\":false,      \"request_access_enabled\":true,      \"only_allow_merge_if_all_discussions_are_resolved\":false,      \"remove_source_branch_after_merge\":true,      \"printing_merge_request_link_enabled\":true,      \"merge_method\":\"merge\",      \"suggestion_commit_message\":null,      \"auto_devops_enabled\":true,      \"auto_devops_deploy_strategy\":\"continuous\",      \"autoclose_referenced_issues\":true,      \"repository_storage\":\"default\"   }]"
+    },
+    {
+      "name": "Details of a group",
+      "description": "When adding the parameter with_projects=false, projects aren’t returned.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        },
+        {
+          "name": "with_custom_attributes",
+          "type": "boolean",
+          "required": false,
+          "description": "Include custom attributes in response (administrators only)."
+        },
+        {
+          "name": "with_projects",
+          "type": "boolean",
+          "required": false,
+          "description": "Include details from projects that belong to the specified group (defaults to true). (Deprecated, scheduled for removal in API v5. To get the details of all projects within a group, use the list a group’s projects endpoint.)"
+        }
+      ],
+      "response": {
+        "id": 4,
+        "name": "Twitter",
+        "path": "twitter",
+        "description": "Aliquid qui quis dignissimos distinctio ut commodi voluptas est.",
+        "visibility": "public",
+        "avatar_url": null,
+        "web_url": "https://gitlab.example.com/groups/twitter",
+        "request_access_enabled": false,
+        "full_name": "Twitter",
+        "full_path": "twitter",
+        "file_template_project_id": 1,
+        "parent_id": null
+      }
+    },
+    {
+      "name": "Download a Group avatar",
+      "description": "Example:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/avatar"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "ID of the group"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Disable the results limit",
+      "description": "For GitLab 14.0 and later, the limit cannot be disabled.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "New group",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the group."
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": "The path of the group."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The group’s description."
+        },
+        {
+          "name": "membership_lock",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent adding new members to projects within this group."
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "The group’s visibility. Can be private, internal, or public."
+        },
+        {
+          "name": "share_with_group_lock",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent sharing a project with another group within this group."
+        },
+        {
+          "name": "require_two_factor_authentication",
+          "type": "boolean",
+          "required": false,
+          "description": "Require all users in this group to setup Two-factor authentication."
+        },
+        {
+          "name": "two_factor_grace_period",
+          "type": "integer",
+          "required": false,
+          "description": "Time before Two-factor authentication is enforced (in hours)."
+        },
+        {
+          "name": "project_creation_level",
+          "type": "string",
+          "required": false,
+          "description": "Determine if developers can create projects in the group. Can be noone (No one), maintainer (users with the Maintainer role), or developer (users with the Developer or Maintainer role)."
+        },
+        {
+          "name": "auto_devops_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Default to Auto DevOps pipeline for all projects within this group."
+        },
+        {
+          "name": "subgroup_creation_level",
+          "type": "string",
+          "required": false,
+          "description": "Allowed to create subgroups. Can be owner (Owners), or maintainer (users with the Maintainer role)."
+        },
+        {
+          "name": "emails_disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable email notifications"
+        },
+        {
+          "name": "avatar",
+          "type": "mixed",
+          "required": false,
+          "description": "Image file for avatar of the group. Introduced in GitLab 12.9"
+        },
+        {
+          "name": "mentions_disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable the capability of a group from getting mentioned"
+        },
+        {
+          "name": "lfs_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable Large File Storage (LFS) for the projects in this group."
+        },
+        {
+          "name": "request_access_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow users to request member access."
+        },
+        {
+          "name": "parent_id",
+          "type": "integer",
+          "required": false,
+          "description": "The parent group ID for creating nested group."
+        },
+        {
+          "name": "default_branch_protection",
+          "type": "integer",
+          "required": false,
+          "description": "See Options for default_branch_protection. Default to the global level default branch protection setting."
+        },
+        {
+          "name": "shared_runners_minutes_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0."
+        },
+        {
+          "name": "extra_shared_runners_minutes_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Can be set by administrators only. Additional CI/CD minutes for this group."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Options for default_branch_protection",
+      "description": "The default_branch_protection attribute determines whether users with the Developer or Maintainer role can push to the applicable default branch, as described in the following table:",
+      "resources": [],
+      "attributes": [
+        {
+          "name": "0",
+          "type": "No protection. Users with the Developer or Maintainer role can: - Push new commits- Force push changes- Delete the branch",
+          "required": false
+        },
+        {
+          "name": "1",
+          "type": "Partial protection. Users with the Developer or Maintainer role can: - Push new commits",
+          "required": false
+        },
+        {
+          "name": "2",
+          "type": "Full protection. Only users with the Maintainer role can: - Push new commits",
+          "required": false
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "New Subgroup",
+      "description": "This is similar to creating a New group. You need the parent_id from the List groups call. You can then enter the desired:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Transfer project to group",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": ""
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the target group"
+        },
+        {
+          "name": "project_id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Transfer a group to a new parent group / Turn a subgroup to a top-level group",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": ""
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group to transfer."
+        },
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the new parent group. When not specified, the group to transfer is instead turned into a top-level group."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Update group",
+      "description": "The prevent_sharing_groups_outside_hierarchy attribute is present in the response only for top-level groups.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the group."
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false,
+          "description": "The path of the group."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of the group."
+        },
+        {
+          "name": "membership_lock",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent adding new members to projects within this group."
+        },
+        {
+          "name": "share_with_group_lock",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent sharing a project with another group within this group."
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "The visibility level of the group. Can be private, internal, or public."
+        },
+        {
+          "name": "require_two_factor_authentication",
+          "type": "boolean",
+          "required": false,
+          "description": "Require all users in this group to setup Two-factor authentication."
+        },
+        {
+          "name": "two_factor_grace_period",
+          "type": "integer",
+          "required": false,
+          "description": "Time before Two-factor authentication is enforced (in hours)."
+        },
+        {
+          "name": "project_creation_level",
+          "type": "string",
+          "required": false,
+          "description": "Determine if developers can create projects in the group. Can be noone (No one), maintainer (users with the Maintainer role), or developer (users with the Developer or Maintainer role)."
+        },
+        {
+          "name": "auto_devops_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Default to Auto DevOps pipeline for all projects within this group."
+        },
+        {
+          "name": "subgroup_creation_level",
+          "type": "string",
+          "required": false,
+          "description": "Allowed to create subgroups. Can be owner (Owners), or maintainer (users with the Maintainer role)."
+        },
+        {
+          "name": "emails_disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable email notifications"
+        },
+        {
+          "name": "avatar",
+          "type": "mixed",
+          "required": false,
+          "description": "Image file for avatar of the group. Introduced in GitLab 12.9"
+        },
+        {
+          "name": "mentions_disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable the capability of a group from getting mentioned"
+        },
+        {
+          "name": "lfs_enabled (optional)",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable/disable Large File Storage (LFS) for the projects in this group."
+        },
+        {
+          "name": "request_access_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow users to request member access."
+        },
+        {
+          "name": "default_branch_protection",
+          "type": "integer",
+          "required": false,
+          "description": "See Options for default_branch_protection."
+        },
+        {
+          "name": "file_template_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of a project to load custom file templates from."
+        },
+        {
+          "name": "shared_runners_minutes_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0."
+        },
+        {
+          "name": "extra_shared_runners_minutes_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Can be set by administrators only. Additional CI/CD minutes for this group."
+        },
+        {
+          "name": "prevent_forking_outside_group",
+          "type": "boolean",
+          "required": false,
+          "description": "When enabled, users can not fork projects from this group to external namespaces"
+        },
+        {
+          "name": "shared_runners_setting",
+          "type": "string",
+          "required": false,
+          "description": "See Options for shared_runners_setting. Enable or disable shared runners for a group’s subgroups and projects."
+        },
+        {
+          "name": "prevent_sharing_groups_outside_hierarchy",
+          "type": "boolean",
+          "required": false,
+          "description": "See Prevent group sharing outside the group hierarchy. This attribute is only available on top-level groups. Introduced in GitLab 14.1"
+        }
+      ],
+      "response": "{  \"id\": 5,  \"name\": \"Experimental\",  \"path\": \"h5bp\",  \"description\": \"foo\",  \"visibility\": \"internal\",  \"avatar_url\": null,  \"web_url\": \"http://gitlab.example.com/groups/h5bp\",  \"request_access_enabled\": false,  \"full_name\": \"Foobar Group\",  \"full_path\": \"foo-bar\",  \"file_template_project_id\": 1,  \"parent_id\": null,  \"created_at\": \"2020-01-15T12:36:29.590Z\",  \"prevent_sharing_groups_outside_hierarchy\": false,  \"projects\": [ // Deprecated and will be removed in API v5    {      \"id\": 9,      \"description\": \"foo\",      \"default_branch\": \"master\",      \"tag_list\": [], //deprecated, use `topics` instead      \"topics\": [],      \"public\": false,      \"archived\": false,      \"visibility\": \"internal\",      \"ssh_url_to_repo\": \"git@gitlab.example.com/html5-boilerplate.git\",      \"http_url_to_repo\": \"http://gitlab.example.com/h5bp/html5-boilerplate.git\",      \"web_url\": \"http://gitlab.example.com/h5bp/html5-boilerplate\",      \"name\": \"Html5 Boilerplate\",      \"name_with_namespace\": \"Experimental / Html5 Boilerplate\",      \"path\": \"html5-boilerplate\",      \"path_with_namespace\": \"h5bp/html5-boilerplate\",      \"issues_enabled\": true,      \"merge_requests_enabled\": true,      \"wiki_enabled\": true,      \"jobs_enabled\": true,      \"snippets_enabled\": true,      \"created_at\": \"2016-04-05T21:40:50.169Z\",      \"last_activity_at\": \"2016-04-06T16:52:08.432Z\",      \"shared_runners_enabled\": true,      \"creator_id\": 1,      \"namespace\": {        \"id\": 5,        \"name\": \"Experimental\",        \"path\": \"h5bp\",        \"kind\": \"group\"      },      \"avatar_url\": null,      \"star_count\": 1,      \"forks_count\": 0,      \"open_issues_count\": 3,      \"public_jobs\": true,      \"shared_with_groups\": [],      \"request_access_enabled\": false    }  ]}"
+    },
+    {
+      "name": "Disable the results limit",
+      "description": "For GitLab 14.0 and later, the limit cannot be disabled.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Options for shared_runners_setting",
+      "description": "The shared_runners_setting attribute determines whether shared runners are enabled for a group’s subgroups and projects.",
+      "resources": [],
+      "attributes": [
+        {
+          "name": "enabled",
+          "type": "Enables shared runners for all projects and subgroups in this group.",
+          "required": false
+        },
+        {
+          "name": "disabled_with_override",
+          "type": "Disables shared runners for all projects and subgroups in this group, but allows subgroups to override this setting.",
+          "required": false
+        },
+        {
+          "name": "disabled_and_unoverridable",
+          "type": "Disables shared runners for all projects and subgroups in this group, and prevents subgroups from overriding this setting.",
+          "required": false
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Upload a group avatar",
+      "description": "To upload an avatar file from your file system, use the --form argument. This causes curl to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Remove group",
+      "description": "The response is 202 Accepted if the user has authorization.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Restore group marked for deletion",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/restore"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Search for group",
+      "description": "Get all groups that match your string in their name or path.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups?search=foobar"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "name": "Foobar Group",
+          "path": "foo-bar",
+          "description": "An interesting group"
+        }
+      ]
+    },
+    {
+      "name": "List provisioned users",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/provisioned_users"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "ID or URL-encoded path of the group"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "Return single user with a specific username"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search users by name, email, username"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only active users"
+        },
+        {
+          "name": "blocked",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only blocked users"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return users created after the specified time"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return users created before the specified time"
+        }
+      ],
+      "response": "[  {    id: 66,    username: \"user22\",    name: \"John Doe22\",    state: \"active\",    avatar_url: \"https://www.gravatar.com/avatar/xxx?s=80&d=identicon\",    web_url: \"http://my.gitlab.com/user22\",    created_at: \"2021-09-10T12:48:22.381Z\",    bio: \"\",    location: null,    public_email: \"\",    skype: \"\",    linkedin: \"\",    twitter: \"\",    website_url: \"\",    organization: null,    job_title: \"\",    pronouns: null,    bot: false,    work_information: null,    followers: 0,    following: 0,    local_time: null,    last_sign_in_at: null,    confirmed_at: \"2021-09-10T12:48:22.330Z\",    last_activity_on: null,    email: \"user22@example.org\",    theme_id: 1,    color_scheme_id: 1,    projects_limit: 100000,    current_sign_in_at: null,    identities: [ ],    can_create_group: true,    can_create_project: true,    two_factor_enabled: false,    external: false,    private_profile: false,    commit_email: \"user22@example.org\",    shared_runners_minutes_limit: null,    extra_shared_runners_minutes_limit: null  },  ...]"
+    },
+    {
+      "name": "Hooks",
+      "description": "Also called Group Hooks and Webhooks. These are different from System Hooks that are system wide and Project Hooks that are limited to one project.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List group hooks",
+      "description": "Get a list of group hooks",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/hooks"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Get group hook",
+      "description": "Get a specific hook for a group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/hooks/:hook_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "hook_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a group hook"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "url": "http://example.com/hook",
+        "group_id": 3,
+        "push_events": true,
+        "issues_events": true,
+        "confidential_issues_events": true,
+        "merge_requests_events": true,
+        "tag_push_events": true,
+        "note_events": true,
+        "confidential_note_events": true,
+        "job_events": true,
+        "pipeline_events": true,
+        "wiki_page_events": true,
+        "deployment_events": true,
+        "releases_events": true,
+        "subgroup_events": true,
+        "enable_ssl_verification": true,
+        "created_at": "2012-10-12T17:04:47Z"
+      }
+    },
+    {
+      "name": "Add group hook",
+      "description": "Adds a hook to a specified group.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/hooks"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "description": "The hook URL"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on issues events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on confidential issues events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on merge requests events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on confidential note events"
+        },
+        {
+          "name": "job_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on job events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on wiki page events"
+        },
+        {
+          "name": "deployment_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on deployment events"
+        },
+        {
+          "name": "releases_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on release events"
+        },
+        {
+          "name": "subgroup_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on subgroup events"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Do SSL verification when triggering the hook"
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Secret token to validate received payloads; not returned in the response"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Edit group hook",
+      "description": "Edits a hook for a specified group.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/hooks/:hook_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "hook_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group hook"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "description": "The hook URL"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on issues events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on confidential issues events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on merge requests events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on confidential note events"
+        },
+        {
+          "name": "job_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on job events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on wiki page events"
+        },
+        {
+          "name": "deployment_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on deployment events"
+        },
+        {
+          "name": "releases_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on release events"
+        },
+        {
+          "name": "subgroup_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on subgroup events"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Do SSL verification when triggering the hook"
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Secret token to validate received payloads; not returned in the response"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete group hook",
+      "description": "Removes a hook from a group. This is an idempotent method and can be called multiple times. Either the hook is available or not.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/hooks/:hook_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "hook_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group hook."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Group Audit Events",
+      "description": "Group audit events can be accessed via the Group Audit Events API",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Sync group with LDAP",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/ldap_sync"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Group members",
+      "description": "Please consult the Group Members documentation.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "LDAP Group Links",
+      "description": "List, add, and delete LDAP group links.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List LDAP group links",
+      "description": "Lists LDAP group links.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/ldap_group_links"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Add LDAP group link with CN or filter",
+      "description": "Adds an LDAP group link using a CN or filter. Adding a group link by filter is only supported in the Premium tier and above.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/ldap_group_links"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "cn",
+          "type": "string",
+          "required": false,
+          "description": "The CN of an LDAP group"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "description": "The LDAP filter for the group"
+        },
+        {
+          "name": "group_access",
+          "type": "integer",
+          "required": true,
+          "description": "Minimum access level for members of the LDAP group"
+        },
+        {
+          "name": "provider",
+          "type": "string",
+          "required": true,
+          "description": "LDAP provider for the LDAP group link"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete LDAP group link",
+      "description": "Deletes an LDAP group link for a specific LDAP provider. Deprecated. Scheduled for removal in a future release.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/ldap_group_links/:provider/:cn"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "cn",
+          "type": "string",
+          "required": true,
+          "description": "The CN of an LDAP group"
+        },
+        {
+          "name": "provider",
+          "type": "string",
+          "required": true,
+          "description": "LDAP provider for the LDAP group link"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete LDAP group link with CN or filter",
+      "description": "Deletes an LDAP group link using a CN or filter. Deleting by filter is only supported in the Premium tier and above.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/ldap_group_links"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "cn",
+          "type": "string",
+          "required": false,
+          "description": "The CN of an LDAP group"
+        },
+        {
+          "name": "filter",
+          "type": "string",
+          "required": false,
+          "description": "The LDAP filter for the group"
+        },
+        {
+          "name": "provider",
+          "type": "string",
+          "required": true,
+          "description": "LDAP provider for the LDAP group link"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Namespaces in groups",
+      "description": "And to switch pages add:",
+      "resources": [
+        {
+          "method": "/groups?per_page=100&page=2"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Group badges",
+      "description": "Read more in the Group Badges documentation.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Group Import/Export",
+      "description": "Read more in the Group Import/Export and Group Relations Export documentation.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Share Groups with Groups",
+      "description": "These endpoints create and delete links for sharing a group with another group. For more information, see the related discussion in the GitLab Groups page.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Create a link to share a group with another group",
+      "description": "Share group with another group. Returns 200 and the group details on success.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/share"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group to share with"
+        },
+        {
+          "name": "group_access",
+          "type": "integer",
+          "required": true,
+          "description": "The access level to grant the group"
+        },
+        {
+          "name": "expires_at",
+          "type": "string",
+          "required": false,
+          "description": "Share expiration date in ISO 8601 format: 2016-09-26"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete link sharing group with another group",
+      "description": "Unshare the group from another group. Returns 204 and no content on success.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/share/:group_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group to share with"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Push Rules",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Get group push rules",
+      "description": "Users on GitLab Premium or higher also see the commit_committer_check and reject_unsigned_commits parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/push_rule"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of the group or URL-encoded path of the group"
+        }
+      ],
+      "response": "{  \"id\": 2,  \"created_at\": \"2020-08-17T19:09:19.580Z\",  \"commit_committer_check\": true,  \"reject_unsigned_commits\": false,  ...}"
+    },
+    {
+      "name": "Add group push rule",
+      "description": "Response:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/push_rule"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "deny_delete_tag",
+          "type": "boolean",
+          "required": false,
+          "description": "Deny deleting a tag"
+        },
+        {
+          "name": "member_check",
+          "type": "boolean",
+          "required": false,
+          "description": "Allows only GitLab users to author commits"
+        },
+        {
+          "name": "prevent_secrets",
+          "type": "boolean",
+          "required": false,
+          "description": "Files that are likely to contain secrets are rejected"
+        },
+        {
+          "name": "commit_message_regex",
+          "type": "string",
+          "required": false,
+          "description": "All commit messages must match the regular expression provided in this attribute, for example, Fixed \\d+\\..*"
+        },
+        {
+          "name": "commit_message_negative_regex",
+          "type": "string",
+          "required": false,
+          "description": "Commit messages matching the regular expression provided in this attribute aren’t allowed, for example, ssh\\:\\/\\/"
+        },
+        {
+          "name": "branch_name_regex",
+          "type": "string",
+          "required": false,
+          "description": "All branch names must match the regular expression provided in this attribute, for example, (feature|hotfix)\\/*"
+        },
+        {
+          "name": "author_email_regex",
+          "type": "string",
+          "required": false,
+          "description": "All commit author emails must match the regular expression provided in this attribute, for example, @my-company.com$"
+        },
+        {
+          "name": "file_name_regex",
+          "type": "string",
+          "required": false,
+          "description": "Filenames matching the regular expression provided in this attribute are not allowed, for example, (jar|exe)$"
+        },
+        {
+          "name": "max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum file size (MB) allowed"
+        },
+        {
+          "name": "commit_committer_check",
+          "type": "boolean",
+          "required": false,
+          "description": "Only commits pushed using verified emails are allowed"
+        },
+        {
+          "name": "reject_unsigned_commits",
+          "type": "boolean",
+          "required": false,
+          "description": "Only commits signed through GPG are allowed"
+        }
+      ],
+      "response": {
+        "id": 19,
+        "created_at": "2020-08-31T15:53:00.073Z",
+        "commit_message_regex": "[a-zA-Z]",
+        "commit_message_negative_regex": "[x+]",
+        "branch_name_regex": null,
+        "deny_delete_tag": false,
+        "member_check": false,
+        "prevent_secrets": false,
+        "author_email_regex": "^[A-Za-z0-9.]+@gitlab.com$",
+        "file_name_regex": null,
+        "max_file_size": 100
+      }
+    },
+    {
+      "name": "Edit group push rule",
+      "description": "Response:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/push_rule"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "deny_delete_tag",
+          "type": "boolean",
+          "required": false,
+          "description": "Deny deleting a tag"
+        },
+        {
+          "name": "member_check",
+          "type": "boolean",
+          "required": false,
+          "description": "Restricts commits to be authored by existing GitLab users only"
+        },
+        {
+          "name": "prevent_secrets",
+          "type": "boolean",
+          "required": false,
+          "description": "Files that are likely to contain secrets are rejected"
+        },
+        {
+          "name": "commit_message_regex",
+          "type": "string",
+          "required": false,
+          "description": "All commit messages must match the regular expression provided in this attribute, for example, Fixed \\d+\\..*"
+        },
+        {
+          "name": "commit_message_negative_regex",
+          "type": "string",
+          "required": false,
+          "description": "Commit messages matching the regular expression provided in this attribute aren’t allowed, for example, ssh\\:\\/\\/"
+        },
+        {
+          "name": "branch_name_regex",
+          "type": "string",
+          "required": false,
+          "description": "All branch names must match the regular expression provided in this attribute, for example, (feature|hotfix)\\/*"
+        },
+        {
+          "name": "author_email_regex",
+          "type": "string",
+          "required": false,
+          "description": "All commit author emails must match the regular expression provided in this attribute, for example, @my-company.com$"
+        },
+        {
+          "name": "file_name_regex",
+          "type": "string",
+          "required": false,
+          "description": "Filenames matching the regular expression provided in this attribute are not allowed, for example, (jar|exe)$"
+        },
+        {
+          "name": "max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum file size (MB) allowed"
+        },
+        {
+          "name": "commit_committer_check",
+          "type": "boolean",
+          "required": false,
+          "description": "Only commits pushed using verified emails are allowed"
+        },
+        {
+          "name": "reject_unsigned_commits",
+          "type": "boolean",
+          "required": false,
+          "description": "Only commits signed through GPG are allowed"
+        }
+      ],
+      "response": {
+        "id": 19,
+        "created_at": "2020-08-31T15:53:00.073Z",
+        "commit_message_regex": "[a-zA-Z]",
+        "commit_message_negative_regex": "[x+]",
+        "branch_name_regex": null,
+        "deny_delete_tag": false,
+        "member_check": false,
+        "prevent_secrets": false,
+        "author_email_regex": "^[A-Za-z0-9.]+@staging.gitlab.com$",
+        "file_name_regex": null,
+        "max_file_size": 100
+      }
+    },
+    {
+      "name": "Delete group push rule",
+      "description": "Only available to group owners and administrators.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/push_rule"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        }
+      ],
+      "response": {}
+    }
+  ]
 }

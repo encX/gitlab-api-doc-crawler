@@ -120,9 +120,12 @@ export class PageCrawler {
       }
 
       if (/language-json/gi.test(e.attribs["class"])) {
-        exampleResponse = JSON.parse(
-          cheerio(e).find("code").text().replace(/\n/g, "")
-        );
+        const text = cheerio(e).find("code").text().replace(/\n/g, "");
+        try {
+          exampleResponse = JSON.parse(text);
+        } catch {
+          exampleResponse = text;
+        }
       }
     });
 

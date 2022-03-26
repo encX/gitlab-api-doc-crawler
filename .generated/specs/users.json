@@ -1,5 +1,1893 @@
 {
   "origin": "https://docs.gitlab.com/ee/api/users.html",
   "pageName": "Users",
-  "apis": "failed"
+  "apis": [
+    {
+      "name": "Users API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List users",
+      "description": "This function takes pagination parameters page and per_page to restrict the list of users.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "For normal users",
+      "description": "In addition, to exclude external users from the users’ list, you can use the parameter exclude_external=true.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users?exclude_external=true"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "username": "john_smith",
+          "name": "John Smith",
+          "state": "active",
+          "avatar_url": "http://localhost:3000/uploads/user/avatar/1/cd8.jpeg",
+          "web_url": "http://localhost:3000/john_smith"
+        },
+        {
+          "id": 2,
+          "username": "jack_smith",
+          "name": "Jack Smith",
+          "state": "blocked",
+          "avatar_url": "http://gravatar.com/../e32131cd8.jpeg",
+          "web_url": "http://localhost:3000/jack_smith"
+        }
+      ]
+    },
+    {
+      "name": "For admins",
+      "description": "You can include the users’ custom attributes in the response with:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users?with_custom_attributes=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return users ordered by id, name, username, created_at, or updated_at fields. Default is id"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return users sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "two_factor",
+          "type": "string",
+          "required": false,
+          "description": "Filter users by Two-factor authentication. Filter values are enabled or disabled. By default it returns all users"
+        },
+        {
+          "name": "without_projects",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter users without projects. Default is false, which means that all users are returned, with and without projects."
+        },
+        {
+          "name": "admins",
+          "type": "boolean",
+          "required": false,
+          "description": "Return only administrators. Default is false"
+        },
+        {
+          "name": "saml_provider_id",
+          "type": "number",
+          "required": false,
+          "description": "Return only users created by the specified SAML provider ID. If not included, it returns all users."
+        }
+      ],
+      "response": "[  {    \"id\": 1,    ...    \"identities\": [      {\"provider\": \"github\", \"extern_uid\": \"2435223452345\"},      {\"provider\": \"bitbucket\", \"extern_uid\": \"john.smith\"},      {\"provider\": \"google_oauth2\", \"extern_uid\": \"8776128412476123468721346\"},      {\"provider\": \"group_saml\", \"extern_uid\": \"123789\", \"saml_provider_id\": 10}    ],    \"provisioned_by_group_id\": 123789    ...  }]"
+    },
+    {
+      "name": "Single user",
+      "description": "Get a single user.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "For user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a user"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "username": "john_smith",
+        "name": "John Smith",
+        "state": "active",
+        "avatar_url": "http://localhost:3000/uploads/user/avatar/1/cd8.jpeg",
+        "web_url": "http://localhost:3000/john_smith",
+        "created_at": "2012-05-23T08:00:58Z",
+        "bio": "",
+        "bot": false,
+        "location": null,
+        "public_email": "john@example.com",
+        "skype": "",
+        "linkedin": "",
+        "twitter": "",
+        "website_url": "",
+        "organization": "",
+        "job_title": "Operations Specialist",
+        "followers": 1,
+        "following": 1
+      }
+    },
+    {
+      "name": "For admin",
+      "description": "You can include the user’s custom attributes in the response with:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id?with_custom_attributes=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a user"
+        }
+      ],
+      "response": "{  \"id\": 1,  \"username\": \"john_smith\",  \"shared_runners_minutes_limit\": 133,  \"extra_shared_runners_minutes_limit\": 133,  \"identities\": [    {\"provider\": \"github\", \"extern_uid\": \"2435223452345\"},    {\"provider\": \"bitbucket\", \"extern_uid\": \"john.smith\"},    {\"provider\": \"google_oauth2\", \"extern_uid\": \"8776128412476123468721346\"},    {\"provider\": \"group_saml\", \"extern_uid\": \"123789\", \"saml_provider_id\": 10}  ],  \"provisioned_by_group_id\": 123789  ...}"
+    },
+    {
+      "name": "User creation",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "admin",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "avatar",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "bio",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "can_create_group",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "color_scheme_id",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "Yes",
+          "required": false
+        },
+        {
+          "name": "extern_uid",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "external",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "extra_shared_runners_minutes_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "force_random_password",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "group_id_for_saml",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "linkedin",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "location",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "Yes",
+          "required": false
+        },
+        {
+          "name": "note",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "organization",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "password",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "private_profile",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "projects_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "provider",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "reset_password",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "shared_runners_minutes_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "skip_confirmation",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "skype",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "theme_id",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "twitter",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "username",
+          "type": "Yes",
+          "required": false
+        },
+        {
+          "name": "view_diffs_file_by_file",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "website_url",
+          "type": "No",
+          "required": false
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "User modification",
+      "description": "On password update, the user is forced to change it upon next login. Note, at the moment this method does only return a 404 error, even in cases where a 409 (Conflict) would be more appropriate. For example, when renaming the email address to some existing one.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/users/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "admin",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "avatar",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "bio",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "can_create_group",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "color_scheme_id",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "extern_uid",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "external",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "extra_shared_runners_minutes_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "group_id_for_saml",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "id",
+          "type": "Yes",
+          "required": false
+        },
+        {
+          "name": "linkedin",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "location",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "note",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "organization",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "password",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "private_profile",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "projects_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "provider",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "public_email",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "shared_runners_minutes_limit",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "skip_reconfirmation",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "skype",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "theme_id",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "twitter",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "username",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "view_diffs_file_by_file",
+          "type": "No",
+          "required": false
+        },
+        {
+          "name": "website_url",
+          "type": "No",
+          "required": false
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete authentication identity from user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id/identities/:provider"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a user"
+        },
+        {
+          "name": "provider",
+          "type": "string",
+          "required": true,
+          "description": "External provider name"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "User deletion",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a user"
+        },
+        {
+          "name": "hard_delete",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, contributions that would usually be moved to Ghost User are deleted instead, as well as groups owned solely by this user."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "List current user (for normal users)",
+      "description": "Gets currently authenticated user.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "id": 1,
+        "username": "john_smith",
+        "email": "john@example.com",
+        "name": "John Smith",
+        "state": "active",
+        "avatar_url": "http://localhost:3000/uploads/user/avatar/1/index.jpg",
+        "web_url": "http://localhost:3000/john_smith",
+        "created_at": "2012-05-23T08:00:58Z",
+        "bio": "",
+        "location": null,
+        "public_email": "john@example.com",
+        "skype": "",
+        "linkedin": "",
+        "twitter": "",
+        "website_url": "",
+        "organization": "",
+        "last_sign_in_at": "2012-06-01T11:41:01Z",
+        "confirmed_at": "2012-05-23T09:05:22Z",
+        "theme_id": 1,
+        "last_activity_on": "2012-05-23",
+        "color_scheme_id": 2,
+        "projects_limit": 100,
+        "current_sign_in_at": "2012-06-02T06:36:55Z",
+        "identities": [
+          {
+            "provider": "github",
+            "extern_uid": "2435223452345"
+          },
+          {
+            "provider": "bitbucket",
+            "extern_uid": "john_smith"
+          },
+          {
+            "provider": "google_oauth2",
+            "extern_uid": "8776128412476123468721346"
+          }
+        ],
+        "can_create_group": true,
+        "can_create_project": true,
+        "two_factor_enabled": true,
+        "external": false,
+        "private_profile": false
+      }
+    },
+    {
+      "name": "List current user (for admins)",
+      "description": "Users on GitLab Premium or higher also see these parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "sudo",
+          "type": "integer",
+          "required": false,
+          "description": "the ID of a user to make the call in their place"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "username": "john_smith",
+        "email": "john@example.com",
+        "name": "John Smith",
+        "state": "active",
+        "avatar_url": "http://localhost:3000/uploads/user/avatar/1/index.jpg",
+        "web_url": "http://localhost:3000/john_smith",
+        "created_at": "2012-05-23T08:00:58Z",
+        "is_admin": true,
+        "bio": "",
+        "location": null,
+        "public_email": "john@example.com",
+        "skype": "",
+        "linkedin": "",
+        "twitter": "",
+        "website_url": "",
+        "organization": "",
+        "job_title": "",
+        "last_sign_in_at": "2012-06-01T11:41:01Z",
+        "confirmed_at": "2012-05-23T09:05:22Z",
+        "theme_id": 1,
+        "last_activity_on": "2012-05-23",
+        "color_scheme_id": 2,
+        "projects_limit": 100,
+        "current_sign_in_at": "2012-06-02T06:36:55Z",
+        "identities": [
+          {
+            "provider": "github",
+            "extern_uid": "2435223452345"
+          },
+          {
+            "provider": "bitbucket",
+            "extern_uid": "john_smith"
+          },
+          {
+            "provider": "google_oauth2",
+            "extern_uid": "8776128412476123468721346"
+          }
+        ],
+        "can_create_group": true,
+        "can_create_project": true,
+        "two_factor_enabled": true,
+        "external": false,
+        "private_profile": false,
+        "commit_email": "john-codes@example.com",
+        "current_sign_in_ip": "196.165.1.102",
+        "last_sign_in_ip": "172.127.2.22",
+        "namespace_id": 1
+      }
+    },
+    {
+      "name": "User status",
+      "description": "Get the status of the currently signed in user.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/status"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "emoji": "coffee",
+        "availability": "busy",
+        "message": "I crave coffee :coffee:",
+        "message_html": "I crave coffee <gl-emoji title=\"hot beverage\" data-name=\"coffee\" data-unicode-version=\"4.0\">☕</gl-emoji>",
+        "clear_status_at": null
+      }
+    },
+    {
+      "name": "Get the status of a user",
+      "description": "Get the status of a user. This endpoint can be accessed without authentication.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id_or_username/status"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id_or_username",
+          "type": "string",
+          "required": true,
+          "description": "The ID or username of the user to get a status of"
+        }
+      ],
+      "response": {
+        "emoji": "coffee",
+        "availability": "busy",
+        "message": "I crave coffee :coffee:",
+        "message_html": "I crave coffee <gl-emoji title=\"hot beverage\" data-name=\"coffee\" data-unicode-version=\"4.0\">☕</gl-emoji>",
+        "clear_status_at": null
+      }
+    },
+    {
+      "name": "Set user status",
+      "description": "When both parameters emoji and message are empty, the status is cleared. When the clear_status_after parameter is missing from the request, the previously set value for \"clear_status_after is cleared.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/user/status"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "emoji",
+          "type": "string",
+          "required": false,
+          "description": "The name of the emoji to use as status. If omitted speech_balloon is used. Emoji name can be one of the specified names in the Gemojione index."
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": false,
+          "description": "The message to set as a status. It can also contain emoji codes."
+        },
+        {
+          "name": "clear_status_after",
+          "type": "string",
+          "required": false,
+          "description": "Automatically clean up the status after a given time interval, allowed values: 30_minutes, 3_hours, 8_hours, 1_day, 3_days, 7_days, 30_days"
+        }
+      ],
+      "response": {
+        "emoji": "coffee",
+        "message": "I crave coffee",
+        "message_html": "I crave coffee",
+        "clear_status_at": "2021-02-15T10:49:01.311Z"
+      }
+    },
+    {
+      "name": "Get user preferences",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/preferences"
+        }
+      ],
+      "attributes": [],
+      "response": "{  \"id\": 1,    \"user_id\": 1      \"view_diffs_file_by_file\": true,      \"show_whitespace_in_diffs\": false}"
+    },
+    {
+      "name": "User preference modification",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/user/preferences"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "view_diffs_file_by_file",
+          "type": "Yes",
+          "required": false
+        },
+        {
+          "name": "show_whitespace_in_diffs",
+          "type": "Yes",
+          "required": false
+        }
+      ],
+      "response": "{  \"id\": 1,    \"user_id\": 1      \"view_diffs_file_by_file\": true,      \"show_whitespace_in_diffs\": false}"
+    },
+    {
+      "name": "User Follow",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Follow and unfollow users",
+      "description": "Unfollow a user.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/unfollow"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user to follow"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "username": "john_smith",
+        "name": "John Smith",
+        "state": "active",
+        "avatar_url": "http://localhost:3000/uploads/user/avatar/1/cd8.jpeg",
+        "web_url": "http://localhost:3000/john_smith"
+      }
+    },
+    {
+      "name": "Followers and following",
+      "description": "Get the list of users being followed.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/following"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user to follow"
+        }
+      ],
+      "response": [
+        {
+          "id": 2,
+          "name": "Lennie Donnelly",
+          "username": "evette.kilback",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/7955171a55ac4997ed81e5976287890a?s=80&d=identicon",
+          "web_url": "http://127.0.0.1:3000/evette.kilback"
+        },
+        {
+          "id": 4,
+          "name": "Serena Bradtke",
+          "username": "cammy",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/a2daad869a7b60d3090b7b9bef4baf57?s=80&d=identicon",
+          "web_url": "http://127.0.0.1:3000/cammy"
+        }
+      ]
+    },
+    {
+      "name": "User counts",
+      "description": "Get the counts (same as in top right menu) of the currently signed in user.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user_counts"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "assigned_issues",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "assigned_merge_requests",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "merge_requests",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "review_requested_merge_requests",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "todos",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "response": {
+        "merge_requests": 4,
+        "assigned_issues": 15,
+        "assigned_merge_requests": 11,
+        "review_requested_merge_requests": 0,
+        "todos": 1
+      }
+    },
+    {
+      "name": "List user projects",
+      "description": "Please refer to the List of user projects.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List SSH keys",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/keys"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "title": "Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "created_at": "2014-08-01T14:47:39.080Z"
+        },
+        {
+          "id": 3,
+          "title": "Another Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "created_at": "2014-08-01T14:47:39.080Z"
+        }
+      ]
+    },
+    {
+      "name": "List SSH keys for user",
+      "description": "Get a list of a specified user’s SSH keys.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id_or_username/keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id_or_username",
+          "type": "string",
+          "required": true,
+          "description": "The ID or username of the user to get the SSH keys for."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Single SSH key",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key_id",
+          "type": "string",
+          "required": true,
+          "description": "The ID of an SSH key"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "Public key",
+        "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+        "created_at": "2014-08-01T14:47:39.080Z"
+      }
+    },
+    {
+      "name": "Single SSH key for given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "SSH key ID"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "Public key",
+        "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+        "created_at": "2014-08-01T14:47:39.080Z"
+      }
+    },
+    {
+      "name": "Add SSH key",
+      "description": "Returns a created key with status 201 Created on success. If an error occurs a 400 Bad Request is returned with a message explaining the error:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/user/keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "new SSH key’s title"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "new SSH key"
+        },
+        {
+          "name": "expires_at",
+          "type": "string",
+          "required": false,
+          "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
+        }
+      ],
+      "response": {
+        "message": {
+          "fingerprint": [
+            "has already been taken"
+          ],
+          "key": [
+            "has already been taken"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add SSH key for user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "new SSH key’s title"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "new SSH key"
+        },
+        {
+          "name": "expires_at",
+          "type": "string",
+          "required": false,
+          "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete SSH key for current user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/user/keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "SSH key ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete SSH key for given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id/keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "SSH key ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "List all GPG keys",
+      "description": "Get a list of currently authenticated user’s GPG keys.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/gpg_keys"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+          "created_at": "2017-09-05T09:17:46.264Z"
+        }
+      ]
+    },
+    {
+      "name": "Get a specific GPG key",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/gpg_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the GPG key"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+        "created_at": "2017-09-05T09:17:46.264Z"
+      }
+    },
+    {
+      "name": "Add a GPG key",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/user/gpg_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The new GPG key"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+          "created_at": "2017-09-05T09:17:46.264Z"
+        }
+      ]
+    },
+    {
+      "name": "Delete a GPG key",
+      "description": "Returns 204 No Content on success, or 404 Not found if the key cannot be found.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/user/gpg_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the GPG key"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "List all GPG keys for given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/gpg_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+          "created_at": "2017-09-05T09:17:46.264Z"
+        }
+      ]
+    },
+    {
+      "name": "Get a specific GPG key for a given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/gpg_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the GPG key"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+        "created_at": "2017-09-05T09:17:46.264Z"
+      }
+    },
+    {
+      "name": "Add a GPG key for a given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/gpg_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the GPG key"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\nxsBNBFVjnlIBCACibzXOLCiZiL2oyzYUaTOCkYnSUhymg3pdbfKtd4mpBa58xKBj\r\nt1pTHVpw3Sk03wmzhM/Ndlt1AV2YhLv++83WKr+gAHFYFiCV/tnY8bx3HqvVoy8O\r\nCfxWhw4QZK7+oYzVmJj8ZJm3ZjOC4pzuegNWlNLCUdZDx9OKlHVXLCX1iUbjdYWa\r\nqKV6tdV8hZolkbyjedQgrpvoWyeSHHpwHF7yk4gNJWMMI5rpcssL7i6mMXb/sDzO\r\nVaAtU5wiVducsOa01InRFf7QSTxoAm6Xy0PGv/k48M6xCALa9nY+BzlOv47jUT57\r\nvilf4Szy9dKD0v9S0mQ+IHB+gNukWrnwtXx5ABEBAAHNFm5hbWUgKGNvbW1lbnQp\r\nIDxlbUBpbD7CwHUEEwECACkFAlVjnlIJEINgJNgv009/AhsDAhkBBgsJCAcDAgYV\r\nCAIJCgsEFgIDAQAAxqMIAFBHuBA8P1v8DtHonIK8Lx2qU23t8Mh68HBIkSjk2H7/\r\noO2cDWCw50jZ9D91PXOOyMPvBWV2IE3tARzCvnNGtzEFRtpIEtZ0cuctxeIF1id5\r\ncrfzdMDsmZyRHAOoZ9VtuD6mzj0ybQWMACb7eIHjZDCee3Slh3TVrLy06YRdq2I4\r\nbjMOPePtK5xnIpHGpAXkB3IONxyITpSLKsA4hCeP7gVvm7r7TuQg1ygiUBlWbBYn\r\niE5ROzqZjG1s7dQNZK/riiU2umGqGuwAb2IPvNiyuGR3cIgRE4llXH/rLuUlspAp\r\no4nlxaz65VucmNbN1aMbDXLJVSqR1DuE00vEsL1AItI=\r\n=XQoy\r\n-----END PGP PUBLIC KEY BLOCK-----",
+          "created_at": "2017-09-05T09:17:46.264Z"
+        }
+      ]
+    },
+    {
+      "name": "Delete a GPG key for a given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id/gpg_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the GPG key"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "List emails",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/emails"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "email": "email@example.com",
+          "confirmed_at": "2021-03-26T19:07:56.248Z"
+        },
+        {
+          "id": 3,
+          "email": "email2@example.com",
+          "confirmed_at": null
+        }
+      ]
+    },
+    {
+      "name": "List emails for user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/emails"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Single email",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/emails/:email_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "email_id",
+          "type": "integer",
+          "required": true,
+          "description": "Email ID"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "email": "email@example.com",
+        "confirmed_at": "2021-03-26T19:07:56.248Z"
+      }
+    },
+    {
+      "name": "Add email",
+      "description": "Returns a created email with status 201 Created on success. If an error occurs a 400 Bad Request is returned with a message explaining the error:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/user/emails"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "email",
+          "type": "string",
+          "required": true,
+          "description": "Email address"
+        }
+      ],
+      "response": {
+        "message": {
+          "email": [
+            "has already been taken"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add email for user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/emails"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "description": "ID of specified user"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": true,
+          "description": "Email address"
+        },
+        {
+          "name": "skip_confirmation",
+          "type": "boolean",
+          "required": false,
+          "description": "Skip confirmation and assume email is verified - true or false (default)"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete email for current user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/user/emails/:email_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "email_id",
+          "type": "integer",
+          "required": true,
+          "description": "Email ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Delete email for given user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id/emails/:email_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        },
+        {
+          "name": "email_id",
+          "type": "integer",
+          "required": true,
+          "description": "Email ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Block user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/block"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Unblock user",
+      "description": "Returns 201 OK on success, 404 User Not Found is user cannot be found or 403 Forbidden when trying to unblock a user blocked by LDAP synchronization.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/unblock"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Deactivate user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/deactivate"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Activate user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/activate"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Ban user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/ban"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Unban user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/unban"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Get user contribution events",
+      "description": "Please refer to the Events API documentation",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Get all impersonation tokens of a user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:user_id/impersonation_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "filter tokens based on state (all, active, inactive)"
+        }
+      ],
+      "response": [
+        {
+          "active": true,
+          "user_id": 2,
+          "scopes": [
+            "api"
+          ],
+          "revoked": false,
+          "name": "mytoken",
+          "id": 2,
+          "created_at": "2017-03-17T17:18:09.283Z",
+          "impersonation": true,
+          "expires_at": "2017-04-04"
+        },
+        {
+          "active": false,
+          "user_id": 2,
+          "scopes": [
+            "read_user"
+          ],
+          "revoked": true,
+          "name": "mytoken2",
+          "created_at": "2017-03-17T17:19:28.697Z",
+          "id": 3,
+          "impersonation": true,
+          "expires_at": "2017-04-14"
+        }
+      ]
+    },
+    {
+      "name": "Approve user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/approve"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of specified user"
+        }
+      ],
+      "response": {
+        "message": "The user you are trying to approve is not pending approval"
+      }
+    },
+    {
+      "name": "Reject user",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:id/reject"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "message": "User does not have a pending request"
+      }
+    },
+    {
+      "name": "Get an impersonation token of a user",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:user_id/impersonation_tokens/:impersonation_token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "impersonation_token_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the impersonation token"
+        }
+      ],
+      "response": {
+        "active": true,
+        "user_id": 2,
+        "scopes": [
+          "api"
+        ],
+        "revoked": false,
+        "name": "mytoken",
+        "id": 2,
+        "created_at": "2017-03-17T17:18:09.283Z",
+        "impersonation": true,
+        "expires_at": "2017-04-04"
+      }
+    },
+    {
+      "name": "Create an impersonation token",
+      "description": "It creates a new impersonation token. Only administrators can do this. You are only able to create impersonation tokens to impersonate the user and perform both API calls and Git reads and writes. The user can’t see these tokens in their profile settings page.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:user_id/impersonation_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the impersonation token"
+        },
+        {
+          "name": "expires_at",
+          "type": "date",
+          "required": false,
+          "description": "The expiration date of the impersonation token in ISO format (YYYY-MM-DD)"
+        },
+        {
+          "name": "scopes",
+          "type": "array",
+          "required": true,
+          "description": "The array of scopes of the impersonation token (api, read_user)"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "revoked": false,
+        "user_id": 2,
+        "scopes": [
+          "api"
+        ],
+        "token": "EsMo-vhKfXGwX9RKrwiy",
+        "active": true,
+        "impersonation": true,
+        "name": "mytoken",
+        "created_at": "2017-03-17T17:18:09.283Z",
+        "expires_at": "2017-04-04"
+      }
+    },
+    {
+      "name": "Revoke an impersonation token",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:user_id/impersonation_tokens/:impersonation_token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "impersonation_token_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the impersonation token"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Create a personal access token",
+      "description": "Use this API to create a new personal access token. Token values are returned once so, make sure you save it as you can’t access it again. This API can only be used by GitLab administrators.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/users/:user_id/personal_access_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the personal access token"
+        },
+        {
+          "name": "expires_at",
+          "type": "date",
+          "required": false,
+          "description": "The expiration date of the personal access token in ISO format (YYYY-MM-DD)"
+        },
+        {
+          "name": "scopes",
+          "type": "array",
+          "required": true,
+          "description": "The array of scopes of the personal access token (api, read_user, read_api, read_repository, write_repository)"
+        }
+      ],
+      "response": {
+        "id": 3,
+        "name": "mytoken",
+        "revoked": false,
+        "created_at": "2020-10-14T11:58:53.526Z",
+        "scopes": [
+          "api"
+        ],
+        "user_id": 42,
+        "active": true,
+        "expires_at": "2020-12-31",
+        "token": "ggbfKkC4n-Lujy8jwCR2"
+      }
+    },
+    {
+      "name": "Get user activities (admin only)",
+      "description": "last_activity_at is deprecated. Use last_activity_on instead.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/user/activities"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "from",
+          "type": "string",
+          "required": false,
+          "description": "Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11. Defaults to 6 months ago."
+        }
+      ],
+      "response": [
+        {
+          "username": "user1",
+          "last_activity_on": "2015-12-14",
+          "last_activity_at": "2015-12-14"
+        },
+        {
+          "username": "user2",
+          "last_activity_on": "2015-12-15",
+          "last_activity_at": "2015-12-15"
+        },
+        {
+          "username": "user3",
+          "last_activity_on": "2015-12-16",
+          "last_activity_at": "2015-12-16"
+        }
+      ]
+    },
+    {
+      "name": "User memberships (admin only)",
+      "description": "Returns:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/memberships"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a specified user"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "Filter memberships by type. Can be either Project or Namespace"
+        }
+      ],
+      "response": [
+        {
+          "source_id": 1,
+          "source_name": "Project one",
+          "source_type": "Project",
+          "access_level": "20"
+        },
+        {
+          "source_id": 3,
+          "source_name": "Group three",
+          "source_type": "Namespace",
+          "access_level": "20"
+        }
+      ]
+    }
+  ]
 }
