@@ -149,10 +149,14 @@ export class PageCrawler {
 
   private sanitizeAndParse(json: string, apiName?: string): any {
     const sanitized = json
+      // truncated list/objects
       .replace(/\.\.\. *(]|})/, "$1")
       .replace(/(\[|{) *\.\.\./, "$1")
       .replace(/, *(]|})/, "$1")
-      .replace(/, *\/\/[\w\s`,]+"/, ',"');
+      // json comments
+      .replace(/([{,]) *\/\/ *[\w\s\d`,]+"/, '$1"')
+      // bad string in diff
+      .replace(/\\ /g, "\\\\ ");
 
     try {
       return JSON.parse(sanitized);
