@@ -121,15 +121,18 @@ export class PageCrawler {
 
       if (
         /language-json/gi.test(e.attribs["class"]) &&
-        exampleResponse === null
+        (exampleResponse === null || typeof exampleResponse === "string")
       ) {
+        // check if api hit cultiple code blocks
         const text = cheerio(e).find("code").text().replace(/\n/g, "");
-
-        exampleResponse = this.sanitizeAndParse(text, name);
+        exampleResponse = this.sanitizeAndParse(text);
       }
     });
 
     if (invalid) return undefined;
+    if (typeof exampleResponse === "string") {
+      console.warn("Parsing error persist!", `${this.pagePath} > ${name}`);
+    }
     return {
       name,
       description,
@@ -144,24 +147,26 @@ export class PageCrawler {
     if (/introduced-in/gi.test(elem.attribs["class"])) return true;
     if (/Example (request|response):?/gi.test(cheerio(elem).text()))
       return true;
+    // if (/...$/.test(cheerio(elem).find("code").text())) return true;
     return false;
   }
 
-  private sanitizeAndParse(json: string, apiName?: string): any {
+  private sanitizeAndParse(json: string): any {
     const sanitized = json
       // truncated list/objects
-      .replace(/\.\.\. *(]|})/, "$1")
-      .replace(/(\[|{) *\.\.\./, "$1")
-      .replace(/, *(]|})/, "$1")
+      .replace(/\.\.\. *(]|})/g, "$1")
+      .replace(/(\[|{) *\.\.\./g, "$1")
+      .replace(/, *(]|})/g, "$1")
       // json comments
-      .replace(/([{,]) *\/\/ *[\w\s\d`,]+"/, '$1"')
+      .replace(/([\[{,]) *\/\/[\w\s\d`,.]+"/g, '$1"')
       // bad string in diff
-      .replace(/\\ /g, "\\\\ ");
+      .replace(/\\ /g, "\\\\ ")
+      // missing colon (this is so stupid, GitLab!)
+      .replace(/("job_artifacts_size": 0)[\s\n]+"/g, '$1,"');
 
     try {
       return JSON.parse(sanitized);
-    } catch (e) {
-      console.warn("Parsing error", `${this.pagePath} > ${apiName}`, e.message);
+    } catch {
       return sanitized;
     }
   }
