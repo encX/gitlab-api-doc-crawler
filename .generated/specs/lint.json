@@ -7,7 +7,7 @@
       "description": "",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Validate the CI YAML configuration",
@@ -38,7 +38,7 @@
           "description": "If the list of jobs should be included in the response. This is false by default."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "YAML expansion",
@@ -128,7 +128,7 @@
           "description": "When dry_run is true, sets the branch or tag to use. Defaults to the project’s default branch when not set."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Validate a project’s CI configuration",
@@ -160,11 +160,9 @@
         }
       ],
       "response": {
-        "valid": false,
+        "valid": true,
         "merged_yaml": "---\n:test_job:\n  :script: echo 1\n",
-        "errors": [
-          "jobs config should contain at least one visible job"
-        ],
+        "errors": [],
         "warnings": []
       }
     },
@@ -173,14 +171,14 @@
       "description": "To POST a YAML configuration to the CI Lint endpoint, it must be properly escaped and JSON encoded. You can use jq and curl to escape and upload YAML to the GitLab API.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Escape YAML for JSON encoding",
       "description": "To escape and encode an input YAML file (example-gitlab-ci.yml), and POST it to the GitLab API using curl and jq in a one-line command:",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Parse a CI Lint response",

@@ -7,21 +7,21 @@
       "description": "Interact with projects using the REST API.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project visibility level",
       "description": "For more, read Project visibility.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project merge method",
       "description": "There are three options for merge_method to choose from:",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List all projects",
@@ -184,20 +184,14 @@
           "description": "Limit by projects which use the given programming language."
         }
       ],
-      "response": [
-        {
-          "id": 4,
-          "description": null,
-          "approvals_before_merge": 0
-        }
-      ]
+      "response": "[  {    \"id\": 4,    \"description\": null,    \"default_branch\": \"master\",    \"ssh_url_to_repo\": \"git@example.com:diaspora/diaspora-client.git\",    \"http_url_to_repo\": \"http://example.com/diaspora/diaspora-client.git\",    \"web_url\": \"http://example.com/diaspora/diaspora-client\",    \"readme_url\": \"http://example.com/diaspora/diaspora-client/blob/master/README.md\",    \"tag_list\": [ //deprecated, use `topics` instead      \"example\",      \"disapora client\"    ],    \"topics\": [      \"example\",      \"disapora client\"    ],    \"name\": \"Diaspora Client\",    \"name_with_namespace\": \"Diaspora / Diaspora Client\",    \"path\": \"diaspora-client\",    \"path_with_namespace\": \"diaspora/diaspora-client\",    \"created_at\": \"2013-09-30T13:46:02Z\",    \"last_activity_at\": \"2013-09-30T13:46:02Z\",    \"forks_count\": 0,    \"avatar_url\": \"http://example.com/uploads/project/avatar/4/uploads/avatar.png\",    \"star_count\": 0  },  {    \"id\": 6,    \"description\": null,    \"default_branch\": \"master\",..."
     },
     {
       "name": "Pagination limits",
       "description": "Keyset pagination supports only order_by=id. Other sorting options aren’t available.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List user projects",
@@ -458,7 +452,7 @@
           "description": "Include custom attributes in response. (administrators only)"
         }
       ],
-      "response": "{   \"id\":3,   ...   \"mr_default_target_self\": false,   \"forked_from_project\":{      \"id\":13083,      \"description\":\"GitLab Community Edition\",      \"name\":\"GitLab Community Edition\",      \"name_with_namespace\":\"GitLab.org / GitLab Community Edition\",      \"path\":\"gitlab-foss\",      \"path_with_namespace\":\"gitlab-org/gitlab-foss\",      \"created_at\":\"2013-09-26T06:02:36.000Z\",      \"default_branch\":\"master\",      \"tag_list\":[], //deprecated, use `topics` instead      \"topics\":[],      \"ssh_url_to_repo\":\"git@gitlab.com:gitlab-org/gitlab-foss.git\",      \"http_url_to_repo\":\"https://gitlab.com/gitlab-org/gitlab-foss.git\",      \"web_url\":\"https://gitlab.com/gitlab-org/gitlab-foss\",      \"avatar_url\":\"https://gitlab.com/uploads/-/system/project/avatar/13083/logo-extra-whitespace.png\",      \"license_url\": \"https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE\",      \"license\": {        \"key\": \"mit\",        \"name\": \"MIT License\",        \"nickname\": null,        \"html_url\": \"http://choosealicense.com/licenses/mit/\",        \"source_url\": \"https://opensource.org/licenses/MIT\"      },      \"star_count\":3812,      \"forks_count\":3561,      \"last_activity_at\":\"2018-01-02T11:40:26.570Z\",      \"namespace\": {            \"id\": 72,            \"name\": \"GitLab.org\",            \"path\": \"gitlab-org\",            \"kind\": \"group\",            \"full_path\": \"gitlab-org\",            \"parent_id\": null      }   }   }"
+      "response": "{  \"id\": 3,  \"description\": null,  \"default_branch\": \"master\",  \"visibility\": \"private\",  \"ssh_url_to_repo\": \"git@example.com:diaspora/diaspora-project-site.git\",  \"http_url_to_repo\": \"http://example.com/diaspora/diaspora-project-site.git\",  \"web_url\": \"http://example.com/diaspora/diaspora-project-site\",  \"readme_url\": \"http://example.com/diaspora/diaspora-project-site/blob/master/README.md\",  \"tag_list\": [ //deprecated, use `topics` instead    \"example\",    \"disapora project\"  ],  \"topics\": [    \"example\",    \"disapora project\"  ],  \"owner\": {    \"id\": 3,    \"name\": \"Diaspora\",    \"created_at\": \"2013-09-30T13:46:02Z\"  },  \"name\": \"Diaspora Project Site\",  \"name_with_namespace\": \"Diaspora / Diaspora Project Site\",  \"path\": \"diaspora-project-site\",  \"path_with_namespace\": \"diaspora/diaspora-project-site\",  \"issues_enabled\": true,  \"open_issues_count\": 1,  \"merge_requests_enabled\": true,  \"jobs_enabled\": true,  \"wiki_enabled\": true,  \"snippets_enabled\": false,  \"can_create_merge_request_in\": true,  \"resolve_outdated_diff_discussions\": false,  \"container_registry_enabled\": false, // deprecated, use container_registry_access_level instead  \"container_registry_access_level\": \"disabled\",  \"security_and_compliance_access_level\": \"disabled\",  \"container_expiration_policy\": {    \"cadence\": \"7d\",    \"enabled\": false,    \"keep_n\": null,    \"older_than\": null,    \"name_regex\": null, // to be deprecated in GitLab 13.0 in favor of `name_regex_delete`    \"name_regex_delete\": null,    \"name_regex_keep\": null,    \"next_run_at\": \"2020-01-07T21:42:58.658Z\"  },  \"created_at\": \"2013-09-30T13:46:02Z\",  \"last_activity_at\": \"2013-09-30T13:46:02Z\",  \"creator_id\": 3,  \"namespace\": {    \"id\": 3,    \"name\": \"Diaspora\",    \"path\": \"diaspora\",    \"kind\": \"group\",    \"full_path\": \"diaspora\",    \"avatar_url\": \"http://localhost:3000/uploads/group/avatar/3/foo.jpg\",    \"web_url\": \"http://localhost:3000/groups/diaspora\"  },  \"import_status\": \"none\",  \"import_error\": null,  \"permissions\": {    \"project_access\": {      \"access_level\": 10,      \"notification_level\": 3    },    \"group_access\": {      \"access_level\": 50,      \"notification_level\": 3    }  },  \"archived\": false,  \"avatar_url\": \"http://example.com/uploads/project/avatar/3/uploads/avatar.png\",  \"license_url\": \"http://example.com/diaspora/diaspora-client/blob/master/LICENSE\",  \"license\": {    \"key\": \"lgpl-3.0\",    \"name\": \"GNU Lesser General Public License v3.0\",    \"nickname\": \"GNU LGPLv3\",    \"html_url\": \"http://choosealicense.com/licenses/lgpl-3.0/\",    \"source_url\": \"http://www.gnu.org/licenses/lgpl-3.0.txt\"  },  \"shared_runners_enabled\": true,  \"forks_count\": 0,  \"star_count\": 0,  \"runners_token\": \"b8bc4a7a29eb76ea83cf79e4908c2b\",  \"ci_default_git_depth\": 50,  \"ci_forward_deployment_enabled\": true,  \"public_jobs\": true,  \"shared_with_groups\": [    {      \"group_id\": 4,      \"group_name\": \"Twitter\",      \"group_full_path\": \"twitter\",      \"group_access_level\": 30    },    {      \"group_id\": 3,      \"group_name\": \"Gitlab Org\",      \"group_full_path\": \"gitlab-org\",      \"group_access_level\": 10    }  ],  \"repository_storage\": \"default\",  \"only_allow_merge_if_pipeline_succeeds\": false,  \"allow_merge_on_skipped_pipeline\": false,  \"restrict_user_defined_variables\": false,  \"only_allow_merge_if_all_discussions_are_resolved\": false,  \"remove_source_branch_after_merge\": false,  \"printing_merge_requests_link_enabled\": true,  \"request_access_enabled\": false,  \"merge_method\": \"merge\",  \"squash_option\": \"default_on\",  \"auto_devops_enabled\": true,  \"auto_devops_deploy_strategy\": \"continuous\",  \"approvals_before_merge\": 0,  \"mirror\": false,  \"mirror_user_id\": 45,  \"mirror_trigger_builds\": false,  \"only_mirror_protected_branches\": false,  \"mirror_overwrites_diverged_branches\": false,  \"external_authorization_classification_label\": null,  \"packages_enabled\": true,  \"service_desk_enabled\": false,  \"service_desk_address\": null,  \"autoclose_referenced_issues\": true,  \"suggestion_commit_message\": null,  \"merge_commit_template\": null,  \"squash_commit_template\": null,  \"marked_for_deletion_at\": \"2020-04-03\", // Deprecated and will be removed in API v5 in favor of marked_for_deletion_on  \"marked_for_deletion_on\": \"2020-04-03\",  \"compliance_frameworks\": [ \"sox\" ],  \"statistics\": {    \"commit_count\": 37,    \"storage_size\": 1038090,    \"repository_size\": 1038090,    \"wiki_size\" : 0,    \"lfs_objects_size\": 0,    \"job_artifacts_size\": 0,    \"pipeline_artifacts_size\": 0,    \"packages_size\": 0,    \"snippets_size\": 0,    \"uploads_size\": 0  },  \"container_registry_image_prefix\": \"registry.example.com/diaspora/diaspora-client\",  \"_links\": {    \"self\": \"http://example.com/api/v4/projects\",    \"issues\": \"http://example.com/api/v4/projects/1/issues\",    \"merge_requests\": \"http://example.com/api/v4/projects/1/merge_requests\",    \"repo_branches\": \"http://example.com/api/v4/projects/1/repository_branches\",    \"labels\": \"http://example.com/api/v4/projects/1/labels\",    \"events\": \"http://example.com/api/v4/projects/1/events\",    \"members\": \"http://example.com/api/v4/projects/1/members\"  }}"
     },
     {
       "name": "Templates for issues and merge requests",
@@ -573,7 +567,7 @@
       "description": "Refer to the Events API documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Create project",
@@ -970,7 +964,7 @@
           "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Create project for user",
@@ -1367,7 +1361,7 @@
           "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Edit project",
@@ -1818,7 +1812,7 @@
           "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Fork project",
@@ -1885,7 +1879,7 @@
           "description": "The visibility level assigned to the resultant project after forking."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "List forks of a project",
@@ -2155,7 +2149,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Restore project marked for deletion",
@@ -2174,7 +2168,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Upload a file",
@@ -2211,7 +2205,7 @@
       "description": "In installations from source:",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Upload a project avatar",
@@ -2275,7 +2269,7 @@
           "description": "Share expiration date in ISO 8601 format: 2016-09-26"
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Delete a shared project link within a group",
@@ -2300,7 +2294,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Import project members",
@@ -2325,14 +2319,14 @@
           "description": "The ID or URL-encoded path of the source project to import the members from."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Hooks",
       "description": "Also called Project Hooks and Webhooks. These are different for System Hooks that are system-wide.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List project hooks",
@@ -2351,7 +2345,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get project hook",
@@ -2510,7 +2504,7 @@
           "description": "Trigger hook on wiki events."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Edit project hook",
@@ -2631,7 +2625,7 @@
           "description": "Trigger hook on wiki page events."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Delete project hook",
@@ -2656,14 +2650,14 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Fork relationship",
       "description": "Allows modification of the forked relationship between existing projects. Available only for project owners and administrators.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Create a forked from/to relation between existing projects",
@@ -2688,7 +2682,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Delete an existing forked from relationship",
@@ -2707,7 +2701,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Search for projects by name",
@@ -2738,7 +2732,7 @@
           "description": "Return requests sorted in asc or desc order."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Start the Housekeeping task for a project",
@@ -2757,14 +2751,14 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Push rules",
       "description": "",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get project push rules",
@@ -2786,6 +2780,16 @@
       "response": {
         "id": 1,
         "project_id": 3,
+        "commit_message_regex": "Fixes \\d+\\..*",
+        "commit_message_negative_regex": "ssh\\:\\/\\/",
+        "branch_name_regex": "",
+        "deny_delete_tag": false,
+        "created_at": "2012-10-12T17:04:47Z",
+        "member_check": false,
+        "prevent_secrets": false,
+        "author_email_regex": "",
+        "file_name_regex": "",
+        "max_file_size": 5,
         "commit_committer_check": false,
         "reject_unsigned_commits": false
       }
@@ -2873,7 +2877,7 @@
           "description": "Reject commit when it’s not signed through GPG."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Edit project push rule",
@@ -2958,7 +2962,7 @@
           "description": "Reject commits when they are not GPG signed."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Delete project push rule",
@@ -2977,7 +2981,7 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Transfer a project to a new namespace",
@@ -3009,28 +3013,28 @@
       "description": "Read more in the Branches documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project import/export",
       "description": "Read more in the Project import/export documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project members",
       "description": "Read more in the Project members documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project vulnerabilities",
       "description": "Read more in the Project vulnerabilities documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Configure pull mirroring for a project",
@@ -3062,7 +3066,7 @@
           "description": "Limits mirroring to only protected branches when set to true."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Start the pull mirroring process for a Project",
@@ -3081,14 +3085,14 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Project badges",
       "description": "Read more in the Project Badges documentation.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Download snapshot of a Git repository",
@@ -3113,7 +3117,7 @@
           "description": "Whether to download the wiki, rather than project, repository."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get the path to repository storage",

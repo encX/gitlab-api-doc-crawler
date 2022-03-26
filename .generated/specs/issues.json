@@ -7,14 +7,14 @@
       "description": "If a user is not a member of a private project, a GET request on that project results in a 404 status code.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Issues pagination",
       "description": "Read more on pagination.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List issues",
@@ -257,7 +257,90 @@
         {
           "state": "opened",
           "description": "Ratione dolores corrupti mollitia soluta quia.",
-          "health_status": "on_track"
+          "author": {
+            "state": "active",
+            "id": 18,
+            "web_url": "https://gitlab.example.com/eileen.lowe",
+            "name": "Alexandra Bashirian",
+            "avatar_url": null,
+            "username": "eileen.lowe"
+          },
+          "milestone": {
+            "project_id": 1,
+            "description": "Ducimus nam enim ex consequatur cumque ratione.",
+            "state": "closed",
+            "due_date": null,
+            "iid": 2,
+            "created_at": "2016-01-04T15:31:39.996Z",
+            "title": "v4.0",
+            "id": 17,
+            "updated_at": "2016-01-04T15:31:39.996Z"
+          },
+          "project_id": 1,
+          "assignees": [
+            {
+              "state": "active",
+              "id": 1,
+              "name": "Administrator",
+              "web_url": "https://gitlab.example.com/root",
+              "avatar_url": null,
+              "username": "root"
+            }
+          ],
+          "assignee": {
+            "state": "active",
+            "id": 1,
+            "name": "Administrator",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root"
+          },
+          "type": "ISSUE",
+          "updated_at": "2016-01-04T15:31:51.081Z",
+          "closed_at": null,
+          "closed_by": null,
+          "id": 76,
+          "title": "Consequatur vero maxime deserunt laboriosam est voluptas dolorem.",
+          "created_at": "2016-01-04T15:31:51.081Z",
+          "moved_to_id": null,
+          "iid": 6,
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "user_notes_count": 1,
+          "due_date": "2016-07-22",
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/6",
+          "references": {
+            "short": "#6",
+            "relative": "my-group/my-project#6",
+            "full": "my-group/my-project#6"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/1/issues/76",
+            "notes": "http://gitlab.example.com/api/v4/projects/1/issues/76/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/76/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/1"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
         }
       ]
     },
@@ -495,8 +578,90 @@
       "response": [
         {
           "project_id": 4,
+          "milestone": {
+            "due_date": null,
+            "project_id": 4,
+            "state": "closed",
+            "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+            "iid": 3,
+            "id": 11,
+            "title": "v3.0",
+            "created_at": "2016-01-04T15:31:39.788Z",
+            "updated_at": "2016-01-04T15:31:39.788Z"
+          },
+          "author": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
           "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "at_risk"
+          "state": "closed",
+          "iid": 1,
+          "assignees": [
+            {
+              "avatar_url": null,
+              "web_url": "https://gitlab.example.com/lennie",
+              "state": "active",
+              "username": "lennie",
+              "id": 9,
+              "name": "Dr. Luella Kovacek"
+            }
+          ],
+          "assignee": {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          },
+          "type": "ISSUE",
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "id": 41,
+          "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+          "updated_at": "2016-01-04T15:31:46.176Z",
+          "created_at": "2016-01-04T15:31:46.176Z",
+          "closed_at": null,
+          "closed_by": null,
+          "user_notes_count": 1,
+          "due_date": null,
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+          "references": {
+            "short": "#1",
+            "relative": "my-project#1",
+            "full": "my-group/my-project#1"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/4/issues/41",
+            "notes": "http://gitlab.example.com/api/v4/projects/4/issues/41/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/4/issues/41/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/4"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
         }
       ]
     },
@@ -728,8 +893,97 @@
       "response": [
         {
           "project_id": 4,
+          "milestone": {
+            "due_date": null,
+            "project_id": 4,
+            "state": "closed",
+            "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+            "iid": 3,
+            "id": 11,
+            "title": "v3.0",
+            "created_at": "2016-01-04T15:31:39.788Z",
+            "updated_at": "2016-01-04T15:31:39.788Z"
+          },
+          "author": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
           "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "at_risk"
+          "state": "closed",
+          "iid": 1,
+          "assignees": [
+            {
+              "avatar_url": null,
+              "web_url": "https://gitlab.example.com/lennie",
+              "state": "active",
+              "username": "lennie",
+              "id": 9,
+              "name": "Dr. Luella Kovacek"
+            }
+          ],
+          "assignee": {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          },
+          "type": "ISSUE",
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "id": 41,
+          "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+          "updated_at": "2016-01-04T15:31:46.176Z",
+          "created_at": "2016-01-04T15:31:46.176Z",
+          "closed_at": "2016-01-05T15:31:46.176Z",
+          "closed_by": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
+          "user_notes_count": 1,
+          "due_date": "2016-07-22",
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+          "references": {
+            "short": "#1",
+            "relative": "#1",
+            "full": "my-group/my-project#1"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/4/issues/41",
+            "notes": "http://gitlab.example.com/api/v4/projects/4/issues/41/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/4/issues/41/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/4"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
         }
       ]
     },
@@ -750,13 +1004,93 @@
           "description": "The ID of the issue"
         }
       ],
-      "response": [
-        {
+      "response": {
+        "id": 1,
+        "milestone": {
+          "due_date": null,
           "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
-        }
-      ]
+          "state": "closed",
+          "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+          "iid": 3,
+          "id": 11,
+          "title": "v3.0",
+          "created_at": "2016-01-04T15:31:39.788Z",
+          "updated_at": "2016-01-04T15:31:39.788Z",
+          "closed_at": "2016-01-05T15:31:46.176Z"
+        },
+        "author": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "description": "Omnis vero earum sunt corporis dolor et placeat.",
+        "state": "closed",
+        "iid": 1,
+        "assignees": [
+          {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          }
+        ],
+        "assignee": {
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/lennie",
+          "state": "active",
+          "username": "lennie",
+          "id": 9,
+          "name": "Dr. Luella Kovacek"
+        },
+        "type": "ISSUE",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+        "updated_at": "2016-01-04T15:31:46.176Z",
+        "created_at": "2016-01-04T15:31:46.176Z",
+        "closed_at": null,
+        "closed_by": null,
+        "subscribed": false,
+        "user_notes_count": 1,
+        "due_date": null,
+        "web_url": "http://example.com/my-group/my-project/issues/1",
+        "references": {
+          "short": "#1",
+          "relative": "#1",
+          "full": "my-group/my-project#1"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        },
+        "weight": null,
+        "has_tasks": false,
+        "_links": {
+          "self": "http://gitlab.example:3000/api/v4/projects/1/issues/1",
+          "notes": "http://gitlab.example:3000/api/v4/projects/1/issues/1/notes",
+          "award_emoji": "http://gitlab.example:3000/api/v4/projects/1/issues/1/award_emoji",
+          "project": "http://gitlab.example:3000/api/v4/projects/1"
+        },
+        "moved_to_id": null,
+        "service_desk_reply_to": "service.desk@gitlab.com"
+      }
     },
     {
       "name": "Single project issue",
@@ -781,13 +1115,90 @@
           "description": "The internal ID of a project’s issue"
         }
       ],
-      "response": [
-        {
+      "response": {
+        "project_id": 4,
+        "milestone": {
+          "due_date": null,
           "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
+          "state": "closed",
+          "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+          "iid": 3,
+          "id": 11,
+          "title": "v3.0",
+          "created_at": "2016-01-04T15:31:39.788Z",
+          "updated_at": "2016-01-04T15:31:39.788Z",
+          "closed_at": "2016-01-05T15:31:46.176Z"
+        },
+        "author": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "description": "Omnis vero earum sunt corporis dolor et placeat.",
+        "state": "closed",
+        "iid": 1,
+        "assignees": [
+          {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          }
+        ],
+        "assignee": {
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/lennie",
+          "state": "active",
+          "username": "lennie",
+          "id": 9,
+          "name": "Dr. Luella Kovacek"
+        },
+        "type": "ISSUE",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "id": 41,
+        "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+        "updated_at": "2016-01-04T15:31:46.176Z",
+        "created_at": "2016-01-04T15:31:46.176Z",
+        "closed_at": null,
+        "closed_by": null,
+        "subscribed": false,
+        "user_notes_count": 1,
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+        "references": {
+          "short": "#1",
+          "relative": "#1",
+          "full": "my-group/my-project#1"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
         }
-      ]
+      }
     },
     {
       "name": "New issue",
@@ -902,20 +1313,72 @@
           "description": "The weight of the issue. Valid values are greater than or equal to 0."
         }
       ],
-      "response": [
-        {
-          "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
+      "response": {
+        "project_id": 4,
+        "id": 84,
+        "created_at": "2016-01-07T12:44:33.959Z",
+        "iid": 14,
+        "title": "Issues with auth",
+        "state": "opened",
+        "assignees": [],
+        "assignee": null,
+        "type": "ISSUE",
+        "labels": [
+          "bug"
+        ],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe",
+          "id": 18,
+          "username": "eileen.lowe"
+        },
+        "description": null,
+        "updated_at": "2016-01-07T12:44:33.959Z",
+        "closed_at": null,
+        "closed_by": null,
+        "milestone": null,
+        "subscribed": true,
+        "user_notes_count": 0,
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/14",
+        "references": {
+          "short": "#14",
+          "relative": "#14",
+          "full": "my-group/my-project#14"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
         }
-      ]
+      }
     },
     {
       "name": "Rate limits",
       "description": "To help avoid abuse, users can be limited to a specific number of Create requests per minute. See Issues rate limits.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Edit issue",
@@ -1036,13 +1499,71 @@
           "description": "The weight of the issue. Valid values are greater than or equal to 0. 0"
         }
       ],
-      "response": [
-        {
-          "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
+      "response": {
+        "created_at": "2016-01-07T12:46:01.410Z",
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "username": "eileen.lowe",
+          "id": 18,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe"
+        },
+        "state": "closed",
+        "title": "Issues with auth",
+        "project_id": 4,
+        "description": null,
+        "updated_at": "2016-01-07T12:55:16.213Z",
+        "closed_at": "2016-01-08T12:55:16.213Z",
+        "closed_by": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "iid": 15,
+        "labels": [
+          "bug"
+        ],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "id": 85,
+        "assignees": [],
+        "assignee": null,
+        "milestone": null,
+        "subscribed": true,
+        "user_notes_count": 0,
+        "due_date": "2016-07-22",
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/15",
+        "references": {
+          "short": "#15",
+          "relative": "#15",
+          "full": "my-group/my-project#15"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
         }
-      ]
+      }
     },
     {
       "name": "Delete an issue",
@@ -1067,7 +1588,7 @@
           "description": "The internal ID of a project’s issue"
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Reorder an issue",
@@ -1104,7 +1625,7 @@
           "description": "The ID of a project’s issue that should be placed before this issue"
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Move an issue",
@@ -1135,13 +1656,77 @@
           "description": "The ID of the new project"
         }
       ],
-      "response": [
-        {
-          "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
+      "response": {
+        "id": 92,
+        "iid": 11,
+        "project_id": 5,
+        "title": "Sit voluptas tempora quisquam aut doloribus et.",
+        "description": "Repellat voluptas quibusdam voluptatem exercitationem.",
+        "state": "opened",
+        "created_at": "2016-04-05T21:41:45.652Z",
+        "updated_at": "2016-04-07T12:20:17.596Z",
+        "closed_at": null,
+        "closed_by": null,
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "milestone": null,
+        "assignees": [
+          {
+            "name": "Miss Monserrate Beier",
+            "username": "axel.block",
+            "id": 12,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/axel.block"
+          }
+        ],
+        "assignee": {
+          "name": "Miss Monserrate Beier",
+          "username": "axel.block",
+          "id": 12,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/axel.block"
+        },
+        "type": "ISSUE",
+        "author": {
+          "name": "Kris Steuber",
+          "username": "solon.cremin",
+          "id": 10,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/7a190fecbaa68212a4b68aeb6e3acd10?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/solon.cremin"
+        },
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/11",
+        "references": {
+          "short": "#11",
+          "relative": "#11",
+          "full": "my-group/my-project#11"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
         }
-      ]
+      }
     },
     {
       "name": "Clone an issue",
@@ -1279,13 +1864,77 @@
           "description": "The internal ID of a project’s issue"
         }
       ],
-      "response": [
-        {
-          "project_id": 4,
-          "description": "Omnis vero earum sunt corporis dolor et placeat.",
-          "health_status": "on_track"
+      "response": {
+        "id": 92,
+        "iid": 11,
+        "project_id": 5,
+        "title": "Sit voluptas tempora quisquam aut doloribus et.",
+        "description": "Repellat voluptas quibusdam voluptatem exercitationem.",
+        "state": "opened",
+        "created_at": "2016-04-05T21:41:45.652Z",
+        "updated_at": "2016-04-07T12:20:17.596Z",
+        "closed_at": null,
+        "closed_by": null,
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "milestone": null,
+        "assignees": [
+          {
+            "name": "Miss Monserrate Beier",
+            "username": "axel.block",
+            "id": 12,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/axel.block"
+          }
+        ],
+        "assignee": {
+          "name": "Miss Monserrate Beier",
+          "username": "axel.block",
+          "id": 12,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/axel.block"
+        },
+        "type": "ISSUE",
+        "author": {
+          "name": "Kris Steuber",
+          "username": "solon.cremin",
+          "id": 10,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/7a190fecbaa68212a4b68aeb6e3acd10?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/solon.cremin"
+        },
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/11",
+        "references": {
+          "short": "#11",
+          "relative": "#11",
+          "full": "my-group/my-project#11"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
         }
-      ]
+      }
     },
     {
       "name": "Unsubscribe from an issue",
@@ -1985,7 +2634,7 @@
       "description": "Comments are done via the notes resource.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get user agent details",
@@ -2021,7 +2670,7 @@
       "description": "To track which state was set, who did it, and when it happened, check out Resource state events API.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Upload metric image",
@@ -2192,7 +2841,7 @@
           "description": "The ID of the image"
         }
       ],
-      "response": {}
+      "response": null
     }
   ]
 }

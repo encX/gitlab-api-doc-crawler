@@ -7,7 +7,7 @@
       "description": "Snippets API operates on snippets. Related APIs exist for project snippets and moving snippets between storages.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Snippet visibility level",
@@ -30,7 +30,7 @@
           "required": false
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "List all snippets for a user",
@@ -141,7 +141,7 @@
           "description": "ID of snippet to retrieve."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Snippet repository file content",
@@ -172,7 +172,7 @@
           "description": "URL-encoded path to the file."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Create new snippet",
@@ -234,31 +234,13 @@
         }
       ],
       "response": {
-        "id": 1,
         "title": "This is a snippet",
         "description": "Hello World snippet",
         "visibility": "internal",
-        "author": {
-          "id": 1,
-          "username": "john_smith",
-          "email": "john@example.com",
-          "name": "John Smith",
-          "state": "active",
-          "created_at": "2012-05-23T08:00:58Z"
-        },
-        "expires_at": null,
-        "updated_at": "2012-06-28T10:52:04Z",
-        "created_at": "2012-06-28T10:52:04Z",
-        "project_id": null,
-        "web_url": "http://example.com/snippets/1",
-        "raw_url": "http://example.com/snippets/1/raw",
-        "ssh_url_to_repo": "ssh://git@gitlab.example.com:snippets/1.git",
-        "http_url_to_repo": "https://gitlab.example.com/snippets/1.git",
-        "file_name": "test.txt",
         "files": [
           {
-            "path": "text.txt",
-            "raw_url": "https://gitlab.example.com/-/snippets/1/raw/master/renamed.md"
+            "content": "Hello world",
+            "file_path": "test.txt"
           }
         ]
       }
@@ -341,31 +323,12 @@
         }
       ],
       "response": {
-        "id": 1,
-        "title": "test",
-        "description": "description of snippet",
-        "visibility": "internal",
-        "author": {
-          "id": 1,
-          "username": "john_smith",
-          "email": "john@example.com",
-          "name": "John Smith",
-          "state": "active",
-          "created_at": "2012-05-23T08:00:58Z"
-        },
-        "expires_at": null,
-        "updated_at": "2012-06-28T10:52:04Z",
-        "created_at": "2012-06-28T10:52:04Z",
-        "project_id": null,
-        "web_url": "http://example.com/snippets/1",
-        "raw_url": "http://example.com/snippets/1/raw",
-        "ssh_url_to_repo": "ssh://git@gitlab.example.com:snippets/1.git",
-        "http_url_to_repo": "https://gitlab.example.com/snippets/1.git",
-        "file_name": "renamed.md",
+        "title": "foo",
         "files": [
           {
-            "path": "renamed.md",
-            "raw_url": "https://gitlab.example.com/-/snippets/1/raw/master/renamed.md"
+            "action": "move",
+            "previous_path": "test.txt",
+            "file_path": "renamed.md"
           }
         ]
       }
@@ -391,7 +354,7 @@
           "required": false
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "List all public snippets",

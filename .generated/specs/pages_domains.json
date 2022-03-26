@@ -7,7 +7,7 @@
       "description": "The GitLab Pages feature must be enabled to use these endpoints. Find out more about administering and using the feature.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List all Pages domains",
@@ -91,15 +91,8 @@
         }
       ],
       "response": {
-        "domain": "ssl.domain.example",
-        "url": "https://ssl.domain.example",
-        "auto_ssl_enabled": false,
-        "certificate": {
-          "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
-          "expired": false,
-          "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
-          "certificate_text": "Certificate:\n … \n"
-        }
+        "domain": "www.domain.example",
+        "url": "http://www.domain.example"
       }
     },
     {
@@ -196,7 +189,7 @@
           "description": "The certificate key in PEM format."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Adding certificate",
@@ -260,7 +253,7 @@
           "description": "The custom domain indicated by the user"
         }
       ],
-      "response": {}
+      "response": null
     }
   ]
 }

@@ -24,7 +24,7 @@
         }
       ],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List protected branches",
@@ -56,17 +56,31 @@
           "push_access_levels": [
             {
               "access_level": 40,
-              "user_id": null,
-              "group_id": null,
               "access_level_description": "Maintainers"
             }
           ],
           "merge_access_levels": [
             {
-              "access_level": null,
-              "user_id": null,
-              "group_id": 1234,
-              "access_level_description": "Example Merge Group"
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "allow_force_push": false,
+          "code_owner_approval_required": false
+        },
+        {
+          "id": 1,
+          "name": "release/*",
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
             }
           ],
           "allow_force_push": false,
@@ -103,17 +117,13 @@
         "push_access_levels": [
           {
             "access_level": 40,
-            "user_id": null,
-            "group_id": null,
             "access_level_description": "Maintainers"
           }
         ],
         "merge_access_levels": [
           {
-            "access_level": null,
-            "user_id": null,
-            "group_id": 1234,
-            "access_level_description": "Example Merge Group"
+            "access_level": 40,
+            "access_level_description": "Maintainers"
           }
         ],
         "allow_force_push": false,
@@ -197,24 +207,18 @@
         "push_access_levels": [
           {
             "access_level": 30,
-            "user_id": null,
-            "group_id": null,
             "access_level_description": "Developers + Maintainers"
           }
         ],
         "merge_access_levels": [
           {
             "access_level": 30,
-            "user_id": null,
-            "group_id": null,
             "access_level_description": "Developers + Maintainers"
           }
         ],
         "unprotect_access_levels": [
           {
             "access_level": 40,
-            "user_id": null,
-            "group_id": null,
             "access_level_description": "Maintainers"
           }
         ],
@@ -323,7 +327,7 @@
           "description": "The name of the branch"
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Require code owner approvals for a single branch",
@@ -354,7 +358,7 @@
           "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)"
         }
       ],
-      "response": {}
+      "response": null
     }
   ]
 }

@@ -7,7 +7,7 @@
       "description": "Every API call to merge requests must be authenticated.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List merge requests",
@@ -236,20 +236,14 @@
           "description": "Return merge requests deployed after the given date/time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
         }
       ],
-      "response": [
-        {
-          "id": 1,
-          "title": "test1",
-          "approvals_before_merge": null
-        }
-      ]
+      "response": "[  {    \"id\": 1,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"test1\",    \"description\": \"fixed login page css paddings\",    \"state\": \"merged\",    \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merge_user\": {      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merged_at\": \"2018-09-07T11:16:17.520Z\",    \"closed_by\": null,    \"closed_at\": null,    \"created_at\": \"2017-04-29T08:46:00Z\",    \"updated_at\": \"2017-04-29T08:46:00Z\",    \"target_branch\": \"master\",    \"source_branch\": \"test1\",    \"upvotes\": 0,    \"downvotes\": 0,    \"author\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignee\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignees\": [{      \"name\": \"Miss Monserrate Beier\",      \"username\": \"axel.block\",      \"id\": 12,      \"state\": \"active\",      \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",      \"web_url\": \"https://gitlab.example.com/axel.block\"    }],    \"reviewers\": [{      \"id\": 2,      \"name\": \"Sam Bauch\",      \"username\": \"kenyatta_oconnell\",      \"state\": \"active\",      \"avatar_url\": \"https://www.gravatar.com/avatar/956c92487c6f6f7616b536927e22c9a0?s=80&d=identicon\",      \"web_url\": \"http://gitlab.example.com//kenyatta_oconnell\"    }],    \"source_project_id\": 2,    \"target_project_id\": 3,    \"labels\": [      \"Community contribution\",      \"Manage\"    ],    \"draft\": false,    \"work_in_progress\": false,    \"milestone\": {      \"id\": 5,      \"iid\": 1,      \"project_id\": 3,      \"title\": \"v2.0\",      \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",      \"state\": \"closed\",      \"created_at\": \"2015-02-02T19:49:26.013Z\",      \"updated_at\": \"2015-02-02T19:49:26.013Z\",      \"due_date\": \"2018-09-22\",      \"start_date\": \"2018-08-08\",      \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"    },    \"merge_when_pipeline_succeeds\": true,    \"merge_status\": \"can_be_merged\",    \"sha\": \"8888888888888888888888888888888888888888\",    \"merge_commit_sha\": null,    \"squash_commit_sha\": null,    \"user_notes_count\": 1,    \"discussion_locked\": null,    \"should_remove_source_branch\": true,    \"force_remove_source_branch\": false,    \"allow_collaboration\": false,    \"allow_maintainer_to_push\": false,    \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",    \"references\": {      \"short\": \"!1\",      \"relative\": \"my-group/my-project!1\",      \"full\": \"my-group/my-project!1\"    },    \"time_stats\": {      \"time_estimate\": 0,      \"total_time_spent\": 0,      \"human_time_estimate\": null,      \"human_total_time_spent\": null    },    \"squash\": false,    \"task_completion_status\":{      \"count\":0,      \"completed_count\":0    }  }]"
     },
     {
       "name": "Merge requests list response notes",
       "description": "",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List project merge requests",
@@ -322,13 +316,7 @@
           "description": "Return merge requests that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, reviewer_id, reviewer_username, my_reaction_emoji."
         }
       ],
-      "response": [
-        {
-          "id": 1,
-          "title": "test1",
-          "approvals_before_merge": null
-        }
-      ]
+      "response": "[  {    \"id\": 1,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"test1\",    \"description\": \"fixed login page css paddings\",    \"state\": \"merged\",    \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merge_user\": {      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merged_at\": \"2018-09-07T11:16:17.520Z\",    \"closed_by\": null,    \"closed_at\": null,    \"created_at\": \"2017-04-29T08:46:00Z\",    \"updated_at\": \"2017-04-29T08:46:00Z\",    \"target_branch\": \"master\",    \"source_branch\": \"test1\",    \"upvotes\": 0,    \"downvotes\": 0,    \"author\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignee\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignees\": [{      \"name\": \"Miss Monserrate Beier\",      \"username\": \"axel.block\",      \"id\": 12,      \"state\": \"active\",      \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",      \"web_url\": \"https://gitlab.example.com/axel.block\"    }],    \"reviewers\": [{      \"id\": 2,      \"name\": \"Sam Bauch\",      \"username\": \"kenyatta_oconnell\",      \"state\": \"active\",      \"avatar_url\": \"https://www.gravatar.com/avatar/956c92487c6f6f7616b536927e22c9a0?s=80&d=identicon\",      \"web_url\": \"http://gitlab.example.com//kenyatta_oconnell\"    }],    \"source_project_id\": 2,    \"target_project_id\": 3,    \"labels\": [      \"Community contribution\",      \"Manage\"    ],    \"draft\": false,    \"work_in_progress\": false,    \"milestone\": {      \"id\": 5,      \"iid\": 1,      \"project_id\": 3,      \"title\": \"v2.0\",      \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",      \"state\": \"closed\",      \"created_at\": \"2015-02-02T19:49:26.013Z\",      \"updated_at\": \"2015-02-02T19:49:26.013Z\",      \"due_date\": \"2018-09-22\",      \"start_date\": \"2018-08-08\",      \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"    },    \"merge_when_pipeline_succeeds\": true,    \"merge_status\": \"can_be_merged\",    \"sha\": \"8888888888888888888888888888888888888888\",    \"merge_commit_sha\": null,    \"squash_commit_sha\": null,    \"user_notes_count\": 1,    \"discussion_locked\": null,    \"should_remove_source_branch\": true,    \"force_remove_source_branch\": false,    \"allow_collaboration\": false,    \"allow_maintainer_to_push\": false,    \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",    \"references\": {      \"short\": \"!1\",      \"relative\": \"!1\",      \"full\": \"my-group/my-project!1\"    },    \"time_stats\": {      \"time_estimate\": 0,      \"total_time_spent\": 0,      \"human_time_estimate\": null,      \"human_total_time_spent\": null    },    \"squash\": false,    \"task_completion_status\":{      \"count\":0,      \"completed_count\":0    },    \"has_conflicts\": false,    \"blocking_discussions_resolved\": true  }]"
     },
     {
       "name": "List group merge requests",
@@ -523,13 +511,7 @@
           "description": "Return merge requests that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, reviewer_id, reviewer_username, my_reaction_emoji."
         }
       ],
-      "response": [
-        {
-          "id": 1,
-          "title": "test1",
-          "approvals_before_merge": null
-        }
-      ]
+      "response": "[  {    \"id\": 1,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"test1\",    \"description\": \"fixed login page css paddings\",    \"state\": \"merged\",    \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merge_user\": {      \"id\": 87854,      \"name\": \"Douwe Maan\",      \"username\": \"DouweM\",      \"state\": \"active\",      \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",      \"web_url\": \"https://gitlab.com/DouweM\"    },    \"merged_at\": \"2018-09-07T11:16:17.520Z\",    \"closed_by\": null,    \"closed_at\": null,    \"created_at\": \"2017-04-29T08:46:00Z\",    \"updated_at\": \"2017-04-29T08:46:00Z\",    \"target_branch\": \"master\",    \"source_branch\": \"test1\",    \"upvotes\": 0,    \"downvotes\": 0,    \"author\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignee\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"admin\",      \"state\": \"active\",      \"avatar_url\": null,      \"web_url\" : \"https://gitlab.example.com/admin\"    },    \"assignees\": [{      \"name\": \"Miss Monserrate Beier\",      \"username\": \"axel.block\",      \"id\": 12,      \"state\": \"active\",      \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",      \"web_url\": \"https://gitlab.example.com/axel.block\"    }],    \"reviewers\": [{      \"id\": 2,      \"name\": \"Sam Bauch\",      \"username\": \"kenyatta_oconnell\",      \"state\": \"active\",      \"avatar_url\": \"https://www.gravatar.com/avatar/956c92487c6f6f7616b536927e22c9a0?s=80&d=identicon\",      \"web_url\": \"http://gitlab.example.com//kenyatta_oconnell\"    }],    \"source_project_id\": 2,    \"target_project_id\": 3,    \"labels\": [      \"Community contribution\",      \"Manage\"    ],    \"draft\": false,    \"work_in_progress\": false,    \"milestone\": {      \"id\": 5,      \"iid\": 1,      \"project_id\": 3,      \"title\": \"v2.0\",      \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",      \"state\": \"closed\",      \"created_at\": \"2015-02-02T19:49:26.013Z\",      \"updated_at\": \"2015-02-02T19:49:26.013Z\",      \"due_date\": \"2018-10-22\",      \"start_date\": \"2018-09-08\",      \"web_url\": \"gitlab.example.com/my-group/my-project/milestones/1\"    },    \"merge_when_pipeline_succeeds\": true,    \"merge_status\": \"can_be_merged\",    \"sha\": \"8888888888888888888888888888888888888888\",    \"merge_commit_sha\": null,    \"squash_commit_sha\": null,    \"user_notes_count\": 1,    \"discussion_locked\": null,    \"should_remove_source_branch\": true,    \"force_remove_source_branch\": false,    \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",    \"references\": {      \"short\": \"!1\",      \"relative\": \"my-project!1\",      \"full\": \"my-group/my-project!1\"    },    \"time_stats\": {      \"time_estimate\": 0,      \"total_time_spent\": 0,      \"human_time_estimate\": null,      \"human_total_time_spent\": null    },    \"squash\": false,    \"task_completion_status\":{      \"count\":0,      \"completed_count\":0    },    \"has_conflicts\": false,    \"blocking_discussions_resolved\": true  }]"
     },
     {
       "name": "Get single MR",
@@ -572,18 +554,14 @@
           "description": "If true response includes whether a rebase operation is in progress."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"user\" : {    \"can_merge\" : false  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"id\": 2,    \"name\": \"Sam Bauch\",    \"username\": \"kenyatta_oconnell\",    \"state\": \"active\",    \"avatar_url\": \"https://www.gravatar.com/avatar/956c92487c6f6f7616b536927e22c9a0?s=80&d=identicon\",    \"web_url\": \"http://gitlab.example.com//kenyatta_oconnell\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"merge_error\": null,  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"rebase_in_progress\": false,  \"first_contribution\": false,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  },  \"has_conflicts\": false,  \"blocking_discussions_resolved\": true}"
     },
     {
       "name": "Single merge request response notes",
       "description": "",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get single MR participants",
@@ -901,11 +879,7 @@
           "description": "Squash commits into a single commit when merging."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"merge_error\": null,  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Update MR",
@@ -1026,11 +1000,7 @@
           "description": "Alias of allow_collaboration."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"merge_error\": null,  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Delete a merge request",
@@ -1055,7 +1025,7 @@
           "description": "The internal ID of the merge request."
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Merge a merge request",
@@ -1088,11 +1058,7 @@
           "required": false
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"merge_error\": null,  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Merge to default merge ref path",
@@ -1144,11 +1110,7 @@
           "description": "The internal ID of the merge request."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": false,  \"merge_status\": \"can_be_merged\",  \"merge_error\": null,  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Rebase a merge request",
@@ -1180,8 +1142,7 @@
         }
       ],
       "response": {
-        "rebase_in_progress": false,
-        "merge_error": "Rebase failed. Please rebase locally"
+        "rebase_in_progress": true
       }
     },
     {
@@ -1189,7 +1150,7 @@
       "description": "Comments are done via the notes resource.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List issues that close on merge",
@@ -1216,8 +1177,44 @@
       ],
       "response": [
         {
-          "id": "PROJECT-123",
-          "title": "Title of this issue"
+          "state": "opened",
+          "description": "Ratione dolores corrupti mollitia soluta quia.",
+          "author": {
+            "state": "active",
+            "id": 18,
+            "web_url": "https://gitlab.example.com/eileen.lowe",
+            "name": "Alexandra Bashirian",
+            "avatar_url": null,
+            "username": "eileen.lowe"
+          },
+          "milestone": {
+            "project_id": 1,
+            "description": "Ducimus nam enim ex consequatur cumque ratione.",
+            "state": "closed",
+            "due_date": null,
+            "iid": 2,
+            "created_at": "2016-01-04T15:31:39.996Z",
+            "title": "v4.0",
+            "id": 17,
+            "updated_at": "2016-01-04T15:31:39.996Z"
+          },
+          "project_id": 1,
+          "assignee": {
+            "state": "active",
+            "id": 1,
+            "name": "Administrator",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root"
+          },
+          "updated_at": "2016-01-04T15:31:51.081Z",
+          "id": 76,
+          "title": "Consequatur vero maxime deserunt laboriosam est voluptas dolorem.",
+          "created_at": "2016-01-04T15:31:51.081Z",
+          "iid": 6,
+          "labels": [],
+          "user_notes_count": 1,
+          "changes_count": "1"
         }
       ]
     },
@@ -1244,11 +1241,7 @@
           "description": "The internal ID of the merge request."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Unsubscribe from a merge request",
@@ -1273,11 +1266,7 @@
           "description": "The internal ID of the merge request."
         }
       ],
-      "response": {
-        "id": 1,
-        "title": "test1",
-        "approvals_before_merge": null
-      }
+      "response": "{  \"id\": 1,  \"iid\": 1,  \"project_id\": 3,  \"title\": \"test1\",  \"description\": \"fixed login page css paddings\",  \"state\": \"merged\",  \"created_at\": \"2017-04-29T08:46:00Z\",  \"updated_at\": \"2017-04-29T08:46:00Z\",  \"target_branch\": \"master\",  \"source_branch\": \"test1\",  \"upvotes\": 0,  \"downvotes\": 0,  \"author\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignee\": {    \"id\": 1,    \"name\": \"Administrator\",    \"username\": \"admin\",    \"state\": \"active\",    \"avatar_url\": null,    \"web_url\" : \"https://gitlab.example.com/admin\"  },  \"assignees\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"reviewers\": [{    \"name\": \"Miss Monserrate Beier\",    \"username\": \"axel.block\",    \"id\": 12,    \"state\": \"active\",    \"avatar_url\": \"http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon\",    \"web_url\": \"https://gitlab.example.com/axel.block\"  }],  \"source_project_id\": 2,  \"target_project_id\": 3,  \"labels\": [    \"Community contribution\",    \"Manage\"  ],  \"draft\": false,  \"work_in_progress\": false,  \"milestone\": {    \"id\": 5,    \"iid\": 1,    \"project_id\": 3,    \"title\": \"v2.0\",    \"description\": \"Assumenda aut placeat expedita exercitationem labore sunt enim earum.\",    \"state\": \"closed\",    \"created_at\": \"2015-02-02T19:49:26.013Z\",    \"updated_at\": \"2015-02-02T19:49:26.013Z\",    \"due_date\": \"2018-09-22\",    \"start_date\": \"2018-08-08\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/milestones/1\"  },  \"merge_when_pipeline_succeeds\": true,  \"merge_status\": \"can_be_merged\",  \"sha\": \"8888888888888888888888888888888888888888\",  \"merge_commit_sha\": null,  \"squash_commit_sha\": null,  \"user_notes_count\": 1,  \"discussion_locked\": null,  \"should_remove_source_branch\": true,  \"force_remove_source_branch\": false,  \"allow_collaboration\": false,  \"allow_maintainer_to_push\": false,  \"web_url\": \"http://gitlab.example.com/my-group/my-project/merge_requests/1\",  \"references\": {    \"short\": \"!1\",    \"relative\": \"!1\",    \"full\": \"my-group/my-project!1\"  },  \"time_stats\": {    \"time_estimate\": 0,    \"total_time_spent\": 0,    \"human_time_estimate\": null,    \"human_total_time_spent\": null  },  \"squash\": false,  \"subscribed\": false,  \"changes_count\": \"1\",  \"merged_by\": { // Deprecated and will be removed in API v5, use `merge_user` instead    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merge_user\": {    \"id\": 87854,    \"name\": \"Douwe Maan\",    \"username\": \"DouweM\",    \"state\": \"active\",    \"avatar_url\": \"https://gitlab.example.com/uploads/-/system/user/avatar/87854/avatar.png\",    \"web_url\": \"https://gitlab.com/DouweM\"  },  \"merged_at\": \"2018-09-07T11:16:17.520Z\",  \"closed_by\": null,  \"closed_at\": null,  \"latest_build_started_at\": \"2018-09-07T07:27:38.472Z\",  \"latest_build_finished_at\": \"2018-09-07T08:07:06.012Z\",  \"first_deployed_to_production_at\": null,  \"pipeline\": {    \"id\": 29626725,    \"sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"ref\": \"patch-28\",    \"status\": \"success\",    \"web_url\": \"https://gitlab.example.com/my-group/my-project/pipelines/29626725\"  },  \"diff_refs\": {    \"base_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\",    \"head_sha\": \"2be7ddb704c7b6b83732fdd5b9f09d5a397b5f8f\",    \"start_sha\": \"c380d3acebd181f13629a25d2e2acca46ffe1e00\"  },  \"diverged_commits_count\": 2,  \"task_completion_status\":{    \"count\":0,    \"completed_count\":0  }}"
     },
     {
       "name": "Create a to-do item",
@@ -1478,7 +1467,7 @@
           "required": false
         }
       ],
-      "response": {}
+      "response": null
     },
     {
       "name": "Get a single MR diff version",
@@ -1734,14 +1723,14 @@
       "description": "For approvals, see Merge request approvals",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "List merge request state events",
       "description": "To track which state was set, who did it, and when it happened, check out Resource state events API.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     }
   ]
 }

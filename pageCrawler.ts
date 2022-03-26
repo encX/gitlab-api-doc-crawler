@@ -152,10 +152,11 @@ export class PageCrawler {
       .replace(/\.\.\. *(]|})/, "$1")
       .replace(/(\[|{) *\.\.\./, "$1")
       .replace(/, *(]|})/, "$1");
+      .replace(/, *\/\/.+"/, ",\"")
     try {
       return JSON.parse(sanitized);
-    } catch {
-      console.warn("Parsing error", `${this.pagePath} > ${apiName}`);
+    } catch (e) {
+      console.warn("Parsing error", `${this.pagePath} > ${apiName}`, e.message);
       return sanitized;
     }
   }

@@ -7,14 +7,14 @@
       "description": "Use the Invitations API to send email to users you want to join a group or project, and to list pending invitations.",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Valid access levels",
       "description": "To send an invitation, you must have access to the project or group you are sending email for. Valid access levels are defined in the Gitlab::Access module. Currently, these levels are valid:",
       "resources": [],
       "attributes": [],
-      "response": {}
+      "response": null
     },
     {
       "name": "Invite by email to group or project",
@@ -74,11 +74,7 @@
         }
       ],
       "response": {
-        "status": "error",
-        "message": {
-          "test@example.com": "Invite email has already been taken",
-          "test2@example.com": "User already exists in source"
-        }
+        "status": "success"
       }
     },
     {
@@ -203,7 +199,7 @@
           "description": "The email address to which the invitation was previously sent"
         }
       ],
-      "response": {}
+      "response": null
     }
   ]
 }
