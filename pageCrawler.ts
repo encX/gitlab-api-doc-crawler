@@ -121,7 +121,13 @@ export class PageCrawler {
 
       if (/language-json/gi.test(e.attribs["class"])) {
         if (exampleResponse !== null) {
-          console.log(this.pagePath, name, "Hit multiple code block!");
+          console.log(
+            `${glUrl.pageUrl(this.pagePath)}#${name
+              .toLowerCase()
+              .replace(/ /g, "-")
+              .replace(/\//g, "")}`,
+            "Hit multiple code block!"
+          );
         }
 
         if (exampleResponse === null || typeof exampleResponse === "string") {
