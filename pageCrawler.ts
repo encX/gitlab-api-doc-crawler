@@ -151,8 +151,9 @@ export class PageCrawler {
     const sanitized = json
       .replace(/\.\.\. *(]|})/, "$1")
       .replace(/(\[|{) *\.\.\./, "$1")
-      .replace(/, *(]|})/, "$1");
-      .replace(/, *\/\/.+"/, ",\"")
+      .replace(/, *(]|})/, "$1")
+      .replace(/, *\/\/[\w\s`,]+"/, ',"');
+
     try {
       return JSON.parse(sanitized);
     } catch (e) {
