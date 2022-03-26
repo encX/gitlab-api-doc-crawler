@@ -147,7 +147,6 @@ export class PageCrawler {
     if (/introduced-in/gi.test(elem.attribs["class"])) return true;
     if (/Example (request|response):?/gi.test(cheerio(elem).text()))
       return true;
-    // if (/...$/.test(cheerio(elem).find("code").text())) return true;
     return false;
   }
 
@@ -159,6 +158,7 @@ export class PageCrawler {
       .replace(/, *(]|})/g, "$1")
       // json comments
       .replace(/([\[{,]) *\/\/[\w\s\d`,.]+"/g, '$1"')
+      .replace(/\[ *\/\/[\w\s\d`,.]+{/g, "[{")
       // bad string in diff
       .replace(/\\ /g, "\\\\ ")
       // missing colon (this is so stupid, GitLab!)
