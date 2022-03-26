@@ -25,7 +25,6 @@ export const load = async (
   } catch {}
 
   if (cachedContent && !ignoreCache) {
-    console.log("read cached", cacheFileName);
     return cheerio.load(cachedContent);
   }
   const res = await fetch(url);

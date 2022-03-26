@@ -29,8 +29,6 @@ for await (const page of pages) {
 
   try {
     apis = await new PageCrawler(page.path).getApis();
-    console.log(`"${page.name}" has ${apis.length} APIs`);
-    console.log(`==> write ${specPath}`);
   } catch (e) {
     apis = e.message;
     console.error(`"${page.name}" fetch APIs failed`, e);

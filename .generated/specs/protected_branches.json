@@ -49,7 +49,30 @@
           "description": "Name or part of the name of protected branches to be searched for"
         }
       ],
-      "response": "[  {    \"id\": 1,    \"name\": \"master\",    \"push_access_levels\": [      {        \"access_level\": 40,        \"user_id\": null,        \"group_id\": null,        \"access_level_description\": \"Maintainers\"      }    ],    \"merge_access_levels\": [      {        \"access_level\": null,        \"user_id\": null,        \"group_id\": 1234,        \"access_level_description\": \"Example Merge Group\"      }    ],    \"allow_force_push\":false,    \"code_owner_approval_required\": false  },  ...]"
+      "response": [
+        {
+          "id": 1,
+          "name": "master",
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "user_id": null,
+              "group_id": null,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": null,
+              "user_id": null,
+              "group_id": 1234,
+              "access_level_description": "Example Merge Group"
+            }
+          ],
+          "allow_force_push": false,
+          "code_owner_approval_required": false
+        }
+      ]
     },
     {
       "name": "Get a single protected branch or wildcard protected branch",

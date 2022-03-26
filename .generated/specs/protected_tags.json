@@ -39,7 +39,17 @@
           "description": "The ID or URL-encoded path of the project owned by the authenticated user"
         }
       ],
-      "response": "[  {    \"name\": \"release-1-0\",    \"create_access_levels\": [      {        \"access_level\": 40,        \"access_level_description\": \"Maintainers\"      }    ]  },  ...]"
+      "response": [
+        {
+          "name": "release-1-0",
+          "create_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "Get a single protected tag or wildcard protected tag",

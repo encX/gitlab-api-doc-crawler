@@ -50,11 +50,11 @@ export class PageCrawler {
       } else if (Array.isArray(current)) {
         current.push(e);
       } else {
-        console.warn(
-          "=> Uncatched element",
-          e.name,
-          cheerio(e).text().replace(/\n/g, "\\\\n")
-        );
+        // console.warn(
+        //   "=> Uncatched element",
+        //   e.name,
+        //   cheerio(e).text().replace(/\n/g, "\\\\n")
+        // );
       }
     });
 
@@ -121,11 +121,8 @@ export class PageCrawler {
 
       if (/language-json/gi.test(e.attribs["class"])) {
         const text = cheerio(e).find("code").text().replace(/\n/g, "");
-        try {
-          exampleResponse = JSON.parse(text);
-        } catch {
-          exampleResponse = text;
-        }
+
+        exampleResponse = this.sanitizeAndParse(text, name);
       }
     });
 
@@ -145,5 +142,18 @@ export class PageCrawler {
     if (/Example (request|response):?/gi.test(cheerio(elem).text()))
       return true;
     return false;
+  }
+
+  private sanitizeAndParse(json: string, apiName?: string): any {
+    const sanitized = json
+      .replace(/\.\.\. *]/, "]")
+      .replace(/\[ *\.\.\./, "[")
+      .replace(/} *, *]/, "}]");
+    try {
+      return JSON.parse(sanitized);
+    } catch {
+      console.warn("Parsing error", `${this.pagePath} > ${apiName}`);
+      return sanitized;
+    }
   }
 }
