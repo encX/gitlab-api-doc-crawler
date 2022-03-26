@@ -8,7 +8,13 @@ import { DocVer } from "./enums/docVer.ts";
 import { Api } from "./models.ts";
 
 glUrl.setDocVer(DocVer.current);
-const pages = await new PagesLister().getPages();
+const pages = (await new PagesLister().getPages())
+  .sort((a, b) => (a.path > b.path ? 1 : -1))
+  .filter((x, i, a) => {
+    if (i >= a.length - 1) return false;
+    if (x.path === a[i + 1].path) return false;
+    return true;
+  });
 console.log(`Got ${pages.length} pages or APIs`);
 
 await ensureDir(".generated/specs");

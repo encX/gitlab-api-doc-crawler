@@ -119,13 +119,16 @@ export class PageCrawler {
           });
       }
 
-      if (
-        /language-json/gi.test(e.attribs["class"]) &&
-        (exampleResponse === null || typeof exampleResponse === "string")
-      ) {
-        // check if api hit cultiple code blocks
-        const text = cheerio(e).find("code").text().replace(/\n/g, "");
-        exampleResponse = this.sanitizeAndParse(text);
+      if (/language-json/gi.test(e.attribs["class"])) {
+        if (exampleResponse !== null) {
+          console.log(this.pagePath, name, "Hit multiple code block!");
+        }
+
+        if (exampleResponse === null || typeof exampleResponse === "string") {
+          // check if api hit cultiple code blocks
+          const text = cheerio(e).find("code").text().replace(/\n/g, "");
+          exampleResponse = this.sanitizeAndParse(text);
+        }
       }
     });
 
