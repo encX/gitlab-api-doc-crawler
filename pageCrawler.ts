@@ -162,7 +162,9 @@ export class PageCrawler {
       // bad string in diff
       .replace(/\\ /g, "\\\\ ")
       // missing colon (this is so stupid, GitLab!)
-      .replace(/("job_artifacts_size": 0)[\s\n]+"/g, '$1,"');
+      .replace(/("job_artifacts_size": 0)[\s\n]+"/g, '$1,"')
+      // key without quote
+      .replace(/ {4}(\w+): (?=["ntf\[\{\d])/g, '"$1":');
 
     try {
       return JSON.parse(sanitized);
