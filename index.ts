@@ -1,5 +1,5 @@
 import { join } from "https://deno.land/std@0.132.0/path/mod.ts";
-import { ensureDir } from "https://deno.land/std@0.132.0/fs/mod.ts";
+import { ensureDir, ensureFile } from "https://deno.land/std@0.132.0/fs/mod.ts";
 
 import { PagesLister } from "./pageLister.ts";
 import { PageCrawler } from "./pageCrawler.ts";
@@ -13,13 +13,17 @@ console.log(`Got ${pages.length} pages or APIs`);
 await ensureDir("specs");
 
 for await (const page of pages) {
+  const specPath = join("specs", page.path.replace(/\.html/, ".json"));
+  await ensureFile(specPath);
+
   try {
     const apis = await new PageCrawler(page.path).getApis();
     console.log(`"${page.name}" has ${apis.length} APIs`);
-    const specPath = join("specs", page.path.replace(/\.html/, ".json"));
+
     await Deno.writeTextFile(specPath, JSON.stringify(apis, null, 2));
     console.log(`==> write ${specPath}`);
   } catch (e) {
+    await Deno.writeTextFile(specPath, "failed");
     console.error(`"${page.name}" fetch APIs failed`, e);
   }
 }
