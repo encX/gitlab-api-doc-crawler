@@ -40,7 +40,15 @@
           "description": "In GitLab 14.2 and later, returns a list of owned namespaces only"
         }
       ],
-      "response": "[  {    \"id\": 1,    \"name\": \"user1\",    \"billable_members_count\": 2,    \"max_seats_used\": 3,    \"seats_in_use\": 2,    ...  }]"
+      "response": [
+        {
+          "id": 1,
+          "name": "user1",
+          "billable_members_count": 2,
+          "max_seats_used": 3,
+          "seats_in_use": 2
+        }
+      ]
     },
     {
       "name": "Get namespace by ID",

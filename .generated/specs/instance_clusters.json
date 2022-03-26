@@ -19,7 +19,66 @@
         }
       ],
       "attributes": [],
-      "response": "[  {    \"id\": 9,    \"name\": \"cluster-1\",    \"created_at\": \"2020-07-14T18:36:10.440Z\",    \"managed\": true,    \"enabled\": true,    \"domain\": null,    \"provider_type\": \"user\",    \"platform_type\": \"kubernetes\",    \"environment_scope\": \"*\",    \"cluster_type\": \"instance_type\",    \"user\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"root\",      \"state\": \"active\",      \"avatar_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon\",      \"web_url\": \"https://gitlab.example.com/root\"    },    \"platform_kubernetes\": {      \"api_url\": \"https://example.com\",      \"namespace\": null,      \"authorization_type\": \"rbac\",      \"ca_cert\":\"-----BEGIN CERTIFICATE-----IxMDM1MV0ZDJkZjM...-----END CERTIFICATE-----\"    },    \"provider_gcp\": null,    \"management_project\": null  },  {    \"id\": 10,    \"name\": \"cluster-2\",    \"created_at\": \"2020-07-14T18:39:05.383Z\",    \"domain\": null,    \"provider_type\": \"user\",    \"platform_type\": \"kubernetes\",    \"environment_scope\": \"staging\",    \"cluster_type\": \"instance_type\",    \"user\": {      \"id\": 1,      \"name\": \"Administrator\",      \"username\": \"root\",      \"state\": \"active\",      \"avatar_url\": \"https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon\",      \"web_url\": \"https://gitlab.example.com/root\"    },    \"platform_kubernetes\": {      \"api_url\": \"https://example.com\",      \"namespace\": null,      \"authorization_type\": \"rbac\",      \"ca_cert\":\"-----BEGIN CERTIFICATE-----LzEtMCadtaLGxcsGAZjM...-----END CERTIFICATE-----\"    },    \"provider_gcp\": null,    \"management_project\": null  },  {    \"id\": 11,    \"name\": \"cluster-3\",    ...  }]"
+      "response": [
+        {
+          "id": 9,
+          "name": "cluster-1",
+          "created_at": "2020-07-14T18:36:10.440Z",
+          "managed": true,
+          "enabled": true,
+          "domain": null,
+          "provider_type": "user",
+          "platform_type": "kubernetes",
+          "environment_scope": "*",
+          "cluster_type": "instance_type",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "platform_kubernetes": {
+            "api_url": "https://example.com",
+            "namespace": null,
+            "authorization_type": "rbac",
+            "ca_cert": "-----BEGIN CERTIFICATE-----IxMDM1MV0ZDJkZjM...-----END CERTIFICATE-----"
+          },
+          "provider_gcp": null,
+          "management_project": null
+        },
+        {
+          "id": 10,
+          "name": "cluster-2",
+          "created_at": "2020-07-14T18:39:05.383Z",
+          "domain": null,
+          "provider_type": "user",
+          "platform_type": "kubernetes",
+          "environment_scope": "staging",
+          "cluster_type": "instance_type",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "platform_kubernetes": {
+            "api_url": "https://example.com",
+            "namespace": null,
+            "authorization_type": "rbac",
+            "ca_cert": "-----BEGIN CERTIFICATE-----LzEtMCadtaLGxcsGAZjM...-----END CERTIFICATE-----"
+          },
+          "provider_gcp": null,
+          "management_project": null
+        },
+        {
+          "id": 11,
+          "name": "cluster-3"
+        }
+      ]
     },
     {
       "name": "Get a single instance cluster",

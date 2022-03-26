@@ -327,7 +327,14 @@
           "description": "Enable/disable this notification (Introduced in GitLab 11.3)"
         }
       ],
-      "response": "{  \"level\": \"custom\",  \"events\": {    \"new_note\": true,    \"new_issue\": false,    \"new_epic\": false,    ...  }}"
+      "response": {
+        "level": "custom",
+        "events": {
+          "new_note": true,
+          "new_issue": false,
+          "new_epic": false
+        }
+      }
     }
   ]
 }

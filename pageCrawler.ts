@@ -74,7 +74,7 @@ export class PageCrawler {
     // ? "Example Request:"
     let exampleRequest: string[] = [];
     // "Example Response:"
-    let exampleResponse = {};
+    let exampleResponse: any = null;
 
     let invalid = false;
 
@@ -119,7 +119,10 @@ export class PageCrawler {
           });
       }
 
-      if (/language-json/gi.test(e.attribs["class"])) {
+      if (
+        /language-json/gi.test(e.attribs["class"]) &&
+        exampleResponse === null
+      ) {
         const text = cheerio(e).find("code").text().replace(/\n/g, "");
 
         exampleResponse = this.sanitizeAndParse(text, name);
@@ -146,9 +149,9 @@ export class PageCrawler {
 
   private sanitizeAndParse(json: string, apiName?: string): any {
     const sanitized = json
-      .replace(/\.\.\. *]/, "]")
-      .replace(/\[ *\.\.\./, "[")
-      .replace(/} *, *]/, "}]");
+      .replace(/\.\.\. *(]|})/, "$1")
+      .replace(/(\[|{) *\.\.\./, "$1")
+      .replace(/, *(]|})/, "$1");
     try {
       return JSON.parse(sanitized);
     } catch {

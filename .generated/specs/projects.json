@@ -184,7 +184,13 @@
           "description": "Limit by projects which use the given programming language."
         }
       ],
-      "response": "[  {    \"id\": 4,    \"description\": null,    \"approvals_before_merge\": 0,    ...  }]"
+      "response": [
+        {
+          "id": 4,
+          "description": null,
+          "approvals_before_merge": 0
+        }
+      ]
     },
     {
       "name": "Pagination limits",
@@ -452,14 +458,18 @@
           "description": "Include custom attributes in response. (administrators only)"
         }
       ],
-      "response": "{   \"id\":3,   ...   \"mr_default_target_self\": false,   \"forked_from_project\":{      \"id\":13083,      \"description\":\"GitLab Community Edition\",      \"name\":\"GitLab Community Edition\",      \"name_with_namespace\":\"GitLab.org / GitLab Community Edition\",      \"path\":\"gitlab-foss\",      \"path_with_namespace\":\"gitlab-org/gitlab-foss\",      \"created_at\":\"2013-09-26T06:02:36.000Z\",      \"default_branch\":\"master\",      \"tag_list\":[], //deprecated, use `topics` instead      \"topics\":[],      \"ssh_url_to_repo\":\"git@gitlab.com:gitlab-org/gitlab-foss.git\",      \"http_url_to_repo\":\"https://gitlab.com/gitlab-org/gitlab-foss.git\",      \"web_url\":\"https://gitlab.com/gitlab-org/gitlab-foss\",      \"avatar_url\":\"https://gitlab.com/uploads/-/system/project/avatar/13083/logo-extra-whitespace.png\",      \"license_url\": \"https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE\",      \"license\": {        \"key\": \"mit\",        \"name\": \"MIT License\",        \"nickname\": null,        \"html_url\": \"http://choosealicense.com/licenses/mit/\",        \"source_url\": \"https://opensource.org/licenses/MIT\"      },      \"star_count\":3812,      \"forks_count\":3561,      \"last_activity_at\":\"2018-01-02T11:40:26.570Z\",      \"namespace\": {            \"id\": 72,            \"name\": \"GitLab.org\",            \"path\": \"gitlab-org\",            \"kind\": \"group\",            \"full_path\": \"gitlab-org\",            \"parent_id\": null      }   }   ...}"
+      "response": "{   \"id\":3,   ...   \"mr_default_target_self\": false,   \"forked_from_project\":{      \"id\":13083,      \"description\":\"GitLab Community Edition\",      \"name\":\"GitLab Community Edition\",      \"name_with_namespace\":\"GitLab.org / GitLab Community Edition\",      \"path\":\"gitlab-foss\",      \"path_with_namespace\":\"gitlab-org/gitlab-foss\",      \"created_at\":\"2013-09-26T06:02:36.000Z\",      \"default_branch\":\"master\",      \"tag_list\":[], //deprecated, use `topics` instead      \"topics\":[],      \"ssh_url_to_repo\":\"git@gitlab.com:gitlab-org/gitlab-foss.git\",      \"http_url_to_repo\":\"https://gitlab.com/gitlab-org/gitlab-foss.git\",      \"web_url\":\"https://gitlab.com/gitlab-org/gitlab-foss\",      \"avatar_url\":\"https://gitlab.com/uploads/-/system/project/avatar/13083/logo-extra-whitespace.png\",      \"license_url\": \"https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE\",      \"license\": {        \"key\": \"mit\",        \"name\": \"MIT License\",        \"nickname\": null,        \"html_url\": \"http://choosealicense.com/licenses/mit/\",        \"source_url\": \"https://opensource.org/licenses/MIT\"      },      \"star_count\":3812,      \"forks_count\":3561,      \"last_activity_at\":\"2018-01-02T11:40:26.570Z\",      \"namespace\": {            \"id\": 72,            \"name\": \"GitLab.org\",            \"path\": \"gitlab-org\",            \"kind\": \"group\",            \"full_path\": \"gitlab-org\",            \"parent_id\": null      }   }   }"
     },
     {
       "name": "Templates for issues and merge requests",
       "description": "Users of GitLab Premium or higher can also see the issues_template and merge_requests_template parameters for managing issue and merge request description templates.",
       "resources": [],
       "attributes": [],
-      "response": "{  \"id\": 3,  \"issues_template\": null,  \"merge_requests_template\": null,  ...}"
+      "response": {
+        "id": 3,
+        "issues_template": null,
+        "merge_requests_template": null
+      }
     },
     {
       "name": "Get project users",
@@ -556,7 +566,7 @@
           "description": "Include projects shared with this group. Default is false."
         }
       ],
-      "response": "[  {    \"id\": 1,    \"name\": \"Foobar Group\",    \"avatar_url\": \"http://localhost:3000/uploads/group/avatar/1/foo.jpg\",    \"web_url\": \"http://localhost:3000/groups/foo-bar\",    \"full_name\": \"Foobar Group\",    \"full_path\": \"foo-bar\",  },  {    \"id\": 2,    \"name\": \"Shared Group\",    \"avatar_url\": \"http://gitlab.example.com/uploads/group/avatar/1/bar.jpg\",    \"web_url\": \"http://gitlab.example.com/groups/foo/bar\",    \"full_name\": \"Shared Group\",    \"full_path\": \"foo/shared\",  }]"
+      "response": "[  {    \"id\": 1,    \"name\": \"Foobar Group\",    \"avatar_url\": \"http://localhost:3000/uploads/group/avatar/1/foo.jpg\",    \"web_url\": \"http://localhost:3000/groups/foo-bar\",    \"full_name\": \"Foobar Group\",    \"full_path\": \"foo-bar\"},  {    \"id\": 2,    \"name\": \"Shared Group\",    \"avatar_url\": \"http://gitlab.example.com/uploads/group/avatar/1/bar.jpg\",    \"web_url\": \"http://gitlab.example.com/groups/foo/bar\",    \"full_name\": \"Shared Group\",    \"full_path\": \"foo/shared\",  }]"
     },
     {
       "name": "Get project events",
@@ -2773,7 +2783,12 @@
           "description": "The ID or URL-encoded path of the project"
         }
       ],
-      "response": "{  \"id\": 1,  \"project_id\": 3,  \"commit_committer_check\": false,  \"reject_unsigned_commits\": false  ...}"
+      "response": {
+        "id": 1,
+        "project_id": 3,
+        "commit_committer_check": false,
+        "reject_unsigned_commits": false
+      }
     },
     {
       "name": "Add project push rule",

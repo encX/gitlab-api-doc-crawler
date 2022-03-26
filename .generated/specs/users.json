@@ -92,7 +92,7 @@
           "description": "Return only users created by the specified SAML provider ID. If not included, it returns all users."
         }
       ],
-      "response": "[  {    \"id\": 1,    ...    \"identities\": [      {\"provider\": \"github\", \"extern_uid\": \"2435223452345\"},      {\"provider\": \"bitbucket\", \"extern_uid\": \"john.smith\"},      {\"provider\": \"google_oauth2\", \"extern_uid\": \"8776128412476123468721346\"},      {\"provider\": \"group_saml\", \"extern_uid\": \"123789\", \"saml_provider_id\": 10}    ],    \"provisioned_by_group_id\": 123789    ...  }]"
+      "response": "[  {    \"id\": 1,    ...    \"identities\": [      {\"provider\": \"github\", \"extern_uid\": \"2435223452345\"},      {\"provider\": \"bitbucket\", \"extern_uid\": \"john.smith\"},      {\"provider\": \"google_oauth2\", \"extern_uid\": \"8776128412476123468721346\"},      {\"provider\": \"group_saml\", \"extern_uid\": \"123789\", \"saml_provider_id\": 10}    ],    \"provisioned_by_group_id\": 123789    }]"
     },
     {
       "name": "Single user",
@@ -157,7 +157,32 @@
           "description": "The ID of a user"
         }
       ],
-      "response": "{  \"id\": 1,  \"username\": \"john_smith\",  \"shared_runners_minutes_limit\": 133,  \"extra_shared_runners_minutes_limit\": 133,  \"identities\": [    {\"provider\": \"github\", \"extern_uid\": \"2435223452345\"},    {\"provider\": \"bitbucket\", \"extern_uid\": \"john.smith\"},    {\"provider\": \"google_oauth2\", \"extern_uid\": \"8776128412476123468721346\"},    {\"provider\": \"group_saml\", \"extern_uid\": \"123789\", \"saml_provider_id\": 10}  ],  \"provisioned_by_group_id\": 123789  ...}"
+      "response": {
+        "id": 1,
+        "username": "john_smith",
+        "shared_runners_minutes_limit": 133,
+        "extra_shared_runners_minutes_limit": 133,
+        "identities": [
+          {
+            "provider": "github",
+            "extern_uid": "2435223452345"
+          },
+          {
+            "provider": "bitbucket",
+            "extern_uid": "john.smith"
+          },
+          {
+            "provider": "google_oauth2",
+            "extern_uid": "8776128412476123468721346"
+          },
+          {
+            "provider": "group_saml",
+            "extern_uid": "123789",
+            "saml_provider_id": 10
+          }
+        ],
+        "provisioned_by_group_id": 123789
+      }
     },
     {
       "name": "User creation",
