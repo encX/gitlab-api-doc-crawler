@@ -1,0 +1,182 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/instance_level_ci_variables.html",
+  "pageName": "Instance-level CI/CD variables",
+  "apis": [
+    {
+      "name": "Instance-level CI/CD variables API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List all instance variables",
+      "description": "Get the list of all instance-level variables.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/admin/ci/variables"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "key": "TEST_VARIABLE_1",
+          "variable_type": "env_var",
+          "value": "TEST_1",
+          "protected": false,
+          "masked": false
+        },
+        {
+          "key": "TEST_VARIABLE_2",
+          "variable_type": "env_var",
+          "value": "TEST_2",
+          "protected": false,
+          "masked": false
+        }
+      ]
+    },
+    {
+      "name": "Show instance variable details",
+      "description": "Get the details of a specific instance-level variable.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/admin/ci/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        }
+      ],
+      "response": {
+        "key": "TEST_VARIABLE_1",
+        "variable_type": "env_var",
+        "value": "TEST_1",
+        "protected": false,
+        "masked": false
+      }
+    },
+    {
+      "name": "Create instance variable",
+      "description": "In GitLab 13.1 and later, the maximum number of allowed instance-level variables can be changed.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/admin/ci/variables"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable. Max 255 characters, only A-Z, a-z, 0-9, and _ are allowed."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable. 10,000 characters allowed (GitLab 13.3 and later)."
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file."
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected."
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked."
+        }
+      ],
+      "response": {
+        "key": "NEW_VARIABLE",
+        "value": "new value",
+        "variable_type": "env_var",
+        "protected": false,
+        "masked": false
+      }
+    },
+    {
+      "name": "Update instance variable",
+      "description": "Update an instance-level variable.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/admin/ci/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable. 10,000 characters allowed (GitLab 13.3 and later)."
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file."
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected."
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked."
+        }
+      ],
+      "response": {
+        "key": "NEW_VARIABLE",
+        "value": "updated value",
+        "variable_type": "env_var",
+        "protected": true,
+        "masked": true
+      }
+    },
+    {
+      "name": "Remove instance variable",
+      "description": "Remove an instance-level variable.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/admin/ci/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        }
+      ],
+      "response": {}
+    }
+  ]
+}

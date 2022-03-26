@@ -10,7 +10,7 @@ export interface Api {
   description: string;
   resources: Resource[];
   attributes: Attribute[];
-  response: JSONSchema;
+  response: any;
 }
 
 export interface Resource {

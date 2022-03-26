@@ -1,0 +1,328 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/vulnerabilities.html",
+  "pageName": "Vulnerabilities",
+  "apis": [
+    {
+      "name": "Vulnerabilities API",
+      "description": "Vulnerability permissions inherit permissions from their project. If a project is private, and a user isn’t a member of the project to which the vulnerability belongs, requests to that project returns a 404 Not Found status code.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Single vulnerability",
+      "description": "Gets a single vulnerability",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/vulnerabilities/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a Vulnerability to get"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "Predictable pseudorandom number generator",
+        "description": null,
+        "state": "opened",
+        "severity": "medium",
+        "confidence": "medium",
+        "report_type": "sast",
+        "project": {
+          "id": 32,
+          "name": "security-reports",
+          "full_path": "/gitlab-examples/security/security-reports",
+          "full_name": "gitlab-examples / security / security-reports"
+        },
+        "author_id": 1,
+        "updated_by_id": null,
+        "last_edited_by_id": null,
+        "closed_by_id": null,
+        "start_date": null,
+        "due_date": null,
+        "created_at": "2019-10-13T15:08:40.219Z",
+        "updated_at": "2019-10-13T15:09:40.382Z",
+        "last_edited_at": null,
+        "closed_at": null
+      }
+    },
+    {
+      "name": "Confirm vulnerability",
+      "description": "If an authenticated user does not have permission to confirm vulnerabilities, this request results in a 403 status code.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/vulnerabilities/:id/confirm"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a vulnerability to confirm"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "title": "Predictable pseudorandom number generator",
+        "description": null,
+        "state": "confirmed",
+        "severity": "medium",
+        "confidence": "medium",
+        "report_type": "sast",
+        "project": {
+          "id": 32,
+          "name": "security-reports",
+          "full_path": "/gitlab-examples/security/security-reports",
+          "full_name": "gitlab-examples / security / security-reports"
+        },
+        "author_id": 1,
+        "updated_by_id": null,
+        "last_edited_by_id": null,
+        "closed_by_id": null,
+        "start_date": null,
+        "due_date": null,
+        "created_at": "2019-10-13T15:08:40.219Z",
+        "updated_at": "2019-10-13T15:09:40.382Z",
+        "last_edited_at": null,
+        "closed_at": null
+      }
+    },
+    {
+      "name": "Resolve vulnerability",
+      "description": "If an authenticated user does not have permission to resolve vulnerabilities, this request results in a 403 status code.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/vulnerabilities/:id/resolve"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a Vulnerability to resolve"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "title": "Predictable pseudorandom number generator",
+        "description": null,
+        "state": "resolved",
+        "severity": "medium",
+        "confidence": "medium",
+        "report_type": "sast",
+        "project": {
+          "id": 32,
+          "name": "security-reports",
+          "full_path": "/gitlab-examples/security/security-reports",
+          "full_name": "gitlab-examples / security / security-reports"
+        },
+        "author_id": 1,
+        "updated_by_id": null,
+        "last_edited_by_id": null,
+        "closed_by_id": null,
+        "start_date": null,
+        "due_date": null,
+        "created_at": "2019-10-13T15:08:40.219Z",
+        "updated_at": "2019-10-13T15:09:40.382Z",
+        "last_edited_at": null,
+        "closed_at": null
+      }
+    },
+    {
+      "name": "Dismiss vulnerability",
+      "description": "If an authenticated user does not have permission to dismiss vulnerabilities, this request results in a 403 status code.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/vulnerabilities/:id/dismiss"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a vulnerability to dismiss"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "title": "Predictable pseudorandom number generator",
+        "description": null,
+        "state": "closed",
+        "severity": "medium",
+        "confidence": "medium",
+        "report_type": "sast",
+        "project": {
+          "id": 32,
+          "name": "security-reports",
+          "full_path": "/gitlab-examples/security/security-reports",
+          "full_name": "gitlab-examples / security / security-reports"
+        },
+        "author_id": 1,
+        "updated_by_id": null,
+        "last_edited_by_id": null,
+        "closed_by_id": null,
+        "start_date": null,
+        "due_date": null,
+        "created_at": "2019-10-13T15:08:40.219Z",
+        "updated_at": "2019-10-13T15:09:40.382Z",
+        "last_edited_at": null,
+        "closed_at": null
+      }
+    },
+    {
+      "name": "Revert vulnerability to detected state",
+      "description": "If an authenticated user does not have permission to revert vulnerability to detected state, this request results in a 403 status code.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/vulnerabilities/:id/revert"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a vulnerability to revert to detected state"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "title": "Predictable pseudorandom number generator",
+        "description": null,
+        "state": "detected",
+        "severity": "medium",
+        "confidence": "medium",
+        "report_type": "sast",
+        "project": {
+          "id": 32,
+          "name": "security-reports",
+          "full_path": "/gitlab-examples/security/security-reports",
+          "full_name": "gitlab-examples / security / security-reports"
+        },
+        "author_id": 1,
+        "updated_by_id": null,
+        "last_edited_by_id": null,
+        "closed_by_id": null,
+        "start_date": null,
+        "due_date": null,
+        "created_at": "2019-10-13T15:08:40.219Z",
+        "updated_at": "2019-10-13T15:09:40.382Z",
+        "last_edited_at": null,
+        "closed_at": null
+      }
+    },
+    {
+      "name": "Replace Vulnerability REST API with GraphQL",
+      "description": "To prepare for the upcoming deprecation of the Vulnerability REST API endpoint, use the examples below to perform the equivalent operations with the GraphQL API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "GraphQL - Single vulnerability",
+      "description": "Use Query.vulnerability.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "data": {
+          "vulnerability": {
+            "title": "Improper Input Validation in railties",
+            "description": "A remote code execution vulnerability in development mode Rails beta3 can allow an attacker to guess the automatically generated development mode secret token. This secret token can be used in combination with other Rails internals to escalate to a remote code execution exploit.",
+            "state": "RESOLVED",
+            "severity": "CRITICAL",
+            "reportType": "DEPENDENCY_SCANNING",
+            "project": {
+              "id": "gid://gitlab/Project/6102100",
+              "name": "security-reports",
+              "fullPath": "gitlab-examples/security/security-reports"
+            },
+            "detectedAt": "2021-10-14T03:13:41Z",
+            "confirmedAt": "2021-12-14T01:45:56Z",
+            "resolvedAt": "2021-12-14T01:45:59Z",
+            "resolvedBy": {
+              "id": "gid://gitlab/User/480804",
+              "username": "thiagocsf"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "GraphQL - Confirm vulnerability",
+      "description": "Use Mutation.vulnerabilityConfirm.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "data": {
+          "vulnerabilityConfirm": {
+            "vulnerability": {
+              "state": "CONFIRMED"
+            },
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "name": "GraphQL - Resolve vulnerability",
+      "description": "Use Mutation.vulnerabilityResolve.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "data": {
+          "vulnerabilityConfirm": {
+            "vulnerability": {
+              "state": "RESOLVED"
+            },
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "name": "GraphQL - Dismiss vulnerability",
+      "description": "Use Mutation.vulnerabilityDismiss.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "data": {
+          "vulnerabilityConfirm": {
+            "vulnerability": {
+              "state": "DISMISSED"
+            },
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "name": "GraphQL - Revert vulnerability to detected state",
+      "description": "Use Mutation.vulnerabilityRevertToDetected.",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "data": {
+          "vulnerabilityConfirm": {
+            "vulnerability": {
+              "state": "DETECTED"
+            },
+            "errors": []
+          }
+        }
+      }
+    }
+  ]
+}

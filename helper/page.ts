@@ -10,10 +10,14 @@ export const load = async (
   url: string,
   ignoreCache = false
 ): Promise<Cheerio & Root> => {
-  await ensureDir("cache");
+  await ensureDir(".generated/cache");
 
   const uObj = new URL(url);
-  const cacheFileName = join("cache", uObj.pathname.replace(/\//g, "_"));
+  const cacheFileName = join(
+    ".generated",
+    "cache",
+    uObj.pathname.replace(/\//g, "_")
+  );
   let cachedContent = "";
 
   try {

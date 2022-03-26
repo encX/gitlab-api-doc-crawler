@@ -1,0 +1,197 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/lint.html",
+  "pageName": "Validate .gitlab-ci.yml file",
+  "apis": [
+    {
+      "name": "CI Lint API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Validate the CI YAML configuration",
+      "description": "Be sure to paste the exact contents of your GitLab CI/CD YAML configuration because YAML is very sensitive about indentation and spacing.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/ci/lint"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "content",
+          "type": "string",
+          "required": true,
+          "description": "The CI/CD configuration content."
+        },
+        {
+          "name": "include_merged_yaml",
+          "type": "boolean",
+          "required": false,
+          "description": "If the expanded CI/CD configuration should be included in the response."
+        },
+        {
+          "name": "include_jobs",
+          "type": "boolean",
+          "required": false,
+          "description": "If the list of jobs should be included in the response. This is false by default."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "YAML expansion",
+      "description": "Example contents of https://example.com/remote.yaml:",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "status": "valid",
+        "errors": [],
+        "merged_yaml": "---\n:another_test:\n  :stage: test\n  :script: echo 2\n:test:\n  :stage: test\n  :script: echo 1\n",
+        "jobs": [
+          {
+            "name": "test",
+            "stage": "test",
+            "before_script": [],
+            "script": [
+              "echo 1"
+            ],
+            "after_script": [],
+            "tag_list": [],
+            "environment": null,
+            "when": "on_success",
+            "allow_failure": false,
+            "only": {
+              "refs": [
+                "branches",
+                "tags"
+              ]
+            },
+            "except": null
+          },
+          {
+            "name": "another_test",
+            "stage": "test",
+            "before_script": [],
+            "script": [
+              "echo 2"
+            ],
+            "after_script": [],
+            "tag_list": [],
+            "environment": null,
+            "when": "on_success",
+            "allow_failure": false,
+            "only": {
+              "refs": [
+                "branches",
+                "tags"
+              ]
+            },
+            "except": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "Validate a CI YAML configuration with a namespace",
+      "description": "Checks if CI/CD YAML configuration is valid. This endpoint has namespace specific context.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/ci/lint"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "content",
+          "type": "string",
+          "required": true,
+          "description": "The CI/CD configuration content."
+        },
+        {
+          "name": "dry_run",
+          "type": "boolean",
+          "required": false,
+          "description": "Run pipeline creation simulation, or only do static check. This is false by default."
+        },
+        {
+          "name": "include_jobs",
+          "type": "boolean",
+          "required": false,
+          "description": "If the list of jobs that would exist in a static check or pipeline simulation should be included in the response. This is false by default."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": false,
+          "description": "When dry_run is true, sets the branch or tag to use. Defaults to the project’s default branch when not set."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Validate a project’s CI configuration",
+      "description": "Checks if a project’s latest (HEAD of the project’s default branch) .gitlab-ci.yml configuration is valid. This endpoint uses all namespace specific data available, including variables, local includes, and so on.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/ci/lint"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "dry_run",
+          "type": "boolean",
+          "required": false,
+          "description": "Run pipeline creation simulation, or only do static check."
+        },
+        {
+          "name": "include_jobs",
+          "type": "boolean",
+          "required": false,
+          "description": "If the list of jobs that would exist in a static check or pipeline simulation should be included in the response. This is false by default."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": false,
+          "description": "When dry_run is true, sets the branch or tag to use. Defaults to the project’s default branch when not set."
+        }
+      ],
+      "response": {
+        "valid": false,
+        "merged_yaml": "---\n:test_job:\n  :script: echo 1\n",
+        "errors": [
+          "jobs config should contain at least one visible job"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "name": "Use jq to create and process YAML & JSON payloads",
+      "description": "To POST a YAML configuration to the CI Lint endpoint, it must be properly escaped and JSON encoded. You can use jq and curl to escape and upload YAML to the GitLab API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Escape YAML for JSON encoding",
+      "description": "To escape and encode an input YAML file (example-gitlab-ci.yml), and POST it to the GitLab API using curl and jq in a one-line command:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Parse a CI Lint response",
+      "description": "With a one-line command, you can:",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "status": "valid",
+        "errors": [],
+        "merged_yaml": "---\n:.api_test:\n  :rules:\n  - :if: $CI_PIPELINE_SOURCE==\"merge_request_event\"\n    :changes:\n    - src/api/*\n:deploy:\n  :rules:\n  - :when: manual\n    :allow_failure: true\n  :extends:\n  - \".api_test\"\n  :script:\n  - echo \"hello world\"\n"
+      }
+    }
+  ]
+}

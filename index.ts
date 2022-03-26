@@ -5,27 +5,43 @@ import { PagesLister } from "./pageLister.ts";
 import { PageCrawler } from "./pageCrawler.ts";
 import { glUrl } from "./helper/url.ts";
 import { DocVer } from "./enums/docVer.ts";
+import { Api } from "./models.ts";
 
 glUrl.setDocVer(DocVer.current);
 const pages = await new PagesLister().getPages();
 console.log(`Got ${pages.length} pages or APIs`);
 
-await ensureDir("specs");
+await ensureDir(".generated/specs");
+await Deno.writeTextFile(
+  ".generated/allPages.json",
+  JSON.stringify(pages, null, 2)
+);
 
 for await (const page of pages) {
-  const specPath = join("specs", page.path.replace(/\.html/, ".json"));
+  const specPath = join(
+    ".generated",
+    "specs",
+    page.path.replace(/\.html/, ".json")
+  );
   await ensureFile(specPath);
 
-  try {
-    const apis = await new PageCrawler(page.path).getApis();
-    console.log(`"${page.name}" has ${apis.length} APIs`);
+  let apis: Api[] | string = "failed";
 
-    await Deno.writeTextFile(specPath, JSON.stringify(apis, null, 2));
+  try {
+    apis = await new PageCrawler(page.path).getApis();
+    console.log(`"${page.name}" has ${apis.length} APIs`);
     console.log(`==> write ${specPath}`);
   } catch (e) {
-    await Deno.writeTextFile(specPath, "failed");
     console.error(`"${page.name}" fetch APIs failed`, e);
   }
+
+  const wrapper = {
+    origin: glUrl.pageUrl(page.path),
+    pageName: page.name,
+    apis,
+  };
+
+  await Deno.writeTextFile(specPath, JSON.stringify(wrapper, null, 2));
 }
 
 console.log("done");

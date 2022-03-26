@@ -1,0 +1,122 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/visual_review_discussions.html",
+  "pageName": "Visual Review discussions",
+  "apis": [
+    {
+      "name": "Visual Review discussions API",
+      "description": "Visual Review discussions are notes on merge requests sent as feedback from Visual Reviews.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Create new merge request thread",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/visual_review_discussions"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a merge request"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of the thread"
+        },
+        {
+          "name": "position",
+          "type": "hash",
+          "required": false,
+          "description": "Position when creating a diff note"
+        },
+        {
+          "name": "position[base_sha]",
+          "type": "string",
+          "required": true,
+          "description": "Base commit SHA in the source branch"
+        },
+        {
+          "name": "position[start_sha]",
+          "type": "string",
+          "required": true,
+          "description": "SHA referencing commit in target branch"
+        },
+        {
+          "name": "position[head_sha]",
+          "type": "string",
+          "required": true,
+          "description": "SHA referencing HEAD of this merge request"
+        },
+        {
+          "name": "position[position_type]",
+          "type": "string",
+          "required": true,
+          "description": "Type of the position reference. Either text or image."
+        },
+        {
+          "name": "position[new_path]",
+          "type": "string",
+          "required": false,
+          "description": "File path after change"
+        },
+        {
+          "name": "position[new_line]",
+          "type": "integer",
+          "required": false,
+          "description": "Line number after change (Only stored for text diff notes)"
+        },
+        {
+          "name": "position[old_path]",
+          "type": "string",
+          "required": false,
+          "description": "File path before change"
+        },
+        {
+          "name": "position[old_line]",
+          "type": "integer",
+          "required": false,
+          "description": "Line number before change (Only stored for text diff notes)"
+        },
+        {
+          "name": "position[width]",
+          "type": "integer",
+          "required": false,
+          "description": "Width of the image (Only stored for image diff notes)"
+        },
+        {
+          "name": "position[height]",
+          "type": "integer",
+          "required": false,
+          "description": "Height of the image (Only stored for image diff notes)"
+        },
+        {
+          "name": "position[x]",
+          "type": "integer",
+          "required": false,
+          "description": "X coordinate (Only stored for image diff notes)"
+        },
+        {
+          "name": "position[y]",
+          "type": "integer",
+          "required": false,
+          "description": "Y coordinate (Only stored for image diff notes)"
+        }
+      ],
+      "response": {}
+    }
+  ]
+}

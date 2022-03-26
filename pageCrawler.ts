@@ -42,8 +42,10 @@ export class PageCrawler {
     let current: TagElement[];
 
     elems.forEach((e) => {
-      if (e.name === "h2") {
-        if (current) groups.push(current);
+      if (/h[1-3]/.test(e.name)) {
+        if (current) {
+          groups.push(current);
+        }
         current = [e];
       } else if (Array.isArray(current)) {
         current.push(e);
@@ -55,6 +57,8 @@ export class PageCrawler {
         );
       }
     });
+
+    if (current! && Array.isArray(current)) groups.push(current);
 
     return groups;
   }
@@ -70,14 +74,14 @@ export class PageCrawler {
     // ? "Example Request:"
     let exampleRequest: string[] = [];
     // "Example Response:"
-    let exampleResponse = "";
+    let exampleResponse = {};
 
     let invalid = false;
 
     elems.forEach((e) => {
       if (this.shouldSkip(e)) return;
 
-      if (e.name === "h2") {
+      if (/h[1-3]/.test(e.name)) {
         name = cheerio(e.children).text().replace(/\n/g, " ").trim();
       }
 
@@ -116,19 +120,27 @@ export class PageCrawler {
       }
 
       if (/language-json/gi.test(e.attribs["class"])) {
-        exampleResponse = JSON.stringify(
-          JSON.parse(cheerio(e).find("code").text().replace(/\n/g, ""))
+        exampleResponse = JSON.parse(
+          cheerio(e).find("code").text().replace(/\n/g, "")
         );
       }
     });
 
     if (invalid) return undefined;
-    return { name, description, resources, attributes, response: {} };
+    return {
+      name,
+      description,
+      resources,
+      attributes,
+      response: exampleResponse,
+    };
     // at least title, desc?, urls, attrs?, reqEx, resEx?
   }
 
   private shouldSkip(elem: TagElement): boolean {
     if (/introduced-in/gi.test(elem.attribs["class"])) return true;
+    if (/Example (request|response):?/gi.test(cheerio(elem).text()))
+      return true;
     return false;
   }
 }

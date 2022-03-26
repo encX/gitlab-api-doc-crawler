@@ -1,0 +1,790 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/releases/index.html",
+  "pageName": "Releases",
+  "apis": [
+    {
+      "name": "Releases API",
+      "description": "Use this API to manipulate GitLab Release entries. For manipulating links as a release asset, see Release Links API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Authentication",
+      "description": "For authentication, the Releases API accepts either:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List Releases",
+      "description": "Paginated list of Releases, sorted by released_at.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/releases"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "The field to use as order. Either released_at (default) or created_at."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "The direction of the order. Either desc (default) for descending order or asc for ascending order."
+        },
+        {
+          "name": "include_html_description",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, a response includes HTML rendered Markdown of the release description."
+        }
+      ],
+      "response": [
+        {
+          "tag_name": "v0.2",
+          "description": "## CHANGELOG\r\n\r\n- Escape label and milestone titles to prevent XSS in GFM autocomplete. !2740\r\n- Prevent private snippets from being embeddable.\r\n- Add subresources removal to member destroy service.",
+          "name": "Awesome app v0.2 beta",
+          "created_at": "2019-01-03T01:56:19.539Z",
+          "released_at": "2019-01-03T01:56:19.539Z",
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "commit": {
+            "id": "079e90101242458910cccd35eab0e211dfc359c0",
+            "short_id": "079e9010",
+            "title": "Update README.md",
+            "created_at": "2019-01-03T01:55:38.000Z",
+            "parent_ids": [
+              "f8d3d94cbd347e924aa7b715845e439d00e80ca4"
+            ],
+            "message": "Update README.md",
+            "author_name": "Administrator",
+            "author_email": "admin@example.com",
+            "authored_date": "2019-01-03T01:55:38.000Z",
+            "committer_name": "Administrator",
+            "committer_email": "admin@example.com",
+            "committed_date": "2019-01-03T01:55:38.000Z"
+          },
+          "milestones": [
+            {
+              "id": 51,
+              "iid": 1,
+              "project_id": 24,
+              "title": "v1.0-rc",
+              "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+              "state": "closed",
+              "created_at": "2019-07-12T19:45:44.256Z",
+              "updated_at": "2019-07-12T19:45:44.256Z",
+              "due_date": "2019-08-16",
+              "start_date": "2019-07-30",
+              "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/1",
+              "issue_stats": {
+                "total": 98,
+                "closed": 76
+              }
+            },
+            {
+              "id": 52,
+              "iid": 2,
+              "project_id": 24,
+              "title": "v1.0",
+              "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+              "state": "closed",
+              "created_at": "2019-07-16T14:00:12.256Z",
+              "updated_at": "2019-07-16T14:00:12.256Z",
+              "due_date": "2019-08-16",
+              "start_date": "2019-07-30",
+              "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/2",
+              "issue_stats": {
+                "total": 24,
+                "closed": 21
+              }
+            }
+          ],
+          "commit_path": "/root/awesome-app/commit/588440f66559714280628a4f9799f0c4eb880a4a",
+          "tag_path": "/root/awesome-app/-/tags/v0.11.1",
+          "assets": {
+            "count": 6,
+            "sources": [
+              {
+                "format": "zip",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.2/awesome-app-v0.2.zip"
+              },
+              {
+                "format": "tar.gz",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.2/awesome-app-v0.2.tar.gz"
+              },
+              {
+                "format": "tar.bz2",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.2/awesome-app-v0.2.tar.bz2"
+              },
+              {
+                "format": "tar",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.2/awesome-app-v0.2.tar"
+              }
+            ],
+            "links": [
+              {
+                "id": 2,
+                "name": "awesome-v0.2.msi",
+                "url": "http://192.168.10.15:3000/msi",
+                "external": true,
+                "link_type": "other"
+              },
+              {
+                "id": 1,
+                "name": "awesome-v0.2.dmg",
+                "url": "http://192.168.10.15:3000",
+                "external": true,
+                "link_type": "other"
+              }
+            ],
+            "evidence_file_path": "https://gitlab.example.com/root/awesome-app/-/releases/v0.2/evidence.json"
+          },
+          "evidences": [
+            {
+              "sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
+              "filepath": "https://gitlab.example.com/root/awesome-app/-/releases/v0.2/evidence.json",
+              "collected_at": "2019-01-03T01:56:19.539Z"
+            }
+          ]
+        },
+        {
+          "tag_name": "v0.1",
+          "description": "## CHANGELOG\r\n\r\n-Remove limit of 100 when searching repository code. !8671\r\n- Show error message when attempting to reopen an MR and there is an open MR for the same branch. !16447 (Akos Gyimesi)\r\n- Fix a bug where internal email pattern wasn't respected. !22516",
+          "name": "Awesome app v0.1 alpha",
+          "created_at": "2019-01-03T01:55:18.203Z",
+          "released_at": "2019-01-03T01:55:18.203Z",
+          "author": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "commit": {
+            "id": "f8d3d94cbd347e924aa7b715845e439d00e80ca4",
+            "short_id": "f8d3d94c",
+            "title": "Initial commit",
+            "created_at": "2019-01-03T01:53:28.000Z",
+            "parent_ids": [],
+            "message": "Initial commit",
+            "author_name": "Administrator",
+            "author_email": "admin@example.com",
+            "authored_date": "2019-01-03T01:53:28.000Z",
+            "committer_name": "Administrator",
+            "committer_email": "admin@example.com",
+            "committed_date": "2019-01-03T01:53:28.000Z"
+          },
+          "assets": {
+            "count": 4,
+            "sources": [
+              {
+                "format": "zip",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.zip"
+              },
+              {
+                "format": "tar.gz",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.gz"
+              },
+              {
+                "format": "tar.bz2",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.bz2"
+              },
+              {
+                "format": "tar",
+                "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar"
+              }
+            ],
+            "links": [],
+            "evidence_file_path": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json"
+          },
+          "evidences": [
+            {
+              "sha": "c3ffedec13af470e760d6cdfb08790f71cf52c6cde4d",
+              "filepath": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json",
+              "collected_at": "2019-01-03T01:55:18.203Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get a Release by a tag name",
+      "description": "Get a Release for the given tag.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/releases/:tag_name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The Git tag the release is associated with."
+        },
+        {
+          "name": "include_html_description",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, a response includes HTML rendered Markdown of the release description."
+        }
+      ],
+      "response": {
+        "tag_name": "v0.1",
+        "description": "## CHANGELOG\r\n\r\n- Remove limit of 100 when searching repository code. !8671\r\n- Show error message when attempting to reopen an MR and there is an open MR for the same branch. !16447 (Akos Gyimesi)\r\n- Fix a bug where internal email pattern wasn't respected. !22516",
+        "name": "Awesome app v0.1 alpha",
+        "created_at": "2019-01-03T01:55:18.203Z",
+        "released_at": "2019-01-03T01:55:18.203Z",
+        "author": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "commit": {
+          "id": "f8d3d94cbd347e924aa7b715845e439d00e80ca4",
+          "short_id": "f8d3d94c",
+          "title": "Initial commit",
+          "created_at": "2019-01-03T01:53:28.000Z",
+          "parent_ids": [],
+          "message": "Initial commit",
+          "author_name": "Administrator",
+          "author_email": "admin@example.com",
+          "authored_date": "2019-01-03T01:53:28.000Z",
+          "committer_name": "Administrator",
+          "committer_email": "admin@example.com",
+          "committed_date": "2019-01-03T01:53:28.000Z"
+        },
+        "milestones": [
+          {
+            "id": 51,
+            "iid": 1,
+            "project_id": 24,
+            "title": "v1.0-rc",
+            "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+            "state": "closed",
+            "created_at": "2019-07-12T19:45:44.256Z",
+            "updated_at": "2019-07-12T19:45:44.256Z",
+            "due_date": "2019-08-16",
+            "start_date": "2019-07-30",
+            "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/1",
+            "issue_stats": {
+              "total": 98,
+              "closed": 76
+            }
+          },
+          {
+            "id": 52,
+            "iid": 2,
+            "project_id": 24,
+            "title": "v1.0",
+            "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+            "state": "closed",
+            "created_at": "2019-07-16T14:00:12.256Z",
+            "updated_at": "2019-07-16T14:00:12.256Z",
+            "due_date": "2019-08-16",
+            "start_date": "2019-07-30",
+            "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/2",
+            "issue_stats": {
+              "total": 24,
+              "closed": 21
+            }
+          }
+        ],
+        "commit_path": "/root/awesome-app/commit/588440f66559714280628a4f9799f0c4eb880a4a",
+        "tag_path": "/root/awesome-app/-/tags/v0.11.1",
+        "assets": {
+          "count": 5,
+          "sources": [
+            {
+              "format": "zip",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.zip"
+            },
+            {
+              "format": "tar.gz",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.gz"
+            },
+            {
+              "format": "tar.bz2",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.bz2"
+            },
+            {
+              "format": "tar",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar"
+            }
+          ],
+          "links": [
+            {
+              "id": 3,
+              "name": "hoge",
+              "url": "https://gitlab.example.com/root/awesome-app/-/tags/v0.11.1/binaries/linux-amd64",
+              "external": true,
+              "link_type": "other"
+            }
+          ]
+        },
+        "evidences": [
+          {
+            "sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
+            "filepath": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json",
+            "collected_at": "2019-07-16T14:00:12.256Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create a release",
+      "description": "Create a release. Developer level access to the project is required to create a release.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/releases"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The release name."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The tag where the release is created from."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of the release. You can use Markdown."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": false,
+          "description": "If a tag specified in tag_name doesn’t exist, the release is created from ref and tagged with tag_name. It can be a commit SHA, another tag name, or a branch name."
+        },
+        {
+          "name": "milestones",
+          "type": "array of string",
+          "required": false,
+          "description": "The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones."
+        },
+        {
+          "name": "assets:links",
+          "type": "array of hash",
+          "required": false,
+          "description": "An array of assets links."
+        },
+        {
+          "name": "assets:links:name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the link. Link names must be unique within the release."
+        },
+        {
+          "name": "assets:links:url",
+          "type": "string",
+          "required": false,
+          "description": "The URL of the link. Link URLs must be unique within the release."
+        },
+        {
+          "name": "assets:links:filepath",
+          "type": "string",
+          "required": false,
+          "description": "Optional path for a Direct Asset link."
+        },
+        {
+          "name": "assets:links:link_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of the link: other, runbook, image, package. Defaults to other."
+        },
+        {
+          "name": "released_at",
+          "type": "datetime",
+          "required": false,
+          "description": "The date when the release is/was ready. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+        }
+      ],
+      "response": {
+        "tag_name": "v0.3",
+        "description": "Super nice release",
+        "name": "New release",
+        "created_at": "2019-01-03T02:22:45.118Z",
+        "released_at": "2019-01-03T02:22:45.118Z",
+        "author": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "commit": {
+          "id": "079e90101242458910cccd35eab0e211dfc359c0",
+          "short_id": "079e9010",
+          "title": "Update README.md",
+          "created_at": "2019-01-03T01:55:38.000Z",
+          "parent_ids": [
+            "f8d3d94cbd347e924aa7b715845e439d00e80ca4"
+          ],
+          "message": "Update README.md",
+          "author_name": "Administrator",
+          "author_email": "admin@example.com",
+          "authored_date": "2019-01-03T01:55:38.000Z",
+          "committer_name": "Administrator",
+          "committer_email": "admin@example.com",
+          "committed_date": "2019-01-03T01:55:38.000Z"
+        },
+        "milestones": [
+          {
+            "id": 51,
+            "iid": 1,
+            "project_id": 24,
+            "title": "v1.0-rc",
+            "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+            "state": "closed",
+            "created_at": "2019-07-12T19:45:44.256Z",
+            "updated_at": "2019-07-12T19:45:44.256Z",
+            "due_date": "2019-08-16",
+            "start_date": "2019-07-30",
+            "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/1",
+            "issue_stats": {
+              "total": 99,
+              "closed": 76
+            }
+          },
+          {
+            "id": 52,
+            "iid": 2,
+            "project_id": 24,
+            "title": "v1.0",
+            "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+            "state": "closed",
+            "created_at": "2019-07-16T14:00:12.256Z",
+            "updated_at": "2019-07-16T14:00:12.256Z",
+            "due_date": "2019-08-16",
+            "start_date": "2019-07-30",
+            "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/2",
+            "issue_stats": {
+              "total": 24,
+              "closed": 21
+            }
+          }
+        ],
+        "commit_path": "/root/awesome-app/commit/588440f66559714280628a4f9799f0c4eb880a4a",
+        "tag_path": "/root/awesome-app/-/tags/v0.11.1",
+        "evidence_sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
+        "assets": {
+          "count": 5,
+          "sources": [
+            {
+              "format": "zip",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.3/awesome-app-v0.3.zip"
+            },
+            {
+              "format": "tar.gz",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.3/awesome-app-v0.3.tar.gz"
+            },
+            {
+              "format": "tar.bz2",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.3/awesome-app-v0.3.tar.bz2"
+            },
+            {
+              "format": "tar",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.3/awesome-app-v0.3.tar"
+            }
+          ],
+          "links": [
+            {
+              "id": 3,
+              "name": "hoge",
+              "url": "https://gitlab.example.com/root/awesome-app/-/tags/v0.11.1/binaries/linux-amd64",
+              "external": true,
+              "link_type": "other"
+            }
+          ],
+          "evidence_file_path": "https://gitlab.example.com/root/awesome-app/-/releases/v0.3/evidence.json"
+        }
+      }
+    },
+    {
+      "name": "Group milestones",
+      "description": "Group milestones associated with the project may be specified in the milestones array for Create a release and Update a release API calls. Only milestones associated with the project’s group may be specified, and adding milestones for ancestor groups raises an error.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Collect release evidence",
+      "description": "Create Evidence for an existing Release.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/releases/:tag_name/evidence"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The Git tag the release is associated with."
+        }
+      ],
+      "response": 200
+    },
+    {
+      "name": "Update a release",
+      "description": "Update a release. Developer level access to the project is required to update a release.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/releases/:tag_name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The Git tag the release is associated with."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The release name."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of the release. You can use Markdown."
+        },
+        {
+          "name": "milestones",
+          "type": "array of string",
+          "required": false,
+          "description": "The title of each milestone to associate with the release. GitLab Premium customers can specify group milestones. To remove all milestones from the release, specify []."
+        },
+        {
+          "name": "released_at",
+          "type": "datetime",
+          "required": false,
+          "description": "The date when the release is/was ready. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+        }
+      ],
+      "response": {
+        "tag_name": "v0.1",
+        "description": "## CHANGELOG\r\n\r\n- Remove limit of 100 when searching repository code. !8671\r\n- Show error message when attempting to reopen an MR and there is an open MR for the same branch. !16447 (Akos Gyimesi)\r\n- Fix a bug where internal email pattern wasn't respected. !22516",
+        "name": "new name",
+        "created_at": "2019-01-03T01:55:18.203Z",
+        "released_at": "2019-01-03T01:55:18.203Z",
+        "author": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "commit": {
+          "id": "f8d3d94cbd347e924aa7b715845e439d00e80ca4",
+          "short_id": "f8d3d94c",
+          "title": "Initial commit",
+          "created_at": "2019-01-03T01:53:28.000Z",
+          "parent_ids": [],
+          "message": "Initial commit",
+          "author_name": "Administrator",
+          "author_email": "admin@example.com",
+          "authored_date": "2019-01-03T01:53:28.000Z",
+          "committer_name": "Administrator",
+          "committer_email": "admin@example.com",
+          "committed_date": "2019-01-03T01:53:28.000Z"
+        },
+        "milestones": [
+          {
+            "id": 53,
+            "iid": 3,
+            "project_id": 24,
+            "title": "v1.2",
+            "description": "Voluptate fugiat possimus quis quod aliquam expedita.",
+            "state": "active",
+            "created_at": "2019-09-01T13:00:00.256Z",
+            "updated_at": "2019-09-01T13:00:00.256Z",
+            "due_date": "2019-09-20",
+            "start_date": "2019-09-05",
+            "web_url": "https://gitlab.example.com/root/awesome-app/-/milestones/3",
+            "issue_stats": {
+              "opened": 11,
+              "closed": 78
+            }
+          }
+        ],
+        "commit_path": "/root/awesome-app/commit/588440f66559714280628a4f9799f0c4eb880a4a",
+        "tag_path": "/root/awesome-app/-/tags/v0.11.1",
+        "evidence_sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
+        "assets": {
+          "count": 4,
+          "sources": [
+            {
+              "format": "zip",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.zip"
+            },
+            {
+              "format": "tar.gz",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.gz"
+            },
+            {
+              "format": "tar.bz2",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.bz2"
+            },
+            {
+              "format": "tar",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar"
+            }
+          ],
+          "links": [],
+          "evidence_file_path": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json"
+        }
+      }
+    },
+    {
+      "name": "Delete a Release",
+      "description": "Delete a release. Deleting a release doesn’t delete the associated tag. Maintainer level access to the project is required to delete a release.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/releases/:tag_name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The Git tag the release is associated with."
+        }
+      ],
+      "response": {
+        "tag_name": "v0.1",
+        "description": "## CHANGELOG\r\n\r\n- Remove limit of 100 when searching repository code. !8671\r\n- Show error message when attempting to reopen an MR and there is an open MR for the same branch. !16447 (Akos Gyimesi)\r\n- Fix a bug where internal email pattern wasn't respected. !22516",
+        "name": "new name",
+        "created_at": "2019-01-03T01:55:18.203Z",
+        "released_at": "2019-01-03T01:55:18.203Z",
+        "author": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "commit": {
+          "id": "f8d3d94cbd347e924aa7b715845e439d00e80ca4",
+          "short_id": "f8d3d94c",
+          "title": "Initial commit",
+          "created_at": "2019-01-03T01:53:28.000Z",
+          "parent_ids": [],
+          "message": "Initial commit",
+          "author_name": "Administrator",
+          "author_email": "admin@example.com",
+          "authored_date": "2019-01-03T01:53:28.000Z",
+          "committer_name": "Administrator",
+          "committer_email": "admin@example.com",
+          "committed_date": "2019-01-03T01:53:28.000Z"
+        },
+        "commit_path": "/root/awesome-app/commit/588440f66559714280628a4f9799f0c4eb880a4a",
+        "tag_path": "/root/awesome-app/-/tags/v0.11.1",
+        "evidence_sha": "760d6cdfb0879c3ffedec13af470e0f71cf52c6cde4d",
+        "assets": {
+          "count": 4,
+          "sources": [
+            {
+              "format": "zip",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.zip"
+            },
+            {
+              "format": "tar.gz",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.gz"
+            },
+            {
+              "format": "tar.bz2",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar.bz2"
+            },
+            {
+              "format": "tar",
+              "url": "https://gitlab.example.com/root/awesome-app/-/archive/v0.1/awesome-app-v0.1.tar"
+            }
+          ],
+          "links": [],
+          "evidence_file_path": "https://gitlab.example.com/root/awesome-app/-/releases/v0.1/evidence.json"
+        }
+      }
+    },
+    {
+      "name": "Upcoming Releases",
+      "description": "Additionally, if a release is requested from the API, for each release with a release_at attribute set to a future date, an additional attribute upcoming_release (set to true) will be returned as part of the response.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    }
+  ]
+}

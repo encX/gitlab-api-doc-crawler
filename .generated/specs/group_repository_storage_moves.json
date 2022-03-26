@@ -1,0 +1,204 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/group_repository_storage_moves.html",
+  "pageName": "Group repository storage moves",
+  "apis": [
+    {
+      "name": "Group repository storage moves API",
+      "description": "APIs are also available to move other types of repositories:",
+      "resources": [
+        {
+          "method": "The",
+          "path": "repository"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Retrieve all group repository storage moves",
+      "description": "By default, GET requests return 20 results at a time, because the API results are paginated.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/group_repository_storage_moves"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "created_at": "2020-05-07T04:27:17.234Z",
+          "state": "scheduled",
+          "source_storage_name": "default",
+          "destination_storage_name": "storage2",
+          "group": {
+            "id": 283,
+            "web_url": "https://gitlab.example.com/groups/testgroup",
+            "name": "testgroup"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retrieve all repository storage moves for a single group",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:group_id/repository_storage_moves"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "created_at": "2020-05-07T04:27:17.234Z",
+          "state": "scheduled",
+          "source_storage_name": "default",
+          "destination_storage_name": "storage2",
+          "group": {
+            "id": 283,
+            "web_url": "https://gitlab.example.com/groups/testgroup",
+            "name": "testgroup"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get a single group repository storage move",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/group_repository_storage_moves/:repository_storage_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "repository_storage_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group repository storage move."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "created_at": "2020-05-07T04:27:17.234Z",
+        "state": "scheduled",
+        "source_storage_name": "default",
+        "destination_storage_name": "storage2",
+        "group": {
+          "id": 283,
+          "web_url": "https://gitlab.example.com/groups/testgroup",
+          "name": "testgroup"
+        }
+      }
+    },
+    {
+      "name": "Get a single repository storage move for a group",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:group_id/repository_storage_moves/:repository_storage_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group."
+        },
+        {
+          "name": "repository_storage_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group repository storage move."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "created_at": "2020-05-07T04:27:17.234Z",
+        "state": "scheduled",
+        "source_storage_name": "default",
+        "destination_storage_name": "storage2",
+        "group": {
+          "id": 283,
+          "web_url": "https://gitlab.example.com/groups/testgroup",
+          "name": "testgroup"
+        }
+      }
+    },
+    {
+      "name": "Schedule a repository storage move for a group",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:group_id/repository_storage_moves"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the group."
+        },
+        {
+          "name": "destination_storage_name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the destination storage shard. In GitLab 13.5 and later, the storage is selected based on storage weights if not provided."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "created_at": "2020-05-07T04:27:17.234Z",
+        "state": "scheduled",
+        "source_storage_name": "default",
+        "destination_storage_name": "storage2",
+        "group": {
+          "id": 283,
+          "web_url": "https://gitlab.example.com/groups/testgroup",
+          "name": "testgroup"
+        }
+      }
+    },
+    {
+      "name": "Schedule repository storage moves for all groups on a storage shard",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/group_repository_storage_moves"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "source_storage_name",
+          "type": "string",
+          "required": true,
+          "description": "Name of the source storage shard."
+        },
+        {
+          "name": "destination_storage_name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the destination storage shard. The storage is selected based on storage weights if not provided."
+        }
+      ],
+      "response": {
+        "message": "202 Accepted"
+      }
+    }
+  ]
+}

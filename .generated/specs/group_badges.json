@@ -1,0 +1,230 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/group_badges.html",
+  "pageName": "Group badges",
+  "apis": [
+    {
+      "name": "Group badges API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Placeholder tokens",
+      "description": "Because these endpoints aren’t inside a project’s context, the information used to replace the placeholders comes from the first group’s project by creation date. If the group hasn’t got any project the original URL with the placeholders is returned.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List all badges of a group",
+      "description": "Gets a list of a group’s badges.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/badges"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the badges to return (case-sensitive)."
+        }
+      ],
+      "response": [
+        {
+          "name": "Coverage",
+          "id": 1,
+          "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+          "image_url": "https://shields.io/my/badge",
+          "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+          "rendered_image_url": "https://shields.io/my/badge",
+          "kind": "group"
+        }
+      ]
+    },
+    {
+      "name": "Get a badge of a group",
+      "description": "Gets a badge of a group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+        "rendered_image_url": "https://shields.io/my/badge",
+        "kind": "group"
+      }
+    },
+    {
+      "name": "Add a badge to a group",
+      "description": "Adds a badge to a group.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/badges"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge image"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "image_url": "https://shields.io/my/badge1",
+        "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "rendered_image_url": "https://shields.io/my/badge1",
+        "kind": "group"
+      }
+    },
+    {
+      "name": "Edit a badge of a group",
+      "description": "Updates a badge of a group.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": false,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": false,
+          "description": "URL of the badge image"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "rendered_image_url": "https://shields.io/my/badge",
+        "kind": "group"
+      }
+    },
+    {
+      "name": "Remove a badge from a group",
+      "description": "Removes a badge from a group.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Preview a badge from a group",
+      "description": "Returns how the link_url and image_url final URLs would be after resolving the placeholder interpolation.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/badges/render"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge image"
+        }
+      ],
+      "response": {
+        "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+        "rendered_image_url": "https://shields.io/my/badge"
+      }
+    }
+  ]
+}

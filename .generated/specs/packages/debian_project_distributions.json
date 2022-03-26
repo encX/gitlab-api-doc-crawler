@@ -1,0 +1,380 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/packages/debian_project_distributions.html",
+  "pageName": "Debian distributions",
+  "apis": [
+    {
+      "name": "Debian project distributions API",
+      "description": "For more information about working with Debian packages, see the Debian package registry documentation.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Enable the Debian API",
+      "description": "The Debian API is behind a feature flag that is disabled by default. GitLab administrators with access to the GitLab Rails console can opt to enable it. To enable it, follow the instructions in Enable the Debian API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List all Debian distributions in a project",
+      "description": "Lists Debian distributions in the given project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/debian_distributions"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": false,
+          "description": "Filter with a specific codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "Filter with a specific suite."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "codename": "unstable",
+          "suite": null,
+          "origin": null,
+          "label": null,
+          "version": null,
+          "description": null,
+          "valid_time_duration_seconds": null,
+          "components": [
+            "main"
+          ],
+          "architectures": [
+            "all",
+            "amd64"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single Debian project distribution",
+      "description": "Gets a single Debian project distribution.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The codename of a distribution."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": null,
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": null,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Single Debian project distribution key",
+      "description": "Gets a single Debian project distribution key.",
+      "resources": [
+        {
+          "method": "-----BEGIN",
+          "path": "PGP"
+        },
+        {
+          "method": "Comment:",
+          "path": "Alice's"
+        },
+        {
+          "method": "Comment:",
+          "path": "https://www.ietf.org/id/draft-bre-openpgp-samples-01.html"
+        },
+        {
+          "method": "mDMEXEcE6RYJKwYBBAHaRw8BAQdArjWwk3FAqyiFbFBKT4TzXcVBqPTB3gmzlC/U"
+        },
+        {
+          "method": "b7O1u120JkFsaWNlIExvdmVsYWNlIDxhbGljZUBvcGVucGdwLmV4YW1wbGU+iJAE"
+        },
+        {
+          "method": "ExYIADgCGwMFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AWIQTrhbtfozp14V6UTmPy"
+        },
+        {
+          "method": "MVUMT0fjjgUCXaWfOgAKCRDyMVUMT0fjjukrAPoDnHBSogOmsHOsd9qGsiZpgRnO"
+        },
+        {
+          "method": "dypvbm+QtXZqth9rvwD9HcDC0tC+PHAsO7OTh1S1TC9RiJsvawAfCPaQZoed8gK4"
+        },
+        {
+          "method": "OARcRwTpEgorBgEEAZdVAQUBAQdAQv8GIa2rSTzgqbXCpDDYMiKRVitCsy203x3s"
+        },
+        {
+          "method": "E9+eviIDAQgHiHgEGBYIACAWIQTrhbtfozp14V6UTmPyMVUMT0fjjgUCXEcE6QIb"
+        },
+        {
+          "method": "DAAKCRDyMVUMT0fjjlnQAQDFHUs6TIcxrNTtEZFjUFm1M0PJ1Dng/cDW4xN80fsn"
+        },
+        {
+          "method": "0QEA22Kr7VkCjeAEC08VSTeV+QFsmz55/lntWkwYWhmvOgE="
+        },
+        {
+          "method": "=iIGO"
+        },
+        {
+          "method": "-----END",
+          "path": "PGP"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The codename of a distribution."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Create a Debian project distribution",
+      "description": "Creates a Debian project distribution.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/debian_distributions"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s suite."
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s origin."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s label."
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s version."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s description."
+        },
+        {
+          "name": "valid_time_duration_seconds",
+          "type": "integer",
+          "required": false,
+          "description": "The new Debian distribution’s valid time duration (in seconds)."
+        },
+        {
+          "name": "components",
+          "type": "architectures",
+          "required": false,
+          "description": "The new Debian distribution’s list of components."
+        },
+        {
+          "name": "architectures",
+          "type": "architectures",
+          "required": false,
+          "description": "The new Debian distribution’s list of architectures."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": null,
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": null,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Update a Debian project distribution",
+      "description": "Updates a Debian project distribution.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new suite."
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new origin."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new label."
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new version."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new description."
+        },
+        {
+          "name": "valid_time_duration_seconds",
+          "type": "integer",
+          "required": false,
+          "description": "The Debian distribution’s new valid time duration (in seconds)."
+        },
+        {
+          "name": "components",
+          "type": "architectures",
+          "required": false,
+          "description": "The Debian distribution’s new list of components."
+        },
+        {
+          "name": "architectures",
+          "type": "architectures",
+          "required": false,
+          "description": "The Debian distribution’s new list of architectures."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": "new-suite",
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": 604800,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Delete a Debian project distribution",
+      "description": "Deletes a Debian project distribution.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        }
+      ],
+      "response": {}
+    }
+  ]
+}

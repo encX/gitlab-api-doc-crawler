@@ -1,0 +1,253 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/project_badges.html",
+  "pageName": "Project badges",
+  "apis": [
+    {
+      "name": "Project badges API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Placeholder tokens",
+      "description": "Badges support placeholders that are replaced in real-time in both the link and image URL. The allowed placeholders are:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List all badges of a project",
+      "description": "Gets a list of a project’s badges and its group badges.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/badges"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the badges to return (case-sensitive)."
+        }
+      ],
+      "response": [
+        {
+          "name": "Coverage",
+          "id": 1,
+          "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+          "image_url": "https://shields.io/my/badge",
+          "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+          "rendered_image_url": "https://shields.io/my/badge",
+          "kind": "project"
+        },
+        {
+          "name": "Pipeline",
+          "id": 2,
+          "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+          "image_url": "https://shields.io/my/badge",
+          "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+          "rendered_image_url": "https://shields.io/my/badge",
+          "kind": "group"
+        }
+      ]
+    },
+    {
+      "name": "Get a badge of a project",
+      "description": "Gets a badge of a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+        "rendered_image_url": "https://shields.io/my/badge",
+        "kind": "project"
+      }
+    },
+    {
+      "name": "Add a badge to a project",
+      "description": "Adds a badge to a project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/badges"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge image"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the badge"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "mybadge",
+        "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "image_url": "https://shields.io/my/badge1",
+        "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "rendered_image_url": "https://shields.io/my/badge1",
+        "kind": "project"
+      }
+    },
+    {
+      "name": "Edit a badge of a project",
+      "description": "Updates a badge of a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": false,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": false,
+          "description": "URL of the badge image"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the badge"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "mybadge",
+        "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+        "rendered_image_url": "https://shields.io/my/badge",
+        "kind": "project"
+      }
+    },
+    {
+      "name": "Remove a badge from a project",
+      "description": "Removes a badge from a project. Only project badges are removed by using this endpoint.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/badges/:badge_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "badge_id",
+          "type": "integer",
+          "required": true,
+          "description": "The badge ID"
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Preview a badge from a project",
+      "description": "Returns how the link_url and image_url final URLs would be after resolving the placeholder interpolation.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/badges/render"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "link_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge link"
+        },
+        {
+          "name": "image_url",
+          "type": "string",
+          "required": true,
+          "description": "URL of the badge image"
+        }
+      ],
+      "response": {
+        "link_url": "http://example.com/ci_status.svg?project=%{project_path}&ref=%{default_branch}",
+        "image_url": "https://shields.io/my/badge",
+        "rendered_link_url": "http://example.com/ci_status.svg?project=example-org/example-project&ref=master",
+        "rendered_image_url": "https://shields.io/my/badge"
+      }
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/pages_domains.html",
+  "pageName": "Pages domains",
+  "apis": [
+    {
+      "name": "Pages domains API",
+      "description": "The GitLab Pages feature must be enabled to use these endpoints. Find out more about administering and using the feature.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List all Pages domains",
+      "description": "Get a list of all Pages domains. The user must have administrator access.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/pages/domains"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "domain": "ssl.domain.example",
+          "url": "https://ssl.domain.example",
+          "project_id": 1337,
+          "auto_ssl_enabled": false,
+          "certificate": {
+            "expired": false,
+            "expiration": "2020-04-12T14:32:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "List Pages domains",
+      "description": "Get a list of project Pages domains. The user must have permissions to view Pages domains.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/pages/domains"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "domain": "www.domain.example",
+          "url": "http://www.domain.example"
+        },
+        {
+          "domain": "ssl.domain.example",
+          "url": "https://ssl.domain.example",
+          "auto_ssl_enabled": false,
+          "certificate": {
+            "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
+            "expired": false,
+            "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
+            "certificate_text": "Certificate:\n … \n"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Single Pages domain",
+      "description": "Get a single project Pages domain. The user must have permissions to view Pages domains.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/pages/domains/:domain"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": true,
+          "description": "The custom domain indicated by the user"
+        }
+      ],
+      "response": {
+        "domain": "ssl.domain.example",
+        "url": "https://ssl.domain.example",
+        "auto_ssl_enabled": false,
+        "certificate": {
+          "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
+          "expired": false,
+          "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
+          "certificate_text": "Certificate:\n … \n"
+        }
+      }
+    },
+    {
+      "name": "Create new Pages domain",
+      "description": "Create a new Pages domain with an automatic certificate:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/pages/domains"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": true,
+          "description": "The custom domain indicated by the user"
+        },
+        {
+          "name": "auto_ssl_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains."
+        },
+        {
+          "name": "certificate",
+          "type": "file/string",
+          "required": false,
+          "description": "The certificate in PEM format with intermediates following in most specific to least specific order."
+        },
+        {
+          "name": "key",
+          "type": "file/string",
+          "required": false,
+          "description": "The certificate key in PEM format."
+        }
+      ],
+      "response": {
+        "domain": "ssl.domain.example",
+        "url": "https://ssl.domain.example",
+        "auto_ssl_enabled": true,
+        "certificate": {
+          "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
+          "expired": false,
+          "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
+          "certificate_text": "Certificate:\n … \n"
+        }
+      }
+    },
+    {
+      "name": "Update Pages domain",
+      "description": "Updates an existing project Pages domain. The user must have permissions to change an existing Pages domains.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/pages/domains/:domain"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": true,
+          "description": "The custom domain indicated by the user"
+        },
+        {
+          "name": "auto_ssl_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains."
+        },
+        {
+          "name": "certificate",
+          "type": "file/string",
+          "required": false,
+          "description": "The certificate in PEM format with intermediates following in most specific to least specific order."
+        },
+        {
+          "name": "key",
+          "type": "file/string",
+          "required": false,
+          "description": "The certificate key in PEM format."
+        }
+      ],
+      "response": {}
+    },
+    {
+      "name": "Adding certificate",
+      "description": "Add a certificate for a Pages domain by using a variable containing the certificate:",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "domain": "ssl.domain.example",
+        "url": "https://ssl.domain.example",
+        "auto_ssl_enabled": false,
+        "certificate": {
+          "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
+          "expired": false,
+          "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
+          "certificate_text": "Certificate:\n … \n"
+        }
+      }
+    },
+    {
+      "name": "Enabling Let’s Encrypt integration for Pages custom domains",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "domain": "ssl.domain.example",
+        "url": "https://ssl.domain.example",
+        "auto_ssl_enabled": true
+      }
+    },
+    {
+      "name": "Removing certificate",
+      "description": "To remove the SSL certificate attached to the Pages domain, run:",
+      "resources": [],
+      "attributes": [],
+      "response": {
+        "domain": "ssl.domain.example",
+        "url": "https://ssl.domain.example",
+        "auto_ssl_enabled": false
+      }
+    },
+    {
+      "name": "Delete Pages domain",
+      "description": "Deletes an existing project Pages domain.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/pages/domains/:domain"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": true,
+          "description": "The custom domain indicated by the user"
+        }
+      ],
+      "response": {}
+    }
+  ]
+}

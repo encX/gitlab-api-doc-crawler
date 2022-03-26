@@ -1,0 +1,370 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/audit_events.html",
+  "pageName": "Audit Events",
+  "apis": [
+    {
+      "name": "Audit Events API",
+      "description": "",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Instance Audit Events",
+      "description": "To retrieve audit events using the API, you must authenticate yourself as an Administrator.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Retrieve all instance audit events",
+      "description": "Read more on pagination.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/audit_events"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "created_after",
+          "type": "string",
+          "required": false,
+          "description": "Return audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        },
+        {
+          "name": "created_before",
+          "type": "string",
+          "required": false,
+          "description": "Return audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        },
+        {
+          "name": "entity_type",
+          "type": "string",
+          "required": false,
+          "description": "Return audit events for the given entity type. Valid values are: User, Group, or Project."
+        },
+        {
+          "name": "entity_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return audit events for the given entity ID. Requires entity_type attribute to be present."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "author_id": 1,
+          "entity_id": 6,
+          "entity_type": "Project",
+          "details": {
+            "custom_message": "Project archived",
+            "author_name": "Administrator",
+            "target_id": "flightjs/flight",
+            "target_type": "Project",
+            "target_details": "flightjs/flight",
+            "ip_address": "127.0.0.1",
+            "entity_path": "flightjs/flight"
+          },
+          "created_at": "2019-08-30T07:00:41.885Z"
+        },
+        {
+          "id": 2,
+          "author_id": 1,
+          "entity_id": 60,
+          "entity_type": "Group",
+          "details": {
+            "add": "group",
+            "author_name": "Administrator",
+            "target_id": "flightjs",
+            "target_type": "Group",
+            "target_details": "flightjs",
+            "ip_address": "127.0.0.1",
+            "entity_path": "flightjs"
+          },
+          "created_at": "2019-08-27T18:36:44.162Z"
+        },
+        {
+          "id": 3,
+          "author_id": 51,
+          "entity_id": 51,
+          "entity_type": "User",
+          "details": {
+            "change": "email address",
+            "from": "hello@flightjs.com",
+            "to": "maintainer@flightjs.com",
+            "author_name": "Andreas",
+            "target_id": 51,
+            "target_type": "User",
+            "target_details": "Andreas",
+            "ip_address": null,
+            "entity_path": "Andreas"
+          },
+          "created_at": "2019-08-22T16:34:25.639Z"
+        }
+      ]
+    },
+    {
+      "name": "Retrieve single instance audit event",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/audit_events/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the audit event"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "author_id": 1,
+        "entity_id": 6,
+        "entity_type": "Project",
+        "details": {
+          "custom_message": "Project archived",
+          "author_name": "Administrator",
+          "target_id": "flightjs/flight",
+          "target_type": "Project",
+          "target_details": "flightjs/flight",
+          "ip_address": "127.0.0.1",
+          "entity_path": "flightjs/flight"
+        },
+        "created_at": "2019-08-30T07:00:41.885Z"
+      }
+    },
+    {
+      "name": "Group Audit Events",
+      "description": "A user with a Owner role (or above) can retrieve group audit events of all users. A user with a Developer or Maintainer role is limited to group audit events based on their individual actions.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Retrieve all group audit events",
+      "description": "Read more on pagination.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/audit_events"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "created_after",
+          "type": "string",
+          "required": false,
+          "description": "Return group audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        },
+        {
+          "name": "created_before",
+          "type": "string",
+          "required": false,
+          "description": "Return group audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        }
+      ],
+      "response": [
+        {
+          "id": 2,
+          "author_id": 1,
+          "entity_id": 60,
+          "entity_type": "Group",
+          "details": {
+            "custom_message": "Group marked for deletion",
+            "author_name": "Administrator",
+            "target_id": "flightjs",
+            "target_type": "Group",
+            "target_details": "flightjs",
+            "ip_address": "127.0.0.1",
+            "entity_path": "flightjs"
+          },
+          "created_at": "2019-08-28T19:36:44.162Z"
+        },
+        {
+          "id": 1,
+          "author_id": 1,
+          "entity_id": 60,
+          "entity_type": "Group",
+          "details": {
+            "add": "group",
+            "author_name": "Administrator",
+            "target_id": "flightjs",
+            "target_type": "Group",
+            "target_details": "flightjs",
+            "ip_address": "127.0.0.1",
+            "entity_path": "flightjs"
+          },
+          "created_at": "2019-08-27T18:36:44.162Z"
+        }
+      ]
+    },
+    {
+      "name": "Retrieve a specific group audit event",
+      "description": "Only available to group owners and administrators.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/audit_events/:audit_event_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "audit_event_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the audit event"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "author_id": 1,
+        "entity_id": 60,
+        "entity_type": "Group",
+        "details": {
+          "custom_message": "Group marked for deletion",
+          "author_name": "Administrator",
+          "target_id": "flightjs",
+          "target_type": "Group",
+          "target_details": "flightjs",
+          "ip_address": "127.0.0.1",
+          "entity_path": "flightjs"
+        },
+        "created_at": "2019-08-28T19:36:44.162Z"
+      }
+    },
+    {
+      "name": "Project Audit Events",
+      "description": "A user with a Maintainer role (or above) can retrieve project audit events of all users. A user with a Developer role is limited to project audit events based on their individual actions.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Retrieve all project audit events",
+      "description": "Read more on pagination.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/audit_events"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "created_after",
+          "type": "string",
+          "required": false,
+          "description": "Return project audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        },
+        {
+          "name": "created_before",
+          "type": "string",
+          "required": false,
+          "description": "Return project audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)"
+        }
+      ],
+      "response": [
+        {
+          "id": 5,
+          "author_id": 1,
+          "entity_id": 7,
+          "entity_type": "Project",
+          "details": {
+            "change": "prevent merge request approval from committers",
+            "from": "",
+            "to": "true",
+            "author_name": "Administrator",
+            "target_id": 7,
+            "target_type": "Project",
+            "target_details": "twitter/typeahead-js",
+            "ip_address": "127.0.0.1",
+            "entity_path": "twitter/typeahead-js"
+          },
+          "created_at": "2020-05-26T22:55:04.230Z"
+        },
+        {
+          "id": 4,
+          "author_id": 1,
+          "entity_id": 7,
+          "entity_type": "Project",
+          "details": {
+            "change": "prevent merge request approval from authors",
+            "from": "false",
+            "to": "true",
+            "author_name": "Administrator",
+            "target_id": 7,
+            "target_type": "Project",
+            "target_details": "twitter/typeahead-js",
+            "ip_address": "127.0.0.1",
+            "entity_path": "twitter/typeahead-js"
+          },
+          "created_at": "2020-05-26T22:55:04.218Z"
+        }
+      ]
+    },
+    {
+      "name": "Retrieve a specific project audit event",
+      "description": "Only available to users with at least the Maintainer role for the project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/audit_events/:audit_event_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "audit_event_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the audit event"
+        }
+      ],
+      "response": {
+        "id": 5,
+        "author_id": 1,
+        "entity_id": 7,
+        "entity_type": "Project",
+        "details": {
+          "change": "prevent merge request approval from committers",
+          "from": "",
+          "to": "true",
+          "author_name": "Administrator",
+          "target_id": 7,
+          "target_type": "Project",
+          "target_details": "twitter/typeahead-js",
+          "ip_address": "127.0.0.1",
+          "entity_path": "twitter/typeahead-js"
+        },
+        "created_at": "2020-05-26T22:55:04.230Z"
+      }
+    }
+  ]
+}

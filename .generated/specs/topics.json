@@ -1,0 +1,216 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/topics.html",
+  "pageName": "Topics",
+  "apis": [
+    {
+      "name": "Topics API",
+      "description": "Interact with project topics using the REST API.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "List topics",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/topics"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "description": "Page to retrieve. Defaults to 1."
+        },
+        {
+          "name": "per_page",
+          "type": "integer",
+          "required": false,
+          "description": "Number of records to return per page. Defaults to 20."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search topics against their name."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "GitLab",
+          "description": "GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more.",
+          "total_projects_count": 1000,
+          "avatar_url": "http://www.gravatar.com/avatar/a0d477b3ea21970ce6ffcbb817b0b435?s=80&d=identicon"
+        },
+        {
+          "id": 3,
+          "name": "Git",
+          "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+          "total_projects_count": 900,
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon"
+        },
+        {
+          "id": 2,
+          "name": "Git LFS",
+          "description": null,
+          "total_projects_count": 300,
+          "avatar_url": null
+        }
+      ]
+    },
+    {
+      "name": "Get a topic",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "GitLab",
+        "description": "GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more.",
+        "total_projects_count": 1000,
+        "avatar_url": "http://www.gravatar.com/avatar/a0d477b3ea21970ce6ffcbb817b0b435?s=80&d=identicon"
+      }
+    },
+    {
+      "name": "List projects assigned to a topic",
+      "description": "Use the Projects API to list all projects assigned to a specific topic.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects?topic=<topic_name>"
+        }
+      ],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Create a project topic",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/topics"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name"
+        },
+        {
+          "name": "avatar",
+          "type": "file",
+          "required": false,
+          "description": "Avatar"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "topic1",
+        "description": null,
+        "total_projects_count": 0,
+        "avatar_url": null
+      }
+    },
+    {
+      "name": "Update a project topic",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        },
+        {
+          "name": "avatar",
+          "type": "file",
+          "required": false,
+          "description": "Avatar"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Name"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "topic1",
+        "description": null,
+        "total_projects_count": 0,
+        "avatar_url": null
+      }
+    },
+    {
+      "name": "Upload a topic avatar",
+      "description": "To upload an avatar file from your file system, use the --form argument. This argument causes cURL to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Remove a topic avatar",
+      "description": "To remove a topic avatar, use a blank value for the avatar attribute.",
+      "resources": [],
+      "attributes": [],
+      "response": {}
+    },
+    {
+      "name": "Delete a project topic",
+      "description": "Supported attributes:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        }
+      ],
+      "response": {}
+    }
+  ]
+}
