@@ -8,7 +8,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/users?exclude_external=true"
+          "path": "/users"
         }
       ],
       "attributes": [],
@@ -37,7 +37,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/users?with_custom_attributes=true"
+          "path": "/users"
         }
       ],
       "attributes": [
@@ -210,7 +210,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/users/:id?with_custom_attributes=true"
+          "path": "/users/:id"
         }
       ],
       "attributes": [
@@ -895,7 +895,7 @@
       "resources": [
         {
           "method": "POST",
-          "path": "/users/:id/unfollow"
+          "path": "/users/:id/follow"
         }
       ],
       "attributes": [
@@ -921,7 +921,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/users/:id/following"
+          "path": "/users/:id/followers"
         }
       ],
       "attributes": [

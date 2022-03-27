@@ -8,7 +8,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/groups?custom_attributes[key]=value&custom_attributes[other_key]=other_value"
+          "path": "/groups"
         }
       ],
       "attributes": [
@@ -1008,7 +1008,7 @@
       "resources": [
         {
           "method": "POST",
-          "path": ""
+          "path": "/groups/:id/projects/:project_id"
         }
       ],
       "attributes": [
@@ -1033,7 +1033,7 @@
       "resources": [
         {
           "method": "POST",
-          "path": ""
+          "path": "/groups/:id/transfer"
         }
       ],
       "attributes": [
@@ -1823,7 +1823,7 @@
       "resources": [
         {
           "method": "DELETE",
-          "path": "/groups/:id/ldap_group_links/:provider/:cn"
+          "path": "/groups/:id/ldap_group_links/:cn"
         }
       ],
       "attributes": [
@@ -1883,17 +1883,6 @@
           "description": "LDAP provider for the LDAP group link"
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Namespaces in groups",
-      "description": "And to switch pages add:",
-      "resources": [
-        {
-          "method": "/groups?per_page=100&page=2"
-        }
-      ],
-      "attributes": [],
       "response": null
     },
     {

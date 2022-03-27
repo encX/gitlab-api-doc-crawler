@@ -194,7 +194,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/projects/:id/repository/compare?from=master&to=feature"
+          "path": "/projects/:id/repository/compare"
         }
       ],
       "attributes": [
@@ -408,54 +408,6 @@
           "description": "The commit message to produce when committing the changes, defaults to Add changelog for version X where X is the value of the version argument."
         }
       ],
-      "response": null
-    },
-    {
-      "name": "How it works",
-      "description": "Trailers can be manually added while editing a commit message. To include a commit using the default trailer of Changelog and categorize it as a feature, the trailer could be added to a commit message like so:",
-      "resources": [
-        {
-          "method": "<Commit",
-          "path": "message"
-        },
-        {
-          "method": "<Commit",
-          "path": "message"
-        },
-        {
-          "method": "Changelog:",
-          "path": "feature"
-        }
-      ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Custom templates",
-      "description": "When specifying the template you should use template: | and not template: >, as the latter doesn’t preserve newlines in the template.",
-      "resources": [
-        {
-          "method": "---"
-        },
-        {
-          "method": "bar"
-        },
-        {
-          "method": "---"
-        }
-      ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Customize the tag format when extracting versions",
-      "description": "To test if your regular expression is working, you can use websites such as regex101. If the regular expression syntax is invalid, an error is produced when generating a changelog.",
-      "resources": [
-        {
-          "method": "^v?(?P<major>0|[1-9]\\d*)\\.(?P<minor>0|[1-9]\\d*)\\.(?P<patch>0|[1-9]\\d*)(?:-(?P<pre>(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+(?P<meta>[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
-        }
-      ],
-      "attributes": [],
       "response": null
     },
     {

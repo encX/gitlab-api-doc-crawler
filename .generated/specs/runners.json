@@ -352,37 +352,6 @@
       }
     },
     {
-      "name": "Pause a runner",
-      "description": "Pause a specific runner.",
-      "resources": [
-        {
-          "method": "PUT",
-          "path": "--form"
-        },
-        {
-          "method": "#",
-          "path": "--or--"
-        },
-        {
-          "method": "#",
-          "path": "Deprecated:"
-        },
-        {
-          "method": "PUT",
-          "path": "--form"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "runner_id",
-          "type": "integer",
-          "required": true,
-          "description": "The ID of a runner"
-        }
-      ],
-      "response": null
-    },
-    {
       "name": "List runner’s jobs",
       "description": "List jobs that are being processed or were processed by specified runner.",
       "resources": [
