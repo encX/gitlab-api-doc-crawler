@@ -3,36 +3,6 @@
   "pageName": "Code snippets",
   "apis": [
     {
-      "name": "Snippets API",
-      "description": "Snippets API operates on snippets. Related APIs exist for project snippets and moving snippets between storages.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Snippet visibility level",
-      "description": "Valid values for snippet visibility levels are:",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "private",
-          "type": "Snippet is visible only to the snippet creator.",
-          "required": false
-        },
-        {
-          "name": "internal",
-          "type": "Snippet is visible for any logged in user except external users.",
-          "required": false
-        },
-        {
-          "name": "public",
-          "type": "Snippet can be accessed without any authentication.",
-          "required": false
-        }
-      ],
-      "response": null
-    },
-    {
       "name": "List all snippets for a user",
       "description": "Get a list of the current user’s snippets.",
       "resources": [

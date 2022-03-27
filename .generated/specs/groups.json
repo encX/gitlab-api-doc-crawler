@@ -3,13 +3,6 @@
   "pageName": "Groups",
   "apis": [
     {
-      "name": "Groups API",
-      "description": "",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "List groups",
       "description": "You can filter by custom attributes with:",
       "resources": [
@@ -877,13 +870,6 @@
       "response": null
     },
     {
-      "name": "Disable the results limit",
-      "description": "For GitLab 14.0 and later, the limit cannot be disabled.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "New group",
       "description": "Parameters:",
       "resources": [
@@ -1014,36 +1000,6 @@
           "description": "Can be set by administrators only. Additional CI/CD minutes for this group."
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Options for default_branch_protection",
-      "description": "The default_branch_protection attribute determines whether users with the Developer or Maintainer role can push to the applicable default branch, as described in the following table:",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "0",
-          "type": "No protection. Users with the Developer or Maintainer role can: - Push new commits- Force push changes- Delete the branch",
-          "required": false
-        },
-        {
-          "name": "1",
-          "type": "Partial protection. Users with the Developer or Maintainer role can: - Push new commits",
-          "required": false
-        },
-        {
-          "name": "2",
-          "type": "Full protection. Only users with the Maintainer role can: - Push new commits",
-          "required": false
-        }
-      ],
-      "response": null
-    },
-    {
-      "name": "New Subgroup",
-      "description": "This is similar to creating a New group. You need the parent_id from the List groups call. You can then enter the desired:",
-      "resources": [],
-      "attributes": [],
       "response": null
     },
     {
@@ -1310,43 +1266,6 @@
       }
     },
     {
-      "name": "Disable the results limit",
-      "description": "For GitLab 14.0 and later, the limit cannot be disabled.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Options for shared_runners_setting",
-      "description": "The shared_runners_setting attribute determines whether shared runners are enabled for a group’s subgroups and projects.",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "enabled",
-          "type": "Enables shared runners for all projects and subgroups in this group.",
-          "required": false
-        },
-        {
-          "name": "disabled_with_override",
-          "type": "Disables shared runners for all projects and subgroups in this group, but allows subgroups to override this setting.",
-          "required": false
-        },
-        {
-          "name": "disabled_and_unoverridable",
-          "type": "Disables shared runners for all projects and subgroups in this group, and prevents subgroups from overriding this setting.",
-          "required": false
-        }
-      ],
-      "response": null
-    },
-    {
-      "name": "Upload a group avatar",
-      "description": "To upload an avatar file from your file system, use the --form argument. This causes curl to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Remove group",
       "description": "The response is 202 Accepted if the user has authorization.",
       "resources": [
@@ -1499,13 +1418,6 @@
           "extra_shared_runners_minutes_limit": null
         }
       ]
-    },
-    {
-      "name": "Hooks",
-      "description": "Also called Group Hooks and Webhooks. These are different from System Hooks that are system wide and Project Hooks that are limited to one project.",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "List group hooks",
@@ -1832,13 +1744,6 @@
       "response": null
     },
     {
-      "name": "Group Audit Events",
-      "description": "Group audit events can be accessed via the Group Audit Events API",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Sync group with LDAP",
       "description": "Parameters:",
       "resources": [
@@ -1847,20 +1752,6 @@
           "path": "/groups/:id/ldap_sync"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Group members",
-      "description": "Please consult the Group Members documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "LDAP Group Links",
-      "description": "List, add, and delete LDAP group links.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2006,27 +1897,6 @@
       "response": null
     },
     {
-      "name": "Group badges",
-      "description": "Read more in the Group Badges documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Group Import/Export",
-      "description": "Read more in the Group Import/Export and Group Relations Export documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Share Groups with Groups",
-      "description": "These endpoints create and delete links for sharing a group with another group. For more information, see the related discussion in the GitLab Groups page.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create a link to share a group with another group",
       "description": "Share group with another group. Returns 200 and the group details on success.",
       "resources": [
@@ -2086,13 +1956,6 @@
           "description": "The ID of the group to share with"
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Push Rules",
-      "description": "",
-      "resources": [],
-      "attributes": [],
       "response": null
     },
     {

@@ -3,13 +3,6 @@
   "pageName": "Merge requests",
   "apis": [
     {
-      "name": "Merge requests API",
-      "description": "Every API call to merge requests must be authenticated.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "List merge requests",
       "description": "Users on GitLab Premium or higher also see the approvals_before_merge parameter:",
       "resources": [
@@ -356,13 +349,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "Merge requests list response notes",
-      "description": "",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "List project merge requests",
@@ -1057,13 +1043,6 @@
         "has_conflicts": false,
         "blocking_discussions_resolved": true
       }
-    },
-    {
-      "name": "Single merge request response notes",
-      "description": "",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "Get single MR participants",
@@ -2278,13 +2257,6 @@
       }
     },
     {
-      "name": "Comments on merge requests",
-      "description": "Comments are done via the notes resource.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "List issues that close on merge",
       "description": "Get all the issues that would be closed by merging the provided merge request.",
       "resources": [
@@ -2849,29 +2821,6 @@
       ]
     },
     {
-      "name": "SHAs in the API response",
-      "description": "",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "head_commit_sha",
-          "type": "The HEAD commit of the source branch.",
-          "required": false
-        },
-        {
-          "name": "base_commit_sha",
-          "type": "The merge-base commit SHA between the source branch and the target branches.",
-          "required": false
-        },
-        {
-          "name": "start_commit_sha",
-          "type": "The HEAD commit SHA of the target branch when this version of the diff was created.",
-          "required": false
-        }
-      ],
-      "response": null
-    },
-    {
       "name": "Get a single MR diff version",
       "description": "Get a single merge request diff version. For an explanation of the SHAs in the response, read SHAs in the API response.",
       "resources": [
@@ -3119,20 +3068,6 @@
         "time_estimate": 7200,
         "total_time_spent": 3600
       }
-    },
-    {
-      "name": "Approvals",
-      "description": "For approvals, see Merge request approvals",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "List merge request state events",
-      "description": "To track which state was set, who did it, and when it happened, check out Resource state events API.",
-      "resources": [],
-      "attributes": [],
-      "response": null
     }
   ]
 }

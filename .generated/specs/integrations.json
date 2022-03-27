@@ -3,13 +3,6 @@
   "pageName": "Integrations",
   "apis": [
     {
-      "name": "Integrations API",
-      "description": "This API requires an access token with the Maintainer or Owner role.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "List all active integrations",
       "description": "Get a list of all active project integrations.",
       "resources": [
@@ -61,13 +54,6 @@
           "comment_on_event_enabled": true
         }
       ]
-    },
-    {
-      "name": "Asana",
-      "description": "See also the Asana integration documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "Create/Edit Asana integration",
@@ -125,13 +111,6 @@
       "response": null
     },
     {
-      "name": "Assembla",
-      "description": "Project Management Software (Source Commits Endpoint)",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Assembla integration",
       "description": "Parameters:",
       "resources": [
@@ -183,13 +162,6 @@
           "path": "/projects/:id/integrations/assembla"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Atlassian Bamboo CI",
-      "description": "A continuous integration and build server",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -267,13 +239,6 @@
       "response": null
     },
     {
-      "name": "Bugzilla",
-      "description": "Bugzilla Issue Tracker",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Bugzilla integration",
       "description": "Parameters:",
       "resources": [
@@ -347,13 +312,6 @@
       "response": null
     },
     {
-      "name": "Buildkite",
-      "description": "Continuous integration and deployments",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Buildkite integration",
       "description": "Parameters:",
       "resources": [
@@ -411,13 +369,6 @@
           "path": "/projects/:id/integrations/buildkite"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Campfire",
-      "description": "Send notifications about push events to Campfire chat rooms. New users can no longer sign up for Campfire.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -483,13 +434,6 @@
       "response": null
     },
     {
-      "name": "Datadog",
-      "description": "Datadog system monitoring.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Datadog integration",
       "description": "| Parameter | Type | Required | Description | | ———————- | ——- | ——– | ———– | | api_key | string | true | API key used for authentication with Datadog | | api_url | string | false | (Advanced) The full URL for your Datadog site | | datadog_env | string | false | For self-managed deployments, set the env% tag for all the data sent to Datadog. | | datadog_service | string | false | Tag all data from this GitLab instance in Datadog. Useful when managing several self-managed deployments | | datadog_site | string | false | The Datadog site to send data to. To send data to the EU site, use datadoghq.eu | | datadog_tags | string | false | Custom tags in Datadog. Specify one tag per line in the format: key:value\\nkey2:value2 (Introduced in GitLab 14.8.) |",
       "resources": [
@@ -522,13 +466,6 @@
           "path": "/projects/:id/integrations/datadog"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Unify Circuit",
-      "description": "Unify Circuit RTC and collaboration tool.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -642,13 +579,6 @@
       "response": null
     },
     {
-      "name": "Webex Teams",
-      "description": "Webex Teams collaboration tool.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Webex Teams integration",
       "description": "Parameters:",
       "resources": [
@@ -758,13 +688,6 @@
       "response": null
     },
     {
-      "name": "Custom Issue Tracker",
-      "description": "Custom issue tracker",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Custom Issue Tracker integration",
       "description": "Parameters:",
       "resources": [
@@ -838,13 +761,6 @@
       "response": null
     },
     {
-      "name": "Discord",
-      "description": "Send notifications about project events to a Discord channel.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Discord integration",
       "description": "Parameters:",
       "resources": [
@@ -884,13 +800,6 @@
           "path": "/projects/:id/integrations/discord"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Drone CI",
-      "description": "Drone is a Continuous Integration platform built on Docker, written in Go",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -968,13 +877,6 @@
       "response": null
     },
     {
-      "name": "Emails on Push",
-      "description": "Email the commits and diff of each push to a list of recipients.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Emails on Push integration",
       "description": "Parameters:",
       "resources": [
@@ -1048,13 +950,6 @@
       "response": null
     },
     {
-      "name": "Engineering Workflow Management (EWM)",
-      "description": "Use IBM Engineering Workflow Management (EWM) as a project’s issue tracker.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit EWM integration",
       "description": "Parameters:",
       "resources": [
@@ -1110,13 +1005,6 @@
       "response": null
     },
     {
-      "name": "Confluence integration",
-      "description": "Replaces the link to the internal wiki with a link to a Confluence Cloud Workspace.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Confluence integration",
       "description": "Parameters:",
       "resources": [
@@ -1160,13 +1048,6 @@
       "response": null
     },
     {
-      "name": "External wiki",
-      "description": "Replaces the link to the internal wiki with a link to an external wiki.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit External wiki integration",
       "description": "Parameters:",
       "resources": [
@@ -1206,13 +1087,6 @@
           "path": "/projects/:id/integrations/external-wiki"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Flowdock",
-      "description": "Flowdock is a ChatOps application for collaboration in software engineering companies. You can send notifications from GitLab events to Flowdock flows. For integration instructions, see the Flowdock documentation.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -1262,13 +1136,6 @@
           "path": "/projects/:id/integrations/flowdock"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "GitHub",
-      "description": "Code collaboration software.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -1324,13 +1191,6 @@
           "path": "/projects/:id/integrations/github"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Hangouts Chat",
-      "description": "Google Workspace team collaboration tool.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -1450,13 +1310,6 @@
       "response": null
     },
     {
-      "name": "Irker (IRC gateway)",
-      "description": "For more information, see the irker integration documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Irker (IRC gateway) integration",
       "description": "Parameters:",
       "resources": [
@@ -1526,13 +1379,6 @@
           "path": "/projects/:id/integrations/irker"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Jira",
-      "description": "Jira issue tracker.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -1634,13 +1480,6 @@
       "response": null
     },
     {
-      "name": "Slack Slash Commands",
-      "description": "Ability to receive slash commands from a Slack chat instance.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Get Slack Slash Command integration settings",
       "description": "Get Slack Slash Command integration settings for a project.",
       "resources": [
@@ -1703,13 +1542,6 @@
       "response": null
     },
     {
-      "name": "Mattermost Slash Commands",
-      "description": "Ability to receive slash commands from a Mattermost chat instance.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Get Mattermost Slash Command integration settings",
       "description": "Get Mattermost Slash Command integration settings for a project.",
       "resources": [
@@ -1755,13 +1587,6 @@
           "path": "/projects/:id/integrations/mattermost-slash-commands"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Packagist",
-      "description": "Update your project on Packagist (the main Composer repository) when commits or tags are pushed to GitLab.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -1839,13 +1664,6 @@
       "response": null
     },
     {
-      "name": "Pipeline-Emails",
-      "description": "Get emails for GitLab CI/CD pipelines.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Pipeline-Emails integration",
       "description": "Parameters:",
       "resources": [
@@ -1919,13 +1737,6 @@
       "response": null
     },
     {
-      "name": "Pivotal Tracker",
-      "description": "See also the Pivotal Tracker integration documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Pivotal Tracker integration",
       "description": "Parameters:",
       "resources": [
@@ -1981,13 +1792,6 @@
       "response": null
     },
     {
-      "name": "Prometheus",
-      "description": "Prometheus is a powerful time-series monitoring service.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Prometheus integration",
       "description": "Parameters:",
       "resources": [
@@ -2039,13 +1843,6 @@
           "path": "/projects/:id/integrations/prometheus"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Pushover",
-      "description": "Pushover makes it easy to get real-time notifications on your Android device, iPhone, iPad, and Desktop.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2123,13 +1920,6 @@
       "response": null
     },
     {
-      "name": "Redmine",
-      "description": "Redmine issue tracker",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Redmine integration",
       "description": "Parameters:",
       "resources": [
@@ -2193,13 +1983,6 @@
           "path": "/projects/:id/integrations/redmine"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Slack notifications",
-      "description": "Receive event notifications in Slack",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2409,13 +2192,6 @@
       "response": null
     },
     {
-      "name": "Microsoft Teams",
-      "description": "Group Chat Software",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Microsoft Teams integration",
       "description": "Parameters:",
       "resources": [
@@ -2527,13 +2303,6 @@
           "path": "/projects/:id/integrations/microsoft-teams"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Mattermost notifications",
-      "description": "Receive event notifications in Mattermost",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2719,13 +2488,6 @@
       "response": null
     },
     {
-      "name": "JetBrains TeamCity CI",
-      "description": "A continuous integration and build server",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit JetBrains TeamCity CI integration",
       "description": "Parameters:",
       "resources": [
@@ -2795,13 +2557,6 @@
           "path": "/projects/:id/integrations/teamcity"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Jenkins CI",
-      "description": "A continuous integration and build server",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2891,13 +2646,6 @@
       "response": null
     },
     {
-      "name": "Jenkins CI (Deprecated) integration",
-      "description": "A continuous integration and build server",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create/Edit Jenkins CI (Deprecated) integration",
       "description": "Parameters:",
       "resources": [
@@ -2930,13 +2678,6 @@
           "path": "/projects/:id/integrations/jenkins-deprecated"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "MockCI",
-      "description": "This integration is only available when your environment is set to development.",
-      "resources": [],
       "attributes": [],
       "response": null
     },
@@ -2986,13 +2727,6 @@
           "path": "/projects/:id/integrations/mock-ci"
         }
       ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "YouTrack",
-      "description": "YouTrack issue tracker",
-      "resources": [],
       "attributes": [],
       "response": null
     },

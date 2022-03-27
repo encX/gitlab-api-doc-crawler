@@ -3,31 +3,6 @@
   "pageName": "Runners",
   "apis": [
     {
-      "name": "Runners API",
-      "description": "",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Registration and authentication tokens",
-      "description": "GitLab and the runner are then connected.",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "Registration token",
-          "type": "Token used to register the runner. It can be obtained through GitLab.",
-          "required": false
-        },
-        {
-          "name": "Authentication token",
-          "type": "Token used to authenticate the runner with the GitLab instance. It is obtained automatically when you register a runner or by the Runner API when you manually register a runner or reset the authentication token.",
-          "required": false
-        }
-      ],
-      "response": null
-    },
-    {
       "name": "List owned runners",
       "description": "Get a list of specific runners available to the user.",
       "resources": [
@@ -779,13 +754,6 @@
         "token": "6337ff461c94fd3fa32ba3b1ff4125",
         "token_expires_at": "2021-09-27T21:05:03.203Z"
       }
-    },
-    {
-      "name": "Delete a runner",
-      "description": "There are two ways to delete a runner:",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "Delete a runner by ID",

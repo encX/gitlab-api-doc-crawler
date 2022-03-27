@@ -3,13 +3,6 @@
   "pageName": "Broadcast messages",
   "apis": [
     {
-      "name": "Broadcast Messages API",
-      "description": "As of GitLab 12.8, GET requests do not require authentication. All other broadcast message API endpoints are accessible only to administrators. Non-GET requests by:",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Get all broadcast messages",
       "description": "List all broadcast messages.",
       "resources": [
@@ -241,20 +234,6 @@
         "broadcast_type": "notification",
         "dismissable": false
       }
-    },
-    {
-      "name": "Delete a broadcast message",
-      "description": "Parameters:",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer",
-          "required": true,
-          "description": "ID of broadcast message to delete."
-        }
-      ],
-      "response": null
     }
   ]
 }

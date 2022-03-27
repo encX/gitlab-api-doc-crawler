@@ -3,27 +3,6 @@
   "pageName": "Projects",
   "apis": [
     {
-      "name": "Projects API",
-      "description": "Interact with projects using the REST API.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Project visibility level",
-      "description": "For more, read Project visibility.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Project merge method",
-      "description": "There are three options for merge_method to choose from:",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "List all projects",
       "description": "You can filter by custom attributes with:",
       "resources": [
@@ -398,13 +377,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "Pagination limits",
-      "description": "Keyset pagination supports only order_by=id. Other sorting options aren’t available.",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "List user projects",
@@ -1241,17 +1213,6 @@
       }
     },
     {
-      "name": "Templates for issues and merge requests",
-      "description": "Users of GitLab Premium or higher can also see the issues_template and merge_requests_template parameters for managing issue and merge request description templates.",
-      "resources": [],
-      "attributes": [],
-      "response": {
-        "id": 3,
-        "issues_template": null,
-        "merge_requests_template": null
-      }
-    },
-    {
       "name": "Get project users",
       "description": "Get the users list of a project.",
       "resources": [
@@ -1364,13 +1325,6 @@
           "full_path": "foo/shared"
         }
       ]
-    },
-    {
-      "name": "Get project events",
-      "description": "Refer to the Events API documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
     },
     {
       "name": "Create project",
@@ -3431,13 +3385,6 @@
       }
     },
     {
-      "name": "Max attachment size enforcement",
-      "description": "In installations from source:",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Upload a project avatar",
       "description": "Returned object:",
       "resources": [
@@ -3549,13 +3496,6 @@
           "description": "The ID or URL-encoded path of the source project to import the members from."
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Hooks",
-      "description": "Also called Project Hooks and Webhooks. These are different for System Hooks that are system-wide.",
-      "resources": [],
-      "attributes": [],
       "response": null
     },
     {
@@ -3883,13 +3823,6 @@
       "response": null
     },
     {
-      "name": "Fork relationship",
-      "description": "Allows modification of the forked relationship between existing projects. Available only for project owners and administrators.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
       "name": "Create a forked from/to relation between existing projects",
       "description": "",
       "resources": [
@@ -3981,13 +3914,6 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Push rules",
-      "description": "",
-      "resources": [],
-      "attributes": [],
       "response": null
     },
     {
@@ -4342,66 +4268,6 @@
       }
     },
     {
-      "name": "Branches",
-      "description": "Read more in the Branches documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Project import/export",
-      "description": "Read more in the Project import/export documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Project members",
-      "description": "Read more in the Project members documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Project vulnerabilities",
-      "description": "Read more in the Project vulnerabilities documentation.",
-      "resources": [],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Configure pull mirroring for a project",
-      "description": "Configure pull mirroring while creating a new project or updating an existing project using the API if the remote repository is publicly accessible or via username:token authentication. In case your HTTP repository is not publicly accessible, you can add the authentication information to the URL: https://username:token@gitlab.company.com/group/project.git, where token is a personal access token with the API scope enabled.",
-      "resources": [],
-      "attributes": [
-        {
-          "name": "import_url",
-          "type": "string",
-          "required": false,
-          "description": "URL of remote repository being mirrored (with user:token if needed)."
-        },
-        {
-          "name": "mirror",
-          "type": "boolean",
-          "required": false,
-          "description": "Enables pull mirroring on project when set to true."
-        },
-        {
-          "name": "mirror_trigger_builds",
-          "type": "boolean",
-          "required": false,
-          "description": "Trigger pipelines for mirror updates when set to true."
-        },
-        {
-          "name": "only_mirror_protected_branches",
-          "type": "boolean",
-          "required": false,
-          "description": "Limits mirroring to only protected branches when set to true."
-        }
-      ],
-      "response": null
-    },
-    {
       "name": "Start the pull mirroring process for a Project",
       "description": "",
       "resources": [
@@ -4418,13 +4284,6 @@
           "description": "The ID or URL-encoded path of the project."
         }
       ],
-      "response": null
-    },
-    {
-      "name": "Project badges",
-      "description": "Read more in the Project Badges documentation.",
-      "resources": [],
-      "attributes": [],
       "response": null
     },
     {
