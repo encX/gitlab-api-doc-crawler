@@ -22,10 +22,10 @@ export class PageCrawler {
     const tagElems = content
       .children()
       .toArray()
-      .map((c) => this.getTagElem(c))
+      .map((c) => PageCrawler.getTagElem(c))
       .filter((c) => c !== null && c !== undefined) as TagElement[];
 
-    const chunks = this.getChunksByH2(tagElems);
+    const chunks = PageCrawler.getChunksByHElem(tagElems);
 
     const apis = chunks
       .map((c) => this.tryParseApi(c))
@@ -34,22 +34,24 @@ export class PageCrawler {
     return apis;
   }
 
-  private getTagElem(
+  private static getTagElem(
     elem: TagElement | TextElement | null
   ): TagElement | undefined {
     if (!elem || elem.type !== "tag") return undefined;
     return elem;
   }
 
-  private getChunksByH2(elems: TagElement[]): TagElement[][] {
+  private static isHElem(e: TagElement): boolean {
+    return /h[1-3]/.test(e.name);
+  }
+
+  private static getChunksByHElem(elems: TagElement[]): TagElement[][] {
     const groups: TagElement[][] = [];
     let current: TagElement[];
 
     elems.forEach((e) => {
-      if (/h[1-3]/.test(e.name)) {
-        if (current) {
-          groups.push(current);
-        }
+      if (PageCrawler.isHElem(e)) {
+        if (current) groups.push(current);
         current = [e];
       } else if (Array.isArray(current)) {
         current.push(e);
@@ -59,6 +61,7 @@ export class PageCrawler {
     if (current! && Array.isArray(current)) {
       groups.push(current);
     }
+
     return groups;
   }
 
@@ -74,11 +77,10 @@ export class PageCrawler {
         apiBuilder.getName()
       );
 
-      if (this.shouldSkip(e)) return;
+      if (PageCrawler.shouldSkip(e)) return;
 
-      if (/h[1-3]/.test(e.name))
+      if (PageCrawler.isHElem(e))
         apiBuilder.withName(PageCrawler.getElementText(e));
-      // nice to have: handle if h2 & h3 coexist in the same block
 
       if (e.name === "p")
         apiBuilder.withDescription(PageCrawler.getElementText(e));
@@ -107,7 +109,7 @@ export class PageCrawler {
     return cheerio(elem.children).text().replace(/\n/g, " ").trim();
   }
 
-  private shouldSkip(elem: TagElement): boolean {
+  private static shouldSkip(elem: TagElement): boolean {
     if (/introduced-in/gi.test(elem.attribs["class"])) return true;
     if (
       /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text())
