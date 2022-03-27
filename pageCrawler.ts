@@ -88,20 +88,20 @@ export class PageCrawler {
 
       if (
         e.name === "div" &&
-        /language-(plaintext|shell)/gi.test(e.attribs["class"]) &&
-        resources.length === 0
+        /language-(plaintext|shell)/gi.test(e.attribs["class"])
       ) {
-        // validate if it's really resources
         // handle multiblock of resources
-        resources = cheerio(e)
-          .find("code")
-          .text()
-          .split("\n")
-          .filter((u) => u && this.isResource(u))
-          .map((u) => {
-            const [method, path] = u.split(/ +/);
-            return { method, path };
-          });
+        resources.push(
+          ...cheerio(e)
+            .find("code")
+            .text()
+            .split("\n")
+            .filter((u) => u && this.isResource(u))
+            .map((u) => {
+              const [method, path] = u.split(/ +/);
+              return { method, path };
+            })
+        );
       }
 
       if (e.name === "table") {

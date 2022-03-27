@@ -9,6 +9,34 @@
         {
           "method": "GET",
           "path": "/users"
+        },
+        {
+          "method": "GET",
+          "path": "/users?username=:username"
+        },
+        {
+          "method": "GET",
+          "path": "/users?username=jack_smith"
+        },
+        {
+          "method": "GET",
+          "path": "/users?active=true"
+        },
+        {
+          "method": "GET",
+          "path": "/users?blocked=true"
+        },
+        {
+          "method": "GET",
+          "path": "/users?external=true"
+        },
+        {
+          "method": "GET",
+          "path": "/users?exclude_internal=true"
+        },
+        {
+          "method": "GET",
+          "path": "/users?exclude_external=true"
         }
       ],
       "attributes": [],
@@ -38,6 +66,26 @@
         {
           "method": "GET",
           "path": "/users"
+        },
+        {
+          "method": "GET",
+          "path": "/users?extern_uid=:extern_uid&provider=:provider"
+        },
+        {
+          "method": "GET",
+          "path": "/users?extern_uid=1234567&provider=github"
+        },
+        {
+          "method": "GET",
+          "path": "/users?created_before=2001-01-02T00:00:00.060Z&created_after=1999-01-02T00:00:00.060"
+        },
+        {
+          "method": "GET",
+          "path": "/users?custom_attributes[key]=value&custom_attributes[other_key]=other_value"
+        },
+        {
+          "method": "GET",
+          "path": "/users?with_custom_attributes=true"
         }
       ],
       "attributes": [
@@ -211,6 +259,10 @@
         {
           "method": "GET",
           "path": "/users/:id"
+        },
+        {
+          "method": "GET",
+          "path": "/users/:id?with_custom_attributes=true"
         }
       ],
       "attributes": [
@@ -896,6 +948,10 @@
         {
           "method": "POST",
           "path": "/users/:id/follow"
+        },
+        {
+          "method": "POST",
+          "path": "/users/:id/unfollow"
         }
       ],
       "attributes": [
@@ -922,6 +978,10 @@
         {
           "method": "GET",
           "path": "/users/:id/followers"
+        },
+        {
+          "method": "GET",
+          "path": "/users/:id/following"
         }
       ],
       "attributes": [

@@ -9,6 +9,14 @@
         {
           "method": "GET",
           "path": "/groups"
+        },
+        {
+          "method": "GET",
+          "path": "/groups?statistics=true"
+        },
+        {
+          "method": "GET",
+          "path": "/groups?custom_attributes[key]=value&custom_attributes[other_key]=other_value"
         }
       ],
       "attributes": [
@@ -1824,6 +1832,10 @@
         {
           "method": "DELETE",
           "path": "/groups/:id/ldap_group_links/:cn"
+        },
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/ldap_group_links/:provider/:cn"
         }
       ],
       "attributes": [
