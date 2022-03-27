@@ -3,6 +3,7 @@ import {
   TagElement,
   cheerio,
 } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
+import { ensureDirSync } from "https://deno.land/std@0.132.0/fs/mod.ts";
 
 import { Api, Attribute, Resource } from "./models.ts";
 import { load } from "./helper/page.ts";
@@ -63,22 +64,20 @@ export class PageCrawler {
     // introduced-in
     let description = "";
     // h3
-    let resources: Resource[] = [];
+    const resources: Resource[] = [];
     // "Parameters:"
     let attributes: Attribute[] = [];
     // ? "Example Request:"
-    let exampleRequest: string[] = [];
+    // example curl
     // "Example Response:"
     let exampleResponse: any = null;
-
-    let invalid = false;
 
     elems.forEach((e) => {
       if (this.shouldSkip(e)) return;
 
       if (/h[1-3]/.test(e.name)) {
         name = cheerio(e.children).text().replace(/\n/g, " ").trim();
-        // nice to have: handle if h2&  h3 coexist in the same block
+        // nice to have: handle if h2 & h3 coexist in the same block
       }
 
       if (e.name === "p" && !description) {
@@ -121,17 +120,9 @@ export class PageCrawler {
       }
 
       if (/language-json/gi.test(e.attribs["class"])) {
-        if (exampleResponse !== null) {
-          console.log(
-            `${glUrl.pageUrl(this.pagePath)}#${name
-              .toLowerCase()
-              .replace(/ /g, "-")
-              .replace(/\//g, "")}`,
-            "Hit multiple code block!"
-          );
-        }
         const response = this.sanitizeAndParse(
-          cheerio(e).find("code").text().replace(/\n/g, "")
+          cheerio(e).find("code").text().replace(/\n/g, ""),
+          name
         );
 
         if (exampleResponse === null || typeof exampleResponse === "string") {
@@ -149,7 +140,6 @@ export class PageCrawler {
       }
     });
 
-    if (invalid) return undefined;
     if (typeof exampleResponse === "string") {
       console.warn("Parsing error persist!", `${this.pagePath} > ${name}`);
     }
@@ -182,7 +172,7 @@ export class PageCrawler {
     );
   }
 
-  private sanitizeAndParse(json: string): any {
+  private sanitizeAndParse(json: string, apiName: string): any {
     const sanitized = json
       // truncated list/objects
       .replace(/\.\.\. *(]|})/g, "$1")
@@ -201,6 +191,15 @@ export class PageCrawler {
     try {
       return JSON.parse(sanitized);
     } catch {
+      ensureDirSync(`.generated/unparsable`);
+      Deno.writeTextFileSync(
+        ".generated/unparsable/" +
+          this.pagePath.replace(/\.html/, "") +
+          "__" +
+          apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() +
+          ".json",
+        sanitized
+      );
       return sanitized;
     }
   }
