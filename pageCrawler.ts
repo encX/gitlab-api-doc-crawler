@@ -130,11 +130,21 @@ export class PageCrawler {
             "Hit multiple code block!"
           );
         }
+        const response = this.sanitizeAndParse(
+          cheerio(e).find("code").text().replace(/\n/g, "")
+        );
 
         if (exampleResponse === null || typeof exampleResponse === "string") {
-          // check if api hit cultiple code blocks
-          const text = cheerio(e).find("code").text().replace(/\n/g, "");
-          exampleResponse = this.sanitizeAndParse(text);
+          exampleResponse = response;
+        } else if (Array.isArray(exampleResponse) && Array.isArray(response)) {
+          exampleResponse = [...response, ...exampleResponse];
+        } else if (
+          typeof exampleResponse === "object" &&
+          typeof response === "object" &&
+          !Array.isArray(exampleResponse) &&
+          !Array.isArray(response)
+        ) {
+          exampleResponse = { ...response, ...exampleResponse };
         }
       }
     });

@@ -85,7 +85,14 @@
       ],
       "response": {
         "domain": "www.domain.example",
-        "url": "http://www.domain.example"
+        "url": "http://www.domain.example",
+        "auto_ssl_enabled": false,
+        "certificate": {
+          "subject": "/O=Example, Inc./OU=Example Origin CA/CN=Example Origin Certificate",
+          "expired": false,
+          "certificate": "-----BEGIN CERTIFICATE-----\n … \n-----END CERTIFICATE-----",
+          "certificate_text": "Certificate:\n … \n"
+        }
       }
     },
     {

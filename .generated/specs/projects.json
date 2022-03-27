@@ -171,6 +171,11 @@
         {
           "id": 4,
           "description": null,
+          "approvals_before_merge": 0
+        },
+        {
+          "id": 4,
+          "description": null,
           "default_branch": "master",
           "visibility": "private",
           "ssh_url_to_repo": "git@example.com:diaspora/diaspora-client.git",
@@ -1062,6 +1067,7 @@
       "response": {
         "id": 3,
         "description": null,
+        "approvals_before_merge": 0,
         "default_branch": "master",
         "visibility": "private",
         "ssh_url_to_repo": "git@example.com:diaspora/diaspora-project-site.git",
@@ -1173,7 +1179,6 @@
         "squash_option": "default_on",
         "auto_devops_enabled": true,
         "auto_devops_deploy_strategy": "continuous",
-        "approvals_before_merge": 0,
         "mirror": false,
         "mirror_user_id": 45,
         "mirror_trigger_builds": false,
@@ -3940,6 +3945,8 @@
       "response": {
         "id": 1,
         "project_id": 3,
+        "commit_committer_check": false,
+        "reject_unsigned_commits": false,
         "commit_message_regex": "Fixes \\d+\\..*",
         "commit_message_negative_regex": "ssh\\:\\/\\/",
         "branch_name_regex": "",
@@ -3949,9 +3956,7 @@
         "prevent_secrets": false,
         "author_email_regex": "",
         "file_name_regex": "",
-        "max_file_size": 5,
-        "commit_committer_check": false,
-        "reject_unsigned_commits": false
+        "max_file_size": 5
       }
     },
     {

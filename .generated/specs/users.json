@@ -276,6 +276,24 @@
       "response": {
         "id": 1,
         "username": "john_smith",
+        "shared_runners_minutes_limit": 133,
+        "extra_shared_runners_minutes_limit": 133,
+        "identities": [
+          {
+            "provider": "github",
+            "extern_uid": "2435223452345"
+          },
+          {
+            "provider": "bitbucket",
+            "extern_uid": "john.smith"
+          },
+          {
+            "provider": "google_oauth2",
+            "extern_uid": "8776128412476123468721346"
+          }
+        ],
+        "provisioned_by_group_id": 123789,
+        "is_auditor": false,
         "email": "john@example.com",
         "name": "John Smith",
         "state": "active",
@@ -300,20 +318,6 @@
         "projects_limit": 100,
         "current_sign_in_at": "2012-06-02T06:36:55Z",
         "note": "DMCA Request: 2018-11-05 | DMCA Violation | Abuse | https://gitlab.zendesk.com/agent/tickets/123",
-        "identities": [
-          {
-            "provider": "github",
-            "extern_uid": "2435223452345"
-          },
-          {
-            "provider": "bitbucket",
-            "extern_uid": "john.smith"
-          },
-          {
-            "provider": "google_oauth2",
-            "extern_uid": "8776128412476123468721346"
-          }
-        ],
         "can_create_group": true,
         "can_create_project": true,
         "two_factor_enabled": true,
@@ -1183,6 +1187,14 @@
         }
       ],
       "response": {
+        "message": {
+          "fingerprint": [
+            "has already been taken"
+          ],
+          "key": [
+            "has already been taken"
+          ]
+        },
         "title": "ABC",
         "key": "ssh-dss AAAAB3NzaC1kc3MAAACBAMLrhYgI3atfrSD6KDas1b/3n6R/HP+bLaHHX6oh+L1vg31mdUqK0Ac/NjZoQunavoyzqdPYhFz9zzOezCrZKjuJDS3NRK9rspvjgM0xYR4d47oNZbdZbwkI4cTv/gcMlquRy0OvpfIvJtjtaJWMwTLtM5VhRusRuUlpH99UUVeXAAAAFQCVyX+92hBEjInEKL0v13c/egDCTQAAAIEAvFdWGq0ccOPbw4f/F8LpZqvWDydAcpXHV3thwb7WkFfppvm4SZte0zds1FJ+Hr8Xzzc5zMHe6J4Nlay/rP4ewmIW7iFKNBEYb/yWa+ceLrs+TfR672TaAgO6o7iSRofEq5YLdwgrwkMmIawa21FrZ2D9SPao/IwvENzk/xcHu7YAAACAQFXQH6HQnxOrw4dqf0NqeKy1tfIPxYYUZhPJfo9O0AmBW2S36pD2l14kS89fvz6Y1g8gN/FwFnRncMzlLY/hX70FSc/3hKBSbH6C6j8hwlgFKfizav21eS358JJz93leOakJZnGb8XlWvz1UJbwCsnR2VEY8Dz90uIk1l/UqHkA= loic@call",
         "expires_at": "2016-01-21T00:00:00.000Z"
@@ -1547,6 +1559,11 @@
         }
       ],
       "response": {
+        "message": {
+          "email": [
+            "has already been taken"
+          ]
+        },
         "id": 4,
         "email": "email@example.com",
         "confirmed_at": "2021-03-26T19:07:56.248Z"

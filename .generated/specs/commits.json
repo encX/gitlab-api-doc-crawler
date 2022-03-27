@@ -334,6 +334,9 @@
         }
       ],
       "response": {
+        "dry_run": "success",
+        "message": "Feature added\n\nSigned-off-by: Example User <user@example.com>\n",
+        "error_code": "empty",
         "id": "8b090c1b79a14f2bd9e8a738f717824ff53aebad",
         "short_id": "8b090c1b",
         "author_name": "Example User",
@@ -344,7 +347,6 @@
         "committer_email": "admin@example.com",
         "committed_date": "2016-12-12T20:10:39.000+01:00",
         "title": "Feature added",
-        "message": "Feature added\n\nSigned-off-by: Example User <user@example.com>\n",
         "parent_ids": [
           "a738f717824ff53aebad8b090c1b79a14f2bd9e8"
         ],
@@ -387,6 +389,9 @@
         }
       ],
       "response": {
+        "dry_run": "success",
+        "message": "Revert \"Feature added\"\n\nThis reverts commit a738f717824ff53aebad8b090c1b79a14f2bd9e8",
+        "error_code": "conflict",
         "id": "8b090c1b79a14f2bd9e8a738f717824ff53aebad",
         "short_id": "8b090c1b",
         "title": "Revert \"Feature added\"",
@@ -394,7 +399,6 @@
         "parent_ids": [
           "a738f717824ff53aebad8b090c1b79a14f2bd9e8"
         ],
-        "message": "Revert \"Feature added\"\n\nThis reverts commit a738f717824ff53aebad8b090c1b79a14f2bd9e8",
         "author_name": "Administrator",
         "author_email": "admin@example.com",
         "authored_date": "2018-11-08T15:55:26.000Z",
@@ -870,14 +874,29 @@
         }
       ],
       "response": {
+        "message": "404 GPG Signature Not Found",
         "signature_type": "PGP",
         "verification_status": "verified",
+        "x509_certificate": {
+          "id": 1,
+          "subject": "CN=gitlab@example.org,OU=Example,O=World",
+          "subject_key_identifier": "BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC:BC",
+          "email": "gitlab@example.org",
+          "serial_number": 2.7896956101890133e+38,
+          "certificate_status": "good",
+          "x509_issuer": {
+            "id": 1,
+            "subject": "CN=PKI,OU=Example,O=World",
+            "subject_key_identifier": "AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB:AB",
+            "crl_url": "http://example.com/pki.crl"
+          }
+        },
+        "commit_source": "gitaly",
         "gpg_key_id": 1,
         "gpg_key_primary_keyid": "8254AAB3FBD54AC9",
         "gpg_key_user_name": "John Doe",
         "gpg_key_user_email": "johndoe@example.com",
-        "gpg_key_subkey_id": null,
-        "commit_source": "gitaly"
+        "gpg_key_subkey_id": null
       }
     }
   ]
