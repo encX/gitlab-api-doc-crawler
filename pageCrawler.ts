@@ -49,17 +49,12 @@ export class PageCrawler {
         current = [e];
       } else if (Array.isArray(current)) {
         current.push(e);
-      } else {
-        // console.warn(
-        //   "=> Uncatched element",
-        //   e.name,
-        //   cheerio(e).text().replace(/\n/g, "\\\\n")
-        // );
       }
     });
 
-    if (current! && Array.isArray(current)) groups.push(current);
-
+    if (current! && Array.isArray(current)) {
+      groups.push(current);
+    }
     return groups;
   }
 
@@ -83,20 +78,28 @@ export class PageCrawler {
 
       if (/h[1-3]/.test(e.name)) {
         name = cheerio(e.children).text().replace(/\n/g, " ").trim();
+        // nice to have: handle if h2&  h3 coexist in the same block
       }
 
       if (e.name === "p") {
+        // only first one?
         description = cheerio(e.children).text().replace(/\n/g, " ").trim();
       }
 
-      if (e.name === "div" && /language-plaintext/gi.test(e.attribs["class"])) {
+      if (
+        e.name === "div" &&
+        /language-(plaintext|shell)/gi.test(e.attribs["class"]) &&
+        resources.length === 0
+      ) {
+        // validate if it's really resources
+        // handle multiblock of resources
         resources = cheerio(e)
           .find("code")
           .text()
           .split("\n")
-          .filter((u) => u)
+          .filter((u) => u && this.isResource(u))
           .map((u) => {
-            const [method, path] = u.split(" ");
+            const [method, path] = u.split(/ +/);
             return { method, path };
           });
       }
@@ -142,6 +145,9 @@ export class PageCrawler {
     if (typeof exampleResponse === "string") {
       console.warn("Parsing error persist!", `${this.pagePath} > ${name}`);
     }
+
+    if (!name || resources.length === 0) return undefined;
+
     return {
       name,
       description,
@@ -149,7 +155,6 @@ export class PageCrawler {
       attributes,
       response: exampleResponse,
     };
-    // at least title, desc?, urls, attrs?, reqEx, resEx?
   }
 
   private shouldSkip(elem: TagElement): boolean {
@@ -157,6 +162,14 @@ export class PageCrawler {
     if (/Example (request|response):?/gi.test(cheerio(elem).text()))
       return true;
     return false;
+  }
+
+  private isResource(str: string): boolean {
+    const [method, path] = str.split(/ +/);
+    return (
+      /^(GET|POST|PUT|PATCH|DELETE)$/i.test(method) &&
+      /^(\/?:?\w+)((\/:?\w+))*/.test(path)
+    );
   }
 
   private sanitizeAndParse(json: string): any {
