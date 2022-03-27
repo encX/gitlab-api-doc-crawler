@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List snippets",
-      "description": "Parameters:",
+      "description": "Get a list of project snippets.",
       "resources": [
         {
           "method": "GET",
@@ -23,7 +23,7 @@
     },
     {
       "name": "Single snippet",
-      "description": "Parameters:",
+      "description": "Get a single project snippet.",
       "resources": [
         {
           "method": "GET",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Create new snippet",
-      "description": "Parameters:",
+      "description": "Creates a new project snippet. The user must have permission to create new snippets.",
       "resources": [
         {
           "method": "POST",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Update snippet",
-      "description": "Updates to snippets with multiple files must use the files attribute.",
+      "description": "Updates an existing project snippet. The user must have permission to change an existing snippet.",
       "resources": [
         {
           "method": "PUT",
@@ -239,7 +239,7 @@
     },
     {
       "name": "Delete snippet",
-      "description": "Parameters:",
+      "description": "Deletes an existing project snippet. This returns a 204 No Content status code if the operation was successfully or 404 if the resource was not found.",
       "resources": [
         {
           "method": "DELETE",
@@ -264,7 +264,7 @@
     },
     {
       "name": "Snippet content",
-      "description": "Parameters:",
+      "description": "Returns the raw project snippet as plain text.",
       "resources": [
         {
           "method": "GET",
@@ -289,7 +289,7 @@
     },
     {
       "name": "Snippet repository file content",
-      "description": "Parameters:",
+      "description": "Returns the raw file content as plain text.",
       "resources": [
         {
           "method": "GET",

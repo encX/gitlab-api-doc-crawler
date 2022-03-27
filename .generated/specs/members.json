@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List all members of a group or project",
-      "description": "This function takes pagination parameters page and per_page to restrict the list of users.",
+      "description": "Gets a list of group or project members viewable by the authenticated user. Returns only direct members and not inherited members through ancestors groups.",
       "resources": [
         {
           "method": "GET",
@@ -69,7 +69,7 @@
     },
     {
       "name": "List all members of a group or project including inherited and invited members",
-      "description": "This function takes pagination parameters page and per_page to restrict the list of users.",
+      "description": "Gets a list of group or project members viewable by the authenticated user, including inherited members, invited users, and permissions through ancestor groups.",
       "resources": [
         {
           "method": "GET",
@@ -235,7 +235,7 @@
     },
     {
       "name": "List all billable members of a group",
-      "description": "The supported values for the sort attribute are:",
+      "description": "Gets a list of group members that count as billable. The list includes members in the subgroup or subproject.",
       "resources": [
         {
           "method": "GET",
@@ -336,7 +336,7 @@
     },
     {
       "name": "List memberships for a billable member of a group",
-      "description": "This API endpoint takes pagination parameters page and per_page to restrict the list of memberships.",
+      "description": "Gets a list of memberships for a billable member of a group.",
       "resources": [
         {
           "method": "GET",
@@ -386,7 +386,7 @@
     },
     {
       "name": "Remove a billable member from a group",
-      "description": "The user does not need to be a group member to qualify for removal. For example, if the user was added directly to a project within the group, you can still use this API to remove them.",
+      "description": "Removes a billable member from a group and its subgroups and projects.",
       "resources": [
         {
           "method": "DELETE",
@@ -605,7 +605,7 @@
     },
     {
       "name": "Remove a member from a group or project",
-      "description": "The user needs to be a group member to qualify for removal. For example, if the user was added directly to a project within the group but not this group explicitly, you cannot use this API to remove them. See Remove a billable member from a group for an alternative approach.",
+      "description": "Removes a user from a group or project where the user has been explicitly assigned a role.",
       "resources": [
         {
           "method": "DELETE",
@@ -690,7 +690,7 @@
     },
     {
       "name": "List pending members of a group and its subgroups and projects",
-      "description": "This API endpoint takes pagination parameters page and per_page to restrict the list of members.",
+      "description": "For a group and its subgroups and projects, get a list of all members in an awaiting state and those who are invited but do not have a GitLab account.",
       "resources": [
         {
           "method": "GET",

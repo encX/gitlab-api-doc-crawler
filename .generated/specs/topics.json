@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List topics",
-      "description": "Supported attributes:",
+      "description": "Returns a list of project topics in the GitLab instance ordered by number of associated projects.",
       "resources": [
         {
           "method": "GET",
@@ -57,7 +57,7 @@
     },
     {
       "name": "Get a topic",
-      "description": "Supported attributes:",
+      "description": "Get a project topic by ID.",
       "resources": [
         {
           "method": "GET",
@@ -94,7 +94,7 @@
     },
     {
       "name": "Create a project topic",
-      "description": "Supported attributes:",
+      "description": "Create a new project topic. Only available to administrators.",
       "resources": [
         {
           "method": "POST",
@@ -131,7 +131,7 @@
     },
     {
       "name": "Update a project topic",
-      "description": "Supported attributes:",
+      "description": "Update a project topic. Only available to administrators.",
       "resources": [
         {
           "method": "PUT",
@@ -174,7 +174,7 @@
     },
     {
       "name": "Delete a project topic",
-      "description": "Supported attributes:",
+      "description": "You must be an administrator to delete a project. When you delete a project topic, you also delete the topic assignment for projects.",
       "resources": [
         {
           "method": "DELETE",

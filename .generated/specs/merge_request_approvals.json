@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Get Configuration",
-      "description": "Parameters:",
+      "description": "You can request information about a project’s approval configuration using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Change configuration",
-      "description": "Parameters:",
+      "description": "If you are allowed to, you can change approval configuration using the following endpoint:",
       "resources": [
         {
           "method": "POST",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Get project-level rules",
-      "description": "Parameters:",
+      "description": "You can request information about a project’s approval rules using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -190,7 +190,7 @@
     },
     {
       "name": "Get a single project-level rule",
-      "description": "Parameters:",
+      "description": "You can request information about a single project approval rules using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -292,7 +292,7 @@
     },
     {
       "name": "Create project-level rule",
-      "description": "Another example is creating an additional, user-specific rule:",
+      "description": "You can create project approval rules using the following endpoint:",
       "resources": [
         {
           "method": "POST",
@@ -454,7 +454,7 @@
     },
     {
       "name": "Update project-level rule",
-      "description": "Parameters:",
+      "description": "You can update project approval rules using the following endpoint:",
       "resources": [
         {
           "method": "PUT",
@@ -610,7 +610,7 @@
     },
     {
       "name": "Delete project-level rule",
-      "description": "Parameters:",
+      "description": "You can delete project approval rules using the following endpoint:",
       "resources": [
         {
           "method": "DELETE",
@@ -635,7 +635,7 @@
     },
     {
       "name": "Get Configuration",
-      "description": "Parameters:",
+      "description": "You can request information about a merge request’s approval status using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -684,7 +684,7 @@
     },
     {
       "name": "Change approval configuration",
-      "description": "Parameters:",
+      "description": "If you are allowed to, you can change approvals_required using the following endpoint:",
       "resources": [
         {
           "method": "POST",
@@ -728,7 +728,7 @@
     },
     {
       "name": "Get the approval state of merge requests",
-      "description": "Parameters:",
+      "description": "You can request information about a merge request’s approval state by using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -798,7 +798,7 @@
     },
     {
       "name": "Get merge request level rules",
-      "description": "Parameters:",
+      "description": "You can request information about a merge request’s approval rules using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -879,7 +879,7 @@
     },
     {
       "name": "Get a single merge request level rule",
-      "description": "Parameters:",
+      "description": "You can request information about a single merge request approval rule using the following endpoint:",
       "resources": [
         {
           "method": "GET",
@@ -964,7 +964,7 @@
     },
     {
       "name": "Create merge request level rule",
-      "description": "Important: When approval_project_rule_id is set, the name, users and groups of project-level rule are copied. The approvals_required specified is used.",
+      "description": "You can create merge request approval rules using the following endpoint:",
       "resources": [
         {
           "method": "POST",
@@ -1073,7 +1073,7 @@
     },
     {
       "name": "Update merge request level rule",
-      "description": "Parameters:",
+      "description": "You can update merge request approval rules using the following endpoint:",
       "resources": [
         {
           "method": "PUT",
@@ -1182,7 +1182,7 @@
     },
     {
       "name": "Delete merge request level rule",
-      "description": "Parameters:",
+      "description": "You can delete merge request approval rules using the following endpoint:",
       "resources": [
         {
           "method": "DELETE",
@@ -1213,7 +1213,7 @@
     },
     {
       "name": "Approve merge request",
-      "description": "The sha parameter works in the same way as when accepting a merge request: if it is passed, then it must match the current HEAD of the merge request for the approval to be added. If it does not match, the response code is 409.",
+      "description": "If you are allowed to, you can approve a merge request using the following endpoint:",
       "resources": [
         {
           "method": "POST",
@@ -1284,7 +1284,7 @@
     },
     {
       "name": "Unapprove merge request",
-      "description": "Parameters:",
+      "description": "If you did approve a merge request, you can unapprove it using the following endpoint:",
       "resources": [
         {
           "method": "POST",

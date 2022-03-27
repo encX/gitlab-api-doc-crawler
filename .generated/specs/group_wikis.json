@@ -186,7 +186,7 @@
     },
     {
       "name": "Delete a wiki page",
-      "description": "On success the HTTP status code is 204 and no JSON response is expected.",
+      "description": "Delete a wiki page with a given slug.",
       "resources": [
         {
           "method": "DELETE",
@@ -211,7 +211,7 @@
     },
     {
       "name": "Upload an attachment to the wiki repository",
-      "description": "To upload a file from your file system, use the --form argument. This causes cURL to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
+      "description": "Upload a file to the attachment folder inside the wiki’s repository. The attachment folder is the uploads folder.",
       "resources": [
         {
           "method": "POST",

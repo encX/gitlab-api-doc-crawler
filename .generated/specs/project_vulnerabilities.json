@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List project vulnerabilities",
-      "description": "If an authenticated user does not have permission to use the Project Security Dashboard, GET requests for vulnerabilities of this project result in a 403 status code.",
+      "description": "List all of a project’s vulnerabilities.",
       "resources": [
         {
           "method": "GET",
@@ -74,7 +74,7 @@
     },
     {
       "name": "New vulnerability",
-      "description": "The other attributes of a newly created Vulnerability are populated from its source Vulnerability Finding, or with these default values:",
+      "description": "Creates a new vulnerability.",
       "resources": [
         {
           "method": "POST",

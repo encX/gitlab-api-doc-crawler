@@ -37,7 +37,7 @@
     },
     {
       "name": "Retrieve all repository storage moves for a snippet",
-      "description": "Supported attributes:",
+      "description": "By default, GET requests return 20 results at a time because the API results are paginated.",
       "resources": [
         {
           "method": "GET",
@@ -203,7 +203,7 @@
     },
     {
       "name": "Schedule repository storage moves for all snippets on a storage shard",
-      "description": "Supported attributes:",
+      "description": "Schedules repository storage moves for each snippet repository stored on the source storage shard.",
       "resources": [
         {
           "method": "POST",

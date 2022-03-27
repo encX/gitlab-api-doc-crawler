@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List all deploy tokens",
-      "description": "Parameters:",
+      "description": "Get a list of all deploy tokens across the GitLab instance. This endpoint requires administrator access.",
       "resources": [
         {
           "method": "GET",
@@ -36,7 +36,7 @@
     },
     {
       "name": "List project deploy tokens",
-      "description": "Parameters:",
+      "description": "Get a list of a project’s deploy tokens.",
       "resources": [
         {
           "method": "GET",
@@ -74,7 +74,7 @@
     },
     {
       "name": "Get a project deploy token",
-      "description": "Parameters:",
+      "description": "Get a single project’s deploy token by ID.",
       "resources": [
         {
           "method": "GET",
@@ -110,7 +110,7 @@
     },
     {
       "name": "Create a project deploy token",
-      "description": "Parameters:",
+      "description": "Creates a new deploy token for a project.",
       "resources": [
         {
           "method": "POST",
@@ -164,7 +164,7 @@
     },
     {
       "name": "Delete a project deploy token",
-      "description": "Parameters:",
+      "description": "Removes a deploy token from the project.",
       "resources": [
         {
           "method": "DELETE",
@@ -189,7 +189,7 @@
     },
     {
       "name": "List group deploy tokens",
-      "description": "Parameters:",
+      "description": "Get a list of a group’s deploy tokens",
       "resources": [
         {
           "method": "GET",
@@ -227,7 +227,7 @@
     },
     {
       "name": "Get a group deploy token",
-      "description": "Parameters:",
+      "description": "Get a single group’s deploy token by ID.",
       "resources": [
         {
           "method": "GET",
@@ -263,7 +263,7 @@
     },
     {
       "name": "Create a group deploy token",
-      "description": "Parameters:",
+      "description": "Creates a new deploy token for a group.",
       "resources": [
         {
           "method": "POST",
@@ -317,7 +317,7 @@
     },
     {
       "name": "Delete a group deploy token",
-      "description": "Parameters:",
+      "description": "Removes a deploy token from the group.",
       "resources": [
         {
           "method": "DELETE",

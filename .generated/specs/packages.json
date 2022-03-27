@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Within a project",
-      "description": "Although you can filter packages by status, working with packages that have a processing status can result in malformed data or broken packages.",
+      "description": "Get a list of project packages. All package types are included in results. When accessed without authentication, only packages of public projects are returned.",
       "resources": [
         {
           "method": "GET",
@@ -87,7 +87,7 @@
     },
     {
       "name": "Within a group",
-      "description": "Although you can filter packages by status, working with packages that have a processing status can result in malformed data or broken packages.",
+      "description": "Get a list of project packages at the group level. When accessed without authentication, only packages of public projects are returned.",
       "resources": [
         {
           "method": "GET",
@@ -201,7 +201,7 @@
     },
     {
       "name": "Get a project package",
-      "description": "The _links object contains the following properties:",
+      "description": "Get a single project package.",
       "resources": [
         {
           "method": "GET",
@@ -273,7 +273,7 @@
     },
     {
       "name": "List package files",
-      "description": "By default, the GET request returns 20 results, because the API is paginated.",
+      "description": "Get a list of package files of a single package.",
       "resources": [
         {
           "method": "GET",
@@ -344,7 +344,7 @@
     },
     {
       "name": "Delete a project package",
-      "description": "Can return the following status codes:",
+      "description": "Deletes a project package.",
       "resources": [
         {
           "method": "DELETE",
@@ -369,7 +369,7 @@
     },
     {
       "name": "Delete a package file",
-      "description": "Can return the following status codes:",
+      "description": "Delete a package file:",
       "resources": [
         {
           "method": "DELETE",

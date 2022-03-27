@@ -104,7 +104,7 @@
     },
     {
       "name": "Get single issue discussion item",
-      "description": "Parameters:",
+      "description": "Returns a single discussion item for a specific project issue",
       "resources": [
         {
           "method": "GET",
@@ -135,7 +135,7 @@
     },
     {
       "name": "Create new issue thread",
-      "description": "Parameters:",
+      "description": "Creates a new thread to a single project issue. This is similar to creating a note but other comments (replies) can be added to it later.",
       "resources": [
         {
           "method": "POST",
@@ -172,7 +172,7 @@
     },
     {
       "name": "Add note to existing issue thread",
-      "description": "Parameters:",
+      "description": "Adds a new note to the thread. This can also create a thread from a single comment.",
       "resources": [
         {
           "method": "POST",
@@ -221,7 +221,7 @@
     },
     {
       "name": "Modify existing issue thread note",
-      "description": "Parameters:",
+      "description": "Modify existing thread note of an issue.",
       "resources": [
         {
           "method": "PUT",
@@ -264,7 +264,7 @@
     },
     {
       "name": "Delete an issue thread note",
-      "description": "Parameters:",
+      "description": "Deletes an existing thread note of an issue.",
       "resources": [
         {
           "method": "DELETE",
@@ -401,7 +401,7 @@
     },
     {
       "name": "Get single snippet discussion item",
-      "description": "Parameters:",
+      "description": "Returns a single discussion item for a specific project snippet",
       "resources": [
         {
           "method": "GET",
@@ -432,7 +432,7 @@
     },
     {
       "name": "Create new snippet thread",
-      "description": "Parameters:",
+      "description": "Creates a new thread to a single project snippet. This is similar to creating a note but other comments (replies) can be added to it later.",
       "resources": [
         {
           "method": "POST",
@@ -469,7 +469,7 @@
     },
     {
       "name": "Add note to existing snippet thread",
-      "description": "Parameters:",
+      "description": "Adds a new note to the thread.",
       "resources": [
         {
           "method": "POST",
@@ -518,7 +518,7 @@
     },
     {
       "name": "Modify existing snippet thread note",
-      "description": "Parameters:",
+      "description": "Modify existing thread note of a snippet.",
       "resources": [
         {
           "method": "PUT",
@@ -561,7 +561,7 @@
     },
     {
       "name": "Delete a snippet thread note",
-      "description": "Parameters:",
+      "description": "Deletes an existing thread note of a snippet.",
       "resources": [
         {
           "method": "DELETE",
@@ -699,7 +699,7 @@
     },
     {
       "name": "Get single epic discussion item",
-      "description": "Parameters:",
+      "description": "Returns a single discussion item for a specific group epic",
       "resources": [
         {
           "method": "GET",
@@ -730,7 +730,7 @@
     },
     {
       "name": "Create new epic thread",
-      "description": "Parameters:",
+      "description": "Creates a new thread to a single group epic. This is similar to creating a note but other comments (replies) can be added to it later.",
       "resources": [
         {
           "method": "POST",
@@ -767,7 +767,7 @@
     },
     {
       "name": "Add note to existing epic thread",
-      "description": "Parameters:",
+      "description": "Adds a new note to the thread. This can also create a thread from a single comment.",
       "resources": [
         {
           "method": "POST",
@@ -816,7 +816,7 @@
     },
     {
       "name": "Modify existing epic thread note",
-      "description": "Parameters:",
+      "description": "Modify existing thread note of an epic.",
       "resources": [
         {
           "method": "PUT",
@@ -859,7 +859,7 @@
     },
     {
       "name": "Delete an epic thread note",
-      "description": "Parameters:",
+      "description": "Deletes an existing thread note of an epic.",
       "resources": [
         {
           "method": "DELETE",
@@ -896,7 +896,7 @@
     },
     {
       "name": "List project merge request discussion items",
-      "description": "Diff comments also contain position:",
+      "description": "Gets a list of all discussion items for a single merge request.",
       "resources": [
         {
           "method": "GET",
@@ -1004,7 +1004,7 @@
     },
     {
       "name": "Get single merge request discussion item",
-      "description": "Parameters:",
+      "description": "Returns a single discussion item for a specific project merge request",
       "resources": [
         {
           "method": "GET",
@@ -1035,7 +1035,7 @@
     },
     {
       "name": "Create new merge request thread",
-      "description": "If a commit (<COMMIT_ID>) adds line 157 to hello.rb, you can comment on the addition by referencing line 157 in the new file:",
+      "description": "Creates a new thread to a single project merge request. This is similar to creating a note but other comments (replies) can be added to it later.",
       "resources": [
         {
           "method": "POST",
@@ -1084,7 +1084,7 @@
     },
     {
       "name": "Resolve a merge request thread",
-      "description": "Parameters:",
+      "description": "Resolve/unresolve whole thread of a merge request.",
       "resources": [
         {
           "method": "PUT",
@@ -1121,7 +1121,7 @@
     },
     {
       "name": "Add note to existing merge request thread",
-      "description": "Parameters:",
+      "description": "Adds a new note to the thread. This can also create a thread from a single comment.",
       "resources": [
         {
           "method": "POST",
@@ -1170,7 +1170,7 @@
     },
     {
       "name": "Modify an existing merge request thread note",
-      "description": "Resolving a note:",
+      "description": "Modify or resolve an existing thread note of a merge request.",
       "resources": [
         {
           "method": "PUT",
@@ -1219,7 +1219,7 @@
     },
     {
       "name": "Delete a merge request thread note",
-      "description": "Parameters:",
+      "description": "Deletes an existing thread note of a merge request.",
       "resources": [
         {
           "method": "DELETE",
@@ -1256,7 +1256,7 @@
     },
     {
       "name": "List project commit discussion items",
-      "description": "Diff comments contain also position:",
+      "description": "Gets a list of all discussion items for a single commit.",
       "resources": [
         {
           "method": "GET",
@@ -1357,7 +1357,7 @@
     },
     {
       "name": "Get single commit discussion item",
-      "description": "Parameters:",
+      "description": "Returns a single discussion item for a specific project commit",
       "resources": [
         {
           "method": "GET",
@@ -1388,7 +1388,7 @@
     },
     {
       "name": "Create new commit thread",
-      "description": "The rules for creating the API request are the same as when creating a new thread in the merge request diff, with the exception of base_sha, start_sha, and head_sha attributes.",
+      "description": "Creates a new thread to a single project commit. This is similar to creating a note but other comments (replies) can be added to it later.",
       "resources": [
         {
           "method": "POST",
@@ -1503,7 +1503,7 @@
     },
     {
       "name": "Add note to existing commit thread",
-      "description": "Parameters:",
+      "description": "Adds a new note to the thread.",
       "resources": [
         {
           "method": "POST",
@@ -1552,7 +1552,7 @@
     },
     {
       "name": "Modify an existing commit thread note",
-      "description": "Resolving a note:",
+      "description": "Modify or resolve an existing thread note of a commit.",
       "resources": [
         {
           "method": "PUT",
@@ -1595,7 +1595,7 @@
     },
     {
       "name": "Delete a commit thread note",
-      "description": "Parameters:",
+      "description": "Deletes an existing thread note of a commit.",
       "resources": [
         {
           "method": "DELETE",

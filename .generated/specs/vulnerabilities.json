@@ -47,7 +47,7 @@
     },
     {
       "name": "Confirm vulnerability",
-      "description": "If an authenticated user does not have permission to confirm vulnerabilities, this request results in a 403 status code.",
+      "description": "Confirms a given vulnerability. Returns status code 304 if the vulnerability is already confirmed.",
       "resources": [
         {
           "method": "POST",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Resolve vulnerability",
-      "description": "If an authenticated user does not have permission to resolve vulnerabilities, this request results in a 403 status code.",
+      "description": "Resolves a given vulnerability. Returns status code 304 if the vulnerability is already resolved.",
       "resources": [
         {
           "method": "POST",
@@ -133,7 +133,7 @@
     },
     {
       "name": "Dismiss vulnerability",
-      "description": "If an authenticated user does not have permission to dismiss vulnerabilities, this request results in a 403 status code.",
+      "description": "Dismisses a given vulnerability. Returns status code 304 if the vulnerability is already dismissed.",
       "resources": [
         {
           "method": "POST",
@@ -176,7 +176,7 @@
     },
     {
       "name": "Revert vulnerability to detected state",
-      "description": "If an authenticated user does not have permission to revert vulnerability to detected state, this request results in a 403 status code.",
+      "description": "Reverts a given vulnerability to detected state. Returns status code 304 if the vulnerability is already in detected state.",
       "resources": [
         {
           "method": "POST",

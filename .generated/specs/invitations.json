@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Invite by email to group or project",
-      "description": "When there was any error sending the email:",
+      "description": "Invites a new user by email to join a group or project.",
       "resources": [
         {
           "method": "POST",
@@ -65,7 +65,7 @@
     },
     {
       "name": "List all invitations pending for a group or project",
-      "description": "This function takes pagination parameters page and per_page to restrict the list of users.",
+      "description": "Gets a list of invited group or project members viewable by the authenticated user. Returns invitations to direct members only, and not through inherited ancestors’ groups.",
       "resources": [
         {
           "method": "GET",

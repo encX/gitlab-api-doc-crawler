@@ -238,7 +238,7 @@
     },
     {
       "name": "Edit a Geo node",
-      "description": "This can only be run against a primary Geo node.",
+      "description": "Updates settings of an existing Geo node.",
       "resources": [
         {
           "method": "PUT",
@@ -383,7 +383,7 @@
     },
     {
       "name": "Repair a Geo node",
-      "description": "This can only be run against a primary Geo node.",
+      "description": "To repair the OAuth authentication of a Geo node.",
       "resources": [
         {
           "method": "POST",
@@ -923,7 +923,7 @@
     },
     {
       "name": "Retrieve project sync or verification failures that occurred on the current node",
-      "description": "This endpoint uses Pagination.",
+      "description": "This only works on a secondary node.",
       "resources": [
         {
           "method": "GET",

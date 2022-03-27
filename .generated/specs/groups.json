@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List groups",
-      "description": "You can filter by custom attributes with:",
+      "description": "Get a list of visible groups for the authenticated user. When accessed without authentication, only public groups are returned.",
       "resources": [
         {
           "method": "GET",
@@ -111,7 +111,7 @@
     },
     {
       "name": "List a group’s subgroups",
-      "description": "Parameters:",
+      "description": "Get a list of visible direct subgroups in this group. When accessed without authentication, only public groups are returned.",
       "resources": [
         {
           "method": "GET",
@@ -210,7 +210,7 @@
     },
     {
       "name": "List a group’s descendant groups",
-      "description": "Parameters:",
+      "description": "Get a list of visible descendant groups of this group. When accessed without authentication, only public groups are returned.",
       "resources": [
         {
           "method": "GET",
@@ -334,7 +334,7 @@
     },
     {
       "name": "List a group’s projects",
-      "description": "Parameters:",
+      "description": "Get a list of projects in this group. When accessed without authentication, only public projects are returned.",
       "resources": [
         {
           "method": "GET",
@@ -482,7 +482,7 @@
     },
     {
       "name": "List a group’s shared projects",
-      "description": "Parameters:",
+      "description": "Get a list of projects shared to this group. When accessed without authentication, only public shared projects are returned.",
       "resources": [
         {
           "method": "GET",
@@ -669,7 +669,7 @@
     },
     {
       "name": "Details of a group",
-      "description": "When adding the parameter with_projects=false, projects aren’t returned.",
+      "description": "Get all details of a group. This endpoint can be accessed without authentication if the group is publicly accessible. In case the user that requests is an administrator if the group is publicly accessible. With authentication, it returns the runners_token for the group too, if the user is an administrator or group owner.",
       "resources": [
         {
           "method": "GET",
@@ -860,7 +860,7 @@
     },
     {
       "name": "Download a Group avatar",
-      "description": "Example:",
+      "description": "Get a group avatar. This endpoint can be accessed without authentication if the group is publicly accessible.",
       "resources": [
         {
           "method": "GET",
@@ -879,7 +879,7 @@
     },
     {
       "name": "New group",
-      "description": "Parameters:",
+      "description": "Creates a new project group. Available only for users who can create groups.",
       "resources": [
         {
           "method": "POST",
@@ -1012,7 +1012,7 @@
     },
     {
       "name": "Transfer project to group",
-      "description": "Parameters:",
+      "description": "Transfer a project to the Group namespace. Available only to instance administrators, although an alternative API endpoint is available which does not require administrator access on the instance. Transferring projects may fail when tagged packages exist in the project’s repository.",
       "resources": [
         {
           "method": "POST",
@@ -1037,7 +1037,7 @@
     },
     {
       "name": "Transfer a group to a new parent group / Turn a subgroup to a top-level group",
-      "description": "Parameters:",
+      "description": "Transfer a group to a new parent group or turn a subgroup to a top-level group. Available to administrators and users:",
       "resources": [
         {
           "method": "POST",
@@ -1062,7 +1062,7 @@
     },
     {
       "name": "Update group",
-      "description": "The prevent_sharing_groups_outside_hierarchy attribute is present in the response only for top-level groups.",
+      "description": "Updates the project group. Only available to group owners and administrators.",
       "resources": [
         {
           "method": "PUT",
@@ -1275,7 +1275,7 @@
     },
     {
       "name": "Remove group",
-      "description": "The response is 202 Accepted if the user has authorization.",
+      "description": "Only available to group owners and administrators.",
       "resources": [
         {
           "method": "DELETE",
@@ -1294,7 +1294,7 @@
     },
     {
       "name": "Restore group marked for deletion",
-      "description": "Parameters:",
+      "description": "Restores a group marked for deletion.",
       "resources": [
         {
           "method": "POST",
@@ -1332,7 +1332,7 @@
     },
     {
       "name": "List provisioned users",
-      "description": "Parameters:",
+      "description": "Get a list of users provisioned by a given group. Does not include users provisioned by subgroups.",
       "resources": [
         {
           "method": "GET",
@@ -1753,7 +1753,7 @@
     },
     {
       "name": "Sync group with LDAP",
-      "description": "Parameters:",
+      "description": "Syncs the group with its linked LDAP group. Only available to group owners and administrators.",
       "resources": [
         {
           "method": "POST",
@@ -1827,7 +1827,7 @@
     },
     {
       "name": "Delete LDAP group link",
-      "description": "Deletes an LDAP group link for a specific LDAP provider. Deprecated. Scheduled for removal in a future release.",
+      "description": "Deletes an LDAP group link. Deprecated. Scheduled for removal in a future release.",
       "resources": [
         {
           "method": "DELETE",
@@ -1961,7 +1961,7 @@
     },
     {
       "name": "Get group push rules",
-      "description": "Users on GitLab Premium or higher also see the commit_committer_check and reject_unsigned_commits parameters:",
+      "description": "Get the push rules of a group.",
       "resources": [
         {
           "method": "GET",
@@ -1992,7 +1992,7 @@
     },
     {
       "name": "Add group push rule",
-      "description": "Response:",
+      "description": "Adds push rules to the specified group.",
       "resources": [
         {
           "method": "POST",
@@ -2089,7 +2089,7 @@
     },
     {
       "name": "Edit group push rule",
-      "description": "Response:",
+      "description": "Edit push rules for a specified group.",
       "resources": [
         {
           "method": "PUT",
@@ -2186,7 +2186,7 @@
     },
     {
       "name": "Delete group push rule",
-      "description": "Only available to group owners and administrators.",
+      "description": "Deletes the push rules of a group.",
       "resources": [
         {
           "method": "DELETE",

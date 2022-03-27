@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "For normal users",
-      "description": "In addition, to exclude external users from the users’ list, you can use the parameter exclude_external=true.",
+      "description": "You can also search for users by name, username or public email by using ?search=. For example. /users?search=John.",
       "resources": [
         {
           "method": "GET",
@@ -61,7 +61,7 @@
     },
     {
       "name": "For admins",
-      "description": "You can include the users’ custom attributes in the response with:",
+      "description": "Users on GitLab Premium or higher also see the group_saml provider option and provisioned_by_group_id parameter:",
       "resources": [
         {
           "method": "GET",
@@ -215,7 +215,7 @@
     },
     {
       "name": "For user",
-      "description": "Parameters:",
+      "description": "",
       "resources": [
         {
           "method": "GET",
@@ -254,7 +254,7 @@
     },
     {
       "name": "For admin",
-      "description": "You can include the user’s custom attributes in the response with:",
+      "description": "Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:",
       "resources": [
         {
           "method": "GET",
@@ -330,7 +330,7 @@
     },
     {
       "name": "User creation",
-      "description": "Parameters:",
+      "description": "Creates a new user. Note only administrators can create new users. Either password, reset_password, or force_random_password must be specified. If reset_password and force_random_password are both false, then password is required.",
       "resources": [
         {
           "method": "POST",
@@ -488,7 +488,7 @@
     },
     {
       "name": "User modification",
-      "description": "On password update, the user is forced to change it upon next login. Note, at the moment this method does only return a 404 error, even in cases where a 409 (Conflict) would be more appropriate. For example, when renaming the email address to some existing one.",
+      "description": "Modifies an existing user. Only administrators can change attributes of a user.",
       "resources": [
         {
           "method": "PUT",
@@ -646,7 +646,7 @@
     },
     {
       "name": "Delete authentication identity from user",
-      "description": "Parameters:",
+      "description": "Deletes a user’s authentication identity using the provider name associated with that identity. Available only for administrators.",
       "resources": [
         {
           "method": "DELETE",
@@ -671,7 +671,7 @@
     },
     {
       "name": "User deletion",
-      "description": "Parameters:",
+      "description": "Deletes a user. Available only for administrators. This returns a 204 No Content status code if the operation was successfully, 404 if the resource was not found or 409 if the user cannot be soft deleted.",
       "resources": [
         {
           "method": "DELETE",
@@ -751,7 +751,7 @@
     },
     {
       "name": "List current user (for admins)",
-      "description": "Users on GitLab Premium or higher also see these parameters:",
+      "description": "",
       "resources": [
         {
           "method": "GET",
@@ -862,7 +862,7 @@
     },
     {
       "name": "Set user status",
-      "description": "When both parameters emoji and message are empty, the status is cleared. When the clear_status_after parameter is missing from the request, the previously set value for \"clear_status_after is cleared.",
+      "description": "Set the status of the current user.",
       "resources": [
         {
           "method": "PUT",
@@ -898,7 +898,7 @@
     },
     {
       "name": "Get user preferences",
-      "description": "Parameters:",
+      "description": "Get a list of currently authenticated user’s preferences.",
       "resources": [
         {
           "method": "GET",
@@ -915,7 +915,7 @@
     },
     {
       "name": "User preference modification",
-      "description": "Parameters:",
+      "description": "Update the current user’s preferences.",
       "resources": [
         {
           "method": "PUT",
@@ -943,7 +943,7 @@
     },
     {
       "name": "Follow and unfollow users",
-      "description": "Unfollow a user.",
+      "description": "Follow a user.",
       "resources": [
         {
           "method": "POST",
@@ -973,7 +973,7 @@
     },
     {
       "name": "Followers and following",
-      "description": "Get the list of users being followed.",
+      "description": "Get the followers of a user.",
       "resources": [
         {
           "method": "GET",
@@ -1057,7 +1057,7 @@
     },
     {
       "name": "List SSH keys",
-      "description": "Parameters:",
+      "description": "Get a list of currently authenticated user’s SSH keys.",
       "resources": [
         {
           "method": "GET",
@@ -1101,7 +1101,7 @@
     },
     {
       "name": "Single SSH key",
-      "description": "Parameters:",
+      "description": "Get a single key.",
       "resources": [
         {
           "method": "GET",
@@ -1125,7 +1125,7 @@
     },
     {
       "name": "Single SSH key for given user",
-      "description": "Parameters:",
+      "description": "Get a single key for a given user.",
       "resources": [
         {
           "method": "GET",
@@ -1155,7 +1155,7 @@
     },
     {
       "name": "Add SSH key",
-      "description": "Returns a created key with status 201 Created on success. If an error occurs a 400 Bad Request is returned with a message explaining the error:",
+      "description": "Creates a new key owned by the currently authenticated user.",
       "resources": [
         {
           "method": "POST",
@@ -1190,7 +1190,7 @@
     },
     {
       "name": "Add SSH key for user",
-      "description": "Parameters:",
+      "description": "Create new key owned by specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1227,7 +1227,7 @@
     },
     {
       "name": "Delete SSH key for current user",
-      "description": "Parameters:",
+      "description": "Deletes key owned by currently authenticated user. This returns a 204 No Content status code if the operation was successfully or 404 if the resource was not found.",
       "resources": [
         {
           "method": "DELETE",
@@ -1246,7 +1246,7 @@
     },
     {
       "name": "Delete SSH key for given user",
-      "description": "Parameters:",
+      "description": "Deletes key owned by a specified user. Available only for administrator.",
       "resources": [
         {
           "method": "DELETE",
@@ -1289,7 +1289,7 @@
     },
     {
       "name": "Get a specific GPG key",
-      "description": "Parameters:",
+      "description": "Get a specific GPG key of currently authenticated user.",
       "resources": [
         {
           "method": "GET",
@@ -1312,7 +1312,7 @@
     },
     {
       "name": "Add a GPG key",
-      "description": "Parameters:",
+      "description": "Creates a new GPG key owned by the currently authenticated user.",
       "resources": [
         {
           "method": "POST",
@@ -1337,7 +1337,7 @@
     },
     {
       "name": "Delete a GPG key",
-      "description": "Returns 204 No Content on success, or 404 Not found if the key cannot be found.",
+      "description": "Delete a GPG key owned by currently authenticated user.",
       "resources": [
         {
           "method": "DELETE",
@@ -1356,7 +1356,7 @@
     },
     {
       "name": "List all GPG keys for given user",
-      "description": "Parameters:",
+      "description": "Get a list of a specified user’s GPG keys. This endpoint can be accessed without authentication.",
       "resources": [
         {
           "method": "GET",
@@ -1381,7 +1381,7 @@
     },
     {
       "name": "Get a specific GPG key for a given user",
-      "description": "Parameters:",
+      "description": "Get a specific GPG key for a given user. Introduced in GitLab 13.5, this endpoint can be accessed without administrator authentication.",
       "resources": [
         {
           "method": "GET",
@@ -1410,7 +1410,7 @@
     },
     {
       "name": "Add a GPG key for a given user",
-      "description": "Parameters:",
+      "description": "Create new GPG key owned by the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1441,7 +1441,7 @@
     },
     {
       "name": "Delete a GPG key for a given user",
-      "description": "Parameters:",
+      "description": "Delete a GPG key owned by a specified user. Available only for administrator.",
       "resources": [
         {
           "method": "DELETE",
@@ -1466,7 +1466,7 @@
     },
     {
       "name": "List emails",
-      "description": "Parameters:",
+      "description": "Get a list of currently authenticated user’s emails.",
       "resources": [
         {
           "method": "GET",
@@ -1489,7 +1489,7 @@
     },
     {
       "name": "List emails for user",
-      "description": "Parameters:",
+      "description": "Get a list of a specified user’s emails. Available only for administrator",
       "resources": [
         {
           "method": "GET",
@@ -1508,7 +1508,7 @@
     },
     {
       "name": "Single email",
-      "description": "Parameters:",
+      "description": "Get a single email.",
       "resources": [
         {
           "method": "GET",
@@ -1531,7 +1531,7 @@
     },
     {
       "name": "Add email",
-      "description": "Returns a created email with status 201 Created on success. If an error occurs a 400 Bad Request is returned with a message explaining the error:",
+      "description": "Creates a new email owned by the currently authenticated user.",
       "resources": [
         {
           "method": "POST",
@@ -1554,7 +1554,7 @@
     },
     {
       "name": "Add email for user",
-      "description": "Parameters:",
+      "description": "Create new email owned by specified user. Available only for administrator",
       "resources": [
         {
           "method": "POST",
@@ -1585,7 +1585,7 @@
     },
     {
       "name": "Delete email for current user",
-      "description": "Parameters:",
+      "description": "Deletes email owned by currently authenticated user. This returns a 204 No Content status code if the operation was successfully or 404 if the resource was not found.",
       "resources": [
         {
           "method": "DELETE",
@@ -1604,7 +1604,7 @@
     },
     {
       "name": "Delete email for given user",
-      "description": "Parameters:",
+      "description": "Deletes email owned by a specified user. Available only for administrator.",
       "resources": [
         {
           "method": "DELETE",
@@ -1629,7 +1629,7 @@
     },
     {
       "name": "Block user",
-      "description": "Returns:",
+      "description": "Blocks the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1648,7 +1648,7 @@
     },
     {
       "name": "Unblock user",
-      "description": "Returns 201 OK on success, 404 User Not Found is user cannot be found or 403 Forbidden when trying to unblock a user blocked by LDAP synchronization.",
+      "description": "Unblocks the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1667,7 +1667,7 @@
     },
     {
       "name": "Deactivate user",
-      "description": "Returns:",
+      "description": "Deactivates the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1686,7 +1686,7 @@
     },
     {
       "name": "Activate user",
-      "description": "Returns:",
+      "description": "Activates the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1705,7 +1705,7 @@
     },
     {
       "name": "Ban user",
-      "description": "Returns:",
+      "description": "Bans the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1717,7 +1717,7 @@
     },
     {
       "name": "Unban user",
-      "description": "Returns:",
+      "description": "Unbans the specified user. Available only for administrator.",
       "resources": [
         {
           "method": "POST",
@@ -1729,7 +1729,7 @@
     },
     {
       "name": "Get all impersonation tokens of a user",
-      "description": "Parameters:",
+      "description": "Requires administrator access.",
       "resources": [
         {
           "method": "GET",
@@ -1781,7 +1781,7 @@
     },
     {
       "name": "Approve user",
-      "description": "Returns:",
+      "description": "Approves the specified user. Available only for administrators.",
       "resources": [
         {
           "method": "POST",
@@ -1802,7 +1802,7 @@
     },
     {
       "name": "Reject user",
-      "description": "Returns:",
+      "description": "Rejects specified user that is pending approval. Available only for administrators.",
       "resources": [
         {
           "method": "POST",
@@ -1816,7 +1816,7 @@
     },
     {
       "name": "Get an impersonation token of a user",
-      "description": "Parameters:",
+      "description": "It shows a user’s impersonation token.",
       "resources": [
         {
           "method": "GET",
@@ -1853,7 +1853,7 @@
     },
     {
       "name": "Create an impersonation token",
-      "description": "It creates a new impersonation token. Only administrators can do this. You are only able to create impersonation tokens to impersonate the user and perform both API calls and Git reads and writes. The user can’t see these tokens in their profile settings page.",
+      "description": "Requires administrator access. Token values are returned once. Make sure you save it because you can’t access it again.",
       "resources": [
         {
           "method": "POST",
@@ -1903,7 +1903,7 @@
     },
     {
       "name": "Revoke an impersonation token",
-      "description": "Parameters:",
+      "description": "Requires administrator access.",
       "resources": [
         {
           "method": "DELETE",
@@ -1977,7 +1977,7 @@
     },
     {
       "name": "Get user activities (admin only)",
-      "description": "last_activity_at is deprecated. Use last_activity_on instead.",
+      "description": "Get the last activity date for all users, sorted from oldest to newest.",
       "resources": [
         {
           "method": "GET",
@@ -2012,7 +2012,7 @@
     },
     {
       "name": "User memberships (admin only)",
-      "description": "Returns:",
+      "description": "Lists all projects and groups a user is a member of. This endpoint is available for administrators only. It returns the source_id, source_name, source_type and access_level of a membership. Source can be of type Namespace (representing a group) or Project. The response represents only direct memberships. Inherited memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For more details, read about the meaning of access level values.",
       "resources": [
         {
           "method": "GET",

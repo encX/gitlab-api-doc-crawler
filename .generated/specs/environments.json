@@ -156,7 +156,7 @@
     },
     {
       "name": "Create a new environment",
-      "description": "It returns 201 if the environment was successfully created, 400 for wrong parameters.",
+      "description": "Creates a new environment with the given name and external_url.",
       "resources": [
         {
           "method": "POST",
@@ -195,7 +195,7 @@
     },
     {
       "name": "Edit an existing environment",
-      "description": "It returns 200 if the environment was successfully updated. In case of an error, a status code 400 is returned.",
+      "description": "Updates an existing environment’s name and/or external_url.",
       "resources": [
         {
           "method": "PUT",

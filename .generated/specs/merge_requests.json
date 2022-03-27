@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List merge requests",
-      "description": "Users on GitLab Premium or higher also see the approvals_before_merge parameter:",
+      "description": "Get all merge requests the authenticated user has access to. By default it returns only merge requests created by the current user. To get all merge requests, use parameter scope=all.",
       "resources": [
         {
           "method": "GET",
@@ -47,188 +47,7 @@
           "path": "/merge_requests?search=foo&in=title"
         }
       ],
-      "attributes": [
-        {
-          "name": "state",
-          "type": "string",
-          "required": false,
-          "description": "Return all merge requests or just those that are opened, closed, locked, or merged."
-        },
-        {
-          "name": "order_by",
-          "type": "string",
-          "required": false,
-          "description": "Return requests ordered by created_at, title, or updated_at fields. Default is created_at. Introduced in GitLab 14.8."
-        },
-        {
-          "name": "sort",
-          "type": "string",
-          "required": false,
-          "description": "Return requests sorted in asc or desc order. Default is desc."
-        },
-        {
-          "name": "milestone",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests for a specific milestone. None returns merge requests with no milestone. Any returns merge requests that have an assigned milestone."
-        },
-        {
-          "name": "view",
-          "type": "string",
-          "required": false,
-          "description": "If simple, returns the iid, URL, title, description, and basic state of merge request."
-        },
-        {
-          "name": "labels",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests matching a comma-separated list of labels. None lists all merge requests with no labels. Any lists all merge requests with at least one label. Predefined names are case-insensitive."
-        },
-        {
-          "name": "with_labels_details",
-          "type": "boolean",
-          "required": false,
-          "description": "If true, response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. Introduced in GitLab 12.7."
-        },
-        {
-          "name": "with_merge_status_recheck",
-          "type": "boolean",
-          "required": false,
-          "description": "If true, this projection requests (but does not guarantee) that the merge_status field be recalculated asynchronously. Default is false. Introduced in GitLab 13.0."
-        },
-        {
-          "name": "created_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "created_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "updated_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "updated_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "scope",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me."
-        },
-        {
-          "name": "author_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
-        },
-        {
-          "name": "author_username",
-          "type": "string",
-          "required": false,
-          "description": "Returns merge requests created by the given username. Mutually exclusive with author_id. Introduced in GitLab 12.10."
-        },
-        {
-          "name": "assignee_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests assigned to the given user id. None returns unassigned merge requests. Any returns merge requests with an assignee."
-        },
-        {
-          "name": "approver_ids",
-          "type": "integer array",
-          "required": false,
-          "description": "Returns merge requests which have specified all the users with the given ids as individual approvers. None returns merge requests without approvers. Any returns merge requests with an approver."
-        },
-        {
-          "name": "approved_by_ids",
-          "type": "integer array",
-          "required": false,
-          "description": "Returns merge requests which have been approved by all the users with the given ids (Max: 5). None returns merge requests with no approvals. Any returns merge requests with an approval."
-        },
-        {
-          "name": "reviewer_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests which have the user as a reviewer with the given user id. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_username."
-        },
-        {
-          "name": "reviewer_username",
-          "type": "string",
-          "required": false,
-          "description": "Returns merge requests which have the user as a reviewer with the given username. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_id. Introduced in GitLab 13.8."
-        },
-        {
-          "name": "my_reaction_emoji",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
-        },
-        {
-          "name": "source_branch",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests with the given source branch."
-        },
-        {
-          "name": "target_branch",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests with the given target branch."
-        },
-        {
-          "name": "search",
-          "type": "string",
-          "required": false,
-          "description": "Search merge requests against their title and description."
-        },
-        {
-          "name": "in",
-          "type": "string",
-          "required": false,
-          "description": "Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description."
-        },
-        {
-          "name": "wip",
-          "type": "string",
-          "required": false,
-          "description": "Filter merge requests against their wip status. yes to return only draft merge requests, no to return non-draft merge requests."
-        },
-        {
-          "name": "not",
-          "type": "Hash",
-          "required": false,
-          "description": "Return merge requests that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, reviewer_id, reviewer_username, my_reaction_emoji."
-        },
-        {
-          "name": "environment",
-          "type": "string",
-          "required": false,
-          "description": "Returns merge requests deployed to the given environment. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "deployed_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests deployed before the given date/time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "deployed_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests deployed after the given date/time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        }
-      ],
+      "attributes": [],
       "response": [
         {
           "id": 1,
@@ -352,7 +171,7 @@
     },
     {
       "name": "List project merge requests",
-      "description": "For important notes on response data, read Merge requests list response notes.",
+      "description": "project_id represents the ID of the project where the MR resides. project_id always equals target_project_id.",
       "resources": [
         {
           "method": "GET",
@@ -385,40 +204,136 @@
       ],
       "attributes": [
         {
-          "name": "my_reaction_emoji",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
         },
         {
-          "name": "source_branch",
-          "type": "string",
+          "name": "iids[]",
+          "type": "integer array",
           "required": false,
-          "description": "Return merge requests with the given source branch."
+          "description": "Return the request having the given iid."
         },
         {
-          "name": "target_branch",
+          "name": "state",
           "type": "string",
           "required": false,
-          "description": "Return merge requests with the given target branch."
+          "description": "Return all merge requests or just those that are opened, closed, locked, or merged."
         },
         {
-          "name": "search",
+          "name": "order_by",
           "type": "string",
           "required": false,
-          "description": "Search merge requests against their title and description."
+          "description": "Return requests ordered by created_at, title or updated_at fields. Default is created_at. Introduced in GitLab 14.8."
         },
         {
-          "name": "wip",
+          "name": "sort",
           "type": "string",
           "required": false,
-          "description": "Filter merge requests against their wip status. yes to return only draft merge requests, no to return non-draft merge requests."
+          "description": "Return requests sorted in asc or desc order. Default is desc."
         },
         {
-          "name": "not",
-          "type": "Hash",
+          "name": "milestone",
+          "type": "string",
           "required": false,
-          "description": "Return merge requests that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, reviewer_id, reviewer_username, my_reaction_emoji."
+          "description": "Return merge requests for a specific milestone. None returns merge requests with no milestone. Any returns merge requests that have an assigned milestone."
+        },
+        {
+          "name": "view",
+          "type": "string",
+          "required": false,
+          "description": "If simple, returns the iid, URL, title, description, and basic state of merge request."
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Return merge requests matching a comma-separated list of labels. None lists all merge requests with no labels. Any lists all merge requests with at least one label. Predefined names are case-insensitive."
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. Introduced in GitLab 12.7."
+        },
+        {
+          "name": "with_merge_status_recheck",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, this projection requests (but does not guarantee) that the merge_status field be recalculated asynchronously. Default is false. Introduced in GitLab 13.0."
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return merge requests created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return merge requests created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return merge requests updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return merge requests updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return merge requests for the given scope: created_by_me, assigned_to_me, or all."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Returns merge requests created by the given user id. Mutually exclusive with author_username."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Returns merge requests created by the given username. Mutually exclusive with author_id. Introduced in GitLab 12.10."
+        },
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Returns merge requests assigned to the given user id. None returns unassigned merge requests. Any returns merge requests with an assignee."
+        },
+        {
+          "name": "approver_ids",
+          "type": "integer array",
+          "required": false,
+          "description": "Returns merge requests which have specified all the users with the given ids as individual approvers. None returns merge requests without approvers. Any returns merge requests with an approver."
+        },
+        {
+          "name": "approved_by_ids",
+          "type": "integer array",
+          "required": false,
+          "description": "Returns merge requests which have been approved by all the users with the given ids (Max: 5). None returns merge requests with no approvals. Any returns merge requests with an approval."
+        },
+        {
+          "name": "reviewer_id",
+          "type": "integer",
+          "required": false,
+          "description": "Returns merge requests which have the user as a reviewer with the given user id. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_username."
+        },
+        {
+          "name": "reviewer_username",
+          "type": "string",
+          "required": false,
+          "description": "Returns merge requests which have the user as a reviewer with the given username. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_id. Introduced in GitLab 13.8."
         }
       ],
       "response": [
@@ -546,7 +461,7 @@
     },
     {
       "name": "List group merge requests",
-      "description": "For important notes on response data, read Merge requests list response notes.",
+      "description": "group_id represents the ID of the group which contains the project where the MR resides.",
       "resources": [
         {
           "method": "GET",
@@ -573,170 +488,7 @@
           "path": "/groups/:id/merge_requests?my_reaction_emoji=star"
         }
       ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "The ID or URL-encoded path of the group owned by the authenticated user."
-        },
-        {
-          "name": "state",
-          "type": "string",
-          "required": false,
-          "description": "Return all merge requests or just those that are opened, closed, locked, or merged."
-        },
-        {
-          "name": "order_by",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests ordered by created_at, title or updated_at fields. Default is created_at. Introduced in GitLab 14.8."
-        },
-        {
-          "name": "sort",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests sorted in asc or desc order. Default is desc."
-        },
-        {
-          "name": "milestone",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests for a specific milestone. None returns merge requests with no milestone. Any returns merge requests that have an assigned milestone."
-        },
-        {
-          "name": "view",
-          "type": "string",
-          "required": false,
-          "description": "If simple, returns the iid, URL, title, description, and basic state of merge request."
-        },
-        {
-          "name": "labels",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests matching a comma-separated list of labels. None lists all merge requests with no labels. Any lists all merge requests with at least one label. Predefined names are case-insensitive."
-        },
-        {
-          "name": "with_labels_details",
-          "type": "boolean",
-          "required": false,
-          "description": "If true, response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. Introduced in GitLab 12.7."
-        },
-        {
-          "name": "with_merge_status_recheck",
-          "type": "boolean",
-          "required": false,
-          "description": "If true, this projection requests (but does not guarantee) that the merge_status field be recalculated asynchronously. Default is false. Introduced in GitLab 13.0."
-        },
-        {
-          "name": "created_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
-        },
-        {
-          "name": "created_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
-        },
-        {
-          "name": "updated_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
-        },
-        {
-          "name": "updated_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return merge requests updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
-        },
-        {
-          "name": "scope",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests for the given scope: created_by_me, assigned_to_me or all."
-        },
-        {
-          "name": "author_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests created by the given user id. Mutually exclusive with author_username."
-        },
-        {
-          "name": "author_username",
-          "type": "string",
-          "required": false,
-          "description": "Returns merge requests created by the given username. Mutually exclusive with author_id. Introduced in GitLab 12.10."
-        },
-        {
-          "name": "assignee_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests assigned to the given user id. None returns unassigned merge requests. Any returns merge requests with an assignee."
-        },
-        {
-          "name": "approver_ids",
-          "type": "integer array",
-          "required": false,
-          "description": "Returns merge requests which have specified all the users with the given ids as individual approvers. None returns merge requests without approvers. Any returns merge requests with an approver."
-        },
-        {
-          "name": "approved_by_ids",
-          "type": "integer array",
-          "required": false,
-          "description": "Returns merge requests which have been approved by all the users with the given ids (Max: 5). None returns merge requests with no approvals. Any returns merge requests with an approval."
-        },
-        {
-          "name": "reviewer_id",
-          "type": "integer",
-          "required": false,
-          "description": "Returns merge requests which have the user as a reviewer with the given user id. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_username."
-        },
-        {
-          "name": "reviewer_username",
-          "type": "string",
-          "required": false,
-          "description": "Returns merge requests which have the user as a reviewer with the given username. None returns merge requests with no reviewers. Any returns merge requests with any reviewer. Mutually exclusive with reviewer_id. Introduced in GitLab 13.8."
-        },
-        {
-          "name": "my_reaction_emoji",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
-        },
-        {
-          "name": "source_branch",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests with the given source branch."
-        },
-        {
-          "name": "target_branch",
-          "type": "string",
-          "required": false,
-          "description": "Return merge requests with the given target branch."
-        },
-        {
-          "name": "search",
-          "type": "string",
-          "required": false,
-          "description": "Search merge requests against their title and description."
-        },
-        {
-          "name": "non_archived",
-          "type": "boolean",
-          "required": false,
-          "description": "Return merge requests from non archived projects only. Default is true. (Introduced in GitLab 12.8)."
-        },
-        {
-          "name": "not",
-          "type": "Hash",
-          "required": false,
-          "description": "Return merge requests that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, reviewer_id, reviewer_username, my_reaction_emoji."
-        }
-      ],
+      "attributes": [],
       "response": [
         {
           "id": 1,
@@ -860,7 +612,7 @@
     },
     {
       "name": "Get single MR",
-      "description": "Users on GitLab Premium or higher also see the approvals_before_merge parameter:",
+      "description": "Shows information about a single merge request.",
       "resources": [
         {
           "method": "GET",
@@ -1046,7 +798,7 @@
     },
     {
       "name": "Get single MR participants",
-      "description": "Parameters:",
+      "description": "Get a list of merge request participants.",
       "resources": [
         {
           "method": "GET",
@@ -1088,7 +840,7 @@
     },
     {
       "name": "Get single MR commits",
-      "description": "Parameters:",
+      "description": "Get a list of merge request commits.",
       "resources": [
         {
           "method": "GET",
@@ -1132,7 +884,7 @@
     },
     {
       "name": "Get single MR changes",
-      "description": "Parameters:",
+      "description": "Shows information about the merge request including its files and changes.",
       "resources": [
         {
           "method": "GET",
@@ -1269,7 +1021,7 @@
     },
     {
       "name": "List MR pipelines",
-      "description": "Parameters:",
+      "description": "Get a list of merge request pipelines.",
       "resources": [
         {
           "method": "GET",
@@ -1301,7 +1053,7 @@
     },
     {
       "name": "Create MR Pipeline",
-      "description": "Parameters:",
+      "description": "Create a new pipeline for a merge request. A pipeline created via this endpoint doesn’t run a regular branch/tag pipeline. It requires .gitlab-ci.yml to be configured with only: [merge_requests] to create jobs.",
       "resources": [
         {
           "method": "POST",
@@ -1361,7 +1113,7 @@
     },
     {
       "name": "Create MR",
-      "description": "For important notes on response data, read Single merge request response notes.",
+      "description": "Creates a new merge request.",
       "resources": [
         {
           "method": "POST",
@@ -1586,7 +1338,7 @@
     },
     {
       "name": "Update MR",
-      "description": "For important notes on response data, read Single merge request response notes.",
+      "description": "Updates an existing merge request. You can change the target branch, title, or even close the MR.",
       "resources": [
         {
           "method": "PUT",
@@ -1868,7 +1620,7 @@
     },
     {
       "name": "Merge a merge request",
-      "description": "For additional important notes on response data, read Single merge request response notes.",
+      "description": "Accept and merge changes submitted with MR using this API.",
       "resources": [
         {
           "method": "PUT",
@@ -2037,7 +1789,7 @@
     },
     {
       "name": "Merge to default merge ref path",
-      "description": "Parameters:",
+      "description": "Merge the changes between the merge request source and target branches into refs/merge-requests/:iid/merge ref, of the target project repository, if possible. This ref has the state the target branch would have if a regular merge action was taken.",
       "resources": [
         {
           "method": "GET",
@@ -2064,7 +1816,7 @@
     },
     {
       "name": "Cancel Merge When Pipeline Succeeds",
-      "description": "For important notes on response data, read Single merge request response notes.",
+      "description": "This API returns specific HTTP status codes on failure:",
       "resources": [
         {
           "method": "POST",
@@ -2225,7 +1977,7 @@
     },
     {
       "name": "Rebase a merge request",
-      "description": "If the rebase operation fails, the response includes the following:",
+      "description": "Automatically rebase the source_branch of the merge request against its target_branch.",
       "resources": [
         {
           "method": "PUT",
@@ -2324,7 +2076,7 @@
     },
     {
       "name": "Subscribe to a merge request",
-      "description": "For important notes on response data, read Single merge request response notes.",
+      "description": "Subscribes the authenticated user to a merge request to receive notification. If the user is already subscribed to the merge request, the status code HTTP 304 Not Modified is returned.",
       "resources": [
         {
           "method": "POST",
@@ -2484,7 +2236,7 @@
     },
     {
       "name": "Unsubscribe from a merge request",
-      "description": "For important notes on response data, read Single merge request response notes.",
+      "description": "Unsubscribes the authenticated user from a merge request to not receive notifications from that merge request. If the user is not subscribed to the merge request, the status code HTTP 304 Not Modified is returned.",
       "resources": [
         {
           "method": "POST",

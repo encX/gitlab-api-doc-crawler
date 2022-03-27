@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Schedule an export",
-      "description": "The upload[url] parameter is required if the upload parameter is present.",
+      "description": "Start a new export.",
       "resources": [
         {
           "method": "POST",
@@ -49,7 +49,7 @@
     },
     {
       "name": "Export status",
-      "description": "created_at is the project create timestamp, not the export start time.",
+      "description": "Get the status of export.",
       "resources": [
         {
           "method": "GET",
@@ -100,7 +100,7 @@
     },
     {
       "name": "Import a file",
-      "description": "cURL doesn’t support posting a file from a remote server. Importing a project from a remote server can be accomplished through something like the following:",
+      "description": "To upload a file from your file system, use the --form argument. This causes cURL to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
       "resources": [
         {
           "method": "POST",
@@ -160,7 +160,7 @@
     },
     {
       "name": "Import a file from a remote object storage",
-      "description": "The Content-Length header must return a valid number. The maximum file size is 10 gigabytes. The Content-Type header must be application/gzip.",
+      "description": "This endpoint is behind a feature flag that is enabled by default.",
       "resources": [
         {
           "method": "POST",
@@ -221,7 +221,7 @@
     },
     {
       "name": "Import a file from AWS S3",
-      "description": "The passed override parameters take precedence over all values defined in the export file.",
+      "description": "",
       "resources": [
         {
           "method": "POST",
@@ -288,7 +288,7 @@
     },
     {
       "name": "Import status",
-      "description": "When importing from GitHub, the a stats field lists how many objects were already fetched from GitHub and how many were already imported:",
+      "description": "Get the status of an import.",
       "resources": [
         {
           "method": "GET",

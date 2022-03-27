@@ -81,8 +81,7 @@ export class PageCrawler {
         // nice to have: handle if h2&  h3 coexist in the same block
       }
 
-      if (e.name === "p") {
-        // only first one?
+      if (e.name === "p" && !description) {
         description = cheerio(e.children).text().replace(/\n/g, " ").trim();
       }
 
@@ -90,7 +89,6 @@ export class PageCrawler {
         e.name === "div" &&
         /language-(plaintext|shell)/gi.test(e.attribs["class"])
       ) {
-        // handle multiblock of resources
         resources.push(
           ...cheerio(e)
             .find("code")
@@ -159,7 +157,9 @@ export class PageCrawler {
 
   private shouldSkip(elem: TagElement): boolean {
     if (/introduced-in/gi.test(elem.attribs["class"])) return true;
-    if (/Example (request|response):?/gi.test(cheerio(elem).text()))
+    if (
+      /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text())
+    )
       return true;
     return false;
   }

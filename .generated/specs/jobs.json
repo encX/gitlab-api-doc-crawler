@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List project jobs",
-      "description": "Example of response",
+      "description": "Get a list of jobs in a project. Jobs are sorted in descending order of their IDs.",
       "resources": [
         {
           "method": "GET",
@@ -173,7 +173,7 @@
     },
     {
       "name": "List pipeline jobs",
-      "description": "In GitLab 13.9 and later, this endpoint can include retried jobs in the response with include_retried set to true.",
+      "description": "Get a list of jobs for a pipeline.",
       "resources": [
         {
           "method": "GET",
@@ -354,7 +354,7 @@
     },
     {
       "name": "List pipeline bridges",
-      "description": "Example of response",
+      "description": "Get a list of bridge jobs for a pipeline.",
       "resources": [
         {
           "method": "GET",
@@ -447,7 +447,7 @@
     },
     {
       "name": "Get job token’s job",
-      "description": "Example of response",
+      "description": "Retrieve the job that generated a job token.",
       "resources": [
         {
           "method": "GET",
@@ -511,7 +511,7 @@
     },
     {
       "name": "Get GitLab agent by CI_JOB_TOKEN",
-      "description": "Supported attributes:",
+      "description": "Retrieve the job that generated the CI_JOB_TOKEN, along with a list of allowed agents.",
       "resources": [
         {
           "method": "GET",
@@ -579,7 +579,7 @@
     },
     {
       "name": "Get a single job",
-      "description": "Example of response",
+      "description": "Get a single job of a project",
       "resources": [
         {
           "method": "GET",
@@ -659,7 +659,7 @@
     },
     {
       "name": "Get a log file",
-      "description": "Possible response status codes:",
+      "description": "Get a log (trace) of a specific job of a project:",
       "resources": [
         {
           "method": "GET",
@@ -682,7 +682,7 @@
     },
     {
       "name": "Cancel a job",
-      "description": "Example of response",
+      "description": "Cancel a single job of a project",
       "resources": [
         {
           "method": "POST",
@@ -734,7 +734,7 @@
     },
     {
       "name": "Retry a job",
-      "description": "Example of response",
+      "description": "Retry a single job of a project",
       "resources": [
         {
           "method": "POST",
@@ -786,7 +786,7 @@
     },
     {
       "name": "Erase a job",
-      "description": "Example of response",
+      "description": "Erase a single job of a project (remove job artifacts and a job log)",
       "resources": [
         {
           "method": "POST",
@@ -839,7 +839,7 @@
     },
     {
       "name": "Run a job",
-      "description": "@variables.json is structured like:",
+      "description": "Triggers a manual action to start a job.",
       "resources": [
         {
           "method": "POST",

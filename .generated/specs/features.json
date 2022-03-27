@@ -88,7 +88,7 @@
     },
     {
       "name": "Set or create a feature",
-      "description": "You can enable or disable a feature for a feature_group, a user, a group, and a project in a single API call.",
+      "description": "Set a feature’s gate value. If a feature with the given name doesn’t exist yet, it’s created. The value can be a boolean, or an integer to indicate percentage of time.",
       "resources": [
         {
           "method": "POST",
@@ -170,7 +170,7 @@
     },
     {
       "name": "Set percentage of actors rollout",
-      "description": "Rolls out the my_user_feature to 42% of actors.",
+      "description": "Rollout to percentage of actors.",
       "resources": [
         {
           "method": "POST",

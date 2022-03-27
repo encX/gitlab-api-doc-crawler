@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List currently authenticated user’s events",
-      "description": "Parameters:",
+      "description": "Get a list of events for the authenticated user. Scope read_user or api is required. Events associated with epics are not available using the API.",
       "resources": [
         {
           "method": "GET",
@@ -94,7 +94,7 @@
     },
     {
       "name": "Get user contribution events",
-      "description": "Parameters:",
+      "description": "Get the contribution events for the specified user, sorted from newest to oldest. Scope read_user or api is required. Events associated with epics are not available using API.",
       "resources": [
         {
           "method": "GET",
@@ -259,7 +259,7 @@
     },
     {
       "name": "List a Project’s visible events",
-      "description": "Parameters:",
+      "description": "Get a list of visible events for a particular project.",
       "resources": [
         {
           "method": "GET",

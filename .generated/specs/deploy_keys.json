@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List all deploy keys",
-      "description": "Supported attributes:",
+      "description": "Get a list of all deploy keys across all projects of the GitLab instance. This endpoint requires administrator access and is not available on GitLab.com.",
       "resources": [
         {
           "method": "GET",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Get a single deploy key",
-      "description": "Parameters:",
+      "description": "Get a single key.",
       "resources": [
         {
           "method": "GET",
@@ -124,7 +124,7 @@
     },
     {
       "name": "Add deploy key",
-      "description": "If the deploy key already exists in another project, it’s joined to the current project only if the original one is accessible by the same user.",
+      "description": "Creates a new deploy key for a project.",
       "resources": [
         {
           "method": "POST",

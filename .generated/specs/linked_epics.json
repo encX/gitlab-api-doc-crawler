@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List linked epics",
-      "description": "Supported attributes:",
+      "description": "Get a list of a given epic’s linked epics filtered according to the user authorizations.",
       "resources": [
         {
           "method": "GET",
@@ -76,7 +76,7 @@
     },
     {
       "name": "Create a related epic link",
-      "description": "Supported attributes:",
+      "description": "Create a two-way relation between two epics. The user must be allowed to update both epics to succeed.",
       "resources": [
         {
           "method": "POST",
@@ -205,7 +205,7 @@
     },
     {
       "name": "Delete a related epic link",
-      "description": "Supported attributes:",
+      "description": "Delete a two-way relation between two epics. The user must be allowed to update both epics to succeed.",
       "resources": [
         {
           "method": "DELETE",

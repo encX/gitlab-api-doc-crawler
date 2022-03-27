@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Change the visibility of the Container Registry",
-      "description": "See the Container Registry visibility permissions for more details about the permissions that this setting grants to users.",
+      "description": "This controls who can view the Container Registry.",
       "resources": [
         {
           "method": "PUT",
@@ -213,7 +213,7 @@
     },
     {
       "name": "Delete registry repository",
-      "description": "This operation is executed asynchronously and might take some time to get executed.",
+      "description": "Delete a repository in registry.",
       "resources": [
         {
           "method": "DELETE",
@@ -314,7 +314,7 @@
     },
     {
       "name": "Delete a registry repository tag",
-      "description": "This action doesn’t delete blobs. To delete them and recycle disk space, run the garbage collection.",
+      "description": "Delete a registry repository tag.",
       "resources": [
         {
           "method": "DELETE",
@@ -345,7 +345,7 @@
     },
     {
       "name": "Delete registry repository tags in bulk",
-      "description": "Examples:",
+      "description": "Delete registry repository tags in bulk based on given criteria.",
       "resources": [
         {
           "method": "DELETE",

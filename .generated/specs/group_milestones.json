@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List group milestones",
-      "description": "Parameters:",
+      "description": "Returns a list of group milestones.",
       "resources": [
         {
           "method": "GET",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Get single milestone",
-      "description": "Parameters:",
+      "description": "Gets a single group milestone.",
       "resources": [
         {
           "method": "GET",
@@ -117,7 +117,7 @@
     },
     {
       "name": "Create new milestone",
-      "description": "Parameters:",
+      "description": "Creates a new group milestone.",
       "resources": [
         {
           "method": "POST",
@@ -160,7 +160,7 @@
     },
     {
       "name": "Edit milestone",
-      "description": "Parameters:",
+      "description": "Updates an existing group milestone.",
       "resources": [
         {
           "method": "PUT",
@@ -215,7 +215,7 @@
     },
     {
       "name": "Delete group milestone",
-      "description": "Parameters:",
+      "description": "Only for users with the Developer role in the group.",
       "resources": [
         {
           "method": "DELETE",
@@ -240,7 +240,7 @@
     },
     {
       "name": "Get all issues assigned to a single milestone",
-      "description": "Currently, this API endpoint doesn’t return issues from any subgroups. If you want to get all the milestones’ issues, you can instead use the List issues API and filter for a particular milestone (for example, GET /issues?milestone=1.0.0&state=opened).",
+      "description": "Gets all issues assigned to a single group milestone.",
       "resources": [
         {
           "method": "GET",
@@ -265,7 +265,7 @@
     },
     {
       "name": "Get all merge requests assigned to a single milestone",
-      "description": "Parameters:",
+      "description": "Gets all merge requests assigned to a single group milestone.",
       "resources": [
         {
           "method": "GET",
@@ -290,7 +290,7 @@
     },
     {
       "name": "Get all burndown chart events for a single milestone",
-      "description": "Parameters:",
+      "description": "Get all burndown chart events for a single milestone.",
       "resources": [
         {
           "method": "GET",

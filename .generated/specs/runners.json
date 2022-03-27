@@ -92,7 +92,7 @@
     },
     {
       "name": "List all runners",
-      "description": "To view more than the first 20 runners, use pagination.",
+      "description": "Get a list of all runners in the GitLab instance (specific and shared). Access is restricted to users with administrator access.",
       "resources": [
         {
           "method": "GET",
@@ -204,7 +204,7 @@
     },
     {
       "name": "Get runner’s details",
-      "description": "Instance-level runner details via this endpoint are available to all signed in users.",
+      "description": "Get details of a runner.",
       "resources": [
         {
           "method": "GET",
@@ -704,7 +704,7 @@
     },
     {
       "name": "Register a new runner",
-      "description": "Response:",
+      "description": "Register a new runner for the instance.",
       "resources": [
         {
           "method": "POST",
@@ -745,7 +745,7 @@
     },
     {
       "name": "Delete a runner by authentication token",
-      "description": "Response:",
+      "description": "To delete the runner by using its authentication token:",
       "resources": [
         {
           "method": "DELETE",
@@ -763,7 +763,7 @@
     },
     {
       "name": "Verify authentication for a registered runner",
-      "description": "Response:",
+      "description": "Validates authentication credentials for a registered runner.",
       "resources": [
         {
           "method": "POST",

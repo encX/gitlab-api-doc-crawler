@@ -110,7 +110,7 @@
     },
     {
       "name": "Create a commit with multiple files and actions",
-      "description": "GitLab supports form encoding. The following is an example using Commit API with form encoding:",
+      "description": "Create a commit by posting a JSON payload",
       "resources": [
         {
           "method": "POST",
@@ -187,7 +187,7 @@
     },
     {
       "name": "Get a single commit",
-      "description": "Parameters:",
+      "description": "Get a specific commit identified by the commit hash or name of a branch or tag.",
       "resources": [
         {
           "method": "GET",
@@ -246,7 +246,7 @@
     },
     {
       "name": "Get references a commit is pushed to",
-      "description": "Parameters:",
+      "description": "",
       "resources": [
         {
           "method": "GET",
@@ -294,7 +294,7 @@
     },
     {
       "name": "Cherry-pick a commit",
-      "description": "In the event of a failure, an error displays that is identical to a failure without dry run.",
+      "description": "Cherry-picks a commit to a given branch.",
       "resources": [
         {
           "method": "POST",
@@ -353,7 +353,7 @@
     },
     {
       "name": "Revert a commit",
-      "description": "In the event of a failure, an error displays that is identical to a failure without dry run.",
+      "description": "Reverts a commit in a given branch.",
       "resources": [
         {
           "method": "POST",
@@ -406,7 +406,7 @@
     },
     {
       "name": "Get the diff of a commit",
-      "description": "Parameters:",
+      "description": "Get the diff of a commit in a project.",
       "resources": [
         {
           "method": "GET",
@@ -442,7 +442,7 @@
     },
     {
       "name": "Get the comments of a commit",
-      "description": "Parameters:",
+      "description": "Get the comments of a commit in a project.",
       "resources": [
         {
           "method": "GET",
@@ -479,7 +479,7 @@
     },
     {
       "name": "Post comment to commit",
-      "description": "In any of the above cases, the response of line, line_type and path is set to null.",
+      "description": "Adds a comment to a commit.",
       "resources": [
         {
           "method": "POST",
@@ -542,7 +542,7 @@
     },
     {
       "name": "Get the discussions of a commit",
-      "description": "Parameters:",
+      "description": "Get the discussions of a commit in a project.",
       "resources": [
         {
           "method": "GET",
@@ -597,7 +597,7 @@
     },
     {
       "name": "List the statuses of a commit",
-      "description": "List the statuses of a commit in a project. The pagination parameters page and per_page can be used to restrict the list of references.",
+      "description": "",
       "resources": [
         {
           "method": "GET",
@@ -848,7 +848,7 @@
     },
     {
       "name": "Get GPG signature of a commit",
-      "description": "Parameters:",
+      "description": "Get the GPG signature from a commit, if it is signed. For unsigned commits, it results in a 404 response.",
       "resources": [
         {
           "method": "GET",

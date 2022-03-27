@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "List issues for an epic",
-      "description": "Note: assignee column is deprecated, now we show it as a single-sized array assignees to conform to the GitLab EE API.",
+      "description": "Gets all issues that are assigned to an epic and the authenticated user has access to.",
       "resources": [
         {
           "method": "GET",
@@ -101,7 +101,7 @@
     },
     {
       "name": "Assign an issue to the epic",
-      "description": "Note: assignee column is deprecated, now we show it as a single-sized array assignees to conform to the GitLab EE API.",
+      "description": "Creates an epic - issue association. If the issue in question belongs to another epic it is unassigned from that epic.",
       "resources": [
         {
           "method": "POST",
@@ -214,7 +214,7 @@
     },
     {
       "name": "Remove an issue from the epic",
-      "description": "Note: assignee column is deprecated, now we show it as a single-sized array assignees to conform to the GitLab EE API.",
+      "description": "Removes an epic - issue association.",
       "resources": [
         {
           "method": "DELETE",

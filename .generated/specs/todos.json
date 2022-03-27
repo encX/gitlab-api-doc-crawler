@@ -4,7 +4,7 @@
   "apis": [
     {
       "name": "Get a list of to-do items",
-      "description": "Parameters:",
+      "description": "Returns a list of to-do items. When no filter is applied, it returns all pending to-do items for the current user. Different filters allow the user to refine the request.",
       "resources": [
         {
           "method": "GET",
@@ -202,7 +202,7 @@
     },
     {
       "name": "Mark a to-do item as done",
-      "description": "Parameters:",
+      "description": "Marks a single pending to-do item given by its ID for the current user as done. The to-do item marked as done is returned in the response.",
       "resources": [
         {
           "method": "POST",
