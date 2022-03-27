@@ -3,11 +3,14 @@ import {
   TagElement,
   cheerio,
 } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
-import { ensureDirSync } from "https://deno.land/std@0.132.0/fs/mod.ts";
 
-import { Api, Attribute, Resource } from "./models.ts";
+import { Api } from "./models.ts";
 import { load } from "./helper/page.ts";
 import { glUrl } from "./helper/url.ts";
+import { ResourceParser } from "./parsers/ResourceParser.ts";
+import { AttributesParser } from "./parsers/AttributesParser.ts";
+import { ResponseParser } from "./parsers/ResponseParser.ts";
+import { ApiBuilder } from "./ApiBuilder.ts";
 
 export class PageCrawler {
   constructor(private pagePath: string) {}
@@ -60,99 +63,48 @@ export class PageCrawler {
   }
 
   private tryParseApi(elems: TagElement[]): Api | undefined {
-    let name = "";
-    // introduced-in
-    let description = "";
-    // h3
-    const resources: Resource[] = [];
-    // "Parameters:"
-    let attributes: Attribute[] = [];
-    // ? "Example Request:"
-    // example curl
-    // "Example Response:"
-    let exampleResponse: any = null;
+    const apiBuilder = new ApiBuilder();
 
     elems.forEach((e) => {
+      const resourceParser = new ResourceParser(e);
+      const attributesParser = new AttributesParser(e);
+      const responseParser = new ResponseParser(
+        e,
+        this.pagePath,
+        apiBuilder.getName()
+      );
+
       if (this.shouldSkip(e)) return;
 
-      if (/h[1-3]/.test(e.name)) {
-        name = cheerio(e.children).text().replace(/\n/g, " ").trim();
-        // nice to have: handle if h2 & h3 coexist in the same block
-      }
+      if (/h[1-3]/.test(e.name))
+        apiBuilder.withName(PageCrawler.getElementText(e));
+      // nice to have: handle if h2 & h3 coexist in the same block
 
-      if (e.name === "p" && !description) {
-        description = cheerio(e.children).text().replace(/\n/g, " ").trim();
-      }
+      if (e.name === "p")
+        apiBuilder.withDescription(PageCrawler.getElementText(e));
 
-      if (
-        e.name === "div" &&
-        /language-(plaintext|shell)/gi.test(e.attribs["class"])
-      ) {
-        resources.push(
-          ...cheerio(e)
-            .find("code")
-            .text()
-            .split("\n")
-            .filter((u) => u && this.isResource(u))
-            .map((u) => {
-              const [method, path] = u.split(/ +/);
-              return { method, path };
-            })
-        );
-      }
+      if (resourceParser.isValid())
+        apiBuilder.withResources(resourceParser.parse());
 
-      if (e.name === "table") {
-        attributes = cheerio(e)
-          .find("tbody>tr")
-          .toArray()
-          .map((tr) => {
-            const [_name, type, _required, _descr] = cheerio(tr)
-              .find("td")
-              .toArray()
-              .map((td) => cheerio(td).text().replace(/\n/g, " ").trim());
-            return {
-              name: _name,
-              type,
-              required: _required === "yes",
-              description: _descr,
-            };
-          });
-      }
+      if (attributesParser.isValid())
+        apiBuilder.withAttributes(attributesParser.parse());
 
-      if (/language-json/gi.test(e.attribs["class"])) {
-        const response = this.sanitizeAndParse(
-          cheerio(e).find("code").text().replace(/\n/g, ""),
-          name
-        );
-
-        if (exampleResponse === null || typeof exampleResponse === "string") {
-          exampleResponse = response;
-        } else if (Array.isArray(exampleResponse) && Array.isArray(response)) {
-          exampleResponse = [...response, ...exampleResponse];
-        } else if (
-          typeof exampleResponse === "object" &&
-          typeof response === "object" &&
-          !Array.isArray(exampleResponse) &&
-          !Array.isArray(response)
-        ) {
-          exampleResponse = { ...response, ...exampleResponse };
-        }
-      }
+      if (responseParser.isValid())
+        apiBuilder.withResponse(responseParser.parse());
     });
 
-    if (typeof exampleResponse === "string") {
-      console.warn("Parsing error persist!", `${this.pagePath} > ${name}`);
+    const api = apiBuilder.build();
+
+    if (typeof api.response === "string") {
+      console.warn("Parsing error persist!", `${this.pagePath} > ${api.name}`);
     }
 
-    if (!name || resources.length === 0) return undefined;
+    if (!api.name || api.resources.length === 0) return undefined;
+    return api;
+  }
 
-    return {
-      name,
-      description,
-      resources,
-      attributes,
-      response: exampleResponse,
-    };
+  private static getElementText(elem: TagElement): string {
+    return cheerio(elem.children).text().replace(/\n/g, " ").trim();
   }
 
   private shouldSkip(elem: TagElement): boolean {
@@ -162,45 +114,5 @@ export class PageCrawler {
     )
       return true;
     return false;
-  }
-
-  private isResource(str: string): boolean {
-    const [method, path] = str.split(/ +/);
-    return (
-      /^(GET|POST|PUT|PATCH|DELETE)$/i.test(method) &&
-      /^(\/?:?\w+)((\/:?\w+))*/.test(path)
-    );
-  }
-
-  private sanitizeAndParse(json: string, apiName: string): any {
-    const sanitized = json
-      // truncated list/objects
-      .replace(/\.\.\. *(]|})/g, "$1")
-      .replace(/(\[|{) *\.\.\./g, "$1")
-      .replace(/, *(]|})/g, "$1")
-      // json comments
-      .replace(/([\[{,]) *\/\/[\w\s\d`,.]+"/g, '$1"')
-      .replace(/\[ *\/\/[\w\s\d`,.]+{/g, "[{")
-      // bad string in diff
-      .replace(/\\ /g, "\\\\ ")
-      // missing colon (this is so stupid, GitLab!)
-      .replace(/("job_artifacts_size": 0|"user_id": 1)[\s\n]+"/g, '$1,"')
-      // key without quote
-      .replace(/ {4}(\w+): (?=["ntf\[\{\d])/g, '"$1":');
-
-    try {
-      return JSON.parse(sanitized);
-    } catch {
-      ensureDirSync(`.generated/unparsable`);
-      Deno.writeTextFileSync(
-        ".generated/unparsable/" +
-          this.pagePath.replace(/\.html/, "") +
-          "__" +
-          apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() +
-          ".json",
-        sanitized
-      );
-      return sanitized;
-    }
   }
 }
