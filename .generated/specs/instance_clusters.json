@@ -226,6 +226,113 @@
       }
     },
     {
+      "name": "Edit instance cluster",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/admin/clusters/:cluster_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "cluster_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the cluster"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the cluster"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": false,
+          "description": "The base domain of the cluster"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The associated environment to the cluster"
+        },
+        {
+          "name": "management_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of the management project for the cluster"
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if cluster is active or not"
+        },
+        {
+          "name": "managed",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if GitLab manages namespaces and service accounts for this cluster"
+        },
+        {
+          "name": "platform_kubernetes_attributes[api_url]",
+          "type": "string",
+          "required": false,
+          "description": "The URL to access the Kubernetes API"
+        },
+        {
+          "name": "platform_kubernetes_attributes[token]",
+          "type": "string",
+          "required": false,
+          "description": "The token to authenticate against Kubernetes"
+        },
+        {
+          "name": "platform_kubernetes_attributes[ca_cert]",
+          "type": "string",
+          "required": false,
+          "description": "TLS certificate. Required if API is using a self-signed TLS certificate."
+        },
+        {
+          "name": "platform_kubernetes_attributes[namespace]",
+          "type": "string",
+          "required": false,
+          "description": "The unique namespace related to the project"
+        }
+      ],
+      "response": {
+        "id": 9,
+        "name": "update-cluster-name",
+        "created_at": "2020-07-14T18:36:10.440Z",
+        "managed": true,
+        "enabled": true,
+        "domain": null,
+        "provider_type": "user",
+        "platform_type": "kubernetes",
+        "environment_scope": "*",
+        "cluster_type": "instance_type",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "platform_kubernetes": {
+          "api_url": "https://new-example.com",
+          "namespace": null,
+          "authorization_type": "rbac",
+          "ca_cert": "-----BEGIN CERTIFICATE-----IxMDM1MV0ZDJkZjM...-----END CERTIFICATE-----"
+        },
+        "provider_gcp": null,
+        "management_project": null,
+        "project": null
+      }
+    },
+    {
       "name": "Delete instance cluster",
       "description": "Parameters:",
       "resources": [

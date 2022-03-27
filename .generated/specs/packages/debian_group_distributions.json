@@ -97,50 +97,8 @@
       "description": "Gets a single Debian group distribution key.",
       "resources": [
         {
-          "method": "-----BEGIN",
-          "path": "PGP"
-        },
-        {
-          "method": "Comment:",
-          "path": "Alice's"
-        },
-        {
-          "method": "Comment:",
-          "path": "https://www.ietf.org/id/draft-bre-openpgp-samples-01.html"
-        },
-        {
-          "method": "mDMEXEcE6RYJKwYBBAHaRw8BAQdArjWwk3FAqyiFbFBKT4TzXcVBqPTB3gmzlC/U"
-        },
-        {
-          "method": "b7O1u120JkFsaWNlIExvdmVsYWNlIDxhbGljZUBvcGVucGdwLmV4YW1wbGU+iJAE"
-        },
-        {
-          "method": "ExYIADgCGwMFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AWIQTrhbtfozp14V6UTmPy"
-        },
-        {
-          "method": "MVUMT0fjjgUCXaWfOgAKCRDyMVUMT0fjjukrAPoDnHBSogOmsHOsd9qGsiZpgRnO"
-        },
-        {
-          "method": "dypvbm+QtXZqth9rvwD9HcDC0tC+PHAsO7OTh1S1TC9RiJsvawAfCPaQZoed8gK4"
-        },
-        {
-          "method": "OARcRwTpEgorBgEEAZdVAQUBAQdAQv8GIa2rSTzgqbXCpDDYMiKRVitCsy203x3s"
-        },
-        {
-          "method": "E9+eviIDAQgHiHgEGBYIACAWIQTrhbtfozp14V6UTmPyMVUMT0fjjgUCXEcE6QIb"
-        },
-        {
-          "method": "DAAKCRDyMVUMT0fjjlnQAQDFHUs6TIcxrNTtEZFjUFm1M0PJ1Dng/cDW4xN80fsn"
-        },
-        {
-          "method": "0QEA22Kr7VkCjeAEC08VSTeV+QFsmz55/lntWkwYWhmvOgE="
-        },
-        {
-          "method": "=iIGO"
-        },
-        {
-          "method": "-----END",
-          "path": "PGP"
+          "method": "GET",
+          "path": "/groups/:id/debian_distributions/:codename/key.asc"
         }
       ],
       "attributes": [

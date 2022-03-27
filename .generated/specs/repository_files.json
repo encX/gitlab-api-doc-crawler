@@ -7,50 +7,8 @@
       "description": "In addition to the GET method, you can also use HEAD to get just file metadata.",
       "resources": [
         {
-          "method": "HTTP/1.1",
-          "path": "200"
-        },
-        {
-          "method": "..."
-        },
-        {
-          "method": "X-Gitlab-Blob-Id:",
-          "path": "79f7bbd25901e8334750839545a9bd021f0e4c83"
-        },
-        {
-          "method": "X-Gitlab-Commit-Id:",
-          "path": "d5a3ff139356ce33e37e73add446f16869741b50"
-        },
-        {
-          "method": "X-Gitlab-Content-Sha256:",
-          "path": "4c294617b60715c1d218e61164a3abd4808a4284cbc30e6728a01ad9aada4481"
-        },
-        {
-          "method": "X-Gitlab-Encoding:",
-          "path": "base64"
-        },
-        {
-          "method": "X-Gitlab-File-Name:",
-          "path": "key.rb"
-        },
-        {
-          "method": "X-Gitlab-File-Path:",
-          "path": "app/models/key.rb"
-        },
-        {
-          "method": "X-Gitlab-Last-Commit-Id:",
-          "path": "570e7b2abdd848b95f2f578043fc23bd6f6fd24d"
-        },
-        {
-          "method": "X-Gitlab-Ref:",
-          "path": "master"
-        },
-        {
-          "method": "X-Gitlab-Size:",
-          "path": "1476"
-        },
-        {
-          "method": "..."
+          "method": "GET",
+          "path": "/projects/:id/repository/files/:file_path"
         }
       ],
       "attributes": [
@@ -91,50 +49,8 @@
       "description": "Allows you to receive blame information. Each blame range contains lines and corresponding commit information.",
       "resources": [
         {
-          "method": "HTTP/1.1",
-          "path": "200"
-        },
-        {
-          "method": "..."
-        },
-        {
-          "method": "X-Gitlab-Blob-Id:",
-          "path": "79f7bbd25901e8334750839545a9bd021f0e4c83"
-        },
-        {
-          "method": "X-Gitlab-Commit-Id:",
-          "path": "d5a3ff139356ce33e37e73add446f16869741b50"
-        },
-        {
-          "method": "X-Gitlab-Content-Sha256:",
-          "path": "4c294617b60715c1d218e61164a3abd4808a4284cbc30e6728a01ad9aada4481"
-        },
-        {
-          "method": "X-Gitlab-Encoding:",
-          "path": "base64"
-        },
-        {
-          "method": "X-Gitlab-File-Name:",
-          "path": "file.rb"
-        },
-        {
-          "method": "X-Gitlab-File-Path:",
-          "path": "path/to/file.rb"
-        },
-        {
-          "method": "X-Gitlab-Last-Commit-Id:",
-          "path": "570e7b2abdd848b95f2f578043fc23bd6f6fd24d"
-        },
-        {
-          "method": "X-Gitlab-Ref:",
-          "path": "master"
-        },
-        {
-          "method": "X-Gitlab-Size:",
-          "path": "1476"
-        },
-        {
-          "method": "..."
+          "method": "GET",
+          "path": "/projects/:id/repository/files/:file_path/blame"
         }
       ],
       "attributes": [

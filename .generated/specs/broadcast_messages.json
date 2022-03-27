@@ -234,6 +234,25 @@
         "broadcast_type": "notification",
         "dismissable": false
       }
+    },
+    {
+      "name": "Delete a broadcast message",
+      "description": "Parameters:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/broadcast_messages/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of broadcast message to delete."
+        }
+      ],
+      "response": null
     }
   ]
 }
