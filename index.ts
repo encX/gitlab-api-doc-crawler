@@ -42,6 +42,7 @@ for await (const page of pages) {
 
   const wrapper = {
     origin: glUrl.pageUrl(page.path),
+    pageSlug: page.path.replace(/\.\w+$/, ""),
     pageName: page.name,
     apis,
   };
