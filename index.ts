@@ -5,7 +5,7 @@ import { PagesLister } from "./pageLister.ts";
 import { PageCrawler } from "./pageCrawler.ts";
 import { glUrl } from "./helper/url.ts";
 import { DocVer } from "./enums/docVer.ts";
-import { Api } from "./models.ts";
+import { Api } from "./types/models.ts";
 
 glUrl.setDocVer(DocVer.current);
 const pages = (await new PagesLister().getPages())
@@ -48,6 +48,12 @@ for await (const page of pages) {
   };
 
   await Deno.writeTextFile(specPath, JSON.stringify(wrapper, null, 2));
+}
+
+await ensureDir(".generated/swagger");
+
+for await (const spec of Deno.readDir("./.generated/specs")) {
+  // convert spec to swagger
 }
 
 console.log("done");

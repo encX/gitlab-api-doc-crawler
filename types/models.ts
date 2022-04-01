@@ -1,5 +1,3 @@
-import { type JSONSchema } from "https://deno.land/x/json_schema_typed@v8.0.0/draft_2020_12.ts";
-
 export interface Page {
   name: string;
   path: string;

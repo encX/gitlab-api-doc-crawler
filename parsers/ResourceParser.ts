@@ -1,6 +1,6 @@
 import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 
-import { Resource } from "../models.ts";
+import { Resource } from "../types/models.ts";
 import { Parser } from "./Parser.ts";
 
 export class ResourceParser implements Parser<Resource[]> {
