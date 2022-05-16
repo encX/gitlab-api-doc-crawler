@@ -1,0 +1,155 @@
+[
+  {
+    "/applications": {
+      "post": {
+        "summary": "Create an application",
+        "description": "Create an application by posting a JSON payload.",
+        "operationId": "createAnApplication",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the application.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "description": "Redirect URI of the application.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scopes",
+            "in": "query",
+            "description": "Scopes of the application. You can specify multiple scopes by separating each scope using a space.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "confidential",
+            "in": "query",
+            "description": "The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "application_id": {
+                      "type": "string"
+                    },
+                    "application_name": {
+                      "type": "string"
+                    },
+                    "secret": {
+                      "type": "string"
+                    },
+                    "callback_url": {
+                      "type": "string"
+                    },
+                    "confidential": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/applications": {
+      "get": {
+        "summary": "List all applications",
+        "description": "List all registered applications.",
+        "operationId": "listAllApplications",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "application_id": {
+                        "type": "string"
+                      },
+                      "application_name": {
+                        "type": "string"
+                      },
+                      "callback_url": {
+                        "type": "string"
+                      },
+                      "confidential": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/applications/{id}": {
+      "delete": {
+        "summary": "Delete an application",
+        "description": "Delete a specific application.",
+        "operationId": "deleteAnApplication",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the application (not the application_id).",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -45,8 +45,8 @@ export class Endpoint {
     if (methods.size > 1)
       throw new Error(`API "${this.api.name}" has >1 http methods defined`);
 
-    if (paths.size > 1)
-      throw new Error(`API "${this.api.name}" has >1 paths defined`);
+    // if (paths.size > 1)
+    //   throw new Error(`API "${this.api.name}" has >1 paths defined`);
 
     this.method = [...methods][0].toLowerCase();
 

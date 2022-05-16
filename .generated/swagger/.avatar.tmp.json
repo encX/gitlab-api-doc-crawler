@@ -1,0 +1,48 @@
+[
+  {
+    "/avatar": {
+      "get": {
+        "summary": "Get a single avatar URL",
+        "description": "Get a single avatar URL for a user with the given email address.",
+        "operationId": "getASingleAvatarUrl",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Public email address of the user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Single pixel dimension (because images are squares). Only used for avatar lookups at Gravatar or at the configured Libravatar server.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "avatar_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

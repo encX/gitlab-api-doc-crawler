@@ -54,7 +54,7 @@ for await (const page of pages) {
 
   await Deno.writeTextFile(specPath, JSON.stringify(wrapper, null, 2));
 
-  if (Array.isArray(apis)) swaggerBuilder.push(apis);
+  if (Array.isArray(apis)) swaggerBuilder.push(apis, wrapper.pageSlug);
 }
 
 console.log("done");
