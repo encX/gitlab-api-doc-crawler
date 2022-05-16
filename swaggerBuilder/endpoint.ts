@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-unused-vars
 import { Api, Resource } from "../types/models.ts";
 import {
   OperationObject,

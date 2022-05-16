@@ -1,5 +1,6 @@
 import { SchemaObject } from "../types/OpenAPIV3.ts";
 
+// deno-lint-ignore no-explicit-any
 export function parseSchema(obj: any): SchemaObject {
   if (obj === null || obj === undefined) return { type: "string" };
   if (Array.isArray(obj)) {
