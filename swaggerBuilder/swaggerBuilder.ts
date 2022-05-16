@@ -1,3 +1,4 @@
+import { Api } from "../types/models.ts";
 import { Document } from "../types/OpenAPIV3.ts";
 
 export class SwaggerBuilder {
@@ -11,7 +12,7 @@ export class SwaggerBuilder {
   };
   constructor() {}
 
-  push(apis: Api[]): void {
+  push(_apis: Api[]): void {
     // todo
   }
 }

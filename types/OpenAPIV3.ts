@@ -1,3 +1,5 @@
+// deno-lint-ignore-file
+
 export interface Document<T extends {} = {}> {
   openapi: string;
   info: InfoObject;

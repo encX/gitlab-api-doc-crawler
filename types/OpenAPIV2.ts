@@ -1,3 +1,5 @@
+// deno-lint-ignore-file
+
 import { IJsonSchema } from "./IJsonSchema.ts";
 
 export interface Document<T extends {} = {}> {

@@ -1,3 +1,5 @@
+// deno-lint-ignore-file
+
 import * as OpenAPIV3 from "./OpenAPIV3.ts";
 import * as OpenAPIV2 from "./OpenAPIV2.ts";
 
