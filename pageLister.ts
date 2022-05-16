@@ -1,4 +1,4 @@
-import { Page } from "./models.ts";
+import { Page } from "./types/models.ts";
 import { load } from "./helper/page.ts";
 import { glUrl } from "./helper/url.ts";
 
