@@ -1,11 +1,9 @@
-import { Api, Resource } from "./types/models.ts";
+import { Api, Resource } from "../types/models.ts";
 import {
-  PathsObject,
   ParameterObject,
   SchemaObject,
-  PathItemObject,
   OperationObject,
-} from "./types/OpenAPIV3.ts";
+} from "../types/OpenAPIV3.ts";
 
 type HttpMethod = "get" | "post" | "put" | "patch" | "delete";
 
