@@ -1,0 +1,369 @@
+[
+  {
+    "/pages/domains": {
+      "get": {
+        "summary": "List all Pages domains",
+        "description": "Get a list of all Pages domains. The user must have administrator access.",
+        "operationId": "listAllPagesDomains",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "domain": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "auto_ssl_enabled": {
+                        "type": "boolean"
+                      },
+                      "certificate": {
+                        "type": "object",
+                        "properties": {
+                          "expired": {
+                            "type": "boolean"
+                          },
+                          "expiration": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/pages/domains": {
+      "get": {
+        "summary": "List Pages domains",
+        "description": "Get a list of project Pages domains. The user must have permissions to view Pages domains.",
+        "operationId": "listPagesDomains",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "domain": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/pages/domains/:domain": {
+      "get": {
+        "summary": "Single Pages domain",
+        "description": "Get a single project Pages domain. The user must have permissions to view Pages domains.",
+        "operationId": "singlePagesDomain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "The custom domain indicated by the user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "auto_ssl_enabled": {
+                      "type": "boolean"
+                    },
+                    "certificate": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        },
+                        "expired": {
+                          "type": "boolean"
+                        },
+                        "certificate": {
+                          "type": "string"
+                        },
+                        "certificate_text": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/pages/domains": {
+      "post": {
+        "summary": "Create new Pages domain",
+        "description": "Creates a new Pages domain. The user must have permissions to create new Pages domains.",
+        "operationId": "createNewPagesDomain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "The custom domain indicated by the user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "auto_ssl_enabled",
+            "in": "query",
+            "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "certificate",
+            "in": "query",
+            "description": "The certificate in PEM format with intermediates following in most specific to least specific order.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "The certificate key in PEM format.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "auto_ssl_enabled": {
+                      "type": "boolean"
+                    },
+                    "certificate": {
+                      "type": "object",
+                      "properties": {
+                        "subject": {
+                          "type": "string"
+                        },
+                        "expired": {
+                          "type": "boolean"
+                        },
+                        "certificate": {
+                          "type": "string"
+                        },
+                        "certificate_text": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/pages/domains/:domain": {
+      "put": {
+        "summary": "Update Pages domain",
+        "description": "Updates an existing project Pages domain. The user must have permissions to change an existing Pages domains.",
+        "operationId": "updatePagesDomain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "The custom domain indicated by the user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "auto_ssl_enabled",
+            "in": "query",
+            "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "certificate",
+            "in": "query",
+            "description": "The certificate in PEM format with intermediates following in most specific to least specific order.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "description": "The certificate key in PEM format.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/pages/domains/:domain": {
+      "delete": {
+        "summary": "Delete Pages domain",
+        "description": "Deletes an existing project Pages domain.",
+        "operationId": "deletePagesDomain",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "path",
+            "description": "The custom domain indicated by the user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

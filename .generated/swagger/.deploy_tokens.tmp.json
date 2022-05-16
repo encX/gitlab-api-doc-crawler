@@ -1,0 +1,613 @@
+[
+  {
+    "/deploy_tokens": {
+      "get": {
+        "summary": "List all deploy tokens",
+        "description": "Get a list of all deploy tokens across the GitLab instance. This endpoint requires administrator access.",
+        "operationId": "listAllDeployTokens",
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Limit by active status.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "expires_at": {
+                        "type": "string"
+                      },
+                      "revoked": {
+                        "type": "boolean"
+                      },
+                      "expired": {
+                        "type": "boolean"
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/deploy_tokens": {
+      "get": {
+        "summary": "List project deploy tokens",
+        "description": "Get a list of a project’s deploy tokens.",
+        "operationId": "listProjectDeployTokens",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Limit by active status.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "expires_at": {
+                        "type": "string"
+                      },
+                      "revoked": {
+                        "type": "boolean"
+                      },
+                      "expired": {
+                        "type": "boolean"
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/deploy_tokens/:token_id": {
+      "get": {
+        "summary": "Get a project deploy token",
+        "description": "Get a single project’s deploy token by ID.",
+        "operationId": "getAProjectDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token_id",
+            "in": "path",
+            "description": "ID of the deploy token",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "expires_at": {
+                      "type": "string"
+                    },
+                    "revoked": {
+                      "type": "boolean"
+                    },
+                    "expired": {
+                      "type": "boolean"
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/deploy_tokens": {
+      "post": {
+        "summary": "Create a project deploy token",
+        "description": "Creates a new deploy token for a project.",
+        "operationId": "createAProjectDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "New deploy token’s name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "expires_at",
+            "in": "query",
+            "description": "Expiration date for the deploy token. Does not expire if no value is provided. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username for deploy token. Default is gitlab+deploy-token-{n}",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scopes",
+            "in": "query",
+            "description": "Indicates the deploy token scopes. Must be at least one of read_repository, read_registry, write_registry, read_package_registry, or write_package_registry.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "expires_at": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "revoked": {
+                      "type": "boolean"
+                    },
+                    "expired": {
+                      "type": "boolean"
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/deploy_tokens/:token_id": {
+      "delete": {
+        "summary": "Delete a project deploy token",
+        "description": "Removes a deploy token from the project.",
+        "operationId": "deleteAProjectDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token_id",
+            "in": "path",
+            "description": "ID of the deploy token",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/deploy_tokens": {
+      "get": {
+        "summary": "List group deploy tokens",
+        "description": "Get a list of a group’s deploy tokens",
+        "operationId": "listGroupDeployTokens",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Limit by active status.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "username": {
+                        "type": "string"
+                      },
+                      "expires_at": {
+                        "type": "string"
+                      },
+                      "revoked": {
+                        "type": "boolean"
+                      },
+                      "expired": {
+                        "type": "boolean"
+                      },
+                      "scopes": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/deploy_tokens/:token_id": {
+      "get": {
+        "summary": "Get a group deploy token",
+        "description": "Get a single group’s deploy token by ID.",
+        "operationId": "getAGroupDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the group owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token_id",
+            "in": "path",
+            "description": "ID of the deploy token",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "expires_at": {
+                      "type": "string"
+                    },
+                    "revoked": {
+                      "type": "boolean"
+                    },
+                    "expired": {
+                      "type": "boolean"
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/deploy_tokens": {
+      "post": {
+        "summary": "Create a group deploy token",
+        "description": "Creates a new deploy token for a group.",
+        "operationId": "createAGroupDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the group owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "New deploy token’s name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "expires_at",
+            "in": "query",
+            "description": "Expiration date for the deploy token. Does not expire if no value is provided. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username for deploy token. Default is gitlab+deploy-token-{n}",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scopes",
+            "in": "query",
+            "description": "Indicates the deploy token scopes. Must be at least one of read_repository, read_registry, write_registry, read_package_registry, or write_package_registry.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "expires_at": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "revoked": {
+                      "type": "boolean"
+                    },
+                    "expired": {
+                      "type": "boolean"
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/deploy_tokens/:token_id": {
+      "delete": {
+        "summary": "Delete a group deploy token",
+        "description": "Removes a deploy token from the group.",
+        "operationId": "deleteAGroupDeployToken",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the group owned by the authenticated user",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token_id",
+            "in": "path",
+            "description": "ID of the deploy token",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

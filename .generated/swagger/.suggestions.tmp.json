@@ -1,0 +1,66 @@
+[
+  {
+    "/suggestions/{id}/apply": {
+      "put": {
+        "summary": "Applying suggestions",
+        "description": "Applies a suggested patch in a merge request. Users must have at least the Developer role to perform such action.",
+        "operationId": "applyingSuggestions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a suggestion",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "commit_message",
+            "in": "query",
+            "description": "A custom commit message to use instead of the default generated message or the project’s default message",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "from_line": {
+                      "type": "integer"
+                    },
+                    "to_line": {
+                      "type": "integer"
+                    },
+                    "appliable": {
+                      "type": "boolean"
+                    },
+                    "applied": {
+                      "type": "boolean"
+                    },
+                    "from_content": {
+                      "type": "string"
+                    },
+                    "to_content": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,113 @@
+[
+  {
+    "/analytics/group_activity/issues_count": {
+      "get": {
+        "summary": "Get count of recently created issues for group",
+        "description": "",
+        "operationId": "getCountOfRecentlyCreatedIssuesForGroup",
+        "parameters": [
+          {
+            "name": "group_path",
+            "in": "query",
+            "description": "Group path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "issues_count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/analytics/group_activity/merge_requests_count": {
+      "get": {
+        "summary": "Get count of recently created merge requests for group",
+        "description": "",
+        "operationId": "getCountOfRecentlyCreatedMergeRequestsForGroup",
+        "parameters": [
+          {
+            "name": "group_path",
+            "in": "query",
+            "description": "Group path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "merge_requests_count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/analytics/group_activity/new_members_count": {
+      "get": {
+        "summary": "Get count of members recently added to group",
+        "description": "",
+        "operationId": "getCountOfMembersRecentlyAddedToGroup",
+        "parameters": [
+          {
+            "name": "group_path",
+            "in": "query",
+            "description": "Group path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "new_members_count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

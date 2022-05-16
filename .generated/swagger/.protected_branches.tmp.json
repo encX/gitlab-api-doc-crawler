@@ -1,0 +1,443 @@
+[
+  {
+    "/projects/{id}/protected_branches": {
+      "get": {
+        "summary": "List protected branches",
+        "description": "Gets a list of protected branches from a project as they are defined in the UI. If a wildcard is set, it is returned instead of the exact name of the branches that match that wildcard.",
+        "operationId": "listProtectedBranches",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Name or part of the name of protected branches to be searched for",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "push_access_levels": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "access_level": {
+                              "type": "integer"
+                            },
+                            "user_id": {
+                              "type": "string"
+                            },
+                            "group_id": {
+                              "type": "string"
+                            },
+                            "access_level_description": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "merge_access_levels": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "access_level": {
+                              "type": "string"
+                            },
+                            "user_id": {
+                              "type": "string"
+                            },
+                            "group_id": {
+                              "type": "integer"
+                            },
+                            "access_level_description": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "allow_force_push": {
+                        "type": "boolean"
+                      },
+                      "code_owner_approval_required": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/protected_branches/:name": {
+      "get": {
+        "summary": "Get a single protected branch or wildcard protected branch",
+        "description": "Gets a single protected branch or wildcard protected branch.",
+        "operationId": "getASingleProtectedBranchOrWildcardProtectedBranch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the branch or wildcard",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "push_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_level": {
+                            "type": "integer"
+                          },
+                          "access_level_description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "merge_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_level": {
+                            "type": "integer"
+                          },
+                          "access_level_description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "allow_force_push": {
+                      "type": "boolean"
+                    },
+                    "code_owner_approval_required": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/protected_branches": {
+      "post": {
+        "summary": "Protect repository branches",
+        "description": "Protects a single repository branch or several project repository branches using a wildcard protected branch.",
+        "operationId": "protectRepositoryBranches",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the branch or wildcard",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "push_access_level",
+            "in": "query",
+            "description": "Access levels allowed to push (defaults: 40, Maintainer role)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "merge_access_level",
+            "in": "query",
+            "description": "Access levels allowed to merge (defaults: 40, Maintainer role)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "unprotect_access_level",
+            "in": "query",
+            "description": "Access levels allowed to unprotect (defaults: 40, Maintainer role)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "allow_force_push",
+            "in": "query",
+            "description": "Allow all users with push access to force push. (default: false)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "allowed_to_push",
+            "in": "query",
+            "description": "Array of access levels allowed to push, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "allowed_to_merge",
+            "in": "query",
+            "description": "Array of access levels allowed to merge, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "allowed_to_unprotect",
+            "in": "query",
+            "description": "Array of access levels allowed to unprotect, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code_owner_approval_required",
+            "in": "query",
+            "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "push_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_level": {
+                            "type": "integer"
+                          },
+                          "access_level_description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "merge_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_level": {
+                            "type": "integer"
+                          },
+                          "access_level_description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "unprotect_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "access_level": {
+                            "type": "integer"
+                          },
+                          "access_level_description": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "allow_force_push": {
+                      "type": "boolean"
+                    },
+                    "code_owner_approval_required": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/protected_branches/:name": {
+      "delete": {
+        "summary": "Unprotect repository branches",
+        "description": "Unprotects the given protected branch or wildcard protected branch.",
+        "operationId": "unprotectRepositoryBranches",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the branch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/protected_branches/:name": {
+      "patch": {
+        "summary": "Require code owner approvals for a single branch",
+        "description": "Update the “code owner approval required” option for the given protected branch.",
+        "operationId": "requireCodeOwnerApprovalsForASingleBranch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "description": "The name of the branch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code_owner_approval_required",
+            "in": "query",
+            "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

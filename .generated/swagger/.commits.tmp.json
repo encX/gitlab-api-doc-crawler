@@ -1,0 +1,1694 @@
+[
+  {
+    "/projects/{id}/repository/commits": {
+      "get": {
+        "summary": "List repository commits",
+        "description": "Get a list of repository commits in a project.",
+        "operationId": "listRepositoryCommits",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ref_name",
+            "in": "query",
+            "description": "The name of a repository branch, tag or revision range, or if not given the default branch",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "description": "Only commits after or on this date are returned in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "description": "Only commits before or on this date are returned in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "description": "The file path",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "description": "Retrieve every commit from the repository",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "with_stats",
+            "in": "query",
+            "description": "Stats about each commit are added to the response",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "first_parent",
+            "in": "query",
+            "description": "Follow only the first parent commit upon seeing a merge commit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "List commits in order. Possible values: default, topo. Defaults to default, the commits are shown in reverse chronological order.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trailers",
+            "in": "query",
+            "description": "Parse and include Git trailers for every commit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "short_id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "author_name": {
+                        "type": "string"
+                      },
+                      "author_email": {
+                        "type": "string"
+                      },
+                      "authored_date": {
+                        "type": "string"
+                      },
+                      "committer_name": {
+                        "type": "string"
+                      },
+                      "committer_email": {
+                        "type": "string"
+                      },
+                      "committed_date": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "parent_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "web_url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits": {
+      "post": {
+        "summary": "Create a commit with multiple files and actions",
+        "description": "Create a commit by posting a JSON payload",
+        "operationId": "createACommitWithMultipleFilesAndActions",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "description": "The action to perform, create, delete, move, update, chmod",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file_path",
+            "in": "query",
+            "description": "Full path to the file. Ex. lib/class.rb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "previous_path",
+            "in": "query",
+            "description": "Original full path to the file being moved. Ex. lib/class1.rb. Only considered for move action.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "content",
+            "in": "query",
+            "description": "File content, required for all except delete, chmod, and move. Move actions that do not specify content preserve the existing file content, and any other value of content overwrites the file content.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "encoding",
+            "in": "query",
+            "description": "text or base64. text is default.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "last_commit_id",
+            "in": "query",
+            "description": "Last known file commit ID. Only considered in update, move, and delete actions.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "execute_filemode",
+            "in": "query",
+            "description": "When true/false enables/disables the execute flag on the file. Only considered for chmod action.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "short_id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "author_name": {
+                      "type": "string"
+                    },
+                    "author_email": {
+                      "type": "string"
+                    },
+                    "committer_name": {
+                      "type": "string"
+                    },
+                    "committer_email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "parent_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "committed_date": {
+                      "type": "string"
+                    },
+                    "authored_date": {
+                      "type": "string"
+                    },
+                    "stats": {
+                      "type": "object",
+                      "properties": {
+                        "additions": {
+                          "type": "integer"
+                        },
+                        "deletions": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "web_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha": {
+      "get": {
+        "summary": "Get a single commit",
+        "description": "Get a specific commit identified by the commit hash or name of a branch or tag.",
+        "operationId": "getASingleCommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stats",
+            "in": "query",
+            "description": "Include commit stats. Default is true",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "short_id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "author_name": {
+                      "type": "string"
+                    },
+                    "author_email": {
+                      "type": "string"
+                    },
+                    "committer_name": {
+                      "type": "string"
+                    },
+                    "committer_email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "committed_date": {
+                      "type": "string"
+                    },
+                    "authored_date": {
+                      "type": "string"
+                    },
+                    "parent_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "last_pipeline": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "ref": {
+                          "type": "string"
+                        },
+                        "sha": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "stats": {
+                      "type": "object",
+                      "properties": {
+                        "additions": {
+                          "type": "integer"
+                        },
+                        "deletions": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "web_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/refs": {
+      "get": {
+        "summary": "Get references a commit is pushed to",
+        "description": "",
+        "operationId": "getReferencesACommitIsPushedTo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The scope of commits. Possible values branch, tag, all. Default is all.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/cherry_pick": {
+      "post": {
+        "summary": "Cherry-pick a commit",
+        "description": "Cherry-picks a commit to a given branch.",
+        "operationId": "cherry-pickACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "description": "The name of the branch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dry_run",
+            "in": "query",
+            "description": "Does not commit any changes. Default is false. Introduced in GitLab 13.3",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "in": "query",
+            "description": "A custom commit message to use for the new commit. Introduced in GitLab 14.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dry_run": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "short_id": {
+                      "type": "string"
+                    },
+                    "author_name": {
+                      "type": "string"
+                    },
+                    "author_email": {
+                      "type": "string"
+                    },
+                    "authored_date": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "committer_name": {
+                      "type": "string"
+                    },
+                    "committer_email": {
+                      "type": "string"
+                    },
+                    "committed_date": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "parent_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "web_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/revert": {
+      "post": {
+        "summary": "Revert a commit",
+        "description": "Reverts a commit in a given branch.",
+        "operationId": "revertACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "Commit SHA to revert",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "description": "Target branch name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dry_run",
+            "in": "query",
+            "description": "Does not commit any changes. Default is false. Introduced in GitLab 13.3",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dry_run": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "error_code": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "short_id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "parent_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "author_name": {
+                      "type": "string"
+                    },
+                    "author_email": {
+                      "type": "string"
+                    },
+                    "authored_date": {
+                      "type": "string"
+                    },
+                    "committer_name": {
+                      "type": "string"
+                    },
+                    "committer_email": {
+                      "type": "string"
+                    },
+                    "committed_date": {
+                      "type": "string"
+                    },
+                    "web_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/diff": {
+      "get": {
+        "summary": "Get the diff of a commit",
+        "description": "Get the diff of a commit in a project.",
+        "operationId": "getTheDiffOfACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "diff": {
+                        "type": "string"
+                      },
+                      "new_path": {
+                        "type": "string"
+                      },
+                      "old_path": {
+                        "type": "string"
+                      },
+                      "a_mode": {
+                        "type": "string"
+                      },
+                      "b_mode": {
+                        "type": "string"
+                      },
+                      "new_file": {
+                        "type": "boolean"
+                      },
+                      "renamed_file": {
+                        "type": "boolean"
+                      },
+                      "deleted_file": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/comments": {
+      "get": {
+        "summary": "Get the comments of a commit",
+        "description": "Get the comments of a commit in a project.",
+        "operationId": "getTheCommentsOfACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "note": {
+                        "type": "string"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/comments": {
+      "post": {
+        "summary": "Post comment to commit",
+        "description": "Adds a comment to a commit.",
+        "operationId": "postCommentToCommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit SHA or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "note",
+            "in": "query",
+            "description": "The text of the comment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "description": "The file path relative to the repository",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "line",
+            "in": "query",
+            "description": "The line number where the comment should be placed",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "line_type",
+            "in": "query",
+            "description": "The line type. Takes new or old as arguments",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "author": {
+                      "type": "object",
+                      "properties": {
+                        "web_url": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "line_type": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "line": {
+                      "type": "integer"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/discussions": {
+      "get": {
+        "summary": "Get the discussions of a commit",
+        "description": "Get the discussions of a commit in a project.",
+        "operationId": "getTheDiscussionsOfACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "individual_note": {
+                        "type": "boolean"
+                      },
+                      "notes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "body": {
+                              "type": "string"
+                            },
+                            "attachment": {
+                              "type": "string"
+                            },
+                            "author": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "username": {
+                                  "type": "string"
+                                },
+                                "web_url": {
+                                  "type": "string"
+                                },
+                                "state": {
+                                  "type": "string"
+                                },
+                                "avatar_url": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "created_at": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "string"
+                            },
+                            "system": {
+                              "type": "boolean"
+                            },
+                            "noteable_id": {
+                              "type": "string"
+                            },
+                            "noteable_type": {
+                              "type": "string"
+                            },
+                            "resolvable": {
+                              "type": "boolean"
+                            },
+                            "confidential": {
+                              "type": "string"
+                            },
+                            "noteable_iid": {
+                              "type": "string"
+                            },
+                            "commands_changes": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/statuses": {
+      "get": {
+        "summary": "List the statuses of a commit",
+        "description": "",
+        "operationId": "listTheStatusesOfACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit SHA",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ref",
+            "in": "query",
+            "description": "The name of a repository branch or tag or, if not given, the default branch",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stage",
+            "in": "query",
+            "description": "Filter by build stage, for example, test",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by job name, for example, bundler:audit",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "description": "Return all statuses, not only the latest ones",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "started_at": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "allow_failure": {
+                        "type": "boolean"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "target_url": {
+                        "type": "string"
+                      },
+                      "finished_at": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "ref": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/statuses/:sha": {
+      "post": {
+        "summary": "Post the build status to a commit",
+        "description": "Adds or updates a build status of a commit.",
+        "operationId": "postTheBuildStatusToACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit SHA",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "The state of the status. Can be one of the following: pending, running, success, failed, canceled",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ref",
+            "in": "query",
+            "description": "The ref (branch or tag) to which the status refers",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name or context",
+            "in": "query",
+            "description": "The label to differentiate this status from the status of other systems. Default value is default",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "target_url",
+            "in": "query",
+            "description": "The target URL to associate with this status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "The short description of the status",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "coverage",
+            "in": "query",
+            "description": "The total code coverage",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pipeline_id",
+            "in": "query",
+            "description": "The ID of the pipeline to set status. Use in case of several pipeline on same SHA.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "author": {
+                      "type": "object",
+                      "properties": {
+                        "web_url": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sha": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "coverage": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "target_url": {
+                      "type": "string"
+                    },
+                    "ref": {
+                      "type": "string"
+                    },
+                    "started_at": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "allow_failure": {
+                      "type": "boolean"
+                    },
+                    "finished_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/merge_requests": {
+      "get": {
+        "summary": "List merge requests associated with a commit",
+        "description": "Get a list of merge requests related to the specified commit.",
+        "operationId": "listMergeRequestsAssociatedWithACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit SHA",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "iid": {
+                        "type": "integer"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "target_branch": {
+                        "type": "string"
+                      },
+                      "source_branch": {
+                        "type": "string"
+                      },
+                      "upvotes": {
+                        "type": "integer"
+                      },
+                      "downvotes": {
+                        "type": "integer"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "web_url": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "assignee": {
+                        "type": "string"
+                      },
+                      "source_project_id": {
+                        "type": "integer"
+                      },
+                      "target_project_id": {
+                        "type": "integer"
+                      },
+                      "labels": {
+                        "type": "array",
+                        "items": {}
+                      },
+                      "draft": {
+                        "type": "boolean"
+                      },
+                      "work_in_progress": {
+                        "type": "boolean"
+                      },
+                      "milestone": {
+                        "type": "string"
+                      },
+                      "merge_when_pipeline_succeeds": {
+                        "type": "boolean"
+                      },
+                      "merge_status": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "merge_commit_sha": {
+                        "type": "string"
+                      },
+                      "squash_commit_sha": {
+                        "type": "string"
+                      },
+                      "user_notes_count": {
+                        "type": "integer"
+                      },
+                      "discussion_locked": {
+                        "type": "string"
+                      },
+                      "should_remove_source_branch": {
+                        "type": "string"
+                      },
+                      "force_remove_source_branch": {
+                        "type": "boolean"
+                      },
+                      "web_url": {
+                        "type": "string"
+                      },
+                      "time_stats": {
+                        "type": "object",
+                        "properties": {
+                          "time_estimate": {
+                            "type": "integer"
+                          },
+                          "total_time_spent": {
+                            "type": "integer"
+                          },
+                          "human_time_estimate": {
+                            "type": "string"
+                          },
+                          "human_total_time_spent": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/repository/commits/:sha/signature": {
+      "get": {
+        "summary": "Get GPG signature of a commit",
+        "description": "Get the GPG signature from a commit, if it is signed. For unsigned commits, it results in a 404 response.",
+        "operationId": "getGpgSignatureOfACommit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sha",
+            "in": "path",
+            "description": "The commit hash or name of a repository branch or tag",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "signature_type": {
+                      "type": "string"
+                    },
+                    "verification_status": {
+                      "type": "string"
+                    },
+                    "x509_certificate": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "subject_key_identifier": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "serial_number": {
+                          "type": "integer"
+                        },
+                        "certificate_status": {
+                          "type": "string"
+                        },
+                        "x509_issuer": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "subject_key_identifier": {
+                              "type": "string"
+                            },
+                            "crl_url": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "commit_source": {
+                      "type": "string"
+                    },
+                    "gpg_key_id": {
+                      "type": "integer"
+                    },
+                    "gpg_key_primary_keyid": {
+                      "type": "string"
+                    },
+                    "gpg_key_user_name": {
+                      "type": "string"
+                    },
+                    "gpg_key_user_email": {
+                      "type": "string"
+                    },
+                    "gpg_key_subkey_id": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "/projects/{id}/repository/submodules/:submodule": {
+      "put": {
+        "summary": "Update existing submodule reference in repository",
+        "description": "In some workflows, especially automated ones, it can be useful to update a submodule’s reference to keep up to date other projects that use it. This endpoint allows you to update a Git submodule reference in a specific branch.",
+        "operationId": "updateExistingSubmoduleReferenceInRepository",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "submodule",
+            "in": "path",
+            "description": "URL-encoded full path to the submodule. For example, lib%2Fclass%2Erb",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "branch",
+            "in": "query",
+            "description": "Name of the branch to commit into",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "commit_sha",
+            "in": "query",
+            "description": "Full commit SHA to update the submodule to",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "commit_message",
+            "in": "query",
+            "description": "Commit message. If no message is provided, a default is set",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "short_id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "author_name": {
+                      "type": "string"
+                    },
+                    "author_email": {
+                      "type": "string"
+                    },
+                    "committer_name": {
+                      "type": "string"
+                    },
+                    "committer_email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "parent_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "committed_date": {
+                      "type": "string"
+                    },
+                    "authored_date": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

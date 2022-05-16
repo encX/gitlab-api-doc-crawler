@@ -1,0 +1,425 @@
+[
+  {
+    "/events": {
+      "get": {
+        "summary": "List currently authenticated user’s events",
+        "description": "Get a list of events for the authenticated user. Scope read_user or api is required. Events associated with epics are not available using the API.",
+        "operationId": "listCurrentlyAuthenticatedUserEvents",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Include only events of a particular action type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "target_type",
+            "in": "query",
+            "description": "Include only events of a particular target type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "Include only events created before a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "Include only events created after a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Include all events across a user’s projects.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort events in asc or desc order by created_at. Default is desc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "action_name": {
+                        "type": "string"
+                      },
+                      "target_id": {
+                        "type": "integer"
+                      },
+                      "target_type": {
+                        "type": "string"
+                      },
+                      "author_id": {
+                        "type": "integer"
+                      },
+                      "target_title": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "author_username": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/users/{id}/events": {
+      "get": {
+        "summary": "Get user contribution events",
+        "description": "Get the contribution events for the specified user, sorted from newest to oldest. Scope read_user or api is required. Events associated with epics are not available using API.",
+        "operationId": "getUserContributionEvents",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or Username of the user",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Include only events of a particular action type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "target_type",
+            "in": "query",
+            "description": "Include only events of a particular target type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "Include only events created before a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "Include only events created after a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort events in asc or desc order by created_at. Default is desc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page of results to return. Defaults to 1.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "The number of results per page. Defaults to 20.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "action_name": {
+                        "type": "string"
+                      },
+                      "target_id": {
+                        "type": "integer"
+                      },
+                      "target_type": {
+                        "type": "string"
+                      },
+                      "author_id": {
+                        "type": "integer"
+                      },
+                      "target_title": {
+                        "type": "string"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "author_username": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{project_id}/events": {
+      "get": {
+        "summary": "List a Project’s visible events",
+        "description": "Get a list of visible events for a particular project.",
+        "operationId": "listAProjectVisibleEvents",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "description": "Include only events of a particular action type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "target_type",
+            "in": "query",
+            "description": "Include only events of a particular target type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "description": "Include only events created before a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "Include only events created after a particular date. View how to format dates.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort events in asc or desc order by created_at. Default is desc.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "action_name": {
+                        "type": "string"
+                      },
+                      "target_id": {
+                        "type": "integer"
+                      },
+                      "target_iid": {
+                        "type": "integer"
+                      },
+                      "target_type": {
+                        "type": "string"
+                      },
+                      "author_id": {
+                        "type": "integer"
+                      },
+                      "target_title": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "author": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "author_username": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

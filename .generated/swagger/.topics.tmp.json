@@ -1,0 +1,318 @@
+[
+  {
+    "/topics": {
+      "get": {
+        "summary": "List topics",
+        "description": "Returns a list of project topics in the GitLab instance ordered by number of associated projects.",
+        "operationId": "listTopics",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page to retrieve. Defaults to 1.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of records to return per page. Defaults to 20.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search topics against their name.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "total_projects_count": {
+                        "type": "integer"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/topics/{id}": {
+      "get": {
+        "summary": "Get a topic",
+        "description": "Get a project topic by ID.",
+        "operationId": "getATopic",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of project topic",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "total_projects_count": {
+                      "type": "integer"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects": {
+      "get": {
+        "summary": "List projects assigned to a topic",
+        "description": "Use the Projects API to list all projects assigned to a specific topic.",
+        "operationId": "listProjectsAssignedToATopic",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/topics": {
+      "post": {
+        "summary": "Create a project topic",
+        "description": "Create a new project topic. Only available to administrators.",
+        "operationId": "createAProjectTopic",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "avatar",
+            "in": "query",
+            "description": "Avatar",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "Description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "total_projects_count": {
+                      "type": "integer"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/topics/{id}": {
+      "put": {
+        "summary": "Update a project topic",
+        "description": "Update a project topic. Only available to administrators.",
+        "operationId": "updateAProjectTopic",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of project topic",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "avatar",
+            "in": "query",
+            "description": "Avatar",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "Description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "total_projects_count": {
+                      "type": "integer"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/topics/{id}": {
+      "delete": {
+        "summary": "Delete a project topic",
+        "description": "You must be an administrator to delete a project. When you delete a project topic, you also delete the topic assignment for projects.",
+        "operationId": "deleteAProjectTopic",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of project topic",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

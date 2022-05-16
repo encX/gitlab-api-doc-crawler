@@ -4,7 +4,7 @@ import { SchemaObject } from "../types/OpenAPIV3.ts";
 export function parseSchema(obj: any): SchemaObject {
   if (obj === null || obj === undefined) return { type: "string" };
   if (Array.isArray(obj)) {
-    if (obj.length === 0) throw new Error(`Schema has array with no child`);
+    if (obj.length === 0) return { type: "array", items: {} };
     return { type: "array", items: parseSchema(obj[0]) };
   }
 

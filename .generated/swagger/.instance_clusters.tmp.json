@@ -1,0 +1,650 @@
+[
+  {
+    "/admin/clusters": {
+      "get": {
+        "summary": "List instance clusters",
+        "description": "Returns a list of instance clusters.",
+        "operationId": "listInstanceClusters",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "managed": {
+                        "type": "boolean"
+                      },
+                      "enabled": {
+                        "type": "boolean"
+                      },
+                      "domain": {
+                        "type": "string"
+                      },
+                      "provider_type": {
+                        "type": "string"
+                      },
+                      "platform_type": {
+                        "type": "string"
+                      },
+                      "environment_scope": {
+                        "type": "string"
+                      },
+                      "cluster_type": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "platform_kubernetes": {
+                        "type": "object",
+                        "properties": {
+                          "api_url": {
+                            "type": "string"
+                          },
+                          "namespace": {
+                            "type": "string"
+                          },
+                          "authorization_type": {
+                            "type": "string"
+                          },
+                          "ca_cert": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "provider_gcp": {
+                        "type": "string"
+                      },
+                      "management_project": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/admin/clusters/{cluster_id}": {
+      "get": {
+        "summary": "Get a single instance cluster",
+        "description": "Returns a single instance cluster.",
+        "operationId": "getASingleInstanceCluster",
+        "parameters": [
+          {
+            "name": "cluster_id",
+            "in": "path",
+            "description": "The ID of the cluster",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "managed": {
+                      "type": "boolean"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "provider_type": {
+                      "type": "string"
+                    },
+                    "platform_type": {
+                      "type": "string"
+                    },
+                    "environment_scope": {
+                      "type": "string"
+                    },
+                    "cluster_type": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "web_url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "platform_kubernetes": {
+                      "type": "object",
+                      "properties": {
+                        "api_url": {
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "type": "string"
+                        },
+                        "authorization_type": {
+                          "type": "string"
+                        },
+                        "ca_cert": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "provider_gcp": {
+                      "type": "string"
+                    },
+                    "management_project": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/admin/clusters/add": {
+      "post": {
+        "summary": "Add existing instance cluster",
+        "description": "Adds an existing Kubernetes instance cluster.",
+        "operationId": "addExistingInstanceCluster",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the cluster",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "The base domain of the cluster",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "environment_scope",
+            "in": "query",
+            "description": "The associated environment to the cluster. Defaults to *",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "management_project_id",
+            "in": "query",
+            "description": "The ID of the management project for the cluster",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "enabled",
+            "in": "query",
+            "description": "Determines if cluster is active or not, defaults to true",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "managed",
+            "in": "query",
+            "description": "Determines if GitLab manages namespaces and service accounts for this cluster. Defaults to true",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[api_url]",
+            "in": "query",
+            "description": "The URL to access the Kubernetes API",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[token]",
+            "in": "query",
+            "description": "The token to authenticate against Kubernetes",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[ca_cert]",
+            "in": "query",
+            "description": "TLS certificate. Required if API is using a self-signed TLS certificate.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[namespace]",
+            "in": "query",
+            "description": "The unique namespace related to the project",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[authorization_type]",
+            "in": "query",
+            "description": "The cluster authorization type: rbac, abac or unknown_authorization. Defaults to rbac.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "managed": {
+                      "type": "boolean"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "provider_type": {
+                      "type": "string"
+                    },
+                    "platform_type": {
+                      "type": "string"
+                    },
+                    "environment_scope": {
+                      "type": "string"
+                    },
+                    "cluster_type": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "web_url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "platform_kubernetes": {
+                      "type": "object",
+                      "properties": {
+                        "api_url": {
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "type": "string"
+                        },
+                        "authorization_type": {
+                          "type": "string"
+                        },
+                        "ca_cert": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "provider_gcp": {
+                      "type": "string"
+                    },
+                    "management_project": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/admin/clusters/{cluster_id}": {
+      "put": {
+        "summary": "Edit instance cluster",
+        "description": "Updates an existing instance cluster.",
+        "operationId": "editInstanceCluster",
+        "parameters": [
+          {
+            "name": "cluster_id",
+            "in": "path",
+            "description": "The ID of the cluster",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the cluster",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "The base domain of the cluster",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "environment_scope",
+            "in": "query",
+            "description": "The associated environment to the cluster",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "management_project_id",
+            "in": "query",
+            "description": "The ID of the management project for the cluster",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "enabled",
+            "in": "query",
+            "description": "Determines if cluster is active or not",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "managed",
+            "in": "query",
+            "description": "Determines if GitLab manages namespaces and service accounts for this cluster",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[api_url]",
+            "in": "query",
+            "description": "The URL to access the Kubernetes API",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[token]",
+            "in": "query",
+            "description": "The token to authenticate against Kubernetes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[ca_cert]",
+            "in": "query",
+            "description": "TLS certificate. Required if API is using a self-signed TLS certificate.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform_kubernetes_attributes[namespace]",
+            "in": "query",
+            "description": "The unique namespace related to the project",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "managed": {
+                      "type": "boolean"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "provider_type": {
+                      "type": "string"
+                    },
+                    "platform_type": {
+                      "type": "string"
+                    },
+                    "environment_scope": {
+                      "type": "string"
+                    },
+                    "cluster_type": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "web_url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "platform_kubernetes": {
+                      "type": "object",
+                      "properties": {
+                        "api_url": {
+                          "type": "string"
+                        },
+                        "namespace": {
+                          "type": "string"
+                        },
+                        "authorization_type": {
+                          "type": "string"
+                        },
+                        "ca_cert": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "provider_gcp": {
+                      "type": "string"
+                    },
+                    "management_project": {
+                      "type": "string"
+                    },
+                    "project": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/admin/clusters/{cluster_id}": {
+      "delete": {
+        "summary": "Delete instance cluster",
+        "description": "Deletes an existing instance cluster.",
+        "operationId": "deleteInstanceCluster",
+        "parameters": [
+          {
+            "name": "cluster_id",
+            "in": "path",
+            "description": "The ID of the cluster",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

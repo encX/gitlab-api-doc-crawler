@@ -1,0 +1,190 @@
+[
+  {
+    "/application/plan_limits": {
+      "get": {
+        "summary": "Get current plan limits",
+        "description": "List the current limits of a plan on the GitLab instance.",
+        "operationId": "getCurrentPlanLimits",
+        "parameters": [
+          {
+            "name": "plan_name",
+            "in": "query",
+            "description": "Name of the plan to get the limits from. Default: default.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "conan_max_file_size": {
+                      "type": "integer"
+                    },
+                    "generic_packages_max_file_size": {
+                      "type": "integer"
+                    },
+                    "helm_max_file_size": {
+                      "type": "integer"
+                    },
+                    "maven_max_file_size": {
+                      "type": "integer"
+                    },
+                    "npm_max_file_size": {
+                      "type": "integer"
+                    },
+                    "nuget_max_file_size": {
+                      "type": "integer"
+                    },
+                    "pypi_max_file_size": {
+                      "type": "integer"
+                    },
+                    "terraform_module_max_file_size": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/application/plan_limits": {
+      "put": {
+        "summary": "Change plan limits",
+        "description": "Modify the limits of a plan on the GitLab instance.",
+        "operationId": "changePlanLimits",
+        "parameters": [
+          {
+            "name": "plan_name",
+            "in": "query",
+            "description": "Name of the plan to update.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "conan_max_file_size",
+            "in": "query",
+            "description": "Maximum Conan package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "generic_packages_max_file_size",
+            "in": "query",
+            "description": "Maximum generic package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "helm_max_file_size",
+            "in": "query",
+            "description": "Maximum Helm chart file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maven_max_file_size",
+            "in": "query",
+            "description": "Maximum Maven package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "npm_max_file_size",
+            "in": "query",
+            "description": "Maximum NPM package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "nuget_max_file_size",
+            "in": "query",
+            "description": "Maximum NuGet package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pypi_max_file_size",
+            "in": "query",
+            "description": "Maximum PyPI package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "terraform_module_max_file_size",
+            "in": "query",
+            "description": "Maximum Terraform Module package file size in bytes.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "conan_max_file_size": {
+                      "type": "integer"
+                    },
+                    "generic_packages_max_file_size": {
+                      "type": "integer"
+                    },
+                    "helm_max_file_size": {
+                      "type": "integer"
+                    },
+                    "maven_max_file_size": {
+                      "type": "integer"
+                    },
+                    "npm_max_file_size": {
+                      "type": "integer"
+                    },
+                    "nuget_max_file_size": {
+                      "type": "integer"
+                    },
+                    "pypi_max_file_size": {
+                      "type": "integer"
+                    },
+                    "terraform_module_max_file_size": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

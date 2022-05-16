@@ -1,0 +1,313 @@
+[
+  {
+    "/hooks": {
+      "get": {
+        "summary": "List system hooks",
+        "description": "Get a list of all system hooks.",
+        "operationId": "listSystemHooks",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "push_events": {
+                        "type": "boolean"
+                      },
+                      "tag_push_events": {
+                        "type": "boolean"
+                      },
+                      "merge_requests_events": {
+                        "type": "boolean"
+                      },
+                      "repository_update_events": {
+                        "type": "boolean"
+                      },
+                      "enable_ssl_verification": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/hooks/{id}": {
+      "get": {
+        "summary": "Get system hook",
+        "description": "Get a system hook by its ID.",
+        "operationId": "getSystemHook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the hook",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "push_events": {
+                        "type": "boolean"
+                      },
+                      "tag_push_events": {
+                        "type": "boolean"
+                      },
+                      "merge_requests_events": {
+                        "type": "boolean"
+                      },
+                      "repository_update_events": {
+                        "type": "boolean"
+                      },
+                      "enable_ssl_verification": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/hooks": {
+      "post": {
+        "summary": "Add new system hook",
+        "description": "Add a new system hook.",
+        "operationId": "addNewSystemHook",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The hook URL",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "Secret token to validate received payloads; this isn’t returned in the response",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "push_events",
+            "in": "query",
+            "description": "When true, the hook fires on push events",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_push_events",
+            "in": "query",
+            "description": "When true, the hook fires on new tags being pushed",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "merge_requests_events",
+            "in": "query",
+            "description": "Trigger hook on merge requests events",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repository_update_events",
+            "in": "query",
+            "description": "Trigger hook on repository update events",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enable_ssl_verification",
+            "in": "query",
+            "description": "Do SSL verification when triggering the hook",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "push_events": {
+                        "type": "boolean"
+                      },
+                      "tag_push_events": {
+                        "type": "boolean"
+                      },
+                      "merge_requests_events": {
+                        "type": "boolean"
+                      },
+                      "repository_update_events": {
+                        "type": "boolean"
+                      },
+                      "enable_ssl_verification": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/hooks/{id}": {
+      "post": {
+        "summary": "Test system hook",
+        "description": "",
+        "operationId": "testSystemHook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the hook",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "project_id": {
+                      "type": "integer"
+                    },
+                    "owner_email": {
+                      "type": "string"
+                    },
+                    "owner_name": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "event_name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/hooks/{id}": {
+      "delete": {
+        "summary": "Delete system hook",
+        "description": "Deletes a system hook.",
+        "operationId": "deleteSystemHook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the hook",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

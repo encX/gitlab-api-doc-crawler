@@ -1,0 +1,1358 @@
+[
+  {
+    "/runners": {
+      "get": {
+        "summary": "List owned runners",
+        "description": "Get a list of specific runners available to the user.",
+        "operationId": "listOwnedRunners",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused, online and offline; showing all runners if none provided",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of runners to show, one of: instance_type, group_type, project_type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "The status of runners to show, one of: online, offline and not_connected. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paused",
+            "in": "query",
+            "description": "Whether to include only runners that are accepting or ignoring new jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_list",
+            "in": "query",
+            "description": "List of the runner’s tags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "paused": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "ip_address": {
+                        "type": "string"
+                      },
+                      "is_shared": {
+                        "type": "boolean"
+                      },
+                      "runner_type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "online": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/all": {
+      "get": {
+        "summary": "List all runners",
+        "description": "Get a list of all runners in the GitLab instance (specific and shared). Access is restricted to users with administrator access.",
+        "operationId": "listAllRunners",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Deprecated: Use type or status instead. The scope of runners to show, one of: specific, shared, active, paused, online and offline; showing all runners if none provided",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of runners to show, one of: instance_type, group_type, project_type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "The status of runners to show, one of: online and offline. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paused",
+            "in": "query",
+            "description": "Whether to include only runners that are accepting or ignoring new jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_list",
+            "in": "query",
+            "description": "List of the runner’s tags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "paused": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "ip_address": {
+                        "type": "string"
+                      },
+                      "is_shared": {
+                        "type": "boolean"
+                      },
+                      "runner_type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "online": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/{id}": {
+      "get": {
+        "summary": "Get runner’s details",
+        "description": "Get details of a runner.",
+        "operationId": "getRunnerDetails",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "paused": {
+                      "type": "boolean"
+                    },
+                    "architecture": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "ip_address": {
+                      "type": "string"
+                    },
+                    "is_shared": {
+                      "type": "boolean"
+                    },
+                    "runner_type": {
+                      "type": "string"
+                    },
+                    "contacted_at": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "online": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string"
+                    },
+                    "projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "name_with_namespace": {
+                            "type": "string"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "path_with_namespace": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "tag_list": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "access_level": {
+                      "type": "string"
+                    },
+                    "maximum_timeout": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/{id}": {
+      "put": {
+        "summary": "Update runner’s details",
+        "description": "Update details of a runner.",
+        "operationId": "updateRunnerDetails",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "The description of a runner",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Deprecated: Use :paused instead. Flag indicating whether the runner is allowed to receive jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paused",
+            "in": "query",
+            "description": "Flag indicating whether the runner should ignore new jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_list",
+            "in": "query",
+            "description": "The list of tags for a runner; put array of tags, that should be finally assigned to a runner",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "run_untagged",
+            "in": "query",
+            "description": "Flag indicating the runner can execute untagged jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locked",
+            "in": "query",
+            "description": "Flag indicating the runner is locked",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_level",
+            "in": "query",
+            "description": "The access_level of the runner; not_protected or ref_protected",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maximum_timeout",
+            "in": "query",
+            "description": "Maximum timeout set when this runner handles the job",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "architecture": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "ip_address": {
+                      "type": "string"
+                    },
+                    "is_shared": {
+                      "type": "boolean"
+                    },
+                    "runner_type": {
+                      "type": "string"
+                    },
+                    "contacted_at": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "online": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string"
+                    },
+                    "projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "name_with_namespace": {
+                            "type": "string"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "path_with_namespace": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "tag_list": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "access_level": {
+                      "type": "string"
+                    },
+                    "maximum_timeout": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/{id}/jobs": {
+      "get": {
+        "summary": "List runner’s jobs",
+        "description": "List jobs that are being processed or were processed by specified runner.",
+        "operationId": "listRunnerJobs",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status of the job; one of: running, success, failed, canceled",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "Order jobs by id.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort jobs in asc or desc order (default: desc)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "ip_address": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "stage": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "ref": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "boolean"
+                      },
+                      "coverage": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "started_at": {
+                        "type": "string"
+                      },
+                      "finished_at": {
+                        "type": "string"
+                      },
+                      "duration": {
+                        "type": "integer"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "bio": {
+                            "type": "string"
+                          },
+                          "location": {
+                            "type": "string"
+                          },
+                          "public_email": {
+                            "type": "string"
+                          },
+                          "skype": {
+                            "type": "string"
+                          },
+                          "linkedin": {
+                            "type": "string"
+                          },
+                          "twitter": {
+                            "type": "string"
+                          },
+                          "website_url": {
+                            "type": "string"
+                          },
+                          "organization": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "commit": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "short_id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "parent_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "author_name": {
+                            "type": "string"
+                          },
+                          "author_email": {
+                            "type": "string"
+                          },
+                          "authored_date": {
+                            "type": "string"
+                          },
+                          "committer_name": {
+                            "type": "string"
+                          },
+                          "committer_email": {
+                            "type": "string"
+                          },
+                          "committed_date": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "pipeline": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "sha": {
+                            "type": "string"
+                          },
+                          "ref": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "project": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "name_with_namespace": {
+                            "type": "string"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "path_with_namespace": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/runners": {
+      "get": {
+        "summary": "List project’s runners",
+        "description": "List all runners available in the project, including from ancestor groups and any allowed shared runners.",
+        "operationId": "listProjectRunners",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused, online and offline; showing all runners if none provided",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of runners to show, one of: instance_type, group_type, project_type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "The status of runners to show, one of: online and offline. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paused",
+            "in": "query",
+            "description": "Whether to include only runners that are accepting or ignoring new jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_list",
+            "in": "query",
+            "description": "List of the runner’s tags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "paused": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "ip_address": {
+                        "type": "string"
+                      },
+                      "is_shared": {
+                        "type": "boolean"
+                      },
+                      "runner_type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "online": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/runners": {
+      "post": {
+        "summary": "Enable a runner in project",
+        "description": "Enable an available specific runner in the project.",
+        "operationId": "enableARunnerInProject",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "runner_id",
+            "in": "query",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "ip_address": {
+                      "type": "string"
+                    },
+                    "is_shared": {
+                      "type": "boolean"
+                    },
+                    "runner_type": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "online": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/runners/:runner_id": {
+      "delete": {
+        "summary": "Disable a runner from project",
+        "description": "Disable a specific runner from the project. It works only if the project isn’t the only project associated with the specified runner. If so, an error is returned. Use the call to delete a runner instead.",
+        "operationId": "disableARunnerFromProject",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "runner_id",
+            "in": "path",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/runners": {
+      "get": {
+        "summary": "List group’s runners",
+        "description": "List all runners available in the group as well as its ancestor groups, including any allowed shared runners.",
+        "operationId": "listGroupRunners",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the group owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The type of runners to show, one of: instance_type, group_type, project_type. The project_type value is deprecated and will be removed in GitLab 15.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "The status of runners to show, one of: online and offline. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "paused",
+            "in": "query",
+            "description": "Whether to include only runners that are accepting or ignoring new jobs",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tag_list",
+            "in": "query",
+            "description": "List of the runner’s tags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "ip_address": {
+                        "type": "string"
+                      },
+                      "active": {
+                        "type": "boolean"
+                      },
+                      "paused": {
+                        "type": "boolean"
+                      },
+                      "is_shared": {
+                        "type": "boolean"
+                      },
+                      "runner_type": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "online": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners": {
+      "post": {
+        "summary": "Register a new runner",
+        "description": "Register a new runner for the instance.",
+        "operationId": "registerANewRunner",
+        "parameters": [
+          {
+            "name": "201",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "token_expires_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/{id}": {
+      "delete": {
+        "summary": "Delete a runner by ID",
+        "description": "To delete the runner by ID, use your access token with the runner’s ID:",
+        "operationId": "deleteARunnerById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a runner. The ID is visible in the UI under Settings > CI/CD. Expand Runners, and below the Remove Runner button is an ID preceded by the pound sign, for example, #6.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners": {
+      "delete": {
+        "summary": "Delete a runner by authentication token",
+        "description": "To delete the runner by using its authentication token:",
+        "operationId": "deleteARunnerByAuthenticationToken",
+        "parameters": [
+          {
+            "name": "204",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/verify": {
+      "post": {
+        "summary": "Verify authentication for a registered runner",
+        "description": "Validates authentication credentials for a registered runner.",
+        "operationId": "verifyAuthenticationForARegisteredRunner",
+        "parameters": [
+          {
+            "name": "200",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "403",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/reset_registration_token": {
+      "post": {
+        "summary": "Reset instance’s runner registration token",
+        "description": "Resets the runner registration token for the GitLab instance.",
+        "operationId": "resetInstanceRunnerRegistrationToken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/runners/reset_registration_token": {
+      "post": {
+        "summary": "Reset project’s runner registration token",
+        "description": "Resets the runner registration token for a project.",
+        "operationId": "resetProjectRunnerRegistrationToken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/runners/reset_registration_token": {
+      "post": {
+        "summary": "Reset group’s runner registration token",
+        "description": "Resets the runner registration token for a group.",
+        "operationId": "resetGroupRunnerRegistrationToken",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/{id}/reset_authentication_token": {
+      "post": {
+        "summary": "Reset runner’s authentication token by using the runner ID",
+        "description": "Resets the runner’s authentication token by using its runner ID.",
+        "operationId": "resetRunnerAuthenticationTokenByUsingTheRunnerId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a runner",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "token_expires_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/runners/reset_authentication_token": {
+      "post": {
+        "summary": "Reset runner’s authentication token by using the current token",
+        "description": "Resets the runner’s authentication token by using the current token’s value as an input.",
+        "operationId": "resetRunnerAuthenticationTokenByUsingTheCurrentToken",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "The current token of the runner",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "token_expires_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,169 @@
+[
+  {
+    "/projects/{id}/merge_requests/:merge_request_iid/visual_review_discussions": {
+      "post": {
+        "summary": "Create new merge request thread",
+        "description": "Creates a new thread to a single project merge request. This is similar to creating a note but other comments (replies) can be added to it later.",
+        "operationId": "createNewMergeRequestThread",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "merge_request_iid",
+            "in": "path",
+            "description": "The IID of a merge request",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "description": "The content of the thread",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "description": "Position when creating a diff note",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[base_sha]",
+            "in": "query",
+            "description": "Base commit SHA in the source branch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[start_sha]",
+            "in": "query",
+            "description": "SHA referencing commit in target branch",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[head_sha]",
+            "in": "query",
+            "description": "SHA referencing HEAD of this merge request",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[position_type]",
+            "in": "query",
+            "description": "Type of the position reference. Either text or image.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[new_path]",
+            "in": "query",
+            "description": "File path after change",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[new_line]",
+            "in": "query",
+            "description": "Line number after change (Only stored for text diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "position[old_path]",
+            "in": "query",
+            "description": "File path before change",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "position[old_line]",
+            "in": "query",
+            "description": "Line number before change (Only stored for text diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "position[width]",
+            "in": "query",
+            "description": "Width of the image (Only stored for image diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "position[height]",
+            "in": "query",
+            "description": "Height of the image (Only stored for image diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "position[x]",
+            "in": "query",
+            "description": "X coordinate (Only stored for image diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "position[y]",
+            "in": "query",
+            "description": "Y coordinate (Only stored for image diff notes)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

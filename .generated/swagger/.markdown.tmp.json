@@ -1,0 +1,57 @@
+[
+  {
+    "/markdown": {
+      "post": {
+        "summary": "Render an arbitrary Markdown document",
+        "description": "Response example:",
+        "operationId": "renderAnArbitraryMarkdownDocument",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "description": "The Markdown text to render",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gfm",
+            "in": "query",
+            "description": "Render text using GitLab Flavored Markdown. Default is false",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "project",
+            "in": "query",
+            "description": "Use project as a context when creating references using GitLab Flavored Markdown. Authentication is required if a project is not public.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "html": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

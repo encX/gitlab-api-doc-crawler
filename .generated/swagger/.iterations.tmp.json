@@ -1,0 +1,90 @@
+[
+  {
+    "/projects/{id}/iterations": {
+      "get": {
+        "summary": "List project iterations",
+        "description": "Returns a list of project iterations.",
+        "operationId": "listProjectIterations",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "description": "‘Return opened, upcoming, current (previously started), closed, or all iterations. Filtering by started state is deprecated starting with 14.1, please use current instead.’",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Return only iterations with a title matching the provided string.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include_ancestors",
+            "in": "query",
+            "description": "Include iterations from parent group and its ancestors. Defaults to true.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "iid": {
+                        "type": "integer"
+                      },
+                      "group_id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "integer"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "due_date": {
+                        "type": "string"
+                      },
+                      "start_date": {
+                        "type": "string"
+                      },
+                      "web_url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

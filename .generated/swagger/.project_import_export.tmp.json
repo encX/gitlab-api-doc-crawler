@@ -1,0 +1,671 @@
+[
+  {
+    "/projects/{id}/export": {
+      "post": {
+        "summary": "Schedule an export",
+        "description": "Start a new export.",
+        "operationId": "scheduleAnExport",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "description": "Overrides the project description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "upload",
+            "in": "query",
+            "description": "Hash that contains the information to upload the exported project to a web server",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "upload[url]",
+            "in": "query",
+            "description": "The URL to upload the project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "upload[http_method]",
+            "in": "query",
+            "description": "The HTTP method to upload the exported project. Only PUT and POST methods allowed. Default is PUT",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/export": {
+      "get": {
+        "summary": "Export status",
+        "description": "Get the status of export.",
+        "operationId": "exportStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "name_with_namespace": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "path_with_namespace": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "export_status": {
+                      "type": "string"
+                    },
+                    "_links": {
+                      "type": "object",
+                      "properties": {
+                        "api_url": {
+                          "type": "string"
+                        },
+                        "web_url": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/export/download": {
+      "get": {
+        "summary": "Export download",
+        "description": "Download the finished export.",
+        "operationId": "exportDownload",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/import": {
+      "post": {
+        "summary": "Import a file",
+        "description": "To upload a file from your file system, use the --form argument. This causes cURL to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
+        "operationId": "importAFile",
+        "parameters": [
+          {
+            "name": "namespace",
+            "in": "query",
+            "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the project to be imported. Defaults to the path of the project if not provided",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "description": "The file to be uploaded",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "description": "Name and path for new project",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "description": "If there is a project with the same path the import overwrites it. Default to false",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "override_params",
+            "in": "query",
+            "description": "Supports all fields defined in the Project API",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "name_with_namespace": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "path_with_namespace": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "import_status": {
+                      "type": "string"
+                    },
+                    "correlation_id": {
+                      "type": "string"
+                    },
+                    "failed_relations": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/remote-import": {
+      "post": {
+        "summary": "Import a file from a remote object storage",
+        "description": "This endpoint is behind a feature flag that is enabled by default.",
+        "operationId": "importAFileFromARemoteObjectStorage",
+        "parameters": [
+          {
+            "name": "namespace",
+            "in": "query",
+            "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the project to import. If not provided, defaults to the path of the project.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "url",
+            "in": "query",
+            "description": "URL for the file to import.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "description": "Name and path for the new project.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "description": "Whether to overwrite a project with the same path when importing. Defaults to false.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "override_params",
+            "in": "query",
+            "description": "Supports all fields defined in the Project API.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "name_with_namespace": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "path_with_namespace": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "import_status": {
+                      "type": "string"
+                    },
+                    "correlation_id": {
+                      "type": "string"
+                    },
+                    "failed_relations": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "import_error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/remote-import-s3": {
+      "post": {
+        "summary": "Import a file from AWS S3",
+        "description": "",
+        "operationId": "importAFileFromAwsS3",
+        "parameters": [
+          {
+            "name": "namespace",
+            "in": "query",
+            "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the project to import. If not provided, defaults to the path of the project.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "description": "AWS S3 region name where the file is stored.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bucket_name",
+            "in": "query",
+            "description": "AWS S3 bucket name where the file is stored.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file_key",
+            "in": "query",
+            "description": "AWS S3 file key to identify the file.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "access_key_id",
+            "in": "query",
+            "description": "AWS S3 access key ID..",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "secret_access_key",
+            "in": "query",
+            "description": "AWS S3 secret access key.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "name_with_namespace": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "path_with_namespace": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "import_status": {
+                      "type": "string"
+                    },
+                    "correlation_id": {
+                      "type": "string"
+                    },
+                    "failed_relations": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "import_error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/import": {
+      "get": {
+        "summary": "Import status",
+        "description": "Get the status of an import.",
+        "operationId": "importStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "name_with_namespace": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "path_with_namespace": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "import_status": {
+                      "type": "string"
+                    },
+                    "import_type": {
+                      "type": "string"
+                    },
+                    "correlation_id": {
+                      "type": "string"
+                    },
+                    "failed_relations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "exception_class": {
+                            "type": "string"
+                          },
+                          "exception_message": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "relation_name": {
+                            "type": "string"
+                          },
+                          "line_number": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "stats": {
+                      "type": "object",
+                      "properties": {
+                        "fetched": {
+                          "type": "object",
+                          "properties": {
+                            "diff_note": {
+                              "type": "integer"
+                            },
+                            "issue": {
+                              "type": "integer"
+                            },
+                            "label": {
+                              "type": "integer"
+                            },
+                            "note": {
+                              "type": "integer"
+                            },
+                            "pull_request": {
+                              "type": "integer"
+                            },
+                            "pull_request_merged_by": {
+                              "type": "integer"
+                            },
+                            "pull_request_review": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "imported": {
+                          "type": "object",
+                          "properties": {
+                            "diff_note": {
+                              "type": "integer"
+                            },
+                            "issue": {
+                              "type": "integer"
+                            },
+                            "label": {
+                              "type": "integer"
+                            },
+                            "note": {
+                              "type": "integer"
+                            },
+                            "pull_request": {
+                              "type": "integer"
+                            },
+                            "pull_request_merged_by": {
+                              "type": "integer"
+                            },
+                            "pull_request_review": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

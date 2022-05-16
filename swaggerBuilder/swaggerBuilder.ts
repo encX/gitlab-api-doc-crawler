@@ -14,6 +14,7 @@ export class SwaggerBuilder {
   constructor() {}
 
   async push(_apis: Api[], _pageSlug: string): Promise<void> {
+    console.log(_pageSlug);
     const endpoints = _apis.map((api) => new Endpoint(api).getEndpoint());
     await Deno.writeTextFile(
       `.generated/swagger/.${_pageSlug}.tmp.json`,
