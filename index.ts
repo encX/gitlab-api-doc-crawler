@@ -1,6 +1,7 @@
 import { join } from "https://deno.land/std@0.132.0/path/mod.ts";
 import { ensureDir, ensureFile } from "https://deno.land/std@0.132.0/fs/mod.ts";
 
+import { SwaggerBuilder } from "./swaggerBuilder/swaggerBuilder.ts";
 import { PagesLister } from "./pageLister.ts";
 import { PageParser } from "./pageParser.ts";
 import { glUrl } from "./helper/url.ts";
@@ -18,10 +19,14 @@ const pages = (await new PagesLister().getPages())
 console.log(`Got ${pages.length} pages or APIs`);
 
 await ensureDir(".generated/specs");
+await ensureDir(".generated/swagger");
+
 await Deno.writeTextFile(
   ".generated/allPages.json",
   JSON.stringify(pages, null, 2)
 );
+
+const swaggerBuilder = new SwaggerBuilder();
 
 for await (const page of pages) {
   const specPath = join(
@@ -48,12 +53,8 @@ for await (const page of pages) {
   };
 
   await Deno.writeTextFile(specPath, JSON.stringify(wrapper, null, 2));
-}
 
-await ensureDir(".generated/swagger");
-
-for await (const spec of Deno.readDir("./.generated/specs")) {
-  // convert spec to swagger
+  if (Array.isArray(apis)) swaggerBuilder.push(apis);
 }
 
 console.log("done");
