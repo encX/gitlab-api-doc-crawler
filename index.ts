@@ -2,7 +2,7 @@ import { join } from "https://deno.land/std@0.132.0/path/mod.ts";
 import { ensureDir, ensureFile } from "https://deno.land/std@0.132.0/fs/mod.ts";
 
 import { PagesLister } from "./pageLister.ts";
-import { PageCrawler } from "./pageCrawler.ts";
+import { PageParser } from "./pageParser.ts";
 import { glUrl } from "./helper/url.ts";
 import { DocVer } from "./enums/docVer.ts";
 import { Api } from "./types/models.ts";
@@ -34,7 +34,7 @@ for await (const page of pages) {
   let apis: Api[] | string = "failed";
 
   try {
-    apis = await new PageCrawler(page.path).getApis();
+    apis = await new PageParser(page.path).getApis();
   } catch (e) {
     apis = e.message;
     console.error(`"${page.name}" fetch APIs failed`, e);

@@ -4,7 +4,7 @@ import {
   cheerio,
 } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 
-import { Api } from "./models.ts";
+import { Api } from "./types/models.ts";
 import { load } from "./helper/page.ts";
 import { glUrl } from "./helper/url.ts";
 import { ResourceParser } from "./parsers/ResourceParser.ts";
@@ -12,7 +12,7 @@ import { AttributesParser } from "./parsers/AttributesParser.ts";
 import { ResponseParser } from "./parsers/ResponseParser.ts";
 import { ApiBuilder } from "./ApiBuilder.ts";
 
-export class PageCrawler {
+export class PageParser {
   constructor(private pagePath: string) {}
 
   async getApis(): Promise<Api[]> {
@@ -22,10 +22,10 @@ export class PageCrawler {
     const tagElems = content
       .children()
       .toArray()
-      .map((c) => PageCrawler.getTagElem(c))
+      .map((c) => PageParser.getTagElem(c))
       .filter((c) => c !== null && c !== undefined) as TagElement[];
 
-    const chunks = PageCrawler.getChunksByHElem(tagElems);
+    const chunks = PageParser.getChunksByHElem(tagElems);
 
     const apis = chunks
       .map((c) => this.tryParseApi(c))
@@ -50,7 +50,7 @@ export class PageCrawler {
     let current: TagElement[];
 
     elems.forEach((e) => {
-      if (PageCrawler.isHElem(e)) {
+      if (PageParser.isHElem(e)) {
         if (current) groups.push(current);
         current = [e];
       } else if (Array.isArray(current)) {
@@ -77,13 +77,13 @@ export class PageCrawler {
         apiBuilder.getName()
       );
 
-      if (PageCrawler.shouldSkip(e)) return;
+      if (PageParser.shouldSkip(e)) return;
 
-      if (PageCrawler.isHElem(e))
-        apiBuilder.withName(PageCrawler.getElementText(e));
+      if (PageParser.isHElem(e))
+        apiBuilder.withName(PageParser.getElementText(e));
 
       if (e.name === "p")
-        apiBuilder.withDescription(PageCrawler.getElementText(e));
+        apiBuilder.withDescription(PageParser.getElementText(e));
 
       if (resourceParser.isValid())
         apiBuilder.withResources(resourceParser.parse());
