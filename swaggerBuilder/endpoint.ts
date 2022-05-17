@@ -77,9 +77,7 @@ export class Endpoint {
       if (type) {
         properties[p.name] = type;
       } else {
-        console.warn(
-          `Property "${p.name}" has non-primitive type of "${p.type}"`
-        );
+        console.warn(`Property "${p.name}" has unknown type of "${p.type}"`);
       }
     });
 

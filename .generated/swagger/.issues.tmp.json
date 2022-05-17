@@ -1683,6 +1683,12 @@
                   "assignee_id": {
                     "type": "integer"
                   },
+                  "assignee_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
                   "confidential": {
                     "type": "boolean"
                   },
@@ -1988,6 +1994,12 @@
                 "properties": {
                   "add_labels": {
                     "type": "string"
+                  },
+                  "assignee_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
                   },
                   "confidential": {
                     "type": "boolean"
