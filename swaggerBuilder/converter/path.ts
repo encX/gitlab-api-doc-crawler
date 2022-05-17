@@ -1,5 +1,4 @@
 import { Resource } from "../../types/models.ts";
-import { HttpMethods } from "../../types/OpenAPIV3.ts";
 
 const paramRegex = /\/:(\w+)/g;
 
