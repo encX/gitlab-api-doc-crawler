@@ -24,7 +24,110 @@
           "path": "/groups/:id/epics?state=opened"
         }
       ],
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return epics created by the given user id"
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return epics created by the user with the given username. Available in GitLab 14.7 and later"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Return epics matching a comma-separated list of labels names. Label names from the epic group or a parent group can be used"
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. Available in GitLab 12.7 and later"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return epics ordered by created_at, updated_at, or title fields. Default is created_at"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return epics sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search epics against their title and description"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Search epics against their state, possible filters: opened, closed and all, default: all"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "include_ancestor_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include epics from the requested group’s ancestors. Default is false"
+        },
+        {
+          "name": "include_descendant_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include epics from the requested group’s descendants. Default is true"
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return epics reacted by the authenticated user by the given emoji. None returns epics not given a reaction. Any returns epics given at least one reaction. Available in GitLab 13.0 and later"
+        },
+        {
+          "name": "not",
+          "type": "Hash",
+          "required": false,
+          "description": "Return epics that do not match the parameters supplied. Accepts: author_id, author_username (GitLab 14.7 and later) and labels. Available in GitLab 14.6 and later"
+        }
+      ],
       "response": [
         {
           "id": 29,

@@ -110,16 +110,17 @@ export class PageParser {
   }
 
   private static shouldSkip(elem: TagElement): boolean {
+    return PageParser.isInfoBubble(elem) || PageParser.isBlockTitle(elem);
+  }
+
+  private static isBlockTitle(elem: TagElement): boolean {
     return (
-      /introduced-in/gi.test(elem.attribs["class"]) ||
-      /Parameters|(Example (request|response)):?/gi.test(
-        cheerio(elem).text()
-      ) ||
-      (elem.name === "table" &&
-        cheerio(elem)
-          .find("thead>tr>th")
-          .toArray()
-          .some((th) => /status/i.test(cheerio(th).text())))
+      elem.name === "p" &&
+      /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text())
     );
+  }
+
+  private static isInfoBubble(elem: TagElement): boolean {
+    return /introduced-in/gi.test(elem.attribs["class"]);
   }
 }

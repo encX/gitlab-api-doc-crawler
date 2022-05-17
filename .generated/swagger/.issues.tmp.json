@@ -5,7 +5,269 @@
         "summary": "List issues",
         "description": "Get all issues the authenticated user has access to. By default it returns only issues created by the current user. To get all issues, use parameter scope=all.",
         "operationId": "listIssues",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "assignee_id",
+            "in": "query",
+            "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "assignee_username",
+            "in": "query",
+            "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "author_id",
+            "in": "query",
+            "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "author_username",
+            "in": "query",
+            "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "confidential",
+            "in": "query",
+            "description": "Filter confidential or public issues.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_after",
+            "in": "query",
+            "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_before",
+            "in": "query",
+            "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "due_date",
+            "in": "query",
+            "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "epic_id",
+            "in": "query",
+            "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "iids[]",
+            "in": "query",
+            "description": "Return only the issues having the given iid",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "in",
+            "in": "query",
+            "description": "Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "issue_type",
+            "in": "query",
+            "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iteration_id",
+            "in": "query",
+            "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "iteration_title",
+            "in": "query",
+            "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "labels",
+            "in": "query",
+            "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "query",
+            "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Using None or Any will be deprecated in the future. Please use milestone_id attribute instead. milestone and milestone_id are mutually exclusive.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "milestone_id",
+            "in": "query",
+            "description": "Returns issues assigned to milestones with a given timebox value (None, Any, Upcoming, and Started). None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all issues assigned to milestones due in the future. Started lists all issues assigned to open, started milestones. milestone and milestone_id are mutually exclusive. (Introduced in GitLab 14.3)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "my_reaction_emoji",
+            "in": "query",
+            "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "non_archived",
+            "in": "query",
+            "description": "Return issues only from non-archived projects. If false, the response returns issues from both archived and non-archived projects. Default is true. (Introduced in GitLab 13.0)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "not",
+            "in": "query",
+            "description": "Return issues that do not match the parameters supplied. Accepts: assignee_id, assignee_username, author_id, author_username, iids, iteration_id, iteration_title, labels, milestone, milestone_id and weight.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "Return issues ordered by created_at, due_date, label_priority, milestone_due, popularity, priority, relative_position, title, updated_at, or weight fields. Default is created_at.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search issues against their title and description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Return issues sorted in asc or desc order. Default is desc",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Return all issues or just those that are opened or closed",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "in": "query",
+            "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_before",
+            "in": "query",
+            "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "with_labels_details",
+            "in": "query",
+            "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab 12.7",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -41,7 +303,260 @@
         "summary": "List group issues",
         "description": "Get a list of a group’s issues.",
         "operationId": "listGroupIssues",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "assignee_id",
+            "in": "query",
+            "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "assignee_username",
+            "in": "query",
+            "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "author_id",
+            "in": "query",
+            "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "author_username",
+            "in": "query",
+            "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "confidential",
+            "in": "query",
+            "description": "Filter confidential or public issues.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_after",
+            "in": "query",
+            "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_before",
+            "in": "query",
+            "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "due_date",
+            "in": "query",
+            "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "epic_id",
+            "in": "query",
+            "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iids[]",
+            "in": "query",
+            "description": "Return only the issues having the given iid",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "issue_type",
+            "in": "query",
+            "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iteration_id",
+            "in": "query",
+            "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "iteration_title",
+            "in": "query",
+            "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "labels",
+            "in": "query",
+            "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "query",
+            "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "my_reaction_emoji",
+            "in": "query",
+            "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "non_archived",
+            "in": "query",
+            "description": "Return issues from non archived projects. Default is true. (Introduced in GitLab 12.8)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "not",
+            "in": "query",
+            "description": "Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, my_reaction_emoji, search, in",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority, milestone_due, popularity, weight fields. Default is created_at",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search group issues against their title and description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Return issues sorted in asc or desc order. Default is desc",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Return all issues or just those that are opened or closed",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "in": "query",
+            "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_before",
+            "in": "query",
+            "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "with_labels_details",
+            "in": "query",
+            "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab 12.7",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -77,7 +592,251 @@
         "summary": "List project issues",
         "description": "Get a list of a project’s issues.",
         "operationId": "listProjectIssues",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "assignee_id",
+            "in": "query",
+            "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "assignee_username",
+            "in": "query",
+            "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "author_id",
+            "in": "query",
+            "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "author_username",
+            "in": "query",
+            "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "confidential",
+            "in": "query",
+            "description": "Filter confidential or public issues.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_after",
+            "in": "query",
+            "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "created_before",
+            "in": "query",
+            "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "due_date",
+            "in": "query",
+            "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "epic_id",
+            "in": "query",
+            "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iids[]",
+            "in": "query",
+            "description": "Return only the issues having the given iid",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "issue_type",
+            "in": "query",
+            "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "iteration_id",
+            "in": "query",
+            "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "iteration_title",
+            "in": "query",
+            "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "labels",
+            "in": "query",
+            "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "milestone",
+            "in": "query",
+            "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "my_reaction_emoji",
+            "in": "query",
+            "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "not",
+            "in": "query",
+            "description": "Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, my_reaction_emoji, search, in",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "description": "Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority, milestone_due, popularity, weight fields. Default is created_at",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search project issues against their title and description",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Return issues sorted in asc or desc order. Default is desc",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Return all issues or just those that are opened or closed",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "in": "query",
+            "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_before",
+            "in": "query",
+            "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "weight",
+            "in": "query",
+            "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "with_labels_details",
+            "in": "query",
+            "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. description_html was introduced in GitLab 12.7",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",

@@ -550,19 +550,12 @@
         "operationId": "deleteSnippet",
         "parameters": [
           {
-            "name": "204",
-            "in": "query",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "ID of snippet to delete.",
+            "required": true,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "404",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],

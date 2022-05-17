@@ -7,7 +7,13 @@ export class AttributesParser implements Parser<Attribute[]> {
   constructor(private readonly elem: TagElement) {}
 
   isValid(): boolean {
-    return this.elem.name === "table";
+    return (
+      this.elem.name === "table" &&
+      cheerio(this.elem)
+        .find("thead>tr>th")
+        .toArray()
+        .some((th) => /attribute|parameter/i.test(cheerio(th).text()))
+    );
   }
 
   parse(): Attribute[] {

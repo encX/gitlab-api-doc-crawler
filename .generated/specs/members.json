@@ -245,54 +245,22 @@
       ],
       "attributes": [
         {
-          "name": "access_level_asc",
-          "type": "Access level, ascending",
-          "required": false
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
         },
         {
-          "name": "access_level_desc",
-          "type": "Access level, descending",
-          "required": false
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "A query string to search for group members by name, username, or public email."
         },
         {
-          "name": "last_joined",
-          "type": "Last joined",
-          "required": false
-        },
-        {
-          "name": "name_asc",
-          "type": "Name, ascending",
-          "required": false
-        },
-        {
-          "name": "name_desc",
-          "type": "Name, descending",
-          "required": false
-        },
-        {
-          "name": "oldest_joined",
-          "type": "Oldest joined",
-          "required": false
-        },
-        {
-          "name": "oldest_sign_in",
-          "type": "Oldest sign in",
-          "required": false
-        },
-        {
-          "name": "recent_sign_in",
-          "type": "Recent sign in",
-          "required": false
-        },
-        {
-          "name": "last_activity_on_asc",
-          "type": "Last active date, ascending",
-          "required": false
-        },
-        {
-          "name": "last_activity_on_desc",
-          "type": "Last active date, descending",
-          "required": false
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "A query string containing parameters that specify the sort attribute and order. See supported values below."
         }
       ],
       "response": [

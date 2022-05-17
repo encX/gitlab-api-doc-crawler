@@ -341,80 +341,27 @@
         "operationId": "listAllBillableMembersOfAGroup",
         "parameters": [
           {
-            "name": "access_level_asc",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
             "in": "query",
+            "description": "A query string to search for group members by name, username, or public email.",
             "required": false,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "access_level_desc",
+            "name": "sort",
             "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_joined",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name_asc",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name_desc",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "oldest_joined",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "oldest_sign_in",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "recent_sign_in",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_activity_on_asc",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_activity_on_desc",
-            "in": "query",
+            "description": "A query string containing parameters that specify the sort attribute and order. See supported values below.",
             "required": false,
             "schema": {
               "type": "string"
