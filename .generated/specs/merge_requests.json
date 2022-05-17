@@ -1648,24 +1648,52 @@
       ],
       "attributes": [
         {
-          "name": "401",
-          "type": "Unauthorized",
-          "required": false
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
         },
         {
-          "name": "405",
-          "type": "Method Not Allowed",
-          "required": false
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of the merge request."
         },
         {
-          "name": "406",
-          "type": "Branch cannot be merged",
-          "required": false
+          "name": "merge_commit_message",
+          "type": "string",
+          "required": false,
+          "description": "Custom merge commit message."
         },
         {
-          "name": "409",
-          "type": "SHA does not match HEAD of source branch",
-          "required": false
+          "name": "squash_commit_message",
+          "type": "string",
+          "required": false,
+          "description": "Custom squash commit message."
+        },
+        {
+          "name": "squash",
+          "type": "boolean",
+          "required": false,
+          "description": "If true the commits are squashed into a single commit on merge."
+        },
+        {
+          "name": "should_remove_source_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "If true removes the source branch."
+        },
+        {
+          "name": "merge_when_pipeline_succeeds",
+          "type": "boolean",
+          "required": false,
+          "description": "If true the MR is merged when the pipeline succeeds."
+        },
+        {
+          "name": "sha",
+          "type": "string",
+          "required": false,
+          "description": "If present, then this SHA must match the HEAD of the source branch, otherwise the merge fails."
         }
       ],
       "response": {

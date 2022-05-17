@@ -2411,7 +2411,26 @@
         "summary": "Merge a merge request",
         "description": "Accept and merge changes submitted with MR using this API.",
         "operationId": "mergeAMergeRequest",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "merge_request_iid",
+            "in": "path",
+            "description": "The internal ID of the merge request.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2815,7 +2834,26 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {},
+                "properties": {
+                  "merge_commit_message": {
+                    "type": "string"
+                  },
+                  "squash_commit_message": {
+                    "type": "string"
+                  },
+                  "squash": {
+                    "type": "boolean"
+                  },
+                  "should_remove_source_branch": {
+                    "type": "boolean"
+                  },
+                  "merge_when_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "sha": {
+                    "type": "string"
+                  }
+                },
                 "required": []
               }
             }

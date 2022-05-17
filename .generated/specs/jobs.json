@@ -669,14 +669,16 @@
       ],
       "attributes": [
         {
-          "name": "200",
-          "type": "Serves the log file",
-          "required": false
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
         },
         {
-          "name": "404",
-          "type": "Job not found or no log file",
-          "required": false
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
         }
       ],
       "response": null

@@ -1069,8 +1069,41 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {},
-                "required": []
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "paused": {
+                    "type": "boolean"
+                  },
+                  "locked": {
+                    "type": "boolean"
+                  },
+                  "run_untagged": {
+                    "type": "boolean"
+                  },
+                  "access_level": {
+                    "type": "string"
+                  },
+                  "maximum_timeout": {
+                    "type": "integer"
+                  },
+                  "maintainer_note": {
+                    "type": "string"
+                  },
+                  "maintenance_note": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
               }
             }
           }
@@ -1118,9 +1151,10 @@
         "operationId": "deleteARunnerByAuthenticationToken",
         "parameters": [
           {
-            "name": "204",
+            "name": "token",
             "in": "query",
-            "required": false,
+            "description": "The runner’s authentication token.",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1165,8 +1199,14 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {},
-                "required": []
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
               }
             }
           }

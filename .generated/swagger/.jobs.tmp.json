@@ -1227,19 +1227,21 @@
         "operationId": "getALogFile",
         "parameters": [
           {
-            "name": "200",
-            "in": "query",
+            "name": "id",
+            "in": "path",
+            "description": "ID or URL-encoded path of the project owned by the authenticated user.",
             "required": false,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "404",
-            "in": "query",
+            "name": "job_id",
+            "in": "path",
+            "description": "ID of a job.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],

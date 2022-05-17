@@ -714,9 +714,76 @@
       ],
       "attributes": [
         {
-          "name": "201",
-          "type": "Runner was created",
-          "required": false
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "Registration token"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Runner’s description"
+        },
+        {
+          "name": "info",
+          "type": "hash",
+          "required": false,
+          "description": "Runner’s metadata. You can include name, version, revision, platform, and architecture, but only version is displayed in the Admin area of the UI"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: Use :paused instead. Whether the runner is allowed to receive jobs"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should ignore new jobs"
+        },
+        {
+          "name": "locked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should be locked for current project"
+        },
+        {
+          "name": "run_untagged",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should handle untagged jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of runner’s tags"
+        },
+        {
+          "name": "access_level",
+          "type": "string",
+          "required": false,
+          "description": "The access_level of the runner; not_protected or ref_protected"
+        },
+        {
+          "name": "maximum_timeout",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum timeout set when this runner handles the job"
+        },
+        {
+          "name": "maintainer_note",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated, see maintenance_note"
+        },
+        {
+          "name": "maintenance_note",
+          "type": "string",
+          "required": false,
+          "description": "Free-form maintenance notes for the runner (1024 characters)"
         }
       ],
       "response": {
@@ -755,9 +822,10 @@
       ],
       "attributes": [
         {
-          "name": "204",
-          "type": "Runner was deleted",
-          "required": false
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "The runner’s authentication token."
         }
       ],
       "response": null
@@ -773,14 +841,10 @@
       ],
       "attributes": [
         {
-          "name": "200",
-          "type": "Credentials are valid",
-          "required": false
-        },
-        {
-          "name": "403",
-          "type": "Credentials are invalid",
-          "required": false
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "Runner’s authentication token."
         }
       ],
       "response": null

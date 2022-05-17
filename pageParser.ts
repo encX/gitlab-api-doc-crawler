@@ -110,11 +110,16 @@ export class PageParser {
   }
 
   private static shouldSkip(elem: TagElement): boolean {
-    if (/introduced-in/gi.test(elem.attribs["class"])) return true;
-    if (
-      /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text())
-    )
-      return true;
-    return false;
+    return (
+      /introduced-in/gi.test(elem.attribs["class"]) ||
+      /Parameters|(Example (request|response)):?/gi.test(
+        cheerio(elem).text()
+      ) ||
+      (elem.name === "table" &&
+        cheerio(elem)
+          .find("thead>tr>th")
+          .toArray()
+          .some((th) => /status/i.test(cheerio(th).text())))
+    );
   }
 }
