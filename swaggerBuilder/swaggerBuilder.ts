@@ -21,7 +21,7 @@ export class SwaggerBuilder {
     try {
       await Deno.writeTextFile(
         `.generated/swagger/.${_pageSlug}.tmp.yml`,
-        stringify({ endpoints }, { skipInvalid: true }) // check yaml errors
+        stringify({ endpoints }, { skipInvalid: true }) // todo check yaml errors
       );
     } catch (e) {
       console.error(e);
