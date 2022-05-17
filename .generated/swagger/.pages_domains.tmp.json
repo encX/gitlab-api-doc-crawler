@@ -176,42 +176,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "domain",
-            "in": "query",
-            "description": "The custom domain indicated by the user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_ssl_enabled",
-            "in": "query",
-            "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "certificate",
-            "in": "query",
-            "description": "The certificate in PEM format with intermediates following in most specific to least specific order.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "key",
-            "in": "query",
-            "description": "The certificate key in PEM format.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -253,6 +217,26 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "auto_ssl_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "domain"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -281,33 +265,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "auto_ssl_enabled",
-            "in": "query",
-            "description": "Enables automatic generation of SSL certificates issued by Let’s Encrypt for custom domains.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "certificate",
-            "in": "query",
-            "description": "The certificate in PEM format with intermediates following in most specific to least specific order.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "key",
-            "in": "query",
-            "description": "The certificate key in PEM format.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -318,6 +275,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "auto_ssl_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }

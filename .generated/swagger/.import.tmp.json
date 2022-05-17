@@ -5,53 +5,7 @@
         "summary": "Import repository from GitHub",
         "description": "Import your projects from GitHub to GitLab via the API.",
         "operationId": "importRepositoryFromGithub",
-        "parameters": [
-          {
-            "name": "personal_access_token",
-            "in": "query",
-            "description": "GitHub personal access token",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repo_id",
-            "in": "query",
-            "description": "GitHub repository ID",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "new_name",
-            "in": "query",
-            "description": "New repository name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_namespace",
-            "in": "query",
-            "description": "Namespace to import repository into. Supports subgroups like /namespace/subgroup.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "github_hostname",
-            "in": "query",
-            "description": "Custom GitHub Enterprise hostname. Do not set for GitHub.com.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -77,6 +31,37 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "personal_access_token": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "integer"
+                  },
+                  "new_name": {
+                    "type": "string"
+                  },
+                  "target_namespace": {
+                    "type": "string"
+                  },
+                  "github_hostname": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "personal_access_token",
+                  "repo_id",
+                  "target_namespace"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -87,71 +72,7 @@
         "summary": "Import repository from Bitbucket Server",
         "description": "Import your projects from Bitbucket Server to GitLab via the API.",
         "operationId": "importRepositoryFromBitbucketServer",
-        "parameters": [
-          {
-            "name": "bitbucket_server_url",
-            "in": "query",
-            "description": "Bitbucket Server URL",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bitbucket_server_username",
-            "in": "query",
-            "description": "Bitbucket Server Username",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "personal_access_token",
-            "in": "query",
-            "description": "Bitbucket Server personal access token/password",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bitbucket_server_project",
-            "in": "query",
-            "description": "Bitbucket Project Key",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "bitbucket_server_repo",
-            "in": "query",
-            "description": "Bitbucket Repository Name",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_name",
-            "in": "query",
-            "description": "New repository name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_namespace",
-            "in": "query",
-            "description": "Namespace to import repository into. Supports subgroups like /namespace/subgroup",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -160,6 +81,45 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bitbucket_server_url": {
+                    "type": "string"
+                  },
+                  "bitbucket_server_username": {
+                    "type": "string"
+                  },
+                  "personal_access_token": {
+                    "type": "string"
+                  },
+                  "bitbucket_server_project": {
+                    "type": "string"
+                  },
+                  "bitbucket_server_repo": {
+                    "type": "string"
+                  },
+                  "new_name": {
+                    "type": "string"
+                  },
+                  "target_namespace": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "bitbucket_server_url",
+                  "bitbucket_server_username",
+                  "personal_access_token",
+                  "bitbucket_server_project",
+                  "bitbucket_server_repo"
+                ]
               }
             }
           }

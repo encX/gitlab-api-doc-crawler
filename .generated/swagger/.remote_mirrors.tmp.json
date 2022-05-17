@@ -116,39 +116,92 @@
         "summary": "Create a push mirror",
         "description": "Push mirroring is disabled by default. You can enable it by including the optional parameter enabled when creating it:",
         "operationId": "createAPushMirror",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "last_error": {
+                      "type": "string"
+                    },
+                    "last_successful_update_at": {
+                      "type": "string"
+                    },
+                    "last_update_at": {
+                      "type": "string"
+                    },
+                    "last_update_started_at": {
+                      "type": "string"
+                    },
+                    "only_protected_branches": {
+                      "type": "boolean"
+                    },
+                    "keep_divergent_refs": {
+                      "type": "boolean"
+                    },
+                    "update_status": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "only_protected_branches": {
+                    "type": "boolean"
+                  },
+                  "keep_divergent_refs": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/remote_mirrors/{mirror_id}": {
+      "put": {
+        "summary": "Update a remote mirror’s attributes",
+        "description": "Toggle a remote mirror on or off, or change which types of branches are mirrored:",
+        "operationId": "updateARemoteMirrorAttributes",
         "parameters": [
           {
-            "name": "url",
-            "in": "query",
-            "description": "The target URL to which the repository is mirrored.",
+            "name": "mirror_id",
+            "in": "path",
+            "description": "The remote mirror ID.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Determines if the mirror is enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_protected_branches",
-            "in": "query",
-            "description": "Determines if only protected branches are mirrored.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "keep_divergent_refs",
-            "in": "query",
-            "description": "Determines if divergent refs are skipped.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -197,94 +250,24 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/remote_mirrors/{mirror_id}": {
-      "put": {
-        "summary": "Update a remote mirror’s attributes",
-        "description": "Toggle a remote mirror on or off, or change which types of branches are mirrored:",
-        "operationId": "updateARemoteMirrorAttributes",
-        "parameters": [
-          {
-            "name": "mirror_id",
-            "in": "path",
-            "description": "The remote mirror ID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Determines if the mirror is enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_protected_branches",
-            "in": "query",
-            "description": "Determines if only protected branches are mirrored.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "keep_divergent_refs",
-            "in": "query",
-            "description": "Determines if divergent refs are skipped.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "enabled": {
-                      "type": "boolean"
-                    },
-                    "id": {
-                      "type": "integer"
-                    },
-                    "last_error": {
-                      "type": "string"
-                    },
-                    "last_successful_update_at": {
-                      "type": "string"
-                    },
-                    "last_update_at": {
-                      "type": "string"
-                    },
-                    "last_update_started_at": {
-                      "type": "string"
-                    },
-                    "only_protected_branches": {
-                      "type": "boolean"
-                    },
-                    "keep_divergent_refs": {
-                      "type": "boolean"
-                    },
-                    "update_status": {
-                      "type": "string"
-                    },
-                    "url": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "only_protected_branches": {
+                    "type": "boolean"
+                  },
+                  "keep_divergent_refs": {
+                    "type": "boolean"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

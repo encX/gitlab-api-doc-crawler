@@ -233,24 +233,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "Name of the branch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "Branch name or commit SHA to create branch from.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -328,6 +310,27 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branch",
+                  "ref"
+                ]
               }
             }
           }

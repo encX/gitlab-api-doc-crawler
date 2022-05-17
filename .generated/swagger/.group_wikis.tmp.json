@@ -151,33 +151,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "The content of the wiki page",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of the wiki page",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "format",
-            "in": "query",
-            "description": "The format of the wiki page. Available formats are: markdown (default), rdoc, asciidoc and org",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -208,6 +181,30 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content",
+                  "title"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -224,33 +221,6 @@
             "in": "path",
             "description": "The ID or URL-encoded path of the group",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "The content of the wiki page",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of the wiki page",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "format",
-            "in": "query",
-            "description": "The format of the wiki page. Available formats are: markdown (default), rdoc, asciidoc and org",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -290,6 +260,27 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -353,24 +344,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "file",
-            "in": "query",
-            "description": "The attachment to be uploaded",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "The name of the branch. Defaults to the wiki repository default branch",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -403,6 +376,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  },
+                  "branch": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
               }
             }
           }

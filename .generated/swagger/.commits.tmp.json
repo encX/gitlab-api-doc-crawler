@@ -165,71 +165,7 @@
         "summary": "Create a commit with multiple files and actions",
         "description": "Create a commit by posting a JSON payload",
         "operationId": "createACommitWithMultipleFilesAndActions",
-        "parameters": [
-          {
-            "name": "action",
-            "in": "query",
-            "description": "The action to perform, create, delete, move, update, chmod",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_path",
-            "in": "query",
-            "description": "Full path to the file. Ex. lib/class.rb",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "previous_path",
-            "in": "query",
-            "description": "Original full path to the file being moved. Ex. lib/class1.rb. Only considered for move action.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "File content, required for all except delete, chmod, and move. Move actions that do not specify content preserve the existing file content, and any other value of content overwrites the file content.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "encoding",
-            "in": "query",
-            "description": "text or base64. text is default.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_commit_id",
-            "in": "query",
-            "description": "Last known file commit ID. Only considered in update, move, and delete actions.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "execute_filemode",
-            "in": "query",
-            "description": "When true/false enables/disables the execute flag on the file. Only considered for chmod action.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -299,6 +235,42 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": "string"
+                  },
+                  "file_path": {
+                    "type": "string"
+                  },
+                  "previous_path": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "encoding": {
+                    "type": "string"
+                  },
+                  "last_commit_id": {
+                    "type": "string"
+                  },
+                  "execute_filemode": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "action",
+                  "file_path"
+                ]
               }
             }
           }
@@ -519,33 +491,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "The name of the branch",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "dry_run",
-            "in": "query",
-            "description": "Does not commit any changes. Default is false. Introduced in GitLab 13.3",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "message",
-            "in": "query",
-            "description": "A custom commit message to use for the new commit. Introduced in GitLab 14.0",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -609,6 +554,29 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "type": "boolean"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branch"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -634,24 +602,6 @@
             "in": "path",
             "description": "Commit SHA to revert",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "Target branch name",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "dry_run",
-            "in": "query",
-            "description": "Does not commit any changes. Default is false. Introduced in GitLab 13.3",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -715,6 +665,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "branch"
+                ]
               }
             }
           }
@@ -888,42 +858,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "note",
-            "in": "query",
-            "description": "The text of the comment",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "The file path relative to the repository",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "line",
-            "in": "query",
-            "description": "The line number where the comment should be placed",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "line_type",
-            "in": "query",
-            "description": "The line type. Takes new or old as arguments",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -974,6 +908,32 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "line": {
+                    "type": "integer"
+                  },
+                  "line_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note"
+                ]
               }
             }
           }
@@ -1266,69 +1226,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "description": "The state of the status. Can be one of the following: pending, running, success, failed, canceled",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "The ref (branch or tag) to which the status refers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name or context",
-            "in": "query",
-            "description": "The label to differentiate this status from the status of other systems. Default value is default",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_url",
-            "in": "query",
-            "description": "The target URL to associate with this status",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The short description of the status",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "coverage",
-            "in": "query",
-            "description": "The total code coverage",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_id",
-            "in": "query",
-            "description": "The ID of the pipeline to set status. Use in case of several pipeline on same SHA.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -1400,6 +1297,38 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "state": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "name or context": {
+                    "type": "string"
+                  },
+                  "target_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "pipeline_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "state"
+                ]
               }
             }
           }

@@ -14,15 +14,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "dashboard_path",
-            "in": "query",
-            "description": "URL-encoded path to file defining the dashboard which should be marked as favorite.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -47,6 +38,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dashboard_path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "dashboard_path"
+                ]
               }
             }
           }

@@ -186,24 +186,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the thread",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -214,6 +196,26 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -254,33 +256,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "note_id",
-            "in": "query",
-            "description": "The ID of a thread note",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -291,6 +266,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_id": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note_id",
+                  "body"
+                ]
               }
             }
           }
@@ -340,15 +339,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -359,6 +349,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -612,24 +619,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a discussion",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -640,6 +629,26 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -680,33 +689,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "note_id",
-            "in": "query",
-            "description": "The ID of a thread note",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -717,6 +699,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_id": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note_id",
+                  "body"
+                ]
               }
             }
           }
@@ -766,15 +772,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -785,6 +782,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -1041,24 +1055,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the thread",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1069,6 +1065,26 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -1109,33 +1125,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "note_id",
-            "in": "query",
-            "description": "The ID of a thread note",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1146,6 +1135,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_id": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note_id",
+                  "body"
+                ]
               }
             }
           }
@@ -1195,15 +1208,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1214,6 +1218,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -1517,62 +1538,7 @@
         "summary": "Create new merge request thread",
         "description": "Creates a new thread to a single project merge request. This is similar to creating a note but other comments (replies) can be added to it later.",
         "operationId": "createNewMergeRequestThread",
-        "parameters": [
-          {
-            "name": "position[line_range][start]",
-            "in": "query",
-            "description": "Multiline note starting line",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[line_range][start][line_code]",
-            "in": "query",
-            "description": "Line code for the start line",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[line_range][start][type]",
-            "in": "query",
-            "description": "Use new for lines added by this commit, otherwise old.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[line_range][end]",
-            "in": "query",
-            "description": "Multiline note ending line",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[line_range][end][line_code]",
-            "in": "query",
-            "description": "Line code for the end line",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[line_range][end][type]",
-            "in": "query",
-            "description": "Use new for lines added by this commit, otherwise old.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1581,6 +1547,35 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "position[line_range][start][line_code]": {
+                    "type": "string"
+                  },
+                  "position[line_range][start][type]": {
+                    "type": "string"
+                  },
+                  "position[line_range][end][line_code]": {
+                    "type": "string"
+                  },
+                  "position[line_range][end][type]": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "position[line_range][start][line_code]",
+                  "position[line_range][start][type]",
+                  "position[line_range][end][line_code]",
+                  "position[line_range][end][type]"
+                ]
               }
             }
           }
@@ -1621,15 +1616,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "resolved",
-            "in": "query",
-            "description": "Resolve/unresolve the discussion",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1640,6 +1626,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resolved": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "resolved"
+                ]
               }
             }
           }
@@ -1680,33 +1683,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "note_id",
-            "in": "query",
-            "description": "The ID of a thread note",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1717,6 +1693,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_id": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note_id",
+                  "body"
+                ]
               }
             }
           }
@@ -1766,24 +1766,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply (exactly one of body or resolved must be set",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resolved",
-            "in": "query",
-            "description": "Resolve/unresolve the note (exactly one of body or resolved must be set",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1794,6 +1776,24 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "resolved": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2079,141 +2079,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the thread",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position",
-            "in": "query",
-            "description": "Position when creating a diff note",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[base_sha]",
-            "in": "query",
-            "description": "SHA of the parent commit",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[start_sha]",
-            "in": "query",
-            "description": "SHA of the parent commit",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[head_sha]",
-            "in": "query",
-            "description": "The SHA of this commit (same as commit_id)",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[position_type]",
-            "in": "query",
-            "description": "Type of the position reference’, allowed values: text or image",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[new_path]",
-            "in": "query",
-            "description": "File path after change",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[new_line]",
-            "in": "query",
-            "description": "Line number after change",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[old_path]",
-            "in": "query",
-            "description": "File path before change",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[old_line]",
-            "in": "query",
-            "description": "Line number before change",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[width]",
-            "in": "query",
-            "description": "Width of the image (for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[height]",
-            "in": "query",
-            "description": "Height of the image (for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[x]",
-            "in": "query",
-            "description": "X coordinate (for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[y]",
-            "in": "query",
-            "description": "Y coordinate (for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -2224,6 +2089,66 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "position[base_sha]": {
+                    "type": "string"
+                  },
+                  "position[start_sha]": {
+                    "type": "string"
+                  },
+                  "position[head_sha]": {
+                    "type": "string"
+                  },
+                  "position[position_type]": {
+                    "type": "string"
+                  },
+                  "position[new_path]": {
+                    "type": "string"
+                  },
+                  "position[new_line]": {
+                    "type": "integer"
+                  },
+                  "position[old_path]": {
+                    "type": "string"
+                  },
+                  "position[old_line]": {
+                    "type": "integer"
+                  },
+                  "position[width]": {
+                    "type": "integer"
+                  },
+                  "position[height]": {
+                    "type": "integer"
+                  },
+                  "position[x]": {
+                    "type": "integer"
+                  },
+                  "position[y]": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "body",
+                  "position[base_sha]",
+                  "position[start_sha]",
+                  "position[head_sha]",
+                  "position[position_type]"
+                ]
               }
             }
           }
@@ -2264,33 +2189,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "note_id",
-            "in": "query",
-            "description": "The ID of a thread note",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the note/reply",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2301,6 +2199,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "note_id": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "note_id",
+                  "body"
+                ]
               }
             }
           }
@@ -2350,15 +2272,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2369,6 +2282,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

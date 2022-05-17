@@ -1783,584 +1783,7 @@
         "summary": "Create project",
         "description": "Creates a new project owned by the authenticated user.",
         "operationId": "createProject",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the new project. Equals path if not provided.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "Repository name for new project. Generated based on name if not provided (generated as lowercase with dashes). Starting with GitLab 14.9, path must not start or end with a special character and must not contain consecutive special characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_merge_on_skipped_pipeline",
-            "in": "query",
-            "description": "Set whether or not merge requests can be merged with skipped jobs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "analytics_access_level",
-            "in": "query",
-            "description": "One of disabled, private or enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_before_merge",
-            "in": "query",
-            "description": "How many approvers should approve merge requests by default. To configure approval rules, see Merge request approvals API.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "auto_cancel_pending_pipelines",
-            "in": "query",
-            "description": "Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_deploy_strategy",
-            "in": "query",
-            "description": "Auto Deploy strategy (continuous, manual or timed_incremental).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_enabled",
-            "in": "query",
-            "description": "Enable Auto DevOps for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "autoclose_referenced_issues",
-            "in": "query",
-            "description": "Set whether auto-closing referenced issues on default branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "Image file for avatar of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_coverage_regex",
-            "in": "query",
-            "description": "Test coverage parsing.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_git_strategy",
-            "in": "query",
-            "description": "The Git strategy. Defaults to fetch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_timeout",
-            "in": "query",
-            "description": "The maximum amount of time, in seconds, that a job can run.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "builds_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ci_config_path",
-            "in": "query",
-            "description": "The path to CI configuration file.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_expiration_policy_attributes",
-            "in": "query",
-            "description": "Update the image cleanup policy for this project. Accepts: cadence (string), keep_n (integer), older_than (string), name_regex (string), name_regex_delete (string), name_regex_keep (string), enabled (boolean). Valid values for cadence are: 1d (every day), 7d (every week), 14d (every two weeks), 1month (every month), or 3month (every quarter).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_access_level",
-            "in": "query",
-            "description": "Set visibility of container registry, for this project, to one of disabled, private or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable container registry for this project. Use container_registry_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "default_branch",
-            "in": "query",
-            "description": "The default branch name. Requires initialize_with_readme to be true.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Short project description.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "emails_disabled",
-            "in": "query",
-            "description": "Disable email notifications.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "external_authorization_classification_label",
-            "in": "query",
-            "description": "The classification label for the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "forking_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_with_project_templates_id",
-            "in": "query",
-            "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "import_url",
-            "in": "query",
-            "description": "URL to import repository from.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "initialize_with_readme",
-            "in": "query",
-            "description": "false by default.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable issues for this project. Use issues_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jobs_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable jobs for this project. Use builds_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "lfs_enabled",
-            "in": "query",
-            "description": "Enable LFS.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_method",
-            "in": "query",
-            "description": "Set the merge method used.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_pipelines_enabled",
-            "in": "query",
-            "description": "Enable or disable merge pipelines.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable merge requests for this project. Use merge_requests_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_trains_enabled",
-            "in": "query",
-            "description": "Enable or disable merge trains.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror_trigger_builds",
-            "in": "query",
-            "description": "Pull mirroring triggers builds.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror",
-            "in": "query",
-            "description": "Enables pull mirroring in a project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "namespace_id",
-            "in": "query",
-            "description": "Namespace for the new project (defaults to the current user’s namespace).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_all_discussions_are_resolved",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged when all the discussions are resolved.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_pipeline_succeeds",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged with successful pipelines. This setting is named Pipelines must succeed in the project settings.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "operations_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "packages_enabled",
-            "in": "query",
-            "description": "Enable or disable packages repository feature.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pages_access_level",
-            "in": "query",
-            "description": "One of disabled, private, enabled, or public.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "printing_merge_request_link_enabled",
-            "in": "query",
-            "description": "Show link to create/view merge request when pushing from the command line.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "public_builds",
-            "in": "query",
-            "description": "If true, jobs can be viewed by non-project members.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_source_branch_after_merge",
-            "in": "query",
-            "description": "Enable Delete source branch option by default for all new merge requests.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_storage",
-            "in": "query",
-            "description": "Which storage shard the repository is on. (administrator only)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request_access_enabled",
-            "in": "query",
-            "description": "Allow users to request member access.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "requirements_access_level",
-            "in": "query",
-            "description": "One of disabled, private or enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resolve_outdated_diff_discussions",
-            "in": "query",
-            "description": "Automatically resolve merge request diffs discussions on lines changed with a push.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "security_and_compliance_access_level",
-            "in": "query",
-            "description": "(GitLab 14.9 and later) Security and compliance access level. One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "shared_runners_enabled",
-            "in": "query",
-            "description": "Enable shared runners for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable snippets for this project. Use snippets_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash_option",
-            "in": "query",
-            "description": "One of never, always, default_on, or default_off.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_list",
-            "in": "query",
-            "description": "(Deprecated in GitLab 14.0) The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "template_name",
-            "in": "query",
-            "description": "When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "template_project_id",
-            "in": "query",
-            "description": "When used with use_custom_template, project ID of a custom project template. This is preferable to using template_name since template_name may be ambiguous.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "topics",
-            "in": "query",
-            "description": "The list of topics for a project; put array of topics, that should be finally assigned to a project. (Introduced in GitLab 14.0.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "use_custom_template",
-            "in": "query",
-            "description": "Use either custom instance or group (with group_with_project_templates_id) project template.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "See project visibility level.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2369,6 +1792,198 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "allow_merge_on_skipped_pipeline": {
+                    "type": "boolean"
+                  },
+                  "analytics_access_level": {
+                    "type": "string"
+                  },
+                  "approvals_before_merge": {
+                    "type": "integer"
+                  },
+                  "auto_cancel_pending_pipelines": {
+                    "type": "string"
+                  },
+                  "auto_devops_deploy_strategy": {
+                    "type": "string"
+                  },
+                  "auto_devops_enabled": {
+                    "type": "boolean"
+                  },
+                  "autoclose_referenced_issues": {
+                    "type": "boolean"
+                  },
+                  "build_coverage_regex": {
+                    "type": "string"
+                  },
+                  "build_git_strategy": {
+                    "type": "string"
+                  },
+                  "build_timeout": {
+                    "type": "integer"
+                  },
+                  "builds_access_level": {
+                    "type": "string"
+                  },
+                  "ci_config_path": {
+                    "type": "string"
+                  },
+                  "container_registry_access_level": {
+                    "type": "string"
+                  },
+                  "container_registry_enabled": {
+                    "type": "boolean"
+                  },
+                  "default_branch": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "emails_disabled": {
+                    "type": "boolean"
+                  },
+                  "external_authorization_classification_label": {
+                    "type": "string"
+                  },
+                  "forking_access_level": {
+                    "type": "string"
+                  },
+                  "group_with_project_templates_id": {
+                    "type": "integer"
+                  },
+                  "import_url": {
+                    "type": "string"
+                  },
+                  "initialize_with_readme": {
+                    "type": "boolean"
+                  },
+                  "issues_access_level": {
+                    "type": "string"
+                  },
+                  "issues_enabled": {
+                    "type": "boolean"
+                  },
+                  "jobs_enabled": {
+                    "type": "boolean"
+                  },
+                  "lfs_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_method": {
+                    "type": "string"
+                  },
+                  "merge_pipelines_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_access_level": {
+                    "type": "string"
+                  },
+                  "merge_requests_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_trains_enabled": {
+                    "type": "boolean"
+                  },
+                  "mirror_trigger_builds": {
+                    "type": "boolean"
+                  },
+                  "mirror": {
+                    "type": "boolean"
+                  },
+                  "namespace_id": {
+                    "type": "integer"
+                  },
+                  "only_allow_merge_if_all_discussions_are_resolved": {
+                    "type": "boolean"
+                  },
+                  "only_allow_merge_if_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "operations_access_level": {
+                    "type": "string"
+                  },
+                  "packages_enabled": {
+                    "type": "boolean"
+                  },
+                  "pages_access_level": {
+                    "type": "string"
+                  },
+                  "printing_merge_request_link_enabled": {
+                    "type": "boolean"
+                  },
+                  "public_builds": {
+                    "type": "boolean"
+                  },
+                  "remove_source_branch_after_merge": {
+                    "type": "boolean"
+                  },
+                  "repository_access_level": {
+                    "type": "string"
+                  },
+                  "repository_storage": {
+                    "type": "string"
+                  },
+                  "request_access_enabled": {
+                    "type": "boolean"
+                  },
+                  "requirements_access_level": {
+                    "type": "string"
+                  },
+                  "resolve_outdated_diff_discussions": {
+                    "type": "boolean"
+                  },
+                  "security_and_compliance_access_level": {
+                    "type": "string"
+                  },
+                  "shared_runners_enabled": {
+                    "type": "boolean"
+                  },
+                  "snippets_access_level": {
+                    "type": "string"
+                  },
+                  "snippets_enabled": {
+                    "type": "boolean"
+                  },
+                  "squash_option": {
+                    "type": "string"
+                  },
+                  "template_name": {
+                    "type": "string"
+                  },
+                  "template_project_id": {
+                    "type": "integer"
+                  },
+                  "use_custom_template": {
+                    "type": "boolean"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "wiki_access_level": {
+                    "type": "string"
+                  },
+                  "wiki_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2391,573 +2006,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the new project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_merge_on_skipped_pipeline",
-            "in": "query",
-            "description": "Set whether or not merge requests can be merged with skipped jobs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "analytics_access_level",
-            "in": "query",
-            "description": "One of disabled, private or enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_before_merge",
-            "in": "query",
-            "description": "How many approvers should approve merge requests by default. To configure approval rules, see Merge request approvals API.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "auto_cancel_pending_pipelines",
-            "in": "query",
-            "description": "Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_deploy_strategy",
-            "in": "query",
-            "description": "Auto Deploy strategy (continuous, manual or timed_incremental).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_enabled",
-            "in": "query",
-            "description": "Enable Auto DevOps for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "autoclose_referenced_issues",
-            "in": "query",
-            "description": "Set whether auto-closing referenced issues on default branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "Image file for avatar of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_coverage_regex",
-            "in": "query",
-            "description": "Test coverage parsing.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_git_strategy",
-            "in": "query",
-            "description": "The Git strategy. Defaults to fetch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_timeout",
-            "in": "query",
-            "description": "The maximum amount of time, in seconds, that a job can run.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "builds_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ci_config_path",
-            "in": "query",
-            "description": "The path to CI configuration file.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_access_level",
-            "in": "query",
-            "description": "Set visibility of container registry, for this project, to one of disabled, private or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable container registry for this project. Use container_registry_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "default_branch",
-            "in": "query",
-            "description": "The default branch name. Requires initialize_with_readme to be true.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Short project description.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "emails_disabled",
-            "in": "query",
-            "description": "Disable email notifications.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "external_authorization_classification_label",
-            "in": "query",
-            "description": "The classification label for the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "forking_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_with_project_templates_id",
-            "in": "query",
-            "description": "For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use_custom_template to be true.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "import_url",
-            "in": "query",
-            "description": "URL to import repository from.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "initialize_with_readme",
-            "in": "query",
-            "description": "false by default.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable issues for this project. Use issues_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jobs_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable jobs for this project. Use builds_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "lfs_enabled",
-            "in": "query",
-            "description": "Enable LFS.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_commit_template",
-            "in": "query",
-            "description": "Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_method",
-            "in": "query",
-            "description": "Set the merge method used.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable merge requests for this project. Use merge_requests_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror_trigger_builds",
-            "in": "query",
-            "description": "Pull mirroring triggers builds.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror",
-            "in": "query",
-            "description": "Enables pull mirroring in a project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "namespace_id",
-            "in": "query",
-            "description": "Namespace for the new project (defaults to the current user’s namespace).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_all_discussions_are_resolved",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged when all the discussions are resolved.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_pipeline_succeeds",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged with successful jobs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "operations_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "packages_enabled",
-            "in": "query",
-            "description": "Enable or disable packages repository feature.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pages_access_level",
-            "in": "query",
-            "description": "One of disabled, private, enabled, or public.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "Custom repository name for new project. By default generated based on name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "printing_merge_request_link_enabled",
-            "in": "query",
-            "description": "Show link to create/view merge request when pushing from the command line.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "public_builds",
-            "in": "query",
-            "description": "If true, jobs can be viewed by non-project-members.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_source_branch_after_merge",
-            "in": "query",
-            "description": "Enable Delete source branch option by default for all new merge requests.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_storage",
-            "in": "query",
-            "description": "Which storage shard the repository is on. (administrators only)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request_access_enabled",
-            "in": "query",
-            "description": "Allow users to request member access.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "requirements_access_level",
-            "in": "query",
-            "description": "One of disabled, private, enabled or public",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resolve_outdated_diff_discussions",
-            "in": "query",
-            "description": "Automatically resolve merge request diffs discussions on lines changed with a push.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "security_and_compliance_access_level",
-            "in": "query",
-            "description": "(GitLab 14.9 and later) Security and compliance access level. One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "shared_runners_enabled",
-            "in": "query",
-            "description": "Enable shared runners for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable snippets for this project. Use snippets_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash_commit_template",
-            "in": "query",
-            "description": "Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash_option",
-            "in": "query",
-            "description": "One of never, always, default_on, or default_off.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "suggestion_commit_message",
-            "in": "query",
-            "description": "The commit message used to apply merge request suggestions.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_list",
-            "in": "query",
-            "description": "(Deprecated in GitLab 14.0) The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "template_name",
-            "in": "query",
-            "description": "When used without use_custom_template, name of a built-in project template. When used with use_custom_template, name of a custom project template.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "topics",
-            "in": "query",
-            "description": "The list of topics for the project. (Introduced in GitLab 14.0.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "use_custom_template",
-            "in": "query",
-            "description": "Use either custom instance or group (with group_with_project_templates_id) project template.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "See project visibility level.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2968,6 +2016,198 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "allow_merge_on_skipped_pipeline": {
+                    "type": "boolean"
+                  },
+                  "analytics_access_level": {
+                    "type": "string"
+                  },
+                  "approvals_before_merge": {
+                    "type": "integer"
+                  },
+                  "auto_cancel_pending_pipelines": {
+                    "type": "string"
+                  },
+                  "auto_devops_deploy_strategy": {
+                    "type": "string"
+                  },
+                  "auto_devops_enabled": {
+                    "type": "boolean"
+                  },
+                  "autoclose_referenced_issues": {
+                    "type": "boolean"
+                  },
+                  "build_coverage_regex": {
+                    "type": "string"
+                  },
+                  "build_git_strategy": {
+                    "type": "string"
+                  },
+                  "build_timeout": {
+                    "type": "integer"
+                  },
+                  "builds_access_level": {
+                    "type": "string"
+                  },
+                  "ci_config_path": {
+                    "type": "string"
+                  },
+                  "container_registry_access_level": {
+                    "type": "string"
+                  },
+                  "container_registry_enabled": {
+                    "type": "boolean"
+                  },
+                  "default_branch": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "emails_disabled": {
+                    "type": "boolean"
+                  },
+                  "external_authorization_classification_label": {
+                    "type": "string"
+                  },
+                  "forking_access_level": {
+                    "type": "string"
+                  },
+                  "group_with_project_templates_id": {
+                    "type": "integer"
+                  },
+                  "import_url": {
+                    "type": "string"
+                  },
+                  "initialize_with_readme": {
+                    "type": "boolean"
+                  },
+                  "issues_access_level": {
+                    "type": "string"
+                  },
+                  "issues_enabled": {
+                    "type": "boolean"
+                  },
+                  "jobs_enabled": {
+                    "type": "boolean"
+                  },
+                  "lfs_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_commit_template": {
+                    "type": "string"
+                  },
+                  "merge_method": {
+                    "type": "string"
+                  },
+                  "merge_requests_access_level": {
+                    "type": "string"
+                  },
+                  "merge_requests_enabled": {
+                    "type": "boolean"
+                  },
+                  "mirror_trigger_builds": {
+                    "type": "boolean"
+                  },
+                  "mirror": {
+                    "type": "boolean"
+                  },
+                  "namespace_id": {
+                    "type": "integer"
+                  },
+                  "only_allow_merge_if_all_discussions_are_resolved": {
+                    "type": "boolean"
+                  },
+                  "only_allow_merge_if_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "operations_access_level": {
+                    "type": "string"
+                  },
+                  "packages_enabled": {
+                    "type": "boolean"
+                  },
+                  "pages_access_level": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "printing_merge_request_link_enabled": {
+                    "type": "boolean"
+                  },
+                  "public_builds": {
+                    "type": "boolean"
+                  },
+                  "remove_source_branch_after_merge": {
+                    "type": "boolean"
+                  },
+                  "repository_access_level": {
+                    "type": "string"
+                  },
+                  "repository_storage": {
+                    "type": "string"
+                  },
+                  "request_access_enabled": {
+                    "type": "boolean"
+                  },
+                  "requirements_access_level": {
+                    "type": "string"
+                  },
+                  "resolve_outdated_diff_discussions": {
+                    "type": "boolean"
+                  },
+                  "security_and_compliance_access_level": {
+                    "type": "string"
+                  },
+                  "shared_runners_enabled": {
+                    "type": "boolean"
+                  },
+                  "snippets_access_level": {
+                    "type": "string"
+                  },
+                  "snippets_enabled": {
+                    "type": "boolean"
+                  },
+                  "squash_commit_template": {
+                    "type": "string"
+                  },
+                  "squash_option": {
+                    "type": "string"
+                  },
+                  "suggestion_commit_message": {
+                    "type": "string"
+                  },
+                  "template_name": {
+                    "type": "string"
+                  },
+                  "use_custom_template": {
+                    "type": "boolean"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "wiki_access_level": {
+                    "type": "string"
+                  },
+                  "wiki_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2990,654 +2230,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "allow_merge_on_skipped_pipeline",
-            "in": "query",
-            "description": "Set whether or not merge requests can be merged with skipped jobs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "analytics_access_level",
-            "in": "query",
-            "description": "One of disabled, private or enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_before_merge",
-            "in": "query",
-            "description": "How many approvers should approve merge request by default. To configure approval rules, see Merge request approvals API.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "auto_cancel_pending_pipelines",
-            "in": "query",
-            "description": "Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_deploy_strategy",
-            "in": "query",
-            "description": "Auto Deploy strategy (continuous, manual, or timed_incremental).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_enabled",
-            "in": "query",
-            "description": "Enable Auto DevOps for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "autoclose_referenced_issues",
-            "in": "query",
-            "description": "Set whether auto-closing referenced issues on default branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "Image file for avatar of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_coverage_regex",
-            "in": "query",
-            "description": "Test coverage parsing.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_git_strategy",
-            "in": "query",
-            "description": "The Git strategy. Defaults to fetch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_timeout",
-            "in": "query",
-            "description": "The maximum amount of time, in seconds, that a job can run.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "builds_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ci_config_path",
-            "in": "query",
-            "description": "The path to CI configuration file.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ci_default_git_depth",
-            "in": "query",
-            "description": "Default number of revisions for shallow cloning.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "ci_forward_deployment_enabled",
-            "in": "query",
-            "description": "When a new deployment job starts, skip older deployment jobs that are still pending",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_expiration_policy_attributes",
-            "in": "query",
-            "description": "Update the image cleanup policy for this project. Accepts: cadence (string), keep_n (integer), older_than (string), name_regex (string), name_regex_delete (string), name_regex_keep (string), enabled (boolean).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_access_level",
-            "in": "query",
-            "description": "Set visibility of container registry, for this project, to one of disabled, private or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "container_registry_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable container registry for this project. Use container_registry_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "default_branch",
-            "in": "query",
-            "description": "The default branch name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Short project description.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "emails_disabled",
-            "in": "query",
-            "description": "Disable email notifications.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "external_authorization_classification_label",
-            "in": "query",
-            "description": "The classification label for the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "forking_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "import_url",
-            "in": "query",
-            "description": "URL to import repository from.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable issues for this project. Use issues_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_template",
-            "in": "query",
-            "description": "Default description for Issues. Description is parsed with GitLab Flavored Markdown. See Templates for issues and merge requests.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jobs_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable jobs for this project. Use builds_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "keep_latest_artifact",
-            "in": "query",
-            "description": "Disable or enable the ability to keep the latest artifact for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "lfs_enabled",
-            "in": "query",
-            "description": "Enable LFS.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_commit_template",
-            "in": "query",
-            "description": "Template used to create merge commit message in merge requests. (Introduced in GitLab 14.5.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_method",
-            "in": "query",
-            "description": "Set the merge method used.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_pipelines_enabled",
-            "in": "query",
-            "description": "Enable or disable merge pipelines.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable merge requests for this project. Use merge_requests_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_template",
-            "in": "query",
-            "description": "Default description for merge requests. Description is parsed with GitLab Flavored Markdown. See Templates for issues and merge requests.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_trains_enabled",
-            "in": "query",
-            "description": "Enable or disable merge trains.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror_overwrites_diverged_branches",
-            "in": "query",
-            "description": "Pull mirror overwrites diverged branches.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror_trigger_builds",
-            "in": "query",
-            "description": "Pull mirroring triggers builds.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mirror_user_id",
-            "in": "query",
-            "description": "User responsible for all the activity surrounding a pull mirror event. (administrators only)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "mirror",
-            "in": "query",
-            "description": "Enables pull mirroring in a project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mr_default_target_self",
-            "in": "query",
-            "description": "For forked projects, target merge requests to this project. If false, the target will be the upstream project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_all_discussions_are_resolved",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged when all the discussions are resolved.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_allow_merge_if_pipeline_succeeds",
-            "in": "query",
-            "description": "Set whether merge requests can only be merged with successful jobs.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "only_mirror_protected_branches",
-            "in": "query",
-            "description": "Only mirror protected branches.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "operations_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "packages_enabled",
-            "in": "query",
-            "description": "Enable or disable packages repository feature.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pages_access_level",
-            "in": "query",
-            "description": "One of disabled, private, enabled, or public.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "Custom repository name for the project. By default generated based on name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "printing_merge_request_link_enabled",
-            "in": "query",
-            "description": "Show link to create/view merge request when pushing from the command line.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "public_builds",
-            "in": "query",
-            "description": "If true, jobs can be viewed by non-project members.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_source_branch_after_merge",
-            "in": "query",
-            "description": "Enable Delete source branch option by default for all new merge requests.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_storage",
-            "in": "query",
-            "description": "Which storage shard the repository is on. (administrators only)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request_access_enabled",
-            "in": "query",
-            "description": "Allow users to request member access.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "requirements_access_level",
-            "in": "query",
-            "description": "One of disabled, private, enabled or public",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "resolve_outdated_diff_discussions",
-            "in": "query",
-            "description": "Automatically resolve merge request diffs discussions on lines changed with a push.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "restrict_user_defined_variables",
-            "in": "query",
-            "description": "Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. For example when the pipeline is triggered in the UI, with the API, or by a trigger token.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "security_and_compliance_access_level",
-            "in": "query",
-            "description": "(GitLab 14.9 and later) Security and compliance access level. One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "service_desk_enabled",
-            "in": "query",
-            "description": "Enable or disable Service Desk feature.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "shared_runners_enabled",
-            "in": "query",
-            "description": "Enable shared runners for this project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "snippets_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable snippets for this project. Use snippets_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash_commit_template",
-            "in": "query",
-            "description": "Template used to create squash commit message in merge requests. (Introduced in GitLab 14.6.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash_option",
-            "in": "query",
-            "description": "One of never, always, default_on, or default_off.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "suggestion_commit_message",
-            "in": "query",
-            "description": "The commit message used to apply merge request suggestions.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_list",
-            "in": "query",
-            "description": "(Deprecated in GitLab 14.0) The list of tags for a project; put array of tags, that should be finally assigned to a project. Use topics instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "topics",
-            "in": "query",
-            "description": "The list of topics for the project. This replaces any existing topics that are already added to the project. (Introduced in GitLab 14.0.)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "See project visibility level.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_access_level",
-            "in": "query",
-            "description": "One of disabled, private, or enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_enabled",
-            "in": "query",
-            "description": "(Deprecated) Enable wiki for this project. Use wiki_access_level instead.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3648,6 +2240,222 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "allow_merge_on_skipped_pipeline": {
+                    "type": "boolean"
+                  },
+                  "analytics_access_level": {
+                    "type": "string"
+                  },
+                  "approvals_before_merge": {
+                    "type": "integer"
+                  },
+                  "auto_cancel_pending_pipelines": {
+                    "type": "string"
+                  },
+                  "auto_devops_deploy_strategy": {
+                    "type": "string"
+                  },
+                  "auto_devops_enabled": {
+                    "type": "boolean"
+                  },
+                  "autoclose_referenced_issues": {
+                    "type": "boolean"
+                  },
+                  "build_coverage_regex": {
+                    "type": "string"
+                  },
+                  "build_git_strategy": {
+                    "type": "string"
+                  },
+                  "build_timeout": {
+                    "type": "integer"
+                  },
+                  "builds_access_level": {
+                    "type": "string"
+                  },
+                  "ci_config_path": {
+                    "type": "string"
+                  },
+                  "ci_default_git_depth": {
+                    "type": "integer"
+                  },
+                  "ci_forward_deployment_enabled": {
+                    "type": "boolean"
+                  },
+                  "container_registry_access_level": {
+                    "type": "string"
+                  },
+                  "container_registry_enabled": {
+                    "type": "boolean"
+                  },
+                  "default_branch": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "emails_disabled": {
+                    "type": "boolean"
+                  },
+                  "external_authorization_classification_label": {
+                    "type": "string"
+                  },
+                  "forking_access_level": {
+                    "type": "string"
+                  },
+                  "import_url": {
+                    "type": "string"
+                  },
+                  "issues_access_level": {
+                    "type": "string"
+                  },
+                  "issues_enabled": {
+                    "type": "boolean"
+                  },
+                  "issues_template": {
+                    "type": "string"
+                  },
+                  "jobs_enabled": {
+                    "type": "boolean"
+                  },
+                  "keep_latest_artifact": {
+                    "type": "boolean"
+                  },
+                  "lfs_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_commit_template": {
+                    "type": "string"
+                  },
+                  "merge_method": {
+                    "type": "string"
+                  },
+                  "merge_pipelines_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_access_level": {
+                    "type": "string"
+                  },
+                  "merge_requests_enabled": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_template": {
+                    "type": "string"
+                  },
+                  "merge_trains_enabled": {
+                    "type": "boolean"
+                  },
+                  "mirror_overwrites_diverged_branches": {
+                    "type": "boolean"
+                  },
+                  "mirror_trigger_builds": {
+                    "type": "boolean"
+                  },
+                  "mirror_user_id": {
+                    "type": "integer"
+                  },
+                  "mirror": {
+                    "type": "boolean"
+                  },
+                  "mr_default_target_self": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "only_allow_merge_if_all_discussions_are_resolved": {
+                    "type": "boolean"
+                  },
+                  "only_allow_merge_if_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "only_mirror_protected_branches": {
+                    "type": "boolean"
+                  },
+                  "operations_access_level": {
+                    "type": "string"
+                  },
+                  "packages_enabled": {
+                    "type": "boolean"
+                  },
+                  "pages_access_level": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "printing_merge_request_link_enabled": {
+                    "type": "boolean"
+                  },
+                  "public_builds": {
+                    "type": "boolean"
+                  },
+                  "remove_source_branch_after_merge": {
+                    "type": "boolean"
+                  },
+                  "repository_access_level": {
+                    "type": "string"
+                  },
+                  "repository_storage": {
+                    "type": "string"
+                  },
+                  "request_access_enabled": {
+                    "type": "boolean"
+                  },
+                  "requirements_access_level": {
+                    "type": "string"
+                  },
+                  "resolve_outdated_diff_discussions": {
+                    "type": "boolean"
+                  },
+                  "restrict_user_defined_variables": {
+                    "type": "boolean"
+                  },
+                  "security_and_compliance_access_level": {
+                    "type": "string"
+                  },
+                  "service_desk_enabled": {
+                    "type": "boolean"
+                  },
+                  "shared_runners_enabled": {
+                    "type": "boolean"
+                  },
+                  "snippets_access_level": {
+                    "type": "string"
+                  },
+                  "snippets_enabled": {
+                    "type": "boolean"
+                  },
+                  "squash_commit_template": {
+                    "type": "string"
+                  },
+                  "squash_option": {
+                    "type": "string"
+                  },
+                  "suggestion_commit_message": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "wiki_access_level": {
+                    "type": "string"
+                  },
+                  "wiki_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3670,78 +2478,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description assigned to the resultant project after forking.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mr_default_target_self",
-            "in": "query",
-            "description": "For forked projects, target merge requests to this project. If false, the target will be the upstream project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name assigned to the resultant project after forking.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "namespace_id",
-            "in": "query",
-            "description": "The ID of the namespace that the project is forked to.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "namespace_path",
-            "in": "query",
-            "description": "The path of the namespace that the project is forked to.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "namespace",
-            "in": "query",
-            "description": "(Deprecated) The ID or path of the namespace that the project is forked to.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "The path assigned to the resultant project after forking.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "The visibility level assigned to the resultant project after forking.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3752,6 +2488,39 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mr_default_target_self": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "namespace_id": {
+                    "type": "integer"
+                  },
+                  "namespace_path": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -5431,15 +4200,6 @@
         "operationId": "uploadAFile",
         "parameters": [
           {
-            "name": "file",
-            "in": "query",
-            "description": "The file to be uploaded.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The ID or URL-encoded path of the project.",
@@ -5474,6 +4234,21 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
         }
       }
     }
@@ -5485,15 +4260,6 @@
         "description": "Uploads an avatar to the specified project.",
         "operationId": "uploadAProjectAvatar",
         "parameters": [
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "The file to be uploaded.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "id",
             "in": "path",
@@ -5520,6 +4286,21 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "avatar": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
         }
       }
     }
@@ -5532,36 +4313,9 @@
         "operationId": "shareProjectWithGroup",
         "parameters": [
           {
-            "name": "group_access",
-            "in": "query",
-            "description": "The access level to grant the group.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "group_id",
-            "in": "query",
-            "description": "The ID of the group to share with.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The ID or URL-encoded path of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "Share expiration date in ISO 8601 format: 2016-09-26",
             "required": false,
             "schema": {
               "type": "string"
@@ -5576,6 +4330,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "group_access": {
+                    "type": "integer"
+                  },
+                  "group_id": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -5809,150 +4584,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The hook URL.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Trigger hook on confidential issues events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Trigger hook on confidential note events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_events",
-            "in": "query",
-            "description": "Trigger hook on deployment events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Do SSL verification when triggering the hook.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Trigger hook on issues events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_events",
-            "in": "query",
-            "description": "Trigger hook on job events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Trigger hook on merge requests events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Trigger hook on note events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Trigger hook on pipeline events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events_branch_filter",
-            "in": "query",
-            "description": "Trigger hook on push events for matching branches only.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Trigger hook on push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "releases_events",
-            "in": "query",
-            "description": "Trigger hook on release events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Trigger hook on tag push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Secret token to validate received payloads; this isn’t returned in the response.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Trigger hook on wiki events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5963,6 +4594,66 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "deployment_events": {
+                    "type": "boolean"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "job_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "push_events_branch_filter": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "releases_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -5994,150 +4685,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The hook URL.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Trigger hook on confidential issues events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Trigger hook on confidential note events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_events",
-            "in": "query",
-            "description": "Trigger hook on deployment events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Do SSL verification when triggering the hook.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Trigger hook on issues events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_events",
-            "in": "query",
-            "description": "Trigger hook on job events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Trigger hook on merge requests events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Trigger hook on note events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Trigger hook on pipeline events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events_branch_filter",
-            "in": "query",
-            "description": "Trigger hook on push events for matching branches only.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Trigger hook on push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "releases_events",
-            "in": "query",
-            "description": "Trigger hook on release events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Trigger hook on tag push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Secret token to validate received payloads; this isn’t returned in the response.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Trigger hook on wiki page events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6148,6 +4695,66 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "deployment_events": {
+                    "type": "boolean"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "job_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "push_events_branch_filter": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "releases_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -6442,105 +5049,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "author_email_regex",
-            "in": "query",
-            "description": "All commit author emails must match this, for example @my-company.com$.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch_name_regex",
-            "in": "query",
-            "description": "All branch names must match this, for example (feature|hotfix)\\/*.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_committer_check",
-            "in": "query",
-            "description": "Users can only push commits to this repository that were committed with one of their own verified emails.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_negative_regex",
-            "in": "query",
-            "description": "No commit message is allowed to match this, for example ssh\\:\\/\\/.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_regex",
-            "in": "query",
-            "description": "All commit messages must match this, for example Fixed \\d+\\..*.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deny_delete_tag",
-            "in": "query",
-            "description": "Deny deleting a tag.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name_regex",
-            "in": "query",
-            "description": "All committed filenames must not match this, for example (jar|exe)$.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "max_file_size",
-            "in": "query",
-            "description": "Maximum file size (MB).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "member_check",
-            "in": "query",
-            "description": "Restrict commits by author (email) to existing GitLab users.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "prevent_secrets",
-            "in": "query",
-            "description": "GitLab rejects any files that are likely to contain secrets.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reject_unsigned_commits",
-            "in": "query",
-            "description": "Reject commit when it’s not signed through GPG.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6551,6 +5059,51 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "author_email_regex": {
+                    "type": "string"
+                  },
+                  "branch_name_regex": {
+                    "type": "string"
+                  },
+                  "commit_committer_check": {
+                    "type": "boolean"
+                  },
+                  "commit_message_negative_regex": {
+                    "type": "string"
+                  },
+                  "commit_message_regex": {
+                    "type": "string"
+                  },
+                  "deny_delete_tag": {
+                    "type": "boolean"
+                  },
+                  "file_name_regex": {
+                    "type": "string"
+                  },
+                  "max_file_size": {
+                    "type": "integer"
+                  },
+                  "member_check": {
+                    "type": "boolean"
+                  },
+                  "prevent_secrets": {
+                    "type": "boolean"
+                  },
+                  "reject_unsigned_commits": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -6573,105 +5126,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "author_email_regex",
-            "in": "query",
-            "description": "All commit author emails must match this, for example @my-company.com$.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch_name_regex",
-            "in": "query",
-            "description": "All branch names must match this, for example (feature|hotfix)\\/*.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_committer_check",
-            "in": "query",
-            "description": "Users can only push commits to this repository that were committed with one of their own verified emails.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_negative_regex",
-            "in": "query",
-            "description": "No commit message is allowed to match this, for example ssh\\:\\/\\/.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_regex",
-            "in": "query",
-            "description": "All commit messages must match this, for example Fixed \\d+\\..*.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deny_delete_tag",
-            "in": "query",
-            "description": "Deny deleting a tag.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name_regex",
-            "in": "query",
-            "description": "All committed filenames must not match this, for example (jar|exe)$.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "max_file_size",
-            "in": "query",
-            "description": "Maximum file size (MB).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "member_check",
-            "in": "query",
-            "description": "Restrict commits by author (email) to existing GitLab users.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "prevent_secrets",
-            "in": "query",
-            "description": "GitLab rejects any files that are likely to contain secrets.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reject_unsigned_commits",
-            "in": "query",
-            "description": "Reject commits when they are not GPG signed.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -6682,6 +5136,51 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "author_email_regex": {
+                    "type": "string"
+                  },
+                  "branch_name_regex": {
+                    "type": "string"
+                  },
+                  "commit_committer_check": {
+                    "type": "boolean"
+                  },
+                  "commit_message_negative_regex": {
+                    "type": "string"
+                  },
+                  "commit_message_regex": {
+                    "type": "string"
+                  },
+                  "deny_delete_tag": {
+                    "type": "boolean"
+                  },
+                  "file_name_regex": {
+                    "type": "string"
+                  },
+                  "max_file_size": {
+                    "type": "integer"
+                  },
+                  "member_check": {
+                    "type": "boolean"
+                  },
+                  "prevent_secrets": {
+                    "type": "boolean"
+                  },
+                  "reject_unsigned_commits": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -6732,15 +5231,6 @@
             "name": "id",
             "in": "path",
             "description": "The ID or URL-encoded path of the project.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "namespace",
-            "in": "query",
-            "description": "The ID or path of the namespace to transfer to project to.",
             "required": false,
             "schema": {
               "type": "string"
@@ -7064,6 +5554,17 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }

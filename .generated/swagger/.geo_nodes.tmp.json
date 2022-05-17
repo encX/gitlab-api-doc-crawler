@@ -5,134 +5,7 @@
         "summary": "Create a new Geo node",
         "description": "Creates a new Geo node.",
         "operationId": "createANewGeoNode",
-        "parameters": [
-          {
-            "name": "primary",
-            "in": "query",
-            "description": "Specifying whether this node should be primary. Defaults to false.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Flag indicating if the Geo node is enabled. Defaults to true.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The unique identifier for the Geo node. Must match geo_node_name if it is set in gitlab.rb, otherwise it must match external_url",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The user-facing URL for the Geo node.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "internal_url",
-            "in": "query",
-            "description": "The URL defined on the primary node that secondary nodes should use to contact it. Returns url if not set.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of LFS/attachment backfill for this secondary node. Defaults to 10.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "repos_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of repository backfill for this secondary node. Defaults to 25.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "verification_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of repository verification for this node. Defaults to 100.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "container_repositories_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of container repository sync for this node. Defaults to 10.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "sync_object_storage",
-            "in": "query",
-            "description": "Flag indicating if the secondary Geo node should replicate blobs in Object Storage. Defaults to false.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_type",
-            "in": "query",
-            "description": "Limit syncing to only specific groups or shards. Valid values: \"namespaces\", \"shards\", or null.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_shards",
-            "in": "query",
-            "description": "The repository storage for the projects synced if selective_sync_type == shards.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_namespace_ids",
-            "in": "query",
-            "description": "The IDs of groups that should be synced, if selective_sync_type == namespaces.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "minimum_reverification_interval",
-            "in": "query",
-            "description": "The interval (in days) in which the repository verification is valid. Once expired, it is reverified. This has no effect when set on a secondary node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -221,6 +94,57 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "primary": {
+                    "type": "boolean"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "internal_url": {
+                    "type": "string"
+                  },
+                  "files_max_capacity": {
+                    "type": "integer"
+                  },
+                  "repos_max_capacity": {
+                    "type": "integer"
+                  },
+                  "verification_max_capacity": {
+                    "type": "integer"
+                  },
+                  "container_repositories_max_capacity": {
+                    "type": "integer"
+                  },
+                  "sync_object_storage": {
+                    "type": "boolean"
+                  },
+                  "selective_sync_type": {
+                    "type": "string"
+                  },
+                  "minimum_reverification_interval": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ]
               }
             }
           }
@@ -432,123 +356,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Flag indicating if the Geo node is enabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The unique identifier for the Geo node. Must match geo_node_name if it is set in gitlab.rb, otherwise it must match external_url.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The user-facing URL of the Geo node.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "internal_url",
-            "in": "query",
-            "description": "The URL defined on the primary node that secondary nodes should use to contact it. Returns url if not set.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of LFS/attachment backfill for this secondary node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "repos_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of repository backfill for this secondary node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "verification_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of verification for this node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "container_repositories_max_capacity",
-            "in": "query",
-            "description": "Control the maximum concurrency of container repository sync for this node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "sync_object_storage",
-            "in": "query",
-            "description": "Flag indicating if the secondary Geo node should replicate blobs in Object Storage.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_type",
-            "in": "query",
-            "description": "Limit syncing to only specific groups or shards. Valid values: \"namespaces\", \"shards\", or null.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_shards",
-            "in": "query",
-            "description": "The repository storage for the projects synced if selective_sync_type == shards.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "selective_sync_namespace_ids",
-            "in": "query",
-            "description": "The IDs of groups that should be synced, if selective_sync_type == namespaces.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "minimum_reverification_interval",
-            "in": "query",
-            "description": "The interval (in days) in which the repository verification is valid. Once expired, it is reverified. This has no effect when set on a secondary node.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -639,6 +446,54 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "internal_url": {
+                    "type": "string"
+                  },
+                  "files_max_capacity": {
+                    "type": "integer"
+                  },
+                  "repos_max_capacity": {
+                    "type": "integer"
+                  },
+                  "verification_max_capacity": {
+                    "type": "integer"
+                  },
+                  "container_repositories_max_capacity": {
+                    "type": "integer"
+                  },
+                  "sync_object_storage": {
+                    "type": "boolean"
+                  },
+                  "selective_sync_type": {
+                    "type": "string"
+                  },
+                  "minimum_reverification_interval": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "url"
+                ]
               }
             }
           }

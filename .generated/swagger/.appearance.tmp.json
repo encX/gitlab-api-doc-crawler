@@ -65,116 +65,7 @@
         "summary": "Change appearance configuration",
         "description": "Use an API call to modify GitLab instance appearance configuration.",
         "operationId": "changeAppearanceConfiguration",
-        "parameters": [
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Instance title on the sign in / sign up page",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Markdown text shown on the sign in / sign up page",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "logo",
-            "in": "query",
-            "description": "Instance image used on the sign in / sign up page. See Change logo",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "header_logo",
-            "in": "query",
-            "description": "Instance image used for the main navigation bar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "favicon",
-            "in": "query",
-            "description": "Instance favicon in .ico or .png format",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_project_guidelines",
-            "in": "query",
-            "description": "Markdown text shown on the new project page",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "profile_image_guidelines",
-            "in": "query",
-            "description": "Markdown text shown on the profile page below Public Avatar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "header_message",
-            "in": "query",
-            "description": "Message in the system header bar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "footer_message",
-            "in": "query",
-            "description": "Message in the system footer bar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "message_background_color",
-            "in": "query",
-            "description": "Background color for the system header / footer bar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "message_font_color",
-            "in": "query",
-            "description": "Font color for the system header / footer bar",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "email_header_and_footer_enabled",
-            "in": "query",
-            "description": "Add header and footer to all outgoing emails if enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -224,6 +115,45 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "new_project_guidelines": {
+                    "type": "string"
+                  },
+                  "profile_image_guidelines": {
+                    "type": "string"
+                  },
+                  "header_message": {
+                    "type": "string"
+                  },
+                  "footer_message": {
+                    "type": "string"
+                  },
+                  "message_background_color": {
+                    "type": "string"
+                  },
+                  "message_font_color": {
+                    "type": "string"
+                  },
+                  "email_header_and_footer_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
         }
       }
     }
@@ -234,17 +164,7 @@
         "summary": "Change logo",
         "description": "Upload a logo to your GitLab instance.",
         "operationId": "changeLogo",
-        "parameters": [
-          {
-            "name": "logo",
-            "in": "query",
-            "description": "File to upload",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -253,6 +173,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logo": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

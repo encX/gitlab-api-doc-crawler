@@ -63,24 +63,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "description": "Pass true to enable the already configured error tracking settings or false to disable it.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "integrated",
-            "in": "query",
-            "description": "Pass true to enable the integrated error tracking backend. Available in GitLab 14.2 and later.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -108,6 +90,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "integrated": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "active"
+                ]
               }
             }
           }

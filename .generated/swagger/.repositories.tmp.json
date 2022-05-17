@@ -553,80 +553,7 @@
         "summary": "Add changelog data to a changelog file",
         "description": "Generate changelog data based on commits in a repository.",
         "operationId": "addChangelogDataToAChangelogFile",
-        "parameters": [
-          {
-            "name": "version",
-            "in": "query",
-            "description": "The version to generate the changelog for. The format must follow semantic versioning.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "from",
-            "in": "query",
-            "description": "The start of the range of commits (as a SHA) to use for generating the changelog. This commit itself isn’t included in the list.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "The end of the range of commits (as a SHA) to use for the changelog. This commit is included in the list. Defaults to the branch specified in the branch attribute.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "date",
-            "in": "query",
-            "description": "The date and time of the release, defaults to the current time.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "The branch to commit the changelog changes to, defaults to the project’s default branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "trailer",
-            "in": "query",
-            "description": "The Git trailer to use for including commits, defaults to Changelog.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file",
-            "in": "query",
-            "description": "The file to commit the changes to, defaults to CHANGELOG.md.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "message",
-            "in": "query",
-            "description": "The commit message to produce when committing the changes, defaults to Add changelog for version X where X is the value of the version argument.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -635,6 +562,45 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "type": "string"
+                  },
+                  "from": {
+                    "type": "string"
+                  },
+                  "to": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "branch": {
+                    "type": "string"
+                  },
+                  "trailer": {
+                    "type": "string"
+                  },
+                  "file": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "version"
+                ]
               }
             }
           }

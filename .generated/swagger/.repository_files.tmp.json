@@ -251,69 +251,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "Name of the new branch to create. The commit is added to this branch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_branch",
-            "in": "query",
-            "description": "Name of the base branch to create the new branch from.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "encoding",
-            "in": "query",
-            "description": "Change encoding to base64. Default is text.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_email",
-            "in": "query",
-            "description": "The commit author’s email address.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_name",
-            "in": "query",
-            "description": "The commit author’s name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "The file’s content.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message",
-            "in": "query",
-            "description": "The commit message.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -332,6 +269,43 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "start_branch": {
+                    "type": "string"
+                  },
+                  "encoding": {
+                    "type": "string"
+                  },
+                  "author_email": {
+                    "type": "string"
+                  },
+                  "author_name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "commit_message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branch",
+                  "content",
+                  "commit_message"
+                ]
               }
             }
           }
@@ -363,78 +337,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "Name of the new branch to create. The commit is added to this branch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_branch",
-            "in": "query",
-            "description": "Name of the base branch to create the new branch from.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "encoding",
-            "in": "query",
-            "description": "Change encoding to base64. Default is text.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_email",
-            "in": "query",
-            "description": "The commit author’s email address.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_name",
-            "in": "query",
-            "description": "The commit author’s name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "The file’s content.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message",
-            "in": "query",
-            "description": "The commit message.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "last_commit_id",
-            "in": "query",
-            "description": "Last known file commit ID.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -453,6 +355,46 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "start_branch": {
+                    "type": "string"
+                  },
+                  "encoding": {
+                    "type": "string"
+                  },
+                  "author_email": {
+                    "type": "string"
+                  },
+                  "author_name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "commit_message": {
+                    "type": "string"
+                  },
+                  "last_commit_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branch",
+                  "content",
+                  "commit_message"
+                ]
               }
             }
           }

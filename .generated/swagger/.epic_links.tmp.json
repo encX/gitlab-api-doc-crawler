@@ -289,24 +289,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of a newly created epic.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "Whether the epic should be confidential. Parameter is ignored if confidential_epics feature flag is disabled. Defaults to the confidentiality state of the parent epic.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -352,6 +334,26 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -386,24 +388,6 @@
             "in": "path",
             "description": "The global ID of the child epic. Internal ID can’t be used because they can conflict with epics from other groups.",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "move_before_id",
-            "in": "query",
-            "description": "The global ID of a sibling epic that should be placed before the child epic.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "move_after_id",
-            "in": "query",
-            "description": "The global ID of a sibling epic that should be placed after the child epic.",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -506,6 +490,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "move_before_id": {
+                    "type": "integer"
+                  },
+                  "move_after_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }

@@ -130,15 +130,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "A valid access level (defaults: 30, the Developer role)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -169,6 +160,21 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_level": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }

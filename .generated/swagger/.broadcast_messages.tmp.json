@@ -138,86 +138,114 @@
         "summary": "Create a broadcast message",
         "description": "Create a new broadcast message.",
         "operationId": "createABroadcastMessage",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "starts_at": {
+                      "type": "string"
+                    },
+                    "ends_at": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "font": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "target_access_levels": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "target_path": {
+                      "type": "string"
+                    },
+                    "broadcast_type": {
+                      "type": "string"
+                    },
+                    "dismissable": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "starts_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ends_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "font": {
+                    "type": "string"
+                  },
+                  "target_path": {
+                    "type": "string"
+                  },
+                  "broadcast_type": {
+                    "type": "string"
+                  },
+                  "dismissable": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/broadcast_messages/{id}": {
+      "put": {
+        "summary": "Update a broadcast message",
+        "description": "Update an existing broadcast message.",
+        "operationId": "updateABroadcastMessage",
         "parameters": [
           {
-            "name": "message",
-            "in": "query",
-            "description": "Message to display.",
+            "name": "id",
+            "in": "path",
+            "description": "ID of broadcast message to update.",
             "required": true,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "starts_at",
-            "in": "query",
-            "description": "Starting time (defaults to current time). Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ends_at",
-            "in": "query",
-            "description": "Ending time (defaults to one hour from current time). Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "description": "Background color hex code.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "font",
-            "in": "query",
-            "description": "Foreground color hex code.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_access_levels",
-            "in": "query",
-            "description": "Target access levels (roles) of the broadcast message.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_path",
-            "in": "query",
-            "description": "Target path of the broadcast message.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "broadcast_type",
-            "in": "query",
-            "description": "Appearance type (defaults to banner)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "dismissable",
-            "in": "query",
-            "description": "Can the user dismiss the message?",
-            "required": false,
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -270,154 +298,41 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/broadcast_messages/{id}": {
-      "put": {
-        "summary": "Update a broadcast message",
-        "description": "Update an existing broadcast message.",
-        "operationId": "updateABroadcastMessage",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of broadcast message to update.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "message",
-            "in": "query",
-            "description": "Message to display.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "starts_at",
-            "in": "query",
-            "description": "Starting time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ends_at",
-            "in": "query",
-            "description": "Ending time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "description": "Background color hex code.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "font",
-            "in": "query",
-            "description": "Foreground color hex code.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_access_levels",
-            "in": "query",
-            "description": "Target access levels (roles) of the broadcast message.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_path",
-            "in": "query",
-            "description": "Target path of the broadcast message.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "broadcast_type",
-            "in": "query",
-            "description": "Appearance type (defaults to banner)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "dismissable",
-            "in": "query",
-            "description": "Can the user dismiss the message?",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "starts_at": {
-                      "type": "string"
-                    },
-                    "ends_at": {
-                      "type": "string"
-                    },
-                    "color": {
-                      "type": "string"
-                    },
-                    "font": {
-                      "type": "string"
-                    },
-                    "id": {
-                      "type": "integer"
-                    },
-                    "active": {
-                      "type": "boolean"
-                    },
-                    "target_access_levels": {
-                      "type": "array",
-                      "items": {
-                        "type": "integer"
-                      }
-                    },
-                    "target_path": {
-                      "type": "string"
-                    },
-                    "broadcast_type": {
-                      "type": "string"
-                    },
-                    "dismissable": {
-                      "type": "boolean"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "starts_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ends_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "font": {
+                    "type": "string"
+                  },
+                  "target_path": {
+                    "type": "string"
+                  },
+                  "broadcast_type": {
+                    "type": "string"
+                  },
+                  "dismissable": {
+                    "type": "boolean"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

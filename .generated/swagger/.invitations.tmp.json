@@ -14,60 +14,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "email",
-            "in": "query",
-            "description": "The email of the new member or multiple emails separated by commas",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "A valid access level",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "A date string in the format YEAR-MONTH-DAY",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "invite_source",
-            "in": "query",
-            "description": "The source of the invitation that starts the member creation process. See this issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tasks_to_be_done",
-            "in": "query",
-            "description": "Tasks the inviter wants the member to focus on. The tasks are added as issues to a specified project. The possible values are: ci, code and issues. If specified, requires tasks_project_id. Introduced in GitLab 14.6",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tasks_project_id",
-            "in": "query",
-            "description": "The project ID in which to create the task issues. If specified, requires tasks_to_be_done. Introduced in GitLab 14.6",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -94,6 +40,36 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "access_level": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
+                  },
+                  "invite_source": {
+                    "type": "string"
+                  },
+                  "tasks_project_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "email",
+                  "access_level"
+                ]
               }
             }
           }
@@ -210,24 +186,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "A valid access level (defaults: 30, the Developer role).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "A date string in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -246,6 +204,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_level": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

@@ -212,15 +212,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the new board",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -276,6 +267,23 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -301,69 +309,6 @@
             "in": "path",
             "description": "The ID of a board",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The new name of the board",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "hide_backlog_list",
-            "in": "query",
-            "description": "Hide the Open list",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "hide_closed_list",
-            "in": "query",
-            "description": "Hide the Closed list",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "The assignee the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The milestone the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated list of label names which the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "weight",
-            "in": "query",
-            "description": "The weight range from 0 to 9, to which the board should be scoped to",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -490,6 +435,39 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "hide_backlog_list": {
+                    "type": "boolean"
+                  },
+                  "hide_closed_list": {
+                    "type": "boolean"
+                  },
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -700,15 +678,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "label_id",
-            "in": "query",
-            "description": "The ID of a label",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -771,6 +740,23 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "label_id"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -808,15 +794,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "position",
-            "in": "query",
-            "description": "The position of the list",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -849,6 +826,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "position": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "position"
+                ]
               }
             }
           }

@@ -1,4 +1,4 @@
-import { SchemaObject } from "../types/OpenAPIV3.ts";
+import { PropertiesObject, SchemaObject } from "../../types/OpenAPIV3.ts";
 
 // deno-lint-ignore no-explicit-any
 export function parseSchema(obj: any): SchemaObject {
@@ -17,7 +17,7 @@ export function parseSchema(obj: any): SchemaObject {
     case "number":
       return { type: Math.floor(obj) === obj ? "integer" : "number" };
     case "object": {
-      const properties: { [key: string]: SchemaObject } = {};
+      const properties: PropertiesObject = {};
       Object.entries(obj).forEach(([key, value]) => {
         properties[key] = parseSchema(value);
       });

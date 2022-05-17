@@ -14,15 +14,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "commit_message",
-            "in": "query",
-            "description": "A custom commit message to use instead of the default generated message or the project’s default message",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -56,6 +47,21 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commit_message": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

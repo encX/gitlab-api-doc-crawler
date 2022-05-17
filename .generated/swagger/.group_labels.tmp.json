@@ -226,30 +226,100 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "text_color": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "description_html": {
+                      "type": "string"
+                    },
+                    "open_issues_count": {
+                      "type": "integer"
+                    },
+                    "closed_issues_count": {
+                      "type": "integer"
+                    },
+                    "open_merge_requests_count": {
+                      "type": "integer"
+                    },
+                    "subscribed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "color"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/labels/{label_id}": {
+      "put": {
+        "summary": "Update a group label",
+        "description": "Updates an existing group label. At least one parameter is required, to update the group label.",
+        "operationId": "updateAGroupLabel",
+        "parameters": [
           {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the label",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the group owned by the authenticated user",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "color",
-            "in": "query",
-            "description": "The color of the label given in 6-digit hex notation with leading ‘#’ sign (for example, #FFAABB) or one of the CSS color names",
+            "name": "label_id",
+            "in": "path",
+            "description": "The ID or title of a group’s label.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the label,",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -298,103 +368,24 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/groups/{id}/labels/{label_id}": {
-      "put": {
-        "summary": "Update a group label",
-        "description": "Updates an existing group label. At least one parameter is required, to update the group label.",
-        "operationId": "updateAGroupLabel",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the group owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "label_id",
-            "in": "path",
-            "description": "The ID or title of a group’s label.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_name",
-            "in": "query",
-            "description": "The new name of the label",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "description": "The color of the label given in 6-digit hex notation with leading ‘#’ sign (for example, #FFAABB) or one of the CSS color names",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the label.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "color": {
-                      "type": "string"
-                    },
-                    "text_color": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "description_html": {
-                      "type": "string"
-                    },
-                    "open_issues_count": {
-                      "type": "integer"
-                    },
-                    "closed_issues_count": {
-                      "type": "integer"
-                    },
-                    "open_merge_requests_count": {
-                      "type": "integer"
-                    },
-                    "subscribed": {
-                      "type": "boolean"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_name": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

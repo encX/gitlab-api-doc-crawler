@@ -1730,188 +1730,7 @@
         "summary": "New group",
         "description": "Creates a new project group. Available only for users who can create groups.",
         "operationId": "newGroup",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the group.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "The path of the group.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The group’s description.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "membership_lock",
-            "in": "query",
-            "description": "Prevent adding new members to projects within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "The group’s visibility. Can be private, internal, or public.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "share_with_group_lock",
-            "in": "query",
-            "description": "Prevent sharing a project with another group within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "require_two_factor_authentication",
-            "in": "query",
-            "description": "Require all users in this group to setup Two-factor authentication.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "two_factor_grace_period",
-            "in": "query",
-            "description": "Time before Two-factor authentication is enforced (in hours).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "project_creation_level",
-            "in": "query",
-            "description": "Determine if developers can create projects in the group. Can be noone (No one), maintainer (users with the Maintainer role), or developer (users with the Developer or Maintainer role).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_enabled",
-            "in": "query",
-            "description": "Default to Auto DevOps pipeline for all projects within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subgroup_creation_level",
-            "in": "query",
-            "description": "Allowed to create subgroups. Can be owner (Owners), or maintainer (users with the Maintainer role).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "emails_disabled",
-            "in": "query",
-            "description": "Disable email notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "Image file for avatar of the group. Introduced in GitLab 12.9",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mentions_disabled",
-            "in": "query",
-            "description": "Disable the capability of a group from getting mentioned",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "lfs_enabled",
-            "in": "query",
-            "description": "Enable/disable Large File Storage (LFS) for the projects in this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request_access_enabled",
-            "in": "query",
-            "description": "Allow users to request member access.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "parent_id",
-            "in": "query",
-            "description": "The parent group ID for creating nested group.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "default_branch_protection",
-            "in": "query",
-            "description": "See Options for default_branch_protection. Default to the global level default branch protection setting.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "shared_runners_minutes_limit",
-            "in": "query",
-            "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "extra_shared_runners_minutes_limit",
-            "in": "query",
-            "description": "Can be set by administrators only. Additional CI/CD minutes for this group.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1920,6 +1739,78 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "membership_lock": {
+                    "type": "boolean"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "share_with_group_lock": {
+                    "type": "boolean"
+                  },
+                  "require_two_factor_authentication": {
+                    "type": "boolean"
+                  },
+                  "two_factor_grace_period": {
+                    "type": "integer"
+                  },
+                  "project_creation_level": {
+                    "type": "string"
+                  },
+                  "auto_devops_enabled": {
+                    "type": "boolean"
+                  },
+                  "subgroup_creation_level": {
+                    "type": "string"
+                  },
+                  "emails_disabled": {
+                    "type": "boolean"
+                  },
+                  "mentions_disabled": {
+                    "type": "boolean"
+                  },
+                  "lfs_enabled": {
+                    "type": "boolean"
+                  },
+                  "request_access_enabled": {
+                    "type": "boolean"
+                  },
+                  "parent_id": {
+                    "type": "integer"
+                  },
+                  "default_branch_protection": {
+                    "type": "integer"
+                  },
+                  "shared_runners_minutes_limit": {
+                    "type": "integer"
+                  },
+                  "extra_shared_runners_minutes_limit": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "path"
+                ]
               }
             }
           }
@@ -1983,15 +1874,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "group_id",
-            "in": "query",
-            "description": "ID of the new parent group. When not specified, the group to transfer is instead turned into a top-level group.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -2002,6 +1884,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "group_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2023,213 +1920,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "description": "The path of the group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "membership_lock",
-            "in": "query",
-            "description": "Prevent adding new members to projects within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "share_with_group_lock",
-            "in": "query",
-            "description": "Prevent sharing a project with another group within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "The visibility level of the group. Can be private, internal, or public.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "require_two_factor_authentication",
-            "in": "query",
-            "description": "Require all users in this group to setup Two-factor authentication.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "two_factor_grace_period",
-            "in": "query",
-            "description": "Time before Two-factor authentication is enforced (in hours).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "project_creation_level",
-            "in": "query",
-            "description": "Determine if developers can create projects in the group. Can be noone (No one), maintainer (users with the Maintainer role), or developer (users with the Developer or Maintainer role).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "auto_devops_enabled",
-            "in": "query",
-            "description": "Default to Auto DevOps pipeline for all projects within this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subgroup_creation_level",
-            "in": "query",
-            "description": "Allowed to create subgroups. Can be owner (Owners), or maintainer (users with the Maintainer role).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "emails_disabled",
-            "in": "query",
-            "description": "Disable email notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "avatar",
-            "in": "query",
-            "description": "Image file for avatar of the group. Introduced in GitLab 12.9",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "mentions_disabled",
-            "in": "query",
-            "description": "Disable the capability of a group from getting mentioned",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "lfs_enabled (optional)",
-            "in": "query",
-            "description": "Enable/disable Large File Storage (LFS) for the projects in this group.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "request_access_enabled",
-            "in": "query",
-            "description": "Allow users to request member access.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "default_branch_protection",
-            "in": "query",
-            "description": "See Options for default_branch_protection.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "file_template_project_id",
-            "in": "query",
-            "description": "The ID of a project to load custom file templates from.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "shared_runners_minutes_limit",
-            "in": "query",
-            "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "extra_shared_runners_minutes_limit",
-            "in": "query",
-            "description": "Can be set by administrators only. Additional CI/CD minutes for this group.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "prevent_forking_outside_group",
-            "in": "query",
-            "description": "When enabled, users can not fork projects from this group to external namespaces",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "shared_runners_setting",
-            "in": "query",
-            "description": "See Options for shared_runners_setting. Enable or disable shared runners for a group’s subgroups and projects.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "prevent_sharing_groups_outside_hierarchy",
-            "in": "query",
-            "description": "See Prevent group sharing outside the group hierarchy. This attribute is only available on top-level groups. Introduced in GitLab 14.1",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -2406,6 +2096,84 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "membership_lock": {
+                    "type": "boolean"
+                  },
+                  "share_with_group_lock": {
+                    "type": "boolean"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "require_two_factor_authentication": {
+                    "type": "boolean"
+                  },
+                  "two_factor_grace_period": {
+                    "type": "integer"
+                  },
+                  "project_creation_level": {
+                    "type": "string"
+                  },
+                  "auto_devops_enabled": {
+                    "type": "boolean"
+                  },
+                  "subgroup_creation_level": {
+                    "type": "string"
+                  },
+                  "emails_disabled": {
+                    "type": "boolean"
+                  },
+                  "mentions_disabled": {
+                    "type": "boolean"
+                  },
+                  "lfs_enabled (optional)": {
+                    "type": "boolean"
+                  },
+                  "request_access_enabled": {
+                    "type": "boolean"
+                  },
+                  "default_branch_protection": {
+                    "type": "integer"
+                  },
+                  "file_template_project_id": {
+                    "type": "integer"
+                  },
+                  "shared_runners_minutes_limit": {
+                    "type": "integer"
+                  },
+                  "extra_shared_runners_minutes_limit": {
+                    "type": "integer"
+                  },
+                  "prevent_forking_outside_group": {
+                    "type": "boolean"
+                  },
+                  "shared_runners_setting": {
+                    "type": "string"
+                  },
+                  "prevent_sharing_groups_outside_hierarchy": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2869,150 +2637,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The hook URL",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Trigger hook on push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Trigger hook on issues events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Trigger hook on confidential issues events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Trigger hook on merge requests events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Trigger hook on tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Trigger hook on note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Trigger hook on confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_events",
-            "in": "query",
-            "description": "Trigger hook on job events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Trigger hook on pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Trigger hook on wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_events",
-            "in": "query",
-            "description": "Trigger hook on deployment events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "releases_events",
-            "in": "query",
-            "description": "Trigger hook on release events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subgroup_events",
-            "in": "query",
-            "description": "Trigger hook on subgroup events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Do SSL verification when triggering the hook",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Secret token to validate received payloads; not returned in the response",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3023,6 +2647,68 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "job_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  },
+                  "deployment_events": {
+                    "type": "boolean"
+                  },
+                  "releases_events": {
+                    "type": "boolean"
+                  },
+                  "subgroup_events": {
+                    "type": "boolean"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
               }
             }
           }
@@ -3054,150 +2740,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The hook URL",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Trigger hook on push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Trigger hook on issues events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Trigger hook on confidential issues events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Trigger hook on merge requests events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Trigger hook on tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Trigger hook on note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Trigger hook on confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_events",
-            "in": "query",
-            "description": "Trigger hook on job events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Trigger hook on pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Trigger hook on wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_events",
-            "in": "query",
-            "description": "Trigger hook on deployment events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "releases_events",
-            "in": "query",
-            "description": "Trigger hook on release events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subgroup_events",
-            "in": "query",
-            "description": "Trigger hook on subgroup events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Do SSL verification when triggering the hook",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Secret token to validate received payloads; not returned in the response",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3208,6 +2750,68 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "job_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  },
+                  "deployment_events": {
+                    "type": "boolean"
+                  },
+                  "releases_events": {
+                    "type": "boolean"
+                  },
+                  "subgroup_events": {
+                    "type": "boolean"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
               }
             }
           }
@@ -3325,42 +2929,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "cn",
-            "in": "query",
-            "description": "The CN of an LDAP group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "The LDAP filter for the group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_access",
-            "in": "query",
-            "description": "Minimum access level for members of the LDAP group",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "provider",
-            "in": "query",
-            "description": "LDAP provider for the LDAP group link",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3371,6 +2939,33 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cn": {
+                    "type": "string"
+                  },
+                  "filter": {
+                    "type": "string"
+                  },
+                  "group_access": {
+                    "type": "integer"
+                  },
+                  "provider": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "group_access",
+                  "provider"
+                ]
               }
             }
           }
@@ -3502,33 +3097,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "group_id",
-            "in": "query",
-            "description": "The ID of the group to share with",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "group_access",
-            "in": "query",
-            "description": "The access level to grant the group",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "Share expiration date in ISO 8601 format: 2016-09-26",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3539,6 +3107,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "group_id": {
+                    "type": "integer"
+                  },
+                  "group_access": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "group_id",
+                  "group_access"
+                ]
               }
             }
           }
@@ -3675,102 +3267,115 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "deny_delete_tag",
-            "in": "query",
-            "description": "Deny deleting a tag",
-            "required": false,
-            "schema": {
-              "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "commit_message_regex": {
+                      "type": "string"
+                    },
+                    "commit_message_negative_regex": {
+                      "type": "string"
+                    },
+                    "branch_name_regex": {
+                      "type": "string"
+                    },
+                    "deny_delete_tag": {
+                      "type": "boolean"
+                    },
+                    "member_check": {
+                      "type": "boolean"
+                    },
+                    "prevent_secrets": {
+                      "type": "boolean"
+                    },
+                    "author_email_regex": {
+                      "type": "string"
+                    },
+                    "file_name_regex": {
+                      "type": "string"
+                    },
+                    "max_file_size": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
             }
-          },
-          {
-            "name": "member_check",
-            "in": "query",
-            "description": "Allows only GitLab users to author commits",
-            "required": false,
-            "schema": {
-              "type": "string"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deny_delete_tag": {
+                    "type": "boolean"
+                  },
+                  "member_check": {
+                    "type": "boolean"
+                  },
+                  "prevent_secrets": {
+                    "type": "boolean"
+                  },
+                  "commit_message_regex": {
+                    "type": "string"
+                  },
+                  "commit_message_negative_regex": {
+                    "type": "string"
+                  },
+                  "branch_name_regex": {
+                    "type": "string"
+                  },
+                  "author_email_regex": {
+                    "type": "string"
+                  },
+                  "file_name_regex": {
+                    "type": "string"
+                  },
+                  "max_file_size": {
+                    "type": "integer"
+                  },
+                  "commit_committer_check": {
+                    "type": "boolean"
+                  },
+                  "reject_unsigned_commits": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
+              }
             }
-          },
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/push_rule": {
+      "put": {
+        "summary": "Edit group push rule",
+        "description": "Edit push rules for a specified group.",
+        "operationId": "editGroupPushRule",
+        "parameters": [
           {
-            "name": "prevent_secrets",
-            "in": "query",
-            "description": "Files that are likely to contain secrets are rejected",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_regex",
-            "in": "query",
-            "description": "All commit messages must match the regular expression provided in this attribute, for example, Fixed \\d+\\..*",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_negative_regex",
-            "in": "query",
-            "description": "Commit messages matching the regular expression provided in this attribute aren’t allowed, for example, ssh\\:\\/\\/",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch_name_regex",
-            "in": "query",
-            "description": "All branch names must match the regular expression provided in this attribute, for example, (feature|hotfix)\\/*",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_email_regex",
-            "in": "query",
-            "description": "All commit author emails must match the regular expression provided in this attribute, for example, @my-company.com$",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name_regex",
-            "in": "query",
-            "description": "Filenames matching the regular expression provided in this attribute are not allowed, for example, (jar|exe)$",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "max_file_size",
-            "in": "query",
-            "description": "Maximum file size (MB) allowed",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "commit_committer_check",
-            "in": "query",
-            "description": "Only commits pushed using verified emails are allowed",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reject_unsigned_commits",
-            "in": "query",
-            "description": "Only commits signed through GPG are allowed",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the group",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -3822,169 +3427,48 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/groups/{id}/push_rule": {
-      "put": {
-        "summary": "Edit group push rule",
-        "description": "Edit push rules for a specified group.",
-        "operationId": "editGroupPushRule",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the group",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deny_delete_tag",
-            "in": "query",
-            "description": "Deny deleting a tag",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "member_check",
-            "in": "query",
-            "description": "Restricts commits to be authored by existing GitLab users only",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "prevent_secrets",
-            "in": "query",
-            "description": "Files that are likely to contain secrets are rejected",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_regex",
-            "in": "query",
-            "description": "All commit messages must match the regular expression provided in this attribute, for example, Fixed \\d+\\..*",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message_negative_regex",
-            "in": "query",
-            "description": "Commit messages matching the regular expression provided in this attribute aren’t allowed, for example, ssh\\:\\/\\/",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branch_name_regex",
-            "in": "query",
-            "description": "All branch names must match the regular expression provided in this attribute, for example, (feature|hotfix)\\/*",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_email_regex",
-            "in": "query",
-            "description": "All commit author emails must match the regular expression provided in this attribute, for example, @my-company.com$",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name_regex",
-            "in": "query",
-            "description": "Filenames matching the regular expression provided in this attribute are not allowed, for example, (jar|exe)$",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "max_file_size",
-            "in": "query",
-            "description": "Maximum file size (MB) allowed",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "commit_committer_check",
-            "in": "query",
-            "description": "Only commits pushed using verified emails are allowed",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reject_unsigned_commits",
-            "in": "query",
-            "description": "Only commits signed through GPG are allowed",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "created_at": {
-                      "type": "string"
-                    },
-                    "commit_message_regex": {
-                      "type": "string"
-                    },
-                    "commit_message_negative_regex": {
-                      "type": "string"
-                    },
-                    "branch_name_regex": {
-                      "type": "string"
-                    },
-                    "deny_delete_tag": {
-                      "type": "boolean"
-                    },
-                    "member_check": {
-                      "type": "boolean"
-                    },
-                    "prevent_secrets": {
-                      "type": "boolean"
-                    },
-                    "author_email_regex": {
-                      "type": "string"
-                    },
-                    "file_name_regex": {
-                      "type": "string"
-                    },
-                    "max_file_size": {
-                      "type": "integer"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deny_delete_tag": {
+                    "type": "boolean"
+                  },
+                  "member_check": {
+                    "type": "boolean"
+                  },
+                  "prevent_secrets": {
+                    "type": "boolean"
+                  },
+                  "commit_message_regex": {
+                    "type": "string"
+                  },
+                  "commit_message_negative_regex": {
+                    "type": "string"
+                  },
+                  "branch_name_regex": {
+                    "type": "string"
+                  },
+                  "author_email_regex": {
+                    "type": "string"
+                  },
+                  "file_name_regex": {
+                    "type": "string"
+                  },
+                  "max_file_size": {
+                    "type": "integer"
+                  },
+                  "commit_committer_check": {
+                    "type": "boolean"
+                  },
+                  "reject_unsigned_commits": {
+                    "type": "boolean"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

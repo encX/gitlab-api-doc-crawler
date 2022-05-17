@@ -159,33 +159,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "target_project_id",
-            "in": "query",
-            "description": "The ID or URL-encoded path of the project of a target project",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_issue_iid",
-            "in": "query",
-            "description": "The internal ID of a target project’s issue",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "link_type",
-            "in": "query",
-            "description": "The type of the relation (“relates_to”, “blocks”, “is_blocked_by”), defaults to “relates_to”).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -373,6 +346,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "link_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "target_project_id",
+                  "target_issue_iid"
+                ]
               }
             }
           }

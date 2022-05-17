@@ -847,24 +847,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "move_before_id",
-            "in": "query",
-            "description": "The ID of the issue - epic association that should be placed before the link in the question.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "move_after_id",
-            "in": "query",
-            "description": "The ID of the issue - epic association that should be placed after the link in the question.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1085,6 +1067,17 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }

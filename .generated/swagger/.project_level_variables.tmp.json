@@ -139,57 +139,97 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "variable_type": {
+                      "type": "string"
+                    },
+                    "key": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "protected": {
+                      "type": "boolean"
+                    },
+                    "masked": {
+                      "type": "boolean"
+                    },
+                    "environment_scope": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "variable_type": {
+                    "type": "string"
+                  },
+                  "protected": {
+                    "type": "boolean"
+                  },
+                  "masked": {
+                    "type": "boolean"
+                  },
+                  "environment_scope": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/variables/{key}": {
+      "put": {
+        "summary": "Update variable",
+        "description": "Update a project’s variable.",
+        "operationId": "updateVariable",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "key",
-            "in": "query",
-            "description": "The key of a variable; must have no more than 255 characters; only A-Z, a-z, 0-9, and _ are allowed",
+            "in": "path",
+            "description": "The key of a variable",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "The value of a variable",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "variable_type",
-            "in": "query",
-            "description": "The type of a variable. Available types are: env_var (default) and file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "protected",
-            "in": "query",
-            "description": "Whether the variable is protected. Default: false",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "masked",
-            "in": "query",
-            "description": "Whether the variable is masked. Default: false",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "environment_scope",
-            "in": "query",
-            "description": "The environment_scope of the variable. Default: *",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -226,118 +266,32 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/variables/{key}": {
-      "put": {
-        "summary": "Update variable",
-        "description": "Update a project’s variable.",
-        "operationId": "updateVariable",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "key",
-            "in": "path",
-            "description": "The key of a variable",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "The value of a variable",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "variable_type",
-            "in": "query",
-            "description": "The type of a variable. Available types are: env_var (default) and file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "protected",
-            "in": "query",
-            "description": "Whether the variable is protected",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "masked",
-            "in": "query",
-            "description": "Whether the variable is masked",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "environment_scope",
-            "in": "query",
-            "description": "The environment_scope of the variable",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Available filters: [environment_scope]. See the filter parameter details.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "variable_type": {
-                      "type": "string"
-                    },
-                    "key": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    },
-                    "protected": {
-                      "type": "boolean"
-                    },
-                    "masked": {
-                      "type": "boolean"
-                    },
-                    "environment_scope": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "variable_type": {
+                    "type": "string"
+                  },
+                  "protected": {
+                    "type": "boolean"
+                  },
+                  "masked": {
+                    "type": "boolean"
+                  },
+                  "environment_scope": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "value"
+                ]
               }
             }
           }

@@ -66,60 +66,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "approvals_before_merge",
-            "in": "query",
-            "description": "How many approvals are required before an MR can be merged. Deprecated in 12.0 in favor of Approval Rules API.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "reset_approvals_on_push",
-            "in": "query",
-            "description": "Reset approvals on a new push",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "disable_overriding_approvers_per_merge_request",
-            "in": "query",
-            "description": "Allow or prevent overriding approvers per MR",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_author_approval",
-            "in": "query",
-            "description": "Allow or prevent authors from self approving merge requests; true means authors can self approve",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_disable_committers_approval",
-            "in": "query",
-            "description": "Allow or prevent committers from self approving merge requests",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "require_password_to_approve",
-            "in": "query",
-            "description": "Require approver to enter a password to authenticate before adding the approval",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -150,6 +96,36 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvals_before_merge": {
+                    "type": "integer"
+                  },
+                  "reset_approvals_on_push": {
+                    "type": "boolean"
+                  },
+                  "disable_overriding_approvers_per_merge_request": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_author_approval": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_disable_committers_approval": {
+                    "type": "boolean"
+                  },
+                  "require_password_to_approve": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -604,104 +580,254 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "rule_type": {
+                      "type": "string"
+                    },
+                    "eligible_approvers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "approvals_required": {
+                      "type": "integer"
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "groups": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "visibility": {
+                            "type": "string"
+                          },
+                          "lfs_enabled": {
+                            "type": "boolean"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          },
+                          "request_access_enabled": {
+                            "type": "boolean"
+                          },
+                          "full_name": {
+                            "type": "string"
+                          },
+                          "full_path": {
+                            "type": "string"
+                          },
+                          "parent_id": {
+                            "type": "string"
+                          },
+                          "ldap_cn": {
+                            "type": "string"
+                          },
+                          "ldap_access": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "protected_branches": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "push_access_levels": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "access_level": {
+                                  "type": "integer"
+                                },
+                                "access_level_description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "merge_access_levels": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "access_level": {
+                                  "type": "integer"
+                                },
+                                "access_level_description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "unprotect_access_levels": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "access_level": {
+                                  "type": "integer"
+                                },
+                                "access_level_description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "code_owner_approval_required": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "contains_hidden_groups": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "approvals_required": {
+                    "type": "integer"
+                  },
+                  "rule_type": {
+                    "type": "string"
+                  },
+                  "report_type": {
+                    "type": "string"
+                  },
+                  "vulnerabilities_allowed": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "approvals_required"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/approval_rules/{approval_rule_id}": {
+      "put": {
+        "summary": "Update project-level rule",
+        "description": "You can update project approval rules using the following endpoint:",
+        "operationId": "updateProject-levelRule",
+        "parameters": [
           {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the approval rule",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of a project",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "approvals_required",
-            "in": "query",
-            "description": "The number of required approvals for this rule",
+            "name": "approval_rule_id",
+            "in": "path",
+            "description": "The ID of a approval rule",
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "rule_type",
-            "in": "query",
-            "description": "The type of rule. any_approver is a pre-configured default rule with approvals_required at 0. Other rules are regular.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user_ids",
-            "in": "query",
-            "description": "The ids of users as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_ids",
-            "in": "query",
-            "description": "The ids of groups as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "protected_branch_ids",
-            "in": "query",
-            "description": "The IDs of protected branches to scope the rule by. To identify the ID, use the API.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "report_type",
-            "in": "query",
-            "description": "The report type required when the rule type is report_approver. The supported report types are: vulnerability, license_scanning, code_coverage. The vulnerability report type is part of the Vulnerability-Check feature, which deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "scanners",
-            "in": "query",
-            "description": "The security scanners the Vulnerability-Check approval rule considers. The supported scanners are: sast, secret_detection, dependency_scanning, container_scanning, dast, coverage_fuzzing, api_fuzzing. Defaults to all supported scanners. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "severity_levels",
-            "in": "query",
-            "description": "The severity levels the Vulnerability-Check approval rule considers. The supported severity levels are: info, unknown, low, medium, high, critical. Defaults to unknown, high, and critical. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "vulnerabilities_allowed",
-            "in": "query",
-            "description": "The number of vulnerabilities allowed for the Vulnerability-Check approval rule. Defaults to 0. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "vulnerability_states",
-            "in": "query",
-            "description": "The vulnerability states the Vulnerability-Check approval rule considers. The supported vulnerability states are: newly_detected (default), detected, confirmed, resolved, dismissed. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -894,303 +1020,27 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/approval_rules/{approval_rule_id}": {
-      "put": {
-        "summary": "Update project-level rule",
-        "description": "You can update project approval rules using the following endpoint:",
-        "operationId": "updateProject-levelRule",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of a project",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approval_rule_id",
-            "in": "path",
-            "description": "The ID of a approval rule",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the approval rule",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_required",
-            "in": "query",
-            "description": "The number of required approvals for this rule",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "user_ids",
-            "in": "query",
-            "description": "The ids of users as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_ids",
-            "in": "query",
-            "description": "The ids of groups as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "protected_branch_ids",
-            "in": "query",
-            "description": "The IDs of protected branches to scope the rule by. To identify the ID, use the API.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "scanners",
-            "in": "query",
-            "description": "The security scanners the Vulnerability-Check approval rule considers. The supported scanners are: sast, secret_detection, dependency_scanning, container_scanning, dast, coverage_fuzzing, api_fuzzing. Defaults to all supported scanners. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "severity_levels",
-            "in": "query",
-            "description": "The severity levels the Vulnerability-Check approval rule considers. The supported severity levels are: info, unknown, low, medium, high, critical. Defaults to unknown, high, and critical. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "vulnerabilities_allowed",
-            "in": "query",
-            "description": "The number of vulnerabilities allowed for the Vulnerability-Check approval rule. Defaults to 0. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "vulnerability_states",
-            "in": "query",
-            "description": "The vulnerability states the Vulnerability-Check approval rule considers. The supported vulnerability states are: newly_detected (default), detected, confirmed, resolved, dismissed. Deprecated in GitLab 14.8, and planned for removal in GitLab 15.0.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "rule_type": {
-                      "type": "string"
-                    },
-                    "eligible_approvers": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "username": {
-                            "type": "string"
-                          },
-                          "state": {
-                            "type": "string"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "approvals_required": {
-                      "type": "integer"
-                    },
-                    "users": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "username": {
-                            "type": "string"
-                          },
-                          "state": {
-                            "type": "string"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "groups": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "path": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "visibility": {
-                            "type": "string"
-                          },
-                          "lfs_enabled": {
-                            "type": "boolean"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          },
-                          "request_access_enabled": {
-                            "type": "boolean"
-                          },
-                          "full_name": {
-                            "type": "string"
-                          },
-                          "full_path": {
-                            "type": "string"
-                          },
-                          "parent_id": {
-                            "type": "string"
-                          },
-                          "ldap_cn": {
-                            "type": "string"
-                          },
-                          "ldap_access": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "protected_branches": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "push_access_levels": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "access_level": {
-                                  "type": "integer"
-                                },
-                                "access_level_description": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "merge_access_levels": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "access_level": {
-                                  "type": "integer"
-                                },
-                                "access_level_description": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "unprotect_access_levels": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "access_level": {
-                                  "type": "integer"
-                                },
-                                "access_level_description": {
-                                  "type": "string"
-                                }
-                              }
-                            }
-                          },
-                          "code_owner_approval_required": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "contains_hidden_groups": {
-                      "type": "boolean"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "approvals_required": {
+                    "type": "integer"
+                  },
+                  "vulnerabilities_allowed": {
+                    "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "name",
+                  "approvals_required"
+                ]
               }
             }
           }
@@ -1370,15 +1220,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "approvals_required",
-            "in": "query",
-            "description": "Approvals required before MR can be merged. Deprecated in 12.0 in favor of Approval Rules API.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -1428,6 +1269,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvals_required": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "approvals_required"
+                ]
               }
             }
           }
@@ -1963,50 +1821,204 @@
             "schema": {
               "type": "integer"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "rule_type": {
+                      "type": "string"
+                    },
+                    "eligible_approvers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "approvals_required": {
+                      "type": "integer"
+                    },
+                    "source_rule": {
+                      "type": "string"
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "groups": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "visibility": {
+                            "type": "string"
+                          },
+                          "lfs_enabled": {
+                            "type": "boolean"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "web_url": {
+                            "type": "string"
+                          },
+                          "request_access_enabled": {
+                            "type": "boolean"
+                          },
+                          "full_name": {
+                            "type": "string"
+                          },
+                          "full_path": {
+                            "type": "string"
+                          },
+                          "parent_id": {
+                            "type": "string"
+                          },
+                          "ldap_cn": {
+                            "type": "string"
+                          },
+                          "ldap_access": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "contains_hidden_groups": {
+                      "type": "boolean"
+                    },
+                    "overridden": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "approvals_required": {
+                    "type": "integer"
+                  },
+                  "approval_project_rule_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "approvals_required"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}": {
+      "put": {
+        "summary": "Update merge request level rule",
+        "description": "You can update merge request approval rules using the following endpoint:",
+        "operationId": "updateMergeRequestLevelRule",
+        "parameters": [
           {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the approval rule",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of a project.",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "approvals_required",
-            "in": "query",
-            "description": "The number of required approvals for this rule",
+            "name": "merge_request_iid",
+            "in": "path",
+            "description": "The IID of a merge request.",
             "required": true,
             "schema": {
               "type": "integer"
             }
           },
           {
-            "name": "approval_project_rule_id",
-            "in": "query",
-            "description": "The ID of a project-level approval rule",
-            "required": false,
+            "name": "approval_rule_id",
+            "in": "path",
+            "description": "The ID of an approval rule.",
+            "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "user_ids",
-            "in": "query",
-            "description": "The ids of users as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_ids",
-            "in": "query",
-            "description": "The ids of groups as approvers",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -2146,214 +2158,24 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}": {
-      "put": {
-        "summary": "Update merge request level rule",
-        "description": "You can update merge request approval rules using the following endpoint:",
-        "operationId": "updateMergeRequestLevelRule",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of a project.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_request_iid",
-            "in": "path",
-            "description": "The IID of a merge request.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "approval_rule_id",
-            "in": "path",
-            "description": "The ID of an approval rule.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the approval rule.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_required",
-            "in": "query",
-            "description": "The number of required approvals for this rule.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "user_ids",
-            "in": "query",
-            "description": "The IDs of users as approvers.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "group_ids",
-            "in": "query",
-            "description": "The IDs of groups as approvers.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "rule_type": {
-                      "type": "string"
-                    },
-                    "eligible_approvers": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "username": {
-                            "type": "string"
-                          },
-                          "state": {
-                            "type": "string"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "approvals_required": {
-                      "type": "integer"
-                    },
-                    "source_rule": {
-                      "type": "string"
-                    },
-                    "users": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "username": {
-                            "type": "string"
-                          },
-                          "state": {
-                            "type": "string"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "groups": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "integer"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "path": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "visibility": {
-                            "type": "string"
-                          },
-                          "lfs_enabled": {
-                            "type": "boolean"
-                          },
-                          "avatar_url": {
-                            "type": "string"
-                          },
-                          "web_url": {
-                            "type": "string"
-                          },
-                          "request_access_enabled": {
-                            "type": "boolean"
-                          },
-                          "full_name": {
-                            "type": "string"
-                          },
-                          "full_path": {
-                            "type": "string"
-                          },
-                          "parent_id": {
-                            "type": "string"
-                          },
-                          "ldap_cn": {
-                            "type": "string"
-                          },
-                          "ldap_access": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "contains_hidden_groups": {
-                      "type": "boolean"
-                    },
-                    "overridden": {
-                      "type": "boolean"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "approvals_required": {
+                    "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "name",
+                  "approvals_required"
+                ]
               }
             }
           }
@@ -2435,24 +2257,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "sha",
-            "in": "query",
-            "description": "The HEAD of the merge request",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approval_password",
-            "in": "query",
-            "description": "Current user’s password. Required if Require user password to approve is enabled in the project settings.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2529,6 +2333,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sha": {
+                    "type": "string"
+                  },
+                  "approval_password": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

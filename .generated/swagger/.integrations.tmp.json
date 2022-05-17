@@ -86,35 +86,7 @@
         "summary": "Create/Edit Asana integration",
         "description": "Set Asana integration for a project.",
         "operationId": "create/editAsanaIntegration",
-        "parameters": [
-          {
-            "name": "api_key",
-            "in": "query",
-            "description": "User API token. User must have access to task. All comments are attributed to this user.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "restrict_to_branch",
-            "in": "query",
-            "description": "Comma-separated list of branches to be are automatically inspected. Leave blank to include all branches.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -123,6 +95,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api_key": {
+                    "type": "string"
+                  },
+                  "restrict_to_branch": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -180,35 +173,7 @@
         "summary": "Create/Edit Assembla integration",
         "description": "Set Assembla integration for a project.",
         "operationId": "create/editAssemblaIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The authentication token",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subdomain",
-            "in": "query",
-            "description": "The subdomain setting",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -217,6 +182,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "subdomain": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -274,62 +260,7 @@
         "summary": "Create/Edit Atlassian Bamboo CI integration",
         "description": "Set Atlassian Bamboo CI integration for a project.",
         "operationId": "create/editAtlassianBambooCiIntegration",
-        "parameters": [
-          {
-            "name": "bamboo_url",
-            "in": "query",
-            "description": "Bamboo root URL. For example, https://bamboo.example.com.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Enable SSL verification. Defaults to true (enabled).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_key",
-            "in": "query",
-            "description": "Bamboo build plan key like KEY",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "A user with API access, if applicable",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "Password of the user",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -338,6 +269,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bamboo_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "build_key": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -395,62 +356,7 @@
         "summary": "Create/Edit Bugzilla integration",
         "description": "Set Bugzilla integration for a project.",
         "operationId": "create/editBugzillaIntegration",
-        "parameters": [
-          {
-            "name": "new_issue_url",
-            "in": "query",
-            "description": "New Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_url",
-            "in": "query",
-            "description": "Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "Project URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -459,6 +365,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_issue_url": {
+                    "type": "string"
+                  },
+                  "issues_url": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -516,44 +452,7 @@
         "summary": "Create/Edit Buildkite integration",
         "description": "Set Buildkite integration for a project.",
         "operationId": "create/editBuildkiteIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Buildkite project GitLab token",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "Pipeline URL. For example, https://buildkite.com/example/pipeline",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "DEPRECATED: This parameter has no effect since SSL verification is always enabled",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -562,6 +461,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -619,44 +542,7 @@
         "summary": "Create/Edit Campfire integration",
         "description": "Set Campfire integration for a project.",
         "operationId": "create/editCampfireIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Campfire API token. To find it, log into Campfire and select My info.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subdomain",
-            "in": "query",
-            "description": "Campfire subdomain. Text between https:// and .campfirenow.com when you’re logged in.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "room",
-            "in": "query",
-            "description": "Campfire room. The last part of the URL when you’re in a room.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -665,6 +551,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "subdomain": {
+                    "type": "string"
+                  },
+                  "room": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -788,116 +698,7 @@
         "summary": "Create/Edit Unify Circuit integration",
         "description": "Set Unify Circuit integration for a project.",
         "operationId": "create/editUnifyCircuitIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "The Unify Circuit webhook. For example, https://circuit.com/rest/v2/webhooks/incoming/....",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -906,6 +707,54 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -963,116 +812,7 @@
         "summary": "Create/Edit Webex Teams integration",
         "description": "Set Webex Teams integration for a project.",
         "operationId": "create/editWebexTeamsIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "The Webex Teams webhook. For example, https://api.ciscospark.com/v1/webhooks/incoming/....",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1081,6 +821,54 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1138,62 +926,7 @@
         "summary": "Create/Edit Custom Issue Tracker integration",
         "description": "Set Custom Issue Tracker integration for a project.",
         "operationId": "create/editCustomIssueTrackerIntegration",
-        "parameters": [
-          {
-            "name": "new_issue_url",
-            "in": "query",
-            "description": "New Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_url",
-            "in": "query",
-            "description": "Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "Project URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1202,6 +935,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_issue_url": {
+                    "type": "string"
+                  },
+                  "issues_url": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1259,17 +1022,7 @@
         "summary": "Create/Edit Discord integration",
         "description": "Set Discord integration for a project.",
         "operationId": "create/editDiscordIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "Discord webhook. For example, https://discord.com/api/webhooks/…",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1278,6 +1031,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1335,62 +1103,7 @@
         "summary": "Create/Edit Drone CI integration",
         "description": "Set Drone CI integration for a project.",
         "operationId": "create/editDroneCiIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Drone CI project specific token",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "drone_url",
-            "in": "query",
-            "description": "http://drone.example.com",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Enable SSL verification. Defaults to true (enabled).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1399,6 +1112,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "drone_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1456,62 +1199,7 @@
         "summary": "Create/Edit Emails on Push integration",
         "description": "Set Emails on Push integration for a project.",
         "operationId": "create/editEmailsOnPushIntegration",
-        "parameters": [
-          {
-            "name": "recipients",
-            "in": "query",
-            "description": "Emails separated by whitespace",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "disable_diffs",
-            "in": "query",
-            "description": "Disable code diffs",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "send_from_committer_email",
-            "in": "query",
-            "description": "Send from committer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. Notifications are always fired for tag pushes. The default value is “all”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1520,6 +1208,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "string"
+                  },
+                  "disable_diffs": {
+                    "type": "boolean"
+                  },
+                  "send_from_committer_email": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1577,35 +1295,7 @@
         "summary": "Create/Edit EWM integration",
         "description": "Set EWM integration for a project.",
         "operationId": "create/editEwmIntegration",
-        "parameters": [
-          {
-            "name": "new_issue_url",
-            "in": "query",
-            "description": "The URL to create an issue in EWM",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "The URL to the project in EWM",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_url",
-            "in": "query",
-            "description": "The URL to view an issue in EWM. Must contain :id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1614,6 +1304,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_issue_url": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "issues_url": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1671,17 +1382,7 @@
         "summary": "Create/Edit Confluence integration",
         "description": "Set Confluence integration for a project.",
         "operationId": "create/editConfluenceIntegration",
-        "parameters": [
-          {
-            "name": "confluence_url",
-            "in": "query",
-            "description": "The URL of the Confluence Cloud Workspace hosted on atlassian.net.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1690,6 +1391,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confluence_url": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1747,17 +1463,7 @@
         "summary": "Create/Edit External wiki integration",
         "description": "Set External wiki integration for a project.",
         "operationId": "create/editExternalWikiIntegration",
-        "parameters": [
-          {
-            "name": "external_wiki_url",
-            "in": "query",
-            "description": "The URL of the external wiki",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1766,6 +1472,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "external_wiki_url": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1823,26 +1544,7 @@
         "summary": "Create/Edit Flowdock integration",
         "description": "Set Flowdock integration for a project.",
         "operationId": "create/editFlowdockIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Flowdock Git source token",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1851,6 +1553,24 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1908,35 +1628,7 @@
         "summary": "Create/Edit GitHub integration",
         "description": "Set GitHub integration for a project.",
         "operationId": "create/editGithubIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "GitHub API token with repo:status OAuth scope",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_url",
-            "in": "query",
-            "description": "GitHub repository URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "static_context",
-            "in": "query",
-            "description": "Append instance name instead of branch to status check name",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1945,6 +1637,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "repository_url": {
+                    "type": "string"
+                  },
+                  "static_context": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2002,125 +1715,7 @@
         "summary": "Create/Edit Hangouts Chat integration",
         "description": "Set Hangouts Chat integration for a project.",
         "operationId": "create/editHangoutsChatIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "The Hangouts Chat webhook. For example, https://chat.googleapis.com/v1/spaces....",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_default_branch",
-            "in": "query",
-            "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2129,6 +1724,57 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "notify_only_default_branch": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2186,62 +1832,7 @@
         "summary": "Create/Edit Irker (IRC gateway) integration",
         "description": "Set Irker (IRC gateway) integration for a project.",
         "operationId": "create/editIrker(ircGateway)Integration",
-        "parameters": [
-          {
-            "name": "recipients",
-            "in": "query",
-            "description": "Recipients/channels separated by whitespaces",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "default_irc_uri",
-            "in": "query",
-            "description": "irc://irc.network.net:6697/",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "server_host",
-            "in": "query",
-            "description": "localhost",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "server_port",
-            "in": "query",
-            "description": "6659",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "colorize_messages",
-            "in": "query",
-            "description": "Colorize messages",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2250,6 +1841,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "string"
+                  },
+                  "default_irc_uri": {
+                    "type": "string"
+                  },
+                  "server_host": {
+                    "type": "string"
+                  },
+                  "server_port": {
+                    "type": "integer"
+                  },
+                  "colorize_messages": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2329,98 +1950,7 @@
         "summary": "Create/Edit Jira integration",
         "description": "Set Jira integration for a project.",
         "operationId": "create/editJiraIntegration",
-        "parameters": [
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The URL to the Jira project which is being linked to this GitLab project. For example, https://jira.example.com.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "api_url",
-            "in": "query",
-            "description": "The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "The username of the user created to be used with GitLab/Jira.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "The password of the user created to be used with GitLab/Jira.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "description": "Activates or deactivates the integration. Defaults to false (deactivated).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jira_issue_transition_automatic",
-            "in": "query",
-            "description": "Enable automatic issue transitions. Takes precedence over jira_issue_transition_id if enabled. Defaults to false",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "jira_issue_transition_id",
-            "in": "query",
-            "description": "The ID of one or more transitions for custom issue transitions. Ignored if jira_issue_transition_automatic is enabled. Defaults to a blank string, which disables custom transitions.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_events",
-            "in": "query",
-            "description": "Enable notifications for commit events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "comment_on_event_enabled",
-            "in": "query",
-            "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2429,6 +1959,52 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "api_url": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "jira_issue_transition_automatic": {
+                    "type": "boolean"
+                  },
+                  "jira_issue_transition_id": {
+                    "type": "string"
+                  },
+                  "commit_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "comment_on_event_enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "url",
+                  "username",
+                  "password"
+                ]
               }
             }
           }
@@ -2541,17 +2117,7 @@
         "summary": "Create/Edit Slack Slash Commands integration",
         "description": "Set Slack Slash Command for a project.",
         "operationId": "create/editSlackSlashCommandsIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The Slack token",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2560,6 +2126,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
               }
             }
           }
@@ -2617,26 +2200,7 @@
         "summary": "Create/Edit Mattermost Slash Command integration",
         "description": "Set Mattermost Slash Command for a project.",
         "operationId": "create/editMattermostSlashCommandIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The Mattermost token",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "The username to use to post the message",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2645,6 +2209,26 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
               }
             }
           }
@@ -2680,62 +2264,7 @@
         "summary": "Create/Edit Packagist integration",
         "description": "Set Packagist integration for a project.",
         "operationId": "create/editPackagistIntegration",
-        "parameters": [
-          {
-            "name": "username",
-            "in": "query",
-            "description": "The username of a Packagist account",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "API token to the Packagist server",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "server",
-            "in": "query",
-            "description": "URL of the Packagist server. Leave blank for default: https://packagist.org",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2744,6 +2273,39 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "server": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "username",
+                  "token"
+                ]
               }
             }
           }
@@ -2801,62 +2363,7 @@
         "summary": "Create/Edit Pipeline-Emails integration",
         "description": "Set Pipeline-Emails integration for a project.",
         "operationId": "create/editPipeline-emailsIntegration",
-        "parameters": [
-          {
-            "name": "recipients",
-            "in": "query",
-            "description": "Comma-separated list of recipient email addresses",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "add_pusher",
-            "in": "query",
-            "description": "Add pusher to recipients list",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Notify only broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_default_branch",
-            "in": "query",
-            "description": "Send notifications only for the default branch (introduced in GitLab 12.0)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2865,6 +2372,38 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recipients": {
+                    "type": "string"
+                  },
+                  "add_pusher": {
+                    "type": "boolean"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "notify_only_default_branch": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "recipients"
+                ]
               }
             }
           }
@@ -2922,35 +2461,7 @@
         "summary": "Create/Edit Pivotal Tracker integration",
         "description": "Set Pivotal Tracker integration for a project.",
         "operationId": "create/editPivotalTrackerIntegration",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The Pivotal Tracker token",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "restrict_to_branch",
-            "in": "query",
-            "description": "Comma-separated list of branches to automatically inspect. Leave blank to include all branches.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -2959,6 +2470,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "restrict_to_branch": {
+                    "type": "boolean"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3016,35 +2548,7 @@
         "summary": "Create/Edit Prometheus integration",
         "description": "Set Prometheus integration for a project.",
         "operationId": "create/editPrometheusIntegration",
-        "parameters": [
-          {
-            "name": "api_url",
-            "in": "query",
-            "description": "Prometheus API Base URL. For example, http://prometheus.example.com/.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "google_iap_audience_client_id",
-            "in": "query",
-            "description": "Client ID of the IAP secured resource (looks like IAP_CLIENT_ID.apps.googleusercontent.com)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "google_iap_service_account_json",
-            "in": "query",
-            "description": "credentials.json file for your service account, like { “type”: “service_account”, “project_id”: … }",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3053,6 +2557,27 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api_url": {
+                    "type": "string"
+                  },
+                  "google_iap_audience_client_id": {
+                    "type": "string"
+                  },
+                  "google_iap_service_account_json": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3110,62 +2635,7 @@
         "summary": "Create/Edit Pushover integration",
         "description": "Set Pushover integration for a project.",
         "operationId": "create/editPushoverIntegration",
-        "parameters": [
-          {
-            "name": "api_key",
-            "in": "query",
-            "description": "Your application key",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user_key",
-            "in": "query",
-            "description": "Your user key",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "priority",
-            "in": "query",
-            "description": "The priority",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "device",
-            "in": "query",
-            "description": "Leave blank for all active devices",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sound",
-            "in": "query",
-            "description": "The sound of the notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3174,6 +2644,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "api_key": {
+                    "type": "string"
+                  },
+                  "user_key": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "string"
+                  },
+                  "device": {
+                    "type": "string"
+                  },
+                  "sound": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3231,53 +2731,7 @@
         "summary": "Create/Edit Redmine integration",
         "description": "Set Redmine integration for a project.",
         "operationId": "create/editRedmineIntegration",
-        "parameters": [
-          {
-            "name": "new_issue_url",
-            "in": "query",
-            "description": "New Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "Project URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_url",
-            "in": "query",
-            "description": "Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3286,6 +2740,33 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "new_issue_url": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "issues_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3343,260 +2824,7 @@
         "summary": "Create/Edit Slack integration",
         "description": "Set Slack integration for a project.",
         "operationId": "create/editSlackIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "https://hooks.slack.com/services/...",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "username",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "channel",
-            "in": "query",
-            "description": "Default channel to use if others are not configured",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_default_branch",
-            "in": "query",
-            "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_events",
-            "in": "query",
-            "description": "Enable notifications for commit events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issue_channel",
-            "in": "query",
-            "description": "The name of the channel to receive confidential issues events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_channel",
-            "in": "query",
-            "description": "The name of the channel to receive confidential note events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_channel",
-            "in": "query",
-            "description": "The name of the channel to receive deployment events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_events",
-            "in": "query",
-            "description": "Enable notifications for deployment events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issue_channel",
-            "in": "query",
-            "description": "The name of the channel to receive issues events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "job_events",
-            "in": "query",
-            "description": "Enable notifications for job events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_request_channel",
-            "in": "query",
-            "description": "The name of the channel to receive merge request events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_channel",
-            "in": "query",
-            "description": "The name of the channel to receive note events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_channel",
-            "in": "query",
-            "description": "The name of the channel to receive pipeline events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_channel",
-            "in": "query",
-            "description": "The name of the channel to receive push events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_channel",
-            "in": "query",
-            "description": "The name of the channel to receive tag push events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_channel",
-            "in": "query",
-            "description": "The name of the channel to receive wiki page events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3605,6 +2833,102 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "notify_only_default_branch": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "commit_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issue_channel": {
+                    "type": "string"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_channel": {
+                    "type": "string"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "deployment_channel": {
+                    "type": "string"
+                  },
+                  "deployment_events": {
+                    "type": "boolean"
+                  },
+                  "issue_channel": {
+                    "type": "string"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "job_events": {
+                    "type": "boolean"
+                  },
+                  "merge_request_channel": {
+                    "type": "string"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "note_channel": {
+                    "type": "string"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_channel": {
+                    "type": "string"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "push_channel": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_channel": {
+                    "type": "string"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_channel": {
+                    "type": "string"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3662,125 +2986,7 @@
         "summary": "Create/Edit Microsoft Teams integration",
         "description": "Set Microsoft Teams integration for a project.",
         "operationId": "create/editMicrosoftTeamsIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/...",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_default_branch",
-            "in": "query",
-            "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3789,6 +2995,57 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "notify_only_default_branch": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -3846,224 +3103,7 @@
         "summary": "Create/Edit Mattermost notifications integration",
         "description": "Set Mattermost notifications integration for a project.",
         "operationId": "create/editMattermostNotificationsIntegration",
-        "parameters": [
-          {
-            "name": "webhook",
-            "in": "query",
-            "description": "The Mattermost webhook. For example, http://mattermost_host/hooks/...",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "username",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "channel",
-            "in": "query",
-            "description": "Default channel to use if others are not configured",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_broken_pipelines",
-            "in": "query",
-            "description": "Send notifications for broken pipelines",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notify_only_default_branch",
-            "in": "query",
-            "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "branches_to_be_notified",
-            "in": "query",
-            "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issues_events",
-            "in": "query",
-            "description": "Enable notifications for issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issues_events",
-            "in": "query",
-            "description": "Enable notifications for confidential issue events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_events",
-            "in": "query",
-            "description": "Enable notifications for note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_events",
-            "in": "query",
-            "description": "Enable notifications for confidential note events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_events",
-            "in": "query",
-            "description": "Enable notifications for pipeline events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_events",
-            "in": "query",
-            "description": "Enable notifications for wiki page events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_channel",
-            "in": "query",
-            "description": "The name of the channel to receive push events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issue_channel",
-            "in": "query",
-            "description": "The name of the channel to receive issues events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_issue_channel",
-            "in": "query",
-            "description": "The name of the channel to receive confidential issues events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_request_channel",
-            "in": "query",
-            "description": "The name of the channel to receive merge request events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "note_channel",
-            "in": "query",
-            "description": "The name of the channel to receive note events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential_note_channel",
-            "in": "query",
-            "description": "The name of the channel to receive confidential note events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_channel",
-            "in": "query",
-            "description": "The name of the channel to receive tag push events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pipeline_channel",
-            "in": "query",
-            "description": "The name of the channel to receive pipeline events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "wiki_page_channel",
-            "in": "query",
-            "description": "The name of the channel to receive wiki page events notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -4072,6 +3112,90 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "webhook": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "notify_only_broken_pipelines": {
+                    "type": "boolean"
+                  },
+                  "notify_only_default_branch": {
+                    "type": "boolean"
+                  },
+                  "branches_to_be_notified": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "issues_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_issues_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "note_events": {
+                    "type": "boolean"
+                  },
+                  "confidential_note_events": {
+                    "type": "boolean"
+                  },
+                  "pipeline_events": {
+                    "type": "boolean"
+                  },
+                  "wiki_page_events": {
+                    "type": "boolean"
+                  },
+                  "push_channel": {
+                    "type": "string"
+                  },
+                  "issue_channel": {
+                    "type": "string"
+                  },
+                  "confidential_issue_channel": {
+                    "type": "string"
+                  },
+                  "merge_request_channel": {
+                    "type": "string"
+                  },
+                  "note_channel": {
+                    "type": "string"
+                  },
+                  "confidential_note_channel": {
+                    "type": "string"
+                  },
+                  "tag_push_channel": {
+                    "type": "string"
+                  },
+                  "pipeline_channel": {
+                    "type": "string"
+                  },
+                  "wiki_page_channel": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -4129,62 +3253,7 @@
         "summary": "Create/Edit JetBrains TeamCity CI integration",
         "description": "Set JetBrains TeamCity CI integration for a project.",
         "operationId": "create/editJetbrainsTeamcityCiIntegration",
-        "parameters": [
-          {
-            "name": "teamcity_url",
-            "in": "query",
-            "description": "TeamCity root URL. For example, https://teamcity.example.com",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Enable SSL verification. Defaults to true (enabled).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "build_type",
-            "in": "query",
-            "description": "Build configuration ID",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "A user with permissions to trigger a manual build",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "The password of the user",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -4193,6 +3262,36 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "teamcity_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "build_type": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -4250,80 +3349,7 @@
         "summary": "Create/Edit Jenkins CI integration",
         "description": "Set Jenkins CI integration for a project.",
         "operationId": "create/editJenkinsCiIntegration",
-        "parameters": [
-          {
-            "name": "jenkins_url",
-            "in": "query",
-            "description": "Jenkins URL like http://jenkins.example.com.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Enable SSL verification. Defaults to true (enabled).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_name",
-            "in": "query",
-            "description": "The URL-friendly project name. Example: my_project_name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "username",
-            "in": "query",
-            "description": "Username for authentication with the Jenkins server, if authentication is required by the server.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "Password for authentication with the Jenkins server, if authentication is required by the server.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Enable notifications for merge request events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "Enable notifications for tag push events.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -4332,6 +3358,42 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jenkins_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  },
+                  "project_name": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -4455,26 +3517,7 @@
         "summary": "Create/Edit MockCI integration",
         "description": "Set MockCI integration for a project.",
         "operationId": "create/editMockciIntegration",
-        "parameters": [
-          {
-            "name": "mock_service_url",
-            "in": "query",
-            "description": "http://localhost:4004",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Enable SSL verification. Defaults to true (enabled).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -4483,6 +3526,24 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mock_service_url": {
+                    "type": "string"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -4540,44 +3601,7 @@
         "summary": "Create/Edit YouTrack integration",
         "description": "Set YouTrack integration for a project.",
         "operationId": "create/editYoutrackIntegration",
-        "parameters": [
-          {
-            "name": "issues_url",
-            "in": "query",
-            "description": "Issue URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "project_url",
-            "in": "query",
-            "description": "Project URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "Enable notifications for push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -4586,6 +3610,30 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "issues_url": {
+                    "type": "string"
+                  },
+                  "project_url": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }

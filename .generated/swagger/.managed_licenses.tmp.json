@@ -112,24 +112,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the managed license",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approval_status",
-            "in": "query",
-            "description": "The approval status of the license. “allowed” or “denied”. “blacklisted” and “approved” are deprecated.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -151,6 +133,27 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "approval_status": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "approval_status"
+                ]
               }
             }
           }
@@ -223,15 +226,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "approval_status",
-            "in": "query",
-            "description": "The approval status of the license. “allowed” or “denied”. “blacklisted” and “approved” are deprecated.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -253,6 +247,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approval_status": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approval_status"
+                ]
               }
             }
           }

@@ -319,3 +319,7 @@ export interface TagObject {
   description?: string;
   externalDocs?: ExternalDocumentationObject;
 }
+
+export interface PropertiesObject {
+  [key: string]: ReferenceObject | SchemaObject;
+}

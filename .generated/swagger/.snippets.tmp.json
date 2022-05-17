@@ -257,80 +257,7 @@
         "summary": "Create new snippet",
         "description": "Create a new snippet.",
         "operationId": "createNewSnippet",
-        "parameters": [
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title of a snippet",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name",
-            "in": "query",
-            "description": "Deprecated: Use files instead. Name of a snippet file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "Deprecated: Use files instead. Content of a snippet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description of a snippet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "Snippet’s visibility",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files",
-            "in": "query",
-            "description": "An array of snippet files",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:file_path",
-            "in": "query",
-            "description": "File path of the snippet file",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:content",
-            "in": "query",
-            "description": "Content of the snippet file",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -420,6 +347,43 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "file_name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "files:file_path": {
+                    "type": "string"
+                  },
+                  "files:content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "files:file_path",
+                  "files:content"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -438,96 +402,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title of a snippet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "file_name",
-            "in": "query",
-            "description": "Deprecated: Use files instead. Name of a snippet file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "content",
-            "in": "query",
-            "description": "Deprecated: Use files instead. Content of a snippet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description of a snippet",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "visibility",
-            "in": "query",
-            "description": "Snippet’s visibility",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files",
-            "in": "query",
-            "description": "An array of snippet files. Required when updating snippets with multiple files.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:action",
-            "in": "query",
-            "description": "Type of action to perform on the file, one of: create, update, delete, move",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:file_path",
-            "in": "query",
-            "description": "File path of the snippet file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:previous_path",
-            "in": "query",
-            "description": "Previous path of the snippet file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "files:content",
-            "in": "query",
-            "description": "Content of the snippet file",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -620,6 +494,47 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "file_name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "type": "string"
+                  },
+                  "files:action": {
+                    "type": "string"
+                  },
+                  "files:file_path": {
+                    "type": "string"
+                  },
+                  "files:previous_path": {
+                    "type": "string"
+                  },
+                  "files:content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "files:action"
+                ]
               }
             }
           }

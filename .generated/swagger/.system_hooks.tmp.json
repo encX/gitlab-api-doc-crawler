@@ -117,71 +117,7 @@
         "summary": "Add new system hook",
         "description": "Add a new system hook.",
         "operationId": "addNewSystemHook",
-        "parameters": [
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The hook URL",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "Secret token to validate received payloads; this isn’t returned in the response",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_events",
-            "in": "query",
-            "description": "When true, the hook fires on push events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_push_events",
-            "in": "query",
-            "description": "When true, the hook fires on new tags being pushed",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_requests_events",
-            "in": "query",
-            "description": "Trigger hook on merge requests events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "repository_update_events",
-            "in": "query",
-            "description": "Trigger hook on repository update events",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "enable_ssl_verification",
-            "in": "query",
-            "description": "Do SSL verification when triggering the hook",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -219,6 +155,41 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "push_events": {
+                    "type": "boolean"
+                  },
+                  "tag_push_events": {
+                    "type": "boolean"
+                  },
+                  "merge_requests_events": {
+                    "type": "boolean"
+                  },
+                  "repository_update_events": {
+                    "type": "boolean"
+                  },
+                  "enable_ssl_verification": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
               }
             }
           }

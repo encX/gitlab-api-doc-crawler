@@ -225,87 +225,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "codename",
-            "in": "query",
-            "description": "The codename of a Debian distribution.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "suite",
-            "in": "query",
-            "description": "The suite of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "origin",
-            "in": "query",
-            "description": "The origin of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "label",
-            "in": "query",
-            "description": "The label of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "The version of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "valid_time_duration_seconds",
-            "in": "query",
-            "description": "The valid time duration (in seconds) of the new Debian distribution.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "components",
-            "in": "query",
-            "description": "The new Debian distribution’s list of components.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "architectures",
-            "in": "query",
-            "description": "The new Debian distribution’s list of architectures.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -357,6 +276,41 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "codename": {
+                    "type": "string"
+                  },
+                  "suite": {
+                    "type": "string"
+                  },
+                  "origin": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "valid_time_duration_seconds": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "codename"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -382,78 +336,6 @@
             "in": "path",
             "description": "The Debian distribution’s new codename.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "suite",
-            "in": "query",
-            "description": "The Debian distribution’s new suite.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "origin",
-            "in": "query",
-            "description": "The Debian distribution’s new origin.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "label",
-            "in": "query",
-            "description": "The Debian distribution’s new label.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "The Debian distribution’s new version.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The Debian distribution’s new description.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "valid_time_duration_seconds",
-            "in": "query",
-            "description": "The Debian distribution’s new valid time duration (in seconds).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "components",
-            "in": "query",
-            "description": "The Debian distribution’s new list of components.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "architectures",
-            "in": "query",
-            "description": "The Debian distribution’s new list of architectures.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -505,6 +387,36 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suite": {
+                    "type": "string"
+                  },
+                  "origin": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "valid_time_duration_seconds": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }

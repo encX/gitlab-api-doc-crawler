@@ -115,15 +115,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "The value of the custom attribute",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -142,6 +133,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "value"
+                ]
               }
             }
           }

@@ -23,33 +23,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "branch",
-            "in": "query",
-            "description": "Name of the branch to commit into",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_sha",
-            "in": "query",
-            "description": "Full commit SHA to update the submodule to",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "commit_message",
-            "in": "query",
-            "description": "Commit message. If no message is provided, a default is set",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -104,6 +77,30 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branch": {
+                    "type": "string"
+                  },
+                  "commit_sha": {
+                    "type": "string"
+                  },
+                  "commit_message": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branch",
+                  "commit_sha"
+                ]
               }
             }
           }

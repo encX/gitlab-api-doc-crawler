@@ -535,105 +535,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The release name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_name",
-            "in": "query",
-            "description": "The tag where the release is created from.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the release. You can use Markdown.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "If a tag specified in tag_name doesn’t exist, the release is created from ref and tagged with tag_name. It can be a commit SHA, another tag name, or a branch name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "milestones",
-            "in": "query",
-            "description": "The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assets:links",
-            "in": "query",
-            "description": "An array of assets links.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assets:links:name",
-            "in": "query",
-            "description": "The name of the link. Link names must be unique within the release.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assets:links:url",
-            "in": "query",
-            "description": "The URL of the link. Link URLs must be unique within the release.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assets:links:filepath",
-            "in": "query",
-            "description": "Optional path for a Direct Asset link.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assets:links:link_type",
-            "in": "query",
-            "description": "The type of the link: other, runbook, image, package. Defaults to other.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "released_at",
-            "in": "query",
-            "description": "The date when the release is/was ready. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -840,6 +741,48 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "tag_name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "assets:links:name": {
+                    "type": "string"
+                  },
+                  "assets:links:url": {
+                    "type": "string"
+                  },
+                  "assets:links:filepath": {
+                    "type": "string"
+                  },
+                  "assets:links:link_type": {
+                    "type": "string"
+                  },
+                  "released_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "tag_name"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -906,42 +849,6 @@
             "in": "path",
             "description": "The Git tag the release is associated with.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The release name.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the release. You can use Markdown.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "milestones",
-            "in": "query",
-            "description": "The title of each milestone to associate with the release. GitLab Premium customers can specify group milestones. To remove all milestones from the release, specify [].",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "released_at",
-            "in": "query",
-            "description": "The date when the release is/was ready. Expected in ISO 8601 format (2019-03-15T08:00:00Z).",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1127,6 +1034,28 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "released_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": []
               }
             }
           }

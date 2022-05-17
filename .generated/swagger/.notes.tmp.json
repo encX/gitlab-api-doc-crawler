@@ -193,33 +193,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "The confidential flag of a note. Default is false.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -230,6 +203,29 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -270,24 +266,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "The confidential flag of a note.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -298,6 +276,24 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -531,24 +527,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -559,6 +537,26 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -599,15 +597,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -618,6 +607,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -866,33 +872,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_request_diff_sha",
-            "in": "query",
-            "description": "The SHA of the head commit which is used to ensure that the merge request hasn’t been updated since the API request was sent. This is required for the /merge quick action",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -903,6 +882,29 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "merge_request_diff_sha": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -943,15 +945,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -962,6 +955,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -1198,15 +1208,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1217,6 +1218,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }
@@ -1257,15 +1275,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Limited to 1,000,000 characters.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1276,6 +1285,23 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
               }
             }
           }

@@ -368,105 +368,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of the epic",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "The comma-separated list of labels",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the epic. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "description": "The color of the epic. Introduced in GitLab 14.8, behind a feature flag named epic_highlight_color (disabled by default)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "Whether the epic should be confidential",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "When the epic was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z . Requires administrator or project/group owner privileges (available in GitLab 13.5 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_date_is_fixed",
-            "in": "query",
-            "description": "Whether start date should be sourced from start_date_fixed or from milestones (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_date_fixed",
-            "in": "query",
-            "description": "The fixed start date of an epic (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date_is_fixed",
-            "in": "query",
-            "description": "Whether due date should be sourced from due_date_fixed or from milestones (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date_fixed",
-            "in": "query",
-            "description": "The fixed due date of an epic (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "parent_id",
-            "in": "query",
-            "description": "The ID of a parent epic (in GitLab 11.11 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -624,6 +525,50 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "start_date_is_fixed": {
+                    "type": "boolean"
+                  },
+                  "start_date_fixed": {
+                    "type": "string"
+                  },
+                  "due_date_is_fixed": {
+                    "type": "boolean"
+                  },
+                  "due_date_fixed": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -649,132 +594,6 @@
             "in": "path",
             "description": "The internal ID of the epic",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "add_labels",
-            "in": "query",
-            "description": "Comma-separated label names to add to an issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "Whether the epic should be confidential",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of an epic. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date_fixed",
-            "in": "query",
-            "description": "The fixed due date of an epic (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date_is_fixed",
-            "in": "query",
-            "description": "Whether due date should be sourced from due_date_fixed or from milestones (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated label names for an issue. Set to an empty string to unassign all labels.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "parent_id",
-            "in": "query",
-            "description": "The ID of a parent epic. Available in GitLab 14.6 and later",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_labels",
-            "in": "query",
-            "description": "Comma-separated label names to remove from an issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_date_fixed",
-            "in": "query",
-            "description": "The fixed start date of an epic (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "start_date_is_fixed",
-            "in": "query",
-            "description": "Whether start date should be sourced from start_date_fixed or from milestones (in GitLab 11.3 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "state_event",
-            "in": "query",
-            "description": "State event for an epic. Set close to close the epic and reopen to reopen it (in GitLab 11.4 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of an epic",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "in": "query",
-            "description": "When the epic was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z . Requires administrator or project/group owner privileges (available in GitLab 13.5 and later)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "description": "The color of the epic. Introduced in GitLab 14.8, behind a feature flag named epic_highlight_color (disabled by default)",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -915,6 +734,57 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "add_labels": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "due_date_fixed": {
+                    "type": "string"
+                  },
+                  "due_date_is_fixed": {
+                    "type": "boolean"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "remove_labels": {
+                    "type": "string"
+                  },
+                  "start_date_fixed": {
+                    "type": "string"
+                  },
+                  "start_date_is_fixed": {
+                    "type": "boolean"
+                  },
+                  "state_event": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

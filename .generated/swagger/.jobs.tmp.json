@@ -1648,15 +1648,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "job_variables_attributes",
-            "in": "query",
-            "description": "An array containing the custom variables available to the job. Introduced in GitLab 14.9.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1761,6 +1752,17 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }

@@ -157,17 +157,7 @@
         "summary": "Add a new license",
         "description": "Returns:",
         "operationId": "addANewLicense",
-        "parameters": [
-          {
-            "name": "license",
-            "in": "query",
-            "description": "The license string",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -230,6 +220,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "license": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "license"
+                ]
               }
             }
           }

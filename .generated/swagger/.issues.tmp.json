@@ -702,156 +702,12 @@
         "operationId": "newIssue",
         "parameters": [
           {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "The ID of the user to assign the issue to. Only appears on GitLab Free.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "assignee_ids",
-            "in": "query",
-            "description": "The IDs of the users to assign the issue to.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "Set an issue to be confidential. Default is false.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "created_at",
-            "in": "query",
-            "description": "When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of an issue. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "discussion_to_resolve",
-            "in": "query",
-            "description": "The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge_request_to_resolve_discussions_of.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date",
-            "in": "query",
-            "description": "The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "epic_id",
-            "in": "query",
-            "description": "ID of the epic to add the issue to. Valid values are greater than or equal to 0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "epic_iid",
-            "in": "query",
-            "description": "IID of the epic to add the issue to. Valid values are greater than or equal to 0. (deprecated, scheduled for removal in API version 5)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The ID or URL-encoded path of the project owned by the authenticated user",
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "iid",
-            "in": "query",
-            "description": "The internal ID of the project’s issue (requires administrator or project owner rights)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issue_type",
-            "in": "query",
-            "description": "The type of issue. One of issue, incident, or test_case. Default is issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated label names for an issue",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_request_to_resolve_discussions_of",
-            "in": "query",
-            "description": "The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue’s details.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of an issue",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "weight",
-            "in": "query",
-            "description": "The weight of the issue. Valid values are greater than or equal to 0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
             }
           }
         ],
@@ -1058,6 +914,62 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "discussion_to_resolve": {
+                    "type": "string"
+                  },
+                  "due_date": {
+                    "type": "string"
+                  },
+                  "epic_id": {
+                    "type": "integer"
+                  },
+                  "epic_iid": {
+                    "type": "integer"
+                  },
+                  "issue_type": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "merge_request_to_resolve_discussions_of": {
+                    "type": "integer"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -1069,78 +981,6 @@
         "description": "Updates an existing project issue. This call is also used to mark an issue as closed.",
         "operationId": "editIssue",
         "parameters": [
-          {
-            "name": "add_labels",
-            "in": "query",
-            "description": "Comma-separated label names to add to an issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assignee_ids",
-            "in": "query",
-            "description": "The ID of the user(s) to assign the issue to. Set to 0 or provide an empty value to unassign all assignees.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "confidential",
-            "in": "query",
-            "description": "Updates an issue to be confidential",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of an issue. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "discussion_locked",
-            "in": "query",
-            "description": "Flag indicating if the issue’s discussion is locked. If the discussion is locked only project members can add or edit comments.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "due_date",
-            "in": "query",
-            "description": "The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "epic_id",
-            "in": "query",
-            "description": "ID of the epic to add the issue to. Valid values are greater than or equal to 0.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "epic_iid",
-            "in": "query",
-            "description": "IID of the epic to add the issue to. Valid values are greater than or equal to 0. (deprecated, scheduled for removal in API version 5)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
           {
             "name": "id",
             "in": "path",
@@ -1155,78 +995,6 @@
             "in": "path",
             "description": "The internal ID of a project’s issue",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "issue_type",
-            "in": "query",
-            "description": "Updates the type of issue. One of issue, incident, or test_case.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated label names for an issue. Set to an empty string to unassign all labels.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The global ID of a milestone to assign the issue to. Set to 0 or provide an empty value to unassign a milestone.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "remove_labels",
-            "in": "query",
-            "description": "Comma-separated label names to remove from an issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "state_event",
-            "in": "query",
-            "description": "The state event of an issue. Set close to close the issue and reopen to reopen it",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "The title of an issue",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "updated_at",
-            "in": "query",
-            "description": "When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z (requires administrator or project owner rights). Empty string or null values are not accepted.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "weight",
-            "in": "query",
-            "description": "The weight of the issue. Valid values are greater than or equal to 0. 0",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -1452,6 +1220,63 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "add_labels": {
+                    "type": "string"
+                  },
+                  "confidential": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "discussion_locked": {
+                    "type": "boolean"
+                  },
+                  "due_date": {
+                    "type": "string"
+                  },
+                  "epic_id": {
+                    "type": "integer"
+                  },
+                  "epic_iid": {
+                    "type": "integer"
+                  },
+                  "issue_type": {
+                    "type": "string"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "remove_labels": {
+                    "type": "string"
+                  },
+                  "state_event": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
         }
       }
     }
@@ -1521,24 +1346,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "move_after_id",
-            "in": "query",
-            "description": "The ID of a project’s issue that should be placed after this issue",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "move_before_id",
-            "in": "query",
-            "description": "The ID of a project’s issue that should be placed before this issue",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -1549,6 +1356,24 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "move_after_id": {
+                    "type": "integer"
+                  },
+                  "move_before_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -1576,15 +1401,6 @@
             "name": "issue_iid",
             "in": "path",
             "description": "The internal ID of a project’s issue",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "to_project_id",
-            "in": "query",
-            "description": "The ID of the new project",
             "required": true,
             "schema": {
               "type": "integer"
@@ -1828,6 +1644,23 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to_project_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "to_project_id"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -1855,24 +1688,6 @@
             "required": false,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "to_project_id",
-            "in": "query",
-            "description": "ID of the new project.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "with_notes",
-            "in": "query",
-            "description": "Clone the issue with notes. Default is false.",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -2102,6 +1917,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "to_project_id": {
+                    "type": "integer"
+                  },
+                  "with_notes": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2889,15 +2722,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of a note. Must contain /promote at the start of a new line.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -2980,6 +2804,23 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "body"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -2991,15 +2832,6 @@
         "description": "Sets an estimated time of work for this issue.",
         "operationId": "setATimeEstimateForAnIssue",
         "parameters": [
-          {
-            "name": "duration",
-            "in": "query",
-            "description": "The duration in human format. e.g: 3h30m",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "id",
             "in": "path",
@@ -3041,6 +2873,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "duration"
+                ]
               }
             }
           }
@@ -3111,15 +2960,6 @@
         "operationId": "addSpentTimeForAnIssue",
         "parameters": [
           {
-            "name": "duration",
-            "in": "query",
-            "description": "The duration in human format. e.g: 3h30m",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "id",
             "in": "path",
             "description": "The ID or URL-encoded path of the project owned by the authenticated user",
@@ -3135,15 +2975,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "summary",
-            "in": "query",
-            "description": "A summary of how the time was spent",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -3169,6 +3000,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "duration"
+                ]
               }
             }
           }
@@ -4048,33 +3899,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "file",
-            "in": "query",
-            "description": "The image file to be uploaded",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The URL to view more metric information",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "url_text",
-            "in": "query",
-            "description": "A description of the image or URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4105,6 +3929,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "url_text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
               }
             }
           }
@@ -4206,24 +4050,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "url",
-            "in": "query",
-            "description": "The URL to view more metric information",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "url_text",
-            "in": "query",
-            "description": "A description of the image or URL",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4254,6 +4080,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "url_text": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

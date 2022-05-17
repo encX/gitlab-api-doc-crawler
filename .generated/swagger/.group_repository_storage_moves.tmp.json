@@ -271,15 +271,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "destination_storage_name",
-            "in": "query",
-            "description": "Name of the destination storage shard. In GitLab 13.5 and later, the storage is selected based on storage weights if not provided.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -324,6 +315,21 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "destination_storage_name": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
         }
       }
     }
@@ -334,26 +340,7 @@
         "summary": "Schedule repository storage moves for all groups on a storage shard",
         "description": "Schedules repository storage moves for each group repository stored on the source storage shard.",
         "operationId": "scheduleRepositoryStorageMovesForAllGroupsOnAStorageShard",
-        "parameters": [
-          {
-            "name": "source_storage_name",
-            "in": "query",
-            "description": "Name of the source storage shard.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "destination_storage_name",
-            "in": "query",
-            "description": "Name of the destination storage shard. The storage is selected based on storage weights if not provided.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -367,6 +354,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "source_storage_name": {
+                    "type": "string"
+                  },
+                  "destination_storage_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source_storage_name"
+                ]
               }
             }
           }

@@ -370,21 +370,78 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the environment",
-            "required": true,
-            "schema": {
-              "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "external_url": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
             }
-          },
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "external_url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/environments/{environments_id}": {
+      "put": {
+        "summary": "Edit an existing environment",
+        "description": "Updates an existing environment’s name and/or external_url.",
+        "operationId": "editAnExistingEnvironment",
+        "parameters": [
           {
-            "name": "external_url",
-            "in": "query",
-            "description": "Place to link to for this environment",
-            "required": false,
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -424,85 +481,26 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/environments/{environments_id}": {
-      "put": {
-        "summary": "Edit an existing environment",
-        "description": "Updates an existing environment’s name and/or external_url.",
-        "operationId": "editAnExistingEnvironment",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "environment_id",
-            "in": "query",
-            "description": "The ID of the environment",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "Deprecated and will be removed in GitLab 15.0",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "external_url",
-            "in": "query",
-            "description": "The new external_url",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "slug": {
-                      "type": "string"
-                    },
-                    "external_url": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "created_at": {
-                      "type": "string"
-                    },
-                    "updated_at": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "environment_id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "external_url": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "environment_id"
+                ]
               }
             }
           }

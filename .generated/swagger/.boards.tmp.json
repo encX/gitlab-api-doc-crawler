@@ -254,15 +254,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the new board",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -330,6 +321,23 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -355,51 +363,6 @@
             "in": "path",
             "description": "The ID of a board",
             "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The new name of the board",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "The assignee the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The milestone the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated list of label names which the board should be scoped to",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "weight",
-            "in": "query",
-            "description": "The weight range from 0 to 9, to which the board should be scoped to",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -570,6 +533,33 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -798,30 +788,105 @@
             "schema": {
               "type": "integer"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "label": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "position": {
+                      "type": "integer"
+                    },
+                    "max_issue_count": {
+                      "type": "integer"
+                    },
+                    "max_issue_weight": {
+                      "type": "integer"
+                    },
+                    "limit_metric": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label_id": {
+                    "type": "integer"
+                  },
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/boards/{board_id}/lists/{list_id}": {
+      "put": {
+        "summary": "Reorder a list in a board",
+        "description": "Updates an existing issue board list. This call is used to change list position.",
+        "operationId": "reorderAListInABoard",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
-            "name": "label_id",
-            "in": "query",
-            "description": "The ID of a label",
-            "required": false,
+            "name": "board_id",
+            "in": "path",
+            "description": "The ID of a board",
+            "required": true,
             "schema": {
               "type": "integer"
             }
           },
           {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "The ID of a user",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The ID of a milestone",
-            "required": false,
+            "name": "list_id",
+            "in": "path",
+            "description": "The ID of a board’s list",
+            "required": true,
             "schema": {
               "type": "integer"
             }
@@ -869,93 +934,20 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/boards/{board_id}/lists/{list_id}": {
-      "put": {
-        "summary": "Reorder a list in a board",
-        "description": "Updates an existing issue board list. This call is used to change list position.",
-        "operationId": "reorderAListInABoard",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "board_id",
-            "in": "path",
-            "description": "The ID of a board",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "list_id",
-            "in": "path",
-            "description": "The ID of a board’s list",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position",
-            "in": "query",
-            "description": "The position of the list",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "label": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "color": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "position": {
-                      "type": "integer"
-                    },
-                    "max_issue_count": {
-                      "type": "integer"
-                    },
-                    "max_issue_weight": {
-                      "type": "integer"
-                    },
-                    "limit_metric": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "position": {
+                    "type": "integer"
                   }
-                }
+                },
+                "required": [
+                  "position"
+                ]
               }
             }
           }

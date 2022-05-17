@@ -23,132 +23,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "body",
-            "in": "query",
-            "description": "The content of the thread",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position",
-            "in": "query",
-            "description": "Position when creating a diff note",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[base_sha]",
-            "in": "query",
-            "description": "Base commit SHA in the source branch",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[start_sha]",
-            "in": "query",
-            "description": "SHA referencing commit in target branch",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[head_sha]",
-            "in": "query",
-            "description": "SHA referencing HEAD of this merge request",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[position_type]",
-            "in": "query",
-            "description": "Type of the position reference. Either text or image.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[new_path]",
-            "in": "query",
-            "description": "File path after change",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[new_line]",
-            "in": "query",
-            "description": "Line number after change (Only stored for text diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[old_path]",
-            "in": "query",
-            "description": "File path before change",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "position[old_line]",
-            "in": "query",
-            "description": "Line number before change (Only stored for text diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[width]",
-            "in": "query",
-            "description": "Width of the image (Only stored for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[height]",
-            "in": "query",
-            "description": "Height of the image (Only stored for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[x]",
-            "in": "query",
-            "description": "X coordinate (Only stored for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "position[y]",
-            "in": "query",
-            "description": "Y coordinate (Only stored for image diff notes)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -159,6 +33,63 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "position[base_sha]": {
+                    "type": "string"
+                  },
+                  "position[start_sha]": {
+                    "type": "string"
+                  },
+                  "position[head_sha]": {
+                    "type": "string"
+                  },
+                  "position[position_type]": {
+                    "type": "string"
+                  },
+                  "position[new_path]": {
+                    "type": "string"
+                  },
+                  "position[new_line]": {
+                    "type": "integer"
+                  },
+                  "position[old_path]": {
+                    "type": "string"
+                  },
+                  "position[old_line]": {
+                    "type": "integer"
+                  },
+                  "position[width]": {
+                    "type": "integer"
+                  },
+                  "position[height]": {
+                    "type": "integer"
+                  },
+                  "position[x]": {
+                    "type": "integer"
+                  },
+                  "position[y]": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "body",
+                  "position[base_sha]",
+                  "position[start_sha]",
+                  "position[head_sha]",
+                  "position[position_type]"
+                ]
               }
             }
           }

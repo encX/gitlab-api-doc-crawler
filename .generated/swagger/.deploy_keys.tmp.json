@@ -205,33 +205,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "New deploy key’s title",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "key",
-            "in": "query",
-            "description": "New deploy key",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "can_push",
-            "in": "query",
-            "description": "Can deploy key push to the project’s repository",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -262,6 +235,30 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "key": {
+                    "type": "string"
+                  },
+                  "can_push": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "title",
+                  "key"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -278,24 +275,6 @@
             "in": "path",
             "description": "The ID or URL-encoded path of the project owned by the authenticated user",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "New deploy key’s title",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "can_push",
-            "in": "query",
-            "description": "Can deploy key push to the project’s repository",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -326,6 +305,24 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "can_push": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }

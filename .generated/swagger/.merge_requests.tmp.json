@@ -1477,141 +1477,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "source_branch",
-            "in": "query",
-            "description": "The source branch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_branch",
-            "in": "query",
-            "description": "The target branch.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title of MR.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "Assignee user ID.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "assignee_ids",
-            "in": "query",
-            "description": "The ID of the user(s) to assign the MR to. Set to 0 or provide an empty value to unassign all assignees.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reviewer_ids",
-            "in": "query",
-            "description": "The ID of the user(s) added as a reviewer to the MR. If set to 0 or left empty, no reviewers are added. Introduced in GitLab 13.8.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description of MR. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "target_project_id",
-            "in": "query",
-            "description": "The target project (numeric ID).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Labels for MR as a comma-separated list.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The global ID of a milestone.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "remove_source_branch",
-            "in": "query",
-            "description": "Flag indicating if a merge request should remove the source branch when merging.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_collaboration",
-            "in": "query",
-            "description": "Allow commits from members who can merge to the target branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_maintainer_to_push",
-            "in": "query",
-            "description": "Alias of allow_collaboration.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "approvals_before_merge",
-            "in": "query",
-            "description": "Number of approvals required before this can be merged (see below).",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "squash",
-            "in": "query",
-            "description": "Squash commits into a single commit when merging.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1959,6 +1824,61 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "source_branch": {
+                    "type": "string"
+                  },
+                  "target_branch": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "target_project_id": {
+                    "type": "integer"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "remove_source_branch": {
+                    "type": "boolean"
+                  },
+                  "allow_collaboration": {
+                    "type": "boolean"
+                  },
+                  "allow_maintainer_to_push": {
+                    "type": "boolean"
+                  },
+                  "approvals_before_merge": {
+                    "type": "integer"
+                  },
+                  "squash": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "source_branch",
+                  "target_branch",
+                  "title"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -1986,150 +1906,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "target_branch",
-            "in": "query",
-            "description": "The target branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "title",
-            "in": "query",
-            "description": "Title of MR.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "assignee_id",
-            "in": "query",
-            "description": "The ID of the user to assign the merge request to. Set to 0 or provide an empty value to unassign all assignees.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "assignee_ids",
-            "in": "query",
-            "description": "The ID of the user(s) to assign the MR to. Set to 0 or provide an empty value to unassign all assignees.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reviewer_ids",
-            "in": "query",
-            "description": "The ID of the user(s) set as a reviewer to the MR. Set the value to 0 or provide an empty value to unset all reviewers. Introduced in GitLab 13.8.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "milestone_id",
-            "in": "query",
-            "description": "The global ID of a milestone to assign the merge request to. Set to 0 or provide an empty value to unassign a milestone.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "labels",
-            "in": "query",
-            "description": "Comma-separated label names for a merge request. Set to an empty string to unassign all labels.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "add_labels",
-            "in": "query",
-            "description": "Comma-separated label names to add to a merge request.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_labels",
-            "in": "query",
-            "description": "Comma-separated label names to remove from a merge request.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description of MR. Limited to 1,048,576 characters.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "state_event",
-            "in": "query",
-            "description": "New state (close/reopen).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "remove_source_branch",
-            "in": "query",
-            "description": "Flag indicating if a merge request should remove the source branch when merging.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "squash",
-            "in": "query",
-            "description": "Squash commits into a single commit when merging.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "discussion_locked",
-            "in": "query",
-            "description": "Flag indicating if the merge request’s discussion is locked. If the discussion is locked only project members can add, edit or resolve comments.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_collaboration",
-            "in": "query",
-            "description": "Allow commits from members who can merge to the target branch.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allow_maintainer_to_push",
-            "in": "query",
-            "description": "Alias of allow_collaboration.",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -2527,6 +2303,60 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "target_branch": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "assignee_id": {
+                    "type": "integer"
+                  },
+                  "milestone_id": {
+                    "type": "integer"
+                  },
+                  "labels": {
+                    "type": "string"
+                  },
+                  "add_labels": {
+                    "type": "string"
+                  },
+                  "remove_labels": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "state_event": {
+                    "type": "string"
+                  },
+                  "remove_source_branch": {
+                    "type": "boolean"
+                  },
+                  "squash": {
+                    "type": "boolean"
+                  },
+                  "discussion_locked": {
+                    "type": "boolean"
+                  },
+                  "allow_collaboration": {
+                    "type": "boolean"
+                  },
+                  "allow_maintainer_to_push": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -2581,40 +2411,7 @@
         "summary": "Merge a merge request",
         "description": "Accept and merge changes submitted with MR using this API.",
         "operationId": "mergeAMergeRequest",
-        "parameters": [
-          {
-            "name": "401",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "405",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "406",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "409",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -3009,6 +2806,17 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }
@@ -3513,15 +3321,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "skip_ci",
-            "in": "query",
-            "description": "Set to true to skip creating a CI pipeline.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -3540,6 +3339,21 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "skip_ci": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -5025,15 +4839,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "duration",
-            "in": "query",
-            "description": "The duration in human format, such as 3h30m.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5058,6 +4863,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "duration"
+                ]
               }
             }
           }
@@ -5144,24 +4966,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "duration",
-            "in": "query",
-            "description": "The duration in human format, such as 3h30m",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "summary",
-            "in": "query",
-            "description": "A summary of how the time was spent.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5186,6 +4990,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "type": "string"
+                  },
+                  "summary": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "duration"
+                ]
               }
             }
           }

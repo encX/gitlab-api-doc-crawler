@@ -602,57 +602,103 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "web_url": {
+                      "type": "string"
+                    },
+                    "expires_at": {
+                      "type": "string"
+                    },
+                    "access_level": {
+                      "type": "integer"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "group_saml_identity": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_level": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
+                  },
+                  "invite_source": {
+                    "type": "string"
+                  },
+                  "tasks_project_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "user_id",
+                  "access_level"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/groups/{id}/members/{user_id}": {
+      "put": {
+        "summary": "Edit a member of a group or project",
+        "description": "Updates a member of a group or project.",
+        "operationId": "editAMemberOfAGroupOrProject",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project or group owned by the authenticated user",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "user_id",
-            "in": "query",
-            "description": "The user ID of the new member or multiple IDs separated by commas",
+            "in": "path",
+            "description": "The user ID of the member",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "A valid access level",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "A date string in the format YEAR-MONTH-DAY",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "invite_source",
-            "in": "query",
-            "description": "The source of the invitation that starts the member creation process. See this issue.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tasks_to_be_done",
-            "in": "query",
-            "description": "Tasks the inviter wants the member to focus on. The tasks are added as issues to a specified project. The possible values are: ci, code and issues. If specified, requires tasks_project_id. Introduced in GitLab 14.5 with a flag named invite_members_for_task. Disabled by default.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tasks_project_id",
-            "in": "query",
-            "description": "The project ID in which to create the task issues. If specified, requires tasks_to_be_done. Introduced in GitLab 14.5 with a flag named invite_members_for_task. Disabled by default.",
-            "required": false,
             "schema": {
               "type": "integer"
             }
@@ -701,94 +747,23 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/groups/{id}/members/{user_id}": {
-      "put": {
-        "summary": "Edit a member of a group or project",
-        "description": "Updates a member of a group or project.",
-        "operationId": "editAMemberOfAGroupOrProject",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project or group owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "The user ID of the member",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "A valid access level",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "expires_at",
-            "in": "query",
-            "description": "A date string in the format YEAR-MONTH-DAY",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "avatar_url": {
-                      "type": "string"
-                    },
-                    "web_url": {
-                      "type": "string"
-                    },
-                    "expires_at": {
-                      "type": "string"
-                    },
-                    "access_level": {
-                      "type": "integer"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "group_saml_identity": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "access_level": {
+                    "type": "integer"
+                  },
+                  "expires_at": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "access_level"
+                ]
               }
             }
           }

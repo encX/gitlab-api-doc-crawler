@@ -142,32 +142,93 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "link_url": {
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "type": "string"
+                    },
+                    "rendered_link_url": {
+                      "type": "string"
+                    },
+                    "rendered_image_url": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "link_url": {
+                    "type": "string"
+                  },
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "link_url",
+                  "image_url"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/badges/{badge_id}": {
+      "put": {
+        "summary": "Edit a badge of a project",
+        "description": "Updates a badge of a project.",
+        "operationId": "editABadgeOfAProject",
+        "parameters": [
           {
-            "name": "link_url",
-            "in": "query",
-            "description": "URL of the badge link",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "image_url",
-            "in": "query",
-            "description": "URL of the badge image",
+            "name": "badge_id",
+            "in": "path",
+            "description": "The badge ID",
             "required": true,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "Name of the badge",
-            "required": false,
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -205,94 +266,24 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/badges/{badge_id}": {
-      "put": {
-        "summary": "Edit a badge of a project",
-        "description": "Updates a badge of a project.",
-        "operationId": "editABadgeOfAProject",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project owned by the authenticated user",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "badge_id",
-            "in": "path",
-            "description": "The badge ID",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "link_url",
-            "in": "query",
-            "description": "URL of the badge link",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "image_url",
-            "in": "query",
-            "description": "URL of the badge image",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "Name of the badge",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "link_url": {
-                      "type": "string"
-                    },
-                    "image_url": {
-                      "type": "string"
-                    },
-                    "rendered_link_url": {
-                      "type": "string"
-                    },
-                    "rendered_image_url": {
-                      "type": "string"
-                    },
-                    "kind": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "link_url": {
+                    "type": "string"
+                  },
+                  "image_url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

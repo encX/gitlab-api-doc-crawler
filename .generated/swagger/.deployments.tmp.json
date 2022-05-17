@@ -581,50 +581,178 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "pending_approval_count": {
+                      "type": "integer"
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "avatar_url": {
+                                "type": "string"
+                              },
+                              "web_url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "iid": {
+                      "type": "integer"
+                    },
+                    "ref": {
+                      "type": "string"
+                    },
+                    "sha": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "state": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "web_url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "environment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "external_url": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "deployable": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "environment": {
+                    "type": "string"
+                  },
+                  "sha": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "tag": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "environment",
+                  "sha",
+                  "ref",
+                  "tag"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/deployments/{deployment_id}": {
+      "put": {
+        "summary": "Update a deployment",
+        "description": "Deployments created by users on GitLab Premium or higher include the approvals and pending_approval_count properties:",
+        "operationId": "updateADeployment",
+        "parameters": [
           {
-            "name": "environment",
-            "in": "query",
-            "description": "The name of the environment to create the deployment for.",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "sha",
-            "in": "query",
-            "description": "The SHA of the commit that is deployed.",
+            "name": "deployment_id",
+            "in": "path",
+            "description": "The ID of the deployment to update.",
             "required": true,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "The name of the branch or tag that is deployed.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag",
-            "in": "query",
-            "description": "A boolean that indicates if the deployed ref is a tag (true) or not (false).",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "description": "The status to filter deployments by. One of created, running, success, failed, or canceled.",
-            "required": false,
-            "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -739,153 +867,18 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/deployments/{deployment_id}": {
-      "put": {
-        "summary": "Update a deployment",
-        "description": "Deployments created by users on GitLab Premium or higher include the approvals and pending_approval_count properties:",
-        "operationId": "updateADeployment",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deployment_id",
-            "in": "path",
-            "description": "The ID of the deployment to update.",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "description": "The new status of the deployment. One of created, running, success, failed, or canceled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string"
-                    },
-                    "pending_approval_count": {
-                      "type": "integer"
-                    },
-                    "approvals": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "user": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              },
-                              "username": {
-                                "type": "string"
-                              },
-                              "name": {
-                                "type": "string"
-                              },
-                              "state": {
-                                "type": "string"
-                              },
-                              "avatar_url": {
-                                "type": "string"
-                              },
-                              "web_url": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "status": {
-                            "type": "string"
-                          },
-                          "created_at": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    "id": {
-                      "type": "integer"
-                    },
-                    "iid": {
-                      "type": "integer"
-                    },
-                    "ref": {
-                      "type": "string"
-                    },
-                    "sha": {
-                      "type": "string"
-                    },
-                    "created_at": {
-                      "type": "string"
-                    },
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "username": {
-                          "type": "string"
-                        },
-                        "id": {
-                          "type": "integer"
-                        },
-                        "state": {
-                          "type": "string"
-                        },
-                        "avatar_url": {
-                          "type": "string"
-                        },
-                        "web_url": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "environment": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "external_url": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "deployable": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": []
               }
             }
           }
@@ -939,24 +932,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "description": "The status of the approval (either approved or rejected).",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "comment",
-            "in": "query",
-            "description": "A comment to go with the approval",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -1001,6 +976,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  },
+                  "comment": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
               }
             }
           }

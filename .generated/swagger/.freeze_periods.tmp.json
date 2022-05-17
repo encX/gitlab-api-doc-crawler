@@ -130,30 +130,88 @@
             "schema": {
               "type": "string"
             }
-          },
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "freeze_start": {
+                      "type": "string"
+                    },
+                    "freeze_end": {
+                      "type": "string"
+                    },
+                    "cron_timezone": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "freeze_start": {
+                    "type": "string"
+                  },
+                  "freeze_end": {
+                    "type": "string"
+                  },
+                  "cron_timezone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "freeze_start",
+                  "freeze_end"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "/projects/{id}/freeze_periods/{freeze_period_id}": {
+      "put": {
+        "summary": "Update a Freeze Period",
+        "description": "Update a Freeze Period for the given freeze_period_id.",
+        "operationId": "updateAFreezePeriod",
+        "parameters": [
           {
-            "name": "freeze_start",
-            "in": "query",
-            "description": "Start of the Freeze Period in cron format.",
+            "name": "id",
+            "in": "path",
+            "description": "The ID or URL-encoded path of the project.",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "freeze_end",
-            "in": "query",
-            "description": "End of the Freeze Period in cron format.",
+            "name": "freeze_period_id",
+            "in": "path",
+            "description": "The database ID of the Freeze Period.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron_timezone",
-            "in": "query",
-            "description": "The time zone for the cron fields, defaults to UTC if not provided.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -190,91 +248,24 @@
               }
             }
           }
-        }
-      }
-    }
-  },
-  {
-    "/projects/{id}/freeze_periods/{freeze_period_id}": {
-      "put": {
-        "summary": "Update a Freeze Period",
-        "description": "Update a Freeze Period for the given freeze_period_id.",
-        "operationId": "updateAFreezePeriod",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "The ID or URL-encoded path of the project.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "freeze_period_id",
-            "in": "path",
-            "description": "The database ID of the Freeze Period.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "freeze_start",
-            "in": "query",
-            "description": "Start of the Freeze Period in cron format.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "freeze_end",
-            "in": "query",
-            "description": "End of the Freeze Period in cron format.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron_timezone",
-            "in": "query",
-            "description": "The time zone for the cron fields.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "freeze_start": {
-                      "type": "string"
-                    },
-                    "freeze_end": {
-                      "type": "string"
-                    },
-                    "cron_timezone": {
-                      "type": "string"
-                    },
-                    "created_at": {
-                      "type": "string"
-                    },
-                    "updated_at": {
-                      "type": "string"
-                    }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "freeze_start": {
+                    "type": "string"
+                  },
+                  "freeze_end": {
+                    "type": "string"
+                  },
+                  "cron_timezone": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": []
               }
             }
           }

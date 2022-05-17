@@ -146,33 +146,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the environment.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deploy_access_levels",
-            "in": "query",
-            "description": "Array of access levels allowed to deploy, with each described by a hash.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "required_approval_count",
-            "in": "query",
-            "description": "The number of approvals required to deploy to this environment. This is part of Deployment Approvals, which isn’t yet available for use. For details, see issue.",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -211,6 +184,27 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "required_approval_count": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "deploy_access_levels"
+                ]
               }
             }
           }

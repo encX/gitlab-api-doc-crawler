@@ -237,51 +237,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the pipeline schedule.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "The branch or tag name that is triggered.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron",
-            "in": "query",
-            "description": "The cron schedule, for example: 0 1 * * *.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron_timezone",
-            "in": "query",
-            "description": "The time zone supported by ActiveSupport::TimeZone, for example: Pacific Time (US & Canada) (default: UTC).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "description": "The activation of pipeline schedule. If false is set, the pipeline schedule is initially deactivated (default: true).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -350,6 +305,37 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "cron": {
+                    "type": "string"
+                  },
+                  "cron_timezone": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "description",
+                  "ref",
+                  "cron"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -377,51 +363,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of the pipeline schedule.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ref",
-            "in": "query",
-            "description": "The branch or tag name that is triggered.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron",
-            "in": "query",
-            "description": "The cron schedule, for example: 0 1 * * *.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cron_timezone",
-            "in": "query",
-            "description": "The time zone supported by ActiveSupport::TimeZone (for example Pacific Time (US & Canada)), or TZInfo::Timezone (for example America/Los_Angeles).",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "description": "The activation of pipeline schedule. If false is set, the pipeline schedule is initially deactivated.",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -502,6 +443,33 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "cron": {
+                    "type": "string"
+                  },
+                  "cron_timezone": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -799,33 +767,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "key",
-            "in": "query",
-            "description": "The key of a variable; must have no more than 255 characters; only A-Z, a-z, 0-9, and _ are allowed",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "The value of a variable",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "variable_type",
-            "in": "query",
-            "description": "The type of a variable. Available types are: env_var (default) and file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -847,6 +788,30 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "variable_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ]
               }
             }
           }
@@ -887,24 +852,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "description": "The value of a variable",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "variable_type",
-            "in": "query",
-            "description": "The type of a variable. Available types are: env_var (default) and file",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -926,6 +873,26 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "variable_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "value"
+                ]
               }
             }
           }

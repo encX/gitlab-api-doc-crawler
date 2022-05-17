@@ -14,15 +14,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "container_registry_access_level",
-            "in": "query",
-            "description": "The desired visibility of the Container Registry. One of enabled (default), private, or disabled.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -44,6 +35,21 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "container_registry_access_level": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }

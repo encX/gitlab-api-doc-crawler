@@ -35,188 +35,7 @@
         "summary": "Update global notification settings",
         "description": "Update current notification settings and email address.",
         "operationId": "updateGlobalNotificationSettings",
-        "parameters": [
-          {
-            "name": "level",
-            "in": "query",
-            "description": "The global notification level",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "notification_email",
-            "in": "query",
-            "description": "The email address to send notifications",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_note",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reopen_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "close_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reassign_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issue_due",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_to_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reopen_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "close_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reassign_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "failed_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "success_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "moved_project",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 13.3)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_when_pipeline_succeeds",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 13.9)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_epic",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 11.3)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -233,6 +52,78 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "level": {
+                    "type": "string"
+                  },
+                  "notification_email": {
+                    "type": "string"
+                  },
+                  "new_note": {
+                    "type": "boolean"
+                  },
+                  "new_issue": {
+                    "type": "boolean"
+                  },
+                  "reopen_issue": {
+                    "type": "boolean"
+                  },
+                  "close_issue": {
+                    "type": "boolean"
+                  },
+                  "reassign_issue": {
+                    "type": "boolean"
+                  },
+                  "issue_due": {
+                    "type": "boolean"
+                  },
+                  "new_merge_request": {
+                    "type": "boolean"
+                  },
+                  "push_to_merge_request": {
+                    "type": "boolean"
+                  },
+                  "reopen_merge_request": {
+                    "type": "boolean"
+                  },
+                  "close_merge_request": {
+                    "type": "boolean"
+                  },
+                  "reassign_merge_request": {
+                    "type": "boolean"
+                  },
+                  "merge_merge_request": {
+                    "type": "boolean"
+                  },
+                  "failed_pipeline": {
+                    "type": "boolean"
+                  },
+                  "fixed_pipeline": {
+                    "type": "boolean"
+                  },
+                  "success_pipeline": {
+                    "type": "boolean"
+                  },
+                  "moved_project": {
+                    "type": "boolean"
+                  },
+                  "merge_when_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "new_epic": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -289,177 +180,6 @@
             "in": "path",
             "description": "The ID, or URL-encoded path, of the group or project",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "level",
-            "in": "query",
-            "description": "The global notification level",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_note",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reopen_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "close_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reassign_issue",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "issue_due",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_to_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reopen_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "close_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "reassign_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_merge_request",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "failed_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fixed_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "success_pipeline",
-            "in": "query",
-            "description": "Enable/disable this notification",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "moved_project",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 13.3)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "merge_when_pipeline_succeeds",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 13.9)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "new_epic",
-            "in": "query",
-            "description": "Enable/disable this notification (Introduced in GitLab 11.3)",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -528,6 +248,75 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "level": {
+                    "type": "string"
+                  },
+                  "new_note": {
+                    "type": "boolean"
+                  },
+                  "new_issue": {
+                    "type": "boolean"
+                  },
+                  "reopen_issue": {
+                    "type": "boolean"
+                  },
+                  "close_issue": {
+                    "type": "boolean"
+                  },
+                  "reassign_issue": {
+                    "type": "boolean"
+                  },
+                  "issue_due": {
+                    "type": "boolean"
+                  },
+                  "new_merge_request": {
+                    "type": "boolean"
+                  },
+                  "push_to_merge_request": {
+                    "type": "boolean"
+                  },
+                  "reopen_merge_request": {
+                    "type": "boolean"
+                  },
+                  "close_merge_request": {
+                    "type": "boolean"
+                  },
+                  "reassign_merge_request": {
+                    "type": "boolean"
+                  },
+                  "merge_merge_request": {
+                    "type": "boolean"
+                  },
+                  "failed_pipeline": {
+                    "type": "boolean"
+                  },
+                  "fixed_pipeline": {
+                    "type": "boolean"
+                  },
+                  "success_pipeline": {
+                    "type": "boolean"
+                  },
+                  "moved_project": {
+                    "type": "boolean"
+                  },
+                  "merge_when_pipeline_succeeds": {
+                    "type": "boolean"
+                  },
+                  "new_epic": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }

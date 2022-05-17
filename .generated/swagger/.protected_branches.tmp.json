@@ -195,87 +195,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the branch or wildcard",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "push_access_level",
-            "in": "query",
-            "description": "Access levels allowed to push (defaults: 40, Maintainer role)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "merge_access_level",
-            "in": "query",
-            "description": "Access levels allowed to merge (defaults: 40, Maintainer role)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "unprotect_access_level",
-            "in": "query",
-            "description": "Access levels allowed to unprotect (defaults: 40, Maintainer role)",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "allow_force_push",
-            "in": "query",
-            "description": "Allow all users with push access to force push. (default: false)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allowed_to_push",
-            "in": "query",
-            "description": "Array of access levels allowed to push, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allowed_to_merge",
-            "in": "query",
-            "description": "Array of access levels allowed to merge, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "allowed_to_unprotect",
-            "in": "query",
-            "description": "Array of access levels allowed to unprotect, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "code_owner_approval_required",
-            "in": "query",
-            "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -342,6 +261,38 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "push_access_level": {
+                    "type": "integer"
+                  },
+                  "merge_access_level": {
+                    "type": "integer"
+                  },
+                  "unprotect_access_level": {
+                    "type": "integer"
+                  },
+                  "allow_force_push": {
+                    "type": "boolean"
+                  },
+                  "code_owner_approval_required": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
               }
             }
           }
@@ -414,15 +365,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "code_owner_approval_required",
-            "in": "query",
-            "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -433,6 +375,21 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code_owner_approval_required": {
+                    "type": "boolean"
+                  }
+                },
+                "required": []
               }
             }
           }

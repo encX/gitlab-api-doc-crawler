@@ -334,78 +334,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "The description of a runner",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "active",
-            "in": "query",
-            "description": "Deprecated: Use :paused instead. Flag indicating whether the runner is allowed to receive jobs",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "paused",
-            "in": "query",
-            "description": "Flag indicating whether the runner should ignore new jobs",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tag_list",
-            "in": "query",
-            "description": "The list of tags for a runner; put array of tags, that should be finally assigned to a runner",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "run_untagged",
-            "in": "query",
-            "description": "Flag indicating the runner can execute untagged jobs",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "locked",
-            "in": "query",
-            "description": "Flag indicating the runner is locked",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "access_level",
-            "in": "query",
-            "description": "The access_level of the runner; not_protected or ref_protected",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "maximum_timeout",
-            "in": "query",
-            "description": "Maximum timeout set when this runner handles the job",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -495,6 +423,39 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "paused": {
+                    "type": "boolean"
+                  },
+                  "run_untagged": {
+                    "type": "boolean"
+                  },
+                  "locked": {
+                    "type": "boolean"
+                  },
+                  "access_level": {
+                    "type": "string"
+                  },
+                  "maximum_timeout": {
+                    "type": "integer"
+                  }
+                },
+                "required": []
               }
             }
           }
@@ -866,15 +827,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "runner_id",
-            "in": "query",
-            "description": "The ID of a runner",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -914,6 +866,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "runner_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "runner_id"
+                ]
               }
             }
           }
@@ -1071,16 +1040,7 @@
         "summary": "Register a new runner",
         "description": "Register a new runner for the instance.",
         "operationId": "registerANewRunner",
-        "parameters": [
-          {
-            "name": "201",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1100,6 +1060,17 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }
@@ -1176,24 +1147,7 @@
         "summary": "Verify authentication for a registered runner",
         "description": "Validates authentication credentials for a registered runner.",
         "operationId": "verifyAuthenticationForARegisteredRunner",
-        "parameters": [
-          {
-            "name": "200",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "403",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1202,6 +1156,17 @@
                 "schema": {
                   "type": "string"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
               }
             }
           }
@@ -1321,17 +1286,7 @@
         "summary": "Reset runner’s authentication token by using the current token",
         "description": "Resets the runner’s authentication token by using the current token’s value as an input.",
         "operationId": "resetRunnerAuthenticationTokenByUsingTheCurrentToken",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The current token of the runner",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1348,6 +1303,23 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "token"
+                ]
               }
             }
           }

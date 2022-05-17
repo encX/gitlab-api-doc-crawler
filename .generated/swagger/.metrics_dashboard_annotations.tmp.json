@@ -5,44 +5,7 @@
         "summary": "Create a new annotation",
         "description": "",
         "operationId": "createANewAnnotation",
-        "parameters": [
-          {
-            "name": "dashboard_path",
-            "in": "query",
-            "description": "ID of the dashboard which needs to be annotated. Treated as a CGI-escaped path, and automatically un-escaped.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "starting_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z. Timestamp marking start point of annotation.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ending_at",
-            "in": "query",
-            "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z. Timestamp marking end point of annotation. When not supplied, an annotation displays as a single event at the start point.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "in": "query",
-            "description": "Description of the annotation.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -74,6 +37,34 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dashboard_path": {
+                    "type": "string"
+                  },
+                  "starting_at": {
+                    "type": "string"
+                  },
+                  "ending_at": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "dashboard_path",
+                  "starting_at",
+                  "description"
+                ]
               }
             }
           }

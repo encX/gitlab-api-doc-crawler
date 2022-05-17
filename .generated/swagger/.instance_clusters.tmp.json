@@ -218,107 +218,7 @@
         "summary": "Add existing instance cluster",
         "description": "Adds an existing Kubernetes instance cluster.",
         "operationId": "addExistingInstanceCluster",
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the cluster",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "domain",
-            "in": "query",
-            "description": "The base domain of the cluster",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "environment_scope",
-            "in": "query",
-            "description": "The associated environment to the cluster. Defaults to *",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "management_project_id",
-            "in": "query",
-            "description": "The ID of the management project for the cluster",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Determines if cluster is active or not, defaults to true",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "managed",
-            "in": "query",
-            "description": "Determines if GitLab manages namespaces and service accounts for this cluster. Defaults to true",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[api_url]",
-            "in": "query",
-            "description": "The URL to access the Kubernetes API",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[token]",
-            "in": "query",
-            "description": "The token to authenticate against Kubernetes",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[ca_cert]",
-            "in": "query",
-            "description": "TLS certificate. Required if API is using a self-signed TLS certificate.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[namespace]",
-            "in": "query",
-            "description": "The unique namespace related to the project",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[authorization_type]",
-            "in": "query",
-            "description": "The cluster authorization type: rbac, abac or unknown_authorization. Defaults to rbac.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -408,6 +308,55 @@
               }
             }
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "domain": {
+                    "type": "string"
+                  },
+                  "environment_scope": {
+                    "type": "string"
+                  },
+                  "management_project_id": {
+                    "type": "integer"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "managed": {
+                    "type": "boolean"
+                  },
+                  "platform_kubernetes_attributes[api_url]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[token]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[ca_cert]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[namespace]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[authorization_type]": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "platform_kubernetes_attributes[api_url]",
+                  "platform_kubernetes_attributes[token]"
+                ]
+              }
+            }
+          }
         }
       }
     }
@@ -426,96 +375,6 @@
             "required": true,
             "schema": {
               "type": "integer"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "The name of the cluster",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "domain",
-            "in": "query",
-            "description": "The base domain of the cluster",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "environment_scope",
-            "in": "query",
-            "description": "The associated environment to the cluster",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "management_project_id",
-            "in": "query",
-            "description": "The ID of the management project for the cluster",
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "enabled",
-            "in": "query",
-            "description": "Determines if cluster is active or not",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "managed",
-            "in": "query",
-            "description": "Determines if GitLab manages namespaces and service accounts for this cluster",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[api_url]",
-            "in": "query",
-            "description": "The URL to access the Kubernetes API",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[token]",
-            "in": "query",
-            "description": "The token to authenticate against Kubernetes",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[ca_cert]",
-            "in": "query",
-            "description": "TLS certificate. Required if API is using a self-signed TLS certificate.",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "platform_kubernetes_attributes[namespace]",
-            "in": "query",
-            "description": "The unique namespace related to the project",
-            "required": false,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -608,6 +467,48 @@
                     }
                   }
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "domain": {
+                    "type": "string"
+                  },
+                  "environment_scope": {
+                    "type": "string"
+                  },
+                  "management_project_id": {
+                    "type": "integer"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "managed": {
+                    "type": "boolean"
+                  },
+                  "platform_kubernetes_attributes[api_url]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[token]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[ca_cert]": {
+                    "type": "string"
+                  },
+                  "platform_kubernetes_attributes[namespace]": {
+                    "type": "string"
+                  }
+                },
+                "required": []
               }
             }
           }
