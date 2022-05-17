@@ -117,7 +117,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id": {
+    "/projects/{id}/boards/{board_id}": {
       "get": {
         "summary": "Show a single issue board",
         "description": "Get a single project issue board.",
@@ -335,7 +335,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id": {
+    "/projects/{id}/boards/{board_id}": {
       "put": {
         "summary": "Update an issue board",
         "description": "Updates a project issue board.",
@@ -578,7 +578,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id": {
+    "/projects/{id}/boards/{board_id}": {
       "delete": {
         "summary": "Delete an issue board",
         "description": "Deletes a project issue board.",
@@ -619,7 +619,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id/lists": {
+    "/projects/{id}/boards/{board_id}/lists": {
       "get": {
         "summary": "List board lists in a project issue board",
         "description": "Get a list of the board’s lists. Does not include open and closed lists.",
@@ -694,7 +694,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id/lists/:list_id": {
+    "/projects/{id}/boards/{board_id}/lists/{list_id}": {
       "get": {
         "summary": "Show a single board list",
         "description": "Get a single board list.",
@@ -775,7 +775,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id/lists": {
+    "/projects/{id}/boards/{board_id}/lists": {
       "post": {
         "summary": "Create a board list",
         "description": "Creates a new issue board list.",
@@ -874,7 +874,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id/lists/:list_id": {
+    "/projects/{id}/boards/{board_id}/lists/{list_id}": {
       "put": {
         "summary": "Reorder a list in a board",
         "description": "Updates an existing issue board list. This call is used to change list position.",
@@ -964,7 +964,7 @@
     }
   },
   {
-    "/projects/{id}/boards/:board_id/lists/:list_id": {
+    "/projects/{id}/boards/{board_id}/lists/{list_id}": {
       "delete": {
         "summary": "Delete a board list from a board",
         "description": "Only for administrators and project owners. Deletes a board list.",

@@ -179,7 +179,7 @@
     }
   },
   {
-    "/groups/{id}/members/:user_id": {
+    "/groups/{id}/members/{user_id}": {
       "get": {
         "summary": "Get a member of a group or project",
         "description": "Gets a member of a group or project. Returns only direct members and not inherited members through ancestor groups.",
@@ -258,7 +258,7 @@
     }
   },
   {
-    "/groups/{id}/members/all/:user_id": {
+    "/groups/{id}/members/all/{user_id}": {
       "get": {
         "summary": "Get a member of a group or project, including inherited and invited members",
         "description": "Gets a member of a group or project, including members inherited or invited through ancestor groups. See the corresponding endpoint to list all inherited members for details.",
@@ -472,7 +472,7 @@
     }
   },
   {
-    "/groups/{id}/billable_members/:user_id/memberships": {
+    "/groups/{id}/billable_members/{user_id}/memberships": {
       "get": {
         "summary": "List memberships for a billable member of a group",
         "description": "Gets a list of memberships for a billable member of a group.",
@@ -547,7 +547,7 @@
     }
   },
   {
-    "/groups/{id}/billable_members/:user_id": {
+    "/groups/{id}/billable_members/{user_id}": {
       "delete": {
         "summary": "Remove a billable member from a group",
         "description": "Removes a billable member from a group and its subgroups and projects.",
@@ -706,7 +706,7 @@
     }
   },
   {
-    "/groups/{id}/members/:user_id": {
+    "/groups/{id}/members/{user_id}": {
       "put": {
         "summary": "Edit a member of a group or project",
         "description": "Updates a member of a group or project.",
@@ -797,7 +797,7 @@
     }
   },
   {
-    "/groups/{id}/members/:user_id/override": {
+    "/groups/{id}/members/{user_id}/override": {
       "post": {
         "summary": "Set override flag for a member of a group",
         "description": "By default, the access level of LDAP group members is set to the value specified by LDAP through Group Sync. You can allow access level overrides by calling this endpoint.",
@@ -870,7 +870,7 @@
     }
   },
   {
-    "/groups/{id}/members/:user_id/override": {
+    "/groups/{id}/members/{user_id}/override": {
       "delete": {
         "summary": "Remove override for a member of a group",
         "description": "Sets the override flag to false and allows LDAP Group Sync to reset the access level to the LDAP-prescribed value.",
@@ -943,7 +943,7 @@
     }
   },
   {
-    "/groups/{id}/members/:user_id": {
+    "/groups/{id}/members/{user_id}": {
       "delete": {
         "summary": "Remove a member from a group or project",
         "description": "Removes a user from a group or project where the user has been explicitly assigned a role.",
@@ -1002,7 +1002,7 @@
     }
   },
   {
-    "/groups/{id}/members/:member_id/approve": {
+    "/groups/{id}/members/{member_id}/approve": {
       "put": {
         "summary": "Approve a member for a group",
         "description": "Approves a pending user for a group and its subgroups and projects.",

@@ -276,7 +276,7 @@
     }
   },
   {
-    "/groups/{id}/audit_events/:audit_event_id": {
+    "/groups/{id}/audit_events/{audit_event_id}": {
       "get": {
         "summary": "Retrieve a specific group audit event",
         "description": "Only available to group owners and administrators.",
@@ -462,7 +462,7 @@
     }
   },
   {
-    "/projects/{id}/audit_events/:audit_event_id": {
+    "/projects/{id}/audit_events/{audit_event_id}": {
       "get": {
         "summary": "Retrieve a specific project audit event",
         "description": "Only available to users with at least the Maintainer role for the project.",

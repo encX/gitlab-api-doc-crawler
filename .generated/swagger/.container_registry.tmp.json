@@ -329,7 +329,7 @@
     }
   },
   {
-    "/projects/{id}/registry/repositories/:repository_id": {
+    "/projects/{id}/registry/repositories/{repository_id}": {
       "delete": {
         "summary": "Delete registry repository",
         "description": "Delete a repository in registry.",
@@ -370,7 +370,7 @@
     }
   },
   {
-    "/projects/{id}/registry/repositories/:repository_id/tags": {
+    "/projects/{id}/registry/repositories/{repository_id}/tags": {
       "get": {
         "summary": "Within a project",
         "description": "Get a list of tags for given registry repository.",
@@ -425,7 +425,7 @@
     }
   },
   {
-    "/projects/{id}/registry/repositories/:repository_id/tags/:tag_name": {
+    "/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}": {
       "get": {
         "summary": "Get details of a registry repository tag",
         "description": "Get details of a registry repository tag.",
@@ -501,7 +501,7 @@
     }
   },
   {
-    "/projects/{id}/registry/repositories/:repository_id/tags/:tag_name": {
+    "/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}": {
       "delete": {
         "summary": "Delete a registry repository tag",
         "description": "Delete a registry repository tag.",
@@ -551,7 +551,7 @@
     }
   },
   {
-    "/projects/{id}/registry/repositories/:repository_id/tags": {
+    "/projects/{id}/registry/repositories/{repository_id}/tags": {
       "delete": {
         "summary": "Delete registry repository tags in bulk",
         "description": "Delete registry repository tags in bulk based on given criteria.",

@@ -1,6 +1,6 @@
 [
   {
-    "/groups/{id}/epics/:epic_iid/related_epics": {
+    "/groups/{id}/epics/{epic_iid}/related_epics": {
       "get": {
         "summary": "List linked epics",
         "description": "Get a list of a given epic’s linked epics filtered according to the user authorizations.",
@@ -176,7 +176,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/related_epics": {
+    "/groups/{id}/epics/{epic_iid}/related_epics": {
       "post": {
         "summary": "Create a related epic link",
         "description": "Create a two-way relation between two epics. The user must be allowed to update both epics to succeed.",
@@ -495,7 +495,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/related_epics/:related_epic_link_id": {
+    "/groups/{id}/epics/{epic_iid}/related_epics/{related_epic_link_id}": {
       "delete": {
         "summary": "Delete a related epic link",
         "description": "Delete a two-way relation between two epics. The user must be allowed to update both epics to succeed.",

@@ -169,7 +169,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid": {
+    "/groups/{id}/epics/{epic_iid}": {
       "get": {
         "summary": "Single epic",
         "description": "Gets a single epic",
@@ -629,7 +629,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid": {
+    "/groups/{id}/epics/{epic_iid}": {
       "put": {
         "summary": "Update epic",
         "description": "Updates an epic.",
@@ -923,7 +923,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid": {
+    "/groups/{id}/epics/{epic_iid}": {
       "delete": {
         "summary": "Delete epic",
         "description": "Deletes an epic",
@@ -964,7 +964,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/todo": {
+    "/groups/{id}/epics/{epic_iid}/todo": {
       "post": {
         "summary": "Create a to-do item",
         "description": "Manually creates a to-do item for the current user on an epic. If there already exists a to-do item for the user on that epic, status code 304 is returned.",

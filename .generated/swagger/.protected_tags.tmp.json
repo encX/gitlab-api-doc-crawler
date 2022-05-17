@@ -54,7 +54,7 @@
     }
   },
   {
-    "/projects/{id}/protected_tags/:name": {
+    "/projects/{id}/protected_tags/{name}": {
       "get": {
         "summary": "Get a single protected tag or wildcard protected tag",
         "description": "",
@@ -183,7 +183,7 @@
     }
   },
   {
-    "/projects/{id}/protected_tags/:name": {
+    "/projects/{id}/protected_tags/{name}": {
       "delete": {
         "summary": "Unprotect repository tags",
         "description": "Unprotects the given protected tag or wildcard protected tag.",

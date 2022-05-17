@@ -5584,7 +5584,7 @@
     }
   },
   {
-    "/projects/{id}/share/:group_id": {
+    "/projects/{id}/share/{group_id}": {
       "delete": {
         "summary": "Delete a shared project link within a group",
         "description": "Unshare the project from the group. Returns 204 and no content on success.",
@@ -5625,7 +5625,7 @@
     }
   },
   {
-    "/projects/{id}/import_project_members/:project_id": {
+    "/projects/{id}/import_project_members/{project_id}": {
       "post": {
         "summary": "Import project members",
         "description": "Import members from another project.",
@@ -5698,7 +5698,7 @@
     }
   },
   {
-    "/projects/{id}/hooks/:hook_id": {
+    "/projects/{id}/hooks/{hook_id}": {
       "get": {
         "summary": "Get project hook",
         "description": "Get a specific hook for a project.",
@@ -5971,7 +5971,7 @@
     }
   },
   {
-    "/projects/{id}/hooks/:hook_id": {
+    "/projects/{id}/hooks/{hook_id}": {
       "put": {
         "summary": "Edit project hook",
         "description": "Edits a hook for a specified project.",
@@ -6156,7 +6156,7 @@
     }
   },
   {
-    "/projects/{id}/hooks/:hook_id": {
+    "/projects/{id}/hooks/{hook_id}": {
       "delete": {
         "summary": "Delete project hook",
         "description": "Removes a hook from a project. This is an idempotent method and can be called multiple times. Either the hook is available or not.",
@@ -6197,7 +6197,7 @@
     }
   },
   {
-    "/projects/{id}/fork/:forked_from_id": {
+    "/projects/{id}/fork/{forked_from_id}": {
       "post": {
         "summary": "Create a forked from/to relation between existing projects",
         "description": "",

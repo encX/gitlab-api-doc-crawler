@@ -91,7 +91,7 @@
     }
   },
   {
-    "/projects/{id}/debian_distributions/:codename": {
+    "/projects/{id}/debian_distributions/{codename}": {
       "get": {
         "summary": "Single Debian project distribution",
         "description": "Gets a single Debian project distribution.",
@@ -170,7 +170,7 @@
     }
   },
   {
-    "/projects/{id}/debian_distributions/:codename/key.asc": {
+    "/projects/{id}/debian_distributions/{codename}/key.asc": {
       "get": {
         "summary": "Single Debian project distribution key",
         "description": "Gets a single Debian project distribution key.",
@@ -362,7 +362,7 @@
     }
   },
   {
-    "/projects/{id}/debian_distributions/:codename": {
+    "/projects/{id}/debian_distributions/{codename}": {
       "put": {
         "summary": "Update a Debian project distribution",
         "description": "Updates a Debian project distribution.",
@@ -513,7 +513,7 @@
     }
   },
   {
-    "/projects/{id}/debian_distributions/:codename": {
+    "/projects/{id}/debian_distributions/{codename}": {
       "delete": {
         "summary": "Delete a Debian project distribution",
         "description": "Deletes a Debian project distribution.",

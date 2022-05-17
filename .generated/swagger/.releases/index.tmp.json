@@ -269,7 +269,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name": {
+    "/projects/{id}/releases/{tag_name}": {
       "get": {
         "summary": "Get a Release by a tag name",
         "description": "Get a Release for the given tag.",
@@ -845,7 +845,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name/evidence": {
+    "/projects/{id}/releases/{tag_name}/evidence": {
       "post": {
         "summary": "Collect release evidence",
         "description": "Create Evidence for an existing Release.",
@@ -886,7 +886,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name": {
+    "/projects/{id}/releases/{tag_name}": {
       "put": {
         "summary": "Update a release",
         "description": "Update a release. Developer level access to the project is required to update a release.",
@@ -1135,7 +1135,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name": {
+    "/projects/{id}/releases/{tag_name}": {
       "delete": {
         "summary": "Delete a Release",
         "description": "Delete a release. Deleting a release doesn’t delete the associated tag. Maintainer level access to the project is required to delete a release.",

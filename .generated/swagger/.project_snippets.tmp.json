@@ -32,7 +32,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id": {
+    "/projects/{id}/snippets/{snippet_id}": {
       "get": {
         "summary": "Single snippet",
         "description": "Get a single project snippet.",
@@ -254,7 +254,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id": {
+    "/projects/{id}/snippets/{snippet_id}": {
       "put": {
         "summary": "Update snippet",
         "description": "Updates an existing project snippet. The user must have permission to change an existing snippet.",
@@ -413,7 +413,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id": {
+    "/projects/{id}/snippets/{snippet_id}": {
       "delete": {
         "summary": "Delete snippet",
         "description": "Deletes an existing project snippet. This returns a 204 No Content status code if the operation was successfully or 404 if the resource was not found.",
@@ -454,7 +454,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/raw": {
+    "/projects/{id}/snippets/{snippet_id}/raw": {
       "get": {
         "summary": "Snippet content",
         "description": "Returns the raw project snippet as plain text.",
@@ -495,7 +495,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/files/:ref/:file_path/raw": {
+    "/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw": {
       "get": {
         "summary": "Snippet repository file content",
         "description": "Returns the raw file content as plain text.",
@@ -554,7 +554,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/user_agent_detail": {
+    "/projects/{id}/snippets/{snippet_id}/user_agent_detail": {
       "get": {
         "summary": "Get user agent details",
         "description": "Available only for users with administrator access.",

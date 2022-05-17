@@ -51,7 +51,7 @@ export class Endpoint {
     this.method = [...methods][0].toLowerCase();
 
     // convert /:foo to /{foo}
-    this.path = [...paths][0].replace(/\/:(\w+)/, "/{$1}");
+    this.path = [...paths][0].replace(/\/:(\w+)/g, "/{$1}");
 
     this.pathParams = [...this.api.resources[0].path.matchAll(/:(\w+)/g)].map(
       ([_, match]) => match
@@ -69,6 +69,7 @@ export class Endpoint {
   }
 
   private getParams(): ParameterObject[] {
+    // todo post body?????
     return this.api.attributes.map<ParameterObject>((a) => ({
       name: a.name,
       in: this.pathParams?.some((p) => p === a.name) ? "path" : "query",

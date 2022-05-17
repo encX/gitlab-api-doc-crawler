@@ -43,7 +43,7 @@
     }
   },
   {
-    "/users/{id}/custom_attributes/:key": {
+    "/users/{id}/custom_attributes/{key}": {
       "get": {
         "summary": "Single custom attribute",
         "description": "Get a single custom attribute on a resource.",
@@ -92,7 +92,7 @@
     }
   },
   {
-    "/users/{id}/custom_attributes/:key": {
+    "/users/{id}/custom_attributes/{key}": {
       "put": {
         "summary": "Set custom attribute",
         "description": "Set a custom attribute on a resource. The attribute is updated if it already exists, or newly created otherwise.",
@@ -150,7 +150,7 @@
     }
   },
   {
-    "/users/{id}/custom_attributes/:key": {
+    "/users/{id}/custom_attributes/{key}": {
       "delete": {
         "summary": "Delete custom attribute",
         "description": "Delete a custom attribute on a resource.",

@@ -96,7 +96,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}": {
       "get": {
         "summary": "Get a single pipeline schedule",
         "description": "Get the pipeline schedule of a project.",
@@ -355,7 +355,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}": {
       "put": {
         "summary": "Edit a pipeline schedule",
         "description": "Updates the pipeline schedule of a project. Once the update is done, it is rescheduled automatically.",
@@ -510,7 +510,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id/take_ownership": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership": {
       "post": {
         "summary": "Take ownership of a pipeline schedule",
         "description": "Update the owner of the pipeline schedule of a project.",
@@ -620,7 +620,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}": {
       "delete": {
         "summary": "Delete a pipeline schedule",
         "description": "Delete the pipeline schedule of a project.",
@@ -730,7 +730,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id/play": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play": {
       "post": {
         "summary": "Run a scheduled pipeline immediately",
         "description": "Trigger a new scheduled pipeline, which runs immediately. The next scheduled run of this pipeline is not affected.",
@@ -776,7 +776,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id/variables": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables": {
       "post": {
         "summary": "Create a new pipeline schedule variable",
         "description": "Create a new variable of a pipeline schedule.",
@@ -855,7 +855,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id/variables/:key": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}": {
       "put": {
         "summary": "Edit a pipeline schedule variable",
         "description": "Updates the variable of a pipeline schedule.",
@@ -934,7 +934,7 @@
     }
   },
   {
-    "/projects/{id}/pipeline_schedules/:pipeline_schedule_id/variables/:key": {
+    "/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}": {
       "delete": {
         "summary": "Delete a pipeline schedule variable",
         "description": "Delete the variable of a pipeline schedule.",

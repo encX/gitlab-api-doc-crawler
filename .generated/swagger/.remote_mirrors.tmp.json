@@ -57,7 +57,7 @@
     }
   },
   {
-    "/projects/{id}/remote_mirrors/:mirror_id": {
+    "/projects/{id}/remote_mirrors/{mirror_id}": {
       "get": {
         "summary": "Get a single project’s remote mirror",
         "description": "Returns a remote mirror and its statuses:",
@@ -202,7 +202,7 @@
     }
   },
   {
-    "/projects/{id}/remote_mirrors/:mirror_id": {
+    "/projects/{id}/remote_mirrors/{mirror_id}": {
       "put": {
         "summary": "Update a remote mirror’s attributes",
         "description": "Toggle a remote mirror on or off, or change which types of branches are mirrored:",
@@ -293,7 +293,7 @@
     }
   },
   {
-    "/projects/{id}/remote_mirrors/:mirror_id": {
+    "/projects/{id}/remote_mirrors/{mirror_id}": {
       "delete": {
         "summary": "Delete a remote mirror",
         "description": "Delete a remote mirror.",

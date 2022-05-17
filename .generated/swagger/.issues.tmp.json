@@ -390,7 +390,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid": {
+    "/projects/{id}/issues/{issue_iid}": {
       "get": {
         "summary": "Single project issue",
         "description": "Get a single project issue.",
@@ -1063,7 +1063,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid": {
+    "/projects/{id}/issues/{issue_iid}": {
       "put": {
         "summary": "Edit issue",
         "description": "Updates an existing project issue. This call is also used to mark an issue as closed.",
@@ -1457,7 +1457,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid": {
+    "/projects/{id}/issues/{issue_iid}": {
       "delete": {
         "summary": "Delete an issue",
         "description": "Only for administrators and project owners. Deletes an issue.",
@@ -1498,7 +1498,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/reorder": {
+    "/projects/{id}/issues/{issue_iid}/reorder": {
       "put": {
         "summary": "Reorder an issue",
         "description": "Reorders an issue, you can see the results when sorting issues manually",
@@ -1557,7 +1557,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/move": {
+    "/projects/{id}/issues/{issue_iid}/move": {
       "post": {
         "summary": "Move an issue",
         "description": "Moves an issue to a different project. If the target project is the source project or the user has insufficient permissions, an error message with status code 400 is returned.",
@@ -1833,7 +1833,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/clone": {
+    "/projects/{id}/issues/{issue_iid}/clone": {
       "post": {
         "summary": "Clone an issue",
         "description": "Clone the issue to given project. If the user has insufficient permissions, an error message with status code 400 is returned.",
@@ -2110,7 +2110,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/subscribe": {
+    "/projects/{id}/issues/{issue_iid}/subscribe": {
       "post": {
         "summary": "Subscribe to an issue",
         "description": "Subscribes the authenticated user to an issue to receive notifications. If the user is already subscribed to the issue, the status code 304 is returned.",
@@ -2377,7 +2377,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/unsubscribe": {
+    "/projects/{id}/issues/{issue_iid}/unsubscribe": {
       "post": {
         "summary": "Unsubscribe from an issue",
         "description": "Unsubscribes the authenticated user from the issue to not receive notifications from it. If the user is not subscribed to the issue, the status code 304 is returned.",
@@ -2561,7 +2561,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/todo": {
+    "/projects/{id}/issues/{issue_iid}/todo": {
       "post": {
         "summary": "Create a to-do item",
         "description": "Manually creates a to-do item for the current user on an issue. If there already exists a to-do item for the user on that issue, status code 304 is returned.",
@@ -2866,7 +2866,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes": {
+    "/projects/{id}/issues/{issue_iid}/notes": {
       "post": {
         "summary": "Promote an issue to an epic",
         "description": "Promotes an issue to an epic by adding a comment with the /promote quick action.",
@@ -2985,7 +2985,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/time_estimate": {
+    "/projects/{id}/issues/{issue_iid}/time_estimate": {
       "post": {
         "summary": "Set a time estimate for an issue",
         "description": "Sets an estimated time of work for this issue.",
@@ -3049,7 +3049,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/reset_time_estimate": {
+    "/projects/{id}/issues/{issue_iid}/reset_time_estimate": {
       "post": {
         "summary": "Reset the time estimate for an issue",
         "description": "Resets the estimated time for this issue to 0 seconds.",
@@ -3104,7 +3104,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/add_spent_time": {
+    "/projects/{id}/issues/{issue_iid}/add_spent_time": {
       "post": {
         "summary": "Add spent time for an issue",
         "description": "Adds spent time for this issue",
@@ -3177,7 +3177,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/reset_spent_time": {
+    "/projects/{id}/issues/{issue_iid}/reset_spent_time": {
       "post": {
         "summary": "Reset spent time for an issue",
         "description": "Resets the total spent time for this issue to 0 seconds.",
@@ -3232,7 +3232,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/time_stats": {
+    "/projects/{id}/issues/{issue_iid}/time_stats": {
       "get": {
         "summary": "Get time tracking stats",
         "description": "If the project is private or the issue is confidential, you need to provide credentials to authorize. The preferred way to do this, is by using personal access tokens.",
@@ -3287,7 +3287,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/related_merge_requests": {
+    "/projects/{id}/issues/{issue_iid}/related_merge_requests": {
       "get": {
         "summary": "List merge requests related to issue",
         "description": "Get all the merge requests that are related to the issue.",
@@ -3715,7 +3715,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/closed_by": {
+    "/projects/{id}/issues/{issue_iid}/closed_by": {
       "get": {
         "summary": "List merge requests that close a particular issue on merge",
         "description": "Get all merge requests that close a particular issue when merged.",
@@ -3909,7 +3909,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/participants": {
+    "/projects/{id}/issues/{issue_iid}/participants": {
       "get": {
         "summary": "Participants on issues",
         "description": "If the project is private or the issue is confidential, you need to provide credentials to authorize. The preferred way to do this, is by using personal access tokens.",
@@ -3973,7 +3973,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/user_agent_detail": {
+    "/projects/{id}/issues/{issue_iid}/user_agent_detail": {
       "get": {
         "summary": "Get user agent details",
         "description": "Available only for administrators.",
@@ -4025,7 +4025,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/metric_images": {
+    "/projects/{id}/issues/{issue_iid}/metric_images": {
       "post": {
         "summary": "Upload metric image",
         "description": "Available only for Incident issues.",
@@ -4113,7 +4113,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/metric_images": {
+    "/projects/{id}/issues/{issue_iid}/metric_images": {
       "get": {
         "summary": "List metric images",
         "description": "Available only for Incident issues.",
@@ -4174,7 +4174,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/metric_images/:image_id": {
+    "/projects/{id}/issues/{issue_iid}/metric_images/{image_id}": {
       "put": {
         "summary": "Update metric image",
         "description": "Available only for Incident issues.",
@@ -4262,7 +4262,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/metric_images/:image_id": {
+    "/projects/{id}/issues/{issue_iid}/metric_images/{image_id}": {
       "delete": {
         "summary": "Delete metric image",
         "description": "Available only for Incident issues.",

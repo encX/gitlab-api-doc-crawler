@@ -115,7 +115,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id": {
+    "/projects/{id}/milestones/{milestone_id}": {
       "get": {
         "summary": "Get single milestone",
         "description": "Gets a single project milestone.",
@@ -224,7 +224,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id": {
+    "/projects/{id}/milestones/{milestone_id}": {
       "put": {
         "summary": "Edit milestone",
         "description": "Updates an existing project milestone.",
@@ -310,7 +310,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id": {
+    "/projects/{id}/milestones/{milestone_id}": {
       "delete": {
         "summary": "Delete project milestone",
         "description": "Only for users with the Developer role in the project.",
@@ -351,7 +351,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id/issues": {
+    "/projects/{id}/milestones/{milestone_id}/issues": {
       "get": {
         "summary": "Get all issues assigned to a single milestone",
         "description": "Gets all issues assigned to a single project milestone.",
@@ -392,7 +392,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id/merge_requests": {
+    "/projects/{id}/milestones/{milestone_id}/merge_requests": {
       "get": {
         "summary": "Get all merge requests assigned to a single milestone",
         "description": "Gets all merge requests assigned to a single project milestone.",
@@ -433,7 +433,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id/promote": {
+    "/projects/{id}/milestones/{milestone_id}/promote": {
       "post": {
         "summary": "Promote project milestone to a group milestone",
         "description": "Only for users with the Developer role in the group.",
@@ -474,7 +474,7 @@
     }
   },
   {
-    "/projects/{id}/milestones/:milestone_id/burndown_events": {
+    "/projects/{id}/milestones/{milestone_id}/burndown_events": {
       "get": {
         "summary": "Get all burndown chart events for a single milestone",
         "description": "Gets all burndown chart events for a single milestone.",

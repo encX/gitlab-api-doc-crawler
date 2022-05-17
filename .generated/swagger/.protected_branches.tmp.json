@@ -98,7 +98,7 @@
     }
   },
   {
-    "/projects/{id}/protected_branches/:name": {
+    "/projects/{id}/protected_branches/{name}": {
       "get": {
         "summary": "Get a single protected branch or wildcard protected branch",
         "description": "Gets a single protected branch or wildcard protected branch.",
@@ -350,7 +350,7 @@
     }
   },
   {
-    "/projects/{id}/protected_branches/:name": {
+    "/projects/{id}/protected_branches/{name}": {
       "delete": {
         "summary": "Unprotect repository branches",
         "description": "Unprotects the given protected branch or wildcard protected branch.",
@@ -391,7 +391,7 @@
     }
   },
   {
-    "/projects/{id}/protected_branches/:name": {
+    "/projects/{id}/protected_branches/{name}": {
       "patch": {
         "summary": "Require code owner approvals for a single branch",
         "description": "Update the “code owner approval required” option for the given protected branch.",

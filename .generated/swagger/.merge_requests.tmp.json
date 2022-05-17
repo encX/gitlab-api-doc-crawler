@@ -307,7 +307,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid": {
+    "/projects/{id}/merge_requests/{merge_request_iid}": {
       "get": {
         "summary": "Get single MR",
         "description": "Shows information about a single merge request.",
@@ -781,7 +781,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/participants": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/participants": {
       "get": {
         "summary": "Get single MR participants",
         "description": "Get a list of merge request participants.",
@@ -845,7 +845,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/commits": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/commits": {
       "get": {
         "summary": "Get single MR commits",
         "description": "Get a list of merge request commits.",
@@ -912,7 +912,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/changes": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/changes": {
       "get": {
         "summary": "Get single MR changes",
         "description": "Shows information about the merge request including its files and changes.",
@@ -1262,7 +1262,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/pipelines": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/pipelines": {
       "get": {
         "summary": "List MR pipelines",
         "description": "Get a list of merge request pipelines.",
@@ -1320,7 +1320,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/pipelines": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/pipelines": {
       "post": {
         "summary": "Create MR Pipeline",
         "description": "Create a new pipeline for a merge request. A pipeline created via this endpoint doesn’t run a regular branch/tag pipeline. It requires .gitlab-ci.yml to be configured with only: [merge_requests] to create jobs.",
@@ -1964,7 +1964,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid": {
+    "/projects/{id}/merge_requests/{merge_request_iid}": {
       "put": {
         "summary": "Update MR",
         "description": "Updates an existing merge request. You can change the target branch, title, or even close the MR.",
@@ -2535,7 +2535,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid": {
+    "/projects/{id}/merge_requests/{merge_request_iid}": {
       "delete": {
         "summary": "Delete a merge request",
         "description": "Only for administrators and project owners. Deletes the merge request in question.",
@@ -2576,7 +2576,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/merge": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/merge": {
       "put": {
         "summary": "Merge a merge request",
         "description": "Accept and merge changes submitted with MR using this API.",
@@ -3017,7 +3017,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/merge_ref": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/merge_ref": {
       "get": {
         "summary": "Merge to default merge ref path",
         "description": "Merge the changes between the merge request source and target branches into refs/merge-requests/:iid/merge ref, of the target project repository, if possible. This ref has the state the target branch would have if a regular merge action was taken.",
@@ -3063,7 +3063,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/cancel_merge_when_pipeline_succeeds": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge_when_pipeline_succeeds": {
       "post": {
         "summary": "Cancel Merge When Pipeline Succeeds",
         "description": "This API returns specific HTTP status codes on failure:",
@@ -3490,7 +3490,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/rebase": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/rebase": {
       "put": {
         "summary": "Rebase a merge request",
         "description": "Automatically rebase the source_branch of the merge request against its target_branch.",
@@ -3548,7 +3548,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/closes_issues": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/closes_issues": {
       "get": {
         "summary": "List issues that close on merge",
         "description": "Get all the issues that would be closed by merging the provided merge request.",
@@ -3600,7 +3600,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/subscribe": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/subscribe": {
       "post": {
         "summary": "Subscribe to a merge request",
         "description": "Subscribes the authenticated user to a merge request to receive notification. If the user is already subscribed to the merge request, the status code HTTP 304 Not Modified is returned.",
@@ -4024,7 +4024,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/unsubscribe": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/unsubscribe": {
       "post": {
         "summary": "Unsubscribe from a merge request",
         "description": "Unsubscribes the authenticated user from a merge request to not receive notifications from that merge request. If the user is not subscribed to the merge request, the status code HTTP 304 Not Modified is returned.",
@@ -4448,7 +4448,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/todo": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/todo": {
       "post": {
         "summary": "Create a to-do item",
         "description": "Manually creates a to-do item for the current user on a merge request. If there already exists a to-do item for the user on that merge request, status code HTTP 304 Not Modified is returned.",
@@ -4795,7 +4795,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/versions": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/versions": {
       "get": {
         "summary": "Get MR diff versions",
         "description": "Get a list of merge request diff versions. For an explanation of the SHAs in the response, read SHAs in the API response.",
@@ -4865,7 +4865,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/versions/:version_id": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/versions/{version_id}": {
       "get": {
         "summary": "Get a single MR diff version",
         "description": "Get a single merge request diff version. For an explanation of the SHAs in the response, read SHAs in the API response.",
@@ -5002,7 +5002,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/time_estimate": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/time_estimate": {
       "post": {
         "summary": "Set a time estimate for a merge request",
         "description": "Sets an estimated time of work for this merge request.",
@@ -5066,7 +5066,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/reset_time_estimate": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate": {
       "post": {
         "summary": "Reset the time estimate for a merge request",
         "description": "Resets the estimated time for this merge request to 0 seconds.",
@@ -5121,7 +5121,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/add_spent_time": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time": {
       "post": {
         "summary": "Add spent time for a merge request",
         "description": "Adds spent time for this merge request.",
@@ -5194,7 +5194,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/reset_spent_time": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time": {
       "post": {
         "summary": "Reset spent time for a merge request",
         "description": "Resets the total spent time for this merge request to 0 seconds.",
@@ -5249,7 +5249,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/time_stats": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/time_stats": {
       "get": {
         "summary": "Get time tracking stats",
         "description": "",

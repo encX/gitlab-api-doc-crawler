@@ -107,7 +107,7 @@
     }
   },
   {
-    "/groups/{id}/access_requests/:user_id/approve": {
+    "/groups/{id}/access_requests/{user_id}/approve": {
       "put": {
         "summary": "Approve an access request",
         "description": "Approves an access request for the given user.",
@@ -177,7 +177,7 @@
     }
   },
   {
-    "/groups/{id}/access_requests/:user_id": {
+    "/groups/{id}/access_requests/{user_id}": {
       "delete": {
         "summary": "Deny an access request",
         "description": "Denies an access request for the given user.",

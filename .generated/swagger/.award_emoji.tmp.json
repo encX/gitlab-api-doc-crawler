@@ -1,6 +1,6 @@
 [
   {
-    "/projects/{id}/issues/:issue_iid/award_emoji": {
+    "/projects/{id}/issues/{issue_iid}/award_emoji": {
       "get": {
         "summary": "List an awardable’s award emojis",
         "description": "Get a list of all award emojis for a specified awardable.",
@@ -87,7 +87,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/award_emoji/:award_id": {
+    "/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}": {
       "get": {
         "summary": "Get single award emoji",
         "description": "Get a single award emoji from an issue, snippet, or merge request.",
@@ -180,7 +180,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/award_emoji": {
+    "/projects/{id}/issues/{issue_iid}/award_emoji": {
       "post": {
         "summary": "Award a new emoji",
         "description": "Create an award emoji on the specified awardable.",
@@ -273,7 +273,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/award_emoji/:award_id": {
+    "/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}": {
       "delete": {
         "summary": "Delete an award emoji",
         "description": "Sometimes it’s just not meant to be and you need to remove the award.",
@@ -323,7 +323,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id/award_emoji": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji": {
       "get": {
         "summary": "List a comment’s award emojis",
         "description": "Get all award emojis for a comment (note).",
@@ -419,7 +419,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id/award_emoji/:award_id": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}": {
       "get": {
         "summary": "Get an award emoji for a comment",
         "description": "Get a single award emoji for a comment (note).",
@@ -521,7 +521,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id/award_emoji": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji": {
       "post": {
         "summary": "Award a new emoji on a comment",
         "description": "Create an award emoji on the specified comment (note).",
@@ -623,7 +623,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id/award_emoji/:award_id": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}": {
       "delete": {
         "summary": "Delete an award emoji from a comment",
         "description": "Sometimes it’s just not meant to be and you need to remove the award.",

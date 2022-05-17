@@ -1,6 +1,6 @@
 [
   {
-    "/projects/{id}/releases/:tag_name/assets/links": {
+    "/projects/{id}/releases/{tag_name}/assets/links": {
       "get": {
         "summary": "Get links",
         "description": "Get assets as links from a Release.",
@@ -61,7 +61,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name/assets/links/:link_id": {
+    "/projects/{id}/releases/{tag_name}/assets/links/{link_id}": {
       "get": {
         "summary": "Get a link",
         "description": "Get an asset as a link from a Release.",
@@ -128,7 +128,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name/assets/links": {
+    "/projects/{id}/releases/{tag_name}/assets/links": {
       "post": {
         "summary": "Create a link",
         "description": "Create an asset as a link from a Release.",
@@ -225,7 +225,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name/assets/links/:link_id": {
+    "/projects/{id}/releases/{tag_name}/assets/links/{link_id}": {
       "put": {
         "summary": "Update a link",
         "description": "Update an asset as a link from a Release.",
@@ -328,7 +328,7 @@
     }
   },
   {
-    "/projects/{id}/releases/:tag_name/assets/links/:link_id": {
+    "/projects/{id}/releases/{tag_name}/assets/links/{link_id}": {
       "delete": {
         "summary": "Delete a link",
         "description": "Delete an asset as a link from a Release.",

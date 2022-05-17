@@ -1,6 +1,6 @@
 [
   {
-    "/groups/{id}/epics/:epic_iid/issues": {
+    "/groups/{id}/epics/{epic_iid}/issues": {
       "get": {
         "summary": "List issues for an epic",
         "description": "Gets all issues that are assigned to an epic and the authenticated user has access to.",
@@ -245,7 +245,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/issues/:issue_id": {
+    "/groups/{id}/epics/{epic_iid}/issues/{issue_id}": {
       "post": {
         "summary": "Assign an issue to the epic",
         "description": "Creates an epic - issue association. If the issue in question belongs to another epic it is unassigned from that epic.",
@@ -530,7 +530,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/issues/:epic_issue_id": {
+    "/groups/{id}/epics/{epic_iid}/issues/{epic_issue_id}": {
       "delete": {
         "summary": "Remove an issue from the epic",
         "description": "Removes an epic - issue association.",
@@ -815,7 +815,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/issues/:epic_issue_id": {
+    "/groups/{id}/epics/{epic_iid}/issues/{epic_issue_id}": {
       "put": {
         "summary": "Update epic - issue association",
         "description": "Updates an epic - issue association.",

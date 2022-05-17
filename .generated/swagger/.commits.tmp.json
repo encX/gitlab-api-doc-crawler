@@ -307,7 +307,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha": {
+    "/projects/{id}/repository/commits/{sha}": {
       "get": {
         "summary": "Get a single commit",
         "description": "Get a specific commit identified by the commit hash or name of a branch or tag.",
@@ -435,7 +435,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/refs": {
+    "/projects/{id}/repository/commits/{sha}/refs": {
       "get": {
         "summary": "Get references a commit is pushed to",
         "description": "",
@@ -496,7 +496,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/cherry_pick": {
+    "/projects/{id}/repository/commits/{sha}/cherry_pick": {
       "post": {
         "summary": "Cherry-pick a commit",
         "description": "Cherry-picks a commit to a given branch.",
@@ -614,7 +614,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/revert": {
+    "/projects/{id}/repository/commits/{sha}/revert": {
       "post": {
         "summary": "Revert a commit",
         "description": "Reverts a commit in a given branch.",
@@ -723,7 +723,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/diff": {
+    "/projects/{id}/repository/commits/{sha}/diff": {
       "get": {
         "summary": "Get the diff of a commit",
         "description": "Get the diff of a commit in a project.",
@@ -793,7 +793,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/comments": {
+    "/projects/{id}/repository/commits/{sha}/comments": {
       "get": {
         "summary": "Get the comments of a commit",
         "description": "Get the comments of a commit in a project.",
@@ -865,7 +865,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/comments": {
+    "/projects/{id}/repository/commits/{sha}/comments": {
       "post": {
         "summary": "Post comment to commit",
         "description": "Adds a comment to a commit.",
@@ -982,7 +982,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/discussions": {
+    "/projects/{id}/repository/commits/{sha}/discussions": {
       "get": {
         "summary": "Get the discussions of a commit",
         "description": "Get the discussions of a commit in a project.",
@@ -1105,7 +1105,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/statuses": {
+    "/projects/{id}/repository/commits/{sha}/statuses": {
       "get": {
         "summary": "List the statuses of a commit",
         "description": "",
@@ -1243,7 +1243,7 @@
     }
   },
   {
-    "/projects/{id}/statuses/:sha": {
+    "/projects/{id}/statuses/{sha}": {
       "post": {
         "summary": "Post the build status to a commit",
         "description": "Adds or updates a build status of a commit.",
@@ -1408,7 +1408,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/merge_requests": {
+    "/projects/{id}/repository/commits/{sha}/merge_requests": {
       "get": {
         "summary": "List merge requests associated with a commit",
         "description": "Get a list of merge requests related to the specified commit.",
@@ -1582,7 +1582,7 @@
     }
   },
   {
-    "/projects/{id}/repository/commits/:sha/signature": {
+    "/projects/{id}/repository/commits/{sha}/signature": {
       "get": {
         "summary": "Get GPG signature of a commit",
         "description": "Get the GPG signature from a commit, if it is signed. For unsigned commits, it results in a 404 response.",

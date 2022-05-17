@@ -1,6 +1,6 @@
 [
   {
-    "/projects/{id}/issues/:issue_iid/notes": {
+    "/projects/{id}/issues/{issue_iid}/notes": {
       "get": {
         "summary": "List project issue notes",
         "description": "Gets a list of all notes for a single issue.",
@@ -120,7 +120,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}": {
       "get": {
         "summary": "Get single issue note",
         "description": "Returns a single note for a specific project issue",
@@ -170,7 +170,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes": {
+    "/projects/{id}/issues/{issue_iid}/notes": {
       "post": {
         "summary": "Create new issue note",
         "description": "Creates a new note to a single project issue.",
@@ -238,7 +238,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}": {
       "put": {
         "summary": "Modify existing issue note",
         "description": "Modify existing note of an issue.",
@@ -306,7 +306,7 @@
     }
   },
   {
-    "/projects/{id}/issues/:issue_iid/notes/:note_id": {
+    "/projects/{id}/issues/{issue_iid}/notes/{note_id}": {
       "delete": {
         "summary": "Delete an issue note",
         "description": "Deletes an existing note of an issue.",
@@ -356,7 +356,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/notes": {
+    "/projects/{id}/snippets/{snippet_id}/notes": {
       "get": {
         "summary": "List all snippet notes",
         "description": "Gets a list of all notes for a single snippet. Snippet notes are comments users can post to a snippet.",
@@ -415,7 +415,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/notes/:note_id": {
+    "/projects/{id}/snippets/{snippet_id}/notes/{note_id}": {
       "get": {
         "summary": "Get single snippet note",
         "description": "Returns a single note for a given snippet.",
@@ -508,7 +508,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/notes": {
+    "/projects/{id}/snippets/{snippet_id}/notes": {
       "post": {
         "summary": "Create new snippet note",
         "description": "Creates a new note for a single snippet. Snippet notes are user comments on snippets. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
@@ -567,7 +567,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/notes/:note_id": {
+    "/projects/{id}/snippets/{snippet_id}/notes/{note_id}": {
       "put": {
         "summary": "Modify existing snippet note",
         "description": "Modify existing note of a snippet.",
@@ -626,7 +626,7 @@
     }
   },
   {
-    "/projects/{id}/snippets/:snippet_id/notes/:note_id": {
+    "/projects/{id}/snippets/{snippet_id}/notes/{note_id}": {
       "delete": {
         "summary": "Delete a snippet note",
         "description": "Deletes an existing note of a snippet.",
@@ -676,7 +676,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/notes": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/notes": {
       "get": {
         "summary": "List all merge request notes",
         "description": "Gets a list of all notes for a single merge request.",
@@ -735,7 +735,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/notes/:note_id": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}": {
       "get": {
         "summary": "Get single merge request note",
         "description": "Returns a single note for a given merge request.",
@@ -843,7 +843,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/notes": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/notes": {
       "post": {
         "summary": "Create new merge request note",
         "description": "Creates a new note for a single merge request. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
@@ -911,7 +911,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/notes/:note_id": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}": {
       "put": {
         "summary": "Modify existing merge request note",
         "description": "Modify existing note of a merge request.",
@@ -970,7 +970,7 @@
     }
   },
   {
-    "/projects/{id}/merge_requests/:merge_request_iid/notes/:note_id": {
+    "/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}": {
       "delete": {
         "summary": "Delete a merge request note",
         "description": "Deletes an existing note of a merge request.",
@@ -1020,7 +1020,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_id/notes": {
+    "/groups/{id}/epics/{epic_id}/notes": {
       "get": {
         "summary": "List all epic notes",
         "description": "Gets a list of all notes for a single epic. Epic notes are comments users can post to an epic.",
@@ -1079,7 +1079,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_id/notes/:note_id": {
+    "/groups/{id}/epics/{epic_id}/notes/{note_id}": {
       "get": {
         "summary": "Get single epic note",
         "description": "Returns a single note for a given epic.",
@@ -1175,7 +1175,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_id/notes": {
+    "/groups/{id}/epics/{epic_id}/notes": {
       "post": {
         "summary": "Create new epic note",
         "description": "Creates a new note for a single epic. Epic notes are comments users can post to an epic. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
@@ -1225,7 +1225,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_id/notes/:note_id": {
+    "/groups/{id}/epics/{epic_id}/notes/{note_id}": {
       "put": {
         "summary": "Modify existing epic note",
         "description": "Modify existing note of an epic.",
@@ -1284,7 +1284,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_id/notes/:note_id": {
+    "/groups/{id}/epics/{epic_id}/notes/{note_id}": {
       "delete": {
         "summary": "Delete an epic note",
         "description": "Deletes an existing note of an epic.",

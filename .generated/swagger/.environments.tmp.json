@@ -59,7 +59,7 @@
     }
   },
   {
-    "/projects/{id}/environments/:environment_id": {
+    "/projects/{id}/environments/{environment_id}": {
       "get": {
         "summary": "Get a specific environment",
         "description": "Example of response",
@@ -429,7 +429,7 @@
     }
   },
   {
-    "/projects/{id}/environments/:environments_id": {
+    "/projects/{id}/environments/{environments_id}": {
       "put": {
         "summary": "Edit an existing environment",
         "description": "Updates an existing environment’s name and/or external_url.",
@@ -511,7 +511,7 @@
     }
   },
   {
-    "/projects/{id}/environments/:environment_id": {
+    "/projects/{id}/environments/{environment_id}": {
       "delete": {
         "summary": "Delete an environment",
         "description": "It returns 204 if the environment was successfully deleted, and 404 if the environment does not exist.",
@@ -637,7 +637,7 @@
     }
   },
   {
-    "/projects/{id}/environments/:environment_id/stop": {
+    "/projects/{id}/environments/{environment_id}/stop": {
       "post": {
         "summary": "Stop an environment",
         "description": "It returns 200 if the environment was successfully stopped, and 404 if the environment does not exist.",

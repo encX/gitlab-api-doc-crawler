@@ -166,7 +166,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id": {
+    "/projects/{id}/pipelines/{pipeline_id}": {
       "get": {
         "summary": "Get a single pipeline",
         "description": "Get one pipeline from a project.",
@@ -286,7 +286,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id/variables": {
+    "/projects/{id}/pipelines/{pipeline_id}/variables": {
       "get": {
         "summary": "Get variables of a pipeline",
         "description": "Example of response",
@@ -341,7 +341,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id/test_report": {
+    "/projects/{id}/pipelines/{pipeline_id}/test_report": {
       "get": {
         "summary": "Get a pipeline’s test report",
         "description": "Sample request:",
@@ -457,7 +457,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id/test_report_summary": {
+    "/projects/{id}/pipelines/{pipeline_id}/test_report_summary": {
       "get": {
         "summary": "Get a pipeline’s test report summary",
         "description": "Sample request:",
@@ -693,7 +693,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id/retry": {
+    "/projects/{id}/pipelines/{pipeline_id}/retry": {
       "post": {
         "summary": "Retry jobs in a pipeline",
         "description": "Response:",
@@ -813,7 +813,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id/cancel": {
+    "/projects/{id}/pipelines/{pipeline_id}/cancel": {
       "post": {
         "summary": "Cancel a pipeline’s jobs",
         "description": "Response:",
@@ -933,7 +933,7 @@
     }
   },
   {
-    "/projects/{id}/pipelines/:pipeline_id": {
+    "/projects/{id}/pipelines/{pipeline_id}": {
       "delete": {
         "summary": "Delete a pipeline",
         "description": "",

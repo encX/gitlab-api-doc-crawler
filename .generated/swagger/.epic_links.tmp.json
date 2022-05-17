@@ -1,6 +1,6 @@
 [
   {
-    "/groups/{id}/epics/:epic_iid/epics": {
+    "/groups/{id}/epics/{epic_iid}/epics": {
       "get": {
         "summary": "List epics related to a given epic",
         "description": "Gets all child epics of an epic.",
@@ -130,7 +130,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/epics/:child_epic_id": {
+    "/groups/{id}/epics/{epic_iid}/epics/{child_epic_id}": {
       "post": {
         "summary": "Assign a child epic",
         "description": "Creates an association between two epics, designating one as the parent epic and the other as the child epic. A parent epic can have multiple child epics. If the new child epic already belonged to another epic, it is unassigned from that previous parent.",
@@ -266,7 +266,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/epics": {
+    "/groups/{id}/epics/{epic_iid}/epics": {
       "post": {
         "summary": "Create and assign a child epic",
         "description": "Creates a new epic and associates it with provided parent epic. The response is LinkedEpic object.",
@@ -357,7 +357,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/epics/:child_epic_id": {
+    "/groups/{id}/epics/{epic_iid}/epics/{child_epic_id}": {
       "put": {
         "summary": "Re-order a child epic",
         "description": "",
@@ -514,7 +514,7 @@
     }
   },
   {
-    "/groups/{id}/epics/:epic_iid/epics/:child_epic_id": {
+    "/groups/{id}/epics/{epic_iid}/epics/{child_epic_id}": {
       "delete": {
         "summary": "Unassign a child epic",
         "description": "Unassigns a child epic from a parent epic.",

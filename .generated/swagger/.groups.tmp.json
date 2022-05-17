@@ -1928,7 +1928,7 @@
     }
   },
   {
-    "/groups/{id}/projects/:project_id": {
+    "/groups/{id}/projects/{project_id}": {
       "post": {
         "summary": "Transfer project to group",
         "description": "Transfer a project to the Group namespace. Available only to instance administrators, although an alternative API endpoint is available which does not require administrator access on the instance. Transferring projects may fail when tagged packages exist in the project’s repository.",
@@ -2758,7 +2758,7 @@
     }
   },
   {
-    "/groups/{id}/hooks/:hook_id": {
+    "/groups/{id}/hooks/{hook_id}": {
       "get": {
         "summary": "Get group hook",
         "description": "Get a specific hook for a group.",
@@ -3031,7 +3031,7 @@
     }
   },
   {
-    "/groups/{id}/hooks/:hook_id": {
+    "/groups/{id}/hooks/{hook_id}": {
       "put": {
         "summary": "Edit group hook",
         "description": "Edits a hook for a specified group.",
@@ -3216,7 +3216,7 @@
     }
   },
   {
-    "/groups/{id}/hooks/:hook_id": {
+    "/groups/{id}/hooks/{hook_id}": {
       "delete": {
         "summary": "Delete group hook",
         "description": "Removes a hook from a group. This is an idempotent method and can be called multiple times. Either the hook is available or not.",
@@ -3379,7 +3379,7 @@
     }
   },
   {
-    "/groups/{id}/ldap_group_links/:cn": {
+    "/groups/{id}/ldap_group_links/{cn}": {
       "delete": {
         "summary": "Delete LDAP group link",
         "description": "Deletes an LDAP group link. Deprecated. Scheduled for removal in a future release.",
@@ -3547,7 +3547,7 @@
     }
   },
   {
-    "/groups/{id}/share/:group_id": {
+    "/groups/{id}/share/{group_id}": {
       "delete": {
         "summary": "Delete link sharing group with another group",
         "description": "Unshare the group from another group. Returns 204 and no content on success.",

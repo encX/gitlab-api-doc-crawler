@@ -133,7 +133,7 @@
     }
   },
   {
-    "/projects/{id}/deploy_keys/:key_id": {
+    "/projects/{id}/deploy_keys/{key_id}": {
       "get": {
         "summary": "Get a single deploy key",
         "description": "Get a single key.",
@@ -267,7 +267,7 @@
     }
   },
   {
-    "/projects/{id}/deploy_keys/:key_id": {
+    "/projects/{id}/deploy_keys/{key_id}": {
       "put": {
         "summary": "Update deploy key",
         "description": "Updates a deploy key for a project.",
@@ -334,7 +334,7 @@
     }
   },
   {
-    "/projects/{id}/deploy_keys/:key_id": {
+    "/projects/{id}/deploy_keys/{key_id}": {
       "delete": {
         "summary": "Delete deploy key",
         "description": "Removes a deploy key from the project. If the deploy key is used only for this project, it’s deleted from the system.",
