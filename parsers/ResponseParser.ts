@@ -1,5 +1,5 @@
 import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
-import { ensureDirSync } from "https://deno.land/std@0.132.0/fs/mod.ts";
+import { ensureDirSync } from "https://deno.land/std@0.139.0/fs/mod.ts";
 
 import { Parser } from "./Parser.ts";
 

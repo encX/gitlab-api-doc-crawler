@@ -1,0 +1,245 @@
+endpoints:
+  - /broadcast_messages:
+      get:
+        summary: Get all broadcast messages
+        description: List all broadcast messages.
+        operationId: getAllBroadcastMessages
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      starts_at:
+                        type: string
+                      ends_at:
+                        type: string
+                      color:
+                        type: string
+                      font:
+                        type: string
+                      id:
+                        type: integer
+                      active:
+                        type: boolean
+                      target_access_levels:
+                        type: array
+                        items:
+                          type: integer
+                      target_path:
+                        type: string
+                      broadcast_type:
+                        type: string
+                      dismissable:
+                        type: boolean
+  - '/broadcast_messages/{id}':
+      get:
+        summary: Get a specific broadcast message
+        description: Get a specific broadcast message.
+        operationId: getASpecificBroadcastMessage
+        parameters:
+          - name: id
+            in: path
+            description: ID of broadcast message to retrieve.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    starts_at:
+                      type: string
+                    ends_at:
+                      type: string
+                    color:
+                      type: string
+                    font:
+                      type: string
+                    id:
+                      type: integer
+                    active:
+                      type: boolean
+                    target_access_levels:
+                      type: array
+                      items:
+                        type: integer
+                    target_path:
+                      type: string
+                    broadcast_type:
+                      type: string
+                    dismissable:
+                      type: boolean
+  - /broadcast_messages:
+      post:
+        summary: Create a broadcast message
+        description: Create a new broadcast message.
+        operationId: createABroadcastMessage
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    starts_at:
+                      type: string
+                    ends_at:
+                      type: string
+                    color:
+                      type: string
+                    font:
+                      type: string
+                    id:
+                      type: integer
+                    active:
+                      type: boolean
+                    target_access_levels:
+                      type: array
+                      items:
+                        type: integer
+                    target_path:
+                      type: string
+                    broadcast_type:
+                      type: string
+                    dismissable:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  ends_at:
+                    type: string
+                    format: date-time
+                  color:
+                    type: string
+                  font:
+                    type: string
+                  target_access_levels:
+                    type: array
+                    items:
+                      type: integer
+                  target_path:
+                    type: string
+                  broadcast_type:
+                    type: string
+                  dismissable:
+                    type: boolean
+                required:
+                  - message
+  - '/broadcast_messages/{id}':
+      put:
+        summary: Update a broadcast message
+        description: Update an existing broadcast message.
+        operationId: updateABroadcastMessage
+        parameters:
+          - name: id
+            in: path
+            description: ID of broadcast message to update.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    starts_at:
+                      type: string
+                    ends_at:
+                      type: string
+                    color:
+                      type: string
+                    font:
+                      type: string
+                    id:
+                      type: integer
+                    active:
+                      type: boolean
+                    target_access_levels:
+                      type: array
+                      items:
+                        type: integer
+                    target_path:
+                      type: string
+                    broadcast_type:
+                      type: string
+                    dismissable:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  starts_at:
+                    type: string
+                    format: date-time
+                  ends_at:
+                    type: string
+                    format: date-time
+                  color:
+                    type: string
+                  font:
+                    type: string
+                  target_access_levels:
+                    type: array
+                    items:
+                      type: integer
+                  target_path:
+                    type: string
+                  broadcast_type:
+                    type: string
+                  dismissable:
+                    type: boolean
+                required: []
+  - '/broadcast_messages/{id}':
+      delete:
+        summary: Delete a broadcast message
+        description: Delete a broadcast message.
+        operationId: deleteABroadcastMessage
+        parameters:
+          - name: id
+            in: path
+            description: ID of broadcast message to delete.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string

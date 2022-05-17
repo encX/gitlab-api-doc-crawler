@@ -1,0 +1,235 @@
+endpoints:
+  - '/projects/{id}/releases/{tag_name}/assets/links':
+      get:
+        summary: Get links
+        description: Get assets as links from a Release.
+        operationId: getLinks
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project.
+            required: true
+            schema:
+              type: string
+          - name: tag_name
+            in: path
+            description: The tag associated with the Release.
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      url:
+                        type: string
+                      external:
+                        type: boolean
+                      link_type:
+                        type: string
+  - '/projects/{id}/releases/{tag_name}/assets/links/{link_id}':
+      get:
+        summary: Get a link
+        description: Get an asset as a link from a Release.
+        operationId: getALink
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project.
+            required: true
+            schema:
+              type: string
+          - name: tag_name
+            in: path
+            description: The tag associated with the Release.
+            required: true
+            schema:
+              type: string
+          - name: link_id
+            in: path
+            description: The ID of the link.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    external:
+                      type: boolean
+                    link_type:
+                      type: string
+  - '/projects/{id}/releases/{tag_name}/assets/links':
+      post:
+        summary: Create a link
+        description: Create an asset as a link from a Release.
+        operationId: createALink
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project.
+            required: true
+            schema:
+              type: string
+          - name: tag_name
+            in: path
+            description: The tag associated with the Release.
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    direct_asset_url:
+                      type: string
+                    external:
+                      type: boolean
+                    link_type:
+                      type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  url:
+                    type: string
+                  filepath:
+                    type: string
+                  link_type:
+                    type: string
+                required:
+                  - name
+                  - url
+  - '/projects/{id}/releases/{tag_name}/assets/links/{link_id}':
+      put:
+        summary: Update a link
+        description: Update an asset as a link from a Release.
+        operationId: updateALink
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project.
+            required: true
+            schema:
+              type: string
+          - name: tag_name
+            in: path
+            description: The tag associated with the Release.
+            required: true
+            schema:
+              type: string
+          - name: link_id
+            in: path
+            description: The ID of the link.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    external:
+                      type: boolean
+                    link_type:
+                      type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  url:
+                    type: string
+                  filepath:
+                    type: string
+                  link_type:
+                    type: string
+                required: []
+  - '/projects/{id}/releases/{tag_name}/assets/links/{link_id}':
+      delete:
+        summary: Delete a link
+        description: Delete an asset as a link from a Release.
+        operationId: deleteALink
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project.
+            required: true
+            schema:
+              type: string
+          - name: tag_name
+            in: path
+            description: The tag associated with the Release.
+            required: true
+            schema:
+              type: string
+          - name: link_id
+            in: path
+            description: The ID of the link.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    external:
+                      type: boolean
+                    link_type:
+                      type: string

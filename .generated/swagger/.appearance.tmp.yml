@@ -1,0 +1,124 @@
+endpoints:
+  - /application/appearance:
+      get:
+        summary: Get current appearance configuration
+        description: List the current appearance configuration of the GitLab instance.
+        operationId: getCurrentAppearanceConfiguration
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    logo:
+                      type: string
+                    header_logo:
+                      type: string
+                    favicon:
+                      type: string
+                    new_project_guidelines:
+                      type: string
+                    profile_image_guidelines:
+                      type: string
+                    header_message:
+                      type: string
+                    footer_message:
+                      type: string
+                    message_background_color:
+                      type: string
+                    message_font_color:
+                      type: string
+                    email_header_and_footer_enabled:
+                      type: boolean
+  - /application/appearance:
+      put:
+        summary: Change appearance configuration
+        description: Use an API call to modify GitLab instance appearance configuration.
+        operationId: changeAppearanceConfiguration
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    logo:
+                      type: string
+                    header_logo:
+                      type: string
+                    favicon:
+                      type: string
+                    new_project_guidelines:
+                      type: string
+                    profile_image_guidelines:
+                      type: string
+                    header_message:
+                      type: string
+                    footer_message:
+                      type: string
+                    message_background_color:
+                      type: string
+                    message_font_color:
+                      type: string
+                    email_header_and_footer_enabled:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  new_project_guidelines:
+                    type: string
+                  profile_image_guidelines:
+                    type: string
+                  header_message:
+                    type: string
+                  footer_message:
+                    type: string
+                  message_background_color:
+                    type: string
+                  message_font_color:
+                    type: string
+                  email_header_and_footer_enabled:
+                    type: boolean
+                required: []
+  - /application/appearance:
+      put:
+        summary: Change logo
+        description: Upload a logo to your GitLab instance.
+        operationId: changeLogo
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  logo:
+                    type: string
+                required: []

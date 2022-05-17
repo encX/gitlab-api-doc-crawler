@@ -1,0 +1,1562 @@
+endpoints:
+  - '/projects/{id}/approvals':
+      get:
+        summary: Get Configuration
+        description: >-
+          You can request information about a project’s approval configuration
+          using the following endpoint:
+        operationId: getConfiguration
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    approvals_before_merge:
+                      type: integer
+                    reset_approvals_on_push:
+                      type: boolean
+                    disable_overriding_approvers_per_merge_request:
+                      type: boolean
+                    merge_requests_author_approval:
+                      type: boolean
+                    merge_requests_disable_committers_approval:
+                      type: boolean
+                    require_password_to_approve:
+                      type: boolean
+  - '/projects/{id}/approvals':
+      post:
+        summary: Change configuration
+        description: >-
+          If you are allowed to, you can change approval configuration using the
+          following endpoint:
+        operationId: changeConfiguration
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    approvals_before_merge:
+                      type: integer
+                    reset_approvals_on_push:
+                      type: boolean
+                    disable_overriding_approvers_per_merge_request:
+                      type: boolean
+                    merge_requests_author_approval:
+                      type: boolean
+                    merge_requests_disable_committers_approval:
+                      type: boolean
+                    require_password_to_approve:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approvals_before_merge:
+                    type: integer
+                  reset_approvals_on_push:
+                    type: boolean
+                  disable_overriding_approvers_per_merge_request:
+                    type: boolean
+                  merge_requests_author_approval:
+                    type: boolean
+                  merge_requests_disable_committers_approval:
+                    type: boolean
+                  require_password_to_approve:
+                    type: boolean
+                required: []
+  - '/projects/{id}/approval_rules':
+      get:
+        summary: Get project-level rules
+        description: >-
+          You can request information about a project’s approval rules using the
+          following endpoint:
+        operationId: getProject-levelRules
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      rule_type:
+                        type: string
+                      eligible_approvers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                      approvals_required:
+                        type: integer
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                      groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            path:
+                              type: string
+                            description:
+                              type: string
+                            visibility:
+                              type: string
+                            lfs_enabled:
+                              type: boolean
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                            request_access_enabled:
+                              type: boolean
+                            full_name:
+                              type: string
+                            full_path:
+                              type: string
+                            parent_id:
+                              type: string
+                            ldap_cn:
+                              type: string
+                            ldap_access:
+                              type: string
+                      protected_branches:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            push_access_levels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  access_level:
+                                    type: integer
+                                  access_level_description:
+                                    type: string
+                            merge_access_levels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  access_level:
+                                    type: integer
+                                  access_level_description:
+                                    type: string
+                            unprotect_access_levels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  access_level:
+                                    type: integer
+                                  access_level_description:
+                                    type: string
+                            code_owner_approval_required:
+                              type: string
+                      contains_hidden_groups:
+                        type: boolean
+  - '/projects/{id}/approval_rules/{approval_rule_id}':
+      get:
+        summary: Get a single project-level rule
+        description: >-
+          You can request information about a single project approval rules
+          using the following endpoint:
+        operationId: getASingleProject-levelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: approval_rule_id
+            in: path
+            description: The ID of a approval rule
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    protected_branches:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          push_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          merge_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          unprotect_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          code_owner_approval_required:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+  - '/projects/{id}/approval_rules':
+      post:
+        summary: Create project-level rule
+        description: 'You can create project approval rules using the following endpoint:'
+        operationId: createProject-levelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    protected_branches:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          push_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          merge_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          unprotect_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          code_owner_approval_required:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  approvals_required:
+                    type: integer
+                  rule_type:
+                    type: string
+                  report_type:
+                    type: string
+                  vulnerabilities_allowed:
+                    type: integer
+                required:
+                  - name
+                  - approvals_required
+  - '/projects/{id}/approval_rules/{approval_rule_id}':
+      put:
+        summary: Update project-level rule
+        description: 'You can update project approval rules using the following endpoint:'
+        operationId: updateProject-levelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: approval_rule_id
+            in: path
+            description: The ID of a approval rule
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    protected_branches:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          push_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          merge_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          unprotect_access_levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                access_level:
+                                  type: integer
+                                access_level_description:
+                                  type: string
+                          code_owner_approval_required:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  approvals_required:
+                    type: integer
+                  vulnerabilities_allowed:
+                    type: integer
+                required:
+                  - name
+                  - approvals_required
+  - '/projects/{id}/approval_rules/{approval_rule_id}':
+      delete:
+        summary: Delete project-level rule
+        description: 'You can delete project approval rules using the following endpoint:'
+        operationId: deleteProject-levelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: approval_rule_id
+            in: path
+            description: The ID of a approval rule
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
+      get:
+        summary: Get Configuration
+        description: >-
+          You can request information about a merge request’s approval status
+          using the following endpoint:
+        operationId: getConfiguration
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of MR
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    state:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    merge_status:
+                      type: string
+                    approvals_required:
+                      type: integer
+                    approvals_left:
+                      type: integer
+                    approved_by:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          user:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              username:
+                                type: string
+                              id:
+                                type: integer
+                              state:
+                                type: string
+                              avatar_url:
+                                type: string
+                              web_url:
+                                type: string
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
+      post:
+        summary: Change approval configuration
+        description: >-
+          If you are allowed to, you can change approvals_required using the
+          following endpoint:
+        operationId: changeApprovalConfiguration
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of MR
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    state:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    merge_status:
+                      type: string
+                    approvals_required:
+                      type: integer
+                    approvals_left:
+                      type: integer
+                    approved_by:
+                      type: array
+                      items: {}
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approvals_required:
+                    type: integer
+                required:
+                  - approvals_required
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_state':
+      get:
+        summary: Get the approval state of merge requests
+        description: >-
+          You can request information about a merge request’s approval state by
+          using the following endpoint:
+        operationId: getTheApprovalStateOfMergeRequests
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of MR
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    approval_rules_overwritten:
+                      type: boolean
+                    rules:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          rule_type:
+                            type: string
+                          eligible_approvers:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                                username:
+                                  type: string
+                                state:
+                                  type: string
+                                avatar_url:
+                                  type: string
+                                web_url:
+                                  type: string
+                          approvals_required:
+                            type: integer
+                          users:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                                username:
+                                  type: string
+                                state:
+                                  type: string
+                                avatar_url:
+                                  type: string
+                                web_url:
+                                  type: string
+                          groups:
+                            type: array
+                            items: {}
+                          contains_hidden_groups:
+                            type: boolean
+                          approved_by:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                                username:
+                                  type: string
+                                state:
+                                  type: string
+                                avatar_url:
+                                  type: string
+                                web_url:
+                                  type: string
+                          source_rule:
+                            type: string
+                          approved:
+                            type: boolean
+                          overridden:
+                            type: boolean
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules':
+      get:
+        summary: Get merge request level rules
+        description: >-
+          You can request information about a merge request’s approval rules
+          using the following endpoint:
+        operationId: getMergeRequestLevelRules
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of MR
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      rule_type:
+                        type: string
+                      eligible_approvers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                      approvals_required:
+                        type: integer
+                      source_rule:
+                        type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                      groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            path:
+                              type: string
+                            description:
+                              type: string
+                            visibility:
+                              type: string
+                            lfs_enabled:
+                              type: boolean
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                            request_access_enabled:
+                              type: boolean
+                            full_name:
+                              type: string
+                            full_path:
+                              type: string
+                            parent_id:
+                              type: string
+                            ldap_cn:
+                              type: string
+                            ldap_access:
+                              type: string
+                      contains_hidden_groups:
+                        type: boolean
+                      overridden:
+                        type: boolean
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}':
+      get:
+        summary: Get a single merge request level rule
+        description: >-
+          You can request information about a single merge request approval rule
+          using the following endpoint:
+        operationId: getASingleMergeRequestLevelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project.
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of a merge request.
+            required: true
+            schema:
+              type: integer
+          - name: approval_rule_id
+            in: path
+            description: The ID of an approval rule.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    source_rule:
+                      type: string
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+                    overridden:
+                      type: boolean
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules':
+      post:
+        summary: Create merge request level rule
+        description: >-
+          You can create merge request approval rules using the following
+          endpoint:
+        operationId: createMergeRequestLevelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of MR
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    source_rule:
+                      type: string
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+                    overridden:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  approvals_required:
+                    type: integer
+                  approval_project_rule_id:
+                    type: integer
+                required:
+                  - name
+                  - approvals_required
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}':
+      put:
+        summary: Update merge request level rule
+        description: >-
+          You can update merge request approval rules using the following
+          endpoint:
+        operationId: updateMergeRequestLevelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project.
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of a merge request.
+            required: true
+            schema:
+              type: integer
+          - name: approval_rule_id
+            in: path
+            description: The ID of an approval rule.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    rule_type:
+                      type: string
+                    eligible_approvers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    approvals_required:
+                      type: integer
+                    source_rule:
+                      type: string
+                    users:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                    groups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          path:
+                            type: string
+                          description:
+                            type: string
+                          visibility:
+                            type: string
+                          lfs_enabled:
+                            type: boolean
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                          request_access_enabled:
+                            type: boolean
+                          full_name:
+                            type: string
+                          full_path:
+                            type: string
+                          parent_id:
+                            type: string
+                          ldap_cn:
+                            type: string
+                          ldap_access:
+                            type: string
+                    contains_hidden_groups:
+                      type: boolean
+                    overridden:
+                      type: boolean
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  approvals_required:
+                    type: integer
+                required:
+                  - name
+                  - approvals_required
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}':
+      delete:
+        summary: Delete merge request level rule
+        description: >-
+          You can delete merge request approval rules using the following
+          endpoint:
+        operationId: deleteMergeRequestLevelRule
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of the merge request
+            required: true
+            schema:
+              type: integer
+          - name: approval_rule_id
+            in: path
+            description: The ID of an approval rule
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string
+  - '/projects/{id}/merge_requests/{merge_request_iid}/approve':
+      post:
+        summary: Approve merge request
+        description: >-
+          If you are allowed to, you can approve a merge request using the
+          following endpoint:
+        operationId: approveMergeRequest
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of the merge request
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    state:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    merge_status:
+                      type: string
+                    approvals_required:
+                      type: integer
+                    approvals_left:
+                      type: integer
+                    approved_by:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          user:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              username:
+                                type: string
+                              id:
+                                type: integer
+                              state:
+                                type: string
+                              avatar_url:
+                                type: string
+                              web_url:
+                                type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sha:
+                    type: string
+                  approval_password:
+                    type: string
+                required: []
+  - '/projects/{id}/merge_requests/{merge_request_iid}/unapprove':
+      post:
+        summary: Unapprove merge request
+        description: >-
+          If you did approve a merge request, you can unapprove it using the
+          following endpoint:
+        operationId: unapproveMergeRequest
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of a project
+            required: true
+            schema:
+              type: string
+          - name: merge_request_iid
+            in: path
+            description: The IID of a merge request
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string

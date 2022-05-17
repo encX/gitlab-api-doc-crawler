@@ -1,0 +1,70 @@
+endpoints:
+  - '/projects/{id}/metrics/user_starred_dashboards':
+      post:
+        summary: Add a star to a dashboard
+        description: ''
+        operationId: addAStarToADashboard
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    dashboard_path:
+                      type: string
+                    user_id:
+                      type: integer
+                    project_id:
+                      type: integer
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dashboard_path:
+                    type: string
+                required:
+                  - dashboard_path
+  - '/projects/{id}/metrics/user_starred_dashboards':
+      delete:
+        summary: Remove a star from a dashboard
+        description: ''
+        operationId: removeAStarFromADashboard
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+          - name: dashboard_path
+            in: query
+            description: >-
+              URL-encoded path to file defining the dashboard which should no
+              longer be marked as favorite. When not supplied, all dashboards
+              within given projects are removed from favorites.
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    deleted_rows:
+                      type: integer

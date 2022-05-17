@@ -1,0 +1,76 @@
+endpoints:
+  - '/admin/sidekiq/queues/{queue_name}':
+      delete:
+        summary: Sidekiq queues administration API
+        description: Delete jobs from a Sidekiq queue that match the given metadata.
+        operationId: sidekiqQueuesAdministrationApi
+        parameters:
+          - name: queue_name
+            in: path
+            description: The name of the queue to delete jobs from
+            required: true
+            schema:
+              type: string
+          - name: user
+            in: query
+            description: The username of the user who scheduled the jobs
+            required: false
+            schema:
+              type: string
+          - name: project
+            in: query
+            description: The full path of the project where the jobs were scheduled from
+            required: false
+            schema:
+              type: string
+          - name: root_namespace
+            in: query
+            description: The root namespace of the project
+            required: false
+            schema:
+              type: string
+          - name: subscription_plan
+            in: query
+            description: The subscription plan of the root namespace (GitLab.com only)
+            required: false
+            schema:
+              type: string
+          - name: caller_id
+            in: query
+            description: >-
+              The endpoint or background job that schedule the job (for example:
+              ProjectsController#create, /api/:version/projects/:id,
+              PostReceive)
+            required: false
+            schema:
+              type: string
+          - name: feature_category
+            in: query
+            description: >-
+              The feature category of the background job (for example:
+              team_planning or code_review)
+            required: false
+            schema:
+              type: string
+          - name: worker_class
+            in: query
+            description: >-
+              The class of the background job worker (for example: PostReceive
+              or MergeWorker)
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    completed:
+                      type: boolean
+                    deleted_jobs:
+                      type: integer
+                    queue_size:
+                      type: integer

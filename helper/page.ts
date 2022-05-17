@@ -3,8 +3,8 @@ import {
   Root,
   cheerio,
 } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
-import { join } from "https://deno.land/std@0.132.0/path/mod.ts";
-import { ensureDir } from "https://deno.land/std@0.132.0/fs/mod.ts";
+import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
+import { ensureDir } from "https://deno.land/std@0.139.0/fs/mod.ts";
 
 export const load = async (
   url: string,

@@ -1,0 +1,124 @@
+endpoints:
+  - '/projects/{id}/templates/{type}':
+      get:
+        summary: Get all templates of a particular type
+        description: ''
+        operationId: getAllTemplatesOfAParticularType
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+          - name: type
+            in: path
+            description: >-
+              The type of the template. Accepted values are: dockerfiles,
+              gitignores, gitlab_ci_ymls, licenses, issues, merge_requests
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      name:
+                        type: string
+  - '/projects/{id}/templates/{type}/{name}':
+      get:
+        summary: Get one template of a particular type
+        description: ''
+        operationId: getOneTemplateOfAParticularType
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+          - name: type
+            in: path
+            description: >-
+              The type of the template. One of: dockerfiles, gitignores,
+              gitlab_ci_ymls, licenses, issues, or merge_requests.
+            required: true
+            schema:
+              type: string
+          - name: name
+            in: path
+            description: 'The key of the template, as obtained from the collection endpoint'
+            required: true
+            schema:
+              type: string
+          - name: source_template_project_id
+            in: query
+            description: >-
+              The project ID where a given template is being stored. This is
+              useful when multiple templates from different projects have the
+              same name. If multiple templates have the same name, the match
+              from closest ancestor is returned if source_template_project_id is
+              not specified
+            required: false
+            schema:
+              type: integer
+          - name: project
+            in: query
+            description: >-
+              The project name to use when expanding placeholders in the
+              template. Only affects licenses
+            required: false
+            schema:
+              type: string
+          - name: fullname
+            in: query
+            description: >-
+              The full name of the copyright holder to use when expanding
+              placeholders in the template. Only affects licenses
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                    name:
+                      type: string
+                    nickname:
+                      type: string
+                    popular:
+                      type: boolean
+                    html_url:
+                      type: string
+                    source_url:
+                      type: string
+                    description:
+                      type: string
+                    conditions:
+                      type: array
+                      items:
+                        type: string
+                    permissions:
+                      type: array
+                      items:
+                        type: string
+                    limitations:
+                      type: array
+                      items:
+                        type: string
+                    content:
+                      type: string

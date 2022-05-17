@@ -1,0 +1,657 @@
+endpoints:
+  - '/projects/{id}/pipelines':
+      get:
+        summary: List project pipelines
+        description: >-
+          List pipelines in a project. Child pipelines are not included in the
+          results, but you can get child pipeline individually.
+        operationId: listProjectPipelines
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: scope
+            in: query
+            description: >-
+              The scope of pipelines, one of: running, pending, finished,
+              branches, tags
+            required: false
+            schema:
+              type: string
+          - name: status
+            in: query
+            description: >-
+              The status of pipelines, one of: created, waiting_for_resource,
+              preparing, pending, running, success, failed, canceled, skipped,
+              manual, scheduled
+            required: false
+            schema:
+              type: string
+          - name: source
+            in: query
+            description: >-
+              In GitLab 14.3 and later, how the pipeline was triggered, one of:
+              push, web, trigger, schedule, api, external, pipeline, chat,
+              webide, merge_request_event, external_pull_request_event,
+              parent_pipeline, ondemand_dast_scan, or ondemand_dast_validation.
+            required: false
+            schema:
+              type: string
+          - name: ref
+            in: query
+            description: The ref of pipelines
+            required: false
+            schema:
+              type: string
+          - name: sha
+            in: query
+            description: The SHA of pipelines
+            required: false
+            schema:
+              type: string
+          - name: yaml_errors
+            in: query
+            description: Returns pipelines with invalid configurations
+            required: false
+            schema:
+              type: string
+          - name: username
+            in: query
+            description: The username of the user who triggered pipelines
+            required: false
+            schema:
+              type: string
+          - name: updated_after
+            in: query
+            description: >-
+              Return pipelines updated after the specified date. Expected in ISO
+              8601 format (2019-03-15T08:00:00Z).
+            required: false
+            schema:
+              type: string
+          - name: updated_before
+            in: query
+            description: >-
+              Return pipelines updated before the specified date. Expected in
+              ISO 8601 format (2019-03-15T08:00:00Z).
+            required: false
+            schema:
+              type: string
+          - name: order_by
+            in: query
+            description: >-
+              Order pipelines by id, status, ref, updated_at or user_id
+              (default: id)
+            required: false
+            schema:
+              type: string
+          - name: sort
+            in: query
+            description: 'Sort pipelines in asc or desc order (default: desc)'
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      iid:
+                        type: integer
+                      project_id:
+                        type: integer
+                      status:
+                        type: string
+                      source:
+                        type: string
+                      ref:
+                        type: string
+                      sha:
+                        type: string
+                      web_url:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+  - '/projects/{id}/pipelines/{pipeline_id}':
+      get:
+        summary: Get a single pipeline
+        description: Get one pipeline from a project.
+        operationId: getASinglePipeline
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    status:
+                      type: string
+                    ref:
+                      type: string
+                    sha:
+                      type: string
+                    before_sha:
+                      type: string
+                    tag:
+                      type: boolean
+                    yaml_errors:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        username:
+                          type: string
+                        id:
+                          type: integer
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
+                          type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    started_at:
+                      type: string
+                    finished_at:
+                      type: string
+                    committed_at:
+                      type: string
+                    duration:
+                      type: number
+                    queued_duration:
+                      type: number
+                    coverage:
+                      type: string
+                    web_url:
+                      type: string
+  - '/projects/{id}/pipelines/{pipeline_id}/variables':
+      get:
+        summary: Get variables of a pipeline
+        description: Example of response
+        operationId: getVariablesOfAPipeline
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      variable_type:
+                        type: string
+                      value:
+                        type: string
+  - '/projects/{id}/pipelines/{pipeline_id}/test_report':
+      get:
+        summary: Get a pipeline’s test report
+        description: 'Sample request:'
+        operationId: getAPipelineTestReport
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    total_time:
+                      type: integer
+                    total_count:
+                      type: integer
+                    success_count:
+                      type: integer
+                    failed_count:
+                      type: integer
+                    skipped_count:
+                      type: integer
+                    error_count:
+                      type: integer
+                    test_suites:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          total_time:
+                            type: integer
+                          total_count:
+                            type: integer
+                          success_count:
+                            type: integer
+                          failed_count:
+                            type: integer
+                          skipped_count:
+                            type: integer
+                          error_count:
+                            type: integer
+                          test_cases:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                status:
+                                  type: string
+                                name:
+                                  type: string
+                                classname:
+                                  type: string
+                                execution_time:
+                                  type: integer
+                                system_output:
+                                  type: string
+                                stack_trace:
+                                  type: string
+  - '/projects/{id}/pipelines/{pipeline_id}/test_report_summary':
+      get:
+        summary: Get a pipeline’s test report summary
+        description: 'Sample request:'
+        operationId: getAPipelineTestReportSummary
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    total:
+                      type: object
+                      properties:
+                        time:
+                          type: integer
+                        count:
+                          type: integer
+                        success:
+                          type: integer
+                        failed:
+                          type: integer
+                        skipped:
+                          type: integer
+                        error:
+                          type: integer
+                        suite_error:
+                          type: string
+                    test_suites:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          total_time:
+                            type: integer
+                          total_count:
+                            type: integer
+                          success_count:
+                            type: integer
+                          failed_count:
+                            type: integer
+                          skipped_count:
+                            type: integer
+                          error_count:
+                            type: integer
+                          build_ids:
+                            type: array
+                            items:
+                              type: integer
+                          suite_error:
+                            type: string
+  - '/projects/{id}/pipeline':
+      post:
+        summary: Create a new pipeline
+        description: Example of response
+        operationId: createANewPipeline
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    sha:
+                      type: string
+                    ref:
+                      type: string
+                    status:
+                      type: string
+                    before_sha:
+                      type: string
+                    tag:
+                      type: boolean
+                    yaml_errors:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        username:
+                          type: string
+                        id:
+                          type: integer
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
+                          type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    started_at:
+                      type: string
+                    finished_at:
+                      type: string
+                    committed_at:
+                      type: string
+                    duration:
+                      type: string
+                    queued_duration:
+                      type: number
+                    coverage:
+                      type: string
+                    web_url:
+                      type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ref:
+                    type: string
+                required:
+                  - ref
+  - '/projects/{id}/pipelines/{pipeline_id}/retry':
+      post:
+        summary: Retry jobs in a pipeline
+        description: 'Response:'
+        operationId: retryJobsInAPipeline
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    status:
+                      type: string
+                    ref:
+                      type: string
+                    sha:
+                      type: string
+                    before_sha:
+                      type: string
+                    tag:
+                      type: boolean
+                    yaml_errors:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        username:
+                          type: string
+                        id:
+                          type: integer
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
+                          type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    started_at:
+                      type: string
+                    finished_at:
+                      type: string
+                    committed_at:
+                      type: string
+                    duration:
+                      type: string
+                    queued_duration:
+                      type: number
+                    coverage:
+                      type: string
+                    web_url:
+                      type: string
+  - '/projects/{id}/pipelines/{pipeline_id}/cancel':
+      post:
+        summary: Cancel a pipeline’s jobs
+        description: 'Response:'
+        operationId: cancelAPipelineJobs
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    iid:
+                      type: integer
+                    project_id:
+                      type: integer
+                    status:
+                      type: string
+                    ref:
+                      type: string
+                    sha:
+                      type: string
+                    before_sha:
+                      type: string
+                    tag:
+                      type: boolean
+                    yaml_errors:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        username:
+                          type: string
+                        id:
+                          type: integer
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
+                          type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    started_at:
+                      type: string
+                    finished_at:
+                      type: string
+                    committed_at:
+                      type: string
+                    duration:
+                      type: string
+                    queued_duration:
+                      type: number
+                    coverage:
+                      type: string
+                    web_url:
+                      type: string
+  - '/projects/{id}/pipelines/{pipeline_id}':
+      delete:
+        summary: Delete a pipeline
+        description: ''
+        operationId: deleteAPipeline
+        parameters:
+          - name: id
+            in: path
+            description: >-
+              The ID or URL-encoded path of the project owned by the
+              authenticated user
+            required: true
+            schema:
+              type: string
+          - name: pipeline_id
+            in: path
+            description: The ID of a pipeline
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string

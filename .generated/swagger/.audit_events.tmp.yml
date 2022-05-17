@@ -1,0 +1,375 @@
+endpoints:
+  - /audit_events:
+      get:
+        summary: Retrieve all instance audit events
+        description: >-
+          By default, GET requests return 20 results at a time because the API
+          results are paginated.
+        operationId: retrieveAllInstanceAuditEvents
+        parameters:
+          - name: created_after
+            in: query
+            description: >-
+              Return audit events created on or after the given time. Format:
+              ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+          - name: created_before
+            in: query
+            description: >-
+              Return audit events created on or before the given time. Format:
+              ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+          - name: entity_type
+            in: query
+            description: >-
+              Return audit events for the given entity type. Valid values are:
+              User, Group, or Project.
+            required: false
+            schema:
+              type: string
+          - name: entity_id
+            in: query
+            description: >-
+              Return audit events for the given entity ID. Requires entity_type
+              attribute to be present.
+            required: false
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      author_id:
+                        type: integer
+                      entity_id:
+                        type: integer
+                      entity_type:
+                        type: string
+                      details:
+                        type: object
+                        properties:
+                          custom_message:
+                            type: string
+                          author_name:
+                            type: string
+                          target_id:
+                            type: string
+                          target_type:
+                            type: string
+                          target_details:
+                            type: string
+                          ip_address:
+                            type: string
+                          entity_path:
+                            type: string
+                      created_at:
+                        type: string
+  - '/audit_events/{id}':
+      get:
+        summary: Retrieve single instance audit event
+        description: ''
+        operationId: retrieveSingleInstanceAuditEvent
+        parameters:
+          - name: id
+            in: path
+            description: The ID of the audit event
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    author_id:
+                      type: integer
+                    entity_id:
+                      type: integer
+                    entity_type:
+                      type: string
+                    details:
+                      type: object
+                      properties:
+                        custom_message:
+                          type: string
+                        author_name:
+                          type: string
+                        target_id:
+                          type: string
+                        target_type:
+                          type: string
+                        target_details:
+                          type: string
+                        ip_address:
+                          type: string
+                        entity_path:
+                          type: string
+                    created_at:
+                      type: string
+  - '/groups/{id}/audit_events':
+      get:
+        summary: Retrieve all group audit events
+        description: >-
+          By default, GET requests return 20 results at a time because the API
+          results are paginated.
+        operationId: retrieveAllGroupAuditEvents
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the group
+            required: true
+            schema:
+              type: string
+          - name: created_after
+            in: query
+            description: >-
+              Return group audit events created on or after the given time.
+              Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+          - name: created_before
+            in: query
+            description: >-
+              Return group audit events created on or before the given time.
+              Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      author_id:
+                        type: integer
+                      entity_id:
+                        type: integer
+                      entity_type:
+                        type: string
+                      details:
+                        type: object
+                        properties:
+                          custom_message:
+                            type: string
+                          author_name:
+                            type: string
+                          target_id:
+                            type: string
+                          target_type:
+                            type: string
+                          target_details:
+                            type: string
+                          ip_address:
+                            type: string
+                          entity_path:
+                            type: string
+                      created_at:
+                        type: string
+  - '/groups/{id}/audit_events/{audit_event_id}':
+      get:
+        summary: Retrieve a specific group audit event
+        description: Only available to group owners and administrators.
+        operationId: retrieveASpecificGroupAuditEvent
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the group
+            required: true
+            schema:
+              type: string
+          - name: audit_event_id
+            in: path
+            description: The ID of the audit event
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    author_id:
+                      type: integer
+                    entity_id:
+                      type: integer
+                    entity_type:
+                      type: string
+                    details:
+                      type: object
+                      properties:
+                        custom_message:
+                          type: string
+                        author_name:
+                          type: string
+                        target_id:
+                          type: string
+                        target_type:
+                          type: string
+                        target_details:
+                          type: string
+                        ip_address:
+                          type: string
+                        entity_path:
+                          type: string
+                    created_at:
+                      type: string
+  - '/projects/{id}/audit_events':
+      get:
+        summary: Retrieve all project audit events
+        description: >-
+          By default, GET requests return 20 results at a time because the API
+          results are paginated.
+        operationId: retrieveAllProjectAuditEvents
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+          - name: created_after
+            in: query
+            description: >-
+              Return project audit events created on or after the given time.
+              Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+          - name: created_before
+            in: query
+            description: >-
+              Return project audit events created on or before the given time.
+              Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      author_id:
+                        type: integer
+                      entity_id:
+                        type: integer
+                      entity_type:
+                        type: string
+                      details:
+                        type: object
+                        properties:
+                          change:
+                            type: string
+                          from:
+                            type: string
+                          to:
+                            type: string
+                          author_name:
+                            type: string
+                          target_id:
+                            type: integer
+                          target_type:
+                            type: string
+                          target_details:
+                            type: string
+                          ip_address:
+                            type: string
+                          entity_path:
+                            type: string
+                      created_at:
+                        type: string
+  - '/projects/{id}/audit_events/{audit_event_id}':
+      get:
+        summary: Retrieve a specific project audit event
+        description: >-
+          Only available to users with at least the Maintainer role for the
+          project.
+        operationId: retrieveASpecificProjectAuditEvent
+        parameters:
+          - name: id
+            in: path
+            description: The ID or URL-encoded path of the project
+            required: true
+            schema:
+              type: string
+          - name: audit_event_id
+            in: path
+            description: The ID of the audit event
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    author_id:
+                      type: integer
+                    entity_id:
+                      type: integer
+                    entity_type:
+                      type: string
+                    details:
+                      type: object
+                      properties:
+                        change:
+                          type: string
+                        from:
+                          type: string
+                        to:
+                          type: string
+                        author_name:
+                          type: string
+                        target_id:
+                          type: integer
+                        target_type:
+                          type: string
+                        target_details:
+                          type: string
+                        ip_address:
+                          type: string
+                        entity_path:
+                          type: string
+                    created_at:
+                      type: string

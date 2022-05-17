@@ -1,0 +1,210 @@
+endpoints:
+  - /license:
+      get:
+        summary: Retrieve information about the current license
+        description: ''
+        operationId: retrieveInformationAboutTheCurrentLicense
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    plan:
+                      type: string
+                    created_at:
+                      type: string
+                    starts_at:
+                      type: string
+                    expires_at:
+                      type: string
+                    historical_max:
+                      type: integer
+                    maximum_user_count:
+                      type: integer
+                    expired:
+                      type: boolean
+                    overage:
+                      type: integer
+                    user_limit:
+                      type: integer
+                    active_users:
+                      type: integer
+                    licensee:
+                      type: object
+                      properties:
+                        Name:
+                          type: string
+                    add_ons:
+                      type: object
+                      properties:
+                        GitLab_FileLocks:
+                          type: integer
+                        GitLab_Auditor_User:
+                          type: integer
+  - /licenses:
+      get:
+        summary: Retrieve information about all licenses
+        description: >-
+          Overage is the difference between the number of billable users and the
+          licensed number of users. This is calculated differently depending on
+          whether the license has expired or not.
+        operationId: retrieveInformationAboutAllLicenses
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      plan:
+                        type: string
+                      created_at:
+                        type: string
+                      starts_at:
+                        type: string
+                      expires_at:
+                        type: string
+                      historical_max:
+                        type: integer
+                      maximum_user_count:
+                        type: integer
+                      expired:
+                        type: boolean
+                      overage:
+                        type: integer
+                      user_limit:
+                        type: integer
+                      licensee:
+                        type: object
+                        properties:
+                          Name:
+                            type: string
+                      add_ons:
+                        type: object
+                        properties:
+                          GitLab_FileLocks:
+                            type: integer
+                          GitLab_Auditor_User:
+                            type: integer
+  - /license:
+      post:
+        summary: Add a new license
+        description: 'Returns:'
+        operationId: addANewLicense
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    plan:
+                      type: string
+                    created_at:
+                      type: string
+                    starts_at:
+                      type: string
+                    expires_at:
+                      type: string
+                    historical_max:
+                      type: integer
+                    maximum_user_count:
+                      type: integer
+                    expired:
+                      type: boolean
+                    overage:
+                      type: integer
+                    user_limit:
+                      type: integer
+                    active_users:
+                      type: integer
+                    licensee:
+                      type: object
+                      properties:
+                        Name:
+                          type: string
+                    add_ons:
+                      type: object
+                      properties:
+                        GitLab_FileLocks:
+                          type: integer
+                        GitLab_Auditor_User:
+                          type: integer
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  license:
+                    type: string
+                required:
+                  - license
+  - '/license/{id}':
+      delete:
+        summary: Delete a license
+        description: 'Returns:'
+        operationId: deleteALicense
+        parameters:
+          - name: id
+            in: path
+            description: ID of the GitLab license.
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    plan:
+                      type: string
+                    created_at:
+                      type: string
+                    starts_at:
+                      type: string
+                    expires_at:
+                      type: string
+                    historical_max:
+                      type: integer
+                    maximum_user_count:
+                      type: integer
+                    expired:
+                      type: boolean
+                    overage:
+                      type: integer
+                    user_limit:
+                      type: integer
+                    licensee:
+                      type: object
+                      properties:
+                        Name:
+                          type: string
+                    add_ons:
+                      type: object
+                      properties:
+                        GitLab_FileLocks:
+                          type: integer
+                        GitLab_Auditor_User:
+                          type: integer

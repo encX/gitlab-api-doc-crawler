@@ -1,0 +1,47 @@
+endpoints:
+  - '/environments/{id}/metrics_dashboard/annotations/':
+      post:
+        summary: Create a new annotation
+        description: ''
+        operationId: createANewAnnotation
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    starting_at:
+                      type: string
+                    ending_at:
+                      type: string
+                    dashboard_path:
+                      type: string
+                    description:
+                      type: string
+                    environment_id:
+                      type: integer
+                    cluster_id:
+                      type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dashboard_path:
+                    type: string
+                  starting_at:
+                    type: string
+                  ending_at:
+                    type: string
+                  description:
+                    type: string
+                required:
+                  - dashboard_path
+                  - starting_at
+                  - description

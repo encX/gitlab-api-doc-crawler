@@ -1,0 +1,378 @@
+endpoints:
+  - /todos:
+      get:
+        summary: Get a list of to-do items
+        description: >-
+          Returns a list of to-do items. When no filter is applied, it returns
+          all pending to-do items for the current user. Different filters allow
+          the user to refine the request.
+        operationId: getAListOfTo-doItems
+        parameters:
+          - name: action
+            in: query
+            description: >-
+              The action to be filtered. Can be assigned, mentioned,
+              build_failed, marked, approval_required, unmergeable,
+              directly_addressed or merge_train_removed.
+            required: false
+            schema:
+              type: string
+          - name: author_id
+            in: query
+            description: The ID of an author
+            required: false
+            schema:
+              type: integer
+          - name: project_id
+            in: query
+            description: The ID of a project
+            required: false
+            schema:
+              type: integer
+          - name: group_id
+            in: query
+            description: The ID of a group
+            required: false
+            schema:
+              type: integer
+          - name: state
+            in: query
+            description: The state of the to-do item. Can be either pending or done
+            required: false
+            schema:
+              type: string
+          - name: type
+            in: query
+            description: >-
+              The type of to-do item. Can be either Issue, MergeRequest, Commit,
+              Epic, DesignManagement::Design or AlertManagement::Alert
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      project:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          name_with_namespace:
+                            type: string
+                          path:
+                            type: string
+                          path_with_namespace:
+                            type: string
+                      author:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          username:
+                            type: string
+                          id:
+                            type: integer
+                          state:
+                            type: string
+                          avatar_url:
+                            type: string
+                          web_url:
+                            type: string
+                      action_name:
+                        type: string
+                      target_type:
+                        type: string
+                      target:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          iid:
+                            type: integer
+                          project_id:
+                            type: integer
+                          title:
+                            type: string
+                          description:
+                            type: string
+                          state:
+                            type: string
+                          created_at:
+                            type: string
+                          updated_at:
+                            type: string
+                          target_branch:
+                            type: string
+                          source_branch:
+                            type: string
+                          upvotes:
+                            type: integer
+                          downvotes:
+                            type: integer
+                          author:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              username:
+                                type: string
+                              id:
+                                type: integer
+                              state:
+                                type: string
+                              avatar_url:
+                                type: string
+                              web_url:
+                                type: string
+                          assignee:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              username:
+                                type: string
+                              id:
+                                type: integer
+                              state:
+                                type: string
+                              avatar_url:
+                                type: string
+                              web_url:
+                                type: string
+                          source_project_id:
+                            type: integer
+                          target_project_id:
+                            type: integer
+                          labels:
+                            type: array
+                            items: {}
+                          draft:
+                            type: boolean
+                          work_in_progress:
+                            type: boolean
+                          milestone:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              iid:
+                                type: integer
+                              project_id:
+                                type: integer
+                              title:
+                                type: string
+                              description:
+                                type: string
+                              state:
+                                type: string
+                              created_at:
+                                type: string
+                              updated_at:
+                                type: string
+                              due_date:
+                                type: string
+                          merge_when_pipeline_succeeds:
+                            type: boolean
+                          merge_status:
+                            type: string
+                          user_notes_count:
+                            type: integer
+                      target_url:
+                        type: string
+                      body:
+                        type: string
+                      state:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+  - '/todos/{id}/mark_as_done':
+      post:
+        summary: Mark a to-do item as done
+        description: >-
+          Marks a single pending to-do item given by its ID for the current user
+          as done. The to-do item marked as done is returned in the response.
+        operationId: markATo-doItemAsDone
+        parameters:
+          - name: id
+            in: path
+            description: The ID of to-do item
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    project:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        name_with_namespace:
+                          type: string
+                        path:
+                          type: string
+                        path_with_namespace:
+                          type: string
+                    author:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        username:
+                          type: string
+                        id:
+                          type: integer
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
+                          type: string
+                    action_name:
+                      type: string
+                    target_type:
+                      type: string
+                    target:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        iid:
+                          type: integer
+                        project_id:
+                          type: integer
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        state:
+                          type: string
+                        created_at:
+                          type: string
+                        updated_at:
+                          type: string
+                        target_branch:
+                          type: string
+                        source_branch:
+                          type: string
+                        upvotes:
+                          type: integer
+                        downvotes:
+                          type: integer
+                        author:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            id:
+                              type: integer
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                        assignee:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            username:
+                              type: string
+                            id:
+                              type: integer
+                            state:
+                              type: string
+                            avatar_url:
+                              type: string
+                            web_url:
+                              type: string
+                        source_project_id:
+                          type: integer
+                        target_project_id:
+                          type: integer
+                        labels:
+                          type: array
+                          items: {}
+                        draft:
+                          type: boolean
+                        work_in_progress:
+                          type: boolean
+                        milestone:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            iid:
+                              type: integer
+                            project_id:
+                              type: integer
+                            title:
+                              type: string
+                            description:
+                              type: string
+                            state:
+                              type: string
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            due_date:
+                              type: string
+                        merge_when_pipeline_succeeds:
+                          type: boolean
+                        merge_status:
+                          type: string
+                        subscribed:
+                          type: boolean
+                        user_notes_count:
+                          type: integer
+                    target_url:
+                      type: string
+                    body:
+                      type: string
+                    state:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+  - /todos/mark_as_done:
+      post:
+        summary: Mark all to-do items as done
+        description: >-
+          Marks all pending to-do items for the current user as done. It returns
+          the HTTP status code 204 with an empty response.
+        operationId: markAllTo-doItemsAsDone
+        parameters: []
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: string

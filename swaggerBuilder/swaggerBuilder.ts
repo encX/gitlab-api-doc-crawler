@@ -1,3 +1,5 @@
+import { stringify } from "https://deno.land/std@0.139.0/encoding/yaml.ts";
+
 import { Api } from "../types/models.ts";
 import { Document } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
@@ -17,8 +19,8 @@ export class SwaggerBuilder {
     console.log(_pageSlug);
     const endpoints = _apis.map((api) => new Endpoint(api).getEndpoint());
     await Deno.writeTextFile(
-      `.generated/swagger/.${_pageSlug}.tmp.json`,
-      JSON.stringify(endpoints, null, 2)
+      `.generated/swagger/.${_pageSlug}.tmp.yml`,
+      stringify({ endpoints })
     );
 
     // todo
