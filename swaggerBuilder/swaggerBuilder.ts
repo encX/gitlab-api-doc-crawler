@@ -18,10 +18,17 @@ export class SwaggerBuilder {
   async push(_apis: Api[], _pageSlug: string): Promise<void> {
     console.log(_pageSlug);
     const endpoints = _apis.map((api) => new Endpoint(api).getEndpoint());
-    await Deno.writeTextFile(
-      `.generated/swagger/.${_pageSlug}.tmp.yml`,
-      stringify({ endpoints })
-    );
+    try {
+      await Deno.writeTextFile(
+        `.generated/swagger/.${_pageSlug}.tmp.yml`,
+        stringify({ endpoints })
+      );
+    } catch (e) {
+      await Deno.writeTextFile(
+        `.generated/swagger/error.${_pageSlug}.tmp.json`,
+        JSON.stringify(endpoints, null, 2)
+      );
+    }
 
     // todo
     // - merge ops with same paths [REQUIRED]
