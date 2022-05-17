@@ -15,6 +15,7 @@ export function parseSchema(obj: any): SchemaObject {
     case "string":
       return { type };
     case "number":
+    case "bigint":
       return { type: Math.floor(obj) === obj ? "integer" : "number" };
     case "object": {
       const properties: PropertiesObject = {};

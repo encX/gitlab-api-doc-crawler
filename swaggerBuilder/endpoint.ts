@@ -7,20 +7,22 @@ import {
   RequestBodyObject,
   ResponsesObject,
 } from "../types/OpenAPIV3.ts";
-import { asSwaggerPathAndParams } from "./converter/path.ts";
+import { extractEndpointInfo } from "./converter/path.ts";
 import { asPropertyType } from "./converter/propertyType.ts";
 import { parseSchema } from "./converter/schema.ts";
 import { operationIDify } from "./converter/text.ts";
 
 export class Endpoint {
   // private pathsObject: PathsObject = {};
-  private method?: string;
-  private path?: string;
+  private method: string;
+  private path: string;
   private operation?: OperationObject;
-  private pathParams?: string[];
+  private pathParams: string[];
 
   constructor(private readonly api: Api) {
-    this.setEndpointInfo();
+    [this.method, this.path, this.pathParams] = extractEndpointInfo(
+      this.api.resources
+    );
     this.setOperationObject();
   }
 
@@ -34,25 +36,6 @@ export class Endpoint {
         [this.method]: this.operation,
       },
     };
-  }
-
-  private setEndpointInfo() {
-    const methods = new Set<string>();
-    const paths = new Set<string>();
-
-    this.api.resources.forEach(({ method, path }) => {
-      methods.add(method.toUpperCase());
-      paths.add(path.split("?")[0]);
-    });
-
-    if (methods.size > 1)
-      throw new Error(`API "${this.api.name}" has >1 http methods defined`);
-
-    // if (paths.size > 1)
-    //   throw new Error(`API "${this.api.name}" has >1 paths defined`);
-
-    this.method = [...methods][0].toLowerCase();
-    [this.path, this.pathParams] = asSwaggerPathAndParams([...paths][0]);
   }
 
   private setOperationObject() {

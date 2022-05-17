@@ -1,7 +1,31 @@
-export function asSwaggerPathAndParams(path: string): [string, string[]] {
-  const paramRegex = /\/:(\w+)/g;
-  const formattedPath = path.replace(paramRegex, "/{$1}");
-  const pathParams = [...path.matchAll(/:(\w+)/g)].map(([_, match]) => match);
+import { Resource } from "../../types/models.ts";
+import { HttpMethods } from "../../types/OpenAPIV3.ts";
 
-  return [formattedPath, pathParams];
+const paramRegex = /\/:(\w+)/g;
+
+export function extractEndpointInfo(
+  resources: Resource[]
+): [string, string, string[]] {
+  const methods = new Set<string>();
+  const paths = new Set<string>();
+
+  resources.forEach(({ method, path }) => {
+    methods.add(method.toUpperCase());
+    paths.add(path.split("?")[0]);
+  });
+
+  if (methods.size > 1) throw new Error(`API has >1 http methods defined`);
+
+  const method = [...methods][0].toLowerCase();
+  const path = [...paths][0];
+
+  return [method.toLowerCase(), formatPath(path), getPathParams(path)];
+}
+
+export function formatPath(path: string): string {
+  return path.replace(paramRegex, "/{$1}");
+}
+
+export function getPathParams(path: string): string[] {
+  return [...path.matchAll(/:(\w+)/g)].map(([_, match]) => match);
 }

@@ -1,4 +1,7 @@
-import { assertEquals } from "https://deno.land/std@0.139.0/testing/asserts.ts";
+import {
+  assertEquals,
+  assertThrows,
+} from "https://deno.land/std@0.139.0/testing/asserts.ts";
 import { SchemaObject } from "../../types/OpenAPIV3.ts";
 import { parseSchema } from "./schema.ts";
 
@@ -24,6 +27,14 @@ Deno.test("parseSchema - null", () => {
     { type: "string" },
     "type null should be treated as string"
   );
+});
+
+Deno.test("parseSchema - function (throw)", () => {
+  assertThrows(() => parseSchema(() => {}));
+});
+
+Deno.test("parseSchema - symbol (throw)", () => {
+  assertThrows(() => parseSchema(Symbol));
 });
 
 Deno.test("parseSchema - object - flat", () => {
