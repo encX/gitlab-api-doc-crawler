@@ -27,10 +27,6 @@ export class Endpoint {
   }
 
   getEndpoint(): PathsObject {
-    if (!this.path) throw new Error();
-    if (!this.method) throw new Error();
-    if (!this.operation) throw new Error();
-
     return {
       [this.path]: {
         [this.method]: this.operation,
@@ -105,10 +101,10 @@ export class Endpoint {
   }
 
   private isMethodHasbody = (): boolean =>
-    ["post", "put", "patch"].includes(this.method ?? "");
+    ["post", "put", "patch"].includes(this.method);
 
   private isPathParam = (param: string): boolean =>
-    this.pathParams?.some((p) => p === param) ?? false;
+    this.pathParams.some((p) => p === param);
 
   private getResponse(): ResponsesObject {
     return {
