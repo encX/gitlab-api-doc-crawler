@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_badges'
+  version: '1.0'
 paths:
   '/projects/{id}/badges':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -25,24 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    id:
-                      type: integer
-                    link_url:
-                      type: string
-                    image_url:
-                      type: string
-                    rendered_link_url:
-                      type: string
-                    rendered_image_url:
-                      type: string
-                    kind:
-                      type: string
+                $ref: '#/components/schemas/listAllBadgesOfAProjectResponse'
     post:
       summary: Add a badge to a project
       description: Adds a badge to a project.
@@ -50,9 +35,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -62,37 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/addABadgeToAProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                link_url:
-                  type: string
-                image_url:
-                  type: string
-                name:
-                  type: string
-              required:
-                - link_url
-                - image_url
+              $ref: '#/components/schemas/addABadgeToAProjectRequest'
   '/projects/{id}/badges/{badge_id}':
     get:
       summary: Get a badge of a project
@@ -101,9 +59,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -119,20 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/getABadgeOfAProjectResponse'
     put:
       summary: Edit a badge of a project
       description: Updates a badge of a project.
@@ -140,9 +83,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -158,47 +99,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/editABadgeOfAProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                link_url:
-                  type: string
-                image_url:
-                  type: string
-                name:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/editABadgeOfAProjectRequest'
     delete:
       summary: Remove a badge from a project
-      description: >-
-        Removes a badge from a project. Only project badges are removed by using
-        this endpoint.
+      description: Removes a badge from a project. Only project badges are removed by using this endpoint.
       operationId: removeABadgeFromAProject
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -214,20 +128,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/removeABadgeFromAProjectResponse'
   '/projects/{id}/badges/render':
     get:
       summary: Preview a badge from a project
-      description: >-
-        Returns how the link_url and image_url final URLs would be after
-        resolving the placeholder interpolation.
+      description: Returns how the link_url and image_url final URLs would be after resolving the placeholder interpolation.
       operationId: previewABadgeFromAProject
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -249,13 +159,108 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
+                $ref: '#/components/schemas/previewABadgeFromAProjectResponse'
+components:
+  schemas:
+    listAllBadgesOfAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          id:
+            type: integer
+          link_url:
+            type: string
+          image_url:
+            type: string
+          rendered_link_url:
+            type: string
+          rendered_image_url:
+            type: string
+          kind:
+            type: string
+    getABadgeOfAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    addABadgeToAProjectRequest:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        name:
+          type: string
+      required:
+        - link_url
+        - image_url
+    addABadgeToAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    editABadgeOfAProjectRequest:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        name:
+          type: string
+    editABadgeOfAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    removeABadgeFromAProjectResponse:
+      type: string
+    previewABadgeFromAProjectResponse:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string

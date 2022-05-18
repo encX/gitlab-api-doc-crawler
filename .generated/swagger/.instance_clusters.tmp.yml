@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / instance_clusters'
+  version: '1.0'
 paths:
   /admin/clusters:
     get:
@@ -11,60 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    created_at:
-                      type: string
-                    managed:
-                      type: boolean
-                    enabled:
-                      type: boolean
-                    domain:
-                      type: string
-                    provider_type:
-                      type: string
-                    platform_type:
-                      type: string
-                    environment_scope:
-                      type: string
-                    cluster_type:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    platform_kubernetes:
-                      type: object
-                      properties:
-                        api_url:
-                          type: string
-                        namespace:
-                          type: string
-                        authorization_type:
-                          type: string
-                        ca_cert:
-                          type: string
-                    provider_gcp:
-                      type: string
-                    management_project:
-                      type: string
+                $ref: '#/components/schemas/listInstanceClustersResponse'
   '/admin/clusters/{cluster_id}':
     get:
       summary: Get a single instance cluster
@@ -83,58 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  created_at:
-                    type: string
-                  managed:
-                    type: boolean
-                  enabled:
-                    type: boolean
-                  domain:
-                    type: string
-                  provider_type:
-                    type: string
-                  platform_type:
-                    type: string
-                  environment_scope:
-                    type: string
-                  cluster_type:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  platform_kubernetes:
-                    type: object
-                    properties:
-                      api_url:
-                        type: string
-                      namespace:
-                        type: string
-                      authorization_type:
-                        type: string
-                      ca_cert:
-                        type: string
-                  provider_gcp:
-                    type: string
-                  management_project:
-                    type: string
+                $ref: '#/components/schemas/getASingleInstanceClusterResponse'
     put:
       summary: Edit instance cluster
       description: Updates an existing instance cluster.
@@ -152,87 +52,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  created_at:
-                    type: string
-                  managed:
-                    type: boolean
-                  enabled:
-                    type: boolean
-                  domain:
-                    type: string
-                  provider_type:
-                    type: string
-                  platform_type:
-                    type: string
-                  environment_scope:
-                    type: string
-                  cluster_type:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  platform_kubernetes:
-                    type: object
-                    properties:
-                      api_url:
-                        type: string
-                      namespace:
-                        type: string
-                      authorization_type:
-                        type: string
-                      ca_cert:
-                        type: string
-                  provider_gcp:
-                    type: string
-                  management_project:
-                    type: string
-                  project:
-                    type: string
+                $ref: '#/components/schemas/editInstanceClusterResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                domain:
-                  type: string
-                environment_scope:
-                  type: string
-                management_project_id:
-                  type: integer
-                enabled:
-                  type: boolean
-                managed:
-                  type: boolean
-                'platform_kubernetes_attributes[api_url]':
-                  type: string
-                'platform_kubernetes_attributes[token]':
-                  type: string
-                'platform_kubernetes_attributes[ca_cert]':
-                  type: string
-                'platform_kubernetes_attributes[namespace]':
-                  type: string
-              required: []
+              $ref: '#/components/schemas/editInstanceClusterRequest'
     delete:
       summary: Delete instance cluster
       description: Deletes an existing instance cluster.
@@ -250,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteInstanceClusterResponse'
   /admin/clusters/add:
     post:
       summary: Add existing instance cluster
@@ -263,87 +88,281 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  created_at:
-                    type: string
-                  managed:
-                    type: boolean
-                  enabled:
-                    type: boolean
-                  domain:
-                    type: string
-                  provider_type:
-                    type: string
-                  platform_type:
-                    type: string
-                  environment_scope:
-                    type: string
-                  cluster_type:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  platform_kubernetes:
-                    type: object
-                    properties:
-                      api_url:
-                        type: string
-                      namespace:
-                        type: string
-                      authorization_type:
-                        type: string
-                      ca_cert:
-                        type: string
-                  provider_gcp:
-                    type: string
-                  management_project:
-                    type: string
+                $ref: '#/components/schemas/addExistingInstanceClusterResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                domain:
-                  type: string
-                environment_scope:
-                  type: string
-                management_project_id:
-                  type: integer
-                enabled:
-                  type: boolean
-                managed:
-                  type: boolean
-                'platform_kubernetes_attributes[api_url]':
-                  type: string
-                'platform_kubernetes_attributes[token]':
-                  type: string
-                'platform_kubernetes_attributes[ca_cert]':
-                  type: string
-                'platform_kubernetes_attributes[namespace]':
-                  type: string
-                'platform_kubernetes_attributes[authorization_type]':
-                  type: string
-              required:
-                - name
-                - 'platform_kubernetes_attributes[api_url]'
-                - 'platform_kubernetes_attributes[token]'
+              $ref: '#/components/schemas/addExistingInstanceClusterRequest'
+components:
+  schemas:
+    listInstanceClustersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          created_at:
+            type: string
+          managed:
+            type: boolean
+          enabled:
+            type: boolean
+          domain:
+            type: string
+          provider_type:
+            type: string
+          platform_type:
+            type: string
+          environment_scope:
+            type: string
+          cluster_type:
+            type: string
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          platform_kubernetes:
+            type: object
+            properties:
+              api_url:
+                type: string
+              namespace:
+                type: string
+              authorization_type:
+                type: string
+              ca_cert:
+                type: string
+          provider_gcp:
+            type: string
+          management_project:
+            type: string
+    getASingleInstanceClusterResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+        managed:
+          type: boolean
+        enabled:
+          type: boolean
+        domain:
+          type: string
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        platform_kubernetes:
+          type: object
+          properties:
+            api_url:
+              type: string
+            namespace:
+              type: string
+            authorization_type:
+              type: string
+            ca_cert:
+              type: string
+        provider_gcp:
+          type: string
+        management_project:
+          type: string
+    addExistingInstanceClusterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        environment_scope:
+          type: string
+        management_project_id:
+          type: integer
+        enabled:
+          type: boolean
+        managed:
+          type: boolean
+        'platform_kubernetes_attributes[api_url]':
+          type: string
+        'platform_kubernetes_attributes[token]':
+          type: string
+        'platform_kubernetes_attributes[ca_cert]':
+          type: string
+        'platform_kubernetes_attributes[namespace]':
+          type: string
+        'platform_kubernetes_attributes[authorization_type]':
+          type: string
+      required:
+        - name
+        - 'platform_kubernetes_attributes[api_url]'
+        - 'platform_kubernetes_attributes[token]'
+    addExistingInstanceClusterResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+        managed:
+          type: boolean
+        enabled:
+          type: boolean
+        domain:
+          type: string
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        platform_kubernetes:
+          type: object
+          properties:
+            api_url:
+              type: string
+            namespace:
+              type: string
+            authorization_type:
+              type: string
+            ca_cert:
+              type: string
+        provider_gcp:
+          type: string
+        management_project:
+          type: string
+    editInstanceClusterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        environment_scope:
+          type: string
+        management_project_id:
+          type: integer
+        enabled:
+          type: boolean
+        managed:
+          type: boolean
+        'platform_kubernetes_attributes[api_url]':
+          type: string
+        'platform_kubernetes_attributes[token]':
+          type: string
+        'platform_kubernetes_attributes[ca_cert]':
+          type: string
+        'platform_kubernetes_attributes[namespace]':
+          type: string
+    editInstanceClusterResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+        managed:
+          type: boolean
+        enabled:
+          type: boolean
+        domain:
+          type: string
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        platform_kubernetes:
+          type: object
+          properties:
+            api_url:
+              type: string
+            namespace:
+              type: string
+            authorization_type:
+              type: string
+            ca_cert:
+              type: string
+        provider_gcp:
+          type: string
+        management_project:
+          type: string
+        project:
+          type: string
+    deleteInstanceClusterResponse:
+      type: string

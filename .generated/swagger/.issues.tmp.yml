@@ -1,45 +1,44 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / issues'
+  version: '1.0'
 paths:
   /issues:
     get:
       summary: List issues
       description: >-
-        Get all issues the authenticated user has access to. By default it
-        returns only issues created by the current user. To get all issues, use
-        parameter scope=all.
+        Get all issues the authenticated user has access to. By default it returns only issues created by the current
+        user. To get all issues, use parameter scope=all.
       operationId: listIssues
       parameters:
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE, the
-            assignee_username array should only contain a single value.
-            Otherwise, an invalid parameter error is returned.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an
+            invalid parameter error is returned.
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
@@ -51,36 +50,30 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: due_date
           in: query
           description: >-
-            Return issues that have no due date, are overdue, or whose due date
-            is this week, this month, or between two weeks ago and next month.
-            Accepts: 0 (no due date), any, today, tomorrow, overdue, week,
-            month, next_month_and_previous_two_weeks.
+            Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two
+            weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month,
+            next_month_and_previous_two_weeks.
           required: false
           schema:
             type: string
         - name: epic_id
           in: query
           description: >-
-            Return issues associated with the given epic ID. None returns issues
-            that are not associated with an epic. Any returns issues that are
-            associated with an epic. (Introduced in GitLab 13.6)
+            Return issues associated with the given epic ID. None returns issues that are not associated with an epic.
+            Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: integer
@@ -93,113 +86,97 @@ paths:
         - name: in
           in: query
           description: >-
-            Modify the scope of the search attribute. title, description, or a
-            string joining them with comma. Default is title,description
+            Modify the scope of the search attribute. title, description, or a string joining them with comma. Default
+            is title,description
           required: false
           schema:
             type: string
         - name: issue_type
           in: query
-          description: >-
-            Filter to a given type of issue. One of issue, incident, or
-            test_case. (Introduced in GitLab 13.12)
+          description: 'Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)'
           required: false
           schema:
             type: string
         - name: iteration_id
           in: query
           description: >-
-            Return issues assigned to the given iteration ID. None returns
-            issues that do not belong to an iteration. Any returns issues that
-            belong to an iteration. Mutually exclusive with iteration_title.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration.
+            Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in
+            GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: iteration_title
           in: query
           description: >-
-            Return issues assigned to the iteration with the given title.
-            Similar to iteration_id and mutually exclusive with iteration_id.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive
+            with iteration_id. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: string
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label. No+Label (Deprecated) lists all
-            issues with no labels. Predefined names are case-insensitive.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no
+            labels. Predefined names are case-insensitive.
           required: false
           schema:
             type: string
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone. Using None or Any
-            will be deprecated in the future. Please use milestone_id attribute
-            instead. milestone and milestone_id are mutually exclusive.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone. Using None or Any will be deprecated in the future. Please use milestone_id attribute instead.
+            milestone and milestone_id are mutually exclusive.
           required: false
           schema:
             type: string
         - name: milestone_id
           in: query
           description: >-
-            Returns issues assigned to milestones with a given timebox value
-            (None, Any, Upcoming, and Started). None lists all issues with no
-            milestone. Any lists all issues that have an assigned milestone.
-            Upcoming lists all issues assigned to milestones due in the future.
-            Started lists all issues assigned to open, started milestones.
-            milestone and milestone_id are mutually exclusive. (Introduced in
-            GitLab 14.3)
+            Returns issues assigned to milestones with a given timebox value (None, Any, Upcoming, and Started). None
+            lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all
+            issues assigned to milestones due in the future. Started lists all issues assigned to open, started
+            milestones. milestone and milestone_id are mutually exclusive. (Introduced in GitLab 14.3)
           required: false
           schema:
             type: string
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
         - name: non_archived
           in: query
           description: >-
-            Return issues only from non-archived projects. If false, the
-            response returns issues from both archived and non-archived
-            projects. Default is true. (Introduced in GitLab 13.0)
+            Return issues only from non-archived projects. If false, the response returns issues from both archived and
+            non-archived projects. Default is true. (Introduced in GitLab 13.0)
           required: false
           schema:
             type: string
         - name: not
           in: query
           description: >-
-            Return issues that do not match the parameters supplied. Accepts:
-            assignee_id, assignee_username, author_id, author_username, iids,
-            iteration_id, iteration_title, labels, milestone, milestone_id and
-            weight.
+            Return issues that do not match the parameters supplied. Accepts: assignee_id, assignee_username, author_id,
+            author_username, iids, iteration_id, iteration_title, labels, milestone, milestone_id and weight.
           required: false
           schema:
             type: string
         - name: order_by
           in: query
           description: >-
-            Return issues ordered by created_at, due_date, label_priority,
-            milestone_due, popularity, priority, relative_position, title,
-            updated_at, or weight fields. Default is created_at.
+            Return issues ordered by created_at, due_date, label_priority, milestone_due, popularity, priority,
+            relative_position, title, updated_at, or weight fields. Default is created_at.
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all. Defaults to created_by_me.
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me.'
           required: false
           schema:
             type: string
@@ -223,35 +200,30 @@ paths:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: weight
           in: query
           description: >-
-            Return issues with the specified weight. None returns issues with no
-            weight assigned. Any returns issues with a weight assigned.
+            Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues
+            with a weight assigned.
           required: false
           schema:
             type: integer
         - name: with_labels_details
           in: query
           description: >-
-            If true, the response returns more details for each label in labels
-            field: :name, :color, :description, :description_html, :text_color.
-            Default is false. The description_html attribute was introduced in
-            GitLab 12.7
+            If true, the response returns more details for each label in labels field: :name, :color, :description,
+            :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab
+            12.7
           required: false
           schema:
             type: string
@@ -261,16 +233,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    state:
-                      type: string
-                    description:
-                      type: string
-                    health_status:
-                      type: string
+                $ref: '#/components/schemas/listIssuesResponse'
   '/groups/{id}/issues':
     get:
       summary: List group issues
@@ -280,35 +243,31 @@ paths:
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE, the
-            assignee_username array should only contain a single value.
-            Otherwise, an invalid parameter error is returned.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an
+            invalid parameter error is returned.
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
@@ -320,44 +279,36 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: due_date
           in: query
           description: >-
-            Return issues that have no due date, are overdue, or whose due date
-            is this week, this month, or between two weeks ago and next month.
-            Accepts: 0 (no due date), any, today, tomorrow, overdue, week,
-            month, next_month_and_previous_two_weeks.
+            Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two
+            weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month,
+            next_month_and_previous_two_weeks.
           required: false
           schema:
             type: string
         - name: epic_id
           in: query
           description: >-
-            Return issues associated with the given epic ID. None returns issues
-            that are not associated with an epic. Any returns issues that are
-            associated with an epic. (Introduced in GitLab 13.6)
+            Return issues associated with the given epic ID. None returns issues that are not associated with an epic.
+            Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -369,89 +320,77 @@ paths:
             type: string
         - name: issue_type
           in: query
-          description: >-
-            Filter to a given type of issue. One of issue, incident, or
-            test_case. (Introduced in GitLab 13.12)
+          description: 'Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)'
           required: false
           schema:
             type: string
         - name: iteration_id
           in: query
           description: >-
-            Return issues assigned to the given iteration ID. None returns
-            issues that do not belong to an iteration. Any returns issues that
-            belong to an iteration. Mutually exclusive with iteration_title.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration.
+            Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in
+            GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: iteration_title
           in: query
           description: >-
-            Return issues assigned to the iteration with the given title.
-            Similar to iteration_id and mutually exclusive with iteration_id.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive
+            with iteration_id. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: string
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label. No+Label (Deprecated) lists all
-            issues with no labels. Predefined names are case-insensitive.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no
+            labels. Predefined names are case-insensitive.
           required: false
           schema:
             type: string
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone.
           required: false
           schema:
             type: string
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
         - name: non_archived
           in: query
-          description: >-
-            Return issues from non archived projects. Default is true.
-            (Introduced in GitLab 12.8)
+          description: Return issues from non archived projects. Default is true. (Introduced in GitLab 12.8)
           required: false
           schema:
             type: string
         - name: not
           in: query
           description: >-
-            Return issues that do not match the parameters supplied. Accepts:
-            labels, milestone, author_id, author_username, assignee_id,
-            assignee_username, my_reaction_emoji, search, in
+            Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id,
+            author_username, assignee_id, assignee_username, my_reaction_emoji, search, in
           required: false
           schema:
             type: string
         - name: order_by
           in: query
           description: >-
-            Return issues ordered by created_at, updated_at, priority, due_date,
-            relative_position, label_priority, milestone_due, popularity, weight
-            fields. Default is created_at
+            Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority,
+            milestone_due, popularity, weight fields. Default is created_at
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all. Defaults to all.
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all.'
           required: false
           schema:
             type: string
@@ -475,35 +414,30 @@ paths:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: weight
           in: query
           description: >-
-            Return issues with the specified weight. None returns issues with no
-            weight assigned. Any returns issues with a weight assigned.
+            Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues
+            with a weight assigned.
           required: false
           schema:
             type: integer
         - name: with_labels_details
           in: query
           description: >-
-            If true, the response returns more details for each label in labels
-            field: :name, :color, :description, :description_html, :text_color.
-            Default is false. The description_html attribute was introduced in
-            GitLab 12.7
+            If true, the response returns more details for each label in labels field: :name, :color, :description,
+            :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab
+            12.7
           required: false
           schema:
             type: string
@@ -513,16 +447,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    project_id:
-                      type: integer
-                    description:
-                      type: string
-                    health_status:
-                      type: string
+                $ref: '#/components/schemas/listGroupIssuesResponse'
   '/projects/{id}/issues':
     get:
       summary: List project issues
@@ -532,35 +457,31 @@ paths:
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE, the
-            assignee_username array should only contain a single value.
-            Otherwise, an invalid parameter error is returned.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an
+            invalid parameter error is returned.
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
@@ -572,44 +493,36 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: due_date
           in: query
           description: >-
-            Return issues that have no due date, are overdue, or whose due date
-            is this week, this month, or between two weeks ago and next month.
-            Accepts: 0 (no due date), any, today, tomorrow, overdue, week,
-            month, next_month_and_previous_two_weeks.
+            Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two
+            weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month,
+            next_month_and_previous_two_weeks.
           required: false
           schema:
             type: string
         - name: epic_id
           in: query
           description: >-
-            Return issues associated with the given epic ID. None returns issues
-            that are not associated with an epic. Any returns issues that are
-            associated with an epic. (Introduced in GitLab 13.6)
+            Return issues associated with the given epic ID. None returns issues that are not associated with an epic.
+            Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -621,81 +534,71 @@ paths:
             type: string
         - name: issue_type
           in: query
-          description: >-
-            Filter to a given type of issue. One of issue, incident, or
-            test_case. (Introduced in GitLab 13.12)
+          description: 'Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)'
           required: false
           schema:
             type: string
         - name: iteration_id
           in: query
           description: >-
-            Return issues assigned to the given iteration ID. None returns
-            issues that do not belong to an iteration. Any returns issues that
-            belong to an iteration. Mutually exclusive with iteration_title.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration.
+            Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in
+            GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: iteration_title
           in: query
           description: >-
-            Return issues assigned to the iteration with the given title.
-            Similar to iteration_id and mutually exclusive with iteration_id.
-            (Introduced in GitLab 13.6)
+            Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive
+            with iteration_id. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: string
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label. No+Label (Deprecated) lists all
-            issues with no labels. Predefined names are case-insensitive.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no
+            labels. Predefined names are case-insensitive.
           required: false
           schema:
             type: string
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone.
           required: false
           schema:
             type: string
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
         - name: not
           in: query
           description: >-
-            Return issues that do not match the parameters supplied. Accepts:
-            labels, milestone, author_id, author_username, assignee_id,
-            assignee_username, my_reaction_emoji, search, in
+            Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id,
+            author_username, assignee_id, assignee_username, my_reaction_emoji, search, in
           required: false
           schema:
             type: string
         - name: order_by
           in: query
           description: >-
-            Return issues ordered by created_at, updated_at, priority, due_date,
-            relative_position, label_priority, milestone_due, popularity, weight
-            fields. Default is created_at
+            Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority,
+            milestone_due, popularity, weight fields. Default is created_at
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all. Defaults to all.
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all.'
           required: false
           schema:
             type: string
@@ -719,34 +622,29 @@ paths:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: weight
           in: query
           description: >-
-            Return issues with the specified weight. None returns issues with no
-            weight assigned. Any returns issues with a weight assigned.
+            Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues
+            with a weight assigned.
           required: false
           schema:
             type: integer
         - name: with_labels_details
           in: query
           description: >-
-            If true, the response returns more details for each label in labels
-            field: :name, :color, :description, :description_html, :text_color.
-            Default is false. description_html was introduced in GitLab 12.7
+            If true, the response returns more details for each label in labels field: :name, :color, :description,
+            :description_html, :text_color. Default is false. description_html was introduced in GitLab 12.7
           required: false
           schema:
             type: string
@@ -756,16 +654,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    project_id:
-                      type: integer
-                    description:
-                      type: string
-                    health_status:
-                      type: string
+                $ref: '#/components/schemas/listProjectIssuesResponse'
     post:
       summary: New issue
       description: Creates a new project issue.
@@ -773,9 +662,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -785,173 +672,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  epic_iid:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      url:
-                        type: string
-                      group_id:
-                        type: integer
-                  weight:
-                    type: string
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  iid:
-                    type: integer
-                  title:
-                    type: string
-                  state:
-                    type: string
-                  assignees:
-                    type: array
-                    items: {}
-                  assignee:
-                    type: string
-                  type:
-                    type: string
-                  labels:
-                    type: array
-                    items:
-                      type: string
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      avatar_url:
-                        type: string
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                  updated_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  milestone:
-                    type: string
-                  subscribed:
-                    type: boolean
-                  user_notes_count:
-                    type: integer
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/newIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                assignee_id:
-                  type: integer
-                assignee_ids:
-                  type: array
-                  items:
-                    type: integer
-                confidential:
-                  type: boolean
-                created_at:
-                  type: string
-                description:
-                  type: string
-                discussion_to_resolve:
-                  type: string
-                due_date:
-                  type: string
-                epic_id:
-                  type: integer
-                epic_iid:
-                  type: integer
-                issue_type:
-                  type: string
-                labels:
-                  type: string
-                merge_request_to_resolve_discussions_of:
-                  type: integer
-                milestone_id:
-                  type: integer
-                title:
-                  type: string
-                weight:
-                  type: integer
-              required:
-                - title
+              $ref: '#/components/schemas/newIssueRequest'
   '/issues/{id}':
     get:
       summary: Single issue
@@ -970,171 +696,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  weight:
-                    type: string
-                  id:
-                    type: integer
-                  milestone:
-                    type: object
-                    properties:
-                      due_date:
-                        type: string
-                      project_id:
-                        type: integer
-                      state:
-                        type: string
-                      description:
-                        type: string
-                      iid:
-                        type: integer
-                      id:
-                        type: integer
-                      title:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                  author:
-                    type: object
-                    properties:
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      avatar_url:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                  state:
-                    type: string
-                  iid:
-                    type: integer
-                  assignees:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                        state:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                  assignee:
-                    type: object
-                    properties:
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                      state:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                  type:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  title:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  subscribed:
-                    type: boolean
-                  user_notes_count:
-                    type: integer
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
-                  has_tasks:
-                    type: boolean
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  moved_to_id:
-                    type: string
-                  service_desk_reply_to:
-                    type: string
+                $ref: '#/components/schemas/singleIssueResponse'
   '/projects/{id}/issues/{issue_iid}':
     get:
       summary: Single project issue
@@ -1143,9 +705,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -1161,192 +721,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  epic_iid:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      url:
-                        type: string
-                      group_id:
-                        type: integer
-                  weight:
-                    type: string
-                  milestone:
-                    type: object
-                    properties:
-                      due_date:
-                        type: string
-                      project_id:
-                        type: integer
-                      state:
-                        type: string
-                      description:
-                        type: string
-                      iid:
-                        type: integer
-                      id:
-                        type: integer
-                      title:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                  author:
-                    type: object
-                    properties:
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      avatar_url:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                  state:
-                    type: string
-                  iid:
-                    type: integer
-                  assignees:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                        state:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                  assignee:
-                    type: object
-                    properties:
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                      state:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                  type:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  subscribed:
-                    type: boolean
-                  user_notes_count:
-                    type: integer
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/singleProjectIssueResponse'
     put:
       summary: Edit issue
-      description: >-
-        Updates an existing project issue. This call is also used to mark an
-        issue as closed.
+      description: Updates an existing project issue. This call is also used to mark an issue as closed.
       operationId: editIssue
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -1362,185 +745,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  epic_iid:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      url:
-                        type: string
-                      group_id:
-                        type: integer
-                  weight:
-                    type: string
-                  created_at:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      avatar_url:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                  state:
-                    type: string
-                  title:
-                    type: string
-                  updated_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: object
-                    properties:
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      avatar_url:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                  iid:
-                    type: integer
-                  labels:
-                    type: array
-                    items:
-                      type: string
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  id:
-                    type: integer
-                  assignees:
-                    type: array
-                    items: {}
-                  assignee:
-                    type: string
-                  milestone:
-                    type: string
-                  subscribed:
-                    type: boolean
-                  user_notes_count:
-                    type: integer
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/editIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                add_labels:
-                  type: string
-                assignee_ids:
-                  type: array
-                  items:
-                    type: integer
-                confidential:
-                  type: boolean
-                description:
-                  type: string
-                discussion_locked:
-                  type: boolean
-                due_date:
-                  type: string
-                epic_id:
-                  type: integer
-                epic_iid:
-                  type: integer
-                issue_type:
-                  type: string
-                labels:
-                  type: string
-                milestone_id:
-                  type: integer
-                remove_labels:
-                  type: string
-                state_event:
-                  type: string
-                title:
-                  type: string
-                updated_at:
-                  type: string
-                weight:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/editIssueRequest'
     delete:
       summary: Delete an issue
       description: Only for administrators and project owners. Deletes an issue.
@@ -1548,9 +758,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -1566,7 +774,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnIssueResponse'
   '/projects/{id}/issues/{issue_iid}/reorder':
     put:
       summary: Reorder an issue
@@ -1575,9 +783,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -1593,32 +799,23 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/reorderAnIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                move_after_id:
-                  type: integer
-                move_before_id:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/reorderAnIssueRequest'
   '/projects/{id}/issues/{issue_iid}/move':
     post:
       summary: Move an issue
       description: >-
-        Moves an issue to a different project. If the target project is the
-        source project or the user has insufficient permissions, an error
-        message with status code 400 is returned.
+        Moves an issue to a different project. If the target project is the source project or the user has insufficient
+        permissions, an error message with status code 400 is returned.
       operationId: moveAnIssue
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -1634,178 +831,23 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  epic_iid:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      url:
-                        type: string
-                      group_id:
-                        type: integer
-                  weight:
-                    type: string
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  title:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  milestone:
-                    type: string
-                  assignees:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                  assignee:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  type:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/moveAnIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                to_project_id:
-                  type: integer
-              required:
-                - to_project_id
+              $ref: '#/components/schemas/moveAnIssueRequest'
   '/projects/{id}/issues/{issue_iid}/clone':
     post:
       summary: Clone an issue
       description: >-
-        Clone the issue to given project. If the user has insufficient
-        permissions, an error message with status code 400 is returned.
+        Clone the issue to given project. If the user has insufficient permissions, an error message with status code
+        400 is returned.
       operationId: cloneAnIssue
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: false
           schema:
             type: string
@@ -1821,175 +863,23 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  milestone:
-                    type: string
-                  assignees:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  type:
-                    type: string
-                  assignee:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  user_notes_count:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  due_date:
-                    type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: string
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  web_url:
-                    type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
-                  blocking_issues_count:
-                    type: integer
-                  has_tasks:
-                    type: boolean
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  subscribed:
-                    type: boolean
-                  moved_to_id:
-                    type: string
-                  service_desk_reply_to:
-                    type: string
+                $ref: '#/components/schemas/cloneAnIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                to_project_id:
-                  type: integer
-                with_notes:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/cloneAnIssueRequest'
   '/projects/{id}/issues/{issue_iid}/subscribe':
     post:
       summary: Subscribe to an issue
       description: >-
-        Subscribes the authenticated user to an issue to receive notifications.
-        If the user is already subscribed to the issue, the status code 304 is
-        returned.
+        Subscribes the authenticated user to an issue to receive notifications. If the user is already subscribed to the
+        issue, the status code 304 is returned.
       operationId: subscribeToAnIssue
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2005,169 +895,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  description:
-                    type: string
-                  epic_iid:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      url:
-                        type: string
-                      group_id:
-                        type: integer
-                  weight:
-                    type: string
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  title:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  milestone:
-                    type: string
-                  assignees:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                  assignee:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  type:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  time_stats:
-                    type: object
-                    properties:
-                      time_estimate:
-                        type: integer
-                      total_time_spent:
-                        type: integer
-                      human_time_estimate:
-                        type: string
-                      human_total_time_spent:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      notes:
-                        type: string
-                      award_emoji:
-                        type: string
-                      project:
-                        type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/subscribeToAnIssueResponse'
   '/projects/{id}/issues/{issue_iid}/unsubscribe':
     post:
       summary: Unsubscribe from an issue
       description: >-
-        Unsubscribes the authenticated user from the issue to not receive
-        notifications from it. If the user is not subscribed to the issue, the
-        status code 304 is returned.
+        Unsubscribes the authenticated user from the issue to not receive notifications from it. If the user is not
+        subscribed to the issue, the status code 304 is returned.
       operationId: unsubscribeFromAnIssue
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2183,115 +922,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  upvotes:
-                    type: integer
-                  downvotes:
-                    type: integer
-                  merge_requests_count:
-                    type: integer
-                  milestone:
-                    type: string
-                  assignee:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  type:
-                    type: string
-                  closed_at:
-                    type: string
-                  closed_by:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  subscribed:
-                    type: boolean
-                  due_date:
-                    type: string
-                  web_url:
-                    type: string
-                  references:
-                    type: object
-                    properties:
-                      short:
-                        type: string
-                      relative:
-                        type: string
-                      full:
-                        type: string
-                  confidential:
-                    type: boolean
-                  discussion_locked:
-                    type: boolean
-                  issue_type:
-                    type: string
-                  severity:
-                    type: string
-                  task_completion_status:
-                    type: object
-                    properties:
-                      count:
-                        type: integer
-                      completed_count:
-                        type: integer
+                $ref: '#/components/schemas/unsubscribeFromAnIssueResponse'
   '/projects/{id}/issues/{issue_iid}/todo':
     post:
       summary: Create a to-do item
       description: >-
-        Manually creates a to-do item for the current user on an issue. If there
-        already exists a to-do item for the user on that issue, status code 304
-        is returned.
+        Manually creates a to-do item for the current user on an issue. If there already exists a to-do item for the
+        user on that issue, status code 304 is returned.
       operationId: createATo-doItem
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2307,193 +949,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  project:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      name_with_namespace:
-                        type: string
-                      path:
-                        type: string
-                      path_with_namespace:
-                        type: string
-                  author:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  action_name:
-                    type: string
-                  target_type:
-                    type: string
-                  target:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      project_id:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      milestone:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          iid:
-                            type: integer
-                          project_id:
-                            type: integer
-                          title:
-                            type: string
-                          description:
-                            type: string
-                          state:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          due_date:
-                            type: string
-                      assignees:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            username:
-                              type: string
-                            id:
-                              type: integer
-                            state:
-                              type: string
-                            avatar_url:
-                              type: string
-                            web_url:
-                              type: string
-                      assignee:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          id:
-                            type: integer
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      type:
-                        type: string
-                      author:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          id:
-                            type: integer
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      subscribed:
-                        type: boolean
-                      user_notes_count:
-                        type: integer
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      merge_requests_count:
-                        type: integer
-                      due_date:
-                        type: string
-                      web_url:
-                        type: string
-                      references:
-                        type: object
-                        properties:
-                          short:
-                            type: string
-                          relative:
-                            type: string
-                          full:
-                            type: string
-                      confidential:
-                        type: boolean
-                      discussion_locked:
-                        type: boolean
-                      issue_type:
-                        type: string
-                      severity:
-                        type: string
-                      task_completion_status:
-                        type: object
-                        properties:
-                          count:
-                            type: integer
-                          completed_count:
-                            type: integer
-                  target_url:
-                    type: string
-                  body:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/createATo-doItemResponse'
   '/projects/{id}/issues/{issue_iid}/notes':
     post:
       summary: Promote an issue to an epic
-      description: >-
-        Promotes an issue to an epic by adding a comment with the /promote quick
-        action.
+      description: Promotes an issue to an epic by adding a comment with the /promote quick action.
       operationId: promoteAnIssueToAnEpic
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2509,62 +974,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  type:
-                    type: string
-                  body:
-                    type: string
-                  attachment:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  system:
-                    type: boolean
-                  noteable_id:
-                    type: integer
-                  noteable_type:
-                    type: string
-                  resolvable:
-                    type: boolean
-                  confidential:
-                    type: boolean
-                  noteable_iid:
-                    type: integer
-                  commands_changes:
-                    type: object
-                    properties:
-                      promote_to_epic:
-                        type: boolean
+                $ref: '#/components/schemas/promoteAnIssueToAnEpicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/promoteAnIssueToAnEpicRequest'
   '/projects/{id}/issues/{issue_iid}/time_estimate':
     post:
       summary: Set a time estimate for an issue
@@ -2573,9 +988,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2591,26 +1004,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  human_time_estimate:
-                    type: string
-                  human_total_time_spent:
-                    type: string
-                  time_estimate:
-                    type: integer
-                  total_time_spent:
-                    type: integer
+                $ref: '#/components/schemas/setATimeEstimateForAnIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                duration:
-                  type: string
-              required:
-                - duration
+              $ref: '#/components/schemas/setATimeEstimateForAnIssueRequest'
   '/projects/{id}/issues/{issue_iid}/reset_time_estimate':
     post:
       summary: Reset the time estimate for an issue
@@ -2619,9 +1018,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2637,16 +1034,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  human_time_estimate:
-                    type: string
-                  human_total_time_spent:
-                    type: string
-                  time_estimate:
-                    type: integer
-                  total_time_spent:
-                    type: integer
+                $ref: '#/components/schemas/resetTheTimeEstimateForAnIssueResponse'
   '/projects/{id}/issues/{issue_iid}/add_spent_time':
     post:
       summary: Add spent time for an issue
@@ -2655,9 +1043,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2673,28 +1059,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  human_time_estimate:
-                    type: string
-                  human_total_time_spent:
-                    type: string
-                  time_estimate:
-                    type: integer
-                  total_time_spent:
-                    type: integer
+                $ref: '#/components/schemas/addSpentTimeForAnIssueResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                duration:
-                  type: string
-                summary:
-                  type: string
-              required:
-                - duration
+              $ref: '#/components/schemas/addSpentTimeForAnIssueRequest'
   '/projects/{id}/issues/{issue_iid}/reset_spent_time':
     post:
       summary: Reset spent time for an issue
@@ -2703,9 +1073,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2721,30 +1089,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  human_time_estimate:
-                    type: string
-                  human_total_time_spent:
-                    type: string
-                  time_estimate:
-                    type: integer
-                  total_time_spent:
-                    type: integer
+                $ref: '#/components/schemas/resetSpentTimeForAnIssueResponse'
   '/projects/{id}/issues/{issue_iid}/time_stats':
     get:
       summary: Get time tracking stats
       description: >-
-        If the project is private or the issue is confidential, you need to
-        provide credentials to authorize. The preferred way to do this, is by
-        using personal access tokens.
+        If the project is private or the issue is confidential, you need to provide credentials to authorize. The
+        preferred way to do this, is by using personal access tokens.
       operationId: getTimeTrackingStats
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2760,16 +1116,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  human_time_estimate:
-                    type: string
-                  human_total_time_spent:
-                    type: string
-                  time_estimate:
-                    type: integer
-                  total_time_spent:
-                    type: integer
+                $ref: '#/components/schemas/getTimeTrackingStatsResponse'
   '/projects/{id}/issues/{issue_iid}/related_merge_requests':
     get:
       summary: List merge requests related to issue
@@ -2778,9 +1125,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -2796,261 +1141,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    state:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    closed_by:
-                      type: string
-                    closed_at:
-                      type: string
-                    target_branch:
-                      type: string
-                    source_branch:
-                      type: string
-                    user_notes_count:
-                      type: integer
-                    upvotes:
-                      type: integer
-                    downvotes:
-                      type: integer
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    assignee:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    source_project_id:
-                      type: integer
-                    target_project_id:
-                      type: integer
-                    labels:
-                      type: array
-                      items: {}
-                    draft:
-                      type: boolean
-                    work_in_progress:
-                      type: boolean
-                    milestone:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        iid:
-                          type: integer
-                        project_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        due_date:
-                          type: string
-                        start_date:
-                          type: string
-                        web_url:
-                          type: string
-                    merge_when_pipeline_succeeds:
-                      type: boolean
-                    merge_status:
-                      type: string
-                    sha:
-                      type: string
-                    merge_commit_sha:
-                      type: string
-                    squash_commit_sha:
-                      type: string
-                    discussion_locked:
-                      type: string
-                    should_remove_source_branch:
-                      type: string
-                    force_remove_source_branch:
-                      type: boolean
-                    reference:
-                      type: string
-                    web_url:
-                      type: string
-                    references:
-                      type: object
-                      properties:
-                        short:
-                          type: string
-                        relative:
-                          type: string
-                        full:
-                          type: string
-                    time_stats:
-                      type: object
-                      properties:
-                        time_estimate:
-                          type: integer
-                        total_time_spent:
-                          type: integer
-                        human_time_estimate:
-                          type: string
-                        human_total_time_spent:
-                          type: string
-                    squash:
-                      type: boolean
-                    task_completion_status:
-                      type: object
-                      properties:
-                        count:
-                          type: integer
-                        completed_count:
-                          type: integer
-                    changes_count:
-                      type: string
-                    latest_build_started_at:
-                      type: string
-                    latest_build_finished_at:
-                      type: string
-                    first_deployed_to_production_at:
-                      type: string
-                    pipeline:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        sha:
-                          type: string
-                        ref:
-                          type: string
-                        status:
-                          type: string
-                        web_url:
-                          type: string
-                    head_pipeline:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        sha:
-                          type: string
-                        ref:
-                          type: string
-                        status:
-                          type: string
-                        web_url:
-                          type: string
-                        before_sha:
-                          type: string
-                        tag:
-                          type: boolean
-                        yaml_errors:
-                          type: string
-                        user:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            name:
-                              type: string
-                            username:
-                              type: string
-                            state:
-                              type: string
-                            avatar_url:
-                              type: string
-                            web_url:
-                              type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        started_at:
-                          type: string
-                        finished_at:
-                          type: string
-                        committed_at:
-                          type: string
-                        duration:
-                          type: integer
-                        coverage:
-                          type: string
-                        detailed_status:
-                          type: object
-                          properties:
-                            icon:
-                              type: string
-                            text:
-                              type: string
-                            label:
-                              type: string
-                            group:
-                              type: string
-                            tooltip:
-                              type: string
-                            has_details:
-                              type: boolean
-                            details_path:
-                              type: string
-                            illustration:
-                              type: string
-                            favicon:
-                              type: string
-                    diff_refs:
-                      type: object
-                      properties:
-                        base_sha:
-                          type: string
-                        head_sha:
-                          type: string
-                        start_sha:
-                          type: string
-                    merge_error:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        can_merge:
-                          type: boolean
+                $ref: '#/components/schemas/listMergeRequestsRelatedToIssueResponse'
   '/projects/{id}/issues/{issue_iid}/closed_by':
     get:
       summary: List merge requests that close a particular issue on merge
@@ -3059,9 +1150,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3077,122 +1166,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    state:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    target_branch:
-                      type: string
-                    source_branch:
-                      type: string
-                    upvotes:
-                      type: integer
-                    downvotes:
-                      type: integer
-                    author:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    assignee:
-                      type: string
-                    source_project_id:
-                      type: integer
-                    target_project_id:
-                      type: integer
-                    closed_at:
-                      type: string
-                    closed_by:
-                      type: string
-                    labels:
-                      type: array
-                      items: {}
-                    draft:
-                      type: boolean
-                    work_in_progress:
-                      type: boolean
-                    milestone:
-                      type: string
-                    merge_when_pipeline_succeeds:
-                      type: boolean
-                    merge_status:
-                      type: string
-                    sha:
-                      type: string
-                    merge_commit_sha:
-                      type: string
-                    squash_commit_sha:
-                      type: string
-                    user_notes_count:
-                      type: integer
-                    should_remove_source_branch:
-                      type: string
-                    force_remove_source_branch:
-                      type: boolean
-                    web_url:
-                      type: string
-                    reference:
-                      type: string
-                    references:
-                      type: object
-                      properties:
-                        short:
-                          type: string
-                        relative:
-                          type: string
-                        full:
-                          type: string
-                    time_stats:
-                      type: object
-                      properties:
-                        time_estimate:
-                          type: integer
-                        total_time_spent:
-                          type: integer
-                        human_time_estimate:
-                          type: string
-                        human_total_time_spent:
-                          type: string
+                $ref: '#/components/schemas/listMergeRequestsThatCloseAParticularIssueOnMergeResponse'
   '/projects/{id}/issues/{issue_iid}/participants':
     get:
       summary: Participants on issues
       description: >-
-        If the project is private or the issue is confidential, you need to
-        provide credentials to authorize. The preferred way to do this, is by
-        using personal access tokens.
+        If the project is private or the issue is confidential, you need to provide credentials to authorize. The
+        preferred way to do this, is by using personal access tokens.
       operationId: participantsOnIssues
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3208,22 +1193,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
+                $ref: '#/components/schemas/participantsOnIssuesResponse'
   '/projects/{id}/issues/{issue_iid}/user_agent_detail':
     get:
       summary: Get user agent details
@@ -3232,9 +1202,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3250,14 +1218,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  user_agent:
-                    type: string
-                  ip_address:
-                    type: string
-                  akismet_submitted:
-                    type: boolean
+                $ref: '#/components/schemas/getUserAgentDetailsResponse'
   '/projects/{id}/issues/{issue_iid}/metric_images':
     post:
       summary: Upload metric image
@@ -3266,9 +1227,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3284,32 +1243,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  filename:
-                    type: string
-                  file_path:
-                    type: string
-                  url:
-                    type: string
-                  url_text:
-                    type: string
+                $ref: '#/components/schemas/uploadMetricImageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                url_text:
-                  type: string
-              required:
-                - file
+              $ref: '#/components/schemas/uploadMetricImageRequest'
     get:
       summary: List metric images
       description: Available only for Incident issues.
@@ -3317,9 +1256,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3335,20 +1272,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    filename:
-                      type: string
-                    file_path:
-                      type: string
-                    url:
-                      type: string
+                $ref: '#/components/schemas/listMetricImagesResponse'
   '/projects/{id}/issues/{issue_iid}/metric_images/{image_id}':
     put:
       summary: Update metric image
@@ -3357,9 +1281,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3381,31 +1303,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  filename:
-                    type: string
-                  file_path:
-                    type: string
-                  url:
-                    type: string
-                  url_text:
-                    type: string
+                $ref: '#/components/schemas/updateMetricImageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                url_text:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateMetricImageRequest'
     delete:
       summary: Delete metric image
       description: Available only for Incident issues.
@@ -3413,9 +1316,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -3437,4 +1338,2035 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteMetricImageResponse'
+components:
+  schemas:
+    listIssuesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          state:
+            type: string
+          description:
+            type: string
+          health_status:
+            type: string
+    listGroupIssuesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          project_id:
+            type: integer
+          description:
+            type: string
+          health_status:
+            type: string
+    listProjectIssuesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          project_id:
+            type: integer
+          description:
+            type: string
+          health_status:
+            type: string
+    singleIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        weight:
+          type: string
+        id:
+          type: integer
+        milestone:
+          type: object
+          properties:
+            due_date:
+              type: string
+            project_id:
+              type: integer
+            state:
+              type: string
+            description:
+              type: string
+            iid:
+              type: integer
+            id:
+              type: integer
+            title:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+        author:
+          type: object
+          properties:
+            state:
+              type: string
+            web_url:
+              type: string
+            avatar_url:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            name:
+              type: string
+        state:
+          type: string
+        iid:
+          type: integer
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              avatar_url:
                 type: string
+              web_url:
+                type: string
+              state:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              name:
+                type: string
+        assignee:
+          type: object
+          properties:
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+            state:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            name:
+              type: string
+        type:
+          type: string
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        title:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        subscribed:
+          type: boolean
+        user_notes_count:
+          type: integer
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+        has_tasks:
+          type: boolean
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        moved_to_id:
+          type: string
+        service_desk_reply_to:
+          type: string
+    singleProjectIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        epic_iid:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            url:
+              type: string
+            group_id:
+              type: integer
+        weight:
+          type: string
+        milestone:
+          type: object
+          properties:
+            due_date:
+              type: string
+            project_id:
+              type: integer
+            state:
+              type: string
+            description:
+              type: string
+            iid:
+              type: integer
+            id:
+              type: integer
+            title:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+        author:
+          type: object
+          properties:
+            state:
+              type: string
+            web_url:
+              type: string
+            avatar_url:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            name:
+              type: string
+        state:
+          type: string
+        iid:
+          type: integer
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+              state:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              name:
+                type: string
+        assignee:
+          type: object
+          properties:
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+            state:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            name:
+              type: string
+        type:
+          type: string
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        id:
+          type: integer
+        title:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        subscribed:
+          type: boolean
+        user_notes_count:
+          type: integer
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    newIssueRequest:
+      type: object
+      properties:
+        assignee_id:
+          type: integer
+        assignee_ids:
+          type: array
+          items:
+            type: integer
+        confidential:
+          type: boolean
+        created_at:
+          type: string
+        description:
+          type: string
+        discussion_to_resolve:
+          type: string
+        due_date:
+          type: string
+        epic_id:
+          type: integer
+        epic_iid:
+          type: integer
+        issue_type:
+          type: string
+        labels:
+          type: string
+        merge_request_to_resolve_discussions_of:
+          type: integer
+        milestone_id:
+          type: integer
+        title:
+          type: string
+        weight:
+          type: integer
+      required:
+        - title
+    newIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        epic_iid:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            url:
+              type: string
+            group_id:
+              type: integer
+        weight:
+          type: string
+        id:
+          type: integer
+        created_at:
+          type: string
+        iid:
+          type: integer
+        title:
+          type: string
+        state:
+          type: string
+        assignees:
+          type: array
+          items: {}
+        assignee:
+          type: string
+        type:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            avatar_url:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            id:
+              type: integer
+            username:
+              type: string
+        updated_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        milestone:
+          type: string
+        subscribed:
+          type: boolean
+        user_notes_count:
+          type: integer
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    editIssueRequest:
+      type: object
+      properties:
+        add_labels:
+          type: string
+        assignee_ids:
+          type: array
+          items:
+            type: integer
+        confidential:
+          type: boolean
+        description:
+          type: string
+        discussion_locked:
+          type: boolean
+        due_date:
+          type: string
+        epic_id:
+          type: integer
+        epic_iid:
+          type: integer
+        issue_type:
+          type: string
+        labels:
+          type: string
+        milestone_id:
+          type: integer
+        remove_labels:
+          type: string
+        state_event:
+          type: string
+        title:
+          type: string
+        updated_at:
+          type: string
+        weight:
+          type: integer
+    editIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        epic_iid:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            url:
+              type: string
+            group_id:
+              type: integer
+        weight:
+          type: string
+        created_at:
+          type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            avatar_url:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            web_url:
+              type: string
+        state:
+          type: string
+        title:
+          type: string
+        updated_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: object
+          properties:
+            state:
+              type: string
+            web_url:
+              type: string
+            avatar_url:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            name:
+              type: string
+        iid:
+          type: integer
+        labels:
+          type: array
+          items:
+            type: string
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        id:
+          type: integer
+        assignees:
+          type: array
+          items: {}
+        assignee:
+          type: string
+        milestone:
+          type: string
+        subscribed:
+          type: boolean
+        user_notes_count:
+          type: integer
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    deleteAnIssueResponse:
+      type: string
+    reorderAnIssueRequest:
+      type: object
+      properties:
+        move_after_id:
+          type: integer
+        move_before_id:
+          type: integer
+    reorderAnIssueResponse:
+      type: string
+    moveAnIssueRequest:
+      type: object
+      properties:
+        to_project_id:
+          type: integer
+      required:
+        - to_project_id
+    moveAnIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        epic_iid:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            url:
+              type: string
+            group_id:
+              type: integer
+        weight:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        title:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        milestone:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+        assignee:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        type:
+          type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    cloneAnIssueRequest:
+      type: object
+      properties:
+        to_project_id:
+          type: integer
+        with_notes:
+          type: boolean
+    cloneAnIssueResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        labels:
+          type: array
+          items: {}
+        milestone:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        type:
+          type: string
+        assignee:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        user_notes_count:
+          type: integer
+        merge_requests_count:
+          type: integer
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        due_date:
+          type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: string
+        issue_type:
+          type: string
+        severity:
+          type: string
+        web_url:
+          type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+        blocking_issues_count:
+          type: integer
+        has_tasks:
+          type: boolean
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        subscribed:
+          type: boolean
+        moved_to_id:
+          type: string
+        service_desk_reply_to:
+          type: string
+    subscribeToAnIssueResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        description:
+          type: string
+        epic_iid:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            url:
+              type: string
+            group_id:
+              type: integer
+        weight:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        title:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        milestone:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+        assignee:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        type:
+          type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        time_stats:
+          type: object
+          properties:
+            time_estimate:
+              type: integer
+            total_time_spent:
+              type: integer
+            human_time_estimate:
+              type: string
+            human_total_time_spent:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            notes:
+              type: string
+            award_emoji:
+              type: string
+            project:
+              type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    unsubscribeFromAnIssueResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        merge_requests_count:
+          type: integer
+        milestone:
+          type: string
+        assignee:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        type:
+          type: string
+        closed_at:
+          type: string
+        closed_by:
+          type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        subscribed:
+          type: boolean
+        due_date:
+          type: string
+        web_url:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        confidential:
+          type: boolean
+        discussion_locked:
+          type: boolean
+        issue_type:
+          type: string
+        severity:
+          type: string
+        task_completion_status:
+          type: object
+          properties:
+            count:
+              type: integer
+            completed_count:
+              type: integer
+    createATo-doItemResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        action_name:
+          type: string
+        target_type:
+          type: string
+        target:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            project_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            milestone:
+              type: object
+              properties:
+                id:
+                  type: integer
+                iid:
+                  type: integer
+                project_id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                state:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                due_date:
+                  type: string
+            assignees:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  id:
+                    type: integer
+                  state:
+                    type: string
+                  avatar_url:
+                    type: string
+                  web_url:
+                    type: string
+            assignee:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                id:
+                  type: integer
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            type:
+              type: string
+            author:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                id:
+                  type: integer
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            subscribed:
+              type: boolean
+            user_notes_count:
+              type: integer
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            merge_requests_count:
+              type: integer
+            due_date:
+              type: string
+            web_url:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            confidential:
+              type: boolean
+            discussion_locked:
+              type: boolean
+            issue_type:
+              type: string
+            severity:
+              type: string
+            task_completion_status:
+              type: object
+              properties:
+                count:
+                  type: integer
+                completed_count:
+                  type: integer
+        target_url:
+          type: string
+        body:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+    promoteAnIssueToAnEpicRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    promoteAnIssueToAnEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        type:
+          type: string
+        body:
+          type: string
+        attachment:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        system:
+          type: boolean
+        noteable_id:
+          type: integer
+        noteable_type:
+          type: string
+        resolvable:
+          type: boolean
+        confidential:
+          type: boolean
+        noteable_iid:
+          type: integer
+        commands_changes:
+          type: object
+          properties:
+            promote_to_epic:
+              type: boolean
+    setATimeEstimateForAnIssueRequest:
+      type: object
+      properties:
+        duration:
+          type: string
+      required:
+        - duration
+    setATimeEstimateForAnIssueResponse:
+      type: object
+      properties:
+        human_time_estimate:
+          type: string
+        human_total_time_spent:
+          type: string
+        time_estimate:
+          type: integer
+        total_time_spent:
+          type: integer
+    resetTheTimeEstimateForAnIssueResponse:
+      type: object
+      properties:
+        human_time_estimate:
+          type: string
+        human_total_time_spent:
+          type: string
+        time_estimate:
+          type: integer
+        total_time_spent:
+          type: integer
+    addSpentTimeForAnIssueRequest:
+      type: object
+      properties:
+        duration:
+          type: string
+        summary:
+          type: string
+      required:
+        - duration
+    addSpentTimeForAnIssueResponse:
+      type: object
+      properties:
+        human_time_estimate:
+          type: string
+        human_total_time_spent:
+          type: string
+        time_estimate:
+          type: integer
+        total_time_spent:
+          type: integer
+    resetSpentTimeForAnIssueResponse:
+      type: object
+      properties:
+        human_time_estimate:
+          type: string
+        human_total_time_spent:
+          type: string
+        time_estimate:
+          type: integer
+        total_time_spent:
+          type: integer
+    getTimeTrackingStatsResponse:
+      type: object
+      properties:
+        human_time_estimate:
+          type: string
+        human_total_time_spent:
+          type: string
+        time_estimate:
+          type: integer
+        total_time_spent:
+          type: integer
+    listMergeRequestsRelatedToIssueResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          closed_by:
+            type: string
+          closed_at:
+            type: string
+          target_branch:
+            type: string
+          source_branch:
+            type: string
+          user_notes_count:
+            type: integer
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          assignee:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          source_project_id:
+            type: integer
+          target_project_id:
+            type: integer
+          labels:
+            type: array
+            items: {}
+          draft:
+            type: boolean
+          work_in_progress:
+            type: boolean
+          milestone:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              due_date:
+                type: string
+              start_date:
+                type: string
+              web_url:
+                type: string
+          merge_when_pipeline_succeeds:
+            type: boolean
+          merge_status:
+            type: string
+          sha:
+            type: string
+          merge_commit_sha:
+            type: string
+          squash_commit_sha:
+            type: string
+          discussion_locked:
+            type: string
+          should_remove_source_branch:
+            type: string
+          force_remove_source_branch:
+            type: boolean
+          reference:
+            type: string
+          web_url:
+            type: string
+          references:
+            type: object
+            properties:
+              short:
+                type: string
+              relative:
+                type: string
+              full:
+                type: string
+          time_stats:
+            type: object
+            properties:
+              time_estimate:
+                type: integer
+              total_time_spent:
+                type: integer
+              human_time_estimate:
+                type: string
+              human_total_time_spent:
+                type: string
+          squash:
+            type: boolean
+          task_completion_status:
+            type: object
+            properties:
+              count:
+                type: integer
+              completed_count:
+                type: integer
+          changes_count:
+            type: string
+          latest_build_started_at:
+            type: string
+          latest_build_finished_at:
+            type: string
+          first_deployed_to_production_at:
+            type: string
+          pipeline:
+            type: object
+            properties:
+              id:
+                type: integer
+              sha:
+                type: string
+              ref:
+                type: string
+              status:
+                type: string
+              web_url:
+                type: string
+          head_pipeline:
+            type: object
+            properties:
+              id:
+                type: integer
+              sha:
+                type: string
+              ref:
+                type: string
+              status:
+                type: string
+              web_url:
+                type: string
+              before_sha:
+                type: string
+              tag:
+                type: boolean
+              yaml_errors:
+                type: string
+              user:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  state:
+                    type: string
+                  avatar_url:
+                    type: string
+                  web_url:
+                    type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              started_at:
+                type: string
+              finished_at:
+                type: string
+              committed_at:
+                type: string
+              duration:
+                type: integer
+              coverage:
+                type: string
+              detailed_status:
+                type: object
+                properties:
+                  icon:
+                    type: string
+                  text:
+                    type: string
+                  label:
+                    type: string
+                  group:
+                    type: string
+                  tooltip:
+                    type: string
+                  has_details:
+                    type: boolean
+                  details_path:
+                    type: string
+                  illustration:
+                    type: string
+                  favicon:
+                    type: string
+          diff_refs:
+            type: object
+            properties:
+              base_sha:
+                type: string
+              head_sha:
+                type: string
+              start_sha:
+                type: string
+          merge_error:
+            type: string
+          user:
+            type: object
+            properties:
+              can_merge:
+                type: boolean
+    listMergeRequestsThatCloseAParticularIssueOnMergeResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          target_branch:
+            type: string
+          source_branch:
+            type: string
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          author:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          assignee:
+            type: string
+          source_project_id:
+            type: integer
+          target_project_id:
+            type: integer
+          closed_at:
+            type: string
+          closed_by:
+            type: string
+          labels:
+            type: array
+            items: {}
+          draft:
+            type: boolean
+          work_in_progress:
+            type: boolean
+          milestone:
+            type: string
+          merge_when_pipeline_succeeds:
+            type: boolean
+          merge_status:
+            type: string
+          sha:
+            type: string
+          merge_commit_sha:
+            type: string
+          squash_commit_sha:
+            type: string
+          user_notes_count:
+            type: integer
+          should_remove_source_branch:
+            type: string
+          force_remove_source_branch:
+            type: boolean
+          web_url:
+            type: string
+          reference:
+            type: string
+          references:
+            type: object
+            properties:
+              short:
+                type: string
+              relative:
+                type: string
+              full:
+                type: string
+          time_stats:
+            type: object
+            properties:
+              time_estimate:
+                type: integer
+              total_time_spent:
+                type: integer
+              human_time_estimate:
+                type: string
+              human_total_time_spent:
+                type: string
+    participantsOnIssuesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    getUserAgentDetailsResponse:
+      type: object
+      properties:
+        user_agent:
+          type: string
+        ip_address:
+          type: string
+        akismet_submitted:
+          type: boolean
+    uploadMetricImageRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        url_text:
+          type: string
+      required:
+        - file
+    uploadMetricImageResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        filename:
+          type: string
+        file_path:
+          type: string
+        url:
+          type: string
+        url_text:
+          type: string
+    listMetricImagesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+          filename:
+            type: string
+          file_path:
+            type: string
+          url:
+            type: string
+    updateMetricImageRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        url_text:
+          type: string
+    updateMetricImageResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        filename:
+          type: string
+        file_path:
+          type: string
+        url:
+          type: string
+        url_text:
+          type: string
+    deleteMetricImageResponse:
+      type: string

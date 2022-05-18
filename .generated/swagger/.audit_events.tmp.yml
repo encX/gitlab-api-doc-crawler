@@ -1,41 +1,35 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / audit_events'
+  version: '1.0'
 paths:
   /audit_events:
     get:
       summary: Retrieve all instance audit events
-      description: >-
-        By default, GET requests return 20 results at a time because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
       operationId: retrieveAllInstanceAuditEvents
       parameters:
         - name: created_after
           in: query
-          description: >-
-            Return audit events created on or after the given time. Format: ISO
-            8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return audit events created on or before the given time. Format: ISO
-            8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
         - name: entity_type
           in: query
-          description: >-
-            Return audit events for the given entity type. Valid values are:
-            User, Group, or Project.
+          description: 'Return audit events for the given entity type. Valid values are: User, Group, or Project.'
           required: false
           schema:
             type: string
         - name: entity_id
           in: query
-          description: >-
-            Return audit events for the given entity ID. Requires entity_type
-            attribute to be present.
+          description: Return audit events for the given entity ID. Requires entity_type attribute to be present.
           required: false
           schema:
             type: integer
@@ -45,37 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    author_id:
-                      type: integer
-                    entity_id:
-                      type: integer
-                    entity_type:
-                      type: string
-                    details:
-                      type: object
-                      properties:
-                        custom_message:
-                          type: string
-                        author_name:
-                          type: string
-                        target_id:
-                          type: string
-                        target_type:
-                          type: string
-                        target_details:
-                          type: string
-                        ip_address:
-                          type: string
-                        entity_path:
-                          type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/retrieveAllInstanceAuditEventsResponse'
   '/audit_events/{id}':
     get:
       summary: Retrieve single instance audit event
@@ -94,41 +58,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  author_id:
-                    type: integer
-                  entity_id:
-                    type: integer
-                  entity_type:
-                    type: string
-                  details:
-                    type: object
-                    properties:
-                      custom_message:
-                        type: string
-                      author_name:
-                        type: string
-                      target_id:
-                        type: string
-                      target_type:
-                        type: string
-                      target_details:
-                        type: string
-                      ip_address:
-                        type: string
-                      entity_path:
-                        type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/retrieveSingleInstanceAuditEventResponse'
   '/groups/{id}/audit_events':
     get:
       summary: Retrieve all group audit events
-      description: >-
-        By default, GET requests return 20 results at a time because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
       operationId: retrieveAllGroupAuditEvents
       parameters:
         - name: id
@@ -139,17 +73,13 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return group audit events created on or after the given time.
-            Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return group audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return group audit events created on or before the given time.
-            Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return group audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
@@ -159,37 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    author_id:
-                      type: integer
-                    entity_id:
-                      type: integer
-                    entity_type:
-                      type: string
-                    details:
-                      type: object
-                      properties:
-                        custom_message:
-                          type: string
-                        author_name:
-                          type: string
-                        target_id:
-                          type: string
-                        target_type:
-                          type: string
-                        target_details:
-                          type: string
-                        ip_address:
-                          type: string
-                        entity_path:
-                          type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/retrieveAllGroupAuditEventsResponse'
   '/groups/{id}/audit_events/{audit_event_id}':
     get:
       summary: Retrieve a specific group audit event
@@ -214,41 +114,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  author_id:
-                    type: integer
-                  entity_id:
-                    type: integer
-                  entity_type:
-                    type: string
-                  details:
-                    type: object
-                    properties:
-                      custom_message:
-                        type: string
-                      author_name:
-                        type: string
-                      target_id:
-                        type: string
-                      target_type:
-                        type: string
-                      target_details:
-                        type: string
-                      ip_address:
-                        type: string
-                      entity_path:
-                        type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/retrieveASpecificGroupAuditEventResponse'
   '/projects/{id}/audit_events':
     get:
       summary: Retrieve all project audit events
-      description: >-
-        By default, GET requests return 20 results at a time because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
       operationId: retrieveAllProjectAuditEvents
       parameters:
         - name: id
@@ -259,17 +129,13 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return project audit events created on or after the given time.
-            Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return project audit events created on or after the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return project audit events created on or before the given time.
-            Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)
+          description: 'Return project audit events created on or before the given time. Format: ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)'
           required: false
           schema:
             type: string
@@ -279,47 +145,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    author_id:
-                      type: integer
-                    entity_id:
-                      type: integer
-                    entity_type:
-                      type: string
-                    details:
-                      type: object
-                      properties:
-                        change:
-                          type: string
-                        from:
-                          type: string
-                        to:
-                          type: string
-                        author_name:
-                          type: string
-                        target_id:
-                          type: integer
-                        target_type:
-                          type: string
-                        target_details:
-                          type: string
-                        ip_address:
-                          type: string
-                        entity_path:
-                          type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/retrieveAllProjectAuditEventsResponse'
   '/projects/{id}/audit_events/{audit_event_id}':
     get:
       summary: Retrieve a specific project audit event
-      description: >-
-        Only available to users with at least the Maintainer role for the
-        project.
+      description: Only available to users with at least the Maintainer role for the project.
       operationId: retrieveASpecificProjectAuditEvent
       parameters:
         - name: id
@@ -340,36 +170,200 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  author_id:
-                    type: integer
-                  entity_id:
-                    type: integer
-                  entity_type:
-                    type: string
-                  details:
-                    type: object
-                    properties:
-                      change:
-                        type: string
-                      from:
-                        type: string
-                      to:
-                        type: string
-                      author_name:
-                        type: string
-                      target_id:
-                        type: integer
-                      target_type:
-                        type: string
-                      target_details:
-                        type: string
-                      ip_address:
-                        type: string
-                      entity_path:
-                        type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/retrieveASpecificProjectAuditEventResponse'
+components:
+  schemas:
+    retrieveAllInstanceAuditEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          author_id:
+            type: integer
+          entity_id:
+            type: integer
+          entity_type:
+            type: string
+          details:
+            type: object
+            properties:
+              custom_message:
+                type: string
+              author_name:
+                type: string
+              target_id:
+                type: string
+              target_type:
+                type: string
+              target_details:
+                type: string
+              ip_address:
+                type: string
+              entity_path:
+                type: string
+          created_at:
+            type: string
+    retrieveSingleInstanceAuditEventResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        author_id:
+          type: integer
+        entity_id:
+          type: integer
+        entity_type:
+          type: string
+        details:
+          type: object
+          properties:
+            custom_message:
+              type: string
+            author_name:
+              type: string
+            target_id:
+              type: string
+            target_type:
+              type: string
+            target_details:
+              type: string
+            ip_address:
+              type: string
+            entity_path:
+              type: string
+        created_at:
+          type: string
+    retrieveAllGroupAuditEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          author_id:
+            type: integer
+          entity_id:
+            type: integer
+          entity_type:
+            type: string
+          details:
+            type: object
+            properties:
+              custom_message:
+                type: string
+              author_name:
+                type: string
+              target_id:
+                type: string
+              target_type:
+                type: string
+              target_details:
+                type: string
+              ip_address:
+                type: string
+              entity_path:
+                type: string
+          created_at:
+            type: string
+    retrieveASpecificGroupAuditEventResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        author_id:
+          type: integer
+        entity_id:
+          type: integer
+        entity_type:
+          type: string
+        details:
+          type: object
+          properties:
+            custom_message:
+              type: string
+            author_name:
+              type: string
+            target_id:
+              type: string
+            target_type:
+              type: string
+            target_details:
+              type: string
+            ip_address:
+              type: string
+            entity_path:
+              type: string
+        created_at:
+          type: string
+    retrieveAllProjectAuditEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          author_id:
+            type: integer
+          entity_id:
+            type: integer
+          entity_type:
+            type: string
+          details:
+            type: object
+            properties:
+              change:
+                type: string
+              from:
+                type: string
+              to:
+                type: string
+              author_name:
+                type: string
+              target_id:
+                type: integer
+              target_type:
+                type: string
+              target_details:
+                type: string
+              ip_address:
+                type: string
+              entity_path:
+                type: string
+          created_at:
+            type: string
+    retrieveASpecificProjectAuditEventResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        author_id:
+          type: integer
+        entity_id:
+          type: integer
+        entity_type:
+          type: string
+        details:
+          type: object
+          properties:
+            change:
+              type: string
+            from:
+              type: string
+            to:
+              type: string
+            author_name:
+              type: string
+            target_id:
+              type: integer
+            target_type:
+              type: string
+            target_details:
+              type: string
+            ip_address:
+              type: string
+            entity_path:
+              type: string
+        created_at:
+          type: string

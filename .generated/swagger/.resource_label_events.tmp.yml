@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / resource_label_events'
+  version: '1.0'
 paths:
   '/projects/{id}/issues/{issue_iid}/resource_label_events':
     get:
@@ -23,46 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    resource_type:
-                      type: string
-                    resource_id:
-                      type: integer
-                    label:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                    action:
-                      type: string
+                $ref: '#/components/schemas/listProjectIssueLabelEventsResponse'
   '/projects/{id}/issues/{issue_iid}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single issue label event
@@ -93,7 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getSingleIssueLabelEventResponse'
   '/groups/{id}/epics/{epic_id}/resource_label_events':
     get:
       summary: List group epic label events
@@ -118,46 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    resource_type:
-                      type: string
-                    resource_id:
-                      type: integer
-                    label:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                    action:
-                      type: string
+                $ref: '#/components/schemas/listGroupEpicLabelEventsResponse'
   '/groups/{id}/epics/{epic_id}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single epic label event
@@ -188,7 +114,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getSingleEpicLabelEventResponse'
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events':
     get:
       summary: List project merge request label events
@@ -213,46 +139,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    resource_type:
-                      type: string
-                    resource_id:
-                      type: integer
-                    label:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                    action:
-                      type: string
+                $ref: '#/components/schemas/listProjectMergeRequestLabelEventsResponse'
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single merge request label event
@@ -283,4 +170,135 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/getSingleMergeRequestLabelEventResponse'
+components:
+  schemas:
+    listProjectIssueLabelEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
                 type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          resource_type:
+            type: string
+          resource_id:
+            type: integer
+          label:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+          action:
+            type: string
+    getSingleIssueLabelEventResponse:
+      type: string
+    listGroupEpicLabelEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          resource_type:
+            type: string
+          resource_id:
+            type: integer
+          label:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+          action:
+            type: string
+    getSingleEpicLabelEventResponse:
+      type: string
+    listProjectMergeRequestLabelEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          resource_type:
+            type: string
+          resource_id:
+            type: integer
+          label:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+          action:
+            type: string
+    getSingleMergeRequestLabelEventResponse:
+      type: string

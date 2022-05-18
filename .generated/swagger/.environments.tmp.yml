@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / environments'
+  version: '1.0'
 paths:
   '/projects/{id}/environments':
     get:
@@ -7,34 +11,27 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
         - name: name
           in: query
-          description: >-
-            Return the environment with this name. Mutually exclusive with
-            search
+          description: Return the environment with this name. Mutually exclusive with search
           required: false
           schema:
             type: string
         - name: search
           in: query
-          description: >-
-            Return list of environments matching the search criteria. Mutually
-            exclusive with name
+          description: Return list of environments matching the search criteria. Mutually exclusive with name
           required: false
           schema:
             type: string
         - name: states
           in: query
           description: >-
-            List all environments that match a specific state. Accepted values:
-            available or stopped. If no state value given, returns all
-            environments.
+            List all environments that match a specific state. Accepted values: available or stopped. If no state value
+            given, returns all environments.
           required: false
           schema:
             type: string
@@ -44,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listEnvironmentsResponse'
     post:
       summary: Create a new environment
       description: Creates a new environment with the given name and external_url.
@@ -52,9 +49,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -64,34 +59,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  slug:
-                    type: string
-                  external_url:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/createANewEnvironmentResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                external_url:
-                  type: string
-              required:
-                - name
+              $ref: '#/components/schemas/createANewEnvironmentRequest'
   '/projects/{id}/environments/{environment_id}':
     get:
       summary: Get a specific environment
@@ -100,9 +73,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -118,187 +89,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  slug:
-                    type: string
-                  external_url:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  enable_advanced_logs_querying:
-                    type: boolean
-                  logs_api_path:
-                    type: string
-                  last_deployment:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      ref:
-                        type: string
-                      sha:
-                        type: string
-                      created_at:
-                        type: string
-                      status:
-                        type: string
-                      user:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          state:
-                            type: string
-                          username:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      deployable:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          status:
-                            type: string
-                          stage:
-                            type: string
-                          name:
-                            type: string
-                          ref:
-                            type: string
-                          tag:
-                            type: boolean
-                          coverage:
-                            type: string
-                          created_at:
-                            type: string
-                          started_at:
-                            type: string
-                          finished_at:
-                            type: string
-                          duration:
-                            type: number
-                          user:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              name:
-                                type: string
-                              username:
-                                type: string
-                              state:
-                                type: string
-                              avatar_url:
-                                type: string
-                              web_url:
-                                type: string
-                              created_at:
-                                type: string
-                              bio:
-                                type: string
-                              location:
-                                type: string
-                              public_email:
-                                type: string
-                              skype:
-                                type: string
-                              linkedin:
-                                type: string
-                              twitter:
-                                type: string
-                              website_url:
-                                type: string
-                              organization:
-                                type: string
-                          commit:
-                            type: object
-                            properties:
-                              id:
-                                type: string
-                              short_id:
-                                type: string
-                              created_at:
-                                type: string
-                              parent_ids:
-                                type: array
-                                items:
-                                  type: string
-                              title:
-                                type: string
-                              message:
-                                type: string
-                              author_name:
-                                type: string
-                              author_email:
-                                type: string
-                              authored_date:
-                                type: string
-                              committer_name:
-                                type: string
-                              committer_email:
-                                type: string
-                              committed_date:
-                                type: string
-                          pipeline:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              sha:
-                                type: string
-                              ref:
-                                type: string
-                              status:
-                                type: string
-                              web_url:
-                                type: string
-                          web_url:
-                            type: string
-                          artifacts:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                file_type:
-                                  type: string
-                                size:
-                                  type: integer
-                                filename:
-                                  type: string
-                                file_format:
-                                  type: string
-                          runner:
-                            type: string
-                          artifacts_expire_at:
-                            type: string
+                $ref: '#/components/schemas/getASpecificEnvironmentResponse'
     delete:
       summary: Delete an environment
-      description: >-
-        It returns 204 if the environment was successfully deleted, and 404 if
-        the environment does not exist.
+      description: 'It returns 204 if the environment was successfully deleted, and 404 if the environment does not exist.'
       operationId: deleteAnEnvironment
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -314,7 +113,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnEnvironmentResponse'
   '/projects/{id}/environments/{environments_id}':
     put:
       summary: Edit an existing environment
@@ -323,9 +122,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -335,58 +132,31 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  slug:
-                    type: string
-                  external_url:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/editAnExistingEnvironmentResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                environment_id:
-                  type: integer
-                name:
-                  type: string
-                external_url:
-                  type: string
-              required:
-                - environment_id
+              $ref: '#/components/schemas/editAnExistingEnvironmentRequest'
   '/projects/{id}/environments/review_apps':
     delete:
       summary: Delete multiple stopped review apps
       description: >-
-        It schedules for deletion multiple environments that have already been
-        stopped and are in the review app folder. The actual deletion is
-        performed after 1 week from the time of execution.
+        It schedules for deletion multiple environments that have already been stopped and are in the review app folder.
+        The actual deletion is performed after 1 week from the time of execution.
       operationId: deleteMultipleStoppedReviewApps
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
         - name: before
           in: query
           description: >-
-            The date before which environments can be deleted. Defaults to 30
-            days ago. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
+            The date before which environments can be deleted. Defaults to 30 days ago. Expected in ISO 8601 format
+            (YYYY-MM-DDTHH:MM:SSZ).
           required: false
           schema:
             type: string
@@ -399,9 +169,8 @@ paths:
         - name: dry_run
           in: query
           description: >-
-            Defaults to true for safety reasons. It performs a dry run where no
-            actual deletion will be performed. Set to false to actually delete
-            the environment.
+            Defaults to true for safety reasons. It performs a dry run where no actual deletion will be performed. Set
+            to false to actually delete the environment.
           required: false
           schema:
             type: string
@@ -411,37 +180,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  scheduled_entries:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        slug:
-                          type: string
-                        external_url:
-                          type: string
-                  unprocessable_entries:
-                    type: array
-                    items: {}
+                $ref: '#/components/schemas/deleteMultipleStoppedReviewAppsResponse'
   '/projects/{id}/environments/{environment_id}/stop':
     post:
       summary: Stop an environment
-      description: >-
-        It returns 200 if the environment was successfully stopped, and 404 if
-        the environment does not exist.
+      description: 'It returns 200 if the environment was successfully stopped, and 404 if the environment does not exist.'
       operationId: stopAnEnvironment
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -457,19 +205,270 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  slug:
-                    type: string
-                  external_url:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/stopAnEnvironmentResponse'
+components:
+  schemas:
+    listEnvironmentsResponse:
+      type: string
+    getASpecificEnvironmentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        external_url:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        enable_advanced_logs_querying:
+          type: boolean
+        logs_api_path:
+          type: string
+        last_deployment:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            ref:
+              type: string
+            sha:
+              type: string
+            created_at:
+              type: string
+            status:
+              type: string
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                state:
+                  type: string
+                username:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            deployable:
+              type: object
+              properties:
+                id:
+                  type: integer
+                status:
+                  type: string
+                stage:
+                  type: string
+                name:
+                  type: string
+                ref:
+                  type: string
+                tag:
+                  type: boolean
+                coverage:
+                  type: string
+                created_at:
+                  type: string
+                started_at:
+                  type: string
+                finished_at:
+                  type: string
+                duration:
+                  type: number
+                user:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    state:
+                      type: string
+                    avatar_url:
+                      type: string
+                    web_url:
+                      type: string
+                    created_at:
+                      type: string
+                    bio:
+                      type: string
+                    location:
+                      type: string
+                    public_email:
+                      type: string
+                    skype:
+                      type: string
+                    linkedin:
+                      type: string
+                    twitter:
+                      type: string
+                    website_url:
+                      type: string
+                    organization:
+                      type: string
+                commit:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    short_id:
+                      type: string
+                    created_at:
+                      type: string
+                    parent_ids:
+                      type: array
+                      items:
+                        type: string
+                    title:
+                      type: string
+                    message:
+                      type: string
+                    author_name:
+                      type: string
+                    author_email:
+                      type: string
+                    authored_date:
+                      type: string
+                    committer_name:
+                      type: string
+                    committer_email:
+                      type: string
+                    committed_date:
+                      type: string
+                pipeline:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    sha:
+                      type: string
+                    ref:
+                      type: string
+                    status:
+                      type: string
+                    web_url:
+                      type: string
+                web_url:
+                  type: string
+                artifacts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      file_type:
+                        type: string
+                      size:
+                        type: integer
+                      filename:
+                        type: string
+                      file_format:
+                        type: string
+                runner:
+                  type: string
+                artifacts_expire_at:
+                  type: string
+    createANewEnvironmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        external_url:
+          type: string
+      required:
+        - name
+    createANewEnvironmentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        external_url:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    editAnExistingEnvironmentRequest:
+      type: object
+      properties:
+        environment_id:
+          type: integer
+        name:
+          type: string
+        external_url:
+          type: string
+      required:
+        - environment_id
+    editAnExistingEnvironmentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        external_url:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    deleteAnEnvironmentResponse:
+      type: string
+    deleteMultipleStoppedReviewAppsResponse:
+      type: object
+      properties:
+        scheduled_entries:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              slug:
+                type: string
+              external_url:
+                type: string
+        unprocessable_entries:
+          type: array
+          items: {}
+    stopAnEnvironmentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        external_url:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string

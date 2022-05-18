@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / error_tracking'
+  version: '1.0'
 paths:
   '/projects/{id}/error_tracking/settings':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: integer
@@ -19,30 +21,17 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  project_name:
-                    type: string
-                  sentry_external_url:
-                    type: string
-                  api_url:
-                    type: string
-                  integrated:
-                    type: boolean
+                $ref: '#/components/schemas/getErrorTrackingSettingsResponse'
     patch:
       summary: Enable or disable the Error Tracking project settings
       description: >-
-        The API allows you to enable or disable the Error Tracking settings for
-        a project. Only for users with the Maintainer role for the project.
+        The API allows you to enable or disable the Error Tracking settings for a project. Only for users with the
+        Maintainer role for the project.
       operationId: enableOrDisableTheErrorTrackingProjectSettings
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: integer
@@ -52,30 +41,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  project_name:
-                    type: string
-                  sentry_external_url:
-                    type: string
-                  api_url:
-                    type: string
-                  integrated:
-                    type: boolean
+                $ref: '#/components/schemas/enableOrDisableTheErrorTrackingProjectSettingsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                active:
-                  type: boolean
-                integrated:
-                  type: boolean
-              required:
-                - active
+              $ref: '#/components/schemas/enableOrDisableTheErrorTrackingProjectSettingsRequest'
   '/projects/{id}/error_tracking/client_keys':
     get:
       summary: List project client keys
@@ -84,9 +55,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -96,30 +65,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    active:
-                      type: boolean
-                    public_key:
-                      type: string
-                    sentry_dsn:
-                      type: string
+                $ref: '#/components/schemas/listProjectClientKeysResponse'
     post:
       summary: Create a client key
-      description: >-
-        Creates a new client key for a project. The public key attribute is
-        generated automatically.
+      description: Creates a new client key for a project. The public key attribute is generated automatically.
       operationId: createAClientKey
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -129,16 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  active:
-                    type: boolean
-                  public_key:
-                    type: string
-                  sentry_dsn:
-                    type: string
+                $ref: '#/components/schemas/createAClientKeyResponse'
   '/projects/{id}/error_tracking/client_keys/{key_id}':
     delete:
       summary: Delete a client key
@@ -147,9 +92,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -165,4 +108,67 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAClientKeyResponse'
+components:
+  schemas:
+    getErrorTrackingSettingsResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        project_name:
+          type: string
+        sentry_external_url:
+          type: string
+        api_url:
+          type: string
+        integrated:
+          type: boolean
+    enableOrDisableTheErrorTrackingProjectSettingsRequest:
+      type: object
+      properties:
+        active:
+          type: boolean
+        integrated:
+          type: boolean
+      required:
+        - active
+    enableOrDisableTheErrorTrackingProjectSettingsResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        project_name:
+          type: string
+        sentry_external_url:
+          type: string
+        api_url:
+          type: string
+        integrated:
+          type: boolean
+    listProjectClientKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          active:
+            type: boolean
+          public_key:
+            type: string
+          sentry_dsn:
+            type: string
+    createAClientKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        active:
+          type: boolean
+        public_key:
+          type: string
+        sentry_dsn:
+          type: string
+    deleteAClientKeyResponse:
+      type: string

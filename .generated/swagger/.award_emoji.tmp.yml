@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / award_emoji'
+  version: '1.0'
 paths:
   '/projects/{id}/issues/{issue_iid}/award_emoji':
     get:
@@ -23,37 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    awardable_id:
-                      type: integer
-                    awardable_type:
-                      type: string
+                $ref: '#/components/schemas/listAnAwardableAwardEmojisResponse'
     post:
       summary: Award a new emoji
       description: Create an award emoji on the specified awardable.
@@ -71,48 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  awardable_id:
-                    type: integer
-                  awardable_type:
-                    type: string
+                $ref: '#/components/schemas/awardANewEmojiResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                issue_iid/merge_request_iid/snippet_id:
-                  type: integer
-                name:
-                  type: string
-              required:
-                - issue_iid/merge_request_iid/snippet_id
-                - name
+              $ref: '#/components/schemas/awardANewEmojiRequest'
   '/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}':
     get:
       summary: Get single award emoji
@@ -143,35 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  awardable_id:
-                    type: integer
-                  awardable_type:
-                    type: string
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
     delete:
       summary: Delete an award emoji
       description: Sometimes it’s just not meant to be and you need to remove the award.
@@ -201,7 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnAwardEmojiResponse'
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji':
     get:
       summary: List a comment’s award emojis
@@ -232,37 +142,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    awardable_id:
-                      type: integer
-                    awardable_type:
-                      type: string
+                $ref: '#/components/schemas/listACommentAwardEmojisResponse'
     post:
       summary: Award a new emoji on a comment
       description: Create an award emoji on the specified comment (note).
@@ -292,45 +172,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  awardable_id:
-                    type: integer
-                  awardable_type:
-                    type: string
+                $ref: '#/components/schemas/awardANewEmojiOnACommentResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-                - name
+              $ref: '#/components/schemas/awardANewEmojiOnACommentRequest'
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}':
     get:
       summary: Get an award emoji for a comment
@@ -367,35 +214,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  user:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  awardable_id:
-                    type: integer
-                  awardable_type:
-                    type: string
+                $ref: '#/components/schemas/getAnAwardEmojiForACommentResponse'
     delete:
       summary: Delete an award emoji from a comment
       description: Sometimes it’s just not meant to be and you need to remove the award.
@@ -431,4 +250,211 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteAnAwardEmojiFromACommentResponse'
+components:
+  schemas:
+    listAnAwardableAwardEmojisResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          user:
+            type: object
+            properties:
+              name:
                 type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          awardable_id:
+            type: integer
+          awardable_type:
+            type: string
+    getSingleAwardEmojiResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        awardable_id:
+          type: integer
+        awardable_type:
+          type: string
+    awardANewEmojiRequest:
+      type: object
+      properties:
+        issue_iid/merge_request_iid/snippet_id:
+          type: integer
+        name:
+          type: string
+      required:
+        - issue_iid/merge_request_iid/snippet_id
+        - name
+    awardANewEmojiResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        awardable_id:
+          type: integer
+        awardable_type:
+          type: string
+    deleteAnAwardEmojiResponse:
+      type: string
+    listACommentAwardEmojisResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          user:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          awardable_id:
+            type: integer
+          awardable_type:
+            type: string
+    getAnAwardEmojiForACommentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        awardable_id:
+          type: integer
+        awardable_type:
+          type: string
+    awardANewEmojiOnACommentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    awardANewEmojiOnACommentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        awardable_id:
+          type: integer
+        awardable_type:
+          type: string
+    deleteAnAwardEmojiFromACommentResponse:
+      type: string

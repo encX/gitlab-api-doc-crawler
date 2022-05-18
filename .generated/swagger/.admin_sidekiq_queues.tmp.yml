@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / admin_sidekiq_queues'
+  version: '1.0'
 paths:
   '/admin/sidekiq/queues/{queue_name}':
     delete:
@@ -38,24 +42,20 @@ paths:
         - name: caller_id
           in: query
           description: >-
-            The endpoint or background job that schedule the job (for example:
-            ProjectsController#create, /api/:version/projects/:id, PostReceive)
+            The endpoint or background job that schedule the job (for example: ProjectsController#create,
+            /api/:version/projects/:id, PostReceive)
           required: false
           schema:
             type: string
         - name: feature_category
           in: query
-          description: >-
-            The feature category of the background job (for example:
-            team_planning or code_review)
+          description: 'The feature category of the background job (for example: team_planning or code_review)'
           required: false
           schema:
             type: string
         - name: worker_class
           in: query
-          description: >-
-            The class of the background job worker (for example: PostReceive or
-            MergeWorker)
+          description: 'The class of the background job worker (for example: PostReceive or MergeWorker)'
           required: false
           schema:
             type: string
@@ -65,11 +65,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  completed:
-                    type: boolean
-                  deleted_jobs:
-                    type: integer
-                  queue_size:
-                    type: integer
+                $ref: '#/components/schemas/sidekiqQueuesAdministrationApiResponse'
+components:
+  schemas:
+    sidekiqQueuesAdministrationApiResponse:
+      type: object
+      properties:
+        completed:
+          type: boolean
+        deleted_jobs:
+          type: integer
+        queue_size:
+          type: integer

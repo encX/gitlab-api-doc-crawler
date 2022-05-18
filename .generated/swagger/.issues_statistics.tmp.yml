@@ -1,88 +1,82 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / issues_statistics'
+  version: '1.0'
 paths:
   /issues_statistics:
     get:
       summary: Get issues statistics
       description: >-
-        Gets issues count statistics on all issues the authenticated user has
-        access to. By default it returns only issues created by the current
-        user. To get all issues, use parameter scope=all.
+        Gets issues count statistics on all issues the authenticated user has access to. By default it returns only
+        issues created by the current user. To get all issues, use parameter scope=all.
       operationId: getIssuesStatistics
       parameters:
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label.
           required: false
           schema:
             type: string
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone.
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all. Defaults to created_by_me
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me'
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE
-            assignee_username array should only contain a single value or an
-            invalid parameter error is returned otherwise.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter
+            error is returned otherwise.
           required: false
           schema:
             type: string
         - name: epic_id
           in: query
           description: >-
-            Return issues associated with the given epic ID. None returns issues
-            that are not associated with an epic. Any returns issues that are
-            associated with an epic. (Introduced in GitLab 13.6)
+            Return issues associated with the given epic ID. None returns issues that are not associated with an epic.
+            Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)
           required: false
           schema:
             type: integer
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
@@ -101,40 +95,32 @@ paths:
         - name: in
           in: query
           description: >-
-            Modify the scope of the search attribute. title, description, or a
-            string joining them with comma. Default is title,description
+            Modify the scope of the search attribute. title, description, or a string joining them with comma. Default
+            is title,description
           required: false
           schema:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
@@ -150,20 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  statistics:
-                    type: object
-                    properties:
-                      counts:
-                        type: object
-                        properties:
-                          all:
-                            type: integer
-                          closed:
-                            type: integer
-                          opened:
-                            type: integer
+                $ref: '#/components/schemas/getIssuesStatisticsResponse'
   '/groups/{id}/issues_statistics':
     get:
       summary: Get group issues statistics
@@ -172,18 +145,15 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label.
           required: false
           schema:
             type: string
@@ -196,60 +166,53 @@ paths:
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone.
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all.
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all.'
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE
-            assignee_username array should only contain a single value or an
-            invalid parameter error is returned otherwise.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter
+            error is returned otherwise.
           required: false
           schema:
             type: string
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
@@ -261,33 +224,25 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
@@ -303,20 +258,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  statistics:
-                    type: object
-                    properties:
-                      counts:
-                        type: object
-                        properties:
-                          all:
-                            type: integer
-                          closed:
-                            type: integer
-                          opened:
-                            type: integer
+                $ref: '#/components/schemas/getGroupIssuesStatisticsResponse'
   '/projects/{id}/issues_statistics':
     get:
       summary: Get project issues statistics
@@ -325,9 +267,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -340,69 +280,61 @@ paths:
         - name: labels
           in: query
           description: >-
-            Comma-separated list of label names, issues must have all labels to
-            be returned. None lists all issues with no labels. Any lists all
-            issues with at least one label.
+            Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with
+            no labels. Any lists all issues with at least one label.
           required: false
           schema:
             type: string
         - name: milestone
           in: query
           description: >-
-            The milestone title. None lists all issues with no milestone. Any
-            lists all issues that have an assigned milestone.
+            The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned
+            milestone.
           required: false
           schema:
             type: string
         - name: scope
           in: query
-          description: >-
-            Return issues for the given scope: created_by_me, assigned_to_me or
-            all.
+          description: 'Return issues for the given scope: created_by_me, assigned_to_me or all.'
           required: false
           schema:
             type: string
         - name: author_id
           in: query
           description: >-
-            Return issues created by the given user id. Mutually exclusive with
-            author_username. Combine with scope=all or scope=assigned_to_me.
+            Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all
+            or scope=assigned_to_me.
           required: false
           schema:
             type: integer
         - name: author_username
           in: query
-          description: >-
-            Return issues created by the given username. Similar to author_id
-            and mutually exclusive with author_id.
+          description: Return issues created by the given username. Similar to author_id and mutually exclusive with author_id.
           required: false
           schema:
             type: string
         - name: assignee_id
           in: query
           description: >-
-            Return issues assigned to the given user id. Mutually exclusive with
-            assignee_username. None returns unassigned issues. Any returns
-            issues with an assignee.
+            Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns
+            unassigned issues. Any returns issues with an assignee.
           required: false
           schema:
             type: integer
         - name: assignee_username
           in: query
           description: >-
-            Return issues assigned to the given username. Similar to assignee_id
-            and mutually exclusive with assignee_id. In GitLab CE
-            assignee_username array should only contain a single value or an
-            invalid parameter error is returned otherwise.
+            Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with
+            assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter
+            error is returned otherwise.
           required: false
           schema:
             type: string
         - name: my_reaction_emoji
           in: query
           description: >-
-            Return issues reacted by the authenticated user by the given emoji.
-            None returns issues not given a reaction. Any returns issues given
-            at least one reaction.
+            Return issues reacted by the authenticated user by the given emoji. None returns issues not given a
+            reaction. Any returns issues given at least one reaction.
           required: false
           schema:
             type: string
@@ -414,33 +346,25 @@ paths:
             type: string
         - name: created_after
           in: query
-          description: >-
-            Return issues created on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: created_before
           in: query
-          description: >-
-            Return issues created on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_after
           in: query
-          description: >-
-            Return issues updated on or after the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
         - name: updated_before
           in: query
-          description: >-
-            Return issues updated on or before the given time. Expected in ISO
-            8601 format (2019-03-15T08:00:00Z)
+          description: 'Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
           required: false
           schema:
             type: string
@@ -456,17 +380,51 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  statistics:
-                    type: object
-                    properties:
-                      counts:
-                        type: object
-                        properties:
-                          all:
-                            type: integer
-                          closed:
-                            type: integer
-                          opened:
-                            type: integer
+                $ref: '#/components/schemas/getProjectIssuesStatisticsResponse'
+components:
+  schemas:
+    getIssuesStatisticsResponse:
+      type: object
+      properties:
+        statistics:
+          type: object
+          properties:
+            counts:
+              type: object
+              properties:
+                all:
+                  type: integer
+                closed:
+                  type: integer
+                opened:
+                  type: integer
+    getGroupIssuesStatisticsResponse:
+      type: object
+      properties:
+        statistics:
+          type: object
+          properties:
+            counts:
+              type: object
+              properties:
+                all:
+                  type: integer
+                closed:
+                  type: integer
+                opened:
+                  type: integer
+    getProjectIssuesStatisticsResponse:
+      type: object
+      properties:
+        statistics:
+          type: object
+          properties:
+            counts:
+              type: object
+              properties:
+                all:
+                  type: integer
+                closed:
+                  type: integer
+                opened:
+                  type: integer

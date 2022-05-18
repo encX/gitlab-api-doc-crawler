@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / lint'
+  version: '1.0'
 paths:
   /ci/lint:
     post:
       summary: Validate the CI YAML configuration
       description: >-
-        Checks if CI/CD YAML configuration is valid. This endpoint validates
-        basic CI/CD configuration syntax. It doesn’t have any namespace-specific
-        context.
+        Checks if CI/CD YAML configuration is valid. This endpoint validates basic CI/CD configuration syntax. It
+        doesn’t have any namespace-specific context.
       operationId: validateTheCiYamlConfiguration
       parameters: []
       responses:
@@ -14,27 +17,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/validateTheCiYamlConfigurationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: string
-                include_merged_yaml:
-                  type: boolean
-                include_jobs:
-                  type: boolean
-              required:
-                - content
+              $ref: '#/components/schemas/validateTheCiYamlConfigurationRequest'
   '/projects/{id}/ci/lint':
     post:
       summary: Validate a CI YAML configuration with a namespace
-      description: >-
-        Checks if CI/CD YAML configuration is valid. This endpoint has namespace
-        specific context.
+      description: Checks if CI/CD YAML configuration is valid. This endpoint has namespace specific context.
       operationId: validateACiYamlConfigurationWithANamespace
       parameters: []
       responses:
@@ -43,29 +35,17 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/validateACiYamlConfigurationWithANamespaceResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: string
-                dry_run:
-                  type: boolean
-                include_jobs:
-                  type: boolean
-                ref:
-                  type: string
-              required:
-                - content
+              $ref: '#/components/schemas/validateACiYamlConfigurationWithANamespaceRequest'
     get:
       summary: Validate a project’s CI configuration
       description: >-
-        Checks if a project’s latest (HEAD of the project’s default branch)
-        .gitlab-ci.yml configuration is valid. This endpoint uses all namespace
-        specific data available, including variables, local includes, and so on.
+        Checks if a project’s latest (HEAD of the project’s default branch) .gitlab-ci.yml configuration is valid. This
+        endpoint uses all namespace specific data available, including variables, local includes, and so on.
       operationId: validateAProjectCiConfiguration
       parameters:
         - name: dry_run
@@ -77,17 +57,14 @@ paths:
         - name: include_jobs
           in: query
           description: >-
-            If the list of jobs that would exist in a static check or pipeline
-            simulation should be included in the response. This is false by
-            default.
+            If the list of jobs that would exist in a static check or pipeline simulation should be included in the
+            response. This is false by default.
           required: false
           schema:
             type: string
         - name: ref
           in: query
-          description: >-
-            When dry_run is true, sets the branch or tag to use. Defaults to the
-            project’s default branch when not set.
+          description: 'When dry_run is true, sets the branch or tag to use. Defaults to the project’s default branch when not set.'
           required: false
           schema:
             type: string
@@ -97,15 +74,47 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  valid:
-                    type: boolean
-                  merged_yaml:
-                    type: string
-                  errors:
-                    type: array
-                    items: {}
-                  warnings:
-                    type: array
-                    items: {}
+                $ref: '#/components/schemas/validateAProjectCiConfigurationResponse'
+components:
+  schemas:
+    validateTheCiYamlConfigurationRequest:
+      type: object
+      properties:
+        content:
+          type: string
+        include_merged_yaml:
+          type: boolean
+        include_jobs:
+          type: boolean
+      required:
+        - content
+    validateTheCiYamlConfigurationResponse:
+      type: string
+    validateACiYamlConfigurationWithANamespaceRequest:
+      type: object
+      properties:
+        content:
+          type: string
+        dry_run:
+          type: boolean
+        include_jobs:
+          type: boolean
+        ref:
+          type: string
+      required:
+        - content
+    validateACiYamlConfigurationWithANamespaceResponse:
+      type: string
+    validateAProjectCiConfigurationResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        merged_yaml:
+          type: string
+        errors:
+          type: array
+          items: {}
+        warnings:
+          type: array
+          items: {}

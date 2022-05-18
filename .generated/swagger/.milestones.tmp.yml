@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / milestones'
+  version: '1.0'
 paths:
   '/projects/{id}/milestones':
     get:
@@ -7,17 +11,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
         - name: 'iids[]'
           in: query
-          description: >-
-            Return only the milestones having the given iid (Note: ignored if
-            include_parent_milestones is set as true)
+          description: 'Return only the milestones having the given iid (Note: ignored if include_parent_milestones is set as true)'
           required: false
           schema:
             type: string
@@ -35,17 +35,13 @@ paths:
             type: string
         - name: search
           in: query
-          description: >-
-            Return only milestones with a title or description matching the
-            provided string
+          description: Return only milestones with a title or description matching the provided string
           required: false
           schema:
             type: string
         - name: include_parent_milestones
           in: query
-          description: >-
-            Include group milestones from parent group and its ancestors.
-            Introduced in GitLab 13.4
+          description: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4
           required: false
           schema:
             type: string
@@ -55,32 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    due_date:
-                      type: string
-                    start_date:
-                      type: string
-                    state:
-                      type: string
-                    updated_at:
-                      type: string
-                    created_at:
-                      type: string
-                    expired:
-                      type: boolean
+                $ref: '#/components/schemas/listProjectMilestonesResponse'
     post:
       summary: Create new milestone
       description: Creates a new project milestone.
@@ -88,9 +59,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -100,23 +69,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewMilestoneResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                description:
-                  type: string
-                due_date:
-                  type: string
-                start_date:
-                  type: string
-              required:
-                - title
+              $ref: '#/components/schemas/createNewMilestoneRequest'
   '/projects/{id}/milestones/{milestone_id}':
     get:
       summary: Get single milestone
@@ -125,9 +83,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -143,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getSingleMilestoneResponse'
     put:
       summary: Edit milestone
       description: Updates an existing project milestone.
@@ -151,9 +107,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -169,24 +123,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/editMilestoneResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                description:
-                  type: string
-                due_date:
-                  type: string
-                start_date:
-                  type: string
-                state_event:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/editMilestoneRequest'
     delete:
       summary: Delete project milestone
       description: Only for users with the Developer role in the project.
@@ -194,9 +136,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -212,7 +152,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteProjectMilestoneResponse'
   '/projects/{id}/milestones/{milestone_id}/issues':
     get:
       summary: Get all issues assigned to a single milestone
@@ -221,9 +161,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -239,7 +177,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getAllIssuesAssignedToASingleMilestoneResponse'
   '/projects/{id}/milestones/{milestone_id}/merge_requests':
     get:
       summary: Get all merge requests assigned to a single milestone
@@ -248,9 +186,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -266,7 +202,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getAllMergeRequestsAssignedToASingleMilestoneResponse'
   '/projects/{id}/milestones/{milestone_id}/promote':
     post:
       summary: Promote project milestone to a group milestone
@@ -275,9 +211,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -293,7 +227,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/promoteProjectMilestoneToAGroupMilestoneResponse'
   '/projects/{id}/milestones/{milestone_id}/burndown_events':
     get:
       summary: Get all burndown chart events for a single milestone
@@ -302,9 +236,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -320,4 +252,75 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getAllBurndownChartEventsForASingleMilestoneResponse'
+components:
+  schemas:
+    listProjectMilestonesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          due_date:
+            type: string
+          start_date:
+            type: string
+          state:
+            type: string
+          updated_at:
+            type: string
+          created_at:
+            type: string
+          expired:
+            type: boolean
+    getSingleMilestoneResponse:
+      type: string
+    createNewMilestoneRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+        start_date:
+          type: string
+      required:
+        - title
+    createNewMilestoneResponse:
+      type: string
+    editMilestoneRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+        start_date:
+          type: string
+        state_event:
+          type: string
+    editMilestoneResponse:
+      type: string
+    deleteProjectMilestoneResponse:
+      type: string
+    getAllIssuesAssignedToASingleMilestoneResponse:
+      type: string
+    getAllMergeRequestsAssignedToASingleMilestoneResponse:
+      type: string
+    promoteProjectMilestoneToAGroupMilestoneResponse:
+      type: string
+    getAllBurndownChartEventsForASingleMilestoneResponse:
+      type: string

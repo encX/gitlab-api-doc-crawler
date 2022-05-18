@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / projects'
+  version: '1.0'
 paths:
   /projects:
     get:
       summary: Search for projects by name
       description: >-
-        Search for projects by name which are accessible to the authenticated
-        user. This endpoint can be accessed without authentication if the
-        project is publicly accessible.
+        Search for projects by name which are accessible to the authenticated user. This endpoint can be accessed
+        without authentication if the project is publicly accessible.
       operationId: searchForProjectsByName
       parameters:
         - name: search
@@ -16,9 +19,7 @@ paths:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return requests ordered by id, name, created_at or last_activity_at
-            fields.
+          description: 'Return requests ordered by id, name, created_at or last_activity_at fields.'
           required: false
           schema:
             type: string
@@ -34,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/searchForProjectsByNameResponse'
     post:
       summary: Create project
       description: Creates a new project owned by the authenticated user.
@@ -46,140 +47,18 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                path:
-                  type: string
-                allow_merge_on_skipped_pipeline:
-                  type: boolean
-                analytics_access_level:
-                  type: string
-                approvals_before_merge:
-                  type: integer
-                auto_cancel_pending_pipelines:
-                  type: string
-                auto_devops_deploy_strategy:
-                  type: string
-                auto_devops_enabled:
-                  type: boolean
-                autoclose_referenced_issues:
-                  type: boolean
-                build_coverage_regex:
-                  type: string
-                build_git_strategy:
-                  type: string
-                build_timeout:
-                  type: integer
-                builds_access_level:
-                  type: string
-                ci_config_path:
-                  type: string
-                container_registry_access_level:
-                  type: string
-                container_registry_enabled:
-                  type: boolean
-                default_branch:
-                  type: string
-                description:
-                  type: string
-                emails_disabled:
-                  type: boolean
-                external_authorization_classification_label:
-                  type: string
-                forking_access_level:
-                  type: string
-                group_with_project_templates_id:
-                  type: integer
-                import_url:
-                  type: string
-                initialize_with_readme:
-                  type: boolean
-                issues_access_level:
-                  type: string
-                issues_enabled:
-                  type: boolean
-                jobs_enabled:
-                  type: boolean
-                lfs_enabled:
-                  type: boolean
-                merge_method:
-                  type: string
-                merge_pipelines_enabled:
-                  type: boolean
-                merge_requests_access_level:
-                  type: string
-                merge_requests_enabled:
-                  type: boolean
-                merge_trains_enabled:
-                  type: boolean
-                mirror_trigger_builds:
-                  type: boolean
-                mirror:
-                  type: boolean
-                namespace_id:
-                  type: integer
-                only_allow_merge_if_all_discussions_are_resolved:
-                  type: boolean
-                only_allow_merge_if_pipeline_succeeds:
-                  type: boolean
-                operations_access_level:
-                  type: string
-                packages_enabled:
-                  type: boolean
-                pages_access_level:
-                  type: string
-                printing_merge_request_link_enabled:
-                  type: boolean
-                public_builds:
-                  type: boolean
-                remove_source_branch_after_merge:
-                  type: boolean
-                repository_access_level:
-                  type: string
-                repository_storage:
-                  type: string
-                request_access_enabled:
-                  type: boolean
-                requirements_access_level:
-                  type: string
-                resolve_outdated_diff_discussions:
-                  type: boolean
-                security_and_compliance_access_level:
-                  type: string
-                shared_runners_enabled:
-                  type: boolean
-                snippets_access_level:
-                  type: string
-                snippets_enabled:
-                  type: boolean
-                squash_option:
-                  type: string
-                template_name:
-                  type: string
-                template_project_id:
-                  type: integer
-                use_custom_template:
-                  type: boolean
-                visibility:
-                  type: string
-                wiki_access_level:
-                  type: string
-                wiki_enabled:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/createProjectRequest'
   '/users/{user_id}/projects':
     get:
       summary: List user projects
       description: >-
-        Get a list of visible projects owned by the given user. When accessed
-        without authentication, only public projects are returned.
+        Get a list of visible projects owned by the given user. When accessed without authentication, only public
+        projects are returned.
       operationId: listUserProjects
       parameters:
         - name: user_id
@@ -221,8 +100,8 @@ paths:
         - name: order_by
           in: query
           description: >-
-            Return projects ordered by id, name, path, created_at, updated_at,
-            or last_activity_at fields. Default is created_at.
+            Return projects ordered by id, name, path, created_at, updated_at, or last_activity_at fields. Default is
+            created_at.
           required: false
           schema:
             type: string
@@ -241,8 +120,8 @@ paths:
         - name: simple
           in: query
           description: >-
-            Return only limited fields for each project. This is a no-op without
-            authentication as then only simple fields are returned.
+            Return only limited fields for each project. This is a no-op without authentication as then only simple
+            fields are returned.
           required: false
           schema:
             type: string
@@ -260,9 +139,7 @@ paths:
             type: string
         - name: statistics
           in: query
-          description: >-
-            Include project statistics. Only available to Reporter or higher
-            level role members.
+          description: Include project statistics. Only available to Reporter or higher level role members.
           required: false
           schema:
             type: string
@@ -302,191 +179,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    default_branch:
-                      type: string
-                    visibility:
-                      type: string
-                    ssh_url_to_repo:
-                      type: string
-                    http_url_to_repo:
-                      type: string
-                    web_url:
-                      type: string
-                    readme_url:
-                      type: string
-                    tag_list:
-                      type: array
-                      items:
-                        type: string
-                    topics:
-                      type: array
-                      items:
-                        type: string
-                    owner:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        created_at:
-                          type: string
-                    name:
-                      type: string
-                    name_with_namespace:
-                      type: string
-                    path:
-                      type: string
-                    path_with_namespace:
-                      type: string
-                    issues_enabled:
-                      type: boolean
-                    open_issues_count:
-                      type: integer
-                    merge_requests_enabled:
-                      type: boolean
-                    jobs_enabled:
-                      type: boolean
-                    wiki_enabled:
-                      type: boolean
-                    snippets_enabled:
-                      type: boolean
-                    can_create_merge_request_in:
-                      type: boolean
-                    resolve_outdated_diff_discussions:
-                      type: boolean
-                    container_registry_enabled:
-                      type: boolean
-                    container_registry_access_level:
-                      type: string
-                    security_and_compliance_access_level:
-                      type: string
-                    created_at:
-                      type: string
-                    last_activity_at:
-                      type: string
-                    creator_id:
-                      type: integer
-                    namespace:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        path:
-                          type: string
-                        kind:
-                          type: string
-                        full_path:
-                          type: string
-                    import_status:
-                      type: string
-                    archived:
-                      type: boolean
-                    avatar_url:
-                      type: string
-                    shared_runners_enabled:
-                      type: boolean
-                    forks_count:
-                      type: integer
-                    star_count:
-                      type: integer
-                    runners_token:
-                      type: string
-                    ci_default_git_depth:
-                      type: integer
-                    ci_forward_deployment_enabled:
-                      type: boolean
-                    public_jobs:
-                      type: boolean
-                    shared_with_groups:
-                      type: array
-                      items: {}
-                    only_allow_merge_if_pipeline_succeeds:
-                      type: boolean
-                    allow_merge_on_skipped_pipeline:
-                      type: boolean
-                    restrict_user_defined_variables:
-                      type: boolean
-                    only_allow_merge_if_all_discussions_are_resolved:
-                      type: boolean
-                    remove_source_branch_after_merge:
-                      type: boolean
-                    request_access_enabled:
-                      type: boolean
-                    merge_method:
-                      type: string
-                    squash_option:
-                      type: string
-                    autoclose_referenced_issues:
-                      type: boolean
-                    suggestion_commit_message:
-                      type: string
-                    merge_commit_template:
-                      type: string
-                    squash_commit_template:
-                      type: string
-                    marked_for_deletion_at:
-                      type: string
-                    marked_for_deletion_on:
-                      type: string
-                    statistics:
-                      type: object
-                      properties:
-                        commit_count:
-                          type: integer
-                        storage_size:
-                          type: integer
-                        repository_size:
-                          type: integer
-                        wiki_size:
-                          type: integer
-                        lfs_objects_size:
-                          type: integer
-                        job_artifacts_size:
-                          type: integer
-                        pipeline_artifacts_size:
-                          type: integer
-                        packages_size:
-                          type: integer
-                        snippets_size:
-                          type: integer
-                        uploads_size:
-                          type: integer
-                    container_registry_image_prefix:
-                      type: string
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        issues:
-                          type: string
-                        merge_requests:
-                          type: string
-                        repo_branches:
-                          type: string
-                        labels:
-                          type: string
-                        events:
-                          type: string
-                        members:
-                          type: string
+                $ref: '#/components/schemas/listUserProjectsResponse'
   '/users/{user_id}/starred_projects':
     get:
       summary: List projects starred by a user
       description: >-
-        Get a list of visible projects starred by the given user. When accessed
-        without authentication, only public projects are returned.
+        Get a list of visible projects starred by the given user. When accessed without authentication, only public
+        projects are returned.
       operationId: listProjectsStarredByAUser
       parameters:
         - name: user_id
@@ -516,8 +215,8 @@ paths:
         - name: order_by
           in: query
           description: >-
-            Return projects ordered by id, name, path, created_at, updated_at,
-            or last_activity_at fields. Default is created_at.
+            Return projects ordered by id, name, path, created_at, updated_at, or last_activity_at fields. Default is
+            created_at.
           required: false
           schema:
             type: string
@@ -536,8 +235,8 @@ paths:
         - name: simple
           in: query
           description: >-
-            Return only limited fields for each project. This is a no-op without
-            authentication as then only simple fields are returned.
+            Return only limited fields for each project. This is a no-op without authentication as then only simple
+            fields are returned.
           required: false
           schema:
             type: string
@@ -555,9 +254,7 @@ paths:
             type: string
         - name: statistics
           in: query
-          description: >-
-            Include project statistics. Only available to Reporter or higher
-            level role members.
+          description: Include project statistics. Only available to Reporter or higher level role members.
           required: false
           schema:
             type: string
@@ -591,181 +288,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    default_branch:
-                      type: string
-                    visibility:
-                      type: string
-                    ssh_url_to_repo:
-                      type: string
-                    http_url_to_repo:
-                      type: string
-                    web_url:
-                      type: string
-                    readme_url:
-                      type: string
-                    tag_list:
-                      type: array
-                      items:
-                        type: string
-                    topics:
-                      type: array
-                      items:
-                        type: string
-                    owner:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        created_at:
-                          type: string
-                    name:
-                      type: string
-                    name_with_namespace:
-                      type: string
-                    path:
-                      type: string
-                    path_with_namespace:
-                      type: string
-                    issues_enabled:
-                      type: boolean
-                    open_issues_count:
-                      type: integer
-                    merge_requests_enabled:
-                      type: boolean
-                    jobs_enabled:
-                      type: boolean
-                    wiki_enabled:
-                      type: boolean
-                    snippets_enabled:
-                      type: boolean
-                    can_create_merge_request_in:
-                      type: boolean
-                    resolve_outdated_diff_discussions:
-                      type: boolean
-                    container_registry_enabled:
-                      type: boolean
-                    container_registry_access_level:
-                      type: string
-                    security_and_compliance_access_level:
-                      type: string
-                    created_at:
-                      type: string
-                    last_activity_at:
-                      type: string
-                    creator_id:
-                      type: integer
-                    namespace:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        path:
-                          type: string
-                        kind:
-                          type: string
-                        full_path:
-                          type: string
-                    import_status:
-                      type: string
-                    archived:
-                      type: boolean
-                    avatar_url:
-                      type: string
-                    shared_runners_enabled:
-                      type: boolean
-                    forks_count:
-                      type: integer
-                    star_count:
-                      type: integer
-                    runners_token:
-                      type: string
-                    public_jobs:
-                      type: boolean
-                    shared_with_groups:
-                      type: array
-                      items: {}
-                    only_allow_merge_if_pipeline_succeeds:
-                      type: boolean
-                    allow_merge_on_skipped_pipeline:
-                      type: boolean
-                    restrict_user_defined_variables:
-                      type: boolean
-                    only_allow_merge_if_all_discussions_are_resolved:
-                      type: boolean
-                    remove_source_branch_after_merge:
-                      type: boolean
-                    request_access_enabled:
-                      type: boolean
-                    merge_method:
-                      type: string
-                    squash_option:
-                      type: string
-                    autoclose_referenced_issues:
-                      type: boolean
-                    suggestion_commit_message:
-                      type: string
-                    merge_commit_template:
-                      type: string
-                    squash_commit_template:
-                      type: string
-                    statistics:
-                      type: object
-                      properties:
-                        commit_count:
-                          type: integer
-                        storage_size:
-                          type: integer
-                        repository_size:
-                          type: integer
-                        lfs_objects_size:
-                          type: integer
-                        job_artifacts_size:
-                          type: integer
-                        pipeline_artifacts_size:
-                          type: integer
-                        packages_size:
-                          type: integer
-                        snippets_size:
-                          type: integer
-                        uploads_size:
-                          type: integer
-                    container_registry_image_prefix:
-                      type: string
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        issues:
-                          type: string
-                        merge_requests:
-                          type: string
-                        repo_branches:
-                          type: string
-                        labels:
-                          type: string
-                        events:
-                          type: string
-                        members:
-                          type: string
+                $ref: '#/components/schemas/listProjectsStarredByAUserResponse'
   '/projects/{id}':
     get:
       summary: Get single project
       description: >-
-        Get a specific project. This endpoint can be accessed without
-        authentication if the project is publicly accessible.
+        Get a specific project. This endpoint can be accessed without authentication if the project is publicly
+        accessible.
       operationId: getSingleProject
       parameters:
         - name: id
@@ -782,9 +311,7 @@ paths:
             type: string
         - name: statistics
           in: query
-          description: >-
-            Include project statistics. Only available to Reporter or higher
-            level role members.
+          description: Include project statistics. Only available to Reporter or higher level role members.
           required: false
           schema:
             type: string
@@ -800,282 +327,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  approvals_before_merge:
-                    type: integer
-                  default_branch:
-                    type: string
-                  visibility:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  topics:
-                    type: array
-                    items:
-                      type: string
-                  owner:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      created_at:
-                        type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  issues_enabled:
-                    type: boolean
-                  open_issues_count:
-                    type: integer
-                  merge_requests_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  can_create_merge_request_in:
-                    type: boolean
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  container_expiration_policy:
-                    type: object
-                    properties:
-                      cadence:
-                        type: string
-                      enabled:
-                        type: boolean
-                      keep_n:
-                        type: string
-                      older_than:
-                        type: string
-                      name_regex:
-                        type: string
-                      name_regex_delete:
-                        type: string
-                      name_regex_keep:
-                        type: string
-                      next_run_at:
-                        type: string
-                  created_at:
-                    type: string
-                  last_activity_at:
-                    type: string
-                  creator_id:
-                    type: integer
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  import_status:
-                    type: string
-                  import_error:
-                    type: string
-                  permissions:
-                    type: object
-                    properties:
-                      project_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                      group_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                  archived:
-                    type: boolean
-                  avatar_url:
-                    type: string
-                  license_url:
-                    type: string
-                  license:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      name:
-                        type: string
-                      nickname:
-                        type: string
-                      html_url:
-                        type: string
-                      source_url:
-                        type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  runners_token:
-                    type: string
-                  ci_default_git_depth:
-                    type: integer
-                  ci_forward_deployment_enabled:
-                    type: boolean
-                  public_jobs:
-                    type: boolean
-                  shared_with_groups:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        group_id:
-                          type: integer
-                        group_name:
-                          type: string
-                        group_full_path:
-                          type: string
-                        group_access_level:
-                          type: integer
-                  repository_storage:
-                    type: string
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: boolean
-                  restrict_user_defined_variables:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  printing_merge_requests_link_enabled:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  auto_devops_enabled:
-                    type: boolean
-                  auto_devops_deploy_strategy:
-                    type: string
-                  mirror:
-                    type: boolean
-                  mirror_user_id:
-                    type: integer
-                  mirror_trigger_builds:
-                    type: boolean
-                  only_mirror_protected_branches:
-                    type: boolean
-                  mirror_overwrites_diverged_branches:
-                    type: boolean
-                  external_authorization_classification_label:
-                    type: string
-                  packages_enabled:
-                    type: boolean
-                  service_desk_enabled:
-                    type: boolean
-                  service_desk_address:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  squash_commit_template:
-                    type: string
-                  marked_for_deletion_at:
-                    type: string
-                  marked_for_deletion_on:
-                    type: string
-                  compliance_frameworks:
-                    type: array
-                    items:
-                      type: string
-                  statistics:
-                    type: object
-                    properties:
-                      commit_count:
-                        type: integer
-                      storage_size:
-                        type: integer
-                      repository_size:
-                        type: integer
-                      wiki_size:
-                        type: integer
-                      lfs_objects_size:
-                        type: integer
-                      job_artifacts_size:
-                        type: integer
-                      pipeline_artifacts_size:
-                        type: integer
-                      packages_size:
-                        type: integer
-                      snippets_size:
-                        type: integer
-                      uploads_size:
-                        type: integer
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
+                $ref: '#/components/schemas/getSingleProjectResponse'
     put:
       summary: Upload a project avatar
       description: Uploads an avatar to the specified project.
@@ -1093,19 +345,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  avatar_url:
-                    type: string
+                $ref: '#/components/schemas/uploadAProjectAvatarResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                avatar:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/uploadAProjectAvatarRequest'
     delete:
       summary: Delete project
       description: 'This endpoint:'
@@ -1123,7 +368,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteProjectResponse'
   '/projects/{id}/users':
     get:
       summary: Get project users
@@ -1154,22 +399,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    username:
-                      type: string
-                    name:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
+                $ref: '#/components/schemas/getProjectUsersResponse'
   '/projects/{id}/groups':
     get:
       summary: List a project’s groups
@@ -1218,28 +448,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                    full_name:
-                      type: string
-                    full_path:
-                      type: string
+                $ref: '#/components/schemas/listAProjectGroupsResponse'
   '/projects/user/{user_id}':
     post:
       summary: Create project for user
-      description: >-
-        Creates a new project owned by the specified user. Available only for
-        administrators.
+      description: Creates a new project owned by the specified user. Available only for administrators.
       operationId: createProjectForUser
       parameters:
         - name: user_id
@@ -1254,140 +467,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createProjectForUserResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                allow_merge_on_skipped_pipeline:
-                  type: boolean
-                analytics_access_level:
-                  type: string
-                approvals_before_merge:
-                  type: integer
-                auto_cancel_pending_pipelines:
-                  type: string
-                auto_devops_deploy_strategy:
-                  type: string
-                auto_devops_enabled:
-                  type: boolean
-                autoclose_referenced_issues:
-                  type: boolean
-                build_coverage_regex:
-                  type: string
-                build_git_strategy:
-                  type: string
-                build_timeout:
-                  type: integer
-                builds_access_level:
-                  type: string
-                ci_config_path:
-                  type: string
-                container_registry_access_level:
-                  type: string
-                container_registry_enabled:
-                  type: boolean
-                default_branch:
-                  type: string
-                description:
-                  type: string
-                emails_disabled:
-                  type: boolean
-                external_authorization_classification_label:
-                  type: string
-                forking_access_level:
-                  type: string
-                group_with_project_templates_id:
-                  type: integer
-                import_url:
-                  type: string
-                initialize_with_readme:
-                  type: boolean
-                issues_access_level:
-                  type: string
-                issues_enabled:
-                  type: boolean
-                jobs_enabled:
-                  type: boolean
-                lfs_enabled:
-                  type: boolean
-                merge_commit_template:
-                  type: string
-                merge_method:
-                  type: string
-                merge_requests_access_level:
-                  type: string
-                merge_requests_enabled:
-                  type: boolean
-                mirror_trigger_builds:
-                  type: boolean
-                mirror:
-                  type: boolean
-                namespace_id:
-                  type: integer
-                only_allow_merge_if_all_discussions_are_resolved:
-                  type: boolean
-                only_allow_merge_if_pipeline_succeeds:
-                  type: boolean
-                operations_access_level:
-                  type: string
-                packages_enabled:
-                  type: boolean
-                pages_access_level:
-                  type: string
-                path:
-                  type: string
-                printing_merge_request_link_enabled:
-                  type: boolean
-                public_builds:
-                  type: boolean
-                remove_source_branch_after_merge:
-                  type: boolean
-                repository_access_level:
-                  type: string
-                repository_storage:
-                  type: string
-                request_access_enabled:
-                  type: boolean
-                requirements_access_level:
-                  type: string
-                resolve_outdated_diff_discussions:
-                  type: boolean
-                security_and_compliance_access_level:
-                  type: string
-                shared_runners_enabled:
-                  type: boolean
-                snippets_access_level:
-                  type: string
-                snippets_enabled:
-                  type: boolean
-                squash_commit_template:
-                  type: string
-                squash_option:
-                  type: string
-                suggestion_commit_message:
-                  type: string
-                template_name:
-                  type: string
-                use_custom_template:
-                  type: boolean
-                visibility:
-                  type: string
-                wiki_access_level:
-                  type: string
-                wiki_enabled:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/createProjectForUserRequest'
   '/projects/{id}/fork':
     post:
       summary: Fork project
-      description: >-
-        Forks a project into the user namespace of the authenticated user or the
-        one provided.
+      description: Forks a project into the user namespace of the authenticated user or the one provided.
       operationId: forkProject
       parameters:
         - name: id
@@ -1402,28 +491,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/forkProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                mr_default_target_self:
-                  type: boolean
-                name:
-                  type: string
-                namespace_id:
-                  type: integer
-                namespace_path:
-                  type: string
-                path:
-                  type: string
-                visibility:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/forkProjectRequest'
     delete:
       summary: Delete an existing forked from relationship
       description: ''
@@ -1441,13 +514,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnExistingForkedFromRelationshipResponse'
   '/projects/{id}/forks':
     get:
       summary: List forks of a project
       description: >-
-        List the projects accessible to the calling user that have an
-        established, forked relationship with the specified project
+        List the projects accessible to the calling user that have an established, forked relationship with the
+        specified project
       operationId: listForksOfAProject
       parameters:
         - name: id
@@ -1477,8 +550,8 @@ paths:
         - name: order_by
           in: query
           description: >-
-            Return projects ordered by id, name, path, created_at, updated_at,
-            or last_activity_at fields. Default is created_at.
+            Return projects ordered by id, name, path, created_at, updated_at, or last_activity_at fields. Default is
+            created_at.
           required: false
           schema:
             type: string
@@ -1497,8 +570,8 @@ paths:
         - name: simple
           in: query
           description: >-
-            Return only limited fields for each project. This is a no-op without
-            authentication as then only simple fields are returned.
+            Return only limited fields for each project. This is a no-op without authentication as then only simple
+            fields are returned.
           required: false
           schema:
             type: string
@@ -1516,9 +589,7 @@ paths:
             type: string
         - name: statistics
           in: query
-          description: >-
-            Include project statistics. Only available to Reporter or higher
-            level role members.
+          description: Include project statistics. Only available to Reporter or higher level role members.
           required: false
           schema:
             type: string
@@ -1552,147 +623,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    default_branch:
-                      type: string
-                    visibility:
-                      type: string
-                    ssh_url_to_repo:
-                      type: string
-                    http_url_to_repo:
-                      type: string
-                    web_url:
-                      type: string
-                    readme_url:
-                      type: string
-                    tag_list:
-                      type: array
-                      items:
-                        type: string
-                    topics:
-                      type: array
-                      items:
-                        type: string
-                    name:
-                      type: string
-                    name_with_namespace:
-                      type: string
-                    path:
-                      type: string
-                    path_with_namespace:
-                      type: string
-                    issues_enabled:
-                      type: boolean
-                    open_issues_count:
-                      type: integer
-                    merge_requests_enabled:
-                      type: boolean
-                    jobs_enabled:
-                      type: boolean
-                    wiki_enabled:
-                      type: boolean
-                    snippets_enabled:
-                      type: boolean
-                    can_create_merge_request_in:
-                      type: boolean
-                    resolve_outdated_diff_discussions:
-                      type: boolean
-                    container_registry_enabled:
-                      type: boolean
-                    container_registry_access_level:
-                      type: string
-                    security_and_compliance_access_level:
-                      type: string
-                    created_at:
-                      type: string
-                    last_activity_at:
-                      type: string
-                    creator_id:
-                      type: integer
-                    namespace:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        path:
-                          type: string
-                        kind:
-                          type: string
-                        full_path:
-                          type: string
-                    import_status:
-                      type: string
-                    archived:
-                      type: boolean
-                    avatar_url:
-                      type: string
-                    shared_runners_enabled:
-                      type: boolean
-                    forks_count:
-                      type: integer
-                    star_count:
-                      type: integer
-                    public_jobs:
-                      type: boolean
-                    shared_with_groups:
-                      type: array
-                      items: {}
-                    only_allow_merge_if_pipeline_succeeds:
-                      type: boolean
-                    allow_merge_on_skipped_pipeline:
-                      type: boolean
-                    restrict_user_defined_variables:
-                      type: boolean
-                    only_allow_merge_if_all_discussions_are_resolved:
-                      type: boolean
-                    remove_source_branch_after_merge:
-                      type: boolean
-                    request_access_enabled:
-                      type: boolean
-                    merge_method:
-                      type: string
-                    squash_option:
-                      type: string
-                    autoclose_referenced_issues:
-                      type: boolean
-                    suggestion_commit_message:
-                      type: string
-                    merge_commit_template:
-                      type: string
-                    container_registry_image_prefix:
-                      type: string
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        issues:
-                          type: string
-                        merge_requests:
-                          type: string
-                        repo_branches:
-                          type: string
-                        labels:
-                          type: string
-                        events:
-                          type: string
-                        members:
-                          type: string
+                $ref: '#/components/schemas/listForksOfAProjectResponse'
   '/projects/{id}/star':
     post:
       summary: Star a project
-      description: >-
-        Stars a given project. Returns status code 304 if the project is already
-        starred.
+      description: Stars a given project. Returns status code 304 if the project is already starred.
       operationId: starAProject
       parameters:
         - name: id
@@ -1707,160 +642,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  default_branch:
-                    type: string
-                  visibility:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  topics:
-                    type: array
-                    items:
-                      type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  issues_enabled:
-                    type: boolean
-                  open_issues_count:
-                    type: integer
-                  merge_requests_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  can_create_merge_request_in:
-                    type: boolean
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  created_at:
-                    type: string
-                  last_activity_at:
-                    type: string
-                  creator_id:
-                    type: integer
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                  import_status:
-                    type: string
-                  archived:
-                    type: boolean
-                  avatar_url:
-                    type: string
-                  license_url:
-                    type: string
-                  license:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      name:
-                        type: string
-                      nickname:
-                        type: string
-                      html_url:
-                        type: string
-                      source_url:
-                        type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  public_jobs:
-                    type: boolean
-                  shared_with_groups:
-                    type: array
-                    items: {}
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: boolean
-                  restrict_user_defined_variables:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
+                $ref: '#/components/schemas/starAProjectResponse'
   '/projects/{id}/unstar':
     post:
       summary: Unstar a project
-      description: >-
-        Unstars a given project. Returns status code 304 if the project is not
-        starred.
+      description: Unstars a given project. Returns status code 304 if the project is not starred.
       operationId: unstarAProject
       parameters:
         - name: id
@@ -1875,154 +661,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  default_branch:
-                    type: string
-                  visibility:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  topics:
-                    type: array
-                    items:
-                      type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  issues_enabled:
-                    type: boolean
-                  open_issues_count:
-                    type: integer
-                  merge_requests_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  can_create_merge_request_in:
-                    type: boolean
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  created_at:
-                    type: string
-                  last_activity_at:
-                    type: string
-                  creator_id:
-                    type: integer
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                  import_status:
-                    type: string
-                  archived:
-                    type: boolean
-                  avatar_url:
-                    type: string
-                  license_url:
-                    type: string
-                  license:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      name:
-                        type: string
-                      nickname:
-                        type: string
-                      html_url:
-                        type: string
-                      source_url:
-                        type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  public_jobs:
-                    type: boolean
-                  shared_with_groups:
-                    type: array
-                    items: {}
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: boolean
-                  restrict_user_defined_variables:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
+                $ref: '#/components/schemas/unstarAProjectResponse'
   '/projects/{id}/starrers':
     get:
       summary: List starrers of a project
@@ -2047,27 +686,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    starred_since:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        username:
-                          type: string
-                        name:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
+                $ref: '#/components/schemas/listStarrersOfAProjectResponse'
   '/projects/{id}/languages':
     get:
       summary: Languages
@@ -2086,23 +705,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  Ruby:
-                    type: number
-                  JavaScript:
-                    type: number
-                  HTML:
-                    type: number
-                  CoffeeScript:
-                    type: number
+                $ref: '#/components/schemas/languagesResponse'
   '/projects/{id}/archive':
     post:
       summary: Archive a project
       description: >-
-        Archives the project if the user is either an administrator or the owner
-        of this project. This action is idempotent, thus archiving an already
-        archived project does not change the project.
+        Archives the project if the user is either an administrator or the owner of this project. This action is
+        idempotent, thus archiving an already archived project does not change the project.
       operationId: archiveAProject
       parameters:
         - name: id
@@ -2117,195 +726,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  default_branch:
-                    type: string
-                  visibility:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  topics:
-                    type: array
-                    items:
-                      type: string
-                  owner:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      created_at:
-                        type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  issues_enabled:
-                    type: boolean
-                  open_issues_count:
-                    type: integer
-                  merge_requests_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  can_create_merge_request_in:
-                    type: boolean
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  created_at:
-                    type: string
-                  last_activity_at:
-                    type: string
-                  creator_id:
-                    type: integer
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                  import_status:
-                    type: string
-                  import_error:
-                    type: string
-                  permissions:
-                    type: object
-                    properties:
-                      project_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                      group_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                  archived:
-                    type: boolean
-                  avatar_url:
-                    type: string
-                  license_url:
-                    type: string
-                  license:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      name:
-                        type: string
-                      nickname:
-                        type: string
-                      html_url:
-                        type: string
-                      source_url:
-                        type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  runners_token:
-                    type: string
-                  ci_default_git_depth:
-                    type: integer
-                  ci_forward_deployment_enabled:
-                    type: boolean
-                  public_jobs:
-                    type: boolean
-                  shared_with_groups:
-                    type: array
-                    items: {}
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: boolean
-                  restrict_user_defined_variables:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
+                $ref: '#/components/schemas/archiveAProjectResponse'
   '/projects/{id}/unarchive':
     post:
       summary: Unarchive a project
       description: >-
-        Unarchives the project if the user is either an administrator or the
-        owner of this project. This action is idempotent, thus unarchiving a
-        non-archived project doesn’t change the project.
+        Unarchives the project if the user is either an administrator or the owner of this project. This action is
+        idempotent, thus unarchiving a non-archived project doesn’t change the project.
       operationId: unarchiveAProject
       parameters:
         - name: id
@@ -2320,188 +747,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  default_branch:
-                    type: string
-                  visibility:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  topics:
-                    type: array
-                    items:
-                      type: string
-                  owner:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      created_at:
-                        type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  issues_enabled:
-                    type: boolean
-                  open_issues_count:
-                    type: integer
-                  merge_requests_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  can_create_merge_request_in:
-                    type: boolean
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  created_at:
-                    type: string
-                  last_activity_at:
-                    type: string
-                  creator_id:
-                    type: integer
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                  import_status:
-                    type: string
-                  import_error:
-                    type: string
-                  permissions:
-                    type: object
-                    properties:
-                      project_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                      group_access:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          notification_level:
-                            type: integer
-                  archived:
-                    type: boolean
-                  avatar_url:
-                    type: string
-                  license_url:
-                    type: string
-                  license:
-                    type: object
-                    properties:
-                      key:
-                        type: string
-                      name:
-                        type: string
-                      nickname:
-                        type: string
-                      html_url:
-                        type: string
-                      source_url:
-                        type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  runners_token:
-                    type: string
-                  ci_default_git_depth:
-                    type: integer
-                  ci_forward_deployment_enabled:
-                    type: boolean
-                  public_jobs:
-                    type: boolean
-                  shared_with_groups:
-                    type: array
-                    items: {}
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: boolean
-                  restrict_user_defined_variables:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
+                $ref: '#/components/schemas/unarchiveAProjectResponse'
   '/projects/{id}/restore':
     post:
       summary: Restore project marked for deletion
@@ -2520,14 +766,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/restoreProjectMarkedForDeletionResponse'
   '/projects/{id}/uploads':
     post:
       summary: Upload a file
       description: >-
-        Uploads a file to the specified project to be used in an issue or merge
-        request description, or a comment. GitLab versions 14.0 and later
-        enforce this limit.
+        Uploads a file to the specified project to be used in an issue or merge request description, or a comment.
+        GitLab versions 14.0 and later enforce this limit.
       operationId: uploadAFile
       parameters:
         - name: id
@@ -2542,25 +787,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  alt:
-                    type: string
-                  url:
-                    type: string
-                  full_path:
-                    type: string
-                  markdown:
-                    type: string
+                $ref: '#/components/schemas/uploadAFileResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/uploadAFileRequest'
   '/projects/{id}/share':
     post:
       summary: Share project with group
@@ -2579,26 +811,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/shareProjectWithGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                group_access:
-                  type: integer
-                group_id:
-                  type: integer
-                expires_at:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/shareProjectWithGroupRequest'
   '/projects/{id}/share/{group_id}':
     delete:
       summary: Delete a shared project link within a group
-      description: >-
-        Unshare the project from the group. Returns 204 and no content on
-        success.
+      description: Unshare the project from the group. Returns 204 and no content on success.
       operationId: deleteASharedProjectLinkWithinAGroup
       parameters:
         - name: group_id
@@ -2619,7 +841,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteASharedProjectLinkWithinAGroupResponse'
   '/projects/{id}/import_project_members/{project_id}':
     post:
       summary: Import project members
@@ -2628,17 +850,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the target project to receive the
-            members.
+          description: The ID or URL-encoded path of the target project to receive the members.
           required: false
           schema:
             type: string
         - name: project_id
           in: path
-          description: >-
-            The ID or URL-encoded path of the source project to import the
-            members from.
+          description: The ID or URL-encoded path of the source project to import the members from.
           required: false
           schema:
             type: string
@@ -2648,7 +866,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/importProjectMembersResponse'
   '/projects/{id}/hooks':
     get:
       summary: List project hooks
@@ -2667,7 +885,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listProjectHooksResponse'
     post:
       summary: Add project hook
       description: Adds a hook to a specified project.
@@ -2685,46 +903,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/addProjectHookResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                confidential_issues_events:
-                  type: boolean
-                confidential_note_events:
-                  type: boolean
-                deployment_events:
-                  type: boolean
-                enable_ssl_verification:
-                  type: boolean
-                issues_events:
-                  type: boolean
-                job_events:
-                  type: boolean
-                merge_requests_events:
-                  type: boolean
-                note_events:
-                  type: boolean
-                pipeline_events:
-                  type: boolean
-                push_events_branch_filter:
-                  type: string
-                push_events:
-                  type: boolean
-                releases_events:
-                  type: boolean
-                tag_push_events:
-                  type: boolean
-                token:
-                  type: string
-                wiki_page_events:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/addProjectHookRequest'
   '/projects/{id}/hooks/{hook_id}':
     get:
       summary: Get project hook
@@ -2749,44 +933,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  url:
-                    type: string
-                  project_id:
-                    type: integer
-                  push_events:
-                    type: boolean
-                  push_events_branch_filter:
-                    type: string
-                  issues_events:
-                    type: boolean
-                  confidential_issues_events:
-                    type: boolean
-                  merge_requests_events:
-                    type: boolean
-                  tag_push_events:
-                    type: boolean
-                  note_events:
-                    type: boolean
-                  confidential_note_events:
-                    type: boolean
-                  job_events:
-                    type: boolean
-                  pipeline_events:
-                    type: boolean
-                  wiki_page_events:
-                    type: boolean
-                  deployment_events:
-                    type: boolean
-                  releases_events:
-                    type: boolean
-                  enable_ssl_verification:
-                    type: boolean
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/getProjectHookResponse'
     put:
       summary: Edit project hook
       description: Edits a hook for a specified project.
@@ -2810,51 +957,17 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/editProjectHookResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                confidential_issues_events:
-                  type: boolean
-                confidential_note_events:
-                  type: boolean
-                deployment_events:
-                  type: boolean
-                enable_ssl_verification:
-                  type: boolean
-                issues_events:
-                  type: boolean
-                job_events:
-                  type: boolean
-                merge_requests_events:
-                  type: boolean
-                note_events:
-                  type: boolean
-                pipeline_events:
-                  type: boolean
-                push_events_branch_filter:
-                  type: string
-                push_events:
-                  type: boolean
-                releases_events:
-                  type: boolean
-                tag_push_events:
-                  type: boolean
-                token:
-                  type: string
-                wiki_page_events:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/editProjectHookRequest'
     delete:
       summary: Delete project hook
       description: >-
-        Removes a hook from a project. This is an idempotent method and can be
-        called multiple times. Either the hook is available or not.
+        Removes a hook from a project. This is an idempotent method and can be called multiple times. Either the hook is
+        available or not.
       operationId: deleteProjectHook
       parameters:
         - name: hook_id
@@ -2875,7 +988,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteProjectHookResponse'
   '/projects/{id}/fork/{forked_from_id}':
     post:
       summary: Create a forked from/to relation between existing projects
@@ -2900,7 +1013,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createAForkedFrom/toRelationBetweenExistingProjectsResponse'
   '/projects/{id}/housekeeping':
     post:
       summary: Start the Housekeeping task for a project
@@ -2919,7 +1032,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/startTheHousekeepingTaskForAProjectResponse'
   '/projects/{id}/push_rule':
     get:
       summary: Get project push rules
@@ -2938,36 +1051,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  project_id:
-                    type: integer
-                  commit_committer_check:
-                    type: boolean
-                  reject_unsigned_commits:
-                    type: boolean
-                  commit_message_regex:
-                    type: string
-                  commit_message_negative_regex:
-                    type: string
-                  branch_name_regex:
-                    type: string
-                  deny_delete_tag:
-                    type: boolean
-                  created_at:
-                    type: string
-                  member_check:
-                    type: boolean
-                  prevent_secrets:
-                    type: boolean
-                  author_email_regex:
-                    type: string
-                  file_name_regex:
-                    type: string
-                  max_file_size:
-                    type: integer
+                $ref: '#/components/schemas/getProjectPushRulesResponse'
     post:
       summary: Add project push rule
       description: Adds a push rule to a specified project.
@@ -2985,36 +1069,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/addProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                author_email_regex:
-                  type: string
-                branch_name_regex:
-                  type: string
-                commit_committer_check:
-                  type: boolean
-                commit_message_negative_regex:
-                  type: string
-                commit_message_regex:
-                  type: string
-                deny_delete_tag:
-                  type: boolean
-                file_name_regex:
-                  type: string
-                max_file_size:
-                  type: integer
-                member_check:
-                  type: boolean
-                prevent_secrets:
-                  type: boolean
-                reject_unsigned_commits:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/addProjectPushRuleRequest'
     put:
       summary: Edit project push rule
       description: Edits a push rule for a specified project.
@@ -3032,41 +1092,17 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/editProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                author_email_regex:
-                  type: string
-                branch_name_regex:
-                  type: string
-                commit_committer_check:
-                  type: boolean
-                commit_message_negative_regex:
-                  type: string
-                commit_message_regex:
-                  type: string
-                deny_delete_tag:
-                  type: boolean
-                file_name_regex:
-                  type: string
-                max_file_size:
-                  type: integer
-                member_check:
-                  type: boolean
-                prevent_secrets:
-                  type: boolean
-                reject_unsigned_commits:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/editProjectPushRuleRequest'
     delete:
       summary: Delete project push rule
       description: >-
-        Removes a push rule from a project. This is an idempotent method and can
-        be called multiple times. Either the push rule is available or not.
+        Removes a push rule from a project. This is an idempotent method and can be called multiple times. Either the
+        push rule is available or not.
       operationId: deleteProjectPushRule
       parameters:
         - name: id
@@ -3081,7 +1117,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteProjectPushRuleResponse'
   '/projects/{id}/transfer':
     put:
       summary: Transfer a project to a new namespace
@@ -3100,220 +1136,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  name:
-                    type: string
-                  name_with_namespace:
-                    type: string
-                  path:
-                    type: string
-                  path_with_namespace:
-                    type: string
-                  created_at:
-                    type: string
-                  default_branch:
-                    type: string
-                  tag_list:
-                    type: array
-                    items: {}
-                  topics:
-                    type: array
-                    items: {}
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  web_url:
-                    type: string
-                  readme_url:
-                    type: string
-                  avatar_url:
-                    type: string
-                  forks_count:
-                    type: integer
-                  star_count:
-                    type: integer
-                  last_activity_at:
-                    type: string
-                  namespace:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      path:
-                        type: string
-                      kind:
-                        type: string
-                      full_path:
-                        type: string
-                      parent_id:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  container_registry_image_prefix:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      self:
-                        type: string
-                      issues:
-                        type: string
-                      merge_requests:
-                        type: string
-                      repo_branches:
-                        type: string
-                      labels:
-                        type: string
-                      events:
-                        type: string
-                      members:
-                        type: string
-                  packages_enabled:
-                    type: boolean
-                  empty_repo:
-                    type: boolean
-                  archived:
-                    type: boolean
-                  visibility:
-                    type: string
-                  resolve_outdated_diff_discussions:
-                    type: boolean
-                  container_registry_enabled:
-                    type: boolean
-                  container_registry_access_level:
-                    type: string
-                  container_expiration_policy:
-                    type: object
-                    properties:
-                      cadence:
-                        type: string
-                      enabled:
-                        type: boolean
-                      keep_n:
-                        type: string
-                      older_than:
-                        type: string
-                      name_regex:
-                        type: string
-                      name_regex_keep:
-                        type: string
-                      next_run_at:
-                        type: string
-                  issues_enabled:
-                    type: boolean
-                  merge_requests_enabled:
-                    type: boolean
-                  wiki_enabled:
-                    type: boolean
-                  jobs_enabled:
-                    type: boolean
-                  snippets_enabled:
-                    type: boolean
-                  service_desk_enabled:
-                    type: boolean
-                  service_desk_address:
-                    type: string
-                  can_create_merge_request_in:
-                    type: boolean
-                  issues_access_level:
-                    type: string
-                  repository_access_level:
-                    type: string
-                  merge_requests_access_level:
-                    type: string
-                  forking_access_level:
-                    type: string
-                  analytics_access_level:
-                    type: string
-                  wiki_access_level:
-                    type: string
-                  builds_access_level:
-                    type: string
-                  snippets_access_level:
-                    type: string
-                  pages_access_level:
-                    type: string
-                  security_and_compliance_access_level:
-                    type: string
-                  emails_disabled:
-                    type: string
-                  shared_runners_enabled:
-                    type: boolean
-                  lfs_enabled:
-                    type: boolean
-                  creator_id:
-                    type: integer
-                  import_status:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  ci_default_git_depth:
-                    type: integer
-                  public_jobs:
-                    type: boolean
-                  build_timeout:
-                    type: integer
-                  auto_cancel_pending_pipelines:
-                    type: string
-                  build_coverage_regex:
-                    type: string
-                  ci_config_path:
-                    type: string
-                  shared_with_groups:
-                    type: array
-                    items: {}
-                  only_allow_merge_if_pipeline_succeeds:
-                    type: boolean
-                  allow_merge_on_skipped_pipeline:
-                    type: string
-                  restrict_user_defined_variables:
-                    type: boolean
-                  request_access_enabled:
-                    type: boolean
-                  only_allow_merge_if_all_discussions_are_resolved:
-                    type: boolean
-                  remove_source_branch_after_merge:
-                    type: boolean
-                  printing_merge_request_link_enabled:
-                    type: boolean
-                  merge_method:
-                    type: string
-                  squash_option:
-                    type: string
-                  suggestion_commit_message:
-                    type: string
-                  merge_commit_template:
-                    type: string
-                  auto_devops_enabled:
-                    type: boolean
-                  auto_devops_deploy_strategy:
-                    type: string
-                  autoclose_referenced_issues:
-                    type: boolean
-                  approvals_before_merge:
-                    type: integer
-                  mirror:
-                    type: boolean
-                  compliance_frameworks:
-                    type: array
-                    items: {}
+                $ref: '#/components/schemas/transferAProjectToANewNamespaceResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-              required: []
+              $ref: '#/components/schemas/transferAProjectToANewNamespaceRequest'
   '/projects/{id}/mirror/pull':
     post:
       summary: Start the pull mirroring process for a Project
@@ -3332,7 +1160,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/startThePullMirroringProcessForAProjectResponse'
   '/projects/{id}/snapshot':
     get:
       summary: Download snapshot of a Git repository
@@ -3357,13 +1185,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/downloadSnapshotOfAGitRepositoryResponse'
   '/projects/{id}/storage':
     get:
       summary: Get the path to repository storage
-      description: >-
-        Get the path to repository storage for specified project. Available for
-        administrators only.
+      description: Get the path to repository storage for specified project. Available for administrators only.
       operationId: getThePathToRepositoryStorage
       parameters:
         - name: id
@@ -3378,15 +1204,2406 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    project_id:
-                      type: integer
-                    disk_path:
-                      type: string
-                    created_at:
-                      type: string
-                    repository_storage:
-                      type: string
+                $ref: '#/components/schemas/getThePathToRepositoryStorageResponse'
+components:
+  schemas:
+    listAllProjectsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          approvals_before_merge:
+            type: integer
+    listUserProjectsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          default_branch:
+            type: string
+          visibility:
+            type: string
+          ssh_url_to_repo:
+            type: string
+          http_url_to_repo:
+            type: string
+          web_url:
+            type: string
+          readme_url:
+            type: string
+          tag_list:
+            type: array
+            items:
+              type: string
+          topics:
+            type: array
+            items:
+              type: string
+          owner:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              created_at:
+                type: string
+          name:
+            type: string
+          name_with_namespace:
+            type: string
+          path:
+            type: string
+          path_with_namespace:
+            type: string
+          issues_enabled:
+            type: boolean
+          open_issues_count:
+            type: integer
+          merge_requests_enabled:
+            type: boolean
+          jobs_enabled:
+            type: boolean
+          wiki_enabled:
+            type: boolean
+          snippets_enabled:
+            type: boolean
+          can_create_merge_request_in:
+            type: boolean
+          resolve_outdated_diff_discussions:
+            type: boolean
+          container_registry_enabled:
+            type: boolean
+          container_registry_access_level:
+            type: string
+          security_and_compliance_access_level:
+            type: string
+          created_at:
+            type: string
+          last_activity_at:
+            type: string
+          creator_id:
+            type: integer
+          namespace:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              path:
+                type: string
+              kind:
+                type: string
+              full_path:
+                type: string
+          import_status:
+            type: string
+          archived:
+            type: boolean
+          avatar_url:
+            type: string
+          shared_runners_enabled:
+            type: boolean
+          forks_count:
+            type: integer
+          star_count:
+            type: integer
+          runners_token:
+            type: string
+          ci_default_git_depth:
+            type: integer
+          ci_forward_deployment_enabled:
+            type: boolean
+          public_jobs:
+            type: boolean
+          shared_with_groups:
+            type: array
+            items: {}
+          only_allow_merge_if_pipeline_succeeds:
+            type: boolean
+          allow_merge_on_skipped_pipeline:
+            type: boolean
+          restrict_user_defined_variables:
+            type: boolean
+          only_allow_merge_if_all_discussions_are_resolved:
+            type: boolean
+          remove_source_branch_after_merge:
+            type: boolean
+          request_access_enabled:
+            type: boolean
+          merge_method:
+            type: string
+          squash_option:
+            type: string
+          autoclose_referenced_issues:
+            type: boolean
+          suggestion_commit_message:
+            type: string
+          merge_commit_template:
+            type: string
+          squash_commit_template:
+            type: string
+          marked_for_deletion_at:
+            type: string
+          marked_for_deletion_on:
+            type: string
+          statistics:
+            type: object
+            properties:
+              commit_count:
+                type: integer
+              storage_size:
+                type: integer
+              repository_size:
+                type: integer
+              wiki_size:
+                type: integer
+              lfs_objects_size:
+                type: integer
+              job_artifacts_size:
+                type: integer
+              pipeline_artifacts_size:
+                type: integer
+              packages_size:
+                type: integer
+              snippets_size:
+                type: integer
+              uploads_size:
+                type: integer
+          container_registry_image_prefix:
+            type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              issues:
+                type: string
+              merge_requests:
+                type: string
+              repo_branches:
+                type: string
+              labels:
+                type: string
+              events:
+                type: string
+              members:
+                type: string
+    listProjectsStarredByAUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          default_branch:
+            type: string
+          visibility:
+            type: string
+          ssh_url_to_repo:
+            type: string
+          http_url_to_repo:
+            type: string
+          web_url:
+            type: string
+          readme_url:
+            type: string
+          tag_list:
+            type: array
+            items:
+              type: string
+          topics:
+            type: array
+            items:
+              type: string
+          owner:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              created_at:
+                type: string
+          name:
+            type: string
+          name_with_namespace:
+            type: string
+          path:
+            type: string
+          path_with_namespace:
+            type: string
+          issues_enabled:
+            type: boolean
+          open_issues_count:
+            type: integer
+          merge_requests_enabled:
+            type: boolean
+          jobs_enabled:
+            type: boolean
+          wiki_enabled:
+            type: boolean
+          snippets_enabled:
+            type: boolean
+          can_create_merge_request_in:
+            type: boolean
+          resolve_outdated_diff_discussions:
+            type: boolean
+          container_registry_enabled:
+            type: boolean
+          container_registry_access_level:
+            type: string
+          security_and_compliance_access_level:
+            type: string
+          created_at:
+            type: string
+          last_activity_at:
+            type: string
+          creator_id:
+            type: integer
+          namespace:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              path:
+                type: string
+              kind:
+                type: string
+              full_path:
+                type: string
+          import_status:
+            type: string
+          archived:
+            type: boolean
+          avatar_url:
+            type: string
+          shared_runners_enabled:
+            type: boolean
+          forks_count:
+            type: integer
+          star_count:
+            type: integer
+          runners_token:
+            type: string
+          public_jobs:
+            type: boolean
+          shared_with_groups:
+            type: array
+            items: {}
+          only_allow_merge_if_pipeline_succeeds:
+            type: boolean
+          allow_merge_on_skipped_pipeline:
+            type: boolean
+          restrict_user_defined_variables:
+            type: boolean
+          only_allow_merge_if_all_discussions_are_resolved:
+            type: boolean
+          remove_source_branch_after_merge:
+            type: boolean
+          request_access_enabled:
+            type: boolean
+          merge_method:
+            type: string
+          squash_option:
+            type: string
+          autoclose_referenced_issues:
+            type: boolean
+          suggestion_commit_message:
+            type: string
+          merge_commit_template:
+            type: string
+          squash_commit_template:
+            type: string
+          statistics:
+            type: object
+            properties:
+              commit_count:
+                type: integer
+              storage_size:
+                type: integer
+              repository_size:
+                type: integer
+              lfs_objects_size:
+                type: integer
+              job_artifacts_size:
+                type: integer
+              pipeline_artifacts_size:
+                type: integer
+              packages_size:
+                type: integer
+              snippets_size:
+                type: integer
+              uploads_size:
+                type: integer
+          container_registry_image_prefix:
+            type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              issues:
+                type: string
+              merge_requests:
+                type: string
+              repo_branches:
+                type: string
+              labels:
+                type: string
+              events:
+                type: string
+              members:
+                type: string
+    getSingleProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        approvals_before_merge:
+          type: integer
+        default_branch:
+          type: string
+        visibility:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
+        owner:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            created_at:
+              type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        issues_enabled:
+          type: boolean
+        open_issues_count:
+          type: integer
+        merge_requests_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        can_create_merge_request_in:
+          type: boolean
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        container_expiration_policy:
+          type: object
+          properties:
+            cadence:
+              type: string
+            enabled:
+              type: boolean
+            keep_n:
+              type: string
+            older_than:
+              type: string
+            name_regex:
+              type: string
+            name_regex_delete:
+              type: string
+            name_regex_keep:
+              type: string
+            next_run_at:
+              type: string
+        created_at:
+          type: string
+        last_activity_at:
+          type: string
+        creator_id:
+          type: integer
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        import_status:
+          type: string
+        import_error:
+          type: string
+        permissions:
+          type: object
+          properties:
+            project_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+            group_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+        archived:
+          type: boolean
+        avatar_url:
+          type: string
+        license_url:
+          type: string
+        license:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            nickname:
+              type: string
+            html_url:
+              type: string
+            source_url:
+              type: string
+        shared_runners_enabled:
+          type: boolean
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        runners_token:
+          type: string
+        ci_default_git_depth:
+          type: integer
+        ci_forward_deployment_enabled:
+          type: boolean
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items:
+            type: object
+            properties:
+              group_id:
+                type: integer
+              group_name:
+                type: string
+              group_full_path:
+                type: string
+              group_access_level:
+                type: integer
+        repository_storage:
+          type: string
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        printing_merge_requests_link_enabled:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        auto_devops_enabled:
+          type: boolean
+        auto_devops_deploy_strategy:
+          type: string
+        mirror:
+          type: boolean
+        mirror_user_id:
+          type: integer
+        mirror_trigger_builds:
+          type: boolean
+        only_mirror_protected_branches:
+          type: boolean
+        mirror_overwrites_diverged_branches:
+          type: boolean
+        external_authorization_classification_label:
+          type: string
+        packages_enabled:
+          type: boolean
+        service_desk_enabled:
+          type: boolean
+        service_desk_address:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        squash_commit_template:
+          type: string
+        marked_for_deletion_at:
+          type: string
+        marked_for_deletion_on:
+          type: string
+        compliance_frameworks:
+          type: array
+          items:
+            type: string
+        statistics:
+          type: object
+          properties:
+            commit_count:
+              type: integer
+            storage_size:
+              type: integer
+            repository_size:
+              type: integer
+            wiki_size:
+              type: integer
+            lfs_objects_size:
+              type: integer
+            job_artifacts_size:
+              type: integer
+            pipeline_artifacts_size:
+              type: integer
+            packages_size:
+              type: integer
+            snippets_size:
+              type: integer
+            uploads_size:
+              type: integer
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+    getProjectUsersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    listAProjectGroupsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+          full_name:
+            type: string
+          full_path:
+            type: string
+    createProjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        analytics_access_level:
+          type: string
+        approvals_before_merge:
+          type: integer
+        auto_cancel_pending_pipelines:
+          type: string
+        auto_devops_deploy_strategy:
+          type: string
+        auto_devops_enabled:
+          type: boolean
+        autoclose_referenced_issues:
+          type: boolean
+        build_coverage_regex:
+          type: string
+        build_git_strategy:
+          type: string
+        build_timeout:
+          type: integer
+        builds_access_level:
+          type: string
+        ci_config_path:
+          type: string
+        container_registry_access_level:
+          type: string
+        container_registry_enabled:
+          type: boolean
+        default_branch:
+          type: string
+        description:
+          type: string
+        emails_disabled:
+          type: boolean
+        external_authorization_classification_label:
+          type: string
+        forking_access_level:
+          type: string
+        group_with_project_templates_id:
+          type: integer
+        import_url:
+          type: string
+        initialize_with_readme:
+          type: boolean
+        issues_access_level:
+          type: string
+        issues_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        lfs_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        merge_pipelines_enabled:
+          type: boolean
+        merge_requests_access_level:
+          type: string
+        merge_requests_enabled:
+          type: boolean
+        merge_trains_enabled:
+          type: boolean
+        mirror_trigger_builds:
+          type: boolean
+        mirror:
+          type: boolean
+        namespace_id:
+          type: integer
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        operations_access_level:
+          type: string
+        packages_enabled:
+          type: boolean
+        pages_access_level:
+          type: string
+        printing_merge_request_link_enabled:
+          type: boolean
+        public_builds:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        repository_access_level:
+          type: string
+        repository_storage:
+          type: string
+        request_access_enabled:
+          type: boolean
+        requirements_access_level:
+          type: string
+        resolve_outdated_diff_discussions:
+          type: boolean
+        security_and_compliance_access_level:
+          type: string
+        shared_runners_enabled:
+          type: boolean
+        snippets_access_level:
+          type: string
+        snippets_enabled:
+          type: boolean
+        squash_option:
+          type: string
+        template_name:
+          type: string
+        template_project_id:
+          type: integer
+        use_custom_template:
+          type: boolean
+        visibility:
+          type: string
+        wiki_access_level:
+          type: string
+        wiki_enabled:
+          type: boolean
+    createProjectResponse:
+      type: string
+    createProjectForUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        analytics_access_level:
+          type: string
+        approvals_before_merge:
+          type: integer
+        auto_cancel_pending_pipelines:
+          type: string
+        auto_devops_deploy_strategy:
+          type: string
+        auto_devops_enabled:
+          type: boolean
+        autoclose_referenced_issues:
+          type: boolean
+        build_coverage_regex:
+          type: string
+        build_git_strategy:
+          type: string
+        build_timeout:
+          type: integer
+        builds_access_level:
+          type: string
+        ci_config_path:
+          type: string
+        container_registry_access_level:
+          type: string
+        container_registry_enabled:
+          type: boolean
+        default_branch:
+          type: string
+        description:
+          type: string
+        emails_disabled:
+          type: boolean
+        external_authorization_classification_label:
+          type: string
+        forking_access_level:
+          type: string
+        group_with_project_templates_id:
+          type: integer
+        import_url:
+          type: string
+        initialize_with_readme:
+          type: boolean
+        issues_access_level:
+          type: string
+        issues_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        lfs_enabled:
+          type: boolean
+        merge_commit_template:
+          type: string
+        merge_method:
+          type: string
+        merge_requests_access_level:
+          type: string
+        merge_requests_enabled:
+          type: boolean
+        mirror_trigger_builds:
+          type: boolean
+        mirror:
+          type: boolean
+        namespace_id:
+          type: integer
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        operations_access_level:
+          type: string
+        packages_enabled:
+          type: boolean
+        pages_access_level:
+          type: string
+        path:
+          type: string
+        printing_merge_request_link_enabled:
+          type: boolean
+        public_builds:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        repository_access_level:
+          type: string
+        repository_storage:
+          type: string
+        request_access_enabled:
+          type: boolean
+        requirements_access_level:
+          type: string
+        resolve_outdated_diff_discussions:
+          type: boolean
+        security_and_compliance_access_level:
+          type: string
+        shared_runners_enabled:
+          type: boolean
+        snippets_access_level:
+          type: string
+        snippets_enabled:
+          type: boolean
+        squash_commit_template:
+          type: string
+        squash_option:
+          type: string
+        suggestion_commit_message:
+          type: string
+        template_name:
+          type: string
+        use_custom_template:
+          type: boolean
+        visibility:
+          type: string
+        wiki_access_level:
+          type: string
+        wiki_enabled:
+          type: boolean
+    createProjectForUserResponse:
+      type: string
+    editProjectRequest:
+      type: object
+      properties:
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        analytics_access_level:
+          type: string
+        approvals_before_merge:
+          type: integer
+        auto_cancel_pending_pipelines:
+          type: string
+        auto_devops_deploy_strategy:
+          type: string
+        auto_devops_enabled:
+          type: boolean
+        autoclose_referenced_issues:
+          type: boolean
+        build_coverage_regex:
+          type: string
+        build_git_strategy:
+          type: string
+        build_timeout:
+          type: integer
+        builds_access_level:
+          type: string
+        ci_config_path:
+          type: string
+        ci_default_git_depth:
+          type: integer
+        ci_forward_deployment_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        container_registry_enabled:
+          type: boolean
+        default_branch:
+          type: string
+        description:
+          type: string
+        emails_disabled:
+          type: boolean
+        external_authorization_classification_label:
+          type: string
+        forking_access_level:
+          type: string
+        import_url:
+          type: string
+        issues_access_level:
+          type: string
+        issues_enabled:
+          type: boolean
+        issues_template:
+          type: string
+        jobs_enabled:
+          type: boolean
+        keep_latest_artifact:
+          type: boolean
+        lfs_enabled:
+          type: boolean
+        merge_commit_template:
+          type: string
+        merge_method:
+          type: string
+        merge_pipelines_enabled:
+          type: boolean
+        merge_requests_access_level:
+          type: string
+        merge_requests_enabled:
+          type: boolean
+        merge_requests_template:
+          type: string
+        merge_trains_enabled:
+          type: boolean
+        mirror_overwrites_diverged_branches:
+          type: boolean
+        mirror_trigger_builds:
+          type: boolean
+        mirror_user_id:
+          type: integer
+        mirror:
+          type: boolean
+        mr_default_target_self:
+          type: boolean
+        name:
+          type: string
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        only_mirror_protected_branches:
+          type: boolean
+        operations_access_level:
+          type: string
+        packages_enabled:
+          type: boolean
+        pages_access_level:
+          type: string
+        path:
+          type: string
+        printing_merge_request_link_enabled:
+          type: boolean
+        public_builds:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        repository_access_level:
+          type: string
+        repository_storage:
+          type: string
+        request_access_enabled:
+          type: boolean
+        requirements_access_level:
+          type: string
+        resolve_outdated_diff_discussions:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        security_and_compliance_access_level:
+          type: string
+        service_desk_enabled:
+          type: boolean
+        shared_runners_enabled:
+          type: boolean
+        snippets_access_level:
+          type: string
+        snippets_enabled:
+          type: boolean
+        squash_commit_template:
+          type: string
+        squash_option:
+          type: string
+        suggestion_commit_message:
+          type: string
+        visibility:
+          type: string
+        wiki_access_level:
+          type: string
+        wiki_enabled:
+          type: boolean
+    editProjectResponse:
+      type: string
+    forkProjectRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        mr_default_target_self:
+          type: boolean
+        name:
+          type: string
+        namespace_id:
+          type: integer
+        namespace_path:
+          type: string
+        path:
+          type: string
+        visibility:
+          type: string
+    forkProjectResponse:
+      type: string
+    listForksOfAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          default_branch:
+            type: string
+          visibility:
+            type: string
+          ssh_url_to_repo:
+            type: string
+          http_url_to_repo:
+            type: string
+          web_url:
+            type: string
+          readme_url:
+            type: string
+          tag_list:
+            type: array
+            items:
+              type: string
+          topics:
+            type: array
+            items:
+              type: string
+          name:
+            type: string
+          name_with_namespace:
+            type: string
+          path:
+            type: string
+          path_with_namespace:
+            type: string
+          issues_enabled:
+            type: boolean
+          open_issues_count:
+            type: integer
+          merge_requests_enabled:
+            type: boolean
+          jobs_enabled:
+            type: boolean
+          wiki_enabled:
+            type: boolean
+          snippets_enabled:
+            type: boolean
+          can_create_merge_request_in:
+            type: boolean
+          resolve_outdated_diff_discussions:
+            type: boolean
+          container_registry_enabled:
+            type: boolean
+          container_registry_access_level:
+            type: string
+          security_and_compliance_access_level:
+            type: string
+          created_at:
+            type: string
+          last_activity_at:
+            type: string
+          creator_id:
+            type: integer
+          namespace:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              path:
+                type: string
+              kind:
+                type: string
+              full_path:
+                type: string
+          import_status:
+            type: string
+          archived:
+            type: boolean
+          avatar_url:
+            type: string
+          shared_runners_enabled:
+            type: boolean
+          forks_count:
+            type: integer
+          star_count:
+            type: integer
+          public_jobs:
+            type: boolean
+          shared_with_groups:
+            type: array
+            items: {}
+          only_allow_merge_if_pipeline_succeeds:
+            type: boolean
+          allow_merge_on_skipped_pipeline:
+            type: boolean
+          restrict_user_defined_variables:
+            type: boolean
+          only_allow_merge_if_all_discussions_are_resolved:
+            type: boolean
+          remove_source_branch_after_merge:
+            type: boolean
+          request_access_enabled:
+            type: boolean
+          merge_method:
+            type: string
+          squash_option:
+            type: string
+          autoclose_referenced_issues:
+            type: boolean
+          suggestion_commit_message:
+            type: string
+          merge_commit_template:
+            type: string
+          container_registry_image_prefix:
+            type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              issues:
+                type: string
+              merge_requests:
+                type: string
+              repo_branches:
+                type: string
+              labels:
+                type: string
+              events:
+                type: string
+              members:
+                type: string
+    starAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        default_branch:
+          type: string
+        visibility:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        issues_enabled:
+          type: boolean
+        open_issues_count:
+          type: integer
+        merge_requests_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        can_create_merge_request_in:
+          type: boolean
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        created_at:
+          type: string
+        last_activity_at:
+          type: string
+        creator_id:
+          type: integer
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+        import_status:
+          type: string
+        archived:
+          type: boolean
+        avatar_url:
+          type: string
+        license_url:
+          type: string
+        license:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            nickname:
+              type: string
+            html_url:
+              type: string
+            source_url:
+              type: string
+        shared_runners_enabled:
+          type: boolean
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items: {}
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+    unstarAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        default_branch:
+          type: string
+        visibility:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        issues_enabled:
+          type: boolean
+        open_issues_count:
+          type: integer
+        merge_requests_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        can_create_merge_request_in:
+          type: boolean
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        created_at:
+          type: string
+        last_activity_at:
+          type: string
+        creator_id:
+          type: integer
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+        import_status:
+          type: string
+        archived:
+          type: boolean
+        avatar_url:
+          type: string
+        license_url:
+          type: string
+        license:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            nickname:
+              type: string
+            html_url:
+              type: string
+            source_url:
+              type: string
+        shared_runners_enabled:
+          type: boolean
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items: {}
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+    listStarrersOfAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          starred_since:
+            type: string
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              username:
+                type: string
+              name:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+    languagesResponse:
+      type: object
+      properties:
+        Ruby:
+          type: number
+        JavaScript:
+          type: number
+        HTML:
+          type: number
+        CoffeeScript:
+          type: number
+    archiveAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        default_branch:
+          type: string
+        visibility:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
+        owner:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            created_at:
+              type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        issues_enabled:
+          type: boolean
+        open_issues_count:
+          type: integer
+        merge_requests_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        can_create_merge_request_in:
+          type: boolean
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        created_at:
+          type: string
+        last_activity_at:
+          type: string
+        creator_id:
+          type: integer
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+        import_status:
+          type: string
+        import_error:
+          type: string
+        permissions:
+          type: object
+          properties:
+            project_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+            group_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+        archived:
+          type: boolean
+        avatar_url:
+          type: string
+        license_url:
+          type: string
+        license:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            nickname:
+              type: string
+            html_url:
+              type: string
+            source_url:
+              type: string
+        shared_runners_enabled:
+          type: boolean
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        runners_token:
+          type: string
+        ci_default_git_depth:
+          type: integer
+        ci_forward_deployment_enabled:
+          type: boolean
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items: {}
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+    unarchiveAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        default_branch:
+          type: string
+        visibility:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
+        owner:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            created_at:
+              type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        issues_enabled:
+          type: boolean
+        open_issues_count:
+          type: integer
+        merge_requests_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        can_create_merge_request_in:
+          type: boolean
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        created_at:
+          type: string
+        last_activity_at:
+          type: string
+        creator_id:
+          type: integer
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+        import_status:
+          type: string
+        import_error:
+          type: string
+        permissions:
+          type: object
+          properties:
+            project_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+            group_access:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                notification_level:
+                  type: integer
+        archived:
+          type: boolean
+        avatar_url:
+          type: string
+        license_url:
+          type: string
+        license:
+          type: object
+          properties:
+            key:
+              type: string
+            name:
+              type: string
+            nickname:
+              type: string
+            html_url:
+              type: string
+            source_url:
+              type: string
+        shared_runners_enabled:
+          type: boolean
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        runners_token:
+          type: string
+        ci_default_git_depth:
+          type: integer
+        ci_forward_deployment_enabled:
+          type: boolean
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items: {}
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+    deleteProjectResponse:
+      type: string
+    restoreProjectMarkedForDeletionResponse:
+      type: string
+    uploadAFileRequest:
+      type: object
+      properties:
+        file:
+          type: string
+    uploadAFileResponse:
+      type: object
+      properties:
+        alt:
+          type: string
+        url:
+          type: string
+        full_path:
+          type: string
+        markdown:
+          type: string
+    uploadAProjectAvatarRequest:
+      type: object
+      properties:
+        avatar:
+          type: string
+    uploadAProjectAvatarResponse:
+      type: object
+      properties:
+        avatar_url:
+          type: string
+    shareProjectWithGroupRequest:
+      type: object
+      properties:
+        group_access:
+          type: integer
+        group_id:
+          type: integer
+        expires_at:
+          type: string
+    shareProjectWithGroupResponse:
+      type: string
+    deleteASharedProjectLinkWithinAGroupResponse:
+      type: string
+    importProjectMembersResponse:
+      type: string
+    listProjectHooksResponse:
+      type: string
+    getProjectHookResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        project_id:
+          type: integer
+        push_events:
+          type: boolean
+        push_events_branch_filter:
+          type: string
+        issues_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        job_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+        deployment_events:
+          type: boolean
+        releases_events:
+          type: boolean
+        enable_ssl_verification:
+          type: boolean
+        created_at:
+          type: string
+    addProjectHookRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        confidential_issues_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        deployment_events:
+          type: boolean
+        enable_ssl_verification:
+          type: boolean
+        issues_events:
+          type: boolean
+        job_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        push_events_branch_filter:
+          type: string
+        push_events:
+          type: boolean
+        releases_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        token:
+          type: string
+        wiki_page_events:
+          type: boolean
+    addProjectHookResponse:
+      type: string
+    editProjectHookRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        confidential_issues_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        deployment_events:
+          type: boolean
+        enable_ssl_verification:
+          type: boolean
+        issues_events:
+          type: boolean
+        job_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        push_events_branch_filter:
+          type: string
+        push_events:
+          type: boolean
+        releases_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        token:
+          type: string
+        wiki_page_events:
+          type: boolean
+    editProjectHookResponse:
+      type: string
+    deleteProjectHookResponse:
+      type: string
+    createAForkedFrom/toRelationBetweenExistingProjectsResponse:
+      type: string
+    deleteAnExistingForkedFromRelationshipResponse:
+      type: string
+    searchForProjectsByNameResponse:
+      type: string
+    startTheHousekeepingTaskForAProjectResponse:
+      type: string
+    getProjectPushRulesResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        project_id:
+          type: integer
+        commit_committer_check:
+          type: boolean
+        reject_unsigned_commits:
+          type: boolean
+        commit_message_regex:
+          type: string
+        commit_message_negative_regex:
+          type: string
+        branch_name_regex:
+          type: string
+        deny_delete_tag:
+          type: boolean
+        created_at:
+          type: string
+        member_check:
+          type: boolean
+        prevent_secrets:
+          type: boolean
+        author_email_regex:
+          type: string
+        file_name_regex:
+          type: string
+        max_file_size:
+          type: integer
+    addProjectPushRuleRequest:
+      type: object
+      properties:
+        author_email_regex:
+          type: string
+        branch_name_regex:
+          type: string
+        commit_committer_check:
+          type: boolean
+        commit_message_negative_regex:
+          type: string
+        commit_message_regex:
+          type: string
+        deny_delete_tag:
+          type: boolean
+        file_name_regex:
+          type: string
+        max_file_size:
+          type: integer
+        member_check:
+          type: boolean
+        prevent_secrets:
+          type: boolean
+        reject_unsigned_commits:
+          type: boolean
+    addProjectPushRuleResponse:
+      type: string
+    editProjectPushRuleRequest:
+      type: object
+      properties:
+        author_email_regex:
+          type: string
+        branch_name_regex:
+          type: string
+        commit_committer_check:
+          type: boolean
+        commit_message_negative_regex:
+          type: string
+        commit_message_regex:
+          type: string
+        deny_delete_tag:
+          type: boolean
+        file_name_regex:
+          type: string
+        max_file_size:
+          type: integer
+        member_check:
+          type: boolean
+        prevent_secrets:
+          type: boolean
+        reject_unsigned_commits:
+          type: boolean
+    editProjectPushRuleResponse:
+      type: string
+    deleteProjectPushRuleResponse:
+      type: string
+    transferAProjectToANewNamespaceRequest:
+      type: object
+      properties: {}
+    transferAProjectToANewNamespaceResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        created_at:
+          type: string
+        default_branch:
+          type: string
+        tag_list:
+          type: array
+          items: {}
+        topics:
+          type: array
+          items: {}
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        web_url:
+          type: string
+        readme_url:
+          type: string
+        avatar_url:
+          type: string
+        forks_count:
+          type: integer
+        star_count:
+          type: integer
+        last_activity_at:
+          type: string
+        namespace:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+            parent_id:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        container_registry_image_prefix:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            issues:
+              type: string
+            merge_requests:
+              type: string
+            repo_branches:
+              type: string
+            labels:
+              type: string
+            events:
+              type: string
+            members:
+              type: string
+        packages_enabled:
+          type: boolean
+        empty_repo:
+          type: boolean
+        archived:
+          type: boolean
+        visibility:
+          type: string
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        container_registry_access_level:
+          type: string
+        container_expiration_policy:
+          type: object
+          properties:
+            cadence:
+              type: string
+            enabled:
+              type: boolean
+            keep_n:
+              type: string
+            older_than:
+              type: string
+            name_regex:
+              type: string
+            name_regex_keep:
+              type: string
+            next_run_at:
+              type: string
+        issues_enabled:
+          type: boolean
+        merge_requests_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        service_desk_enabled:
+          type: boolean
+        service_desk_address:
+          type: string
+        can_create_merge_request_in:
+          type: boolean
+        issues_access_level:
+          type: string
+        repository_access_level:
+          type: string
+        merge_requests_access_level:
+          type: string
+        forking_access_level:
+          type: string
+        analytics_access_level:
+          type: string
+        wiki_access_level:
+          type: string
+        builds_access_level:
+          type: string
+        snippets_access_level:
+          type: string
+        pages_access_level:
+          type: string
+        security_and_compliance_access_level:
+          type: string
+        emails_disabled:
+          type: string
+        shared_runners_enabled:
+          type: boolean
+        lfs_enabled:
+          type: boolean
+        creator_id:
+          type: integer
+        import_status:
+          type: string
+        open_issues_count:
+          type: integer
+        ci_default_git_depth:
+          type: integer
+        public_jobs:
+          type: boolean
+        build_timeout:
+          type: integer
+        auto_cancel_pending_pipelines:
+          type: string
+        build_coverage_regex:
+          type: string
+        ci_config_path:
+          type: string
+        shared_with_groups:
+          type: array
+          items: {}
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: string
+        restrict_user_defined_variables:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        printing_merge_request_link_enabled:
+          type: boolean
+        merge_method:
+          type: string
+        squash_option:
+          type: string
+        suggestion_commit_message:
+          type: string
+        merge_commit_template:
+          type: string
+        auto_devops_enabled:
+          type: boolean
+        auto_devops_deploy_strategy:
+          type: string
+        autoclose_referenced_issues:
+          type: boolean
+        approvals_before_merge:
+          type: integer
+        mirror:
+          type: boolean
+        compliance_frameworks:
+          type: array
+          items: {}
+    startThePullMirroringProcessForAProjectResponse:
+      type: string
+    downloadSnapshotOfAGitRepositoryResponse:
+      type: string
+    getThePathToRepositoryStorageResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          project_id:
+            type: integer
+          disk_path:
+            type: string
+          created_at:
+            type: string
+          repository_storage:
+            type: string

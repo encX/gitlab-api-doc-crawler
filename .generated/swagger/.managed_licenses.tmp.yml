@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / managed_licenses'
+  version: '1.0'
 paths:
   '/projects/{id}/managed_licenses':
     get:
@@ -17,28 +21,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    approval_status:
-                      type: string
+                $ref: '#/components/schemas/listManagedLicensesResponse'
     post:
       summary: Create a new managed license
-      description: >-
-        Creates a new managed license for the given project with the given name
-        and approval status.
+      description: Creates a new managed license for the given project with the given name and approval status.
       operationId: createANewManagedLicense
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -48,27 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  approval_status:
-                    type: string
+                $ref: '#/components/schemas/createANewManagedLicenseResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                approval_status:
-                  type: string
-              required:
-                - name
-                - approval_status
+              $ref: '#/components/schemas/createANewManagedLicenseRequest'
   '/projects/{id}/managed_licenses/{managed_license_id}':
     get:
       summary: Show an existing managed license
@@ -77,9 +53,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -95,14 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  approval_status:
-                    type: string
+                $ref: '#/components/schemas/showAnExistingManagedLicenseResponse'
     delete:
       summary: Delete a managed license
       description: Deletes a managed license with a given ID.
@@ -110,9 +77,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -128,7 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAManagedLicenseResponse'
     patch:
       summary: Edit an existing managed license
       description: Updates an existing managed license with a new approval status.
@@ -136,9 +101,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -154,21 +117,68 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  approval_status:
-                    type: string
+                $ref: '#/components/schemas/editAnExistingManagedLicenseResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                approval_status:
-                  type: string
-              required:
-                - approval_status
+              $ref: '#/components/schemas/editAnExistingManagedLicenseRequest'
+components:
+  schemas:
+    listManagedLicensesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          approval_status:
+            type: string
+    showAnExistingManagedLicenseResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        approval_status:
+          type: string
+    createANewManagedLicenseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        approval_status:
+          type: string
+      required:
+        - name
+        - approval_status
+    createANewManagedLicenseResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        approval_status:
+          type: string
+    deleteAManagedLicenseResponse:
+      type: string
+    editAnExistingManagedLicenseRequest:
+      type: object
+      properties:
+        approval_status:
+          type: string
+      required:
+        - approval_status
+    editAnExistingManagedLicenseResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        approval_status:
+          type: string

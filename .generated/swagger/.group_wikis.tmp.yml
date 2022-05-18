@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_wikis'
+  version: '1.0'
 paths:
   '/groups/{id}/wikis':
     get:
@@ -23,20 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    content:
-                      type: string
-                    format:
-                      type: string
-                    slug:
-                      type: string
-                    title:
-                      type: string
-                    encoding:
-                      type: string
+                $ref: '#/components/schemas/listWikiPagesResponse'
   '/groups/{id}/wikis/{slug}':
     get:
       summary: Get a wiki page
@@ -51,9 +42,7 @@ paths:
             type: string
         - name: slug
           in: path
-          description: >-
-            URL-encoded slug (a unique string) of the wiki page, such as
-            dir%2Fpage_name
+          description: 'URL-encoded slug (a unique string) of the wiki page, such as dir%2Fpage_name'
           required: true
           schema:
             type: string
@@ -75,23 +64,10 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  content:
-                    type: string
-                  format:
-                    type: string
-                  slug:
-                    type: string
-                  title:
-                    type: string
-                  encoding:
-                    type: string
+                $ref: '#/components/schemas/getAWikiPageResponse'
     put:
       summary: Edit an existing wiki page
-      description: >-
-        Update an existing wiki page. At least one parameter is required to
-        update the wiki page.
+      description: Update an existing wiki page. At least one parameter is required to update the wiki page.
       operationId: editAnExistingWikiPage
       parameters:
         - name: id
@@ -102,9 +78,7 @@ paths:
             type: string
         - name: slug
           in: path
-          description: >-
-            URL encoded slug (a unique string) of the wiki page. Ex.
-            dir%2Fpage_name
+          description: URL encoded slug (a unique string) of the wiki page. Ex. dir%2Fpage_name
           required: true
           schema:
             type: string
@@ -114,31 +88,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  content:
-                    type: string
-                  format:
-                    type: string
-                  slug:
-                    type: string
-                  title:
-                    type: string
-                  encoding:
-                    type: string
+                $ref: '#/components/schemas/editAnExistingWikiPageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: string
-                title:
-                  type: string
-                format:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/editAnExistingWikiPageRequest'
     delete:
       summary: Delete a wiki page
       description: Delete a wiki page with a given slug.
@@ -152,9 +107,7 @@ paths:
             type: string
         - name: slug
           in: path
-          description: >-
-            URL-encoded slug (a unique string) of the wiki page, such as
-            dir%2Fpage_name
+          description: 'URL-encoded slug (a unique string) of the wiki page, such as dir%2Fpage_name'
           required: true
           schema:
             type: string
@@ -164,13 +117,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAWikiPageResponse'
   '/projects/{id}/wikis':
     post:
       summary: Create a new wiki page
-      description: >-
-        Create a new wiki page for the given repository with the given title,
-        slug, and content.
+      description: 'Create a new wiki page for the given repository with the given title, slug, and content.'
       operationId: createANewWikiPage
       parameters:
         - name: id
@@ -185,39 +136,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  content:
-                    type: string
-                  format:
-                    type: string
-                  slug:
-                    type: string
-                  title:
-                    type: string
-                  encoding:
-                    type: string
+                $ref: '#/components/schemas/createANewWikiPageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: string
-                title:
-                  type: string
-                format:
-                  type: string
-              required:
-                - content
-                - title
+              $ref: '#/components/schemas/createANewWikiPageRequest'
   '/groups/{id}/wikis/attachments':
     post:
       summary: Upload an attachment to the wiki repository
       description: >-
-        Upload a file to the attachment folder inside the wiki’s repository. The
-        attachment folder is the uploads folder.
+        Upload a file to the attachment folder inside the wiki’s repository. The attachment folder is the uploads
+        folder.
       operationId: uploadAnAttachmentToTheWikiRepository
       parameters:
         - name: id
@@ -232,30 +162,113 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  file_name:
-                    type: string
-                  file_path:
-                    type: string
-                  branch:
-                    type: string
-                  link:
-                    type: object
-                    properties:
-                      url:
-                        type: string
-                      markdown:
-                        type: string
+                $ref: '#/components/schemas/uploadAnAttachmentToTheWikiRepositoryResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                file:
-                  type: string
-                branch:
-                  type: string
-              required:
-                - file
+              $ref: '#/components/schemas/uploadAnAttachmentToTheWikiRepositoryRequest'
+components:
+  schemas:
+    listWikiPagesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          content:
+            type: string
+          format:
+            type: string
+          slug:
+            type: string
+          title:
+            type: string
+          encoding:
+            type: string
+    getAWikiPageResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        format:
+          type: string
+        slug:
+          type: string
+        title:
+          type: string
+        encoding:
+          type: string
+    createANewWikiPageRequest:
+      type: object
+      properties:
+        content:
+          type: string
+        title:
+          type: string
+        format:
+          type: string
+      required:
+        - content
+        - title
+    createANewWikiPageResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        format:
+          type: string
+        slug:
+          type: string
+        title:
+          type: string
+        encoding:
+          type: string
+    editAnExistingWikiPageRequest:
+      type: object
+      properties:
+        content:
+          type: string
+        title:
+          type: string
+        format:
+          type: string
+    editAnExistingWikiPageResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        format:
+          type: string
+        slug:
+          type: string
+        title:
+          type: string
+        encoding:
+          type: string
+    deleteAWikiPageResponse:
+      type: string
+    uploadAnAttachmentToTheWikiRepositoryRequest:
+      type: object
+      properties:
+        file:
+          type: string
+        branch:
+          type: string
+      required:
+        - file
+    uploadAnAttachmentToTheWikiRepositoryResponse:
+      type: object
+      properties:
+        file_name:
+          type: string
+        file_path:
+          type: string
+        branch:
+          type: string
+        link:
+          type: object
+          properties:
+            url:
+              type: string
+            markdown:
+              type: string

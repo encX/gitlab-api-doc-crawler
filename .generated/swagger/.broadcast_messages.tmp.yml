@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / broadcast_messages'
+  version: '1.0'
 paths:
   /broadcast_messages:
     get:
@@ -11,34 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    message:
-                      type: string
-                    starts_at:
-                      type: string
-                    ends_at:
-                      type: string
-                    color:
-                      type: string
-                    font:
-                      type: string
-                    id:
-                      type: integer
-                    active:
-                      type: boolean
-                    target_access_levels:
-                      type: array
-                      items:
-                        type: integer
-                    target_path:
-                      type: string
-                    broadcast_type:
-                      type: string
-                    dismissable:
-                      type: boolean
+                $ref: '#/components/schemas/getAllBroadcastMessagesResponse'
     post:
       summary: Create a broadcast message
       description: Create a new broadcast message.
@@ -50,62 +27,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  starts_at:
-                    type: string
-                  ends_at:
-                    type: string
-                  color:
-                    type: string
-                  font:
-                    type: string
-                  id:
-                    type: integer
-                  active:
-                    type: boolean
-                  target_access_levels:
-                    type: array
-                    items:
-                      type: integer
-                  target_path:
-                    type: string
-                  broadcast_type:
-                    type: string
-                  dismissable:
-                    type: boolean
+                $ref: '#/components/schemas/createABroadcastMessageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                message:
-                  type: string
-                starts_at:
-                  type: string
-                  format: date-time
-                ends_at:
-                  type: string
-                  format: date-time
-                color:
-                  type: string
-                font:
-                  type: string
-                target_access_levels:
-                  type: array
-                  items:
-                    type: integer
-                target_path:
-                  type: string
-                broadcast_type:
-                  type: string
-                dismissable:
-                  type: boolean
-              required:
-                - message
+              $ref: '#/components/schemas/createABroadcastMessageRequest'
   '/broadcast_messages/{id}':
     get:
       summary: Get a specific broadcast message
@@ -124,32 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  starts_at:
-                    type: string
-                  ends_at:
-                    type: string
-                  color:
-                    type: string
-                  font:
-                    type: string
-                  id:
-                    type: integer
-                  active:
-                    type: boolean
-                  target_access_levels:
-                    type: array
-                    items:
-                      type: integer
-                  target_path:
-                    type: string
-                  broadcast_type:
-                    type: string
-                  dismissable:
-                    type: boolean
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
     put:
       summary: Update a broadcast message
       description: Update an existing broadcast message.
@@ -167,61 +69,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  starts_at:
-                    type: string
-                  ends_at:
-                    type: string
-                  color:
-                    type: string
-                  font:
-                    type: string
-                  id:
-                    type: integer
-                  active:
-                    type: boolean
-                  target_access_levels:
-                    type: array
-                    items:
-                      type: integer
-                  target_path:
-                    type: string
-                  broadcast_type:
-                    type: string
-                  dismissable:
-                    type: boolean
+                $ref: '#/components/schemas/updateABroadcastMessageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                message:
-                  type: string
-                starts_at:
-                  type: string
-                  format: date-time
-                ends_at:
-                  type: string
-                  format: date-time
-                color:
-                  type: string
-                font:
-                  type: string
-                target_access_levels:
-                  type: array
-                  items:
-                    type: integer
-                target_path:
-                  type: string
-                broadcast_type:
-                  type: string
-                dismissable:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/updateABroadcastMessageRequest'
     delete:
       summary: Delete a broadcast message
       description: Delete a broadcast message.
@@ -239,4 +92,170 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteABroadcastMessageResponse'
+components:
+  schemas:
+    getAllBroadcastMessagesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          message:
+            type: string
+          starts_at:
+            type: string
+          ends_at:
+            type: string
+          color:
+            type: string
+          font:
+            type: string
+          id:
+            type: integer
+          active:
+            type: boolean
+          target_access_levels:
+            type: array
+            items:
+              type: integer
+          target_path:
+            type: string
+          broadcast_type:
+            type: string
+          dismissable:
+            type: boolean
+    getASpecificBroadcastMessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+        ends_at:
+          type: string
+        color:
+          type: string
+        font:
+          type: string
+        id:
+          type: integer
+        active:
+          type: boolean
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+    createABroadcastMessageRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        color:
+          type: string
+        font:
+          type: string
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+      required:
+        - message
+    createABroadcastMessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+        ends_at:
+          type: string
+        color:
+          type: string
+        font:
+          type: string
+        id:
+          type: integer
+        active:
+          type: boolean
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+    updateABroadcastMessageRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        color:
+          type: string
+        font:
+          type: string
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+    updateABroadcastMessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+        ends_at:
+          type: string
+        color:
+          type: string
+        font:
+          type: string
+        id:
+          type: integer
+        active:
+          type: boolean
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+    deleteABroadcastMessageResponse:
+      type: string

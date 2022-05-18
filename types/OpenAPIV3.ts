@@ -320,6 +320,12 @@ export interface TagObject {
   externalDocs?: ExternalDocumentationObject;
 }
 
+// custom types
+
 export interface PropertiesObject {
   [key: string]: ReferenceObject | SchemaObject;
+}
+
+export interface NamedSchemaObject {
+  [name: string]: SchemaObject;
 }

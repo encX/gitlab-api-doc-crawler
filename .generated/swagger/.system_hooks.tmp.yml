@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / system_hooks'
+  version: '1.0'
 paths:
   /hooks:
     get:
@@ -11,26 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    url:
-                      type: string
-                    created_at:
-                      type: string
-                    push_events:
-                      type: boolean
-                    tag_push_events:
-                      type: boolean
-                    merge_requests_events:
-                      type: boolean
-                    repository_update_events:
-                      type: boolean
-                    enable_ssl_verification:
-                      type: boolean
+                $ref: '#/components/schemas/listSystemHooksResponse'
     post:
       summary: Add new system hook
       description: Add a new system hook.
@@ -42,48 +27,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    url:
-                      type: string
-                    created_at:
-                      type: string
-                    push_events:
-                      type: boolean
-                    tag_push_events:
-                      type: boolean
-                    merge_requests_events:
-                      type: boolean
-                    repository_update_events:
-                      type: boolean
-                    enable_ssl_verification:
-                      type: boolean
+                $ref: '#/components/schemas/addNewSystemHookResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                url:
-                  type: string
-                token:
-                  type: string
-                push_events:
-                  type: boolean
-                tag_push_events:
-                  type: boolean
-                merge_requests_events:
-                  type: boolean
-                repository_update_events:
-                  type: boolean
-                enable_ssl_verification:
-                  type: boolean
-              required:
-                - url
+              $ref: '#/components/schemas/addNewSystemHookRequest'
   '/hooks/{id}':
     get:
       summary: Get system hook
@@ -102,26 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    url:
-                      type: string
-                    created_at:
-                      type: string
-                    push_events:
-                      type: boolean
-                    tag_push_events:
-                      type: boolean
-                    merge_requests_events:
-                      type: boolean
-                    repository_update_events:
-                      type: boolean
-                    enable_ssl_verification:
-                      type: boolean
+                $ref: '#/components/schemas/getSystemHookResponse'
     post:
       summary: Test system hook
       description: ''
@@ -139,20 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  project_id:
-                    type: integer
-                  owner_email:
-                    type: string
-                  owner_name:
-                    type: string
-                  name:
-                    type: string
-                  path:
-                    type: string
-                  event_name:
-                    type: string
+                $ref: '#/components/schemas/testSystemHookResponse'
     delete:
       summary: Delete system hook
       description: Deletes a system hook.
@@ -170,4 +87,105 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteSystemHookResponse'
+components:
+  schemas:
+    listSystemHooksResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          url:
+            type: string
+          created_at:
+            type: string
+          push_events:
+            type: boolean
+          tag_push_events:
+            type: boolean
+          merge_requests_events:
+            type: boolean
+          repository_update_events:
+            type: boolean
+          enable_ssl_verification:
+            type: boolean
+    getSystemHookResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          url:
+            type: string
+          created_at:
+            type: string
+          push_events:
+            type: boolean
+          tag_push_events:
+            type: boolean
+          merge_requests_events:
+            type: boolean
+          repository_update_events:
+            type: boolean
+          enable_ssl_verification:
+            type: boolean
+    addNewSystemHookRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        token:
+          type: string
+        push_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        repository_update_events:
+          type: boolean
+        enable_ssl_verification:
+          type: boolean
+      required:
+        - url
+    addNewSystemHookResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          url:
+            type: string
+          created_at:
+            type: string
+          push_events:
+            type: boolean
+          tag_push_events:
+            type: boolean
+          merge_requests_events:
+            type: boolean
+          repository_update_events:
+            type: boolean
+          enable_ssl_verification:
+            type: boolean
+    testSystemHookResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        owner_email:
+          type: string
+        owner_name:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+        event_name:
+          type: string
+    deleteSystemHookResponse:
+      type: string

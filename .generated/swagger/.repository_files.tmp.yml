@@ -1,19 +1,19 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / repository_files'
+  version: '1.0'
 paths:
   '/projects/{id}/repository/files/{file_path}':
     get:
       summary: Get file from repository
       description: >-
-        Allows you to receive information about file in repository like name,
-        size, content. File content is Base64 encoded. This endpoint can be
-        accessed without authentication if the repository is publicly
-        accessible.
+        Allows you to receive information about file in repository like name, size, content. File content is Base64
+        encoded. This endpoint can be accessed without authentication if the repository is publicly accessible.
       operationId: getFileFromRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -35,40 +35,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  file_name:
-                    type: string
-                  file_path:
-                    type: string
-                  size:
-                    type: integer
-                  encoding:
-                    type: string
-                  content:
-                    type: string
-                  content_sha256:
-                    type: string
-                  ref:
-                    type: string
-                  blob_id:
-                    type: string
-                  commit_id:
-                    type: string
-                  last_commit_id:
-                    type: string
+                $ref: '#/components/schemas/getFileFromRepositoryResponse'
     post:
       summary: Create new file in repository
-      description: >-
-        This allows you to create a single file. For creating multiple files
-        with a single request see the commits API.
+      description: This allows you to create a single file. For creating multiple files with a single request see the commits API.
       operationId: createNewFileInRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -84,48 +59,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  file_path:
-                    type: string
-                  branch:
-                    type: string
+                $ref: '#/components/schemas/createNewFileInRepositoryResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                branch:
-                  type: string
-                start_branch:
-                  type: string
-                encoding:
-                  type: string
-                author_email:
-                  type: string
-                author_name:
-                  type: string
-                content:
-                  type: string
-                commit_message:
-                  type: string
-              required:
-                - branch
-                - content
-                - commit_message
+              $ref: '#/components/schemas/createNewFileInRepositoryRequest'
     put:
       summary: Update existing file in repository
-      description: >-
-        This allows you to update a single file. For updating multiple files
-        with a single request see the commits API.
+      description: This allows you to update a single file. For updating multiple files with a single request see the commits API.
       operationId: updateExistingFileInRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -141,50 +88,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  file_path:
-                    type: string
-                  branch:
-                    type: string
+                $ref: '#/components/schemas/updateExistingFileInRepositoryResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                branch:
-                  type: string
-                start_branch:
-                  type: string
-                encoding:
-                  type: string
-                author_email:
-                  type: string
-                author_name:
-                  type: string
-                content:
-                  type: string
-                commit_message:
-                  type: string
-                last_commit_id:
-                  type: string
-              required:
-                - branch
-                - content
-                - commit_message
+              $ref: '#/components/schemas/updateExistingFileInRepositoryRequest'
     delete:
       summary: Delete existing file in repository
-      description: >-
-        This allows you to delete a single file. For deleting multiple files
-        with a single request, see the commits API.
+      description: 'This allows you to delete a single file. For deleting multiple files with a single request, see the commits API.'
       operationId: deleteExistingFileInRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -196,9 +113,7 @@ paths:
             type: string
         - name: branch
           in: query
-          description: >-
-            Name of the new branch to create. The commit is added to this
-            branch.
+          description: Name of the new branch to create. The commit is added to this branch.
           required: true
           schema:
             type: string
@@ -238,20 +153,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteExistingFileInRepositoryResponse'
   '/projects/{id}/repository/files/{file_path}/blame':
     get:
       summary: Get file blame from repository
-      description: >-
-        Allows you to receive blame information. Each blame range contains lines
-        and corresponding commit information.
+      description: Allows you to receive blame information. Each blame range contains lines and corresponding commit information.
       operationId: getFileBlameFromRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -273,37 +184,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    commit:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        message:
-                          type: string
-                        parent_ids:
-                          type: array
-                          items:
-                            type: string
-                        authored_date:
-                          type: string
-                        author_name:
-                          type: string
-                        author_email:
-                          type: string
-                        committed_date:
-                          type: string
-                        committer_name:
-                          type: string
-                        committer_email:
-                          type: string
-                    lines:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/getFileBlameFromRepositoryResponse'
   '/projects/{id}/repository/files/{file_path}/raw':
     get:
       summary: Get raw file from repository
@@ -312,9 +193,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -326,9 +205,7 @@ paths:
             type: string
         - name: ref
           in: query
-          description: >-
-            The name of branch, tag or commit. Default is the HEAD of the
-            project.
+          description: 'The name of branch, tag or commit. Default is the HEAD of the project.'
           required: true
           schema:
             type: string
@@ -338,4 +215,123 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/getRawFileFromRepositoryResponse'
+components:
+  schemas:
+    getFileFromRepositoryResponse:
+      type: object
+      properties:
+        file_name:
+          type: string
+        file_path:
+          type: string
+        size:
+          type: integer
+        encoding:
+          type: string
+        content:
+          type: string
+        content_sha256:
+          type: string
+        ref:
+          type: string
+        blob_id:
+          type: string
+        commit_id:
+          type: string
+        last_commit_id:
+          type: string
+    getFileBlameFromRepositoryResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          commit:
+            type: object
+            properties:
+              id:
                 type: string
+              message:
+                type: string
+              parent_ids:
+                type: array
+                items:
+                  type: string
+              authored_date:
+                type: string
+              author_name:
+                type: string
+              author_email:
+                type: string
+              committed_date:
+                type: string
+              committer_name:
+                type: string
+              committer_email:
+                type: string
+          lines:
+            type: array
+            items:
+              type: string
+    getRawFileFromRepositoryResponse:
+      type: string
+    createNewFileInRepositoryRequest:
+      type: object
+      properties:
+        branch:
+          type: string
+        start_branch:
+          type: string
+        encoding:
+          type: string
+        author_email:
+          type: string
+        author_name:
+          type: string
+        content:
+          type: string
+        commit_message:
+          type: string
+      required:
+        - branch
+        - content
+        - commit_message
+    createNewFileInRepositoryResponse:
+      type: object
+      properties:
+        file_path:
+          type: string
+        branch:
+          type: string
+    updateExistingFileInRepositoryRequest:
+      type: object
+      properties:
+        branch:
+          type: string
+        start_branch:
+          type: string
+        encoding:
+          type: string
+        author_email:
+          type: string
+        author_name:
+          type: string
+        content:
+          type: string
+        commit_message:
+          type: string
+        last_commit_id:
+          type: string
+      required:
+        - branch
+        - content
+        - commit_message
+    updateExistingFileInRepositoryResponse:
+      type: object
+      properties:
+        file_path:
+          type: string
+        branch:
+          type: string
+    deleteExistingFileInRepositoryResponse:
+      type: string

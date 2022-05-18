@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / applications'
+  version: '1.0'
 paths:
   /applications:
     post:
@@ -11,38 +15,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  application_id:
-                    type: string
-                  application_name:
-                    type: string
-                  secret:
-                    type: string
-                  callback_url:
-                    type: string
-                  confidential:
-                    type: boolean
+                $ref: '#/components/schemas/createAnApplicationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                redirect_uri:
-                  type: string
-                scopes:
-                  type: string
-                confidential:
-                  type: boolean
-              required:
-                - name
-                - redirect_uri
-                - scopes
+              $ref: '#/components/schemas/createAnApplicationRequest'
     get:
       summary: List all applications
       description: List all registered applications.
@@ -54,20 +32,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    application_id:
-                      type: string
-                    application_name:
-                      type: string
-                    callback_url:
-                      type: string
-                    confidential:
-                      type: boolean
+                $ref: '#/components/schemas/listAllApplicationsResponse'
   '/applications/{id}':
     delete:
       summary: Delete an application
@@ -86,4 +51,53 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnApplicationResponse'
+components:
+  schemas:
+    createAnApplicationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        redirect_uri:
+          type: string
+        scopes:
+          type: string
+        confidential:
+          type: boolean
+      required:
+        - name
+        - redirect_uri
+        - scopes
+    createAnApplicationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        application_id:
+          type: string
+        application_name:
+          type: string
+        secret:
+          type: string
+        callback_url:
+          type: string
+        confidential:
+          type: boolean
+    listAllApplicationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          application_id:
+            type: string
+          application_name:
+            type: string
+          callback_url:
+            type: string
+          confidential:
+            type: boolean
+    deleteAnApplicationResponse:
+      type: string

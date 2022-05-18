@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / deploy_keys'
+  version: '1.0'
 paths:
   /deploy_keys:
     get:
       summary: List all deploy keys
       description: >-
-        Get a list of all deploy keys across all projects of the GitLab
-        instance. This endpoint requires administrator access and is not
-        available on GitLab.com.
+        Get a list of all deploy keys across all projects of the GitLab instance. This endpoint requires administrator
+        access and is not available on GitLab.com.
       operationId: listAllDeployKeys
       parameters:
         - name: public
@@ -20,39 +23,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    key:
-                      type: string
-                    fingerprint:
-                      type: string
-                    created_at:
-                      type: string
-                    projects_with_write_access:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          description:
-                            type: string
-                          name:
-                            type: string
-                          name_with_namespace:
-                            type: string
-                          path:
-                            type: string
-                          path_with_namespace:
-                            type: string
-                          created_at:
-                            type: string
+                $ref: '#/components/schemas/listAllDeployKeysResponse'
   '/projects/{id}/deploy_keys':
     get:
       summary: List project deploy keys
@@ -61,9 +32,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -73,20 +42,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    key:
-                      type: string
-                    created_at:
-                      type: string
-                    can_push:
-                      type: boolean
+                $ref: '#/components/schemas/listProjectDeployKeysResponse'
     post:
       summary: Add deploy key
       description: Creates a new deploy key for a project.
@@ -94,9 +50,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -106,33 +60,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  can_push:
-                    type: boolean
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/addDeployKeyResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                key:
-                  type: string
-                can_push:
-                  type: boolean
-              required:
-                - title
-                - key
+              $ref: '#/components/schemas/addDeployKeyRequest'
   '/projects/{id}/deploy_keys/{key_id}':
     get:
       summary: Get a single deploy key
@@ -141,9 +74,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -159,18 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  key:
-                    type: string
-                  created_at:
-                    type: string
-                  can_push:
-                    type: boolean
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
     put:
       summary: Update deploy key
       description: Updates a deploy key for a project.
@@ -178,9 +98,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -190,41 +108,22 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  key:
-                    type: string
-                  created_at:
-                    type: string
-                  can_push:
-                    type: boolean
+                $ref: '#/components/schemas/updateDeployKeyResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                can_push:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/updateDeployKeyRequest'
     delete:
       summary: Delete deploy key
       description: >-
-        Removes a deploy key from the project. If the deploy key is used only
-        for this project, it’s deleted from the system.
+        Removes a deploy key from the project. If the deploy key is used only for this project, it’s deleted from the
+        system.
       operationId: deleteDeployKey
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -240,4 +139,115 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteDeployKeyResponse'
+components:
+  schemas:
+    listAllDeployKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          fingerprint:
+            type: string
+          created_at:
+            type: string
+          projects_with_write_access:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                description:
+                  type: string
+                name:
+                  type: string
+                name_with_namespace:
+                  type: string
+                path:
+                  type: string
+                path_with_namespace:
+                  type: string
+                created_at:
+                  type: string
+    listProjectDeployKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          created_at:
+            type: string
+          can_push:
+            type: boolean
+    getASingleDeployKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        created_at:
+          type: string
+        can_push:
+          type: boolean
+    addDeployKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        key:
+          type: string
+        can_push:
+          type: boolean
+      required:
+        - title
+        - key
+    addDeployKeyResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        id:
+          type: integer
+        title:
+          type: string
+        can_push:
+          type: boolean
+        created_at:
+          type: string
+    updateDeployKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        can_push:
+          type: boolean
+    updateDeployKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        created_at:
+          type: string
+        can_push:
+          type: boolean
+    deleteDeployKeyResponse:
+      type: string

@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / releases/links'
+  version: '1.0'
 paths:
   '/projects/{id}/releases/{tag_name}/assets/links':
     get:
@@ -23,20 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    url:
-                      type: string
-                    external:
-                      type: boolean
-                    link_type:
-                      type: string
+                $ref: '#/components/schemas/getLinksResponse'
     post:
       summary: Create a link
       description: Create an asset as a link from a Release.
@@ -60,37 +51,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  url:
-                    type: string
-                  direct_asset_url:
-                    type: string
-                  external:
-                    type: boolean
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/createALinkResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                url:
-                  type: string
-                filepath:
-                  type: string
-                link_type:
-                  type: string
-              required:
-                - name
-                - url
+              $ref: '#/components/schemas/createALinkRequest'
   '/projects/{id}/releases/{tag_name}/assets/links/{link_id}':
     get:
       summary: Get a link
@@ -121,18 +87,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  url:
-                    type: string
-                  external:
-                    type: boolean
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/getALinkResponse'
     put:
       summary: Update a link
       description: Update an asset as a link from a Release.
@@ -162,33 +117,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  url:
-                    type: string
-                  external:
-                    type: boolean
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/updateALinkResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                url:
-                  type: string
-                filepath:
-                  type: string
-                link_type:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateALinkRequest'
     delete:
       summary: Delete a link
       description: Delete an asset as a link from a Release.
@@ -218,15 +152,100 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  url:
-                    type: string
-                  external:
-                    type: boolean
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/deleteALinkResponse'
+components:
+  schemas:
+    getLinksResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          url:
+            type: string
+          external:
+            type: boolean
+          link_type:
+            type: string
+    getALinkResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        external:
+          type: boolean
+        link_type:
+          type: string
+    createALinkRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        filepath:
+          type: string
+        link_type:
+          type: string
+      required:
+        - name
+        - url
+    createALinkResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        direct_asset_url:
+          type: string
+        external:
+          type: boolean
+        link_type:
+          type: string
+    updateALinkRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        filepath:
+          type: string
+        link_type:
+          type: string
+    updateALinkResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        external:
+          type: boolean
+        link_type:
+          type: string
+    deleteALinkResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        external:
+          type: boolean
+        link_type:
+          type: string

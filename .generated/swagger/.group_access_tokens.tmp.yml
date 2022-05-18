@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_access_tokens'
+  version: '1.0'
 paths:
   'groups/{id}/access_tokens':
     get:
@@ -17,30 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    user_id:
-                      type: integer
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                    name:
-                      type: string
-                    expires_at:
-                      type: string
-                    id:
-                      type: integer
-                    active:
-                      type: boolean
-                    created_at:
-                      type: string
-                    revoked:
-                      type: boolean
-                    access_level:
-                      type: integer
+                $ref: '#/components/schemas/listGroupAccessTokensResponse'
     post:
       summary: Create a group access token
       description: Create a group access token.
@@ -58,46 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  scopes:
-                    type: array
-                    items:
-                      type: string
-                  active:
-                    type: boolean
-                  name:
-                    type: string
-                  revoked:
-                    type: boolean
-                  created_at:
-                    type: string
-                  user_id:
-                    type: integer
-                  id:
-                    type: integer
-                  expires_at:
-                    type: string
-                  token:
-                    type: string
-                  access_level:
-                    type: integer
+                $ref: '#/components/schemas/createAGroupAccessTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                access_level:
-                  type: integer
-                expires_at:
-                  type: string
-                  format: date
-              required:
-                - name
-                - scopes
+              $ref: '#/components/schemas/createAGroupAccessTokenRequest'
   'groups/{id}/access_tokens/{token_id}':
     get:
       summary: Get a group access token
@@ -122,28 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  user_id:
-                    type: integer
-                  scopes:
-                    type: array
-                    items:
-                      type: string
-                  name:
-                    type: string
-                  expires_at:
-                    type: string
-                  id:
-                    type: integer
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  revoked:
-                    type: boolean
-                  access_level:
-                    type: integer
+                $ref: '#/components/schemas/getAGroupAccessTokenResponse'
     delete:
       summary: Revoke a group access token
       description: Revoke a group access token.
@@ -167,4 +93,94 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/revokeAGroupAccessTokenResponse'
+components:
+  schemas:
+    listGroupAccessTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          user_id:
+            type: integer
+          scopes:
+            type: array
+            items:
+              type: string
+          name:
+            type: string
+          expires_at:
+            type: string
+          id:
+            type: integer
+          active:
+            type: boolean
+          created_at:
+            type: string
+          revoked:
+            type: boolean
+          access_level:
+            type: integer
+    getAGroupAccessTokenResponse:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        expires_at:
+          type: string
+        id:
+          type: integer
+        active:
+          type: boolean
+        created_at:
+          type: string
+        revoked:
+          type: boolean
+        access_level:
+          type: integer
+    createAGroupAccessTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        access_level:
+          type: integer
+        expires_at:
+          type: string
+          format: date
+      required:
+        - name
+        - scopes
+    createAGroupAccessTokenResponse:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        name:
+          type: string
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+        user_id:
+          type: integer
+        id:
+          type: integer
+        expires_at:
+          type: string
+        token:
+          type: string
+        access_level:
+          type: integer
+    revokeAGroupAccessTokenResponse:
+      type: string

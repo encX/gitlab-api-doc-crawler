@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / snippets'
+  version: '1.0'
 paths:
   /snippets:
     get:
@@ -11,45 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    file_name:
-                      type: string
-                    description:
-                      type: string
-                    visibility:
-                      type: string
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    updated_at:
-                      type: string
-                    created_at:
-                      type: string
-                    project_id:
-                      type: string
-                    web_url:
-                      type: string
-                    raw_url:
-                      type: string
+                $ref: '#/components/schemas/listAllSnippetsForAUserResponse'
     post:
       summary: Create new snippet
       description: Create a new snippet.
@@ -61,86 +27,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  visibility:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  expires_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  project_id:
-                    type: string
-                  web_url:
-                    type: string
-                  raw_url:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  file_name:
-                    type: string
-                  files:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        content:
-                          type: string
-                        file_path:
-                          type: string
+                $ref: '#/components/schemas/createNewSnippetResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                file_name:
-                  type: string
-                content:
-                  type: string
-                description:
-                  type: string
-                visibility:
-                  type: string
-                files:
-                  type: array
-                  items:
-                    type: string
-                'files:file_path':
-                  type: string
-                'files:content':
-                  type: string
-              required:
-                - title
-                - 'files:file_path'
-                - 'files:content'
+              $ref: '#/components/schemas/createNewSnippetRequest'
   '/snippets/{id}':
     get:
       summary: Get a single snippet
@@ -159,45 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  file_name:
-                    type: string
-                  description:
-                    type: string
-                  visibility:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  expires_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  project_id:
-                    type: string
-                  web_url:
-                    type: string
-                  raw_url:
-                    type: string
+                $ref: '#/components/schemas/getASingleSnippetResponse'
     put:
       summary: Update snippet
       description: Update an existing snippet.
@@ -215,90 +69,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  visibility:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  expires_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  project_id:
-                    type: string
-                  web_url:
-                    type: string
-                  raw_url:
-                    type: string
-                  ssh_url_to_repo:
-                    type: string
-                  http_url_to_repo:
-                    type: string
-                  file_name:
-                    type: string
-                  files:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        action:
-                          type: string
-                        previous_path:
-                          type: string
-                        file_path:
-                          type: string
+                $ref: '#/components/schemas/updateSnippetResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                file_name:
-                  type: string
-                content:
-                  type: string
-                description:
-                  type: string
-                visibility:
-                  type: string
-                files:
-                  type: array
-                  items:
-                    type: string
-                'files:action':
-                  type: string
-                'files:file_path':
-                  type: string
-                'files:previous_path':
-                  type: string
-                'files:content':
-                  type: string
-              required:
-                - 'files:action'
+              $ref: '#/components/schemas/updateSnippetRequest'
     delete:
       summary: Delete snippet
       description: Delete an existing snippet.
@@ -316,7 +92,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteSnippetResponse'
   '/snippets/{id}/raw':
     get:
       summary: Single snippet contents
@@ -335,7 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/singleSnippetContentsResponse'
   '/snippets/{id}/files/{ref}/{file_path}/raw':
     get:
       summary: Snippet repository file content
@@ -366,7 +142,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
   /snippets/public:
     get:
       summary: List all public snippets
@@ -391,41 +167,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    author:
-                      type: object
-                      properties:
-                        avatar_url:
-                          type: string
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        state:
-                          type: string
-                        username:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    file_name:
-                      type: string
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    updated_at:
-                      type: string
-                    project_id:
-                      type: string
-                    web_url:
-                      type: string
-                    raw_url:
-                      type: string
+                $ref: '#/components/schemas/listAllPublicSnippetsResponse'
   '/snippets/{id}/user_agent_detail':
     get:
       summary: Get user agent details
@@ -444,11 +186,297 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  user_agent:
-                    type: string
-                  ip_address:
-                    type: string
-                  akismet_submitted:
-                    type: boolean
+                $ref: '#/components/schemas/getUserAgentDetailsResponse'
+components:
+  schemas:
+    listAllSnippetsForAUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          file_name:
+            type: string
+          description:
+            type: string
+          visibility:
+            type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          updated_at:
+            type: string
+          created_at:
+            type: string
+          project_id:
+            type: string
+          web_url:
+            type: string
+          raw_url:
+            type: string
+    getASingleSnippetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        project_id:
+          type: string
+        web_url:
+          type: string
+        raw_url:
+          type: string
+    singleSnippetContentsResponse:
+      type: string
+    snippetRepositoryFileContentResponse:
+      type: string
+    createNewSnippetRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        file_name:
+          type: string
+        content:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        'files:file_path':
+          type: string
+        'files:content':
+          type: string
+      required:
+        - title
+        - 'files:file_path'
+        - 'files:content'
+    createNewSnippetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        project_id:
+          type: string
+        web_url:
+          type: string
+        raw_url:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        file_name:
+          type: string
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              content:
+                type: string
+              file_path:
+                type: string
+    updateSnippetRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        file_name:
+          type: string
+        content:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        'files:action':
+          type: string
+        'files:file_path':
+          type: string
+        'files:previous_path':
+          type: string
+        'files:content':
+          type: string
+      required:
+        - 'files:action'
+    updateSnippetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        project_id:
+          type: string
+        web_url:
+          type: string
+        raw_url:
+          type: string
+        ssh_url_to_repo:
+          type: string
+        http_url_to_repo:
+          type: string
+        file_name:
+          type: string
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              action:
+                type: string
+              previous_path:
+                type: string
+              file_path:
+                type: string
+    deleteSnippetResponse:
+      type: string
+    listAllPublicSnippetsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          author:
+            type: object
+            properties:
+              avatar_url:
+                type: string
+              id:
+                type: integer
+              name:
+                type: string
+              state:
+                type: string
+              username:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          file_name:
+            type: string
+          id:
+            type: integer
+          title:
+            type: string
+          updated_at:
+            type: string
+          project_id:
+            type: string
+          web_url:
+            type: string
+          raw_url:
+            type: string
+    getUserAgentDetailsResponse:
+      type: object
+      properties:
+        user_agent:
+          type: string
+        ip_address:
+          type: string
+        akismet_submitted:
+          type: boolean

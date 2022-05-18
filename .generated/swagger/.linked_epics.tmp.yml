@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / linked_epics'
+  version: '1.0'
 paths:
   '/groups/{id}/epics/{epic_iid}/related_epics':
     get:
       summary: List linked epics
-      description: >-
-        Get a list of a given epic’s linked epics filtered according to the user
-        authorizations.
+      description: Get a list of a given epic’s linked epics filtered according to the user authorizations.
       operationId: listLinkedEpics
       parameters:
         - name: epic_iid
@@ -25,101 +27,10 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    color:
-                      type: string
-                    text_color:
-                      type: string
-                    group_id:
-                      type: integer
-                    parent_id:
-                      type: string
-                    parent_iid:
-                      type: string
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    confidential:
-                      type: boolean
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        username:
-                          type: string
-                        name:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    start_date:
-                      type: string
-                    end_date:
-                      type: string
-                    due_date:
-                      type: string
-                    state:
-                      type: string
-                    web_url:
-                      type: string
-                    references:
-                      type: object
-                      properties:
-                        short:
-                          type: string
-                        relative:
-                          type: string
-                        full:
-                          type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    closed_at:
-                      type: string
-                    labels:
-                      type: array
-                      items: {}
-                    upvotes:
-                      type: integer
-                    downvotes:
-                      type: integer
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        epic_issues:
-                          type: string
-                        group:
-                          type: string
-                        parent:
-                          type: string
-                    related_epic_link_id:
-                      type: integer
-                    link_type:
-                      type: string
-                    link_created_at:
-                      type: string
-                    link_updated_at:
-                      type: string
+                $ref: '#/components/schemas/listLinkedEpicsResponse'
     post:
       summary: Create a related epic link
-      description: >-
-        Create a two-way relation between two epics. The user must be allowed to
-        update both epics to succeed.
+      description: Create a two-way relation between two epics. The user must be allowed to update both epics to succeed.
       operationId: createARelatedEpicLink
       parameters:
         - name: epic_iid
@@ -140,187 +51,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  source_epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      color:
-                        type: string
-                      text_color:
-                        type: string
-                      group_id:
-                        type: integer
-                      parent_id:
-                        type: string
-                      parent_iid:
-                        type: string
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      confidential:
-                        type: boolean
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          username:
-                            type: string
-                          name:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                      due_date:
-                        type: string
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      references:
-                        type: object
-                        properties:
-                          short:
-                            type: string
-                          relative:
-                            type: string
-                          full:
-                            type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      _links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                          epic_issues:
-                            type: string
-                          group:
-                            type: string
-                          parent:
-                            type: string
-                  target_epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      color:
-                        type: string
-                      text_color:
-                        type: string
-                      group_id:
-                        type: integer
-                      parent_id:
-                        type: string
-                      parent_iid:
-                        type: string
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      confidential:
-                        type: boolean
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          username:
-                            type: string
-                          name:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                      due_date:
-                        type: string
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      references:
-                        type: object
-                        properties:
-                          short:
-                            type: string
-                          relative:
-                            type: string
-                          full:
-                            type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      _links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                          epic_issues:
-                            type: string
-                          group:
-                            type: string
-                          parent:
-                            type: string
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/createARelatedEpicLinkResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                link_type:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/createARelatedEpicLinkRequest'
   '/groups/{id}/epics/{epic_iid}/related_epics/{related_epic_link_id}':
     delete:
       summary: Delete a related epic link
-      description: >-
-        Delete a two-way relation between two epics. The user must be allowed to
-        update both epics to succeed.
+      description: Delete a two-way relation between two epics. The user must be allowed to update both epics to succeed.
       operationId: deleteARelatedEpicLink
       parameters:
         - name: epic_iid
@@ -347,169 +87,436 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  source_epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      color:
-                        type: string
-                      text_color:
-                        type: string
-                      group_id:
-                        type: integer
-                      parent_id:
-                        type: string
-                      parent_iid:
-                        type: string
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      confidential:
-                        type: boolean
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          username:
-                            type: string
-                          name:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                      due_date:
-                        type: string
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      references:
-                        type: object
-                        properties:
-                          short:
-                            type: string
-                          relative:
-                            type: string
-                          full:
-                            type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      _links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                          epic_issues:
-                            type: string
-                          group:
-                            type: string
-                          parent:
-                            type: string
-                  target_epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      color:
-                        type: string
-                      text_color:
-                        type: string
-                      group_id:
-                        type: integer
-                      parent_id:
-                        type: string
-                      parent_iid:
-                        type: string
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      confidential:
-                        type: boolean
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          username:
-                            type: string
-                          name:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                      due_date:
-                        type: string
-                      state:
-                        type: string
-                      web_url:
-                        type: string
-                      references:
-                        type: object
-                        properties:
-                          short:
-                            type: string
-                          relative:
-                            type: string
-                          full:
-                            type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      _links:
-                        type: object
-                        properties:
-                          self:
-                            type: string
-                          epic_issues:
-                            type: string
-                          group:
-                            type: string
-                          parent:
-                            type: string
-                  link_type:
-                    type: string
+                $ref: '#/components/schemas/deleteARelatedEpicLinkResponse'
+components:
+  schemas:
+    listLinkedEpicsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          color:
+            type: string
+          text_color:
+            type: string
+          group_id:
+            type: integer
+          parent_id:
+            type: string
+          parent_iid:
+            type: string
+          title:
+            type: string
+          description:
+            type: string
+          confidential:
+            type: boolean
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              username:
+                type: string
+              name:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          start_date:
+            type: string
+          end_date:
+            type: string
+          due_date:
+            type: string
+          state:
+            type: string
+          web_url:
+            type: string
+          references:
+            type: object
+            properties:
+              short:
+                type: string
+              relative:
+                type: string
+              full:
+                type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          closed_at:
+            type: string
+          labels:
+            type: array
+            items: {}
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              epic_issues:
+                type: string
+              group:
+                type: string
+              parent:
+                type: string
+          related_epic_link_id:
+            type: integer
+          link_type:
+            type: string
+          link_created_at:
+            type: string
+          link_updated_at:
+            type: string
+    createARelatedEpicLinkRequest:
+      type: object
+      properties:
+        link_type:
+          type: string
+    createARelatedEpicLinkResponse:
+      type: object
+      properties:
+        source_epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            color:
+              type: string
+            text_color:
+              type: string
+            group_id:
+              type: integer
+            parent_id:
+              type: string
+            parent_iid:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            confidential:
+              type: boolean
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                username:
+                  type: string
+                name:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            due_date:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            _links:
+              type: object
+              properties:
+                self:
+                  type: string
+                epic_issues:
+                  type: string
+                group:
+                  type: string
+                parent:
+                  type: string
+        target_epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            color:
+              type: string
+            text_color:
+              type: string
+            group_id:
+              type: integer
+            parent_id:
+              type: string
+            parent_iid:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            confidential:
+              type: boolean
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                username:
+                  type: string
+                name:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            due_date:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            _links:
+              type: object
+              properties:
+                self:
+                  type: string
+                epic_issues:
+                  type: string
+                group:
+                  type: string
+                parent:
+                  type: string
+        link_type:
+          type: string
+    deleteARelatedEpicLinkResponse:
+      type: object
+      properties:
+        source_epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            color:
+              type: string
+            text_color:
+              type: string
+            group_id:
+              type: integer
+            parent_id:
+              type: string
+            parent_iid:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            confidential:
+              type: boolean
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                username:
+                  type: string
+                name:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            due_date:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            _links:
+              type: object
+              properties:
+                self:
+                  type: string
+                epic_issues:
+                  type: string
+                group:
+                  type: string
+                parent:
+                  type: string
+        target_epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            color:
+              type: string
+            text_color:
+              type: string
+            group_id:
+              type: integer
+            parent_id:
+              type: string
+            parent_iid:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            confidential:
+              type: boolean
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                username:
+                  type: string
+                name:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            due_date:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            _links:
+              type: object
+              properties:
+                self:
+                  type: string
+                epic_issues:
+                  type: string
+                group:
+                  type: string
+                parent:
+                  type: string
+        link_type:
+          type: string

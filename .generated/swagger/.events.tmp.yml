@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / events'
+  version: '1.0'
 paths:
   /events:
     get:
       summary: List currently authenticated user’s events
       description: >-
-        Get a list of events for the authenticated user. Scope read_user or api
-        is required. Events associated with epics are not available using the
-        API.
+        Get a list of events for the authenticated user. Scope read_user or api is required. Events associated with
+        epics are not available using the API.
       operationId: listCurrentlyAuthenticatedUserEvents
       parameters:
         - name: action
@@ -22,17 +25,13 @@ paths:
             type: string
         - name: before
           in: query
-          description: >-
-            Include only events created before a particular date. View how to
-            format dates.
+          description: Include only events created before a particular date. View how to format dates.
           required: false
           schema:
             type: string
         - name: after
           in: query
-          description: >-
-            Include only events created after a particular date. View how to
-            format dates.
+          description: Include only events created after a particular date. View how to format dates.
           required: false
           schema:
             type: string
@@ -54,52 +53,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    project_id:
-                      type: integer
-                    action_name:
-                      type: string
-                    target_id:
-                      type: integer
-                    target_type:
-                      type: string
-                    author_id:
-                      type: integer
-                    target_title:
-                      type: string
-                    created_at:
-                      type: string
-                    author:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    author_username:
-                      type: string
+                $ref: '#/components/schemas/listCurrentlyAuthenticatedUserEventsResponse'
   '/users/{id}/events':
     get:
       summary: Get user contribution events
       description: >-
-        Get the contribution events for the specified user, sorted from newest
-        to oldest. Scope read_user or api is required. Events associated with
-        epics are not available using API.
+        Get the contribution events for the specified user, sorted from newest to oldest. Scope read_user or api is
+        required. Events associated with epics are not available using API.
       operationId: getUserContributionEvents
       parameters:
         - name: id
@@ -122,17 +82,13 @@ paths:
             type: string
         - name: before
           in: query
-          description: >-
-            Include only events created before a particular date. View how to
-            format dates.
+          description: Include only events created before a particular date. View how to format dates.
           required: false
           schema:
             type: string
         - name: after
           in: query
-          description: >-
-            Include only events created after a particular date. View how to
-            format dates.
+          description: Include only events created after a particular date. View how to format dates.
           required: false
           schema:
             type: string
@@ -160,43 +116,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    project_id:
-                      type: integer
-                    action_name:
-                      type: string
-                    target_id:
-                      type: integer
-                    target_type:
-                      type: string
-                    author_id:
-                      type: integer
-                    target_title:
-                      type: string
-                    author:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    author_username:
-                      type: string
+                $ref: '#/components/schemas/getUserContributionEventsResponse'
   '/projects/{project_id}/events':
     get:
       summary: List a Project’s visible events
@@ -223,17 +143,13 @@ paths:
             type: string
         - name: before
           in: query
-          description: >-
-            Include only events created before a particular date. View how to
-            format dates.
+          description: Include only events created before a particular date. View how to format dates.
           required: false
           schema:
             type: string
         - name: after
           in: query
-          description: >-
-            Include only events created after a particular date. View how to
-            format dates.
+          description: Include only events created after a particular date. View how to format dates.
           required: false
           schema:
             type: string
@@ -249,44 +165,126 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    project_id:
-                      type: integer
-                    action_name:
-                      type: string
-                    target_id:
-                      type: integer
-                    target_iid:
-                      type: integer
-                    target_type:
-                      type: string
-                    author_id:
-                      type: integer
-                    target_title:
-                      type: string
-                    created_at:
-                      type: string
-                    author:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    author_username:
-                      type: string
+                $ref: '#/components/schemas/listAProjectVisibleEventsResponse'
+components:
+  schemas:
+    listCurrentlyAuthenticatedUserEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          project_id:
+            type: integer
+          action_name:
+            type: string
+          target_id:
+            type: integer
+          target_type:
+            type: string
+          author_id:
+            type: integer
+          target_title:
+            type: string
+          created_at:
+            type: string
+          author:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          author_username:
+            type: string
+    getUserContributionEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          project_id:
+            type: integer
+          action_name:
+            type: string
+          target_id:
+            type: integer
+          target_type:
+            type: string
+          author_id:
+            type: integer
+          target_title:
+            type: string
+          author:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          author_username:
+            type: string
+    listAProjectVisibleEventsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          project_id:
+            type: integer
+          action_name:
+            type: string
+          target_id:
+            type: integer
+          target_iid:
+            type: integer
+          target_type:
+            type: string
+          author_id:
+            type: integer
+          target_title:
+            type: string
+          created_at:
+            type: string
+          author:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          author_username:
+            type: string

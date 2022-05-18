@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / pipeline_triggers'
+  version: '1.0'
 paths:
   '/projects/{id}/triggers':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -19,24 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    created_at:
-                      type: string
-                    last_used:
-                      type: string
-                    token:
-                      type: string
-                    updated_at:
-                      type: string
-                    owner:
-                      type: string
+                $ref: '#/components/schemas/listProjectTriggersResponse'
     post:
       summary: Create a project trigger
       description: Create a trigger for a project.
@@ -44,9 +29,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -56,32 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  created_at:
-                    type: string
-                  last_used:
-                    type: string
-                  token:
-                    type: string
-                  updated_at:
-                    type: string
-                  owner:
-                    type: string
+                $ref: '#/components/schemas/createAProjectTriggerResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-              required:
-                - description
+              $ref: '#/components/schemas/createAProjectTriggerRequest'
   '/projects/{id}/triggers/{trigger_id}':
     get:
       summary: Get trigger details
@@ -90,9 +53,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -108,22 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  created_at:
-                    type: string
-                  last_used:
-                    type: string
-                  token:
-                    type: string
-                  updated_at:
-                    type: string
-                  owner:
-                    type: string
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
     put:
       summary: Update a project trigger
       description: Update a trigger for a project.
@@ -131,9 +77,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -149,31 +93,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  created_at:
-                    type: string
-                  last_used:
-                    type: string
-                  token:
-                    type: string
-                  updated_at:
-                    type: string
-                  owner:
-                    type: string
+                $ref: '#/components/schemas/updateAProjectTriggerResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateAProjectTriggerRequest'
     delete:
       summary: Remove a project trigger
       description: Remove a project’s build trigger.
@@ -181,9 +106,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -199,4 +122,90 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/removeAProjectTriggerResponse'
+components:
+  schemas:
+    listProjectTriggersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          created_at:
+            type: string
+          last_used:
+            type: string
+          token:
+            type: string
+          updated_at:
+            type: string
+          owner:
+            type: string
+    getTriggerDetailsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        created_at:
+          type: string
+        last_used:
+          type: string
+        token:
+          type: string
+        updated_at:
+          type: string
+        owner:
+          type: string
+    createAProjectTriggerRequest:
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+        - description
+    createAProjectTriggerResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        created_at:
+          type: string
+        last_used:
+          type: string
+        token:
+          type: string
+        updated_at:
+          type: string
+        owner:
+          type: string
+    updateAProjectTriggerRequest:
+      type: object
+      properties:
+        description:
+          type: string
+    updateAProjectTriggerResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        created_at:
+          type: string
+        last_used:
+          type: string
+        token:
+          type: string
+        updated_at:
+          type: string
+        owner:
+          type: string
+    removeAProjectTriggerResponse:
+      type: string

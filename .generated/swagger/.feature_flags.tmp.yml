@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / feature_flags'
+  version: '1.0'
 paths:
   '/projects/{id}/feature_flags':
     get:
@@ -23,48 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    description:
-                      type: string
-                    active:
-                      type: boolean
-                    version:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    scopes:
-                      type: array
-                      items: {}
-                    strategies:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          parameters:
-                            type: object
-                            properties:
-                              userIds:
-                                type: string
-                          scopes:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: integer
-                                environment_scope:
-                                  type: string
+                $ref: '#/components/schemas/listFeatureFlagsForAProjectResponse'
     post:
       summary: Create a feature flag
       description: Creates a new feature flag.
@@ -82,63 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  active:
-                    type: boolean
-                  version:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  scopes:
-                    type: array
-                    items: {}
-                  strategies:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        parameters:
-                          type: object
-                          properties: {}
-                        scopes:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              environment_scope:
-                                type: string
+                $ref: '#/components/schemas/createAFeatureFlagResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                version:
-                  type: string
-                description:
-                  type: string
-                active:
-                  type: boolean
-                'strategies:scopes:environment_scope':
-                  type: string
-              required:
-                - name
-                - version
+              $ref: '#/components/schemas/createAFeatureFlagRequest'
   '/projects/{id}/feature_flags/{feature_flag_name}':
     get:
       summary: Get a single feature flag
@@ -163,44 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  active:
-                    type: boolean
-                  version:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  scopes:
-                    type: array
-                    items: {}
-                  strategies:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        parameters:
-                          type: object
-                          properties: {}
-                        scopes:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              environment_scope:
-                                type: string
+                $ref: '#/components/schemas/getASingleFeatureFlagResponse'
     put:
       summary: Update a feature flag
       description: Updates a feature flag.
@@ -224,63 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  active:
-                    type: boolean
-                  version:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  scopes:
-                    type: array
-                    items: {}
-                  strategies:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        parameters:
-                          type: object
-                          properties:
-                            groupId:
-                              type: string
-                            percentage:
-                              type: string
-                        scopes:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              environment_scope:
-                                type: string
+                $ref: '#/components/schemas/updateAFeatureFlagResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                active:
-                  type: boolean
-                name:
-                  type: string
-                'strategies:scopes:environment_scope':
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateAFeatureFlagRequest'
     delete:
       summary: Delete a feature flag
       description: Deletes a feature flag.
@@ -304,4 +128,199 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteAFeatureFlagResponse'
+components:
+  schemas:
+    listFeatureFlagsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          description:
+            type: string
+          active:
+            type: boolean
+          version:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          scopes:
+            type: array
+            items: {}
+          strategies:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                parameters:
+                  type: object
+                  properties:
+                    userIds:
+                      type: string
+                scopes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      environment_scope:
+                        type: string
+    getASingleFeatureFlagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        version:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        scopes:
+          type: array
+          items: {}
+        strategies:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
                 type: string
+              parameters:
+                type: object
+                properties: {}
+              scopes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    environment_scope:
+                      type: string
+    createAFeatureFlagRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        'strategies:scopes:environment_scope':
+          type: string
+      required:
+        - name
+        - version
+    createAFeatureFlagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        version:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        scopes:
+          type: array
+          items: {}
+        strategies:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              parameters:
+                type: object
+                properties: {}
+              scopes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    environment_scope:
+                      type: string
+    updateAFeatureFlagRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        active:
+          type: boolean
+        name:
+          type: string
+        'strategies:scopes:environment_scope':
+          type: string
+    updateAFeatureFlagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        version:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        scopes:
+          type: array
+          items: {}
+        strategies:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              parameters:
+                type: object
+                properties:
+                  groupId:
+                    type: string
+                  percentage:
+                    type: string
+              scopes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    environment_scope:
+                      type: string
+    deleteAFeatureFlagResponse:
+      type: string

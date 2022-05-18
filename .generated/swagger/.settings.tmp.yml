@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / settings'
+  version: '1.0'
 paths:
   /application/settings:
     get:
@@ -11,169 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  signup_enabled:
-                    type: boolean
-                  file_template_project_id:
-                    type: integer
-                  geo_node_allowed_ips:
-                    type: string
-                  delayed_project_deletion:
-                    type: boolean
-                  deletion_adjourned_period:
-                    type: integer
-                  default_projects_limit:
-                    type: integer
-                  default_branch_protection:
-                    type: integer
-                  restricted_visibility_levels:
-                    type: array
-                    items: {}
-                  password_authentication_enabled_for_web:
-                    type: boolean
-                  after_sign_out_path:
-                    type: string
-                  max_attachment_size:
-                    type: integer
-                  max_import_size:
-                    type: integer
-                  user_oauth_applications:
-                    type: boolean
-                  updated_at:
-                    type: string
-                  session_expire_delay:
-                    type: integer
-                  home_page_url:
-                    type: string
-                  default_snippet_visibility:
-                    type: string
-                  outbound_local_requests_whitelist:
-                    type: array
-                    items: {}
-                  domain_allowlist:
-                    type: array
-                    items: {}
-                  domain_denylist_enabled:
-                    type: boolean
-                  domain_denylist:
-                    type: array
-                    items: {}
-                  created_at:
-                    type: string
-                  default_ci_config_path:
-                    type: string
-                  default_project_visibility:
-                    type: string
-                  default_group_visibility:
-                    type: string
-                  gravatar_enabled:
-                    type: boolean
-                  sign_in_text:
-                    type: string
-                  container_expiration_policies_enable_historic_entries:
-                    type: boolean
-                  container_registry_cleanup_tags_service_max_list_size:
-                    type: integer
-                  container_registry_delete_tags_service_timeout:
-                    type: integer
-                  container_registry_expiration_policies_caching:
-                    type: boolean
-                  container_registry_expiration_policies_worker_capacity:
-                    type: integer
-                  container_registry_token_expire_delay:
-                    type: integer
-                  repository_storages_weighted:
-                    type: object
-                    properties:
-                      default:
-                        type: integer
-                  plantuml_enabled:
-                    type: boolean
-                  plantuml_url:
-                    type: string
-                  kroki_enabled:
-                    type: boolean
-                  kroki_url:
-                    type: string
-                  terminal_max_session_time:
-                    type: integer
-                  polling_interval_multiplier:
-                    type: integer
-                  rsa_key_restriction:
-                    type: integer
-                  dsa_key_restriction:
-                    type: integer
-                  ecdsa_key_restriction:
-                    type: integer
-                  ed25519_key_restriction:
-                    type: integer
-                  ecdsa_sk_key_restriction:
-                    type: integer
-                  ed25519_sk_key_restriction:
-                    type: integer
-                  first_day_of_week:
-                    type: integer
-                  enforce_terms:
-                    type: boolean
-                  terms:
-                    type: string
-                  performance_bar_allowed_group_id:
-                    type: integer
-                  user_show_add_ssh_key_message:
-                    type: boolean
-                  local_markdown_version:
-                    type: integer
-                  allow_local_requests_from_hooks_and_services:
-                    type: boolean
-                  allow_local_requests_from_web_hooks_and_services:
-                    type: boolean
-                  allow_local_requests_from_system_hooks:
-                    type: boolean
-                  asset_proxy_enabled:
-                    type: boolean
-                  asset_proxy_url:
-                    type: string
-                  asset_proxy_whitelist:
-                    type: array
-                    items:
-                      type: string
-                  asset_proxy_allowlist:
-                    type: array
-                    items:
-                      type: string
-                  npm_package_requests_forwarding:
-                    type: boolean
-                  pypi_package_requests_forwarding:
-                    type: boolean
-                  snippet_size_limit:
-                    type: integer
-                  issues_create_limit:
-                    type: integer
-                  raw_blob_request_limit:
-                    type: integer
-                  wiki_page_max_content_bytes:
-                    type: integer
-                  require_admin_approval_after_user_signup:
-                    type: boolean
-                  personal_access_token_prefix:
-                    type: string
-                  rate_limiting_response_text:
-                    type: string
-                  keep_latest_artifact:
-                    type: boolean
-                  admin_mode:
-                    type: boolean
-                  floc_enabled:
-                    type: boolean
-                  external_pipeline_validation_service_timeout:
-                    type: string
-                  external_pipeline_validation_service_token:
-                    type: string
-                  external_pipeline_validation_service_url:
-                    type: string
+                $ref: '#/components/schemas/getCurrentApplicationSettingsResponse'
     put:
       summary: Change application settings
       description: Use an API call to modify GitLab instance application settings.
@@ -185,159 +27,327 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  default_projects_limit:
-                    type: integer
-                  signup_enabled:
-                    type: boolean
-                  password_authentication_enabled_for_web:
-                    type: boolean
-                  gravatar_enabled:
-                    type: boolean
-                  sign_in_text:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  home_page_url:
-                    type: string
-                  default_branch_protection:
-                    type: integer
-                  restricted_visibility_levels:
-                    type: array
-                    items: {}
-                  max_attachment_size:
-                    type: integer
-                  max_import_size:
-                    type: integer
-                  session_expire_delay:
-                    type: integer
-                  default_ci_config_path:
-                    type: string
-                  default_project_visibility:
-                    type: string
-                  default_snippet_visibility:
-                    type: string
-                  default_group_visibility:
-                    type: string
-                  outbound_local_requests_whitelist:
-                    type: array
-                    items: {}
-                  domain_allowlist:
-                    type: array
-                    items: {}
-                  domain_denylist_enabled:
-                    type: boolean
-                  domain_denylist:
-                    type: array
-                    items: {}
-                  external_authorization_service_enabled:
-                    type: boolean
-                  external_authorization_service_url:
-                    type: string
-                  external_authorization_service_default_label:
-                    type: string
-                  external_authorization_service_timeout:
-                    type: number
-                  user_oauth_applications:
-                    type: boolean
-                  after_sign_out_path:
-                    type: string
-                  container_expiration_policies_enable_historic_entries:
-                    type: boolean
-                  container_registry_cleanup_tags_service_max_list_size:
-                    type: integer
-                  container_registry_delete_tags_service_timeout:
-                    type: integer
-                  container_registry_expiration_policies_caching:
-                    type: boolean
-                  container_registry_expiration_policies_worker_capacity:
-                    type: integer
-                  container_registry_token_expire_delay:
-                    type: integer
-                  repository_storages:
-                    type: array
-                    items:
-                      type: string
-                  plantuml_enabled:
-                    type: boolean
-                  plantuml_url:
-                    type: string
-                  terminal_max_session_time:
-                    type: integer
-                  polling_interval_multiplier:
-                    type: integer
-                  rsa_key_restriction:
-                    type: integer
-                  dsa_key_restriction:
-                    type: integer
-                  ecdsa_key_restriction:
-                    type: integer
-                  ed25519_key_restriction:
-                    type: integer
-                  ecdsa_sk_key_restriction:
-                    type: integer
-                  ed25519_sk_key_restriction:
-                    type: integer
-                  first_day_of_week:
-                    type: integer
-                  enforce_terms:
-                    type: boolean
-                  terms:
-                    type: string
-                  performance_bar_allowed_group_id:
-                    type: integer
-                  user_show_add_ssh_key_message:
-                    type: boolean
-                  file_template_project_id:
-                    type: integer
-                  local_markdown_version:
-                    type: integer
-                  asset_proxy_enabled:
-                    type: boolean
-                  asset_proxy_url:
-                    type: string
-                  asset_proxy_allowlist:
-                    type: array
-                    items:
-                      type: string
-                  geo_node_allowed_ips:
-                    type: string
-                  allow_local_requests_from_hooks_and_services:
-                    type: boolean
-                  allow_local_requests_from_web_hooks_and_services:
-                    type: boolean
-                  allow_local_requests_from_system_hooks:
-                    type: boolean
-                  npm_package_requests_forwarding:
-                    type: boolean
-                  pypi_package_requests_forwarding:
-                    type: boolean
-                  snippet_size_limit:
-                    type: integer
-                  issues_create_limit:
-                    type: integer
-                  raw_blob_request_limit:
-                    type: integer
-                  wiki_page_max_content_bytes:
-                    type: integer
-                  require_admin_approval_after_user_signup:
-                    type: boolean
-                  personal_access_token_prefix:
-                    type: string
-                  rate_limiting_response_text:
-                    type: string
-                  keep_latest_artifact:
-                    type: boolean
-                  admin_mode:
-                    type: boolean
-                  external_pipeline_validation_service_timeout:
-                    type: string
-                  external_pipeline_validation_service_token:
-                    type: string
-                  external_pipeline_validation_service_url:
-                    type: string
+                $ref: '#/components/schemas/changeApplicationSettingsResponse'
+components:
+  schemas:
+    getCurrentApplicationSettingsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        signup_enabled:
+          type: boolean
+        file_template_project_id:
+          type: integer
+        geo_node_allowed_ips:
+          type: string
+        delayed_project_deletion:
+          type: boolean
+        deletion_adjourned_period:
+          type: integer
+        default_projects_limit:
+          type: integer
+        default_branch_protection:
+          type: integer
+        restricted_visibility_levels:
+          type: array
+          items: {}
+        password_authentication_enabled_for_web:
+          type: boolean
+        after_sign_out_path:
+          type: string
+        max_attachment_size:
+          type: integer
+        max_import_size:
+          type: integer
+        user_oauth_applications:
+          type: boolean
+        updated_at:
+          type: string
+        session_expire_delay:
+          type: integer
+        home_page_url:
+          type: string
+        default_snippet_visibility:
+          type: string
+        outbound_local_requests_whitelist:
+          type: array
+          items: {}
+        domain_allowlist:
+          type: array
+          items: {}
+        domain_denylist_enabled:
+          type: boolean
+        domain_denylist:
+          type: array
+          items: {}
+        created_at:
+          type: string
+        default_ci_config_path:
+          type: string
+        default_project_visibility:
+          type: string
+        default_group_visibility:
+          type: string
+        gravatar_enabled:
+          type: boolean
+        sign_in_text:
+          type: string
+        container_expiration_policies_enable_historic_entries:
+          type: boolean
+        container_registry_cleanup_tags_service_max_list_size:
+          type: integer
+        container_registry_delete_tags_service_timeout:
+          type: integer
+        container_registry_expiration_policies_caching:
+          type: boolean
+        container_registry_expiration_policies_worker_capacity:
+          type: integer
+        container_registry_token_expire_delay:
+          type: integer
+        repository_storages_weighted:
+          type: object
+          properties:
+            default:
+              type: integer
+        plantuml_enabled:
+          type: boolean
+        plantuml_url:
+          type: string
+        kroki_enabled:
+          type: boolean
+        kroki_url:
+          type: string
+        terminal_max_session_time:
+          type: integer
+        polling_interval_multiplier:
+          type: integer
+        rsa_key_restriction:
+          type: integer
+        dsa_key_restriction:
+          type: integer
+        ecdsa_key_restriction:
+          type: integer
+        ed25519_key_restriction:
+          type: integer
+        ecdsa_sk_key_restriction:
+          type: integer
+        ed25519_sk_key_restriction:
+          type: integer
+        first_day_of_week:
+          type: integer
+        enforce_terms:
+          type: boolean
+        terms:
+          type: string
+        performance_bar_allowed_group_id:
+          type: integer
+        user_show_add_ssh_key_message:
+          type: boolean
+        local_markdown_version:
+          type: integer
+        allow_local_requests_from_hooks_and_services:
+          type: boolean
+        allow_local_requests_from_web_hooks_and_services:
+          type: boolean
+        allow_local_requests_from_system_hooks:
+          type: boolean
+        asset_proxy_enabled:
+          type: boolean
+        asset_proxy_url:
+          type: string
+        asset_proxy_whitelist:
+          type: array
+          items:
+            type: string
+        asset_proxy_allowlist:
+          type: array
+          items:
+            type: string
+        npm_package_requests_forwarding:
+          type: boolean
+        pypi_package_requests_forwarding:
+          type: boolean
+        snippet_size_limit:
+          type: integer
+        issues_create_limit:
+          type: integer
+        raw_blob_request_limit:
+          type: integer
+        wiki_page_max_content_bytes:
+          type: integer
+        require_admin_approval_after_user_signup:
+          type: boolean
+        personal_access_token_prefix:
+          type: string
+        rate_limiting_response_text:
+          type: string
+        keep_latest_artifact:
+          type: boolean
+        admin_mode:
+          type: boolean
+        floc_enabled:
+          type: boolean
+        external_pipeline_validation_service_timeout:
+          type: string
+        external_pipeline_validation_service_token:
+          type: string
+        external_pipeline_validation_service_url:
+          type: string
+    changeApplicationSettingsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        default_projects_limit:
+          type: integer
+        signup_enabled:
+          type: boolean
+        password_authentication_enabled_for_web:
+          type: boolean
+        gravatar_enabled:
+          type: boolean
+        sign_in_text:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        home_page_url:
+          type: string
+        default_branch_protection:
+          type: integer
+        restricted_visibility_levels:
+          type: array
+          items: {}
+        max_attachment_size:
+          type: integer
+        max_import_size:
+          type: integer
+        session_expire_delay:
+          type: integer
+        default_ci_config_path:
+          type: string
+        default_project_visibility:
+          type: string
+        default_snippet_visibility:
+          type: string
+        default_group_visibility:
+          type: string
+        outbound_local_requests_whitelist:
+          type: array
+          items: {}
+        domain_allowlist:
+          type: array
+          items: {}
+        domain_denylist_enabled:
+          type: boolean
+        domain_denylist:
+          type: array
+          items: {}
+        external_authorization_service_enabled:
+          type: boolean
+        external_authorization_service_url:
+          type: string
+        external_authorization_service_default_label:
+          type: string
+        external_authorization_service_timeout:
+          type: number
+        user_oauth_applications:
+          type: boolean
+        after_sign_out_path:
+          type: string
+        container_expiration_policies_enable_historic_entries:
+          type: boolean
+        container_registry_cleanup_tags_service_max_list_size:
+          type: integer
+        container_registry_delete_tags_service_timeout:
+          type: integer
+        container_registry_expiration_policies_caching:
+          type: boolean
+        container_registry_expiration_policies_worker_capacity:
+          type: integer
+        container_registry_token_expire_delay:
+          type: integer
+        repository_storages:
+          type: array
+          items:
+            type: string
+        plantuml_enabled:
+          type: boolean
+        plantuml_url:
+          type: string
+        terminal_max_session_time:
+          type: integer
+        polling_interval_multiplier:
+          type: integer
+        rsa_key_restriction:
+          type: integer
+        dsa_key_restriction:
+          type: integer
+        ecdsa_key_restriction:
+          type: integer
+        ed25519_key_restriction:
+          type: integer
+        ecdsa_sk_key_restriction:
+          type: integer
+        ed25519_sk_key_restriction:
+          type: integer
+        first_day_of_week:
+          type: integer
+        enforce_terms:
+          type: boolean
+        terms:
+          type: string
+        performance_bar_allowed_group_id:
+          type: integer
+        user_show_add_ssh_key_message:
+          type: boolean
+        file_template_project_id:
+          type: integer
+        local_markdown_version:
+          type: integer
+        asset_proxy_enabled:
+          type: boolean
+        asset_proxy_url:
+          type: string
+        asset_proxy_allowlist:
+          type: array
+          items:
+            type: string
+        geo_node_allowed_ips:
+          type: string
+        allow_local_requests_from_hooks_and_services:
+          type: boolean
+        allow_local_requests_from_web_hooks_and_services:
+          type: boolean
+        allow_local_requests_from_system_hooks:
+          type: boolean
+        npm_package_requests_forwarding:
+          type: boolean
+        pypi_package_requests_forwarding:
+          type: boolean
+        snippet_size_limit:
+          type: integer
+        issues_create_limit:
+          type: integer
+        raw_blob_request_limit:
+          type: integer
+        wiki_page_max_content_bytes:
+          type: integer
+        require_admin_approval_after_user_signup:
+          type: boolean
+        personal_access_token_prefix:
+          type: string
+        rate_limiting_response_text:
+          type: string
+        keep_latest_artifact:
+          type: boolean
+        admin_mode:
+          type: boolean
+        external_pipeline_validation_service_timeout:
+          type: string
+        external_pipeline_validation_service_token:
+          type: string
+        external_pipeline_validation_service_url:
+          type: string

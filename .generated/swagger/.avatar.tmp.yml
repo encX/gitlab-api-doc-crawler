@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / avatar'
+  version: '1.0'
 paths:
   /avatar:
     get:
@@ -14,8 +18,8 @@ paths:
         - name: size
           in: query
           description: >-
-            Single pixel dimension (because images are squares). Only used for
-            avatar lookups at Gravatar or at the configured Libravatar server.
+            Single pixel dimension (because images are squares). Only used for avatar lookups at Gravatar or at the
+            configured Libravatar server.
           required: false
           schema:
             type: integer
@@ -25,7 +29,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  avatar_url:
-                    type: string
+                $ref: '#/components/schemas/getASingleAvatarUrlResponse'
+components:
+  schemas:
+    getASingleAvatarUrlResponse:
+      type: object
+      properties:
+        avatar_url:
+          type: string

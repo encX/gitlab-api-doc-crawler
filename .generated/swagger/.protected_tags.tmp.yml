@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / protected_tags'
+  version: '1.0'
 paths:
   '/projects/{id}/protected_tags':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -19,33 +21,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    create_access_levels:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          access_level:
-                            type: integer
-                          access_level_description:
-                            type: string
+                $ref: '#/components/schemas/listProtectedTagsResponse'
     post:
       summary: Protect repository tags
-      description: >-
-        Protects a single repository tag or several project repository tags
-        using a wildcard protected tag.
+      description: Protects a single repository tag or several project repository tags using a wildcard protected tag.
       operationId: protectRepositoryTags
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -55,31 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  create_access_levels:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        access_level:
-                          type: integer
-                        access_level_description:
-                          type: string
+                $ref: '#/components/schemas/protectRepositoryTagsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                create_access_level:
-                  type: string
-              required:
-                - name
+              $ref: '#/components/schemas/protectRepositoryTagsRequest'
   '/projects/{id}/protected_tags/{name}':
     get:
       summary: Get a single protected tag or wildcard protected tag
@@ -88,9 +53,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -106,19 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  create_access_levels:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        access_level:
-                          type: integer
-                        access_level_description:
-                          type: string
+                $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
     delete:
       summary: Unprotect repository tags
       description: Unprotects the given protected tag or wildcard protected tag.
@@ -126,9 +77,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -144,4 +93,61 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/unprotectRepositoryTagsResponse'
+components:
+  schemas:
+    listProtectedTagsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          create_access_levels:
+            type: array
+            items:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                access_level_description:
+                  type: string
+    getASingleProtectedTagOrWildcardProtectedTagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        create_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
                 type: string
+    protectRepositoryTagsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        create_access_level:
+          type: string
+      required:
+        - name
+    protectRepositoryTagsResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        create_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+    unprotectRepositoryTagsResponse:
+      type: string

@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / features'
+  version: '1.0'
 paths:
   /features:
     get:
@@ -11,25 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    state:
-                      type: string
-                    gates:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          key:
-                            type: string
-                          value:
-                            type: boolean
-                    definition:
-                      type: string
+                $ref: '#/components/schemas/listAllFeaturesResponse'
   /features/definitions:
     get:
       summary: List all feature definitions
@@ -42,31 +28,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    introduced_by_url:
-                      type: string
-                    rollout_issue_url:
-                      type: string
-                    milestone:
-                      type: string
-                    type:
-                      type: string
-                    group:
-                      type: string
-                    default_enabled:
-                      type: boolean
+                $ref: '#/components/schemas/listAllFeatureDefinitionsResponse'
   '/features/{name}':
     post:
       summary: Set or create a feature
       description: >-
-        Set a feature’s gate value. If a feature with the given name doesn’t
-        exist yet, it’s created. The value can be a boolean, or an integer to
-        indicate percentage of time.
+        Set a feature’s gate value. If a feature with the given name doesn’t exist yet, it’s created. The value can be a
+        boolean, or an integer to indicate percentage of time.
       operationId: setOrCreateAFeature
       parameters:
         - name: name
@@ -81,61 +49,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  gates:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                        value:
-                          type: boolean
-                  definition:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      introduced_by_url:
-                        type: string
-                      rollout_issue_url:
-                        type: string
-                      group:
-                        type: string
-                      type:
-                        type: string
-                      default_enabled:
-                        type: boolean
+                $ref: '#/components/schemas/setOrCreateAFeatureResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                key:
-                  type: string
-                feature_group:
-                  type: string
-                user:
-                  type: string
-                group:
-                  type: string
-                project:
-                  type: string
-                force:
-                  type: boolean
-              required:
-                - value
+              $ref: '#/components/schemas/setOrCreateAFeatureRequest'
     delete:
       summary: Delete a feature
-      description: >-
-        Removes a feature gate. Response is equal when the gate exists, or
-        doesn’t.
+      description: 'Removes a feature gate. Response is equal when the gate exists, or doesn’t.'
       operationId: deleteAFeature
       parameters: []
       responses:
@@ -144,7 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAFeatureResponse'
   'https://gitlab.example.com/api/v4/features/my_user_feature':
     post:
       summary: Set percentage of actors rollout
@@ -157,33 +79,126 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  gates:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                        value:
-                          type: boolean
-                  definition:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      introduced_by_url:
-                        type: string
-                      rollout_issue_url:
-                        type: string
-                      group:
-                        type: string
-                      type:
-                        type: string
-                      default_enabled:
-                        type: boolean
+                $ref: '#/components/schemas/setPercentageOfActorsRolloutResponse'
+components:
+  schemas:
+    listAllFeaturesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          state:
+            type: string
+          gates:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                value:
+                  type: boolean
+          definition:
+            type: string
+    listAllFeatureDefinitionsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          introduced_by_url:
+            type: string
+          rollout_issue_url:
+            type: string
+          milestone:
+            type: string
+          type:
+            type: string
+          group:
+            type: string
+          default_enabled:
+            type: boolean
+    setOrCreateAFeatureRequest:
+      type: object
+      properties:
+        key:
+          type: string
+        feature_group:
+          type: string
+        user:
+          type: string
+        group:
+          type: string
+        project:
+          type: string
+        force:
+          type: boolean
+      required:
+        - value
+    setOrCreateAFeatureResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+        gates:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: boolean
+        definition:
+          type: object
+          properties:
+            name:
+              type: string
+            introduced_by_url:
+              type: string
+            rollout_issue_url:
+              type: string
+            group:
+              type: string
+            type:
+              type: string
+            default_enabled:
+              type: boolean
+    setPercentageOfActorsRolloutResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+        gates:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: boolean
+        definition:
+          type: object
+          properties:
+            name:
+              type: string
+            introduced_by_url:
+              type: string
+            rollout_issue_url:
+              type: string
+            group:
+              type: string
+            type:
+              type: string
+            default_enabled:
+              type: boolean
+    deleteAFeatureResponse:
+      type: string

@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / pages_domains'
+  version: '1.0'
 paths:
   /pages/domains:
     get:
       summary: List all Pages domains
-      description: >-
-        Get a list of all Pages domains. The user must have administrator
-        access.
+      description: Get a list of all Pages domains. The user must have administrator access.
       operationId: listAllPagesDomains
       parameters: []
       responses:
@@ -13,38 +15,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    domain:
-                      type: string
-                    url:
-                      type: string
-                    project_id:
-                      type: integer
-                    auto_ssl_enabled:
-                      type: boolean
-                    certificate:
-                      type: object
-                      properties:
-                        expired:
-                          type: boolean
-                        expiration:
-                          type: string
+                $ref: '#/components/schemas/listAllPagesDomainsResponse'
   '/projects/{id}/pages/domains':
     get:
       summary: List Pages domains
-      description: >-
-        Get a list of project Pages domains. The user must have permissions to
-        view Pages domains.
+      description: Get a list of project Pages domains. The user must have permissions to view Pages domains.
       operationId: listPagesDomains
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -54,26 +34,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    domain:
-                      type: string
-                    url:
-                      type: string
+                $ref: '#/components/schemas/listPagesDomainsResponse'
     post:
       summary: Create new Pages domain
-      description: >-
-        Creates a new Pages domain. The user must have permissions to create new
-        Pages domains.
+      description: Creates a new Pages domain. The user must have permissions to create new Pages domains.
       operationId: createNewPagesDomain
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -83,50 +52,21 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  domain:
-                    type: string
-                  url:
-                    type: string
-                  auto_ssl_enabled:
-                    type: boolean
-                  certificate:
-                    type: object
-                    properties:
-                      subject:
-                        type: string
-                      expired:
-                        type: boolean
-                      certificate:
-                        type: string
-                      certificate_text:
-                        type: string
+                $ref: '#/components/schemas/createNewPagesDomainResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                domain:
-                  type: string
-                auto_ssl_enabled:
-                  type: boolean
-              required:
-                - domain
+              $ref: '#/components/schemas/createNewPagesDomainRequest'
   '/projects/{id}/pages/domains/{domain}':
     get:
       summary: Single Pages domain
-      description: >-
-        Get a single project Pages domain. The user must have permissions to
-        view Pages domains.
+      description: Get a single project Pages domain. The user must have permissions to view Pages domains.
       operationId: singlePagesDomain
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -142,37 +82,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  domain:
-                    type: string
-                  url:
-                    type: string
-                  auto_ssl_enabled:
-                    type: boolean
-                  certificate:
-                    type: object
-                    properties:
-                      subject:
-                        type: string
-                      expired:
-                        type: boolean
-                      certificate:
-                        type: string
-                      certificate_text:
-                        type: string
+                $ref: '#/components/schemas/singlePagesDomainResponse'
     put:
       summary: Update Pages domain
-      description: >-
-        Updates an existing project Pages domain. The user must have permissions
-        to change an existing Pages domains.
+      description: Updates an existing project Pages domain. The user must have permissions to change an existing Pages domains.
       operationId: updatePagesDomain
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -188,16 +106,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/updatePagesDomainResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                auto_ssl_enabled:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/updatePagesDomainRequest'
     delete:
       summary: Delete Pages domain
       description: Deletes an existing project Pages domain.
@@ -205,9 +119,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -223,4 +135,93 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deletePagesDomainResponse'
+components:
+  schemas:
+    listAllPagesDomainsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          domain:
+            type: string
+          url:
+            type: string
+          project_id:
+            type: integer
+          auto_ssl_enabled:
+            type: boolean
+          certificate:
+            type: object
+            properties:
+              expired:
+                type: boolean
+              expiration:
                 type: string
+    listPagesDomainsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          domain:
+            type: string
+          url:
+            type: string
+    singlePagesDomainResponse:
+      type: object
+      properties:
+        domain:
+          type: string
+        url:
+          type: string
+        auto_ssl_enabled:
+          type: boolean
+        certificate:
+          type: object
+          properties:
+            subject:
+              type: string
+            expired:
+              type: boolean
+            certificate:
+              type: string
+            certificate_text:
+              type: string
+    createNewPagesDomainRequest:
+      type: object
+      properties:
+        domain:
+          type: string
+        auto_ssl_enabled:
+          type: boolean
+      required:
+        - domain
+    createNewPagesDomainResponse:
+      type: object
+      properties:
+        domain:
+          type: string
+        url:
+          type: string
+        auto_ssl_enabled:
+          type: boolean
+        certificate:
+          type: object
+          properties:
+            subject:
+              type: string
+            expired:
+              type: boolean
+            certificate:
+              type: string
+            certificate_text:
+              type: string
+    updatePagesDomainRequest:
+      type: object
+      properties:
+        auto_ssl_enabled:
+          type: boolean
+    updatePagesDomainResponse:
+      type: string
+    deletePagesDomainResponse:
+      type: string

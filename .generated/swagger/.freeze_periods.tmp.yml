@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / freeze_periods'
+  version: '1.0'
 paths:
   '/projects/{id}/freeze_periods':
     get:
       summary: List Freeze Periods
-      description: >-
-        Paginated list of Freeze Periods, sorted by created_at in ascending
-        order.
+      description: 'Paginated list of Freeze Periods, sorted by created_at in ascending order.'
       operationId: listFreezePeriods
       parameters:
         - name: id
@@ -19,22 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    freeze_start:
-                      type: string
-                    freeze_end:
-                      type: string
-                    cron_timezone:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
+                $ref: '#/components/schemas/listFreezePeriodsResponse'
     post:
       summary: Create a Freeze Period
       description: Create a Freeze Period.
@@ -52,35 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  freeze_start:
-                    type: string
-                  freeze_end:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/createAFreezePeriodResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                freeze_start:
-                  type: string
-                freeze_end:
-                  type: string
-                cron_timezone:
-                  type: string
-              required:
-                - freeze_start
-                - freeze_end
+              $ref: '#/components/schemas/createAFreezePeriodRequest'
   '/projects/{id}/freeze_periods/{freeze_period_id}':
     get:
       summary: Get a Freeze Period by a freeze_period_id
@@ -105,20 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  freeze_start:
-                    type: string
-                  freeze_end:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/getAFreezePeriodByAFreeze_period_idResponse'
     put:
       summary: Update a Freeze Period
       description: Update a Freeze Period for the given freeze_period_id.
@@ -142,33 +93,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  freeze_start:
-                    type: string
-                  freeze_end:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/updateAFreezePeriodResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                freeze_start:
-                  type: string
-                freeze_end:
-                  type: string
-                cron_timezone:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateAFreezePeriodRequest'
     delete:
       summary: Delete a Freeze Period
       description: Delete a Freeze Period for the given freeze_period_id.
@@ -192,4 +122,91 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAFreezePeriodResponse'
+components:
+  schemas:
+    listFreezePeriodsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          freeze_start:
+            type: string
+          freeze_end:
+            type: string
+          cron_timezone:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+    getAFreezePeriodByAFreeze_period_idResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        freeze_start:
+          type: string
+        freeze_end:
+          type: string
+        cron_timezone:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    createAFreezePeriodRequest:
+      type: object
+      properties:
+        freeze_start:
+          type: string
+        freeze_end:
+          type: string
+        cron_timezone:
+          type: string
+      required:
+        - freeze_start
+        - freeze_end
+    createAFreezePeriodResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        freeze_start:
+          type: string
+        freeze_end:
+          type: string
+        cron_timezone:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    updateAFreezePeriodRequest:
+      type: object
+      properties:
+        freeze_start:
+          type: string
+        freeze_end:
+          type: string
+        cron_timezone:
+          type: string
+    updateAFreezePeriodResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        freeze_start:
+          type: string
+        freeze_end:
+          type: string
+        cron_timezone:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    deleteAFreezePeriodResponse:
+      type: string

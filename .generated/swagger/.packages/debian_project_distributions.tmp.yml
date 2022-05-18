@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / packages/debian_project_distributions'
+  version: '1.0'
 paths:
   '/projects/{id}/debian_distributions':
     get:
@@ -29,34 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    codename:
-                      type: string
-                    suite:
-                      type: string
-                    origin:
-                      type: string
-                    label:
-                      type: string
-                    version:
-                      type: string
-                    description:
-                      type: string
-                    valid_time_duration_seconds:
-                      type: string
-                    components:
-                      type: array
-                      items:
-                        type: string
-                    architectures:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/listAllDebianDistributionsInAProjectResponse'
     post:
       summary: Create a Debian project distribution
       description: Creates a Debian project distribution.
@@ -64,9 +41,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -76,54 +51,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: string
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/createADebianProjectDistributionResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                codename:
-                  type: string
-                suite:
-                  type: string
-                origin:
-                  type: string
-                label:
-                  type: string
-                version:
-                  type: string
-                description:
-                  type: string
-                valid_time_duration_seconds:
-                  type: integer
-              required:
-                - codename
+              $ref: '#/components/schemas/createADebianProjectDistributionRequest'
   '/projects/{id}/debian_distributions/{codename}':
     get:
       summary: Single Debian project distribution
@@ -132,9 +65,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -150,32 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: string
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/singleDebianProjectDistributionResponse'
     put:
       summary: Update a Debian project distribution
       description: Updates a Debian project distribution.
@@ -183,9 +89,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -201,51 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: integer
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/updateADebianProjectDistributionResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                suite:
-                  type: string
-                origin:
-                  type: string
-                label:
-                  type: string
-                version:
-                  type: string
-                description:
-                  type: string
-                valid_time_duration_seconds:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/updateADebianProjectDistributionRequest'
     delete:
       summary: Delete a Debian project distribution
       description: Deletes a Debian project distribution.
@@ -253,9 +118,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -271,7 +134,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteADebianProjectDistributionResponse'
   '/projects/{id}/debian_distributions/{codename}/key.asc':
     get:
       summary: Single Debian project distribution key
@@ -280,9 +143,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -298,4 +159,154 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/singleDebianProjectDistributionKeyResponse'
+components:
+  schemas:
+    listAllDebianDistributionsInAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          codename:
+            type: string
+          suite:
+            type: string
+          origin:
+            type: string
+          label:
+            type: string
+          version:
+            type: string
+          description:
+            type: string
+          valid_time_duration_seconds:
+            type: string
+          components:
+            type: array
+            items:
+              type: string
+          architectures:
+            type: array
+            items:
+              type: string
+    singleDebianProjectDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: string
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    singleDebianProjectDistributionKeyResponse:
+      type: string
+    createADebianProjectDistributionRequest:
+      type: object
+      properties:
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+      required:
+        - codename
+    createADebianProjectDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: string
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    updateADebianProjectDistributionRequest:
+      type: object
+      properties:
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+    updateADebianProjectDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    deleteADebianProjectDistributionResponse:
+      type: string

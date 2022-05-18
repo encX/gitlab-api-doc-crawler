@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_badges'
+  version: '1.0'
 paths:
   '/groups/{id}/badges':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -25,24 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    id:
-                      type: integer
-                    link_url:
-                      type: string
-                    image_url:
-                      type: string
-                    rendered_link_url:
-                      type: string
-                    rendered_image_url:
-                      type: string
-                    kind:
-                      type: string
+                $ref: '#/components/schemas/listAllBadgesOfAGroupResponse'
     post:
       summary: Add a badge to a group
       description: Adds a badge to a group.
@@ -50,9 +35,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -62,33 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/addABadgeToAGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                link_url:
-                  type: string
-                image_url:
-                  type: string
-              required:
-                - link_url
-                - image_url
+              $ref: '#/components/schemas/addABadgeToAGroupRequest'
   '/groups/{id}/badges/{badge_id}':
     get:
       summary: Get a badge of a group
@@ -97,9 +59,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -115,20 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/getABadgeOfAGroupResponse'
     put:
       summary: Edit a badge of a group
       description: Updates a badge of a group.
@@ -136,9 +83,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -154,31 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
-                  kind:
-                    type: string
+                $ref: '#/components/schemas/editABadgeOfAGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                link_url:
-                  type: string
-                image_url:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/editABadgeOfAGroupRequest'
     delete:
       summary: Remove a badge from a group
       description: Removes a badge from a group.
@@ -186,9 +112,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -204,20 +128,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/removeABadgeFromAGroupResponse'
   '/groups/{id}/badges/render':
     get:
       summary: Preview a badge from a group
-      description: >-
-        Returns how the link_url and image_url final URLs would be after
-        resolving the placeholder interpolation.
+      description: Returns how the link_url and image_url final URLs would be after resolving the placeholder interpolation.
       operationId: previewABadgeFromAGroup
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -239,13 +159,100 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  link_url:
-                    type: string
-                  image_url:
-                    type: string
-                  rendered_link_url:
-                    type: string
-                  rendered_image_url:
-                    type: string
+                $ref: '#/components/schemas/previewABadgeFromAGroupResponse'
+components:
+  schemas:
+    listAllBadgesOfAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          id:
+            type: integer
+          link_url:
+            type: string
+          image_url:
+            type: string
+          rendered_link_url:
+            type: string
+          rendered_image_url:
+            type: string
+          kind:
+            type: string
+    getABadgeOfAGroupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    addABadgeToAGroupRequest:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+      required:
+        - link_url
+        - image_url
+    addABadgeToAGroupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    editABadgeOfAGroupRequest:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+    editABadgeOfAGroupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    removeABadgeFromAGroupResponse:
+      type: string
+    previewABadgeFromAGroupResponse:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string

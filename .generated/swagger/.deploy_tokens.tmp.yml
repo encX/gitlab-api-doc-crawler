@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / deploy_tokens'
+  version: '1.0'
 paths:
   /deploy_tokens:
     get:
       summary: List all deploy tokens
-      description: >-
-        Get a list of all deploy tokens across the GitLab instance. This
-        endpoint requires administrator access.
+      description: Get a list of all deploy tokens across the GitLab instance. This endpoint requires administrator access.
       operationId: listAllDeployTokens
       parameters:
         - name: active
@@ -19,26 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    expires_at:
-                      type: string
-                    revoked:
-                      type: boolean
-                    expired:
-                      type: boolean
-                    scopes:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/listAllDeployTokensResponse'
   '/projects/{id}/deploy_tokens':
     get:
       summary: List project deploy tokens
@@ -63,26 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    expires_at:
-                      type: string
-                    revoked:
-                      type: boolean
-                    expired:
-                      type: boolean
-                    scopes:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/listProjectDeployTokensResponse'
     post:
       summary: Create a project deploy token
       description: Creates a new deploy token for a project.
@@ -90,9 +54,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: ID or URL-encoded path of the project owned by the authenticated user
           required: false
           schema:
             type: string
@@ -102,44 +64,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  expires_at:
-                    type: string
-                  token:
-                    type: string
-                  revoked:
-                    type: boolean
-                  expired:
-                    type: boolean
-                  scopes:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/createAProjectDeployTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                expires_at:
-                  type: string
-                  format: date-time
-                username:
-                  type: string
-                scopes:
-                  type: array
-                  items:
-                    type: string
-              required: []
+              $ref: '#/components/schemas/createAProjectDeployTokenRequest'
   '/projects/{id}/deploy_tokens/{token_id}':
     get:
       summary: Get a project deploy token
@@ -148,9 +78,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: ID or URL-encoded path of the project owned by the authenticated user
           required: false
           schema:
             type: string
@@ -166,24 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  expires_at:
-                    type: string
-                  revoked:
-                    type: boolean
-                  expired:
-                    type: boolean
-                  scopes:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/getAProjectDeployTokenResponse'
     delete:
       summary: Delete a project deploy token
       description: Removes a deploy token from the project.
@@ -191,9 +102,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: ID or URL-encoded path of the project owned by the authenticated user
           required: false
           schema:
             type: string
@@ -209,7 +118,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAProjectDeployTokenResponse'
   '/groups/{id}/deploy_tokens':
     get:
       summary: List group deploy tokens
@@ -234,26 +143,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    expires_at:
-                      type: string
-                    revoked:
-                      type: boolean
-                    expired:
-                      type: boolean
-                    scopes:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/listGroupDeployTokensResponse'
     post:
       summary: Create a group deploy token
       description: Creates a new deploy token for a group.
@@ -271,44 +161,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  expires_at:
-                    type: string
-                  token:
-                    type: string
-                  revoked:
-                    type: boolean
-                  expired:
-                    type: boolean
-                  scopes:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/createAGroupDeployTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                expires_at:
-                  type: string
-                  format: date-time
-                username:
-                  type: string
-                scopes:
-                  type: array
-                  items:
-                    type: string
-              required: []
+              $ref: '#/components/schemas/createAGroupDeployTokenRequest'
   '/groups/{id}/deploy_tokens/{token_id}':
     get:
       summary: Get a group deploy token
@@ -333,24 +191,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  expires_at:
-                    type: string
-                  revoked:
-                    type: boolean
-                  expired:
-                    type: boolean
-                  scopes:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/getAGroupDeployTokenResponse'
     delete:
       summary: Delete a group deploy token
       description: Removes a deploy token from the group.
@@ -374,4 +215,181 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAGroupDeployTokenResponse'
+components:
+  schemas:
+    listAllDeployTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          expires_at:
+            type: string
+          revoked:
+            type: boolean
+          expired:
+            type: boolean
+          scopes:
+            type: array
+            items:
+              type: string
+    listProjectDeployTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          expires_at:
+            type: string
+          revoked:
+            type: boolean
+          expired:
+            type: boolean
+          scopes:
+            type: array
+            items:
+              type: string
+    getAProjectDeployTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        expires_at:
+          type: string
+        revoked:
+          type: boolean
+        expired:
+          type: boolean
+        scopes:
+          type: array
+          items:
+            type: string
+    createAProjectDeployTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        username:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+    createAProjectDeployTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        expires_at:
+          type: string
+        token:
+          type: string
+        revoked:
+          type: boolean
+        expired:
+          type: boolean
+        scopes:
+          type: array
+          items:
+            type: string
+    deleteAProjectDeployTokenResponse:
+      type: string
+    listGroupDeployTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          expires_at:
+            type: string
+          revoked:
+            type: boolean
+          expired:
+            type: boolean
+          scopes:
+            type: array
+            items:
+              type: string
+    getAGroupDeployTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        expires_at:
+          type: string
+        revoked:
+          type: boolean
+        expired:
+          type: boolean
+        scopes:
+          type: array
+          items:
+            type: string
+    createAGroupDeployTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        username:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+    createAGroupDeployTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        expires_at:
+          type: string
+        token:
+          type: string
+        revoked:
+          type: boolean
+        expired:
+          type: boolean
+        scopes:
+          type: array
+          items:
+            type: string
+    deleteAGroupDeployTokenResponse:
+      type: string

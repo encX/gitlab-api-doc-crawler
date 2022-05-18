@@ -1,18 +1,19 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / repositories'
+  version: '1.0'
 paths:
   '/projects/{id}/repository/tree':
     get:
       summary: List repository tree
       description: >-
-        Get a list of repository files and directories in a project. This
-        endpoint can be accessed without authentication if the repository is
-        publicly accessible.
+        Get a list of repository files and directories in a project. This endpoint can be accessed without
+        authentication if the repository is publicly accessible.
       operationId: listRepositoryTree
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -24,9 +25,7 @@ paths:
             type: string
         - name: ref
           in: query
-          description: >-
-            The name of a repository branch or tag or if not given the default
-            branch.
+          description: The name of a repository branch or tag or if not given the default branch.
           required: false
           schema:
             type: string
@@ -38,9 +37,7 @@ paths:
             type: string
         - name: per_page
           in: query
-          description: >-
-            Number of results to show per page. If not specified, defaults to
-            20. Learn more on pagination.
+          description: 'Number of results to show per page. If not specified, defaults to 20. Learn more on pagination.'
           required: false
           schema:
             type: integer
@@ -52,9 +49,7 @@ paths:
             type: string
         - name: page_token
           in: query
-          description: >-
-            The tree record ID at which to fetch the next page. Used only with
-            keyset pagination.
+          description: The tree record ID at which to fetch the next page. Used only with keyset pagination.
           required: false
           schema:
             type: string
@@ -64,34 +59,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                    name:
-                      type: string
-                    type:
-                      type: string
-                    path:
-                      type: string
-                    mode:
-                      type: string
+                $ref: '#/components/schemas/listRepositoryTreeResponse'
   '/projects/{id}/repository/blobs/{sha}':
     get:
       summary: Get a blob from repository
       description: >-
-        Allows you to receive information about blob in repository like size and
-        content. Blob content is Base64 encoded. This endpoint can be accessed
-        without authentication if the repository is publicly accessible.
+        Allows you to receive information about blob in repository like size and content. Blob content is Base64
+        encoded. This endpoint can be accessed without authentication if the repository is publicly accessible.
       operationId: getABlobFromRepository
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -107,21 +86,18 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getABlobFromRepositoryResponse'
   '/projects/{id}/repository/blobs/{sha}/raw':
     get:
       summary: Raw blob content
       description: >-
-        Get the raw file contents for a blob by blob SHA. This endpoint can be
-        accessed without authentication if the repository is publicly
-        accessible.
+        Get the raw file contents for a blob by blob SHA. This endpoint can be accessed without authentication if the
+        repository is publicly accessible.
       operationId: rawBlobContent
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -137,37 +113,32 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/rawBlobContentResponse'
   '/projects/{id}/repository/archive[.format]':
     get:
       summary: Get file archive
       description: >-
-        Get an archive of the repository. This endpoint can be accessed without
-        authentication if the repository is publicly accessible.
+        Get an archive of the repository. This endpoint can be accessed without authentication if the repository is
+        publicly accessible.
       operationId: getFileArchive
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
         - name: sha
           in: query
           description: >-
-            The commit SHA to download. A tag, branch reference, or SHA can be
-            used. This defaults to the tip of the default branch if not
-            specified.
+            The commit SHA to download. A tag, branch reference, or SHA can be used. This defaults to the tip of the
+            default branch if not specified.
           required: false
           schema:
             type: string
         - name: path
           in: query
-          description: >-
-            The subpath of the repository to download. This defaults to the
-            whole repository (empty string).
+          description: The subpath of the repository to download. This defaults to the whole repository (empty string).
           required: false
           schema:
             type: string
@@ -177,21 +148,18 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getFileArchiveResponse'
   '/projects/{id}/repository/compare':
     get:
       summary: 'Compare branches, tags or commits'
       description: >-
-        This endpoint can be accessed without authentication if the repository
-        is publicly accessible. Diffs can have an empty diff string if diff
-        limits are reached.
+        This endpoint can be accessed without authentication if the repository is publicly accessible. Diffs can have an
+        empty diff string if diff limits are reached.
       operationId: 'compareBranches,TagsOrCommits'
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -216,9 +184,8 @@ paths:
         - name: straight
           in: query
           description: >-
-            Comparison method, true for direct comparison between from and to
-            (from..to), false to compare using merge base (from…to)’. Default is
-            false.
+            Comparison method, true for direct comparison between from and to (from..to), false to compare using merge
+            base (from…to)’. Default is false.
           required: false
           schema:
             type: string
@@ -228,88 +195,24 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  commit:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                      short_id:
-                        type: string
-                      title:
-                        type: string
-                      author_name:
-                        type: string
-                      author_email:
-                        type: string
-                      created_at:
-                        type: string
-                  commits:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        short_id:
-                          type: string
-                        title:
-                          type: string
-                        author_name:
-                          type: string
-                        author_email:
-                          type: string
-                        created_at:
-                          type: string
-                  diffs:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        old_path:
-                          type: string
-                        new_path:
-                          type: string
-                        a_mode:
-                          type: string
-                        b_mode:
-                          type: string
-                        diff:
-                          type: string
-                        new_file:
-                          type: boolean
-                        renamed_file:
-                          type: boolean
-                        deleted_file:
-                          type: boolean
-                  compare_timeout:
-                    type: boolean
-                  compare_same_ref:
-                    type: boolean
-                  web_url:
-                    type: string
+                $ref: '#/components/schemas/compareBranches,TagsOrCommitsResponse'
   '/projects/{id}/repository/contributors':
     get:
       summary: Contributors
       description: >-
-        Get repository contributors list. This endpoint can be accessed without
-        authentication if the repository is publicly accessible.
+        Get repository contributors list. This endpoint can be accessed without authentication if the repository is
+        publicly accessible.
       operationId: contributors
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return contributors ordered by name, email, or commits (orders by
-            commit date) fields. Default is commits.
+          description: 'Return contributors ordered by name, email, or commits (orders by commit date) fields. Default is commits.'
           required: false
           schema:
             type: string
@@ -325,26 +228,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    email:
-                      type: string
-                    commits:
-                      type: integer
-                    additions:
-                      type: integer
-                    deletions:
-                      type: integer
+                $ref: '#/components/schemas/contributorsResponse'
   '/projects/{id}/repository/merge_base':
     get:
       summary: Merge Base
-      description: >-
-        Get the common ancestor for 2 or more refs (commit SHAs, branch names or
-        tags).
+      description: 'Get the common ancestor for 2 or more refs (commit SHAs, branch names or tags).'
       operationId: mergeBase
       parameters:
         - name: id
@@ -365,33 +253,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  short_id:
-                    type: string
-                  title:
-                    type: string
-                  created_at:
-                    type: string
-                  parent_ids:
-                    type: array
-                    items: {}
-                  message:
-                    type: string
-                  author_name:
-                    type: string
-                  author_email:
-                    type: string
-                  authored_date:
-                    type: string
-                  committer_name:
-                    type: string
-                  committer_email:
-                    type: string
-                  committed_date:
-                    type: string
+                $ref: '#/components/schemas/mergeBaseResponse'
   '/projects/{id}/repository/changelog':
     post:
       summary: Add changelog data to a changelog file
@@ -404,69 +266,44 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/addChangelogDataToAChangelogFileResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                version:
-                  type: string
-                from:
-                  type: string
-                to:
-                  type: string
-                date:
-                  type: string
-                  format: date-time
-                branch:
-                  type: string
-                trailer:
-                  type: string
-                file:
-                  type: string
-                message:
-                  type: string
-              required:
-                - version
+              $ref: '#/components/schemas/addChangelogDataToAChangelogFileRequest'
     get:
       summary: Generate changelog data
-      description: >-
-        Generate changelog data based on commits in a repository, without
-        committing them to a changelog file.
+      description: 'Generate changelog data based on commits in a repository, without committing them to a changelog file.'
       operationId: generateChangelogData
       parameters:
         - name: version
           in: query
-          description: >-
-            The version to generate the changelog for. The format must follow
-            semantic versioning.
+          description: The version to generate the changelog for. The format must follow semantic versioning.
           required: true
           schema:
             type: string
         - name: from
           in: query
           description: >-
-            The start of the range of commits (as a SHA) to use for generating
-            the changelog. This commit itself isn’t included in the list.
+            The start of the range of commits (as a SHA) to use for generating the changelog. This commit itself isn’t
+            included in the list.
           required: false
           schema:
             type: string
         - name: to
           in: query
           description: >-
-            The end of the range of commits (as a SHA) to use for the changelog.
-            This commit is included in the list. Defaults to the branch
-            specified in the branch attribute.
+            The end of the range of commits (as a SHA) to use for the changelog. This commit is included in the list.
+            Defaults to the branch specified in the branch attribute.
           required: false
           schema:
             type: string
         - name: date
           in: query
           description: >-
-            The date and time of the release, ISO 8601 formatted. Example:
-            2016-03-11T03:45:40Z. Defaults to the current time.
+            The date and time of the release, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z. Defaults to the current
+            time.
           required: false
           schema:
             type: string
@@ -482,7 +319,161 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  notes:
-                    type: string
+                $ref: '#/components/schemas/generateChangelogDataResponse'
+components:
+  schemas:
+    listRepositoryTreeResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          path:
+            type: string
+          mode:
+            type: string
+    getABlobFromRepositoryResponse:
+      type: string
+    rawBlobContentResponse:
+      type: string
+    getFileArchiveResponse:
+      type: string
+    'compareBranches,TagsOrCommitsResponse':
+      type: object
+      properties:
+        commit:
+          type: object
+          properties:
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            author_name:
+              type: string
+            author_email:
+              type: string
+            created_at:
+              type: string
+        commits:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              short_id:
+                type: string
+              title:
+                type: string
+              author_name:
+                type: string
+              author_email:
+                type: string
+              created_at:
+                type: string
+        diffs:
+          type: array
+          items:
+            type: object
+            properties:
+              old_path:
+                type: string
+              new_path:
+                type: string
+              a_mode:
+                type: string
+              b_mode:
+                type: string
+              diff:
+                type: string
+              new_file:
+                type: boolean
+              renamed_file:
+                type: boolean
+              deleted_file:
+                type: boolean
+        compare_timeout:
+          type: boolean
+        compare_same_ref:
+          type: boolean
+        web_url:
+          type: string
+    contributorsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          email:
+            type: string
+          commits:
+            type: integer
+          additions:
+            type: integer
+          deletions:
+            type: integer
+    mergeBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        short_id:
+          type: string
+        title:
+          type: string
+        created_at:
+          type: string
+        parent_ids:
+          type: array
+          items: {}
+        message:
+          type: string
+        author_name:
+          type: string
+        author_email:
+          type: string
+        authored_date:
+          type: string
+        committer_name:
+          type: string
+        committer_email:
+          type: string
+        committed_date:
+          type: string
+    addChangelogDataToAChangelogFileRequest:
+      type: object
+      properties:
+        version:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        date:
+          type: string
+          format: date-time
+        branch:
+          type: string
+        trailer:
+          type: string
+        file:
+          type: string
+        message:
+          type: string
+      required:
+        - version
+    addChangelogDataToAChangelogFileResponse:
+      type: string
+    generateChangelogDataResponse:
+      type: object
+      properties:
+        notes:
+          type: string

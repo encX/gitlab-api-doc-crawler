@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_repository_storage_moves'
+  version: '1.0'
 paths:
   /group_repository_storage_moves:
     get:
       summary: Retrieve all group repository storage moves
-      description: >-
-        By default, GET requests return 20 results at a time, because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time, because the API results are paginated.'
       operationId: retrieveAllGroupRepositoryStorageMoves
       parameters: []
       responses:
@@ -13,34 +15,10 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    group:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        web_url:
-                          type: string
-                        name:
-                          type: string
+                $ref: '#/components/schemas/retrieveAllGroupRepositoryStorageMovesResponse'
     post:
       summary: Schedule repository storage moves for all groups on a storage shard
-      description: >-
-        Schedules repository storage moves for each group repository stored on
-        the source storage shard.
+      description: Schedules repository storage moves for each group repository stored on the source storage shard.
       operationId: scheduleRepositoryStorageMovesForAllGroupsOnAStorageShard
       parameters: []
       responses:
@@ -49,28 +27,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                source_storage_name:
-                  type: string
-                destination_storage_name:
-                  type: string
-              required:
-                - source_storage_name
+              $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardRequest'
   '/groups/{group_id}/repository_storage_moves':
     get:
       summary: Retrieve all repository storage moves for a single group
-      description: >-
-        To retrieve all the repository storage moves for a single group you can
-        use the following endpoint:
+      description: 'To retrieve all the repository storage moves for a single group you can use the following endpoint:'
       operationId: retrieveAllRepositoryStorageMovesForASingleGroup
       parameters:
         - name: group_id
@@ -85,29 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    group:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        web_url:
-                          type: string
-                        name:
-                          type: string
+                $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForASingleGroupResponse'
     post:
       summary: Schedule a repository storage move for a group
       description: 'Supported attributes:'
@@ -125,42 +69,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      web_url:
-                        type: string
-                      name:
-                        type: string
+                $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                destination_storage_name:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAGroupRequest'
   '/group_repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single group repository storage move
       description: >-
-        To retrieve a single repository storage move throughout all the existing
-        repository storage moves, you can use the following endpoint:
+        To retrieve a single repository storage move throughout all the existing repository storage moves, you can use
+        the following endpoint:
       operationId: getASingleGroupRepositoryStorageMove
       parameters:
         - name: repository_storage_id
@@ -175,33 +95,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      web_url:
-                        type: string
-                      name:
-                        type: string
+                $ref: '#/components/schemas/getASingleGroupRepositoryStorageMoveResponse'
   '/groups/{group_id}/repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single repository storage move for a group
       description: >-
-        Given a group, you can retrieve a specific repository storage move for
-        that group, through the following endpoint:
+        Given a group, you can retrieve a specific repository storage move for that group, through the following
+        endpoint:
       operationId: getASingleRepositoryStorageMoveForAGroup
       parameters:
         - name: group_id
@@ -222,24 +122,139 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      web_url:
-                        type: string
-                      name:
-                        type: string
+                $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAGroupResponse'
+components:
+  schemas:
+    retrieveAllGroupRepositoryStorageMovesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+          state:
+            type: string
+          source_storage_name:
+            type: string
+          destination_storage_name:
+            type: string
+          group:
+            type: object
+            properties:
+              id:
+                type: integer
+              web_url:
+                type: string
+              name:
+                type: string
+    retrieveAllRepositoryStorageMovesForASingleGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+          state:
+            type: string
+          source_storage_name:
+            type: string
+          destination_storage_name:
+            type: string
+          group:
+            type: object
+            properties:
+              id:
+                type: integer
+              web_url:
+                type: string
+              name:
+                type: string
+    getASingleGroupRepositoryStorageMoveResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            web_url:
+              type: string
+            name:
+              type: string
+    getASingleRepositoryStorageMoveForAGroupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            web_url:
+              type: string
+            name:
+              type: string
+    scheduleARepositoryStorageMoveForAGroupRequest:
+      type: object
+      properties:
+        destination_storage_name:
+          type: string
+    scheduleARepositoryStorageMoveForAGroupResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            web_url:
+              type: string
+            name:
+              type: string
+    scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardRequest:
+      type: object
+      properties:
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+      required:
+        - source_storage_name
+    scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardResponse:
+      type: object
+      properties:
+        message:
+          type: string

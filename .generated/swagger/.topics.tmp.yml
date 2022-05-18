@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / topics'
+  version: '1.0'
 paths:
   /topics:
     get:
       summary: List topics
-      description: >-
-        Returns a list of project topics in the GitLab instance ordered by
-        number of associated projects.
+      description: Returns a list of project topics in the GitLab instance ordered by number of associated projects.
       operationId: listTopics
       parameters:
         - name: page
@@ -31,20 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    description:
-                      type: string
-                    total_projects_count:
-                      type: integer
-                    avatar_url:
-                      type: string
+                $ref: '#/components/schemas/listTopicsResponse'
     post:
       summary: Create a project topic
       description: Create a new project topic. Only available to administrators.
@@ -56,29 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  total_projects_count:
-                    type: integer
-                  avatar_url:
-                    type: string
+                $ref: '#/components/schemas/createAProjectTopicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                description:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/createAProjectTopicRequest'
   '/topics/{id}':
     get:
       summary: Get a topic
@@ -97,18 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  total_projects_count:
-                    type: integer
-                  avatar_url:
-                    type: string
+                $ref: '#/components/schemas/getATopicResponse'
     put:
       summary: Update a project topic
       description: Update a project topic. Only available to administrators.
@@ -126,34 +87,17 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  total_projects_count:
-                    type: integer
-                  avatar_url:
-                    type: string
+                $ref: '#/components/schemas/updateAProjectTopicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                name:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateAProjectTopicRequest'
     delete:
       summary: Delete a project topic
       description: >-
-        You must be an administrator to delete a project. When you delete a
-        project topic, you also delete the topic assignment for projects.
+        You must be an administrator to delete a project. When you delete a project topic, you also delete the topic
+        assignment for projects.
       operationId: deleteAProjectTopic
       parameters:
         - name: id
@@ -168,7 +112,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAProjectTopicResponse'
   /projects:
     get:
       summary: List projects assigned to a topic
@@ -181,4 +125,78 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listProjectsAssignedToATopicResponse'
+components:
+  schemas:
+    listTopicsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          description:
+            type: string
+          total_projects_count:
+            type: integer
+          avatar_url:
+            type: string
+    getATopicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        total_projects_count:
+          type: integer
+        avatar_url:
+          type: string
+    listProjectsAssignedToATopicResponse:
+      type: string
+    createAProjectTopicRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    createAProjectTopicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        total_projects_count:
+          type: integer
+        avatar_url:
+          type: string
+    updateAProjectTopicRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    updateAProjectTopicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        total_projects_count:
+          type: integer
+        avatar_url:
+          type: string
+    deleteAProjectTopicResponse:
+      type: string

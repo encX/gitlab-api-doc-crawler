@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / pipeline_schedules'
+  version: '1.0'
 paths:
   '/projects/{id}/pipeline_schedules':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -25,43 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    ref:
-                      type: string
-                    cron:
-                      type: string
-                    cron_timezone:
-                      type: string
-                    next_run_at:
-                      type: string
-                    active:
-                      type: boolean
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    owner:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
+                $ref: '#/components/schemas/getAllPipelineSchedulesResponse'
     post:
       summary: Create a new pipeline schedule
       description: Create a new pipeline schedule of a project.
@@ -69,9 +35,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -81,63 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  ref:
-                    type: string
-                  cron:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  next_run_at:
-                    type: string
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  last_pipeline:
-                    type: string
-                  owner:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
+                $ref: '#/components/schemas/createANewPipelineScheduleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                ref:
-                  type: string
-                cron:
-                  type: string
-                cron_timezone:
-                  type: string
-                active:
-                  type: boolean
-              required:
-                - description
-                - ref
-                - cron
+              $ref: '#/components/schemas/createANewPipelineScheduleRequest'
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}':
     get:
       summary: Get a single pipeline schedule
@@ -146,9 +59,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -164,75 +75,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  ref:
-                    type: string
-                  cron:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  next_run_at:
-                    type: string
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  last_pipeline:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      sha:
-                        type: string
-                      ref:
-                        type: string
-                      status:
-                        type: string
-                  owner:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  variables:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                        variable_type:
-                          type: string
-                        value:
-                          type: string
+                $ref: '#/components/schemas/getASinglePipelineScheduleResponse'
     put:
       summary: Edit a pipeline schedule
-      description: >-
-        Updates the pipeline schedule of a project. Once the update is done, it
-        is rescheduled automatically.
+      description: 'Updates the pipeline schedule of a project. Once the update is done, it is rescheduled automatically.'
       operationId: editAPipelineSchedule
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -248,69 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  ref:
-                    type: string
-                  cron:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  next_run_at:
-                    type: string
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  last_pipeline:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      sha:
-                        type: string
-                      ref:
-                        type: string
-                      status:
-                        type: string
-                  owner:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
+                $ref: '#/components/schemas/editAPipelineScheduleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                ref:
-                  type: string
-                cron:
-                  type: string
-                cron_timezone:
-                  type: string
-                active:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/editAPipelineScheduleRequest'
     delete:
       summary: Delete a pipeline schedule
       description: Delete the pipeline schedule of a project.
@@ -318,9 +112,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -336,52 +128,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  ref:
-                    type: string
-                  cron:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  next_run_at:
-                    type: string
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  last_pipeline:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      sha:
-                        type: string
-                      ref:
-                        type: string
-                      status:
-                        type: string
-                  owner:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
+                $ref: '#/components/schemas/deleteAPipelineScheduleResponse'
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership':
     post:
       summary: Take ownership of a pipeline schedule
@@ -390,9 +137,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -408,65 +153,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  description:
-                    type: string
-                  ref:
-                    type: string
-                  cron:
-                    type: string
-                  cron_timezone:
-                    type: string
-                  next_run_at:
-                    type: string
-                  active:
-                    type: boolean
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  last_pipeline:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      sha:
-                        type: string
-                      ref:
-                        type: string
-                      status:
-                        type: string
-                  owner:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      id:
-                        type: integer
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
+                $ref: '#/components/schemas/takeOwnershipOfAPipelineScheduleResponse'
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play':
     post:
       summary: Run a scheduled pipeline immediately
       description: >-
-        Trigger a new scheduled pipeline, which runs immediately. The next
-        scheduled run of this pipeline is not affected.
+        Trigger a new scheduled pipeline, which runs immediately. The next scheduled run of this pipeline is not
+        affected.
       operationId: runAScheduledPipelineImmediately
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -482,10 +180,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: '#/components/schemas/runAScheduledPipelineImmediatelyResponse'
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables':
     post:
       summary: Create a new pipeline schedule variable
@@ -494,9 +189,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -512,29 +205,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  variable_type:
-                    type: string
-                  value:
-                    type: string
+                $ref: '#/components/schemas/createANewPipelineScheduleVariableResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                key:
-                  type: string
-                value:
-                  type: string
-                variable_type:
-                  type: string
-              required:
-                - key
-                - value
+              $ref: '#/components/schemas/createANewPipelineScheduleVariableRequest'
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/variables/{key}':
     put:
       summary: Edit a pipeline schedule variable
@@ -543,9 +219,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -567,26 +241,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  value:
-                    type: string
-                  variable_type:
-                    type: string
+                $ref: '#/components/schemas/editAPipelineScheduleVariableResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                value:
-                  type: string
-                variable_type:
-                  type: string
-              required:
-                - value
+              $ref: '#/components/schemas/editAPipelineScheduleVariableRequest'
     delete:
       summary: Delete a pipeline schedule variable
       description: Delete the variable of a pipeline schedule.
@@ -594,9 +254,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -618,9 +276,362 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  value:
-                    type: string
+                $ref: '#/components/schemas/deleteAPipelineScheduleVariableResponse'
+components:
+  schemas:
+    getAllPipelineSchedulesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          ref:
+            type: string
+          cron:
+            type: string
+          cron_timezone:
+            type: string
+          next_run_at:
+            type: string
+          active:
+            type: boolean
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          owner:
+            type: object
+            properties:
+              name:
+                type: string
+              username:
+                type: string
+              id:
+                type: integer
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+    getASinglePipelineScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        next_run_at:
+          type: string
+        active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_pipeline:
+          type: object
+          properties:
+            id:
+              type: integer
+            sha:
+              type: string
+            ref:
+              type: string
+            status:
+              type: string
+        owner:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        variables:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              variable_type:
+                type: string
+              value:
+                type: string
+    createANewPipelineScheduleRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        active:
+          type: boolean
+      required:
+        - description
+        - ref
+        - cron
+    createANewPipelineScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        next_run_at:
+          type: string
+        active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_pipeline:
+          type: string
+        owner:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+    editAPipelineScheduleRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        active:
+          type: boolean
+    editAPipelineScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        next_run_at:
+          type: string
+        active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_pipeline:
+          type: object
+          properties:
+            id:
+              type: integer
+            sha:
+              type: string
+            ref:
+              type: string
+            status:
+              type: string
+        owner:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+    takeOwnershipOfAPipelineScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        next_run_at:
+          type: string
+        active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_pipeline:
+          type: object
+          properties:
+            id:
+              type: integer
+            sha:
+              type: string
+            ref:
+              type: string
+            status:
+              type: string
+        owner:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+    deleteAPipelineScheduleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        ref:
+          type: string
+        cron:
+          type: string
+        cron_timezone:
+          type: string
+        next_run_at:
+          type: string
+        active:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        last_pipeline:
+          type: object
+          properties:
+            id:
+              type: integer
+            sha:
+              type: string
+            ref:
+              type: string
+            status:
+              type: string
+        owner:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+    runAScheduledPipelineImmediatelyResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    createANewPipelineScheduleVariableRequest:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        variable_type:
+          type: string
+      required:
+        - key
+        - value
+    createANewPipelineScheduleVariableResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        variable_type:
+          type: string
+        value:
+          type: string
+    editAPipelineScheduleVariableRequest:
+      type: object
+      properties:
+        value:
+          type: string
+        variable_type:
+          type: string
+      required:
+        - value
+    editAPipelineScheduleVariableResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        variable_type:
+          type: string
+    deleteAPipelineScheduleVariableResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string

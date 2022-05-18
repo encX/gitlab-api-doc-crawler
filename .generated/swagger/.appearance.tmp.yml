@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / appearance'
+  version: '1.0'
 paths:
   /application/appearance:
     get:
@@ -11,32 +15,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  logo:
-                    type: string
-                  header_logo:
-                    type: string
-                  favicon:
-                    type: string
-                  new_project_guidelines:
-                    type: string
-                  profile_image_guidelines:
-                    type: string
-                  header_message:
-                    type: string
-                  footer_message:
-                    type: string
-                  message_background_color:
-                    type: string
-                  message_font_color:
-                    type: string
-                  email_header_and_footer_enabled:
-                    type: boolean
+                $ref: '#/components/schemas/getCurrentAppearanceConfigurationResponse'
     put:
       summary: Change logo
       description: Upload a logo to your GitLab instance.
@@ -48,13 +27,93 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/changeLogoResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                logo:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/changeLogoRequest'
+components:
+  schemas:
+    getCurrentAppearanceConfigurationResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        logo:
+          type: string
+        header_logo:
+          type: string
+        favicon:
+          type: string
+        new_project_guidelines:
+          type: string
+        profile_image_guidelines:
+          type: string
+        header_message:
+          type: string
+        footer_message:
+          type: string
+        message_background_color:
+          type: string
+        message_font_color:
+          type: string
+        email_header_and_footer_enabled:
+          type: boolean
+    changeAppearanceConfigurationRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        new_project_guidelines:
+          type: string
+        profile_image_guidelines:
+          type: string
+        header_message:
+          type: string
+        footer_message:
+          type: string
+        message_background_color:
+          type: string
+        message_font_color:
+          type: string
+        email_header_and_footer_enabled:
+          type: boolean
+    changeAppearanceConfigurationResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        logo:
+          type: string
+        header_logo:
+          type: string
+        favicon:
+          type: string
+        new_project_guidelines:
+          type: string
+        profile_image_guidelines:
+          type: string
+        header_message:
+          type: string
+        footer_message:
+          type: string
+        message_background_color:
+          type: string
+        message_font_color:
+          type: string
+        email_header_and_footer_enabled:
+          type: boolean
+    changeLogoRequest:
+      type: object
+      properties:
+        logo:
+          type: string
+    changeLogoResponse:
+      type: string

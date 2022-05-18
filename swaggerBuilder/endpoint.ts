@@ -1,11 +1,13 @@
 import { Api } from "../types/models.ts";
 import {
+  NamedSchemaObject,
   OperationObject,
   ParameterObject,
   PathsObject,
   PropertiesObject,
   RequestBodyObject,
   ResponsesObject,
+  SchemaObject,
 } from "../types/OpenAPIV3.ts";
 import { extractEndpointInfo } from "./converter/path.ts";
 import { asPropertyType } from "./converter/propertyType.ts";
@@ -16,35 +18,42 @@ export class Endpoint {
   // private pathsObject: PathsObject = {};
   private method: string;
   private path: string;
-  private operation?: OperationObject;
+  private operation: OperationObject;
   private pathParams: string[];
+  private requestBody?: NamedSchemaObject;
+  private response?: NamedSchemaObject;
+  private operationId: string;
 
   constructor(private readonly api: Api) {
     [this.method, this.path, this.pathParams] = extractEndpointInfo(
       this.api.resources
     );
-    this.setOperationObject();
+    this.operationId = operationIDify(this.api.name);
+
+    this.operation = {
+      summary: this.api.name,
+      description: this.api.description,
+      operationId: this.operationId,
+      parameters: this.getParams(),
+      responses: this.setResponse(),
+    };
+
+    const requestBody = this.setRequestBody();
+    if (requestBody) this.operation.requestBody = requestBody;
   }
 
-  getEndpoint(): PathsObject {
-    return {
+  getSwaggerDef(): [
+    PathsObject,
+    NamedSchemaObject | undefined,
+    NamedSchemaObject | undefined
+  ] {
+    const path = {
       [this.path]: {
         [this.method]: this.operation,
       },
     };
-  }
 
-  private setOperationObject() {
-    this.operation = {
-      summary: this.api.name,
-      description: this.api.description,
-      operationId: operationIDify(this.api.name),
-      parameters: this.getParams(),
-      responses: this.getResponse(),
-    };
-
-    const requestBody = this.getRequestBody();
-    if (requestBody) this.operation.requestBody = requestBody;
+    return [path, this.requestBody, this.response];
   }
 
   private getParams(): ParameterObject[] {
@@ -60,7 +69,7 @@ export class Endpoint {
   }
   // todo paginated requests
 
-  private getRequestBody(): RequestBodyObject | undefined {
+  private setRequestBody(): RequestBodyObject | undefined {
     if (!this.isMethodHasbody()) return undefined;
 
     const nonPathParams = this.api.attributes.filter(
@@ -84,14 +93,20 @@ export class Endpoint {
       .filter((a) => a.required)
       .map<string>((a) => a.name);
 
+    const schemaName = `${this.operationId}Request`;
+    const schema: SchemaObject = {
+      type: "object",
+      properties,
+    };
+
+    if (required.length > 0) schema.required = required;
+
+    this.requestBody = { [schemaName]: schema };
+
     return {
       content: {
         "application/json": {
-          schema: {
-            type: "object",
-            properties,
-            required,
-          },
+          schema: { $ref: `#/components/schemas/${schemaName}` },
         },
       },
     };
@@ -103,12 +118,16 @@ export class Endpoint {
   private isPathParam = (param: string): boolean =>
     this.pathParams.some((p) => p === param);
 
-  private getResponse(): ResponsesObject {
+  private setResponse(): ResponsesObject {
+    const schemaName = `${this.operationId}Response`;
+    this.response = { [schemaName]: parseSchema(this.api.response) };
     return {
       "200": {
         description: "successful operation",
         content: {
-          "application/json": { schema: parseSchema(this.api.response) },
+          "application/json": {
+            schema: { $ref: `#/components/schemas/${schemaName}` },
+          },
         },
       },
     };

@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / packages'
+  version: '1.0'
 paths:
   '/projects/{id}/packages':
     get:
       summary: Within a project
       description: >-
-        Get a list of project packages. All package types are included in
-        results. When accessed without authentication, only packages of public
-        projects are returned.
+        Get a list of project packages. All package types are included in results. When accessed without authentication,
+        only packages of public projects are returned.
       operationId: withinAProject
       parameters:
         - name: id
@@ -16,50 +19,41 @@ paths:
             type: string
         - name: order_by
           in: query
-          description: >-
-            The field to use as order. One of created_at (default), name,
-            version, or type.
+          description: 'The field to use as order. One of created_at (default), name, version, or type.'
           required: false
           schema:
             type: string
         - name: sort
           in: query
-          description: >-
-            The direction of the order, either asc (default) for ascending order
-            or desc for descending order.
+          description: 'The direction of the order, either asc (default) for ascending order or desc for descending order.'
           required: false
           schema:
             type: string
         - name: package_type
           in: query
           description: >-
-            Filter the returned packages by type. One of conan, maven, npm,
-            pypi, composer, nuget, helm, terraform_module, or golang.
-            (Introduced in GitLab 12.9)
+            Filter the returned packages by type. One of conan, maven, npm, pypi, composer, nuget, helm,
+            terraform_module, or golang. (Introduced in GitLab 12.9)
           required: false
           schema:
             type: string
         - name: package_name
           in: query
-          description: >-
-            Filter the project packages with a fuzzy search by name. (Introduced
-            in GitLab 12.9)
+          description: Filter the project packages with a fuzzy search by name. (Introduced in GitLab 12.9)
           required: false
           schema:
             type: string
         - name: include_versionless
           in: query
-          description: >-
-            When set to true, versionless packages are included in the response.
-            (Introduced in GitLab 13.8)
+          description: 'When set to true, versionless packages are included in the response. (Introduced in GitLab 13.8)'
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            Filter the returned packages by status. One of default (default),
-            hidden, or processing. (Introduced in GitLab 13.9)
+            Filter the returned packages by status. One of default (default), hidden, or processing. (Introduced in
+            GitLab 13.9)
           required: false
           schema:
             type: string
@@ -69,26 +63,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    version:
-                      type: string
-                    package_type:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/withinAProjectResponse'
   '/groups/{id}/packages':
     get:
       summary: Within a group
       description: >-
-        Get a list of project packages at the group level. When accessed without
-        authentication, only packages of public projects are returned.
+        Get a list of project packages at the group level. When accessed without authentication, only packages of public
+        projects are returned.
       operationId: withinAGroup
       parameters:
         - name: id
@@ -100,56 +81,48 @@ paths:
         - name: exclude_subgroups
           in: query
           description: >-
-            If the parameter is included as true, packages from projects from
-            subgroups are not listed. Default is false.
+            If the parameter is included as true, packages from projects from subgroups are not listed. Default is
+            false.
           required: false
           schema:
             type: string
         - name: order_by
           in: query
-          description: >-
-            The field to use as order. One of created_at (default), name,
-            version, type, or project_path.
+          description: 'The field to use as order. One of created_at (default), name, version, type, or project_path.'
           required: false
           schema:
             type: string
         - name: sort
           in: query
-          description: >-
-            The direction of the order, either asc (default) for ascending order
-            or desc for descending order.
+          description: 'The direction of the order, either asc (default) for ascending order or desc for descending order.'
           required: false
           schema:
             type: string
         - name: package_type
           in: query
           description: >-
-            Filter the returned packages by type. One of conan, maven, npm,
-            pypi, composer, nuget, helm, or golang. (Introduced in GitLab 12.9)
+            Filter the returned packages by type. One of conan, maven, npm, pypi, composer, nuget, helm, or golang.
+            (Introduced in GitLab 12.9)
           required: false
           schema:
             type: string
         - name: package_name
           in: query
-          description: >-
-            Filter the project packages with a fuzzy search by name. (Introduced
-            in GitLab 13.0)
+          description: Filter the project packages with a fuzzy search by name. (Introduced in GitLab 13.0)
           required: false
           schema:
             type: string
         - name: include_versionless
           in: query
-          description: >-
-            When set to true, versionless packages are included in the response.
-            (Introduced in GitLab 13.8)
+          description: 'When set to true, versionless packages are included in the response. (Introduced in GitLab 13.8)'
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            Filter the returned packages by status. One of default (default),
-            hidden, or processing. (Introduced in GitLab 13.9)
+            Filter the returned packages by status. One of default (default), hidden, or processing. (Introduced in
+            GitLab 13.9)
           required: false
           schema:
             type: string
@@ -159,53 +132,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    version:
-                      type: string
-                    package_type:
-                      type: string
-                    _links:
-                      type: object
-                      properties:
-                        web_path:
-                          type: string
-                        delete_api_path:
-                          type: string
-                    created_at:
-                      type: string
-                    pipelines:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          status:
-                            type: string
-                          ref:
-                            type: string
-                          sha:
-                            type: string
-                          web_url:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          user:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              avatar_url:
-                                type: string
+                $ref: '#/components/schemas/withinAGroupResponse'
   '/projects/{id}/packages/{package_id}':
     get:
       summary: Get a project package
@@ -230,88 +157,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  version:
-                    type: string
-                  package_type:
-                    type: string
-                  _links:
-                    type: object
-                    properties:
-                      web_path:
-                        type: string
-                      delete_api_path:
-                        type: string
-                  created_at:
-                    type: string
-                  pipelines:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        status:
-                          type: string
-                        ref:
-                          type: string
-                        sha:
-                          type: string
-                        web_url:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        user:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            avatar_url:
-                              type: string
-                  versions:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        version:
-                          type: string
-                        created_at:
-                          type: string
-                        pipelines:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              status:
-                                type: string
-                              ref:
-                                type: string
-                              sha:
-                                type: string
-                              web_url:
-                                type: string
-                              created_at:
-                                type: string
-                              updated_at:
-                                type: string
-                              user:
-                                type: object
-                                properties:
-                                  name:
-                                    type: string
-                                  avatar_url:
-                                    type: string
+                $ref: '#/components/schemas/getAProjectPackageResponse'
     delete:
       summary: Delete a project package
       description: Deletes a project package.
@@ -335,7 +181,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAProjectPackageResponse'
   '/projects/{id}/packages/{package_id}/package_files':
     get:
       summary: List package files
@@ -360,52 +206,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    package_id:
-                      type: integer
-                    created_at:
-                      type: string
-                    file_name:
-                      type: string
-                    size:
-                      type: integer
-                    file_md5:
-                      type: string
-                    file_sha1:
-                      type: string
-                    file_sha256:
-                      type: string
-                    pipelines:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          status:
-                            type: string
-                          ref:
-                            type: string
-                          sha:
-                            type: string
-                          web_url:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          user:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              avatar_url:
-                                type: string
+                $ref: '#/components/schemas/listPackageFilesResponse'
   '/projects/{id}/packages/{package_id}/package_files/{package_file_id}':
     delete:
       summary: Delete a package file
@@ -436,4 +237,203 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteAPackageFileResponse'
+components:
+  schemas:
+    withinAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          version:
+            type: string
+          package_type:
+            type: string
+          created_at:
+            type: string
+    withinAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          version:
+            type: string
+          package_type:
+            type: string
+          _links:
+            type: object
+            properties:
+              web_path:
                 type: string
+              delete_api_path:
+                type: string
+          created_at:
+            type: string
+          pipelines:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                status:
+                  type: string
+                ref:
+                  type: string
+                sha:
+                  type: string
+                web_url:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    avatar_url:
+                      type: string
+    getAProjectPackageResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        version:
+          type: string
+        package_type:
+          type: string
+        _links:
+          type: object
+          properties:
+            web_path:
+              type: string
+            delete_api_path:
+              type: string
+        created_at:
+          type: string
+        pipelines:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              status:
+                type: string
+              ref:
+                type: string
+              sha:
+                type: string
+              web_url:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              user:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  avatar_url:
+                    type: string
+        versions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              version:
+                type: string
+              created_at:
+                type: string
+              pipelines:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    status:
+                      type: string
+                    ref:
+                      type: string
+                    sha:
+                      type: string
+                    web_url:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+                    user:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        avatar_url:
+                          type: string
+    listPackageFilesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          package_id:
+            type: integer
+          created_at:
+            type: string
+          file_name:
+            type: string
+          size:
+            type: integer
+          file_md5:
+            type: string
+          file_sha1:
+            type: string
+          file_sha256:
+            type: string
+          pipelines:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                status:
+                  type: string
+                ref:
+                  type: string
+                sha:
+                  type: string
+                web_url:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    avatar_url:
+                      type: string
+    deleteAProjectPackageResponse:
+      type: string
+    deleteAPackageFileResponse:
+      type: string

@@ -1,11 +1,14 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / visual_review_discussions'
+  version: '1.0'
 paths:
   '/projects/{id}/merge_requests/{merge_request_iid}/visual_review_discussions':
     post:
       summary: Create new merge request thread
       description: >-
-        Creates a new thread to a single project merge request. This is similar
-        to creating a note but other comments (replies) can be added to it
-        later.
+        Creates a new thread to a single project merge request. This is similar to creating a note but other comments
+        (replies) can be added to it later.
       operationId: createNewMergeRequestThread
       parameters:
         - name: id
@@ -26,42 +29,48 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-                'position[base_sha]':
-                  type: string
-                'position[start_sha]':
-                  type: string
-                'position[head_sha]':
-                  type: string
-                'position[position_type]':
-                  type: string
-                'position[new_path]':
-                  type: string
-                'position[new_line]':
-                  type: integer
-                'position[old_path]':
-                  type: string
-                'position[old_line]':
-                  type: integer
-                'position[width]':
-                  type: integer
-                'position[height]':
-                  type: integer
-                'position[x]':
-                  type: integer
-                'position[y]':
-                  type: integer
-              required:
-                - body
-                - 'position[base_sha]'
-                - 'position[start_sha]'
-                - 'position[head_sha]'
-                - 'position[position_type]'
+              $ref: '#/components/schemas/createNewMergeRequestThreadRequest'
+components:
+  schemas:
+    createNewMergeRequestThreadRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        'position[base_sha]':
+          type: string
+        'position[start_sha]':
+          type: string
+        'position[head_sha]':
+          type: string
+        'position[position_type]':
+          type: string
+        'position[new_path]':
+          type: string
+        'position[new_line]':
+          type: integer
+        'position[old_path]':
+          type: string
+        'position[old_line]':
+          type: integer
+        'position[width]':
+          type: integer
+        'position[height]':
+          type: integer
+        'position[x]':
+          type: integer
+        'position[y]':
+          type: integer
+      required:
+        - body
+        - 'position[base_sha]'
+        - 'position[start_sha]'
+        - 'position[head_sha]'
+        - 'position[position_type]'
+    createNewMergeRequestThreadResponse:
+      type: string

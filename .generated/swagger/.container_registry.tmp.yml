@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / container_registry'
+  version: '1.0'
 paths:
   '/projects/{id}/':
     put:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project accessible by the
-            authenticated user.
+          description: The ID or URL-encoded path of the project accessible by the authenticated user.
           required: true
           schema:
             type: string
@@ -19,23 +21,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  container_registry_access_level:
-                    type: string
+                $ref: '#/components/schemas/changeTheVisibilityOfTheContainerRegistryResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                container_registry_access_level:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/changeTheVisibilityOfTheContainerRegistryRequest'
   '/projects/{id}/registry/repositories':
     get:
       summary: Within a project
@@ -44,25 +35,21 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project accessible by the
-            authenticated user.
+          description: The ID or URL-encoded path of the project accessible by the authenticated user.
           required: true
           schema:
             type: string
         - name: tags
           in: query
-          description: >-
-            If the parameter is included as true, each repository includes an
-            array of "tags" in the response.
+          description: 'If the parameter is included as true, each repository includes an array of "tags" in the response.'
           required: false
           schema:
             type: string
         - name: tags_count
           in: query
           description: >-
-            If the parameter is included as true, each repository includes
-            "tags_count" in the response (Introduced in GitLab 13.1).
+            If the parameter is included as true, each repository includes "tags_count" in the response (Introduced in
+            GitLab 13.1).
           required: false
           schema:
             type: string
@@ -72,24 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    path:
-                      type: string
-                    project_id:
-                      type: integer
-                    location:
-                      type: string
-                    created_at:
-                      type: string
-                    cleanup_policy_started_at:
-                      type: string
+                $ref: '#/components/schemas/withinAProjectResponse'
   '/groups/{id}/registry/repositories':
     get:
       summary: Within a group
@@ -98,25 +68,21 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group accessible by the
-            authenticated user.
+          description: The ID or URL-encoded path of the group accessible by the authenticated user.
           required: true
           schema:
             type: string
         - name: tags
           in: query
-          description: >-
-            If the parameter is included as true, each repository includes an
-            array of "tags" in the response.
+          description: 'If the parameter is included as true, each repository includes an array of "tags" in the response.'
           required: false
           schema:
             type: string
         - name: tags_count
           in: query
           description: >-
-            If the parameter is included as true, each repository includes
-            "tags_count" in the response (Introduced in GitLab 13.1).
+            If the parameter is included as true, each repository includes "tags_count" in the response (Introduced in
+            GitLab 13.1).
           required: false
           schema:
             type: string
@@ -126,37 +92,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    path:
-                      type: string
-                    project_id:
-                      type: integer
-                    location:
-                      type: string
-                    created_at:
-                      type: string
-                    cleanup_policy_started_at:
-                      type: string
-                    tags_count:
-                      type: integer
-                    tags:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                          path:
-                            type: string
-                          location:
-                            type: string
+                $ref: '#/components/schemas/withinAGroupResponse'
   '/registry/repositories/{id}':
     get:
       summary: Get details of a single repository
@@ -165,37 +101,29 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID of the registry repository accessible by the authenticated
-            user.
+          description: The ID of the registry repository accessible by the authenticated user.
           required: true
           schema:
             type: string
         - name: tags
           in: query
-          description: >-
-            If the parameter is included as true, the response includes an array
-            of "tags".
+          description: 'If the parameter is included as true, the response includes an array of "tags".'
           required: false
           schema:
             type: string
         - name: tags_count
           in: query
-          description: >-
-            If the parameter is included as true, the response includes
-            "tags_count".
+          description: 'If the parameter is included as true, the response includes "tags_count".'
           required: false
           schema:
             type: string
         - name: size
           in: query
           description: >-
-            If the parameter is included as true, the response includes "size".
-            This is the deduplicated size of all images within the repository.
-            Deduplication eliminates extra copies of identical data. For
-            example, if you upload the same image twice, the Container Registry
-            stores only one copy. This field is only available on GitLab.com for
-            repositories created after 2021-11-04.
+            If the parameter is included as true, the response includes "size". This is the deduplicated size of all
+            images within the repository. Deduplication eliminates extra copies of identical data. For example, if you
+            upload the same image twice, the Container Registry stores only one copy. This field is only available on
+            GitLab.com for repositories created after 2021-11-04.
           required: false
           schema:
             type: string
@@ -205,37 +133,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  path:
-                    type: string
-                  project_id:
-                    type: integer
-                  location:
-                    type: string
-                  created_at:
-                    type: string
-                  cleanup_policy_started_at:
-                    type: string
-                  tags_count:
-                    type: integer
-                  tags:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        path:
-                          type: string
-                        location:
-                          type: string
-                  size:
-                    type: integer
+                $ref: '#/components/schemas/getDetailsOfASingleRepositoryResponse'
   '/projects/{id}/registry/repositories/{repository_id}':
     delete:
       summary: Delete registry repository
@@ -244,9 +142,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -262,7 +158,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteRegistryRepositoryResponse'
   '/projects/{id}/registry/repositories/{repository_id}/tags':
     get:
       summary: Within a project
@@ -271,9 +167,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project accessible by the
-            authenticated user.
+          description: The ID or URL-encoded path of the project accessible by the authenticated user.
           required: true
           schema:
             type: string
@@ -289,16 +183,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    path:
-                      type: string
-                    location:
-                      type: string
+                $ref: '#/components/schemas/withinAProjectResponse'
     delete:
       summary: Delete registry repository tags in bulk
       description: Delete registry repository tags in bulk based on given criteria.
@@ -306,9 +191,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -321,26 +204,22 @@ paths:
         - name: name_regex
           in: query
           description: >-
-            The re2 regex of the name to delete. To delete all tags specify .*.
-            Note: name_regex is deprecated in favor of name_regex_delete. This
-            field is validated.
+            The re2 regex of the name to delete. To delete all tags specify .*. Note: name_regex is deprecated in favor
+            of name_regex_delete. This field is validated.
           required: false
           schema:
             type: string
         - name: name_regex_delete
           in: query
-          description: >-
-            The re2 regex of the name to delete. To delete all tags specify .*.
-            This field is validated.
+          description: The re2 regex of the name to delete. To delete all tags specify .*. This field is validated.
           required: true
           schema:
             type: string
         - name: name_regex_keep
           in: query
           description: >-
-            The re2 regex of the name to keep. This value overrides any matches
-            from name_regex_delete. This field is validated. Note: setting to .*
-            results in a no-op.
+            The re2 regex of the name to keep. This value overrides any matches from name_regex_delete. This field is
+            validated. Note: setting to .* results in a no-op.
           required: false
           schema:
             type: string
@@ -352,9 +231,7 @@ paths:
             type: integer
         - name: older_than
           in: query
-          description: >-
-            Tags to delete that are older than the given time, written in human
-            readable form 1h, 1d, 1month.
+          description: 'Tags to delete that are older than the given time, written in human readable form 1h, 1d, 1month.'
           required: false
           schema:
             type: string
@@ -364,7 +241,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteRegistryRepositoryTagsInBulkResponse'
   '/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}':
     get:
       summary: Get details of a registry repository tag
@@ -373,9 +250,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project accessible by the
-            authenticated user.
+          description: The ID or URL-encoded path of the project accessible by the authenticated user.
           required: true
           schema:
             type: string
@@ -397,24 +272,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  path:
-                    type: string
-                  location:
-                    type: string
-                  revision:
-                    type: string
-                  short_revision:
-                    type: string
-                  digest:
-                    type: string
-                  created_at:
-                    type: string
-                  total_size:
-                    type: integer
+                $ref: '#/components/schemas/getDetailsOfARegistryRepositoryTagResponse'
     delete:
       summary: Delete a registry repository tag
       description: Delete a registry repository tag.
@@ -422,9 +280,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -446,13 +302,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteARegistryRepositoryTagResponse'
   /v2/_catalog:
     get:
       summary: Listing all container repositories
-      description: >-
-        To list all container repositories on your GitLab instance, admin
-        credentials are required:
+      description: 'To list all container repositories on your GitLab instance, admin credentials are required:'
       operationId: listingAllContainerRepositories
       parameters: []
       responses:
@@ -461,4 +315,122 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/listingAllContainerRepositoriesResponse'
+components:
+  schemas:
+    changeTheVisibilityOfTheContainerRegistryRequest:
+      type: object
+      properties:
+        container_registry_access_level:
+          type: string
+    changeTheVisibilityOfTheContainerRegistryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        container_registry_access_level:
+          type: string
+    withinAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          path:
+            type: string
+          location:
+            type: string
+    withinAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          path:
+            type: string
+          project_id:
+            type: integer
+          location:
+            type: string
+          created_at:
+            type: string
+          cleanup_policy_started_at:
+            type: string
+          tags_count:
+            type: integer
+          tags:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                path:
+                  type: string
+                location:
+                  type: string
+    getDetailsOfASingleRepositoryResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        path:
+          type: string
+        project_id:
+          type: integer
+        location:
+          type: string
+        created_at:
+          type: string
+        cleanup_policy_started_at:
+          type: string
+        tags_count:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
                 type: string
+              path:
+                type: string
+              location:
+                type: string
+        size:
+          type: integer
+    deleteRegistryRepositoryResponse:
+      type: string
+    getDetailsOfARegistryRepositoryTagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+        location:
+          type: string
+        revision:
+          type: string
+        short_revision:
+          type: string
+        digest:
+          type: string
+        created_at:
+          type: string
+        total_size:
+          type: integer
+    deleteARegistryRepositoryTagResponse:
+      type: string
+    deleteRegistryRepositoryTagsInBulkResponse:
+      type: string
+    listingAllContainerRepositoriesResponse:
+      type: string

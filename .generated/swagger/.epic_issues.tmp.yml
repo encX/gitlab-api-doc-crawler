@@ -1,17 +1,17 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / epic_issues'
+  version: '1.0'
 paths:
   '/groups/{id}/epics/{epic_iid}/issues':
     get:
       summary: List issues for an epic
-      description: >-
-        Gets all issues that are assigned to an epic and the authenticated user
-        has access to.
+      description: Gets all issues that are assigned to an epic and the authenticated user has access to.
       operationId: listIssuesForAnEpic
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -27,154 +27,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    state:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    closed_at:
-                      type: string
-                    labels:
-                      type: array
-                      items: {}
-                    milestone:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        iid:
-                          type: integer
-                        project_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        due_date:
-                          type: string
-                        start_date:
-                          type: string
-                    assignees:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                    assignee:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    user_notes_count:
-                      type: integer
-                    upvotes:
-                      type: integer
-                    downvotes:
-                      type: integer
-                    due_date:
-                      type: string
-                    confidential:
-                      type: boolean
-                    weight:
-                      type: string
-                    discussion_locked:
-                      type: string
-                    web_url:
-                      type: string
-                    time_stats:
-                      type: object
-                      properties:
-                        time_estimate:
-                          type: integer
-                        total_time_spent:
-                          type: integer
-                        human_time_estimate:
-                          type: string
-                        human_total_time_spent:
-                          type: string
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        notes:
-                          type: string
-                        award_emoji:
-                          type: string
-                        project:
-                          type: string
-                    epic_issue_id:
-                      type: integer
+                $ref: '#/components/schemas/listIssuesForAnEpicResponse'
   '/groups/{id}/epics/{epic_iid}/issues/{issue_id}':
     post:
       summary: Assign an issue to the epic
       description: >-
-        Creates an epic - issue association. If the issue in question belongs to
-        another epic it is unassigned from that epic.
+        Creates an epic - issue association. If the issue in question belongs to another epic it is unassigned from that
+        epic.
       operationId: assignAnIssueToTheEpic
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -196,161 +60,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                  issue:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      project_id:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      milestone:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          iid:
-                            type: integer
-                          project_id:
-                            type: integer
-                          title:
-                            type: string
-                          description:
-                            type: string
-                          state:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          due_date:
-                            type: string
-                          start_date:
-                            type: string
-                      assignees:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            name:
-                              type: string
-                            username:
-                              type: string
-                            state:
-                              type: string
-                            avatar_url:
-                              type: string
-                            web_url:
-                              type: string
-                      assignee:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      user_notes_count:
-                        type: integer
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      due_date:
-                        type: string
-                      confidential:
-                        type: boolean
-                      weight:
-                        type: string
-                      discussion_locked:
-                        type: string
-                      web_url:
-                        type: string
-                      time_stats:
-                        type: object
-                        properties:
-                          time_estimate:
-                            type: integer
-                          total_time_spent:
-                            type: integer
-                          human_time_estimate:
-                            type: string
-                          human_total_time_spent:
-                            type: string
+                $ref: '#/components/schemas/assignAnIssueToTheEpicResponse'
   '/groups/{id}/epics/{epic_iid}/issues/{epic_issue_id}':
     delete:
       summary: Remove an issue from the epic
@@ -359,9 +69,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -383,161 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  epic:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      start_date:
-                        type: string
-                      end_date:
-                        type: string
-                  issue:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      project_id:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      closed_at:
-                        type: string
-                      labels:
-                        type: array
-                        items: {}
-                      milestone:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          iid:
-                            type: integer
-                          project_id:
-                            type: integer
-                          title:
-                            type: string
-                          description:
-                            type: string
-                          state:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          due_date:
-                            type: string
-                          start_date:
-                            type: string
-                      assignees:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            name:
-                              type: string
-                            username:
-                              type: string
-                            state:
-                              type: string
-                            avatar_url:
-                              type: string
-                            web_url:
-                              type: string
-                      assignee:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      author:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                      user_notes_count:
-                        type: integer
-                      upvotes:
-                        type: integer
-                      downvotes:
-                        type: integer
-                      due_date:
-                        type: string
-                      confidential:
-                        type: boolean
-                      weight:
-                        type: string
-                      discussion_locked:
-                        type: string
-                      web_url:
-                        type: string
-                      time_stats:
-                        type: object
-                        properties:
-                          time_estimate:
-                            type: integer
-                          total_time_spent:
-                            type: integer
-                          human_time_estimate:
-                            type: string
-                          human_total_time_spent:
-                            type: string
+                $ref: '#/components/schemas/removeAnIssueFromTheEpicResponse'
     put:
       summary: Update epic - issue association
       description: Updates an epic - issue association.
@@ -545,9 +99,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -569,149 +121,602 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    title:
-                      type: string
-                    description:
-                      type: string
-                    state:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    closed_at:
-                      type: string
-                    labels:
-                      type: array
-                      items: {}
-                    milestone:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        iid:
-                          type: integer
-                        project_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        due_date:
-                          type: string
-                        start_date:
-                          type: string
-                    assignees:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                    assignee:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    user_notes_count:
-                      type: integer
-                    upvotes:
-                      type: integer
-                    downvotes:
-                      type: integer
-                    due_date:
-                      type: string
-                    confidential:
-                      type: boolean
-                    weight:
-                      type: string
-                    discussion_locked:
-                      type: string
-                    web_url:
-                      type: string
-                    time_stats:
-                      type: object
-                      properties:
-                        time_estimate:
-                          type: integer
-                        total_time_spent:
-                          type: integer
-                        human_time_estimate:
-                          type: string
-                        human_total_time_spent:
-                          type: string
-                    _links:
-                      type: object
-                      properties:
-                        self:
-                          type: string
-                        notes:
-                          type: string
-                        award_emoji:
-                          type: string
-                        project:
-                          type: string
-                    subscribed:
-                      type: boolean
-                    epic_issue_id:
-                      type: integer
-                    relative_position:
-                      type: integer
+                $ref: '#/components/schemas/updateEpic-IssueAssociationResponse'
       requestBody:
         content:
           application/json:
             schema:
+              $ref: '#/components/schemas/updateEpic-IssueAssociationRequest'
+components:
+  schemas:
+    listIssuesForAnEpicResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          closed_at:
+            type: string
+          labels:
+            type: array
+            items: {}
+          milestone:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              due_date:
+                type: string
+              start_date:
+                type: string
+          assignees:
+            type: array
+            items:
               type: object
-              properties: {}
-              required: []
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+          assignee:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          user_notes_count:
+            type: integer
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          due_date:
+            type: string
+          confidential:
+            type: boolean
+          weight:
+            type: string
+          discussion_locked:
+            type: string
+          web_url:
+            type: string
+          time_stats:
+            type: object
+            properties:
+              time_estimate:
+                type: integer
+              total_time_spent:
+                type: integer
+              human_time_estimate:
+                type: string
+              human_total_time_spent:
+                type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              notes:
+                type: string
+              award_emoji:
+                type: string
+              project:
+                type: string
+          epic_issue_id:
+            type: integer
+    assignAnIssueToTheEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+        issue:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            project_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            milestone:
+              type: object
+              properties:
+                id:
+                  type: integer
+                iid:
+                  type: integer
+                project_id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                state:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                due_date:
+                  type: string
+                start_date:
+                  type: string
+            assignees:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  state:
+                    type: string
+                  avatar_url:
+                    type: string
+                  web_url:
+                    type: string
+            assignee:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            user_notes_count:
+              type: integer
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            due_date:
+              type: string
+            confidential:
+              type: boolean
+            weight:
+              type: string
+            discussion_locked:
+              type: string
+            web_url:
+              type: string
+            time_stats:
+              type: object
+              properties:
+                time_estimate:
+                  type: integer
+                total_time_spent:
+                  type: integer
+                human_time_estimate:
+                  type: string
+                human_total_time_spent:
+                  type: string
+    removeAnIssueFromTheEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        epic:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+        issue:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            project_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            closed_at:
+              type: string
+            labels:
+              type: array
+              items: {}
+            milestone:
+              type: object
+              properties:
+                id:
+                  type: integer
+                iid:
+                  type: integer
+                project_id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                state:
+                  type: string
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+                due_date:
+                  type: string
+                start_date:
+                  type: string
+            assignees:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  state:
+                    type: string
+                  avatar_url:
+                    type: string
+                  web_url:
+                    type: string
+            assignee:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            user_notes_count:
+              type: integer
+            upvotes:
+              type: integer
+            downvotes:
+              type: integer
+            due_date:
+              type: string
+            confidential:
+              type: boolean
+            weight:
+              type: string
+            discussion_locked:
+              type: string
+            web_url:
+              type: string
+            time_stats:
+              type: object
+              properties:
+                time_estimate:
+                  type: integer
+                total_time_spent:
+                  type: integer
+                human_time_estimate:
+                  type: string
+                human_total_time_spent:
+                  type: string
+    updateEpic-IssueAssociationRequest:
+      type: object
+      properties: {}
+    updateEpic-IssueAssociationResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          closed_at:
+            type: string
+          labels:
+            type: array
+            items: {}
+          milestone:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              due_date:
+                type: string
+              start_date:
+                type: string
+          assignees:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+          assignee:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          user_notes_count:
+            type: integer
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          due_date:
+            type: string
+          confidential:
+            type: boolean
+          weight:
+            type: string
+          discussion_locked:
+            type: string
+          web_url:
+            type: string
+          time_stats:
+            type: object
+            properties:
+              time_estimate:
+                type: integer
+              total_time_spent:
+                type: integer
+              human_time_estimate:
+                type: string
+              human_total_time_spent:
+                type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              notes:
+                type: string
+              award_emoji:
+                type: string
+              project:
+                type: string
+          subscribed:
+            type: boolean
+          epic_issue_id:
+            type: integer
+          relative_position:
+            type: integer

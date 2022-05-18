@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / packages/debian_group_distributions'
+  version: '1.0'
 paths:
   '/groups/{id}/debian_distributions':
     get:
@@ -29,34 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    codename:
-                      type: string
-                    suite:
-                      type: string
-                    origin:
-                      type: string
-                    label:
-                      type: string
-                    version:
-                      type: string
-                    description:
-                      type: string
-                    valid_time_duration_seconds:
-                      type: string
-                    components:
-                      type: array
-                      items:
-                        type: string
-                    architectures:
-                      type: array
-                      items:
-                        type: string
+                $ref: '#/components/schemas/listAllDebianDistributionsInAGroupResponse'
     post:
       summary: Create a Debian group distribution
       description: Creates a Debian group distribution.
@@ -64,9 +41,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -76,54 +51,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: string
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/createADebianGroupDistributionResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                codename:
-                  type: string
-                suite:
-                  type: string
-                origin:
-                  type: string
-                label:
-                  type: string
-                version:
-                  type: string
-                description:
-                  type: string
-                valid_time_duration_seconds:
-                  type: integer
-              required:
-                - codename
+              $ref: '#/components/schemas/createADebianGroupDistributionRequest'
   '/groups/{id}/debian_distributions/{codename}':
     get:
       summary: Single Debian group distribution
@@ -132,9 +65,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -150,32 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: string
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/singleDebianGroupDistributionResponse'
     put:
       summary: Update a Debian group distribution
       description: Updates a Debian group distribution.
@@ -183,9 +89,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -201,51 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  codename:
-                    type: string
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: integer
-                  components:
-                    type: array
-                    items:
-                      type: string
-                  architectures:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/updateADebianGroupDistributionResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                suite:
-                  type: string
-                origin:
-                  type: string
-                label:
-                  type: string
-                version:
-                  type: string
-                description:
-                  type: string
-                valid_time_duration_seconds:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/updateADebianGroupDistributionRequest'
     delete:
       summary: Delete a Debian group distribution
       description: Deletes a Debian group distribution.
@@ -253,9 +118,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -271,7 +134,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteADebianGroupDistributionResponse'
   '/groups/{id}/debian_distributions/{codename}/key.asc':
     get:
       summary: Single Debian group distribution key
@@ -280,9 +143,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user.
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -298,4 +159,154 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/singleDebianGroupDistributionKeyResponse'
+components:
+  schemas:
+    listAllDebianDistributionsInAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          codename:
+            type: string
+          suite:
+            type: string
+          origin:
+            type: string
+          label:
+            type: string
+          version:
+            type: string
+          description:
+            type: string
+          valid_time_duration_seconds:
+            type: string
+          components:
+            type: array
+            items:
+              type: string
+          architectures:
+            type: array
+            items:
+              type: string
+    singleDebianGroupDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: string
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    singleDebianGroupDistributionKeyResponse:
+      type: string
+    createADebianGroupDistributionRequest:
+      type: object
+      properties:
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+      required:
+        - codename
+    createADebianGroupDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: string
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    updateADebianGroupDistributionRequest:
+      type: object
+      properties:
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+    updateADebianGroupDistributionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        codename:
+          type: string
+        suite:
+          type: string
+        origin:
+          type: string
+        label:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        valid_time_duration_seconds:
+          type: integer
+        components:
+          type: array
+          items:
+            type: string
+        architectures:
+          type: array
+          items:
+            type: string
+    deleteADebianGroupDistributionResponse:
+      type: string

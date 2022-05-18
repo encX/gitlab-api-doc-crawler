@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / runners'
+  version: '1.0'
 paths:
   /runners:
     get:
@@ -8,34 +12,28 @@ paths:
         - name: scope
           in: query
           description: >-
-            Deprecated: Use type or status instead. The scope of specific
-            runners to show, one of: active, paused, online and offline; showing
-            all runners if none provided
+            Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused,
+            online and offline; showing all runners if none provided
           required: false
           schema:
             type: string
         - name: type
           in: query
-          description: >-
-            The type of runners to show, one of: instance_type, group_type,
-            project_type
+          description: 'The type of runners to show, one of: instance_type, group_type, project_type'
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            The status of runners to show, one of: online, offline and
-            not_connected. active and paused are also possible values which were
-            deprecated in GitLab 14.8 and will be removed in GitLab 16.0
+            The status of runners to show, one of: online, offline and not_connected. active and paused are also
+            possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0
           required: false
           schema:
             type: string
         - name: paused
           in: query
-          description: >-
-            Whether to include only runners that are accepting or ignoring new
-            jobs
+          description: Whether to include only runners that are accepting or ignoring new jobs
           required: false
           schema:
             type: string
@@ -51,30 +49,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    active:
-                      type: boolean
-                    paused:
-                      type: boolean
-                    description:
-                      type: string
-                    id:
-                      type: integer
-                    ip_address:
-                      type: string
-                    is_shared:
-                      type: boolean
-                    runner_type:
-                      type: string
-                    name:
-                      type: string
-                    online:
-                      type: boolean
-                    status:
-                      type: string
+                $ref: '#/components/schemas/listOwnedRunnersResponse'
     post:
       summary: Register a new runner
       description: Register a new runner for the instance.
@@ -86,46 +61,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  token:
-                    type: string
-                  token_expires_at:
-                    type: string
+                $ref: '#/components/schemas/registerANewRunnerResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                token:
-                  type: string
-                description:
-                  type: string
-                active:
-                  type: boolean
-                paused:
-                  type: boolean
-                locked:
-                  type: boolean
-                run_untagged:
-                  type: boolean
-                tag_list:
-                  type: array
-                  items:
-                    type: string
-                access_level:
-                  type: string
-                maximum_timeout:
-                  type: integer
-                maintainer_note:
-                  type: string
-                maintenance_note:
-                  type: string
-              required:
-                - token
+              $ref: '#/components/schemas/registerANewRunnerRequest'
     delete:
       summary: Delete a runner by authentication token
       description: 'To delete the runner by using its authentication token:'
@@ -143,46 +84,40 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteARunnerByAuthenticationTokenResponse'
   /runners/all:
     get:
       summary: List all runners
       description: >-
-        Get a list of all runners in the GitLab instance (specific and shared).
-        Access is restricted to users with administrator access.
+        Get a list of all runners in the GitLab instance (specific and shared). Access is restricted to users with
+        administrator access.
       operationId: listAllRunners
       parameters:
         - name: scope
           in: query
           description: >-
-            Deprecated: Use type or status instead. The scope of runners to
-            show, one of: specific, shared, active, paused, online and offline;
-            showing all runners if none provided
+            Deprecated: Use type or status instead. The scope of runners to show, one of: specific, shared, active,
+            paused, online and offline; showing all runners if none provided
           required: false
           schema:
             type: string
         - name: type
           in: query
-          description: >-
-            The type of runners to show, one of: instance_type, group_type,
-            project_type
+          description: 'The type of runners to show, one of: instance_type, group_type, project_type'
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            The status of runners to show, one of: online and offline. active
-            and paused are also possible values which were deprecated in GitLab
-            14.8 and will be removed in GitLab 16.0
+            The status of runners to show, one of: online and offline. active and paused are also possible values which
+            were deprecated in GitLab 14.8 and will be removed in GitLab 16.0
           required: false
           schema:
             type: string
         - name: paused
           in: query
-          description: >-
-            Whether to include only runners that are accepting or ignoring new
-            jobs
+          description: Whether to include only runners that are accepting or ignoring new jobs
           required: false
           schema:
             type: string
@@ -198,30 +133,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    active:
-                      type: boolean
-                    paused:
-                      type: boolean
-                    description:
-                      type: string
-                    id:
-                      type: integer
-                    ip_address:
-                      type: string
-                    is_shared:
-                      type: boolean
-                    runner_type:
-                      type: string
-                    name:
-                      type: string
-                    online:
-                      type: boolean
-                    status:
-                      type: string
+                $ref: '#/components/schemas/listAllRunnersResponse'
   '/runners/{id}':
     get:
       summary: Get runner’s details
@@ -240,61 +152,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  paused:
-                    type: boolean
-                  architecture:
-                    type: string
-                  description:
-                    type: string
-                  id:
-                    type: integer
-                  ip_address:
-                    type: string
-                  is_shared:
-                    type: boolean
-                  runner_type:
-                    type: string
-                  contacted_at:
-                    type: string
-                  name:
-                    type: string
-                  online:
-                    type: boolean
-                  status:
-                    type: string
-                  platform:
-                    type: string
-                  projects:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                  revision:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  version:
-                    type: string
-                  access_level:
-                    type: string
-                  maximum_timeout:
-                    type: integer
+                $ref: '#/components/schemas/getRunnerDetailsResponse'
     put:
       summary: Update runner’s details
       description: Update details of a runner.
@@ -312,80 +170,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  architecture:
-                    type: string
-                  description:
-                    type: string
-                  id:
-                    type: integer
-                  ip_address:
-                    type: string
-                  is_shared:
-                    type: boolean
-                  runner_type:
-                    type: string
-                  contacted_at:
-                    type: string
-                  name:
-                    type: string
-                  online:
-                    type: boolean
-                  status:
-                    type: string
-                  platform:
-                    type: string
-                  projects:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                  revision:
-                    type: string
-                  tag_list:
-                    type: array
-                    items:
-                      type: string
-                  version:
-                    type: string
-                  access_level:
-                    type: string
-                  maximum_timeout:
-                    type: string
+                $ref: '#/components/schemas/updateRunnerDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                description:
-                  type: string
-                active:
-                  type: boolean
-                paused:
-                  type: boolean
-                run_untagged:
-                  type: boolean
-                locked:
-                  type: boolean
-                access_level:
-                  type: string
-                maximum_timeout:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/updateRunnerDetailsRequest'
     delete:
       summary: Delete a runner by ID
       description: 'To delete the runner by ID, use your access token with the runner’s ID:'
@@ -394,9 +184,8 @@ paths:
         - name: id
           in: path
           description: >-
-            The ID of a runner. The ID is visible in the UI under Settings >
-            CI/CD. Expand Runners, and below the Remove Runner button is an ID
-            preceded by the pound sign, for example, #6.
+            The ID of a runner. The ID is visible in the UI under Settings > CI/CD. Expand Runners, and below the Remove
+            Runner button is an ID preceded by the pound sign, for example, #6.
           required: true
           schema:
             type: integer
@@ -406,13 +195,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteARunnerByIdResponse'
   '/runners/{id}/jobs':
     get:
       summary: List runner’s jobs
-      description: >-
-        List jobs that are being processed or were processed by specified
-        runner.
+      description: List jobs that are being processed or were processed by specified runner.
       operationId: listRunnerJobs
       parameters:
         - name: id
@@ -445,171 +232,44 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    ip_address:
-                      type: string
-                    status:
-                      type: string
-                    stage:
-                      type: string
-                    name:
-                      type: string
-                    ref:
-                      type: string
-                    tag:
-                      type: boolean
-                    coverage:
-                      type: string
-                    created_at:
-                      type: string
-                    started_at:
-                      type: string
-                    finished_at:
-                      type: string
-                    duration:
-                      type: integer
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                        created_at:
-                          type: string
-                        bio:
-                          type: string
-                        location:
-                          type: string
-                        public_email:
-                          type: string
-                        skype:
-                          type: string
-                        linkedin:
-                          type: string
-                        twitter:
-                          type: string
-                        website_url:
-                          type: string
-                        organization:
-                          type: string
-                    commit:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                        short_id:
-                          type: string
-                        title:
-                          type: string
-                        created_at:
-                          type: string
-                        parent_ids:
-                          type: array
-                          items:
-                            type: string
-                        message:
-                          type: string
-                        author_name:
-                          type: string
-                        author_email:
-                          type: string
-                        authored_date:
-                          type: string
-                        committer_name:
-                          type: string
-                        committer_email:
-                          type: string
-                        committed_date:
-                          type: string
-                    pipeline:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        sha:
-                          type: string
-                        ref:
-                          type: string
-                        status:
-                          type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
+                $ref: '#/components/schemas/listRunnerJobsResponse'
   '/projects/{id}/runners':
     get:
       summary: List project’s runners
-      description: >-
-        List all runners available in the project, including from ancestor
-        groups and any allowed shared runners.
+      description: 'List all runners available in the project, including from ancestor groups and any allowed shared runners.'
       operationId: listProjectRunners
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
         - name: scope
           in: query
           description: >-
-            Deprecated: Use type or status instead. The scope of specific
-            runners to show, one of: active, paused, online and offline; showing
-            all runners if none provided
+            Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused,
+            online and offline; showing all runners if none provided
           required: false
           schema:
             type: string
         - name: type
           in: query
-          description: >-
-            The type of runners to show, one of: instance_type, group_type,
-            project_type
+          description: 'The type of runners to show, one of: instance_type, group_type, project_type'
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            The status of runners to show, one of: online and offline. active
-            and paused are also possible values which were deprecated in GitLab
-            14.8 and will be removed in GitLab 16.0
+            The status of runners to show, one of: online and offline. active and paused are also possible values which
+            were deprecated in GitLab 14.8 and will be removed in GitLab 16.0
           required: false
           schema:
             type: string
         - name: paused
           in: query
-          description: >-
-            Whether to include only runners that are accepting or ignoring new
-            jobs
+          description: Whether to include only runners that are accepting or ignoring new jobs
           required: false
           schema:
             type: string
@@ -625,30 +285,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    active:
-                      type: boolean
-                    paused:
-                      type: boolean
-                    description:
-                      type: string
-                    id:
-                      type: integer
-                    ip_address:
-                      type: string
-                    is_shared:
-                      type: boolean
-                    runner_type:
-                      type: string
-                    name:
-                      type: string
-                    online:
-                      type: boolean
-                    status:
-                      type: string
+                $ref: '#/components/schemas/listProjectRunnersResponse'
     post:
       summary: Enable a runner in project
       description: Enable an available specific runner in the project.
@@ -656,9 +293,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -668,50 +303,23 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  description:
-                    type: string
-                  id:
-                    type: integer
-                  ip_address:
-                    type: string
-                  is_shared:
-                    type: boolean
-                  runner_type:
-                    type: string
-                  name:
-                    type: string
-                  online:
-                    type: boolean
-                  status:
-                    type: string
+                $ref: '#/components/schemas/enableARunnerInProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                runner_id:
-                  type: integer
-              required:
-                - runner_id
+              $ref: '#/components/schemas/enableARunnerInProjectRequest'
   '/projects/{id}/runners/{runner_id}':
     delete:
       summary: Disable a runner from project
       description: >-
-        Disable a specific runner from the project. It works only if the project
-        isn’t the only project associated with the specified runner. If so, an
-        error is returned. Use the call to delete a runner instead.
+        Disable a specific runner from the project. It works only if the project isn’t the only project associated with
+        the specified runner. If so, an error is returned. Use the call to delete a runner instead.
       operationId: disableARunnerFromProject
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -727,13 +335,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/disableARunnerFromProjectResponse'
   '/groups/{id}/runners':
     get:
       summary: List group’s runners
-      description: >-
-        List all runners available in the group as well as its ancestor groups,
-        including any allowed shared runners.
+      description: 'List all runners available in the group as well as its ancestor groups, including any allowed shared runners.'
       operationId: listGroupRunners
       parameters:
         - name: id
@@ -745,26 +351,22 @@ paths:
         - name: type
           in: query
           description: >-
-            The type of runners to show, one of: instance_type, group_type,
-            project_type. The project_type value is deprecated and will be
-            removed in GitLab 15.0
+            The type of runners to show, one of: instance_type, group_type, project_type. The project_type value is
+            deprecated and will be removed in GitLab 15.0
           required: false
           schema:
             type: string
         - name: status
           in: query
           description: >-
-            The status of runners to show, one of: online and offline. active
-            and paused are also possible values which were deprecated in GitLab
-            14.8 and will be removed in GitLab 16.0
+            The status of runners to show, one of: online and offline. active and paused are also possible values which
+            were deprecated in GitLab 14.8 and will be removed in GitLab 16.0
           required: false
           schema:
             type: string
         - name: paused
           in: query
-          description: >-
-            Whether to include only runners that are accepting or ignoring new
-            jobs
+          description: Whether to include only runners that are accepting or ignoring new jobs
           required: false
           schema:
             type: string
@@ -780,30 +382,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    description:
-                      type: string
-                    ip_address:
-                      type: string
-                    active:
-                      type: boolean
-                    paused:
-                      type: boolean
-                    is_shared:
-                      type: boolean
-                    runner_type:
-                      type: string
-                    name:
-                      type: string
-                    online:
-                      type: string
-                    status:
-                      type: string
+                $ref: '#/components/schemas/listGroupRunnersResponse'
   /runners/verify:
     post:
       summary: Verify authentication for a registered runner
@@ -816,17 +395,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                token:
-                  type: string
-              required:
-                - token
+              $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerRequest'
   /runners/reset_registration_token:
     post:
       summary: Reset instance’s runner registration token
@@ -839,7 +413,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/resetInstanceRunnerRegistrationTokenResponse'
   '/projects/{id}/runners/reset_registration_token':
     post:
       summary: Reset project’s runner registration token
@@ -852,7 +426,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/resetProjectRunnerRegistrationTokenResponse'
   '/groups/{id}/runners/reset_registration_token':
     post:
       summary: Reset group’s runner registration token
@@ -865,7 +439,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/resetGroupRunnerRegistrationTokenResponse'
   '/runners/{id}/reset_authentication_token':
     post:
       summary: Reset runner’s authentication token by using the runner ID
@@ -884,18 +458,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                  token_expires_at:
-                    type: string
+                $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse'
   /runners/reset_authentication_token:
     post:
       summary: Reset runner’s authentication token by using the current token
-      description: >-
-        Resets the runner’s authentication token by using the current token’s
-        value as an input.
+      description: Resets the runner’s authentication token by using the current token’s value as an input.
       operationId: resetRunnerAuthenticationTokenByUsingTheCurrentToken
       parameters: []
       responses:
@@ -904,19 +471,465 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                  token_expires_at:
-                    type: string
+                $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheCurrentTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                token:
+              $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheCurrentTokenRequest'
+components:
+  schemas:
+    listOwnedRunnersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          active:
+            type: boolean
+          paused:
+            type: boolean
+          description:
+            type: string
+          id:
+            type: integer
+          ip_address:
+            type: string
+          is_shared:
+            type: boolean
+          runner_type:
+            type: string
+          name:
+            type: string
+          online:
+            type: boolean
+          status:
+            type: string
+    listAllRunnersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          active:
+            type: boolean
+          paused:
+            type: boolean
+          description:
+            type: string
+          id:
+            type: integer
+          ip_address:
+            type: string
+          is_shared:
+            type: boolean
+          runner_type:
+            type: string
+          name:
+            type: string
+          online:
+            type: boolean
+          status:
+            type: string
+    getRunnerDetailsResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        paused:
+          type: boolean
+        architecture:
+          type: string
+        description:
+          type: string
+        id:
+          type: integer
+        ip_address:
+          type: string
+        is_shared:
+          type: boolean
+        runner_type:
+          type: string
+        contacted_at:
+          type: string
+        name:
+          type: string
+        online:
+          type: boolean
+        status:
+          type: string
+        platform:
+          type: string
+        projects:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+        revision:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+        access_level:
+          type: string
+        maximum_timeout:
+          type: integer
+    updateRunnerDetailsRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        active:
+          type: boolean
+        paused:
+          type: boolean
+        run_untagged:
+          type: boolean
+        locked:
+          type: boolean
+        access_level:
+          type: string
+        maximum_timeout:
+          type: integer
+    updateRunnerDetailsResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        architecture:
+          type: string
+        description:
+          type: string
+        id:
+          type: integer
+        ip_address:
+          type: string
+        is_shared:
+          type: boolean
+        runner_type:
+          type: string
+        contacted_at:
+          type: string
+        name:
+          type: string
+        online:
+          type: boolean
+        status:
+          type: string
+        platform:
+          type: string
+        projects:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+        revision:
+          type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+        access_level:
+          type: string
+        maximum_timeout:
+          type: string
+    listRunnerJobsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          ip_address:
+            type: string
+          status:
+            type: string
+          stage:
+            type: string
+          name:
+            type: string
+          ref:
+            type: string
+          tag:
+            type: boolean
+          coverage:
+            type: string
+          created_at:
+            type: string
+          started_at:
+            type: string
+          finished_at:
+            type: string
+          duration:
+            type: integer
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+              created_at:
+                type: string
+              bio:
+                type: string
+              location:
+                type: string
+              public_email:
+                type: string
+              skype:
+                type: string
+              linkedin:
+                type: string
+              twitter:
+                type: string
+              website_url:
+                type: string
+              organization:
+                type: string
+          commit:
+            type: object
+            properties:
+              id:
+                type: string
+              short_id:
+                type: string
+              title:
+                type: string
+              created_at:
+                type: string
+              parent_ids:
+                type: array
+                items:
                   type: string
-              required:
-                - token
+              message:
+                type: string
+              author_name:
+                type: string
+              author_email:
+                type: string
+              authored_date:
+                type: string
+              committer_name:
+                type: string
+              committer_email:
+                type: string
+              committed_date:
+                type: string
+          pipeline:
+            type: object
+            properties:
+              id:
+                type: integer
+              sha:
+                type: string
+              ref:
+                type: string
+              status:
+                type: string
+          project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+    listProjectRunnersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          active:
+            type: boolean
+          paused:
+            type: boolean
+          description:
+            type: string
+          id:
+            type: integer
+          ip_address:
+            type: string
+          is_shared:
+            type: boolean
+          runner_type:
+            type: string
+          name:
+            type: string
+          online:
+            type: boolean
+          status:
+            type: string
+    enableARunnerInProjectRequest:
+      type: object
+      properties:
+        runner_id:
+          type: integer
+      required:
+        - runner_id
+    enableARunnerInProjectResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        description:
+          type: string
+        id:
+          type: integer
+        ip_address:
+          type: string
+        is_shared:
+          type: boolean
+        runner_type:
+          type: string
+        name:
+          type: string
+        online:
+          type: boolean
+        status:
+          type: string
+    disableARunnerFromProjectResponse:
+      type: string
+    listGroupRunnersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          ip_address:
+            type: string
+          active:
+            type: boolean
+          paused:
+            type: boolean
+          is_shared:
+            type: boolean
+          runner_type:
+            type: string
+          name:
+            type: string
+          online:
+            type: string
+          status:
+            type: string
+    registerANewRunnerRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        paused:
+          type: boolean
+        locked:
+          type: boolean
+        run_untagged:
+          type: boolean
+        tag_list:
+          type: array
+          items:
+            type: string
+        access_level:
+          type: string
+        maximum_timeout:
+          type: integer
+        maintainer_note:
+          type: string
+        maintenance_note:
+          type: string
+      required:
+        - token
+    registerANewRunnerResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        token_expires_at:
+          type: string
+    deleteARunnerByIdResponse:
+      type: string
+    deleteARunnerByAuthenticationTokenResponse:
+      type: string
+    verifyAuthenticationForARegisteredRunnerRequest:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+        - token
+    verifyAuthenticationForARegisteredRunnerResponse:
+      type: string
+    resetInstanceRunnerRegistrationTokenResponse:
+      type: string
+    resetProjectRunnerRegistrationTokenResponse:
+      type: string
+    resetGroupRunnerRegistrationTokenResponse:
+      type: string
+    resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        token_expires_at:
+          type: string
+    resetRunnerAuthenticationTokenByUsingTheCurrentTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+        - token
+    resetRunnerAuthenticationTokenByUsingTheCurrentTokenResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        token_expires_at:
+          type: string

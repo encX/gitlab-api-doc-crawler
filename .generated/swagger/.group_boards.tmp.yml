@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_boards'
+  version: '1.0'
 paths:
   '/groups/{id}/boards':
     get:
@@ -7,9 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -19,48 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    group:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        web_url:
-                          type: string
-                    milestone:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        title:
-                          type: string
-                    lists:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          label:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                              color:
-                                type: string
-                              description:
-                                type: string
-                          position:
-                            type: integer
+                $ref: '#/components/schemas/listAllGroupIssueBoardsInAGroupResponse'
     post:
       summary: Create a group issue board
       description: Creates a group issue board.
@@ -68,9 +29,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -80,45 +39,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  project:
-                    type: string
-                  lists:
-                    type: array
-                    items: {}
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      web_url:
-                        type: string
-                  milestone:
-                    type: string
-                  assignee:
-                    type: string
-                  labels:
-                    type: array
-                    items: {}
-                  weight:
-                    type: string
+                $ref: '#/components/schemas/createAGroupIssueBoardResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-              required:
-                - name
+              $ref: '#/components/schemas/createAGroupIssueBoardRequest'
   '/groups/{id}/boards/{board_id}':
     get:
       summary: Single group issue board
@@ -127,9 +53,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -145,46 +69,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      web_url:
-                        type: string
-                  milestone:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      title:
-                        type: string
-                  lists:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        label:
-                          type: object
-                          properties:
-                            name:
-                              type: string
-                            color:
-                              type: string
-                            description:
-                              type: string
-                        position:
-                          type: integer
+                $ref: '#/components/schemas/singleGroupIssueBoardResponse'
     put:
       summary: Update a group issue board
       description: Updates a group issue board.
@@ -192,9 +77,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -210,102 +93,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  project:
-                    type: string
-                  lists:
-                    type: array
-                    items: {}
-                  name:
-                    type: string
-                  group:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      web_url:
-                        type: string
-                  milestone:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      group_id:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      due_date:
-                        type: string
-                      start_date:
-                        type: string
-                      web_url:
-                        type: string
-                  assignee:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      username:
-                        type: string
-                      state:
-                        type: string
-                      avatar_url:
-                        type: string
-                      web_url:
-                        type: string
-                  labels:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                  weight:
-                    type: integer
+                $ref: '#/components/schemas/updateAGroupIssueBoardResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                hide_backlog_list:
-                  type: boolean
-                hide_closed_list:
-                  type: boolean
-                assignee_id:
-                  type: integer
-                milestone_id:
-                  type: integer
-                labels:
-                  type: string
-                weight:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/updateAGroupIssueBoardRequest'
     delete:
       summary: Delete a group issue board
       description: Deletes a group issue board.
@@ -313,9 +106,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -331,7 +122,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAGroupIssueBoardResponse'
   '/groups/{id}/boards/{board_id}/lists':
     get:
       summary: List group issue board lists
@@ -340,9 +131,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -358,23 +147,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    label:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                    position:
-                      type: integer
+                $ref: '#/components/schemas/listGroupIssueBoardListsResponse'
     post:
       summary: New group issue board list
       description: Creates an issue board list.
@@ -382,9 +155,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -400,49 +171,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  label:
-                    type: string
-                  position:
-                    type: integer
-                  milestone:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      iid:
-                        type: integer
-                      group_id:
-                        type: integer
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      due_date:
-                        type: string
-                      start_date:
-                        type: string
-                      web_url:
-                        type: string
+                $ref: '#/components/schemas/newGroupIssueBoardListResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                label_id:
-                  type: integer
-              required:
-                - label_id
+              $ref: '#/components/schemas/newGroupIssueBoardListRequest'
   '/groups/{id}/boards/{board_id}/lists/{list_id}':
     get:
       summary: Single group issue board list
@@ -451,9 +185,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -475,33 +207,15 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  label:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      color:
-                        type: string
-                      description:
-                        type: string
-                  position:
-                    type: integer
+                $ref: '#/components/schemas/singleGroupIssueBoardListResponse'
     put:
       summary: Edit group issue board list
-      description: >-
-        Updates an existing issue board list. This call is used to change list
-        position.
+      description: Updates an existing issue board list. This call is used to change list position.
       operationId: editGroupIssueBoardList
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -523,43 +237,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  label:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      color:
-                        type: string
-                      description:
-                        type: string
-                  position:
-                    type: integer
+                $ref: '#/components/schemas/editGroupIssueBoardListResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                position:
-                  type: integer
-              required:
-                - position
+              $ref: '#/components/schemas/editGroupIssueBoardListRequest'
     delete:
       summary: Delete a group issue board list
-      description: >-
-        Only for administrators and group owners. Deletes the board list in
-        question.
+      description: Only for administrators and group owners. Deletes the board list in question.
       operationId: deleteAGroupIssueBoardList
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the group owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -581,4 +272,322 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteAGroupIssueBoardListResponse'
+components:
+  schemas:
+    listAllGroupIssueBoardsInAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          group:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
                 type: string
+              web_url:
+                type: string
+          milestone:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+          lists:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                label:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    color:
+                      type: string
+                    description:
+                      type: string
+                position:
+                  type: integer
+    singleGroupIssueBoardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            web_url:
+              type: string
+        milestone:
+          type: object
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+        lists:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              label:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  color:
+                    type: string
+                  description:
+                    type: string
+              position:
+                type: integer
+    createAGroupIssueBoardRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    createAGroupIssueBoardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        project:
+          type: string
+        lists:
+          type: array
+          items: {}
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            web_url:
+              type: string
+        milestone:
+          type: string
+        assignee:
+          type: string
+        labels:
+          type: array
+          items: {}
+        weight:
+          type: string
+    updateAGroupIssueBoardRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        hide_backlog_list:
+          type: boolean
+        hide_closed_list:
+          type: boolean
+        assignee_id:
+          type: integer
+        milestone_id:
+          type: integer
+        labels:
+          type: string
+        weight:
+          type: integer
+    updateAGroupIssueBoardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        project:
+          type: string
+        lists:
+          type: array
+          items: {}
+        name:
+          type: string
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            web_url:
+              type: string
+        milestone:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            group_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            due_date:
+              type: string
+            start_date:
+              type: string
+            web_url:
+              type: string
+        assignee:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        labels:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+        weight:
+          type: integer
+    deleteAGroupIssueBoardResponse:
+      type: string
+    listGroupIssueBoardListsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          label:
+            type: object
+            properties:
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+          position:
+            type: integer
+    singleGroupIssueBoardListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: object
+          properties:
+            name:
+              type: string
+            color:
+              type: string
+            description:
+              type: string
+        position:
+          type: integer
+    newGroupIssueBoardListRequest:
+      type: object
+      properties:
+        label_id:
+          type: integer
+      required:
+        - label_id
+    newGroupIssueBoardListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: string
+        position:
+          type: integer
+        milestone:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            group_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            due_date:
+              type: string
+            start_date:
+              type: string
+            web_url:
+              type: string
+    editGroupIssueBoardListRequest:
+      type: object
+      properties:
+        position:
+          type: integer
+      required:
+        - position
+    editGroupIssueBoardListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: object
+          properties:
+            name:
+              type: string
+            color:
+              type: string
+            description:
+              type: string
+        position:
+          type: integer
+    deleteAGroupIssueBoardListResponse:
+      type: string

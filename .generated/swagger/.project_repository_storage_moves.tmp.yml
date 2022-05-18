@@ -1,10 +1,12 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_repository_storage_moves'
+  version: '1.0'
 paths:
   /project_repository_storage_moves:
     get:
       summary: Retrieve all project repository storage moves
-      description: >-
-        By default, GET requests return 20 results at a time because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
       operationId: retrieveAllProjectRepositoryStorageMoves
       parameters: []
       responses:
@@ -13,42 +15,10 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
+                $ref: '#/components/schemas/retrieveAllProjectRepositoryStorageMovesResponse'
     post:
       summary: Schedule repository storage moves for all projects on a storage shard
-      description: >-
-        Schedules repository storage moves for each project repository stored on
-        the source storage shard.
+      description: Schedules repository storage moves for each project repository stored on the source storage shard.
       operationId: scheduleRepositoryStorageMovesForAllProjectsOnAStorageShard
       parameters: []
       responses:
@@ -57,28 +27,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                source_storage_name:
-                  type: string
-                destination_storage_name:
-                  type: string
-              required:
-                - source_storage_name
+              $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardRequest'
   '/projects/{project_id}/repository_storage_moves':
     get:
       summary: Retrieve all repository storage moves for a project
-      description: >-
-        By default, GET requests return 20 results at a time because the API
-        results are paginated.
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
       operationId: retrieveAllRepositoryStorageMovesForAProject
       parameters:
         - name: project_id
@@ -93,37 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
+                $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForAProjectResponse'
     post:
       summary: Schedule a repository storage move for a project
       description: ''
@@ -141,44 +69,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  project:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      description:
-                        type: string
-                      name:
-                        type: string
-                      name_with_namespace:
-                        type: string
-                      path:
-                        type: string
-                      path_with_namespace:
-                        type: string
-                      created_at:
-                        type: string
+                $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                destination_storage_name:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAProjectRequest'
   '/project_repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single project repository storage move
@@ -197,35 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  project:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      description:
-                        type: string
-                      name:
-                        type: string
-                      name_with_namespace:
-                        type: string
-                      path:
-                        type: string
-                      path_with_namespace:
-                        type: string
-                      created_at:
-                        type: string
+                $ref: '#/components/schemas/getASingleProjectRepositoryStorageMoveResponse'
   '/projects/{project_id}/repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single repository storage move for a project
@@ -250,32 +118,179 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  state:
-                    type: string
-                  source_storage_name:
-                    type: string
-                  destination_storage_name:
-                    type: string
-                  project:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      description:
-                        type: string
-                      name:
-                        type: string
-                      name_with_namespace:
-                        type: string
-                      path:
-                        type: string
-                      path_with_namespace:
-                        type: string
-                      created_at:
-                        type: string
+                $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAProjectResponse'
+components:
+  schemas:
+    retrieveAllProjectRepositoryStorageMovesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+          state:
+            type: string
+          source_storage_name:
+            type: string
+          destination_storage_name:
+            type: string
+          project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+    retrieveAllRepositoryStorageMovesForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+          state:
+            type: string
+          source_storage_name:
+            type: string
+          destination_storage_name:
+            type: string
+          project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+    getASingleProjectRepositoryStorageMoveResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+    getASingleRepositoryStorageMoveForAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+    scheduleARepositoryStorageMoveForAProjectRequest:
+      type: object
+      properties:
+        destination_storage_name:
+          type: string
+    scheduleARepositoryStorageMoveForAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+    scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardRequest:
+      type: object
+      properties:
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+      required:
+        - source_storage_name
+    scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardResponse:
+      type: object
+      properties:
+        message:
+          type: string

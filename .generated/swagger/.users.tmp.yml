@@ -1,17 +1,17 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / users'
+  version: '1.0'
 paths:
   /users:
     get:
       summary: For admins
-      description: >-
-        Users on GitLab Premium or higher also see the group_saml provider
-        option and provisioned_by_group_id parameter:
+      description: 'Users on GitLab Premium or higher also see the group_saml provider option and provisioned_by_group_id parameter:'
       operationId: forAdmins
       parameters:
         - name: order_by
           in: query
-          description: >-
-            Return users ordered by id, name, username, created_at, or
-            updated_at fields. Default is id
+          description: 'Return users ordered by id, name, username, created_at, or updated_at fields. Default is id'
           required: false
           schema:
             type: string
@@ -24,16 +24,16 @@ paths:
         - name: two_factor
           in: query
           description: >-
-            Filter users by Two-factor authentication. Filter values are enabled
-            or disabled. By default it returns all users
+            Filter users by Two-factor authentication. Filter values are enabled or disabled. By default it returns all
+            users
           required: false
           schema:
             type: string
         - name: without_projects
           in: query
           description: >-
-            Filter users without projects. Default is false, which means that
-            all users are returned, with and without projects.
+            Filter users without projects. Default is false, which means that all users are returned, with and without
+            projects.
           required: false
           schema:
             type: string
@@ -45,9 +45,7 @@ paths:
             type: string
         - name: saml_provider_id
           in: query
-          description: >-
-            Return only users created by the specified SAML provider ID. If not
-            included, it returns all users.
+          description: 'Return only users created by the specified SAML provider ID. If not included, it returns all users.'
           required: false
           schema:
             type: string
@@ -57,92 +55,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    username:
-                      type: string
-                    email:
-                      type: string
-                    name:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                    created_at:
-                      type: string
-                    is_admin:
-                      type: boolean
-                    bio:
-                      type: string
-                    location:
-                      type: string
-                    skype:
-                      type: string
-                    linkedin:
-                      type: string
-                    twitter:
-                      type: string
-                    website_url:
-                      type: string
-                    organization:
-                      type: string
-                    job_title:
-                      type: string
-                    last_sign_in_at:
-                      type: string
-                    confirmed_at:
-                      type: string
-                    theme_id:
-                      type: integer
-                    last_activity_on:
-                      type: string
-                    color_scheme_id:
-                      type: integer
-                    projects_limit:
-                      type: integer
-                    current_sign_in_at:
-                      type: string
-                    note:
-                      type: string
-                    identities:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          provider:
-                            type: string
-                          extern_uid:
-                            type: string
-                    can_create_group:
-                      type: boolean
-                    can_create_project:
-                      type: boolean
-                    two_factor_enabled:
-                      type: boolean
-                    external:
-                      type: boolean
-                    private_profile:
-                      type: boolean
-                    current_sign_in_ip:
-                      type: string
-                    last_sign_in_ip:
-                      type: string
-                    namespace_id:
-                      type: integer
+                $ref: '#/components/schemas/forAdminsResponse'
     post:
       summary: User creation
       description: >-
-        Creates a new user. Note only administrators can create new users.
-        Either password, reset_password, or force_random_password must be
-        specified. If reset_password and force_random_password are both false,
-        then password is required.
+        Creates a new user. Note only administrators can create new users. Either password, reset_password, or
+        force_random_password must be specified. If reset_password and force_random_password are both false, then
+        password is required.
       operationId: userCreation
       parameters: []
       responses:
@@ -151,20 +70,16 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/userCreationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-              required: []
+              $ref: '#/components/schemas/userCreationRequest'
   '/users/{id}':
     get:
       summary: For admin
-      description: >-
-        Users on GitLab.com Premium or higher also see the group_saml option and
-        provisioned_by_group_id parameter:
+      description: 'Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:'
       operationId: forAdmin
       parameters:
         - name: id
@@ -179,106 +94,10 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  username:
-                    type: string
-                  shared_runners_minutes_limit:
-                    type: integer
-                  extra_shared_runners_minutes_limit:
-                    type: integer
-                  identities:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        provider:
-                          type: string
-                        extern_uid:
-                          type: string
-                  provisioned_by_group_id:
-                    type: integer
-                  is_auditor:
-                    type: boolean
-                  email:
-                    type: string
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
-                  created_at:
-                    type: string
-                  is_admin:
-                    type: boolean
-                  bio:
-                    type: string
-                  location:
-                    type: string
-                  public_email:
-                    type: string
-                  skype:
-                    type: string
-                  linkedin:
-                    type: string
-                  twitter:
-                    type: string
-                  website_url:
-                    type: string
-                  organization:
-                    type: string
-                  job_title:
-                    type: string
-                  last_sign_in_at:
-                    type: string
-                  confirmed_at:
-                    type: string
-                  theme_id:
-                    type: integer
-                  last_activity_on:
-                    type: string
-                  color_scheme_id:
-                    type: integer
-                  projects_limit:
-                    type: integer
-                  current_sign_in_at:
-                    type: string
-                  note:
-                    type: string
-                  can_create_group:
-                    type: boolean
-                  can_create_project:
-                    type: boolean
-                  two_factor_enabled:
-                    type: boolean
-                  external:
-                    type: boolean
-                  private_profile:
-                    type: boolean
-                  commit_email:
-                    type: string
-                  current_sign_in_ip:
-                    type: string
-                  last_sign_in_ip:
-                    type: string
-                  plan:
-                    type: string
-                  trial:
-                    type: boolean
-                  sign_in_count:
-                    type: integer
-                  namespace_id:
-                    type: integer
+                $ref: '#/components/schemas/forAdminResponse'
     put:
       summary: User modification
-      description: >-
-        Modifies an existing user. Only administrators can change attributes of
-        a user.
+      description: Modifies an existing user. Only administrators can change attributes of a user.
       operationId: userModification
       parameters:
         - name: id
@@ -292,20 +111,17 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/userModificationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-              required: []
+              $ref: '#/components/schemas/userModificationRequest'
     delete:
       summary: User deletion
       description: >-
-        Deletes a user. Available only for administrators. This returns a 204 No
-        Content status code if the operation was successfully, 404 if the
-        resource was not found or 409 if the user cannot be soft deleted.
+        Deletes a user. Available only for administrators. This returns a 204 No Content status code if the operation
+        was successfully, 404 if the resource was not found or 409 if the user cannot be soft deleted.
       operationId: userDeletion
       parameters:
         - name: id
@@ -317,8 +133,8 @@ paths:
         - name: hard_delete
           in: query
           description: >-
-            If true, contributions that would usually be moved to Ghost User are
-            deleted instead, as well as groups owned solely by this user.
+            If true, contributions that would usually be moved to Ghost User are deleted instead, as well as groups
+            owned solely by this user.
           required: false
           schema:
             type: string
@@ -328,13 +144,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/userDeletionResponse'
   '/users/{id}/identities/{provider}':
     delete:
       summary: Delete authentication identity from user
       description: >-
-        Deletes a user’s authentication identity using the provider name
-        associated with that identity. Available only for administrators.
+        Deletes a user’s authentication identity using the provider name associated with that identity. Available only
+        for administrators.
       operationId: deleteAuthenticationIdentityFromUser
       parameters:
         - name: id
@@ -355,7 +171,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAuthenticationIdentityFromUserResponse'
   /user:
     get:
       summary: List current user (for admins)
@@ -374,85 +190,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  username:
-                    type: string
-                  email:
-                    type: string
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
-                  created_at:
-                    type: string
-                  is_admin:
-                    type: boolean
-                  bio:
-                    type: string
-                  location:
-                    type: string
-                  public_email:
-                    type: string
-                  skype:
-                    type: string
-                  linkedin:
-                    type: string
-                  twitter:
-                    type: string
-                  website_url:
-                    type: string
-                  organization:
-                    type: string
-                  job_title:
-                    type: string
-                  last_sign_in_at:
-                    type: string
-                  confirmed_at:
-                    type: string
-                  theme_id:
-                    type: integer
-                  last_activity_on:
-                    type: string
-                  color_scheme_id:
-                    type: integer
-                  projects_limit:
-                    type: integer
-                  current_sign_in_at:
-                    type: string
-                  identities:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        provider:
-                          type: string
-                        extern_uid:
-                          type: string
-                  can_create_group:
-                    type: boolean
-                  can_create_project:
-                    type: boolean
-                  two_factor_enabled:
-                    type: boolean
-                  external:
-                    type: boolean
-                  private_profile:
-                    type: boolean
-                  commit_email:
-                    type: string
-                  current_sign_in_ip:
-                    type: string
-                  last_sign_in_ip:
-                    type: string
-                  namespace_id:
-                    type: integer
+                $ref: '#/components/schemas/listCurrentUser(forAdmins)Response'
   /user/status:
     get:
       summary: User status
@@ -465,18 +203,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  emoji:
-                    type: string
-                  availability:
-                    type: string
-                  message:
-                    type: string
-                  message_html:
-                    type: string
-                  clear_status_at:
-                    type: string
+                $ref: '#/components/schemas/userStatusResponse'
     put:
       summary: Set user status
       description: Set the status of the current user.
@@ -488,35 +215,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  emoji:
-                    type: string
-                  message:
-                    type: string
-                  message_html:
-                    type: string
-                  clear_status_at:
-                    type: string
+                $ref: '#/components/schemas/setUserStatusResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                emoji:
-                  type: string
-                message:
-                  type: string
-                clear_status_after:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/setUserStatusRequest'
   '/users/{id_or_username}/status':
     get:
       summary: Get the status of a user
-      description: >-
-        Get the status of a user. This endpoint can be accessed without
-        authentication.
+      description: Get the status of a user. This endpoint can be accessed without authentication.
       operationId: getTheStatusOfAUser
       parameters:
         - name: id_or_username
@@ -531,18 +239,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  emoji:
-                    type: string
-                  availability:
-                    type: string
-                  message:
-                    type: string
-                  message_html:
-                    type: string
-                  clear_status_at:
-                    type: string
+                $ref: '#/components/schemas/getTheStatusOfAUserResponse'
   /user/preferences:
     get:
       summary: Get user preferences
@@ -555,16 +252,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  user_id:
-                    type: integer
-                  view_diffs_file_by_file:
-                    type: boolean
-                  show_whitespace_in_diffs:
-                    type: boolean
+                $ref: '#/components/schemas/getUserPreferencesResponse'
     put:
       summary: User preference modification
       description: Update the current user’s preferences.
@@ -576,23 +264,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  user_id:
-                    type: integer
-                  view_diffs_file_by_file:
-                    type: boolean
-                  show_whitespace_in_diffs:
-                    type: boolean
+                $ref: '#/components/schemas/userPreferenceModificationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
-              required: []
+              $ref: '#/components/schemas/userPreferenceModificationRequest'
   '/users/{id}/follow':
     post:
       summary: Follow and unfollow users
@@ -611,20 +288,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  username:
-                    type: string
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
+                $ref: '#/components/schemas/followAndUnfollowUsersResponse'
   '/users/{id}/followers':
     get:
       summary: Followers and following
@@ -643,28 +307,11 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
+                $ref: '#/components/schemas/followersAndFollowingResponse'
   /user_counts:
     get:
       summary: User counts
-      description: >-
-        Get the counts (same as in top right menu) of the currently signed in
-        user.
+      description: Get the counts (same as in top right menu) of the currently signed in user.
       operationId: userCounts
       parameters:
         - name: assigned_issues
@@ -698,18 +345,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  merge_requests:
-                    type: integer
-                  assigned_issues:
-                    type: integer
-                  assigned_merge_requests:
-                    type: integer
-                  review_requested_merge_requests:
-                    type: integer
-                  todos:
-                    type: integer
+                $ref: '#/components/schemas/userCountsResponse'
   /user/keys:
     get:
       summary: List SSH keys
@@ -722,18 +358,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    key:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/listSshKeysResponse'
     post:
       summary: Add SSH key
       description: Creates a new key owned by the currently authenticated user.
@@ -745,40 +370,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      fingerprint:
-                        type: array
-                        items:
-                          type: string
-                      key:
-                        type: array
-                        items:
-                          type: string
-                  title:
-                    type: string
-                  key:
-                    type: string
-                  expires_at:
-                    type: string
+                $ref: '#/components/schemas/addSshKeyResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                key:
-                  type: string
-                expires_at:
-                  type: string
-              required:
-                - title
-                - key
+              $ref: '#/components/schemas/addSshKeyRequest'
   '/users/{id_or_username}/keys':
     get:
       summary: List SSH keys for user
@@ -797,7 +394,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listSshKeysForUserResponse'
   '/user/keys/{key_id}':
     get:
       summary: Single SSH key
@@ -816,22 +413,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  key:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/singleSshKeyResponse'
     delete:
       summary: Delete SSH key for current user
       description: >-
-        Deletes key owned by currently authenticated user. This returns a 204 No
-        Content status code if the operation was successfully or 404 if the
-        resource was not found.
+        Deletes key owned by currently authenticated user. This returns a 204 No Content status code if the operation
+        was successfully or 404 if the resource was not found.
       operationId: deleteSshKeyForCurrentUser
       parameters:
         - name: key_id
@@ -846,7 +433,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteSshKeyForCurrentUserResponse'
   '/users/{id}/keys/{key_id}':
     get:
       summary: Single SSH key for given user
@@ -871,16 +458,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  key:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/singleSshKeyForGivenUserResponse'
     delete:
       summary: Delete SSH key for given user
       description: Deletes key owned by a specified user. Available only for administrator.
@@ -904,13 +482,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteSshKeyForGivenUserResponse'
   '/users/{id}/keys':
     post:
       summary: Add SSH key for user
-      description: >-
-        Create new key owned by specified user. Available only for
-        administrator.
+      description: Create new key owned by specified user. Available only for administrator.
       operationId: addSshKeyForUser
       parameters:
         - name: id
@@ -925,22 +501,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/addSshKeyForUserResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                key:
-                  type: string
-                expires_at:
-                  type: string
-              required:
-                - title
-                - key
+              $ref: '#/components/schemas/addSshKeyForUserRequest'
   /user/gpg_keys:
     get:
       summary: List all GPG keys
@@ -953,16 +519,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    key:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
     post:
       summary: Add a GPG key
       description: Creates a new GPG key owned by the currently authenticated user.
@@ -974,26 +531,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    key:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/addAGpgKeyResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                key:
-                  type: string
-              required:
-                - key
+              $ref: '#/components/schemas/addAGpgKeyRequest'
   '/user/gpg_keys/{key_id}':
     get:
       summary: Get a specific GPG key
@@ -1012,14 +555,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  key:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/getASpecificGpgKeyResponse'
     delete:
       summary: Delete a GPG key
       description: Delete a GPG key owned by currently authenticated user.
@@ -1037,13 +573,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAGpgKeyResponse'
   '/users/{id}/gpg_keys':
     get:
       summary: List all GPG keys for given user
-      description: >-
-        Get a list of a specified user’s GPG keys. This endpoint can be accessed
-        without authentication.
+      description: Get a list of a specified user’s GPG keys. This endpoint can be accessed without authentication.
       operationId: listAllGpgKeysForGivenUser
       parameters:
         - name: id
@@ -1058,21 +592,10 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    key:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/listAllGpgKeysForGivenUserResponse'
     post:
       summary: Add a GPG key for a given user
-      description: >-
-        Create new GPG key owned by the specified user. Available only for
-        administrator.
+      description: Create new GPG key owned by the specified user. Available only for administrator.
       operationId: addAGpgKeyForAGivenUser
       parameters:
         - name: id
@@ -1087,32 +610,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    key:
-                      type: string
-                    created_at:
-                      type: string
+                $ref: '#/components/schemas/addAGpgKeyForAGivenUserResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                key_id:
-                  type: integer
-              required:
-                - key_id
+              $ref: '#/components/schemas/addAGpgKeyForAGivenUserRequest'
   '/users/{id}/gpg_keys/{key_id}':
     get:
       summary: Get a specific GPG key for a given user
       description: >-
-        Get a specific GPG key for a given user. Introduced in GitLab 13.5, this
-        endpoint can be accessed without administrator authentication.
+        Get a specific GPG key for a given user. Introduced in GitLab 13.5, this endpoint can be accessed without
+        administrator authentication.
       operationId: getASpecificGpgKeyForAGivenUser
       parameters:
         - name: id
@@ -1133,19 +642,10 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  key:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/getASpecificGpgKeyForAGivenUserResponse'
     delete:
       summary: Delete a GPG key for a given user
-      description: >-
-        Delete a GPG key owned by a specified user. Available only for
-        administrator.
+      description: Delete a GPG key owned by a specified user. Available only for administrator.
       operationId: deleteAGpgKeyForAGivenUser
       parameters:
         - name: id
@@ -1166,7 +666,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAGpgKeyForAGivenUserResponse'
   /user/emails:
     get:
       summary: List emails
@@ -1179,16 +679,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    email:
-                      type: string
-                    confirmed_at:
-                      type: string
+                $ref: '#/components/schemas/listEmailsResponse'
     post:
       summary: Add email
       description: Creates a new email owned by the currently authenticated user.
@@ -1200,37 +691,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: object
-                    properties:
-                      email:
-                        type: array
-                        items:
-                          type: string
-                  id:
-                    type: integer
-                  email:
-                    type: string
-                  confirmed_at:
-                    type: string
+                $ref: '#/components/schemas/addEmailResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                email:
-                  type: string
-              required:
-                - email
+              $ref: '#/components/schemas/addEmailRequest'
   '/users/{id}/emails':
     get:
       summary: List emails for user
-      description: >-
-        Get a list of a specified user’s emails. Available only for
-        administrator
+      description: Get a list of a specified user’s emails. Available only for administrator
       operationId: listEmailsForUser
       parameters:
         - name: id
@@ -1245,12 +715,10 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listEmailsForUserResponse'
     post:
       summary: Add email for user
-      description: >-
-        Create new email owned by specified user. Available only for
-        administrator
+      description: Create new email owned by specified user. Available only for administrator
       operationId: addEmailForUser
       parameters:
         - name: id
@@ -1265,19 +733,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/addEmailForUserResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                skip_confirmation:
-                  type: boolean
-              required:
-                - email
+              $ref: '#/components/schemas/addEmailForUserRequest'
   '/user/emails/{email_id}':
     get:
       summary: Single email
@@ -1296,20 +757,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  email:
-                    type: string
-                  confirmed_at:
-                    type: string
+                $ref: '#/components/schemas/singleEmailResponse'
     delete:
       summary: Delete email for current user
       description: >-
-        Deletes email owned by currently authenticated user. This returns a 204
-        No Content status code if the operation was successfully or 404 if the
-        resource was not found.
+        Deletes email owned by currently authenticated user. This returns a 204 No Content status code if the operation
+        was successfully or 404 if the resource was not found.
       operationId: deleteEmailForCurrentUser
       parameters:
         - name: email_id
@@ -1324,13 +777,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteEmailForCurrentUserResponse'
   '/users/{id}/emails/{email_id}':
     delete:
       summary: Delete email for given user
-      description: >-
-        Deletes email owned by a specified user. Available only for
-        administrator.
+      description: Deletes email owned by a specified user. Available only for administrator.
       operationId: deleteEmailForGivenUser
       parameters:
         - name: id
@@ -1351,7 +802,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteEmailForGivenUserResponse'
   '/users/{id}/block':
     post:
       summary: Block user
@@ -1370,7 +821,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/blockUserResponse'
   '/users/{id}/unblock':
     post:
       summary: Unblock user
@@ -1389,7 +840,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/unblockUserResponse'
   '/users/{id}/deactivate':
     post:
       summary: Deactivate user
@@ -1408,7 +859,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deactivateUserResponse'
   '/users/{id}/activate':
     post:
       summary: Activate user
@@ -1427,7 +878,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/activateUserResponse'
   '/users/{id}/ban':
     post:
       summary: Ban user
@@ -1440,7 +891,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/banUserResponse'
   '/users/{id}/unban':
     post:
       summary: Unban user
@@ -1453,7 +904,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/unbanUserResponse'
   '/users/{user_id}/impersonation_tokens':
     get:
       summary: Get all impersonation tokens of a user
@@ -1478,35 +929,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    active:
-                      type: boolean
-                    user_id:
-                      type: integer
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                    revoked:
-                      type: boolean
-                    name:
-                      type: string
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    impersonation:
-                      type: boolean
-                    expires_at:
-                      type: string
+                $ref: '#/components/schemas/getAllImpersonationTokensOfAUserResponse'
     post:
       summary: Create an impersonation token
       description: >-
-        Requires administrator access. Token values are returned once. Make sure
-        you save it because you can’t access it again.
+        Requires administrator access. Token values are returned once. Make sure you save it because you can’t access it
+        again.
       operationId: createAnImpersonationToken
       parameters:
         - name: user_id
@@ -1521,44 +949,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  revoked:
-                    type: boolean
-                  user_id:
-                    type: integer
-                  scopes:
-                    type: array
-                    items:
-                      type: string
-                  token:
-                    type: string
-                  active:
-                    type: boolean
-                  impersonation:
-                    type: boolean
-                  name:
-                    type: string
-                  created_at:
-                    type: string
-                  expires_at:
-                    type: string
+                $ref: '#/components/schemas/createAnImpersonationTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                expires_at:
-                  type: string
-                  format: date
-              required:
-                - name
-                - scopes
+              $ref: '#/components/schemas/createAnImpersonationTokenRequest'
   '/users/{id}/approve':
     post:
       summary: Approve user
@@ -1577,16 +973,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: '#/components/schemas/approveUserResponse'
   '/users/{id}/reject':
     post:
       summary: Reject user
-      description: >-
-        Rejects specified user that is pending approval. Available only for
-        administrators.
+      description: Rejects specified user that is pending approval. Available only for administrators.
       operationId: rejectUser
       parameters: []
       responses:
@@ -1595,10 +986,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                $ref: '#/components/schemas/rejectUserResponse'
   '/users/{user_id}/impersonation_tokens/{impersonation_token_id}':
     get:
       summary: Get an impersonation token of a user
@@ -1623,28 +1011,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  active:
-                    type: boolean
-                  user_id:
-                    type: integer
-                  scopes:
-                    type: array
-                    items:
-                      type: string
-                  revoked:
-                    type: boolean
-                  name:
-                    type: string
-                  id:
-                    type: integer
-                  created_at:
-                    type: string
-                  impersonation:
-                    type: boolean
-                  expires_at:
-                    type: string
+                $ref: '#/components/schemas/getAnImpersonationTokenOfAUserResponse'
     delete:
       summary: Revoke an impersonation token
       description: Requires administrator access.
@@ -1668,14 +1035,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/revokeAnImpersonationTokenResponse'
   '/users/{user_id}/personal_access_tokens':
     post:
       summary: Create a personal access token
       description: >-
-        Use this API to create a new personal access token. Token values are
-        returned once so, make sure you save it as you can’t access it again.
-        This API can only be used by GitLab administrators.
+        Use this API to create a new personal access token. Token values are returned once so, make sure you save it as
+        you can’t access it again. This API can only be used by GitLab administrators.
       operationId: createAPersonalAccessToken
       parameters:
         - name: user_id
@@ -1690,42 +1056,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  revoked:
-                    type: boolean
-                  created_at:
-                    type: string
-                  scopes:
-                    type: array
-                    items:
-                      type: string
-                  user_id:
-                    type: integer
-                  active:
-                    type: boolean
-                  expires_at:
-                    type: string
-                  token:
-                    type: string
+                $ref: '#/components/schemas/createAPersonalAccessTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                expires_at:
-                  type: string
-                  format: date
-              required:
-                - name
-                - scopes
+              $ref: '#/components/schemas/createAPersonalAccessTokenRequest'
   /user/activities:
     get:
       summary: Get user activities (admin only)
@@ -1734,9 +1070,7 @@ paths:
       parameters:
         - name: from
           in: query
-          description: >-
-            Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11.
-            Defaults to 6 months ago.
+          description: 'Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11. Defaults to 6 months ago.'
           required: false
           schema:
             type: string
@@ -1746,28 +1080,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    username:
-                      type: string
-                    last_activity_on:
-                      type: string
-                    last_activity_at:
-                      type: string
+                $ref: '#/components/schemas/getUserActivities(adminOnly)Response'
   '/users/{id}/memberships':
     get:
       summary: User memberships (admin only)
       description: >-
-        Lists all projects and groups a user is a member of. This endpoint is
-        available for administrators only. It returns the source_id,
-        source_name, source_type and access_level of a membership. Source can be
-        of type Namespace (representing a group) or Project. The response
-        represents only direct memberships. Inherited memberships, for example
-        in subgroups, are not included. Access levels are represented by an
-        integer value. For more details, read about the meaning of access level
-        values.
+        Lists all projects and groups a user is a member of. This endpoint is available for administrators only. It
+        returns the source_id, source_name, source_type and access_level of a membership. Source can be of type
+        Namespace (representing a group) or Project. The response represents only direct memberships. Inherited
+        memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For
+        more details, read about the meaning of access level values.
       operationId: userMemberships(adminOnly)
       parameters:
         - name: id
@@ -1788,15 +1110,911 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    source_id:
-                      type: integer
-                    source_name:
-                      type: string
-                    source_type:
-                      type: string
-                    access_level:
-                      type: string
+                $ref: '#/components/schemas/userMemberships(adminOnly)Response'
+components:
+  schemas:
+    forNormalUsersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    forAdminsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          email:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+          created_at:
+            type: string
+          is_admin:
+            type: boolean
+          bio:
+            type: string
+          location:
+            type: string
+          skype:
+            type: string
+          linkedin:
+            type: string
+          twitter:
+            type: string
+          website_url:
+            type: string
+          organization:
+            type: string
+          job_title:
+            type: string
+          last_sign_in_at:
+            type: string
+          confirmed_at:
+            type: string
+          theme_id:
+            type: integer
+          last_activity_on:
+            type: string
+          color_scheme_id:
+            type: integer
+          projects_limit:
+            type: integer
+          current_sign_in_at:
+            type: string
+          note:
+            type: string
+          identities:
+            type: array
+            items:
+              type: object
+              properties:
+                provider:
+                  type: string
+                extern_uid:
+                  type: string
+          can_create_group:
+            type: boolean
+          can_create_project:
+            type: boolean
+          two_factor_enabled:
+            type: boolean
+          external:
+            type: boolean
+          private_profile:
+            type: boolean
+          current_sign_in_ip:
+            type: string
+          last_sign_in_ip:
+            type: string
+          namespace_id:
+            type: integer
+    forUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+        bio:
+          type: string
+        bot:
+          type: boolean
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+    forAdminResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        shared_runners_minutes_limit:
+          type: integer
+        extra_shared_runners_minutes_limit:
+          type: integer
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        provisioned_by_group_id:
+          type: integer
+        is_auditor:
+          type: boolean
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+        is_admin:
+          type: boolean
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        last_sign_in_at:
+          type: string
+        confirmed_at:
+          type: string
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+        note:
+          type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+        current_sign_in_ip:
+          type: string
+        last_sign_in_ip:
+          type: string
+        plan:
+          type: string
+        trial:
+          type: boolean
+        sign_in_count:
+          type: integer
+        namespace_id:
+          type: integer
+    userCreationRequest:
+      type: object
+      properties: {}
+    userCreationResponse:
+      type: string
+    userModificationRequest:
+      type: object
+      properties: {}
+    userModificationResponse:
+      type: string
+    deleteAuthenticationIdentityFromUserResponse:
+      type: string
+    userDeletionResponse:
+      type: string
+    listCurrentUser(forNormalUsers)Response:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        last_sign_in_at:
+          type: string
+        confirmed_at:
+          type: string
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+    listCurrentUser(forAdmins)Response:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+        is_admin:
+          type: boolean
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        last_sign_in_at:
+          type: string
+        confirmed_at:
+          type: string
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+        current_sign_in_ip:
+          type: string
+        last_sign_in_ip:
+          type: string
+        namespace_id:
+          type: integer
+    userStatusResponse:
+      type: object
+      properties:
+        emoji:
+          type: string
+        availability:
+          type: string
+        message:
+          type: string
+        message_html:
+          type: string
+        clear_status_at:
+          type: string
+    getTheStatusOfAUserResponse:
+      type: object
+      properties:
+        emoji:
+          type: string
+        availability:
+          type: string
+        message:
+          type: string
+        message_html:
+          type: string
+        clear_status_at:
+          type: string
+    setUserStatusRequest:
+      type: object
+      properties:
+        emoji:
+          type: string
+        message:
+          type: string
+        clear_status_after:
+          type: string
+    setUserStatusResponse:
+      type: object
+      properties:
+        emoji:
+          type: string
+        message:
+          type: string
+        message_html:
+          type: string
+        clear_status_at:
+          type: string
+    getUserPreferencesResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        view_diffs_file_by_file:
+          type: boolean
+        show_whitespace_in_diffs:
+          type: boolean
+    userPreferenceModificationRequest:
+      type: object
+      properties: {}
+    userPreferenceModificationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        view_diffs_file_by_file:
+          type: boolean
+        show_whitespace_in_diffs:
+          type: boolean
+    followAndUnfollowUsersResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+    followersAndFollowingResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    userCountsResponse:
+      type: object
+      properties:
+        merge_requests:
+          type: integer
+        assigned_issues:
+          type: integer
+        assigned_merge_requests:
+          type: integer
+        review_requested_merge_requests:
+          type: integer
+        todos:
+          type: integer
+    listSshKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          created_at:
+            type: string
+    listSshKeysForUserResponse:
+      type: string
+    singleSshKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        created_at:
+          type: string
+    singleSshKeyForGivenUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        created_at:
+          type: string
+    addSshKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        key:
+          type: string
+        expires_at:
+          type: string
+      required:
+        - title
+        - key
+    addSshKeyResponse:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            fingerprint:
+              type: array
+              items:
+                type: string
+            key:
+              type: array
+              items:
+                type: string
+        title:
+          type: string
+        key:
+          type: string
+        expires_at:
+          type: string
+    addSshKeyForUserRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        key:
+          type: string
+        expires_at:
+          type: string
+      required:
+        - title
+        - key
+    addSshKeyForUserResponse:
+      type: string
+    deleteSshKeyForCurrentUserResponse:
+      type: string
+    deleteSshKeyForGivenUserResponse:
+      type: string
+    listAllGpgKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          key:
+            type: string
+          created_at:
+            type: string
+    getASpecificGpgKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        created_at:
+          type: string
+    addAGpgKeyRequest:
+      type: object
+      properties:
+        key:
+          type: string
+      required:
+        - key
+    addAGpgKeyResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          key:
+            type: string
+          created_at:
+            type: string
+    deleteAGpgKeyResponse:
+      type: string
+    listAllGpgKeysForGivenUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          key:
+            type: string
+          created_at:
+            type: string
+    getASpecificGpgKeyForAGivenUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        created_at:
+          type: string
+    addAGpgKeyForAGivenUserRequest:
+      type: object
+      properties:
+        key_id:
+          type: integer
+      required:
+        - key_id
+    addAGpgKeyForAGivenUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          key:
+            type: string
+          created_at:
+            type: string
+    deleteAGpgKeyForAGivenUserResponse:
+      type: string
+    listEmailsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          email:
+            type: string
+          confirmed_at:
+            type: string
+    listEmailsForUserResponse:
+      type: string
+    singleEmailResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        confirmed_at:
+          type: string
+    addEmailRequest:
+      type: object
+      properties:
+        email:
+          type: string
+      required:
+        - email
+    addEmailResponse:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            email:
+              type: array
+              items:
+                type: string
+        id:
+          type: integer
+        email:
+          type: string
+        confirmed_at:
+          type: string
+    addEmailForUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        skip_confirmation:
+          type: boolean
+      required:
+        - email
+    addEmailForUserResponse:
+      type: string
+    deleteEmailForCurrentUserResponse:
+      type: string
+    deleteEmailForGivenUserResponse:
+      type: string
+    blockUserResponse:
+      type: string
+    unblockUserResponse:
+      type: string
+    deactivateUserResponse:
+      type: string
+    activateUserResponse:
+      type: string
+    banUserResponse:
+      type: string
+    unbanUserResponse:
+      type: string
+    getAllImpersonationTokensOfAUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          active:
+            type: boolean
+          user_id:
+            type: integer
+          scopes:
+            type: array
+            items:
+              type: string
+          revoked:
+            type: boolean
+          name:
+            type: string
+          id:
+            type: integer
+          created_at:
+            type: string
+          impersonation:
+            type: boolean
+          expires_at:
+            type: string
+    approveUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    rejectUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    getAnImpersonationTokenOfAUserResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        revoked:
+          type: boolean
+        name:
+          type: string
+        id:
+          type: integer
+        created_at:
+          type: string
+        impersonation:
+          type: boolean
+        expires_at:
+          type: string
+    createAnImpersonationTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date
+      required:
+        - name
+        - scopes
+    createAnImpersonationTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        revoked:
+          type: boolean
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        token:
+          type: string
+        active:
+          type: boolean
+        impersonation:
+          type: boolean
+        name:
+          type: string
+        created_at:
+          type: string
+        expires_at:
+          type: string
+    revokeAnImpersonationTokenResponse:
+      type: string
+    createAPersonalAccessTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date
+      required:
+        - name
+        - scopes
+    createAPersonalAccessTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: integer
+        active:
+          type: boolean
+        expires_at:
+          type: string
+        token:
+          type: string
+    getUserActivities(adminOnly)Response:
+      type: array
+      items:
+        type: object
+        properties:
+          username:
+            type: string
+          last_activity_on:
+            type: string
+          last_activity_at:
+            type: string
+    userMemberships(adminOnly)Response:
+      type: array
+      items:
+        type: object
+        properties:
+          source_id:
+            type: integer
+          source_name:
+            type: string
+          source_type:
+            type: string
+          access_level:
+            type: string

@@ -1,26 +1,25 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / branches'
+  version: '1.0'
 paths:
   '/projects/{id}/repository/branches':
     get:
       summary: List repository branches
-      description: >-
-        Get a list of repository branches from a project, sorted by name
-        alphabetically.
+      description: 'Get a list of repository branches from a project, sorted by name alphabetically.'
       operationId: listRepositoryBranches
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
         - name: search
           in: query
           description: >-
-            Return list of branches containing the search string. You can use
-            ^term and term$ to find branches that begin and end with term
-            respectively.
+            Return list of branches containing the search string. You can use ^term and term$ to find branches that
+            begin and end with term respectively.
           required: false
           schema:
             type: string
@@ -30,53 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    merged:
-                      type: boolean
-                    protected:
-                      type: boolean
-                    default:
-                      type: boolean
-                    developers_can_push:
-                      type: boolean
-                    developers_can_merge:
-                      type: boolean
-                    can_push:
-                      type: boolean
-                    web_url:
-                      type: string
-                    commit:
-                      type: object
-                      properties:
-                        author_email:
-                          type: string
-                        author_name:
-                          type: string
-                        authored_date:
-                          type: string
-                        committed_date:
-                          type: string
-                        committer_email:
-                          type: string
-                        committer_name:
-                          type: string
-                        id:
-                          type: string
-                        short_id:
-                          type: string
-                        title:
-                          type: string
-                        message:
-                          type: string
-                        parent_ids:
-                          type: array
-                          items:
-                            type: string
+                $ref: '#/components/schemas/listRepositoryBranchesResponse'
     post:
       summary: Create repository branch
       description: Create a new branch in the repository.
@@ -84,9 +37,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: integer
@@ -96,64 +47,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  commit:
-                    type: object
-                    properties:
-                      author_email:
-                        type: string
-                      author_name:
-                        type: string
-                      authored_date:
-                        type: string
-                      committed_date:
-                        type: string
-                      committer_email:
-                        type: string
-                      committer_name:
-                        type: string
-                      id:
-                        type: string
-                      short_id:
-                        type: string
-                      title:
-                        type: string
-                      message:
-                        type: string
-                      parent_ids:
-                        type: array
-                        items:
-                          type: string
-                  name:
-                    type: string
-                  merged:
-                    type: boolean
-                  protected:
-                    type: boolean
-                  default:
-                    type: boolean
-                  developers_can_push:
-                    type: boolean
-                  developers_can_merge:
-                    type: boolean
-                  can_push:
-                    type: boolean
-                  web_url:
-                    type: string
+                $ref: '#/components/schemas/createRepositoryBranchResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                branch:
-                  type: string
-                ref:
-                  type: string
-              required:
-                - branch
-                - ref
+              $ref: '#/components/schemas/createRepositoryBranchRequest'
   '/projects/{id}/repository/branches/{branch}':
     get:
       summary: Get single repository branch
@@ -162,9 +61,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -180,51 +77,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  merged:
-                    type: boolean
-                  protected:
-                    type: boolean
-                  default:
-                    type: boolean
-                  developers_can_push:
-                    type: boolean
-                  developers_can_merge:
-                    type: boolean
-                  can_push:
-                    type: boolean
-                  web_url:
-                    type: string
-                  commit:
-                    type: object
-                    properties:
-                      author_email:
-                        type: string
-                      author_name:
-                        type: string
-                      authored_date:
-                        type: string
-                      committed_date:
-                        type: string
-                      committer_email:
-                        type: string
-                      committer_name:
-                        type: string
-                      id:
-                        type: string
-                      short_id:
-                        type: string
-                      title:
-                        type: string
-                      message:
-                        type: string
-                      parent_ids:
-                        type: array
-                        items:
-                          type: string
+                $ref: '#/components/schemas/getSingleRepositoryBranchResponse'
     delete:
       summary: Delete repository branch
       description: Delete a branch from the repository.
@@ -232,9 +85,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -250,7 +101,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteRepositoryBranchResponse'
   '/projects/{id}/repository/merged_branches':
     delete:
       summary: Delete merged branches
@@ -259,9 +110,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            ID or URL-encoded path of the project owned by the authenticated
-            user.
+          description: ID or URL-encoded path of the project owned by the authenticated user.
           required: true
           schema:
             type: string
@@ -271,4 +120,160 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteMergedBranchesResponse'
+components:
+  schemas:
+    listRepositoryBranchesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          merged:
+            type: boolean
+          protected:
+            type: boolean
+          default:
+            type: boolean
+          developers_can_push:
+            type: boolean
+          developers_can_merge:
+            type: boolean
+          can_push:
+            type: boolean
+          web_url:
+            type: string
+          commit:
+            type: object
+            properties:
+              author_email:
                 type: string
+              author_name:
+                type: string
+              authored_date:
+                type: string
+              committed_date:
+                type: string
+              committer_email:
+                type: string
+              committer_name:
+                type: string
+              id:
+                type: string
+              short_id:
+                type: string
+              title:
+                type: string
+              message:
+                type: string
+              parent_ids:
+                type: array
+                items:
+                  type: string
+    getSingleRepositoryBranchResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        merged:
+          type: boolean
+        protected:
+          type: boolean
+        default:
+          type: boolean
+        developers_can_push:
+          type: boolean
+        developers_can_merge:
+          type: boolean
+        can_push:
+          type: boolean
+        web_url:
+          type: string
+        commit:
+          type: object
+          properties:
+            author_email:
+              type: string
+            author_name:
+              type: string
+            authored_date:
+              type: string
+            committed_date:
+              type: string
+            committer_email:
+              type: string
+            committer_name:
+              type: string
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            message:
+              type: string
+            parent_ids:
+              type: array
+              items:
+                type: string
+    createRepositoryBranchRequest:
+      type: object
+      properties:
+        branch:
+          type: string
+        ref:
+          type: string
+      required:
+        - branch
+        - ref
+    createRepositoryBranchResponse:
+      type: object
+      properties:
+        commit:
+          type: object
+          properties:
+            author_email:
+              type: string
+            author_name:
+              type: string
+            authored_date:
+              type: string
+            committed_date:
+              type: string
+            committer_email:
+              type: string
+            committer_name:
+              type: string
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            message:
+              type: string
+            parent_ids:
+              type: array
+              items:
+                type: string
+        name:
+          type: string
+        merged:
+          type: boolean
+        protected:
+          type: boolean
+        default:
+          type: boolean
+        developers_can_push:
+          type: boolean
+        developers_can_merge:
+          type: boolean
+        can_push:
+          type: boolean
+        web_url:
+          type: string
+    deleteRepositoryBranchResponse:
+      type: string
+    deleteMergedBranchesResponse:
+      type: string

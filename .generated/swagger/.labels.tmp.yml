@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / labels'
+  version: '1.0'
 paths:
   '/projects/{id}/labels':
     get:
@@ -7,17 +11,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
         - name: with_counts
           in: query
-          description: >-
-            Whether or not to include issue and merge request counts. Defaults
-            to false. (Introduced in GitLab 12.2)
+          description: Whether or not to include issue and merge request counts. Defaults to false. (Introduced in GitLab 12.2)
           required: false
           schema:
             type: string
@@ -39,46 +39,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    color:
-                      type: string
-                    text_color:
-                      type: string
-                    description:
-                      type: string
-                    description_html:
-                      type: string
-                    open_issues_count:
-                      type: integer
-                    closed_issues_count:
-                      type: integer
-                    open_merge_requests_count:
-                      type: integer
-                    subscribed:
-                      type: boolean
-                    priority:
-                      type: integer
-                    is_project_label:
-                      type: boolean
+                $ref: '#/components/schemas/listLabelsResponse'
     post:
       summary: Create a new label
-      description: >-
-        Creates a new label for the given repository with the given name and
-        color.
+      description: Creates a new label for the given repository with the given name and color.
       operationId: createANewLabel
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -88,49 +57,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  color:
-                    type: string
-                  text_color:
-                    type: string
-                  description:
-                    type: string
-                  description_html:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  closed_issues_count:
-                    type: integer
-                  open_merge_requests_count:
-                    type: integer
-                  subscribed:
-                    type: boolean
-                  priority:
-                    type: string
-                  is_project_label:
-                    type: boolean
+                $ref: '#/components/schemas/createANewLabelResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                color:
-                  type: string
-                description:
-                  type: string
-                priority:
-                  type: integer
-              required:
-                - name
-                - color
+              $ref: '#/components/schemas/createANewLabelRequest'
   '/projects/{id}/labels/{label_id}':
     get:
       summary: Get a single project label
@@ -139,9 +71,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -163,32 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  color:
-                    type: string
-                  text_color:
-                    type: string
-                  description:
-                    type: string
-                  description_html:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  closed_issues_count:
-                    type: integer
-                  open_merge_requests_count:
-                    type: integer
-                  subscribed:
-                    type: boolean
-                  priority:
-                    type: integer
-                  is_project_label:
-                    type: boolean
+                $ref: '#/components/schemas/getASingleProjectLabelResponse'
     delete:
       summary: Delete a label
       description: Deletes a label with a given name.
@@ -196,9 +101,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -214,19 +117,15 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteALabelResponse'
     put:
       summary: Edit an existing label
-      description: >-
-        Updates an existing label with new name or new color. At least one
-        parameter is required, to update the label.
+      description: 'Updates an existing label with new name or new color. At least one parameter is required, to update the label.'
       operationId: editAnExistingLabel
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -242,47 +141,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  color:
-                    type: string
-                  text_color:
-                    type: string
-                  description:
-                    type: string
-                  description_html:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  closed_issues_count:
-                    type: integer
-                  open_merge_requests_count:
-                    type: integer
-                  subscribed:
-                    type: boolean
-                  priority:
-                    type: string
-                  is_project_label:
-                    type: boolean
+                $ref: '#/components/schemas/editAnExistingLabelResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                new_name:
-                  type: string
-                color:
-                  type: string
-                description:
-                  type: string
-                priority:
-                  type: integer
-              required: []
+              $ref: '#/components/schemas/editAnExistingLabelRequest'
   '/projects/{id}/labels/{label_id}/promote':
     put:
       summary: Promote a project label to a group label
@@ -291,9 +155,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -309,40 +171,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  color:
-                    type: string
-                  description:
-                    type: string
-                  description_html:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  closed_issues_count:
-                    type: integer
-                  open_merge_requests_count:
-                    type: integer
-                  subscribed:
-                    type: boolean
+                $ref: '#/components/schemas/promoteAProjectLabelToAGroupLabelResponse'
   '/projects/{id}/labels/{label_id}/subscribe':
     post:
       summary: Subscribe to a label
       description: >-
-        Subscribes the authenticated user to a label to receive notifications.
-        If the user is already subscribed to the label, the status code 304 is
-        returned.
+        Subscribes the authenticated user to a label to receive notifications. If the user is already subscribed to the
+        label, the status code 304 is returned.
       operationId: subscribeToALabel
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -358,46 +198,18 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  name:
-                    type: string
-                  color:
-                    type: string
-                  text_color:
-                    type: string
-                  description:
-                    type: string
-                  description_html:
-                    type: string
-                  open_issues_count:
-                    type: integer
-                  closed_issues_count:
-                    type: integer
-                  open_merge_requests_count:
-                    type: integer
-                  subscribed:
-                    type: boolean
-                  priority:
-                    type: string
-                  is_project_label:
-                    type: boolean
+                $ref: '#/components/schemas/subscribeToALabelResponse'
   '/projects/{id}/labels/{label_id}/unsubscribe':
     post:
       summary: Unsubscribe from a label
       description: >-
-        Unsubscribes the authenticated user from a label to not receive
-        notifications from it. If the user is not subscribed to the label, the
-        status code 304 is returned.
+        Unsubscribes the authenticated user from a label to not receive notifications from it. If the user is not
+        subscribed to the label, the status code 304 is returned.
       operationId: unsubscribeFromALabel
       parameters:
         - name: id
           in: path
-          description: >-
-            The ID or URL-encoded path of the project owned by the authenticated
-            user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -413,4 +225,193 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/unsubscribeFromALabelResponse'
+components:
+  schemas:
+    listLabelsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          color:
+            type: string
+          text_color:
+            type: string
+          description:
+            type: string
+          description_html:
+            type: string
+          open_issues_count:
+            type: integer
+          closed_issues_count:
+            type: integer
+          open_merge_requests_count:
+            type: integer
+          subscribed:
+            type: boolean
+          priority:
+            type: integer
+          is_project_label:
+            type: boolean
+    getASingleProjectLabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        text_color:
+          type: string
+        description:
+          type: string
+        description_html:
+          type: string
+        open_issues_count:
+          type: integer
+        closed_issues_count:
+          type: integer
+        open_merge_requests_count:
+          type: integer
+        subscribed:
+          type: boolean
+        priority:
+          type: integer
+        is_project_label:
+          type: boolean
+    createANewLabelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        priority:
+          type: integer
+      required:
+        - name
+        - color
+    createANewLabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        text_color:
+          type: string
+        description:
+          type: string
+        description_html:
+          type: string
+        open_issues_count:
+          type: integer
+        closed_issues_count:
+          type: integer
+        open_merge_requests_count:
+          type: integer
+        subscribed:
+          type: boolean
+        priority:
+          type: string
+        is_project_label:
+          type: boolean
+    deleteALabelResponse:
+      type: string
+    editAnExistingLabelRequest:
+      type: object
+      properties:
+        new_name:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        priority:
+          type: integer
+    editAnExistingLabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        text_color:
+          type: string
+        description:
+          type: string
+        description_html:
+          type: string
+        open_issues_count:
+          type: integer
+        closed_issues_count:
+          type: integer
+        open_merge_requests_count:
+          type: integer
+        subscribed:
+          type: boolean
+        priority:
+          type: string
+        is_project_label:
+          type: boolean
+    promoteAProjectLabelToAGroupLabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        description:
+          type: string
+        description_html:
+          type: string
+        open_issues_count:
+          type: integer
+        closed_issues_count:
+          type: integer
+        open_merge_requests_count:
+          type: integer
+        subscribed:
+          type: boolean
+    subscribeToALabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+        text_color:
+          type: string
+        description:
+          type: string
+        description_html:
+          type: string
+        open_issues_count:
+          type: integer
+        closed_issues_count:
+          type: integer
+        open_merge_requests_count:
+          type: integer
+        subscribed:
+          type: boolean
+        priority:
+          type: string
+        is_project_label:
+          type: boolean
+    unsubscribeFromALabelResponse:
+      type: string

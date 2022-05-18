@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / markdown'
+  version: '1.0'
 paths:
   /markdown:
     post:
@@ -11,21 +15,27 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  html:
-                    type: string
+                $ref: '#/components/schemas/renderAnArbitraryMarkdownDocumentResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                text:
-                  type: string
-                gfm:
-                  type: boolean
-                project:
-                  type: string
-              required:
-                - text
+              $ref: '#/components/schemas/renderAnArbitraryMarkdownDocumentRequest'
+components:
+  schemas:
+    renderAnArbitraryMarkdownDocumentRequest:
+      type: object
+      properties:
+        text:
+          type: string
+        gfm:
+          type: boolean
+        project:
+          type: string
+      required:
+        - text
+    renderAnArbitraryMarkdownDocumentResponse:
+      type: object
+      properties:
+        html:
+          type: string

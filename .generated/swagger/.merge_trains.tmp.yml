@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / merge_trains'
+  version: '1.0'
 paths:
   '/projects/{id}/merge_trains':
     get:
@@ -14,8 +18,8 @@ paths:
         - name: scope
           in: query
           description: >-
-            Return Merge Trains filtered by the given scope. Available scopes
-            are active (to be merged) and complete (have been merged).
+            Return Merge Trains filtered by the given scope. Available scopes are active (to be merged) and complete
+            (have been merged).
           required: false
           schema:
             type: string
@@ -31,74 +35,78 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    merge_request:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        iid:
-                          type: integer
-                        project_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        web_url:
-                          type: string
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    pipeline:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        sha:
-                          type: string
-                        ref:
-                          type: string
-                        status:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        web_url:
-                          type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    target_branch:
-                      type: string
-                    status:
-                      type: string
-                    merged_at:
-                      type: string
-                    duration:
-                      type: integer
+                $ref: '#/components/schemas/listMergeTrainsForAProjectResponse'
+components:
+  schemas:
+    listMergeTrainsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          merge_request:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              web_url:
+                type: string
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          pipeline:
+            type: object
+            properties:
+              id:
+                type: integer
+              sha:
+                type: string
+              ref:
+                type: string
+              status:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+              web_url:
+                type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          target_branch:
+            type: string
+          status:
+            type: string
+          merged_at:
+            type: string
+          duration:
+            type: integer

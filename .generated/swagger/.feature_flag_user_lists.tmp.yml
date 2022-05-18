@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / feature_flag_user_lists'
+  version: '1.0'
 paths:
   '/projects/{id}/feature_flags_user_lists':
     get:
@@ -23,24 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    user_xids:
-                      type: string
-                    id:
-                      type: integer
-                    iid:
-                      type: integer
-                    project_id:
-                      type: integer
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
+                $ref: '#/components/schemas/listAllFeatureFlagUserListsForAProjectResponse'
     post:
       summary: Create a feature flag user list
       description: Creates a feature flag user list.
@@ -58,35 +45,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  user_xids:
-                    type: string
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                user_xids:
-                  type: string
-              required:
-                - name
-                - user_xids
+              $ref: '#/components/schemas/createAFeatureFlagUserListRequest'
   '/projects/{id}/feature_flags_user_lists/{iid}':
     get:
       summary: Get a feature flag user list
@@ -111,22 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  user_xids:
-                    type: string
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/getAFeatureFlagUserListResponse'
     put:
       summary: Update a feature flag user list
       description: Updates a feature flag user list.
@@ -150,33 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  user_xids:
-                    type: string
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
+                $ref: '#/components/schemas/updateAFeatureFlagUserListResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                user_xids:
-                  type: string
-              required: []
+              $ref: '#/components/schemas/updateAFeatureFlagUserListRequest'
     delete:
       summary: Delete feature flag user list
       description: Deletes a feature flag user list.
@@ -200,4 +128,95 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteFeatureFlagUserListResponse'
+components:
+  schemas:
+    listAllFeatureFlagUserListsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          user_xids:
+            type: string
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          created_at:
+            type: string
+          updated_at:
+            type: string
+    createAFeatureFlagUserListRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+      required:
+        - name
+        - user_xids
+    createAFeatureFlagUserListResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    getAFeatureFlagUserListResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    updateAFeatureFlagUserListRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+    updateAFeatureFlagUserListResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    deleteFeatureFlagUserListResponse:
+      type: string

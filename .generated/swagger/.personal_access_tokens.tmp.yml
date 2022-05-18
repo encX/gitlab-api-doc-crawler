@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / personal_access_tokens'
+  version: '1.0'
 paths:
   /personal_access_tokens:
     get:
@@ -17,30 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    revoked:
-                      type: boolean
-                    created_at:
-                      type: string
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                    user_id:
-                      type: integer
-                    last_used_at:
-                      type: string
-                    active:
-                      type: boolean
-                    expires_at:
-                      type: string
+                $ref: '#/components/schemas/listPersonalAccessTokensResponse'
   '/personal_access_tokens/{id}':
     delete:
       summary: Revoke a personal access token
@@ -59,4 +40,33 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/revokeAPersonalAccessTokenResponse'
+components:
+  schemas:
+    listPersonalAccessTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          revoked:
+            type: boolean
+          created_at:
+            type: string
+          scopes:
+            type: array
+            items:
+              type: string
+          user_id:
+            type: integer
+          last_used_at:
+            type: string
+          active:
+            type: boolean
+          expires_at:
+            type: string
+    revokeAPersonalAccessTokenResponse:
+      type: string

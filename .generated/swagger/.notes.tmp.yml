@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / notes'
+  version: '1.0'
 paths:
   '/projects/{id}/issues/{issue_iid}/notes':
     get:
@@ -25,9 +29,7 @@ paths:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return issue notes ordered by created_at or updated_at fields.
-            Default is created_at
+          description: Return issue notes ordered by created_at or updated_at fields. Default is created_at
           required: false
           schema:
             type: string
@@ -37,47 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    body:
-                      type: string
-                    attachment:
-                      type: string
-                    author:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        username:
-                          type: string
-                        email:
-                          type: string
-                        name:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    system:
-                      type: boolean
-                    noteable_id:
-                      type: integer
-                    noteable_type:
-                      type: string
-                    noteable_iid:
-                      type: integer
-                    resolvable:
-                      type: boolean
-                    confidential:
-                      type: boolean
+                $ref: '#/components/schemas/listProjectIssueNotesResponse'
     post:
       summary: Create new issue note
       description: Creates a new note to a single project issue.
@@ -101,21 +63,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewIssueNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-                confidential:
-                  type: boolean
-                created_at:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/createNewIssueNoteRequest'
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}':
     get:
       summary: Get single issue note
@@ -146,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/getSingleIssueNoteResponse'
     put:
       summary: Modify existing issue note
       description: Modify existing note of an issue.
@@ -176,18 +129,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/modifyExistingIssueNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-                confidential:
-                  type: boolean
-              required: []
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
     delete:
       summary: Delete an issue note
       description: Deletes an existing note of an issue.
@@ -217,13 +164,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAnIssueNoteResponse'
   '/projects/{id}/snippets/{snippet_id}/notes':
     get:
       summary: List all snippet notes
-      description: >-
-        Gets a list of all notes for a single snippet. Snippet notes are
-        comments users can post to a snippet.
+      description: Gets a list of all notes for a single snippet. Snippet notes are comments users can post to a snippet.
       operationId: listAllSnippetNotes
       parameters:
         - name: id
@@ -246,9 +191,7 @@ paths:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return snippet notes ordered by created_at or updated_at fields.
-            Default is created_at
+          description: Return snippet notes ordered by created_at or updated_at fields. Default is created_at
           required: false
           schema:
             type: string
@@ -258,13 +201,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listAllSnippetNotesResponse'
     post:
       summary: Create new snippet note
       description: >-
-        Creates a new note for a single snippet. Snippet notes are user comments
-        on snippets. If you create a note where the body only contains an Award
-        Emoji, GitLab returns this object.
+        Creates a new note for a single snippet. Snippet notes are user comments on snippets. If you create a note where
+        the body only contains an Award Emoji, GitLab returns this object.
       operationId: createNewSnippetNote
       parameters:
         - name: id
@@ -285,19 +227,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewSnippetNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-                created_at:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/createNewSnippetNoteRequest'
   '/projects/{id}/snippets/{snippet_id}/notes/{note_id}':
     get:
       summary: Get single snippet note
@@ -328,35 +263,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  file_name:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  expires_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
+                $ref: '#/components/schemas/getSingleSnippetNoteResponse'
     put:
       summary: Modify existing snippet note
       description: Modify existing note of a snippet.
@@ -386,17 +293,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/modifyExistingSnippetNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/modifyExistingSnippetNoteRequest'
     delete:
       summary: Delete a snippet note
       description: Deletes an existing note of a snippet.
@@ -426,7 +328,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteASnippetNoteResponse'
   '/projects/{id}/merge_requests/{merge_request_iid}/notes':
     get:
       summary: List all merge request notes
@@ -447,17 +349,13 @@ paths:
             type: integer
         - name: sort
           in: query
-          description: >-
-            Return merge request notes sorted in asc or desc order. Default is
-            desc
+          description: Return merge request notes sorted in asc or desc order. Default is desc
           required: false
           schema:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return merge request notes ordered by created_at or updated_at
-            fields. Default is created_at
+          description: Return merge request notes ordered by created_at or updated_at fields. Default is created_at
           required: false
           schema:
             type: string
@@ -467,12 +365,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listAllMergeRequestNotesResponse'
     post:
       summary: Create new merge request note
       description: >-
-        Creates a new note for a single merge request. If you create a note
-        where the body only contains an Award Emoji, GitLab returns this object.
+        Creates a new note for a single merge request. If you create a note where the body only contains an Award Emoji,
+        GitLab returns this object.
       operationId: createNewMergeRequestNote
       parameters:
         - name: id
@@ -493,21 +391,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-                created_at:
-                  type: string
-                merge_request_diff_sha:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/createNewMergeRequestNoteRequest'
   '/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}':
     get:
       summary: Get single merge request note
@@ -538,45 +427,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  body:
-                    type: string
-                  attachment:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  system:
-                    type: boolean
-                  noteable_id:
-                    type: integer
-                  noteable_type:
-                    type: string
-                  noteable_iid:
-                    type: integer
-                  resolvable:
-                    type: boolean
-                  confidential:
-                    type: boolean
+                $ref: '#/components/schemas/getSingleMergeRequestNoteResponse'
     put:
       summary: Modify existing merge request note
       description: Modify existing note of a merge request.
@@ -606,17 +457,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/modifyExistingMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/modifyExistingMergeRequestNoteRequest'
     delete:
       summary: Delete a merge request note
       description: Deletes an existing note of a merge request.
@@ -646,13 +492,11 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/deleteAMergeRequestNoteResponse'
   '/groups/{id}/epics/{epic_id}/notes':
     get:
       summary: List all epic notes
-      description: >-
-        Gets a list of all notes for a single epic. Epic notes are comments
-        users can post to an epic.
+      description: Gets a list of all notes for a single epic. Epic notes are comments users can post to an epic.
       operationId: listAllEpicNotes
       parameters:
         - name: id
@@ -675,9 +519,7 @@ paths:
             type: string
         - name: order_by
           in: query
-          description: >-
-            Return epic notes ordered by created_at or updated_at fields.
-            Default is created_at
+          description: Return epic notes ordered by created_at or updated_at fields. Default is created_at
           required: false
           schema:
             type: string
@@ -687,13 +529,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/listAllEpicNotesResponse'
     post:
       summary: Create new epic note
       description: >-
-        Creates a new note for a single epic. Epic notes are comments users can
-        post to an epic. If you create a note where the body only contains an
-        Award Emoji, GitLab returns this object.
+        Creates a new note for a single epic. Epic notes are comments users can post to an epic. If you create a note
+        where the body only contains an Award Emoji, GitLab returns this object.
       operationId: createNewEpicNote
       parameters:
         - name: id
@@ -714,17 +555,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/createNewEpicNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/createNewEpicNoteRequest'
   '/groups/{id}/epics/{epic_id}/notes/{note_id}':
     get:
       summary: Get single epic note
@@ -755,37 +591,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  title:
-                    type: string
-                  file_name:
-                    type: string
-                  author:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      username:
-                        type: string
-                      email:
-                        type: string
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      created_at:
-                        type: string
-                  expires_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  created_at:
-                    type: string
-                  confidential:
-                    type: boolean
+                $ref: '#/components/schemas/getSingleEpicNoteResponse'
     put:
       summary: Modify existing epic note
       description: Modify existing note of an epic.
@@ -815,17 +621,12 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/modifyExistingEpicNoteResponse'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                body:
-                  type: string
-              required:
-                - body
+              $ref: '#/components/schemas/modifyExistingEpicNoteRequest'
     delete:
       summary: Delete an epic note
       description: Deletes an existing note of an epic.
@@ -855,4 +656,248 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/deleteAnEpicNoteResponse'
+components:
+  schemas:
+    listProjectIssueNotesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          body:
+            type: string
+          attachment:
+            type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              username:
                 type: string
+              email:
+                type: string
+              name:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+          created_at:
+            type: string
+          updated_at:
+            type: string
+          system:
+            type: boolean
+          noteable_id:
+            type: integer
+          noteable_type:
+            type: string
+          noteable_iid:
+            type: integer
+          resolvable:
+            type: boolean
+          confidential:
+            type: boolean
+    getSingleIssueNoteResponse:
+      type: string
+    createNewIssueNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        confidential:
+          type: boolean
+        created_at:
+          type: string
+      required:
+        - body
+    createNewIssueNoteResponse:
+      type: string
+    modifyExistingIssueNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        confidential:
+          type: boolean
+    modifyExistingIssueNoteResponse:
+      type: string
+    deleteAnIssueNoteResponse:
+      type: string
+    listAllSnippetNotesResponse:
+      type: string
+    getSingleSnippetNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+    createNewSnippetNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        created_at:
+          type: string
+      required:
+        - body
+    createNewSnippetNoteResponse:
+      type: string
+    modifyExistingSnippetNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    modifyExistingSnippetNoteResponse:
+      type: string
+    deleteASnippetNoteResponse:
+      type: string
+    listAllMergeRequestNotesResponse:
+      type: string
+    getSingleMergeRequestNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        body:
+          type: string
+        attachment:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        system:
+          type: boolean
+        noteable_id:
+          type: integer
+        noteable_type:
+          type: string
+        noteable_iid:
+          type: integer
+        resolvable:
+          type: boolean
+        confidential:
+          type: boolean
+    createNewMergeRequestNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        created_at:
+          type: string
+        merge_request_diff_sha:
+          type: string
+      required:
+        - body
+    createNewMergeRequestNoteResponse:
+      type: string
+    modifyExistingMergeRequestNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    modifyExistingMergeRequestNoteResponse:
+      type: string
+    deleteAMergeRequestNoteResponse:
+      type: string
+    listAllEpicNotesResponse:
+      type: string
+    getSingleEpicNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+        created_at:
+          type: string
+        confidential:
+          type: boolean
+    createNewEpicNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    createNewEpicNoteResponse:
+      type: string
+    modifyExistingEpicNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    modifyExistingEpicNoteResponse:
+      type: string
+    deleteAnEpicNoteResponse:
+      type: string

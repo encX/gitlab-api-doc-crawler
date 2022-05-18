@@ -1,3 +1,7 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_activity_analytics'
+  version: '1.0'
 paths:
   /analytics/group_activity/issues_count:
     get:
@@ -17,10 +21,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  issues_count:
-                    type: integer
+                $ref: '#/components/schemas/getCountOfRecentlyCreatedIssuesForGroupResponse'
   /analytics/group_activity/merge_requests_count:
     get:
       summary: Get count of recently created merge requests for group
@@ -39,10 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  merge_requests_count:
-                    type: integer
+                $ref: '#/components/schemas/getCountOfRecentlyCreatedMergeRequestsForGroupResponse'
   /analytics/group_activity/new_members_count:
     get:
       summary: Get count of members recently added to group
@@ -61,7 +59,21 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  new_members_count:
-                    type: integer
+                $ref: '#/components/schemas/getCountOfMembersRecentlyAddedToGroupResponse'
+components:
+  schemas:
+    getCountOfRecentlyCreatedIssuesForGroupResponse:
+      type: object
+      properties:
+        issues_count:
+          type: integer
+    getCountOfRecentlyCreatedMergeRequestsForGroupResponse:
+      type: object
+      properties:
+        merge_requests_count:
+          type: integer
+    getCountOfMembersRecentlyAddedToGroupResponse:
+      type: object
+      properties:
+        new_members_count:
+          type: integer
