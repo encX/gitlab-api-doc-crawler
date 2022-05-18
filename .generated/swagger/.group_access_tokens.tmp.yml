@@ -1,70 +1,24 @@
-endpoints:
-  - 'groups/{id}/access_tokens':
-      get:
-        summary: List group access tokens
-        description: Get a list of group access tokens.
-        operationId: listGroupAccessTokens
-        parameters:
-          - name: id
-            in: path
-            description: ID or URL-encoded path of the group
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      user_id:
-                        type: integer
-                      scopes:
-                        type: array
-                        items:
-                          type: string
-                      name:
-                        type: string
-                      expires_at:
-                        type: string
-                      id:
-                        type: integer
-                      active:
-                        type: boolean
-                      created_at:
-                        type: string
-                      revoked:
-                        type: boolean
-                      access_level:
-                        type: integer
-  - 'groups/{id}/access_tokens/{token_id}':
-      get:
-        summary: Get a group access token
-        description: Get a group access token by ID.
-        operationId: getAGroupAccessToken
-        parameters:
-          - name: id
-            in: path
-            description: ID or URL-encoded path of the group
-            required: true
-            schema:
-              type: string
-          - name: token_id
-            in: path
-            description: ID of the group access token
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  'groups/{id}/access_tokens':
+    get:
+      summary: List group access tokens
+      description: Get a list of group access tokens.
+      operationId: listGroupAccessTokens
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     user_id:
@@ -87,86 +41,130 @@ endpoints:
                       type: boolean
                     access_level:
                       type: integer
-  - 'groups/{id}/access_tokens':
-      post:
-        summary: Create a group access token
-        description: Create a group access token.
-        operationId: createAGroupAccessToken
-        parameters:
-          - name: id
-            in: path
-            description: ID or URL-encoded path of the group
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    scopes:
-                      type: array
-                      items:
-                        type: string
-                    active:
-                      type: boolean
-                    name:
-                      type: string
-                    revoked:
-                      type: boolean
-                    created_at:
-                      type: string
-                    user_id:
-                      type: integer
-                    id:
-                      type: integer
-                    expires_at:
-                      type: string
-                    token:
-                      type: string
-                    access_level:
-                      type: integer
-        requestBody:
+    post:
+      summary: Create a group access token
+      description: Create a group access token.
+      operationId: createAGroupAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  scopes:
+                    type: array
+                    items:
+                      type: string
+                  active:
+                    type: boolean
                   name:
                     type: string
-                  access_level:
+                  revoked:
+                    type: boolean
+                  created_at:
+                    type: string
+                  user_id:
+                    type: integer
+                  id:
                     type: integer
                   expires_at:
                     type: string
-                    format: date
-                required:
-                  - name
-                  - scopes
-  - 'groups/{id}/access_tokens/{token_id}':
-      delete:
-        summary: Revoke a group access token
-        description: Revoke a group access token.
-        operationId: revokeAGroupAccessToken
-        parameters:
-          - name: id
-            in: path
-            description: ID or URL-encoded path of the group
-            required: true
+                  token:
+                    type: string
+                  access_level:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: token_id
-            in: path
-            description: ID of the group access token
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+              type: object
+              properties:
+                name:
                   type: string
+                access_level:
+                  type: integer
+                expires_at:
+                  type: string
+                  format: date
+              required:
+                - name
+                - scopes
+  'groups/{id}/access_tokens/{token_id}':
+    get:
+      summary: Get a group access token
+      description: Get a group access token by ID.
+      operationId: getAGroupAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: token_id
+          in: path
+          description: ID of the group access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                  scopes:
+                    type: array
+                    items:
+                      type: string
+                  name:
+                    type: string
+                  expires_at:
+                    type: string
+                  id:
+                    type: integer
+                  active:
+                    type: boolean
+                  created_at:
+                    type: string
+                  revoked:
+                    type: boolean
+                  access_level:
+                    type: integer
+    delete:
+      summary: Revoke a group access token
+      description: Revoke a group access token.
+      operationId: revokeAGroupAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: token_id
+          in: path
+          description: ID of the group access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string

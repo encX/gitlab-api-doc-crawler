@@ -1,78 +1,24 @@
-endpoints:
-  - /application/plan_limits:
-      get:
-        summary: Get current plan limits
-        description: List the current limits of a plan on the GitLab instance.
-        operationId: getCurrentPlanLimits
-        parameters:
-          - name: plan_name
-            in: query
-            description: 'Name of the plan to get the limits from. Default: default.'
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    conan_max_file_size:
-                      type: integer
-                    generic_packages_max_file_size:
-                      type: integer
-                    helm_max_file_size:
-                      type: integer
-                    maven_max_file_size:
-                      type: integer
-                    npm_max_file_size:
-                      type: integer
-                    nuget_max_file_size:
-                      type: integer
-                    pypi_max_file_size:
-                      type: integer
-                    terraform_module_max_file_size:
-                      type: integer
-  - /application/plan_limits:
-      put:
-        summary: Change plan limits
-        description: Modify the limits of a plan on the GitLab instance.
-        operationId: changePlanLimits
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    conan_max_file_size:
-                      type: integer
-                    generic_packages_max_file_size:
-                      type: integer
-                    helm_max_file_size:
-                      type: integer
-                    maven_max_file_size:
-                      type: integer
-                    npm_max_file_size:
-                      type: integer
-                    nuget_max_file_size:
-                      type: integer
-                    pypi_max_file_size:
-                      type: integer
-                    terraform_module_max_file_size:
-                      type: integer
-        requestBody:
+paths:
+  /application/plan_limits:
+    get:
+      summary: Get current plan limits
+      description: List the current limits of a plan on the GitLab instance.
+      operationId: getCurrentPlanLimits
+      parameters:
+        - name: plan_name
+          in: query
+          description: 'Name of the plan to get the limits from. Default: default.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  plan_name:
-                    type: string
                   conan_max_file_size:
                     type: integer
                   generic_packages_max_file_size:
@@ -89,5 +35,58 @@ endpoints:
                     type: integer
                   terraform_module_max_file_size:
                     type: integer
-                required:
-                  - plan_name
+    put:
+      summary: Change plan limits
+      description: Modify the limits of a plan on the GitLab instance.
+      operationId: changePlanLimits
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conan_max_file_size:
+                    type: integer
+                  generic_packages_max_file_size:
+                    type: integer
+                  helm_max_file_size:
+                    type: integer
+                  maven_max_file_size:
+                    type: integer
+                  npm_max_file_size:
+                    type: integer
+                  nuget_max_file_size:
+                    type: integer
+                  pypi_max_file_size:
+                    type: integer
+                  terraform_module_max_file_size:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan_name:
+                  type: string
+                conan_max_file_size:
+                  type: integer
+                generic_packages_max_file_size:
+                  type: integer
+                helm_max_file_size:
+                  type: integer
+                maven_max_file_size:
+                  type: integer
+                npm_max_file_size:
+                  type: integer
+                nuget_max_file_size:
+                  type: integer
+                pypi_max_file_size:
+                  type: integer
+                terraform_module_max_file_size:
+                  type: integer
+              required:
+                - plan_name

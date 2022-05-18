@@ -1,134 +1,26 @@
-endpoints:
-  - '/projects/{id}/vulnerabilities':
-      get:
-        summary: List project vulnerabilities
-        description: List all of a project’s vulnerabilities.
-        operationId: listProjectVulnerabilities
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      author_id:
-                        type: integer
-                      confidence:
-                        type: string
-                      created_at:
-                        type: string
-                      description:
-                        type: string
-                      dismissed_at:
-                        type: string
-                      dismissed_by_id:
-                        type: string
-                      due_date:
-                        type: string
-                      finding:
-                        type: object
-                        properties:
-                          confidence:
-                            type: string
-                          created_at:
-                            type: string
-                          id:
-                            type: integer
-                          location_fingerprint:
-                            type: string
-                          metadata_version:
-                            type: string
-                          name:
-                            type: string
-                          primary_identifier_id:
-                            type: integer
-                          project_fingerprint:
-                            type: string
-                          project_id:
-                            type: integer
-                          raw_metadata:
-                            type: string
-                          report_type:
-                            type: string
-                          scanner_id:
-                            type: integer
-                          severity:
-                            type: string
-                          updated_at:
-                            type: string
-                          uuid:
-                            type: string
-                          vulnerability_id:
-                            type: integer
-                      id:
-                        type: integer
-                      last_edited_at:
-                        type: string
-                      last_edited_by_id:
-                        type: string
-                      project:
-                        type: object
-                        properties:
-                          created_at:
-                            type: string
-                          description:
-                            type: string
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          name_with_namespace:
-                            type: string
-                          path:
-                            type: string
-                          path_with_namespace:
-                            type: string
-                      project_default_branch:
-                        type: string
-                      report_type:
-                        type: string
-                      resolved_at:
-                        type: string
-                      resolved_by_id:
-                        type: string
-                      resolved_on_default_branch:
-                        type: boolean
-                      severity:
-                        type: string
-                      start_date:
-                        type: string
-                      state:
-                        type: string
-                      title:
-                        type: string
-                      updated_at:
-                        type: string
-                      updated_by_id:
-                        type: string
-  - '/projects/{id}/vulnerabilities':
-      post:
-        summary: New vulnerability
-        description: Creates a new vulnerability.
-        operationId: newVulnerability
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  '/projects/{id}/vulnerabilities':
+    get:
+      summary: List project vulnerabilities
+      description: List all of a project’s vulnerabilities.
+      operationId: listProjectVulnerabilities
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     author_id:
@@ -225,10 +117,117 @@ endpoints:
                       type: string
                     updated_by_id:
                       type: string
-        requestBody:
+    post:
+      summary: New vulnerability
+      description: Creates a new vulnerability.
+      operationId: newVulnerability
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
-                properties: {}
-                required: []
+                properties:
+                  author_id:
+                    type: integer
+                  confidence:
+                    type: string
+                  created_at:
+                    type: string
+                  description:
+                    type: string
+                  dismissed_at:
+                    type: string
+                  dismissed_by_id:
+                    type: string
+                  due_date:
+                    type: string
+                  finding:
+                    type: object
+                    properties:
+                      confidence:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: integer
+                      location_fingerprint:
+                        type: string
+                      metadata_version:
+                        type: string
+                      name:
+                        type: string
+                      primary_identifier_id:
+                        type: integer
+                      project_fingerprint:
+                        type: string
+                      project_id:
+                        type: integer
+                      raw_metadata:
+                        type: string
+                      report_type:
+                        type: string
+                      scanner_id:
+                        type: integer
+                      severity:
+                        type: string
+                      updated_at:
+                        type: string
+                      uuid:
+                        type: string
+                      vulnerability_id:
+                        type: integer
+                  id:
+                    type: integer
+                  last_edited_at:
+                    type: string
+                  last_edited_by_id:
+                    type: string
+                  project:
+                    type: object
+                    properties:
+                      created_at:
+                        type: string
+                      description:
+                        type: string
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      name_with_namespace:
+                        type: string
+                      path:
+                        type: string
+                      path_with_namespace:
+                        type: string
+                  project_default_branch:
+                    type: string
+                  report_type:
+                    type: string
+                  resolved_at:
+                    type: string
+                  resolved_by_id:
+                    type: string
+                  resolved_on_default_branch:
+                    type: boolean
+                  severity:
+                    type: string
+                  start_date:
+                    type: string
+                  state:
+                    type: string
+                  title:
+                    type: string
+                  updated_at:
+                    type: string
+                  updated_by_id:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+              required: []

@@ -1,88 +1,36 @@
-endpoints:
-  - '/projects/{id}/debian_distributions':
-      get:
-        summary: List all Debian distributions in a project
-        description: Lists Debian distributions in the given project.
-        operationId: listAllDebianDistributionsInAProject
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
-            schema:
-              type: string
-          - name: codename
-            in: query
-            description: Filter with a specific codename.
-            required: false
-            schema:
-              type: string
-          - name: suite
-            in: query
-            description: Filter with a specific suite.
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      codename:
-                        type: string
-                      suite:
-                        type: string
-                      origin:
-                        type: string
-                      label:
-                        type: string
-                      version:
-                        type: string
-                      description:
-                        type: string
-                      valid_time_duration_seconds:
-                        type: string
-                      components:
-                        type: array
-                        items:
-                          type: string
-                      architectures:
-                        type: array
-                        items:
-                          type: string
-  - '/projects/{id}/debian_distributions/{codename}':
-      get:
-        summary: Single Debian project distribution
-        description: Gets a single Debian project distribution.
-        operationId: singleDebianProjectDistribution
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
-            schema:
-              type: string
-          - name: codename
-            in: path
-            description: The codename of a distribution.
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  '/projects/{id}/debian_distributions':
+    get:
+      summary: List all Debian distributions in a project
+      description: Lists Debian distributions in the given project.
+      operationId: listAllDebianDistributionsInAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: codename
+          in: query
+          description: Filter with a specific codename.
+          required: false
+          schema:
+            type: string
+        - name: suite
+          in: query
+          description: Filter with a specific suite.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     id:
@@ -109,85 +57,154 @@ endpoints:
                       type: array
                       items:
                         type: string
-  - '/projects/{id}/debian_distributions/{codename}/key.asc':
-      get:
-        summary: Single Debian project distribution key
-        description: Gets a single Debian project distribution key.
-        operationId: singleDebianProjectDistributionKey
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
-            schema:
-              type: string
-          - name: codename
-            in: path
-            description: The codename of a distribution.
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
-  - '/projects/{id}/debian_distributions':
-      post:
-        summary: Create a Debian project distribution
-        description: Creates a Debian project distribution.
-        operationId: createADebianProjectDistribution
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    codename:
-                      type: string
-                    suite:
-                      type: string
-                    origin:
-                      type: string
-                    label:
-                      type: string
-                    version:
-                      type: string
-                    description:
-                      type: string
-                    valid_time_duration_seconds:
-                      type: string
-                    components:
-                      type: array
-                      items:
-                        type: string
-                    architectures:
-                      type: array
-                      items:
-                        type: string
-        requestBody:
+    post:
+      summary: Create a Debian project distribution
+      description: Creates a Debian project distribution.
+      operationId: createADebianProjectDistribution
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
+                  codename:
+                    type: string
+                  suite:
+                    type: string
+                  origin:
+                    type: string
+                  label:
+                    type: string
+                  version:
+                    type: string
+                  description:
+                    type: string
+                  valid_time_duration_seconds:
+                    type: string
+                  components:
+                    type: array
+                    items:
+                      type: string
+                  architectures:
+                    type: array
+                    items:
+                      type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codename:
+                  type: string
+                suite:
+                  type: string
+                origin:
+                  type: string
+                label:
+                  type: string
+                version:
+                  type: string
+                description:
+                  type: string
+                valid_time_duration_seconds:
+                  type: integer
+              required:
+                - codename
+  '/projects/{id}/debian_distributions/{codename}':
+    get:
+      summary: Single Debian project distribution
+      description: Gets a single Debian project distribution.
+      operationId: singleDebianProjectDistribution
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+        - name: codename
+          in: path
+          description: The codename of a distribution.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  codename:
+                    type: string
+                  suite:
+                    type: string
+                  origin:
+                    type: string
+                  label:
+                    type: string
+                  version:
+                    type: string
+                  description:
+                    type: string
+                  valid_time_duration_seconds:
+                    type: string
+                  components:
+                    type: array
+                    items:
+                      type: string
+                  architectures:
+                    type: array
+                    items:
+                      type: string
+    put:
+      summary: Update a Debian project distribution
+      description: Updates a Debian project distribution.
+      operationId: updateADebianProjectDistribution
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+        - name: codename
+          in: path
+          description: The Debian distribution’s codename.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
                   codename:
                     type: string
                   suite:
@@ -202,103 +219,83 @@ endpoints:
                     type: string
                   valid_time_duration_seconds:
                     type: integer
-                required:
-                  - codename
-  - '/projects/{id}/debian_distributions/{codename}':
-      put:
-        summary: Update a Debian project distribution
-        description: Updates a Debian project distribution.
-        operationId: updateADebianProjectDistribution
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
+                  components:
+                    type: array
+                    items:
+                      type: string
+                  architectures:
+                    type: array
+                    items:
+                      type: string
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: codename
-            in: path
-            description: The Debian distribution’s codename.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    codename:
-                      type: string
-                    suite:
-                      type: string
-                    origin:
-                      type: string
-                    label:
-                      type: string
-                    version:
-                      type: string
-                    description:
-                      type: string
-                    valid_time_duration_seconds:
-                      type: integer
-                    components:
-                      type: array
-                      items:
-                        type: string
-                    architectures:
-                      type: array
-                      items:
-                        type: string
-        requestBody:
+              type: object
+              properties:
+                suite:
+                  type: string
+                origin:
+                  type: string
+                label:
+                  type: string
+                version:
+                  type: string
+                description:
+                  type: string
+                valid_time_duration_seconds:
+                  type: integer
+              required: []
+    delete:
+      summary: Delete a Debian project distribution
+      description: Deletes a Debian project distribution.
+      operationId: deleteADebianProjectDistribution
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+        - name: codename
+          in: path
+          description: The Debian distribution’s codename.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  suite:
-                    type: string
-                  origin:
-                    type: string
-                  label:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  valid_time_duration_seconds:
-                    type: integer
-                required: []
-  - '/projects/{id}/debian_distributions/{codename}':
-      delete:
-        summary: Delete a Debian project distribution
-        description: Deletes a Debian project distribution.
-        operationId: deleteADebianProjectDistribution
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user.
-            required: true
-            schema:
-              type: string
-          - name: codename
-            in: path
-            description: The Debian distribution’s codename.
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
+                type: string
+  '/projects/{id}/debian_distributions/{codename}/key.asc':
+    get:
+      summary: Single Debian project distribution key
+      description: Gets a single Debian project distribution key.
+      operationId: singleDebianProjectDistributionKey
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: true
+          schema:
+            type: string
+        - name: codename
+          in: path
+          description: The codename of a distribution.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string

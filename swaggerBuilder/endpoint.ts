@@ -48,7 +48,6 @@ export class Endpoint {
   }
 
   private getParams(): ParameterObject[] {
-    // todo get+delete = query params / post+put+patch = form data ... or json?
     return this.api.attributes
       .filter((a) => this.isPathParam(a.name) || !this.isMethodHasbody())
       .map<ParameterObject>((a) => ({

@@ -1,118 +1,20 @@
-endpoints:
-  - /project_repository_storage_moves:
-      get:
-        summary: Retrieve all project repository storage moves
-        description: >-
-          By default, GET requests return 20 results at a time because the API
-          results are paginated.
-        operationId: retrieveAllProjectRepositoryStorageMoves
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      created_at:
-                        type: string
-                      state:
-                        type: string
-                      source_storage_name:
-                        type: string
-                      destination_storage_name:
-                        type: string
-                      project:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          description:
-                            type: string
-                          name:
-                            type: string
-                          name_with_namespace:
-                            type: string
-                          path:
-                            type: string
-                          path_with_namespace:
-                            type: string
-                          created_at:
-                            type: string
-  - '/projects/{project_id}/repository_storage_moves':
-      get:
-        summary: Retrieve all repository storage moves for a project
-        description: >-
-          By default, GET requests return 20 results at a time because the API
-          results are paginated.
-        operationId: retrieveAllRepositoryStorageMovesForAProject
-        parameters:
-          - name: project_id
-            in: path
-            description: ID of the project
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      created_at:
-                        type: string
-                      state:
-                        type: string
-                      source_storage_name:
-                        type: string
-                      destination_storage_name:
-                        type: string
-                      project:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          description:
-                            type: string
-                          name:
-                            type: string
-                          name_with_namespace:
-                            type: string
-                          path:
-                            type: string
-                          path_with_namespace:
-                            type: string
-                          created_at:
-                            type: string
-  - '/project_repository_storage_moves/{repository_storage_id}':
-      get:
-        summary: Get a single project repository storage move
-        description: ''
-        operationId: getASingleProjectRepositoryStorageMove
-        parameters:
-          - name: repository_storage_id
-            in: path
-            description: ID of the project repository storage move
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  /project_repository_storage_moves:
+    get:
+      summary: Retrieve all project repository storage moves
+      description: >-
+        By default, GET requests return 20 results at a time because the API
+        results are paginated.
+      operationId: retrieveAllProjectRepositoryStorageMoves
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     id:
@@ -142,142 +44,238 @@ endpoints:
                           type: string
                         created_at:
                           type: string
-  - '/projects/{project_id}/repository_storage_moves/{repository_storage_id}':
-      get:
-        summary: Get a single repository storage move for a project
-        description: ''
-        operationId: getASingleRepositoryStorageMoveForAProject
-        parameters:
-          - name: project_id
-            in: path
-            description: ID of the project
-            required: true
-            schema:
-              type: integer
-          - name: repository_storage_id
-            in: path
-            description: ID of the project repository storage move
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
-  - '/projects/{project_id}/repository_storage_moves':
-      post:
-        summary: Schedule a repository storage move for a project
-        description: ''
-        operationId: scheduleARepositoryStorageMoveForAProject
-        parameters:
-          - name: project_id
-            in: path
-            description: ID of the project
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    created_at:
-                      type: string
-                    state:
-                      type: string
-                    source_storage_name:
-                      type: string
-                    destination_storage_name:
-                      type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
-        requestBody:
+    post:
+      summary: Schedule repository storage moves for all projects on a storage shard
+      description: >-
+        Schedules repository storage moves for each project repository stored on
+        the source storage shard.
+      operationId: scheduleRepositoryStorageMovesForAllProjectsOnAStorageShard
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  destination_storage_name:
+                  message:
                     type: string
-                required: []
-  - /project_repository_storage_moves:
-      post:
-        summary: Schedule repository storage moves for all projects on a storage shard
-        description: >-
-          Schedules repository storage moves for each project repository stored
-          on the source storage shard.
-        operationId: scheduleRepositoryStorageMovesForAllProjectsOnAStorageShard
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_storage_name:
+                  type: string
+                destination_storage_name:
+                  type: string
+              required:
+                - source_storage_name
+  '/projects/{project_id}/repository_storage_moves':
+    get:
+      summary: Retrieve all repository storage moves for a project
+      description: >-
+        By default, GET requests return 20 results at a time because the API
+        results are paginated.
+      operationId: retrieveAllRepositoryStorageMovesForAProject
+      parameters:
+        - name: project_id
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
-                    message:
+                    id:
+                      type: integer
+                    created_at:
                       type: string
-        requestBody:
+                    state:
+                      type: string
+                    source_storage_name:
+                      type: string
+                    destination_storage_name:
+                      type: string
+                    project:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        description:
+                          type: string
+                        name:
+                          type: string
+                        name_with_namespace:
+                          type: string
+                        path:
+                          type: string
+                        path_with_namespace:
+                          type: string
+                        created_at:
+                          type: string
+    post:
+      summary: Schedule a repository storage move for a project
+      description: ''
+      operationId: scheduleARepositoryStorageMoveForAProject
+      parameters:
+        - name: project_id
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
+                  created_at:
+                    type: string
+                  state:
+                    type: string
                   source_storage_name:
                     type: string
                   destination_storage_name:
                     type: string
-                required:
-                  - source_storage_name
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      name_with_namespace:
+                        type: string
+                      path:
+                        type: string
+                      path_with_namespace:
+                        type: string
+                      created_at:
+                        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination_storage_name:
+                  type: string
+              required: []
+  '/project_repository_storage_moves/{repository_storage_id}':
+    get:
+      summary: Get a single project repository storage move
+      description: ''
+      operationId: getASingleProjectRepositoryStorageMove
+      parameters:
+        - name: repository_storage_id
+          in: path
+          description: ID of the project repository storage move
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  created_at:
+                    type: string
+                  state:
+                    type: string
+                  source_storage_name:
+                    type: string
+                  destination_storage_name:
+                    type: string
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      name_with_namespace:
+                        type: string
+                      path:
+                        type: string
+                      path_with_namespace:
+                        type: string
+                      created_at:
+                        type: string
+  '/projects/{project_id}/repository_storage_moves/{repository_storage_id}':
+    get:
+      summary: Get a single repository storage move for a project
+      description: ''
+      operationId: getASingleRepositoryStorageMoveForAProject
+      parameters:
+        - name: project_id
+          in: path
+          description: ID of the project
+          required: true
+          schema:
+            type: integer
+        - name: repository_storage_id
+          in: path
+          description: ID of the project repository storage move
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  created_at:
+                    type: string
+                  state:
+                    type: string
+                  source_storage_name:
+                    type: string
+                  destination_storage_name:
+                    type: string
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      name_with_namespace:
+                        type: string
+                      path:
+                        type: string
+                      path_with_namespace:
+                        type: string
+                      created_at:
+                        type: string

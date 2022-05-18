@@ -1,41 +1,13 @@
-endpoints:
-  - /notification_settings:
-      get:
-        summary: Global notification settings
-        description: Get current notification settings and email address.
-        operationId: globalNotificationSettings
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    level:
-                      type: string
-                    notification_email:
-                      type: string
-  - /notification_settings:
-      put:
-        summary: Update global notification settings
-        description: Update current notification settings and email address.
-        operationId: updateGlobalNotificationSettings
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    level:
-                      type: string
-                    notification_email:
-                      type: string
-        requestBody:
+paths:
+  /notification_settings:
+    get:
+      summary: Global notification settings
+      description: Get current notification settings and email address.
+      operationId: globalNotificationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
@@ -45,121 +17,14 @@ endpoints:
                     type: string
                   notification_email:
                     type: string
-                  new_note:
-                    type: boolean
-                  new_issue:
-                    type: boolean
-                  reopen_issue:
-                    type: boolean
-                  close_issue:
-                    type: boolean
-                  reassign_issue:
-                    type: boolean
-                  issue_due:
-                    type: boolean
-                  new_merge_request:
-                    type: boolean
-                  push_to_merge_request:
-                    type: boolean
-                  reopen_merge_request:
-                    type: boolean
-                  close_merge_request:
-                    type: boolean
-                  reassign_merge_request:
-                    type: boolean
-                  merge_merge_request:
-                    type: boolean
-                  failed_pipeline:
-                    type: boolean
-                  fixed_pipeline:
-                    type: boolean
-                  success_pipeline:
-                    type: boolean
-                  moved_project:
-                    type: boolean
-                  merge_when_pipeline_succeeds:
-                    type: boolean
-                  new_epic:
-                    type: boolean
-                required: []
-  - '/groups/{id}/notification_settings':
-      get:
-        summary: Group / project level notification settings
-        description: Get current group or project notification settings.
-        operationId: group/ProjectLevelNotificationSettings
-        parameters:
-          - name: id
-            in: path
-            description: 'The ID, or URL-encoded path, of the group or project.'
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    level:
-                      type: string
-  - '/groups/{id}/notification_settings':
-      put:
-        summary: Update group/project level notification settings
-        description: Update current group/project notification settings.
-        operationId: updateGroup/projectLevelNotificationSettings
-        parameters:
-          - name: id
-            in: path
-            description: 'The ID, or URL-encoded path, of the group or project'
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    level:
-                      type: string
-                    events:
-                      type: object
-                      properties:
-                        new_note:
-                          type: boolean
-                        new_issue:
-                          type: boolean
-                        reopen_issue:
-                          type: boolean
-                        close_issue:
-                          type: boolean
-                        reassign_issue:
-                          type: boolean
-                        issue_due:
-                          type: boolean
-                        new_merge_request:
-                          type: boolean
-                        push_to_merge_request:
-                          type: boolean
-                        reopen_merge_request:
-                          type: boolean
-                        close_merge_request:
-                          type: boolean
-                        reassign_merge_request:
-                          type: boolean
-                        merge_merge_request:
-                          type: boolean
-                        failed_pipeline:
-                          type: boolean
-                        fixed_pipeline:
-                          type: boolean
-                        success_pipeline:
-                          type: boolean
-        requestBody:
+    put:
+      summary: Update global notification settings
+      description: Update current notification settings and email address.
+      operationId: updateGlobalNotificationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
@@ -167,40 +32,173 @@ endpoints:
                 properties:
                   level:
                     type: string
-                  new_note:
-                    type: boolean
-                  new_issue:
-                    type: boolean
-                  reopen_issue:
-                    type: boolean
-                  close_issue:
-                    type: boolean
-                  reassign_issue:
-                    type: boolean
-                  issue_due:
-                    type: boolean
-                  new_merge_request:
-                    type: boolean
-                  push_to_merge_request:
-                    type: boolean
-                  reopen_merge_request:
-                    type: boolean
-                  close_merge_request:
-                    type: boolean
-                  reassign_merge_request:
-                    type: boolean
-                  merge_merge_request:
-                    type: boolean
-                  failed_pipeline:
-                    type: boolean
-                  fixed_pipeline:
-                    type: boolean
-                  success_pipeline:
-                    type: boolean
-                  moved_project:
-                    type: boolean
-                  merge_when_pipeline_succeeds:
-                    type: boolean
-                  new_epic:
-                    type: boolean
-                required: []
+                  notification_email:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level:
+                  type: string
+                notification_email:
+                  type: string
+                new_note:
+                  type: boolean
+                new_issue:
+                  type: boolean
+                reopen_issue:
+                  type: boolean
+                close_issue:
+                  type: boolean
+                reassign_issue:
+                  type: boolean
+                issue_due:
+                  type: boolean
+                new_merge_request:
+                  type: boolean
+                push_to_merge_request:
+                  type: boolean
+                reopen_merge_request:
+                  type: boolean
+                close_merge_request:
+                  type: boolean
+                reassign_merge_request:
+                  type: boolean
+                merge_merge_request:
+                  type: boolean
+                failed_pipeline:
+                  type: boolean
+                fixed_pipeline:
+                  type: boolean
+                success_pipeline:
+                  type: boolean
+                moved_project:
+                  type: boolean
+                merge_when_pipeline_succeeds:
+                  type: boolean
+                new_epic:
+                  type: boolean
+              required: []
+  '/groups/{id}/notification_settings':
+    get:
+      summary: Group / project level notification settings
+      description: Get current group or project notification settings.
+      operationId: group/ProjectLevelNotificationSettings
+      parameters:
+        - name: id
+          in: path
+          description: 'The ID, or URL-encoded path, of the group or project.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  level:
+                    type: string
+    put:
+      summary: Update group/project level notification settings
+      description: Update current group/project notification settings.
+      operationId: updateGroup/projectLevelNotificationSettings
+      parameters:
+        - name: id
+          in: path
+          description: 'The ID, or URL-encoded path, of the group or project'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  level:
+                    type: string
+                  events:
+                    type: object
+                    properties:
+                      new_note:
+                        type: boolean
+                      new_issue:
+                        type: boolean
+                      reopen_issue:
+                        type: boolean
+                      close_issue:
+                        type: boolean
+                      reassign_issue:
+                        type: boolean
+                      issue_due:
+                        type: boolean
+                      new_merge_request:
+                        type: boolean
+                      push_to_merge_request:
+                        type: boolean
+                      reopen_merge_request:
+                        type: boolean
+                      close_merge_request:
+                        type: boolean
+                      reassign_merge_request:
+                        type: boolean
+                      merge_merge_request:
+                        type: boolean
+                      failed_pipeline:
+                        type: boolean
+                      fixed_pipeline:
+                        type: boolean
+                      success_pipeline:
+                        type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                level:
+                  type: string
+                new_note:
+                  type: boolean
+                new_issue:
+                  type: boolean
+                reopen_issue:
+                  type: boolean
+                close_issue:
+                  type: boolean
+                reassign_issue:
+                  type: boolean
+                issue_due:
+                  type: boolean
+                new_merge_request:
+                  type: boolean
+                push_to_merge_request:
+                  type: boolean
+                reopen_merge_request:
+                  type: boolean
+                close_merge_request:
+                  type: boolean
+                reassign_merge_request:
+                  type: boolean
+                merge_merge_request:
+                  type: boolean
+                failed_pipeline:
+                  type: boolean
+                fixed_pipeline:
+                  type: boolean
+                success_pipeline:
+                  type: boolean
+                moved_project:
+                  type: boolean
+                merge_when_pipeline_succeeds:
+                  type: boolean
+                new_epic:
+                  type: boolean
+              required: []

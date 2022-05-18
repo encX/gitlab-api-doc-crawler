@@ -1,62 +1,62 @@
-endpoints:
-  - /personal_access_tokens:
-      get:
-        summary: List personal access tokens
-        description: Get a list of personal access tokens.
-        operationId: listPersonalAccessTokens
-        parameters:
-          - name: user_id
-            in: query
-            description: The ID of the user to filter by
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
+paths:
+  /personal_access_tokens:
+    get:
+      summary: List personal access tokens
+      description: Get a list of personal access tokens.
+      operationId: listPersonalAccessTokens
+      parameters:
+        - name: user_id
+          in: query
+          description: The ID of the user to filter by
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    revoked:
+                      type: boolean
+                    created_at:
+                      type: string
+                    scopes:
+                      type: array
+                      items:
                         type: string
-                      revoked:
-                        type: boolean
-                      created_at:
-                        type: string
-                      scopes:
-                        type: array
-                        items:
-                          type: string
-                      user_id:
-                        type: integer
-                      last_used_at:
-                        type: string
-                      active:
-                        type: boolean
-                      expires_at:
-                        type: string
-  - '/personal_access_tokens/{id}':
-      delete:
-        summary: Revoke a personal access token
-        description: Revoke a personal access token.
-        operationId: revokeAPersonalAccessToken
-        parameters:
-          - name: id
-            in: path
-            description: ID of personal access token
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
+                    user_id:
+                      type: integer
+                    last_used_at:
+                      type: string
+                    active:
+                      type: boolean
+                    expires_at:
+                      type: string
+  '/personal_access_tokens/{id}':
+    delete:
+      summary: Revoke a personal access token
+      description: Revoke a personal access token.
+      operationId: revokeAPersonalAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID of personal access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string

@@ -1,31 +1,31 @@
-endpoints:
-  - /markdown:
-      post:
-        summary: Render an arbitrary Markdown document
-        description: 'Response example:'
-        operationId: renderAnArbitraryMarkdownDocument
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    html:
-                      type: string
-        requestBody:
+paths:
+  /markdown:
+    post:
+      summary: Render an arbitrary Markdown document
+      description: 'Response example:'
+      operationId: renderAnArbitraryMarkdownDocument
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  text:
+                  html:
                     type: string
-                  gfm:
-                    type: boolean
-                  project:
-                    type: string
-                required:
-                  - text
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                gfm:
+                  type: boolean
+                project:
+                  type: string
+              required:
+                - text

@@ -1,193 +1,193 @@
-endpoints:
-  - '/keys/{id}':
-      get:
-        summary: Get SSH key with user by ID of an SSH key
-        description: >-
-          Get SSH key with user by ID of an SSH key. Note only administrators
-          can lookup SSH key with user by ID of an SSH key.
-        operationId: getSshKeyWithUserByIdOfAnSshKey
-        parameters:
-          - name: id
-            in: path
-            description: The ID of an SSH key
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    key:
-                      type: string
-                    created_at:
-                      type: string
-                    expires_at:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        id:
-                          type: integer
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                        created_at:
-                          type: string
-                        bio:
-                          type: string
-                        location:
-                          type: string
-                        public_email:
-                          type: string
-                        skype:
-                          type: string
-                        linkedin:
-                          type: string
-                        twitter:
-                          type: string
-                        website_url:
-                          type: string
-                        organization:
-                          type: string
-                        last_sign_in_at:
-                          type: string
-                        confirmed_at:
-                          type: string
-                        last_activity_on:
-                          type: string
-                        email:
-                          type: string
-                        theme_id:
-                          type: integer
-                        color_scheme_id:
-                          type: integer
-                        projects_limit:
-                          type: integer
-                        current_sign_in_at:
-                          type: string
-                        identities:
-                          type: array
-                          items: {}
-                        can_create_group:
-                          type: boolean
-                        can_create_project:
-                          type: boolean
-                        two_factor_enabled:
-                          type: boolean
-                        external:
-                          type: boolean
-                        private_profile:
-                          type: string
-  - /keys:
-      get:
-        summary: Get user by fingerprint of SSH key
-        description: >-
-          You can search for a user that owns a specific SSH key. Note only
-          administrators can lookup SSH key with the fingerprint of an SSH key.
-        operationId: getUserByFingerprintOfSshKey
-        parameters:
-          - name: fingerprint
-            in: query
-            description: The fingerprint of an SSH key
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    title:
-                      type: string
-                    key:
-                      type: string
-                    created_at:
-                      type: string
-                    expires_at:
-                      type: string
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                        created_at:
-                          type: string
-                        bio:
-                          type: string
-                        location:
-                          type: string
-                        public_email:
-                          type: string
-                        skype:
-                          type: string
-                        linkedin:
-                          type: string
-                        twitter:
-                          type: string
-                        website_url:
-                          type: string
-                        organization:
-                          type: string
-                        last_sign_in_at:
-                          type: string
-                        confirmed_at:
-                          type: string
-                        last_activity_on:
-                          type: string
-                        email:
-                          type: string
-                        theme_id:
-                          type: integer
-                        color_scheme_id:
-                          type: integer
-                        projects_limit:
-                          type: integer
-                        current_sign_in_at:
-                          type: string
-                        identities:
-                          type: array
-                          items: {}
-                        can_create_group:
-                          type: boolean
-                        can_create_project:
-                          type: boolean
-                        two_factor_enabled:
-                          type: boolean
-                        external:
-                          type: boolean
-                        private_profile:
-                          type: boolean
-                        shared_runners_minutes_limit:
-                          type: string
-                        extra_shared_runners_minutes_limit:
-                          type: string
+paths:
+  '/keys/{id}':
+    get:
+      summary: Get SSH key with user by ID of an SSH key
+      description: >-
+        Get SSH key with user by ID of an SSH key. Note only administrators can
+        lookup SSH key with user by ID of an SSH key.
+      operationId: getSshKeyWithUserByIdOfAnSshKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID of an SSH key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  key:
+                    type: string
+                  created_at:
+                    type: string
+                  expires_at:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      id:
+                        type: integer
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+                      created_at:
+                        type: string
+                      bio:
+                        type: string
+                      location:
+                        type: string
+                      public_email:
+                        type: string
+                      skype:
+                        type: string
+                      linkedin:
+                        type: string
+                      twitter:
+                        type: string
+                      website_url:
+                        type: string
+                      organization:
+                        type: string
+                      last_sign_in_at:
+                        type: string
+                      confirmed_at:
+                        type: string
+                      last_activity_on:
+                        type: string
+                      email:
+                        type: string
+                      theme_id:
+                        type: integer
+                      color_scheme_id:
+                        type: integer
+                      projects_limit:
+                        type: integer
+                      current_sign_in_at:
+                        type: string
+                      identities:
+                        type: array
+                        items: {}
+                      can_create_group:
+                        type: boolean
+                      can_create_project:
+                        type: boolean
+                      two_factor_enabled:
+                        type: boolean
+                      external:
+                        type: boolean
+                      private_profile:
+                        type: string
+  /keys:
+    get:
+      summary: Get user by fingerprint of SSH key
+      description: >-
+        You can search for a user that owns a specific SSH key. Note only
+        administrators can lookup SSH key with the fingerprint of an SSH key.
+      operationId: getUserByFingerprintOfSshKey
+      parameters:
+        - name: fingerprint
+          in: query
+          description: The fingerprint of an SSH key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  key:
+                    type: string
+                  created_at:
+                    type: string
+                  expires_at:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+                      created_at:
+                        type: string
+                      bio:
+                        type: string
+                      location:
+                        type: string
+                      public_email:
+                        type: string
+                      skype:
+                        type: string
+                      linkedin:
+                        type: string
+                      twitter:
+                        type: string
+                      website_url:
+                        type: string
+                      organization:
+                        type: string
+                      last_sign_in_at:
+                        type: string
+                      confirmed_at:
+                        type: string
+                      last_activity_on:
+                        type: string
+                      email:
+                        type: string
+                      theme_id:
+                        type: integer
+                      color_scheme_id:
+                        type: integer
+                      projects_limit:
+                        type: integer
+                      current_sign_in_at:
+                        type: string
+                      identities:
+                        type: array
+                        items: {}
+                      can_create_group:
+                        type: boolean
+                      can_create_project:
+                        type: boolean
+                      two_factor_enabled:
+                        type: boolean
+                      external:
+                        type: boolean
+                      private_profile:
+                        type: boolean
+                      shared_runners_minutes_limit:
+                        type: string
+                      extra_shared_runners_minutes_limit:
+                        type: string

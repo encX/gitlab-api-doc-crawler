@@ -1,478 +1,37 @@
-endpoints:
-  - '/projects/{id}/jobs':
-      get:
-        summary: List project jobs
-        description: >-
-          Get a list of jobs in a project. Jobs are sorted in descending order
-          of their IDs.
-        operationId: listProjectJobs
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: scope
-            in: query
-            description: >-
-              Scope of jobs to show. Either one of or an array of the following:
-              created, pending, running, failed, success, canceled, skipped, or
-              manual. All jobs are returned if scope is not provided.
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      commit:
-                        type: object
-                        properties:
-                          author_email:
-                            type: string
-                          author_name:
-                            type: string
-                          created_at:
-                            type: string
-                          id:
-                            type: string
-                          message:
-                            type: string
-                          short_id:
-                            type: string
-                          title:
-                            type: string
-                      coverage:
-                        type: string
-                      allow_failure:
-                        type: boolean
-                      created_at:
-                        type: string
-                      started_at:
-                        type: string
-                      finished_at:
-                        type: string
-                      duration:
-                        type: number
-                      queued_duration:
-                        type: number
-                      artifacts_file:
-                        type: object
-                        properties:
-                          filename:
-                            type: string
-                          size:
-                            type: integer
-                      artifacts:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            file_type:
-                              type: string
-                            size:
-                              type: integer
-                            filename:
-                              type: string
-                            file_format:
-                              type: string
-                      artifacts_expire_at:
-                        type: string
-                      tag_list:
-                        type: array
-                        items:
-                          type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      pipeline:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          project_id:
-                            type: integer
-                          ref:
-                            type: string
-                          sha:
-                            type: string
-                          status:
-                            type: string
-                      ref:
-                        type: string
-                      runner:
-                        type: string
-                      stage:
-                        type: string
-                      status:
-                        type: string
-                      failure_reason:
-                        type: string
-                      tag:
-                        type: boolean
-                      web_url:
-                        type: string
-                      user:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                          created_at:
-                            type: string
-                          bio:
-                            type: string
-                          location:
-                            type: string
-                          public_email:
-                            type: string
-                          skype:
-                            type: string
-                          linkedin:
-                            type: string
-                          twitter:
-                            type: string
-                          website_url:
-                            type: string
-                          organization:
-                            type: string
-  - '/projects/{id}/pipelines/{pipeline_id}/jobs':
-      get:
-        summary: List pipeline jobs
-        description: Get a list of jobs for a pipeline.
-        operationId: listPipelineJobs
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: pipeline_id
-            in: path
-            description: >-
-              ID of a pipeline. Can also be obtained in CI jobs via the
-              predefined CI variable CI_PIPELINE_ID.
-            required: false
-            schema:
-              type: integer
-          - name: scope
-            in: query
-            description: >-
-              Scope of jobs to show. Either one of or an array of the following:
-              created, pending, running, failed, success, canceled, skipped, or
-              manual. All jobs are returned if scope is not provided.
-            required: false
-            schema:
-              type: string
-          - name: include_retried
-            in: query
-            description: >-
-              Include retried jobs in the response. Defaults to false.
-              Introduced in GitLab 13.9.
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      commit:
-                        type: object
-                        properties:
-                          author_email:
-                            type: string
-                          author_name:
-                            type: string
-                          created_at:
-                            type: string
-                          id:
-                            type: string
-                          message:
-                            type: string
-                          short_id:
-                            type: string
-                          title:
-                            type: string
-                      coverage:
-                        type: string
-                      allow_failure:
-                        type: boolean
-                      created_at:
-                        type: string
-                      started_at:
-                        type: string
-                      finished_at:
-                        type: string
-                      duration:
-                        type: number
-                      queued_duration:
-                        type: number
-                      artifacts_expire_at:
-                        type: string
-                      tag_list:
-                        type: array
-                        items:
-                          type: string
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      pipeline:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          project_id:
-                            type: integer
-                          ref:
-                            type: string
-                          sha:
-                            type: string
-                          status:
-                            type: string
-                      ref:
-                        type: string
-                      artifacts:
-                        type: array
-                        items: {}
-                      runner:
-                        type: string
-                      stage:
-                        type: string
-                      status:
-                        type: string
-                      failure_reason:
-                        type: string
-                      tag:
-                        type: boolean
-                      web_url:
-                        type: string
-                      user:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                          created_at:
-                            type: string
-                          bio:
-                            type: string
-                          location:
-                            type: string
-                          public_email:
-                            type: string
-                          skype:
-                            type: string
-                          linkedin:
-                            type: string
-                          twitter:
-                            type: string
-                          website_url:
-                            type: string
-                          organization:
-                            type: string
-  - '/projects/{id}/pipelines/{pipeline_id}/bridges':
-      get:
-        summary: List pipeline bridges
-        description: Get a list of bridge jobs for a pipeline.
-        operationId: listPipelineBridges
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: pipeline_id
-            in: path
-            description: ID of a pipeline.
-            required: false
-            schema:
-              type: integer
-          - name: scope
-            in: query
-            description: >-
-              Scope of jobs to show. Either one of or an array of the following:
-              created, pending, running, failed, success, canceled, skipped, or
-              manual. All jobs are returned if scope is not provided.
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      commit:
-                        type: object
-                        properties:
-                          author_email:
-                            type: string
-                          author_name:
-                            type: string
-                          created_at:
-                            type: string
-                          id:
-                            type: string
-                          message:
-                            type: string
-                          short_id:
-                            type: string
-                          title:
-                            type: string
-                      coverage:
-                        type: string
-                      allow_failure:
-                        type: boolean
-                      created_at:
-                        type: string
-                      started_at:
-                        type: string
-                      finished_at:
-                        type: string
-                      duration:
-                        type: integer
-                      queued_duration:
-                        type: number
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      pipeline:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          project_id:
-                            type: integer
-                          ref:
-                            type: string
-                          sha:
-                            type: string
-                          status:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          web_url:
-                            type: string
-                      ref:
-                        type: string
-                      stage:
-                        type: string
-                      status:
-                        type: string
-                      tag:
-                        type: boolean
-                      web_url:
-                        type: string
-                      user:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          username:
-                            type: string
-                          state:
-                            type: string
-                          avatar_url:
-                            type: string
-                          web_url:
-                            type: string
-                          created_at:
-                            type: string
-                          bio:
-                            type: string
-                          location:
-                            type: string
-                          public_email:
-                            type: string
-                          skype:
-                            type: string
-                          linkedin:
-                            type: string
-                          twitter:
-                            type: string
-                          website_url:
-                            type: string
-                          organization:
-                            type: string
-                      downstream_pipeline:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          sha:
-                            type: string
-                          ref:
-                            type: string
-                          status:
-                            type: string
-                          created_at:
-                            type: string
-                          updated_at:
-                            type: string
-                          web_url:
-                            type: string
-  - /job:
-      get:
-        summary: Get job token’s job
-        description: Retrieve the job that generated a job token.
-        operationId: getJobTokenJob
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  '/projects/{id}/jobs':
+    get:
+      summary: List project jobs
+      description: >-
+        Get a list of jobs in a project. Jobs are sorted in descending order of
+        their IDs.
+      operationId: listProjectJobs
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: scope
+          in: query
+          description: >-
+            Scope of jobs to show. Either one of or an array of the following:
+            created, pending, running, failed, success, canceled, skipped, or
+            manual. All jobs are returned if scope is not provided.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     commit:
@@ -506,8 +65,32 @@ endpoints:
                       type: number
                     queued_duration:
                       type: number
+                    artifacts_file:
+                      type: object
+                      properties:
+                        filename:
+                          type: string
+                        size:
+                          type: integer
+                    artifacts:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          file_type:
+                            type: string
+                          size:
+                            type: integer
+                          filename:
+                            type: string
+                          file_format:
+                            type: string
                     artifacts_expire_at:
                       type: string
+                    tag_list:
+                      type: array
+                      items:
+                        type: string
                     id:
                       type: integer
                     name:
@@ -527,9 +110,6 @@ endpoints:
                           type: string
                     ref:
                       type: string
-                    artifacts:
-                      type: array
-                      items: {}
                     runner:
                       type: string
                     stage:
@@ -575,144 +155,53 @@ endpoints:
                           type: string
                         organization:
                           type: string
-  - /job/allowed_agents:
-      get:
-        summary: Get GitLab agent by CI_JOB_TOKEN
-        description: >-
-          Retrieve the job that generated the CI_JOB_TOKEN, along with a list of
-          allowed agents.
-        operationId: getGitlabAgentByCi_job_token
-        parameters:
-          - name: CI_JOB_TOKEN
-            in: query
-            description: >-
-              Token value associated with the GitLab-provided CI_JOB_TOKEN
-              variable.
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    allowed_agents:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          config_project:
-                            type: object
-                            properties:
-                              id:
-                                type: integer
-                              description:
-                                type: string
-                              name:
-                                type: string
-                              name_with_namespace:
-                                type: string
-                              path:
-                                type: string
-                              path_with_namespace:
-                                type: string
-                              created_at:
-                                type: string
-                    job:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        stage:
-                          type: string
-                        project_id:
-                          type: integer
-                        project_name:
-                          type: string
-                    pipeline:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        project_id:
-                          type: integer
-                        sha:
-                          type: string
-                        ref:
-                          type: string
-                        status:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        web_url:
-                          type: string
-                    project:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        description:
-                          type: string
-                        name:
-                          type: string
-                        name_with_namespace:
-                          type: string
-                        path:
-                          type: string
-                        path_with_namespace:
-                          type: string
-                        created_at:
-                          type: string
-                    user:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-  - '/projects/{id}/jobs/{job_id}':
-      get:
-        summary: Get a single job
-        description: Get a single job of a project
-        operationId: getASingleJob
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+  '/projects/{id}/pipelines/{pipeline_id}/jobs':
+    get:
+      summary: List pipeline jobs
+      description: Get a list of jobs for a pipeline.
+      operationId: listPipelineJobs
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: pipeline_id
+          in: path
+          description: >-
+            ID of a pipeline. Can also be obtained in CI jobs via the predefined
+            CI variable CI_PIPELINE_ID.
+          required: false
+          schema:
+            type: integer
+        - name: scope
+          in: query
+          description: >-
+            Scope of jobs to show. Either one of or an array of the following:
+            created, pending, running, failed, success, canceled, skipped, or
+            manual. All jobs are returned if scope is not provided.
+          required: false
+          schema:
+            type: string
+        - name: include_retried
+          in: query
+          description: >-
+            Include retried jobs in the response. Defaults to false. Introduced
+            in GitLab 13.9.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     commit:
@@ -780,6 +269,8 @@ endpoints:
                       type: string
                     status:
                       type: string
+                    failure_reason:
+                      type: string
                     tag:
                       type: boolean
                     web_url:
@@ -817,59 +308,43 @@ endpoints:
                           type: string
                         organization:
                           type: string
-  - '/projects/{id}/jobs/{job_id}/trace':
-      get:
-        summary: Get a log file
-        description: 'Get a log (trace) of a specific job of a project:'
-        operationId: getALogFile
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
-  - '/projects/{id}/jobs/{job_id}/cancel':
-      post:
-        summary: Cancel a job
-        description: Cancel a single job of a project
-        operationId: cancelAJob
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+  '/projects/{id}/pipelines/{pipeline_id}/bridges':
+    get:
+      summary: List pipeline bridges
+      description: Get a list of bridge jobs for a pipeline.
+      operationId: listPipelineBridges
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: pipeline_id
+          in: path
+          description: ID of a pipeline.
+          required: false
+          schema:
+            type: integer
+        - name: scope
+          in: query
+          description: >-
+            Scope of jobs to show. Either one of or an array of the following:
+            created, pending, running, failed, success, canceled, skipped, or
+            manual. All jobs are returned if scope is not provided.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     commit:
@@ -907,92 +382,26 @@ endpoints:
                       type: integer
                     name:
                       type: string
-                    ref:
-                      type: string
-                    artifacts:
-                      type: array
-                      items: {}
-                    runner:
-                      type: string
-                    stage:
-                      type: string
-                    status:
-                      type: string
-                    tag:
-                      type: boolean
-                    web_url:
-                      type: string
-                    user:
-                      type: string
-  - '/projects/{id}/jobs/{job_id}/retry':
-      post:
-        summary: Retry a job
-        description: Retry a single job of a project
-        operationId: retryAJob
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    commit:
+                    pipeline:
                       type: object
                       properties:
-                        author_email:
+                        id:
+                          type: integer
+                        project_id:
+                          type: integer
+                        ref:
                           type: string
-                        author_name:
+                        sha:
+                          type: string
+                        status:
                           type: string
                         created_at:
                           type: string
-                        id:
+                        updated_at:
                           type: string
-                        message:
+                        web_url:
                           type: string
-                        short_id:
-                          type: string
-                        title:
-                          type: string
-                    coverage:
-                      type: string
-                    allow_failure:
-                      type: boolean
-                    created_at:
-                      type: string
-                    started_at:
-                      type: string
-                    finished_at:
-                      type: string
-                    duration:
-                      type: string
-                    queued_duration:
-                      type: number
-                    id:
-                      type: integer
-                    name:
-                      type: string
                     ref:
-                      type: string
-                    artifacts:
-                      type: array
-                      items: {}
-                    runner:
                       type: string
                     stage:
                       type: string
@@ -1003,186 +412,777 @@ endpoints:
                     web_url:
                       type: string
                     user:
-                      type: string
-  - '/projects/{id}/jobs/{job_id}/erase':
-      post:
-        summary: Erase a job
-        description: Erase a single job of a project (remove job artifacts and a job log)
-        operationId: eraseAJob
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    commit:
                       type: object
                       properties:
-                        author_email:
+                        id:
+                          type: integer
+                        name:
                           type: string
-                        author_name:
+                        username:
+                          type: string
+                        state:
+                          type: string
+                        avatar_url:
+                          type: string
+                        web_url:
                           type: string
                         created_at:
                           type: string
-                        id:
+                        bio:
                           type: string
-                        message:
+                        location:
                           type: string
-                        short_id:
+                        public_email:
                           type: string
-                        title:
+                        skype:
                           type: string
-                    coverage:
-                      type: string
-                    allow_failure:
-                      type: boolean
-                    download_url:
-                      type: string
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    ref:
-                      type: string
-                    artifacts:
-                      type: array
-                      items: {}
-                    runner:
-                      type: string
-                    stage:
-                      type: string
-                    created_at:
-                      type: string
-                    started_at:
-                      type: string
-                    finished_at:
-                      type: string
-                    duration:
-                      type: integer
-                    queued_duration:
-                      type: number
-                    status:
-                      type: string
-                    tag:
-                      type: boolean
-                    web_url:
-                      type: string
-                    user:
-                      type: string
-  - '/projects/{id}/jobs/{job_id}/play':
-      post:
-        summary: Run a job
-        description: Triggers a manual action to start a job.
-        operationId: runAJob
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              ID or URL-encoded path of the project owned by the authenticated
-              user.
-            required: false
-            schema:
-              type: string
-          - name: job_id
-            in: path
-            description: ID of a job.
-            required: false
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    commit:
+                        linkedin:
+                          type: string
+                        twitter:
+                          type: string
+                        website_url:
+                          type: string
+                        organization:
+                          type: string
+                    downstream_pipeline:
                       type: object
                       properties:
-                        author_email:
+                        id:
+                          type: integer
+                        sha:
                           type: string
-                        author_name:
+                        ref:
+                          type: string
+                        status:
                           type: string
                         created_at:
                           type: string
-                        id:
+                        updated_at:
                           type: string
-                        message:
+                        web_url:
                           type: string
-                        short_id:
-                          type: string
-                        title:
-                          type: string
-                    coverage:
-                      type: string
-                    allow_failure:
-                      type: boolean
-                    created_at:
-                      type: string
-                    started_at:
-                      type: string
-                    finished_at:
-                      type: string
-                    duration:
-                      type: string
-                    queued_duration:
-                      type: number
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    ref:
-                      type: string
-                    artifacts:
-                      type: array
-                      items: {}
-                    runner:
-                      type: string
-                    stage:
-                      type: string
-                    status:
-                      type: string
-                    tag:
-                      type: boolean
-                    web_url:
-                      type: string
-                    user:
-                      type: string
-                    job_variables_attributes:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          key:
-                            type: string
-                          value:
-                            type: string
-        requestBody:
+  /job:
+    get:
+      summary: Get job token’s job
+      description: Retrieve the job that generated a job token.
+      operationId: getJobTokenJob
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  job_variables_attributes:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: number
+                  queued_duration:
+                    type: number
+                  artifacts_expire_at:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  pipeline:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      project_id:
+                        type: integer
+                      ref:
+                        type: string
+                      sha:
+                        type: string
+                      status:
+                        type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  status:
+                    type: string
+                  failure_reason:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+                      created_at:
+                        type: string
+                      bio:
+                        type: string
+                      location:
+                        type: string
+                      public_email:
+                        type: string
+                      skype:
+                        type: string
+                      linkedin:
+                        type: string
+                      twitter:
+                        type: string
+                      website_url:
+                        type: string
+                      organization:
+                        type: string
+  /job/allowed_agents:
+    get:
+      summary: Get GitLab agent by CI_JOB_TOKEN
+      description: >-
+        Retrieve the job that generated the CI_JOB_TOKEN, along with a list of
+        allowed agents.
+      operationId: getGitlabAgentByCi_job_token
+      parameters:
+        - name: CI_JOB_TOKEN
+          in: query
+          description: >-
+            Token value associated with the GitLab-provided CI_JOB_TOKEN
+            variable.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowed_agents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        config_project:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            name_with_namespace:
+                              type: string
+                            path:
+                              type: string
+                            path_with_namespace:
+                              type: string
+                            created_at:
+                              type: string
+                  job:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      stage:
+                        type: string
+                      project_id:
+                        type: integer
+                      project_name:
+                        type: string
+                  pipeline:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      project_id:
+                        type: integer
+                      sha:
+                        type: string
+                      ref:
+                        type: string
+                      status:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      web_url:
+                        type: string
+                  project:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      description:
+                        type: string
+                      name:
+                        type: string
+                      name_with_namespace:
+                        type: string
+                      path:
+                        type: string
+                      path_with_namespace:
+                        type: string
+                      created_at:
+                        type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+  '/projects/{id}/jobs/{job_id}':
+    get:
+      summary: Get a single job
+      description: Get a single job of a project
+      operationId: getASingleJob
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: number
+                  queued_duration:
+                    type: number
+                  artifacts_expire_at:
+                    type: string
+                  tag_list:
                     type: array
                     items:
                       type: string
-                required: []
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  pipeline:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      project_id:
+                        type: integer
+                      ref:
+                        type: string
+                      sha:
+                        type: string
+                      status:
+                        type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  status:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+                      created_at:
+                        type: string
+                      bio:
+                        type: string
+                      location:
+                        type: string
+                      public_email:
+                        type: string
+                      skype:
+                        type: string
+                      linkedin:
+                        type: string
+                      twitter:
+                        type: string
+                      website_url:
+                        type: string
+                      organization:
+                        type: string
+  '/projects/{id}/jobs/{job_id}/trace':
+    get:
+      summary: Get a log file
+      description: 'Get a log (trace) of a specific job of a project:'
+      operationId: getALogFile
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+  '/projects/{id}/jobs/{job_id}/cancel':
+    post:
+      summary: Cancel a job
+      description: Cancel a single job of a project
+      operationId: cancelAJob
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: integer
+                  queued_duration:
+                    type: number
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  status:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: string
+  '/projects/{id}/jobs/{job_id}/retry':
+    post:
+      summary: Retry a job
+      description: Retry a single job of a project
+      operationId: retryAJob
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: string
+                  queued_duration:
+                    type: number
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  status:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: string
+  '/projects/{id}/jobs/{job_id}/erase':
+    post:
+      summary: Erase a job
+      description: Erase a single job of a project (remove job artifacts and a job log)
+      operationId: eraseAJob
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  download_url:
+                    type: string
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: integer
+                  queued_duration:
+                    type: number
+                  status:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: string
+  '/projects/{id}/jobs/{job_id}/play':
+    post:
+      summary: Run a job
+      description: Triggers a manual action to start a job.
+      operationId: runAJob
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            ID or URL-encoded path of the project owned by the authenticated
+            user.
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: ID of a job.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: object
+                    properties:
+                      author_email:
+                        type: string
+                      author_name:
+                        type: string
+                      created_at:
+                        type: string
+                      id:
+                        type: string
+                      message:
+                        type: string
+                      short_id:
+                        type: string
+                      title:
+                        type: string
+                  coverage:
+                    type: string
+                  allow_failure:
+                    type: boolean
+                  created_at:
+                    type: string
+                  started_at:
+                    type: string
+                  finished_at:
+                    type: string
+                  duration:
+                    type: string
+                  queued_duration:
+                    type: number
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  ref:
+                    type: string
+                  artifacts:
+                    type: array
+                    items: {}
+                  runner:
+                    type: string
+                  stage:
+                    type: string
+                  status:
+                    type: string
+                  tag:
+                    type: boolean
+                  web_url:
+                    type: string
+                  user:
+                    type: string
+                  job_variables_attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                job_variables_attributes:
+                  type: array
+                  items:
+                    type: string
+              required: []

@@ -1,49 +1,102 @@
-endpoints:
-  - /features:
-      get:
-        summary: List all features
-        description: 'Get a list of all persisted features, with its gate values.'
-        operationId: listAllFeatures
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      state:
-                        type: string
-                      gates:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            key:
-                              type: string
-                            value:
-                              type: boolean
-                      definition:
-                        type: string
-  - /features/definitions:
-      get:
-        summary: List all feature definitions
-        description: Get a list of all feature definitions.
-        operationId: listAllFeatureDefinitions
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
+paths:
+  /features:
+    get:
+      summary: List all features
+      description: 'Get a list of all persisted features, with its gate values.'
+      operationId: listAllFeatures
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    state:
+                      type: string
+                    gates:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          key:
+                            type: string
+                          value:
+                            type: boolean
+                    definition:
+                      type: string
+  /features/definitions:
+    get:
+      summary: List all feature definitions
+      description: Get a list of all feature definitions.
+      operationId: listAllFeatureDefinitions
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    introduced_by_url:
+                      type: string
+                    rollout_issue_url:
+                      type: string
+                    milestone:
+                      type: string
+                    type:
+                      type: string
+                    group:
+                      type: string
+                    default_enabled:
+                      type: boolean
+  '/features/{name}':
+    post:
+      summary: Set or create a feature
+      description: >-
+        Set a feature’s gate value. If a feature with the given name doesn’t
+        exist yet, it’s created. The value can be a boolean, or an integer to
+        indicate percentage of time.
+      operationId: setOrCreateAFeature
+      parameters:
+        - name: name
+          in: path
+          description: Name of the feature to create or update
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  state:
+                    type: string
+                  gates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        value:
+                          type: boolean
+                  definition:
                     type: object
                     properties:
                       name:
@@ -52,139 +105,85 @@ endpoints:
                         type: string
                       rollout_issue_url:
                         type: string
-                      milestone:
+                      group:
                         type: string
                       type:
                         type: string
-                      group:
-                        type: string
                       default_enabled:
                         type: boolean
-  - '/features/{name}':
-      post:
-        summary: Set or create a feature
-        description: >-
-          Set a feature’s gate value. If a feature with the given name doesn’t
-          exist yet, it’s created. The value can be a boolean, or an integer to
-          indicate percentage of time.
-        operationId: setOrCreateAFeature
-        parameters:
-          - name: name
-            in: path
-            description: Name of the feature to create or update
-            required: true
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    state:
-                      type: string
-                    gates:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          key:
-                            type: string
-                          value:
-                            type: boolean
-                    definition:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        introduced_by_url:
-                          type: string
-                        rollout_issue_url:
-                          type: string
-                        group:
-                          type: string
-                        type:
-                          type: string
-                        default_enabled:
-                          type: boolean
-        requestBody:
+              type: object
+              properties:
+                key:
+                  type: string
+                feature_group:
+                  type: string
+                user:
+                  type: string
+                group:
+                  type: string
+                project:
+                  type: string
+                force:
+                  type: boolean
+              required:
+                - value
+    delete:
+      summary: Delete a feature
+      description: >-
+        Removes a feature gate. Response is equal when the gate exists, or
+        doesn’t.
+      operationId: deleteAFeature
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+  'https://gitlab.example.com/api/v4/features/my_user_feature':
+    post:
+      summary: Set percentage of actors rollout
+      description: Rollout to percentage of actors.
+      operationId: setPercentageOfActorsRollout
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  key:
+                  name:
                     type: string
-                  feature_group:
+                  state:
                     type: string
-                  user:
-                    type: string
-                  group:
-                    type: string
-                  project:
-                    type: string
-                  force:
-                    type: boolean
-                required:
-                  - value
-  - 'https://gitlab.example.com/api/v4/features/my_user_feature':
-      post:
-        summary: Set percentage of actors rollout
-        description: Rollout to percentage of actors.
-        operationId: setPercentageOfActorsRollout
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    state:
-                      type: string
-                    gates:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          key:
-                            type: string
-                          value:
-                            type: boolean
-                    definition:
+                  gates:
+                    type: array
+                    items:
                       type: object
                       properties:
-                        name:
+                        key:
                           type: string
-                        introduced_by_url:
-                          type: string
-                        rollout_issue_url:
-                          type: string
-                        group:
-                          type: string
-                        type:
-                          type: string
-                        default_enabled:
+                        value:
                           type: boolean
-  - '/features/{name}':
-      delete:
-        summary: Delete a feature
-        description: >-
-          Removes a feature gate. Response is equal when the gate exists, or
-          doesn’t.
-        operationId: deleteAFeature
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
+                  definition:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      introduced_by_url:
+                        type: string
+                      rollout_issue_url:
+                        type: string
+                      group:
+                        type: string
+                      type:
+                        type: string
+                      default_enabled:
+                        type: boolean

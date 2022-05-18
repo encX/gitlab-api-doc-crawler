@@ -1,231 +1,30 @@
-endpoints:
-  - '/projects/{id}/feature_flags':
-      get:
-        summary: List feature flags for a project
-        description: Gets all feature flags of the requested project.
-        operationId: listFeatureFlagsForAProject
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
-            schema:
-              type: string
-          - name: scope
-            in: query
-            description: 'The condition of feature flags, one of: enabled, disabled.'
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      description:
-                        type: string
-                      active:
-                        type: boolean
-                      version:
-                        type: string
-                      created_at:
-                        type: string
-                      updated_at:
-                        type: string
-                      scopes:
-                        type: array
-                        items: {}
-                      strategies:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            name:
-                              type: string
-                            parameters:
-                              type: object
-                              properties:
-                                userIds:
-                                  type: string
-                            scopes:
-                              type: array
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    type: integer
-                                  environment_scope:
-                                    type: string
-  - '/projects/{id}/feature_flags/{feature_flag_name}':
-      get:
-        summary: Get a single feature flag
-        description: Gets a single feature flag.
-        operationId: getASingleFeatureFlag
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
-            schema:
-              type: string
-          - name: feature_flag_name
-            in: path
-            description: The name of the feature flag.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    description:
-                      type: string
-                    active:
-                      type: boolean
-                    version:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    scopes:
-                      type: array
-                      items: {}
-                    strategies:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          parameters:
-                            type: object
-                            properties: {}
-                          scopes:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: integer
-                                environment_scope:
-                                  type: string
-  - '/projects/{id}/feature_flags':
-      post:
-        summary: Create a feature flag
-        description: Creates a new feature flag.
-        operationId: createAFeatureFlag
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    description:
-                      type: string
-                    active:
-                      type: boolean
-                    version:
-                      type: string
-                    created_at:
-                      type: string
-                    updated_at:
-                      type: string
-                    scopes:
-                      type: array
-                      items: {}
-                    strategies:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          parameters:
-                            type: object
-                            properties: {}
-                          scopes:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                id:
-                                  type: integer
-                                environment_scope:
-                                  type: string
-        requestBody:
+paths:
+  '/projects/{id}/feature_flags':
+    get:
+      summary: List feature flags for a project
+      description: Gets all feature flags of the requested project.
+      operationId: listFeatureFlagsForAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          description: 'The condition of feature flags, one of: enabled, disabled.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  version:
-                    type: string
-                  description:
-                    type: string
-                  active:
-                    type: boolean
-                  'strategies:scopes:environment_scope':
-                    type: string
-                required:
-                  - name
-                  - version
-  - '/projects/{id}/feature_flags/{feature_flag_name}':
-      put:
-        summary: Update a feature flag
-        description: Updates a feature flag.
-        operationId: updateAFeatureFlag
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
-            schema:
-              type: string
-          - name: feature_flag_name
-            in: path
-            description: The current name of the feature flag.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+                type: array
+                items:
                   type: object
                   properties:
                     name:
@@ -255,9 +54,7 @@ endpoints:
                           parameters:
                             type: object
                             properties:
-                              groupId:
-                                type: string
-                              percentage:
+                              userIds:
                                 type: string
                           scopes:
                             type: array
@@ -268,43 +65,243 @@ endpoints:
                                   type: integer
                                 environment_scope:
                                   type: string
-        requestBody:
+    post:
+      summary: Create a feature flag
+      description: Creates a new feature flag.
+      operationId: createAFeatureFlag
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  name:
+                    type: string
                   description:
                     type: string
                   active:
                     type: boolean
+                  version:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  scopes:
+                    type: array
+                    items: {}
+                  strategies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        parameters:
+                          type: object
+                          properties: {}
+                        scopes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              environment_scope:
+                                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                version:
+                  type: string
+                description:
+                  type: string
+                active:
+                  type: boolean
+                'strategies:scopes:environment_scope':
+                  type: string
+              required:
+                - name
+                - version
+  '/projects/{id}/feature_flags/{feature_flag_name}':
+    get:
+      summary: Get a single feature flag
+      description: Gets a single feature flag.
+      operationId: getASingleFeatureFlag
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: feature_flag_name
+          in: path
+          description: The name of the feature flag.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
                   name:
                     type: string
-                  'strategies:scopes:environment_scope':
+                  description:
                     type: string
-                required: []
-  - '/projects/{id}/feature_flags/{feature_flag_name}':
-      delete:
-        summary: Delete a feature flag
-        description: Deletes a feature flag.
-        operationId: deleteAFeatureFlag
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project.
-            required: true
+                  active:
+                    type: boolean
+                  version:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  scopes:
+                    type: array
+                    items: {}
+                  strategies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        parameters:
+                          type: object
+                          properties: {}
+                        scopes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              environment_scope:
+                                type: string
+    put:
+      summary: Update a feature flag
+      description: Updates a feature flag.
+      operationId: updateAFeatureFlag
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: feature_flag_name
+          in: path
+          description: The current name of the feature flag.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  active:
+                    type: boolean
+                  version:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  scopes:
+                    type: array
+                    items: {}
+                  strategies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        parameters:
+                          type: object
+                          properties:
+                            groupId:
+                              type: string
+                            percentage:
+                              type: string
+                        scopes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                              environment_scope:
+                                type: string
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: feature_flag_name
-            in: path
-            description: The name of the feature flag.
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+              type: object
+              properties:
+                description:
                   type: string
+                active:
+                  type: boolean
+                name:
+                  type: string
+                'strategies:scopes:environment_scope':
+                  type: string
+              required: []
+    delete:
+      summary: Delete a feature flag
+      description: Deletes a feature flag.
+      operationId: deleteAFeatureFlag
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: feature_flag_name
+          in: path
+          description: The name of the feature flag.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string

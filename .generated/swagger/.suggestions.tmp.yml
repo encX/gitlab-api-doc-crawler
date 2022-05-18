@@ -1,46 +1,46 @@
-endpoints:
-  - '/suggestions/{id}/apply':
-      put:
-        summary: Applying suggestions
-        description: >-
-          Applies a suggested patch in a merge request. Users must have at least
-          the Developer role to perform such action.
-        operationId: applyingSuggestions
-        parameters:
-          - name: id
-            in: path
-            description: The ID of a suggestion
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    from_line:
-                      type: integer
-                    to_line:
-                      type: integer
-                    appliable:
-                      type: boolean
-                    applied:
-                      type: boolean
-                    from_content:
-                      type: string
-                    to_content:
-                      type: string
-        requestBody:
+paths:
+  '/suggestions/{id}/apply':
+    put:
+      summary: Applying suggestions
+      description: >-
+        Applies a suggested patch in a merge request. Users must have at least
+        the Developer role to perform such action.
+      operationId: applyingSuggestions
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a suggestion
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  commit_message:
+                  id:
+                    type: integer
+                  from_line:
+                    type: integer
+                  to_line:
+                    type: integer
+                  appliable:
+                    type: boolean
+                  applied:
+                    type: boolean
+                  from_content:
                     type: string
-                required: []
+                  to_content:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commit_message:
+                  type: string
+              required: []

@@ -1,7 +1,7 @@
 import { stringify } from "https://deno.land/std@0.139.0/encoding/yaml.ts";
 
 import { Api } from "../types/models.ts";
-import { Document } from "../types/OpenAPIV3.ts";
+import { Document, PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
 
 export class SwaggerBuilder {
@@ -17,11 +17,18 @@ export class SwaggerBuilder {
 
   async push(_apis: Api[], _pageSlug: string): Promise<void> {
     console.log(_pageSlug);
+    const paths: PathsObject = {};
     const endpoints = _apis.map((api) => new Endpoint(api).getEndpoint());
+
+    endpoints.forEach((e) => {
+      const _paths = Object.keys(e);
+      _paths.forEach((p) => (paths[p] = { ...paths[p], ...e[p] }));
+    });
+
     try {
       await Deno.writeTextFile(
         `.generated/swagger/.${_pageSlug}.tmp.yml`,
-        stringify({ endpoints }, { skipInvalid: true }) // todo check yaml errors
+        stringify({ paths }, { skipInvalid: true }) // todo check yaml errors
       );
     } catch (e) {
       console.error(e);

@@ -1,92 +1,26 @@
-endpoints:
-  - '/groups/{id}/boards':
-      get:
-        summary: List all group issue boards in a group
-        description: Lists issue boards in the given group.
-        operationId: listAllGroupIssueBoardsInAGroup
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      group:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          web_url:
-                            type: string
-                      milestone:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          title:
-                            type: string
-                      lists:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                            label:
-                              type: object
-                              properties:
-                                name:
-                                  type: string
-                                color:
-                                  type: string
-                                description:
-                                  type: string
-                            position:
-                              type: integer
-  - '/groups/{id}/boards/{board_id}':
-      get:
-        summary: Single group issue board
-        description: Gets a single group issue board.
-        operationId: singleGroupIssueBoard
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  '/groups/{id}/boards':
+    get:
+      summary: List all group issue boards in a group
+      description: Lists issue boards in the given group.
+      operationId: listAllGroupIssueBoardsInAGroup
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     id:
@@ -127,409 +61,305 @@ endpoints:
                                 type: string
                           position:
                             type: integer
-  - '/groups/{id}/boards':
-      post:
-        summary: Create a group issue board
-        description: Creates a group issue board.
-        operationId: createAGroupIssueBoard
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    project:
-                      type: string
-                    lists:
-                      type: array
-                      items: {}
-                    group:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        web_url:
-                          type: string
-                    milestone:
-                      type: string
-                    assignee:
-                      type: string
-                    labels:
-                      type: array
-                      items: {}
-                    weight:
-                      type: string
-        requestBody:
+    post:
+      summary: Create a group issue board
+      description: Creates a group issue board.
+      operationId: createAGroupIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
                   name:
                     type: string
-                required:
-                  - name
-  - '/groups/{id}/boards/{board_id}':
-      put:
-        summary: Update a group issue board
-        description: Updates a group issue board.
-        operationId: updateAGroupIssueBoard
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    project:
-                      type: string
-                    lists:
-                      type: array
-                      items: {}
-                    name:
-                      type: string
-                    group:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        web_url:
-                          type: string
-                    milestone:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        iid:
-                          type: integer
-                        group_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        due_date:
-                          type: string
-                        start_date:
-                          type: string
-                        web_url:
-                          type: string
-                    assignee:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        username:
-                          type: string
-                        state:
-                          type: string
-                        avatar_url:
-                          type: string
-                        web_url:
-                          type: string
-                    labels:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                          name:
-                            type: string
-                          color:
-                            type: string
-                          description:
-                            type: string
-                    weight:
-                      type: integer
-        requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
+                  project:
                     type: string
-                  hide_backlog_list:
-                    type: boolean
-                  hide_closed_list:
-                    type: boolean
-                  assignee_id:
-                    type: integer
-                  milestone_id:
-                    type: integer
-                  labels:
-                    type: string
-                  weight:
-                    type: integer
-                required: []
-  - '/groups/{id}/boards/{board_id}':
-      delete:
-        summary: Delete a group issue board
-        description: Deletes a group issue board.
-        operationId: deleteAGroupIssueBoard
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
-  - '/groups/{id}/boards/{board_id}/lists':
-      get:
-        summary: List group issue board lists
-        description: >-
-          Get a list of the board’s lists. Does not include open and closed
-          lists
-        operationId: listGroupIssueBoardLists
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
+                  lists:
+                    type: array
+                    items: {}
+                  group:
                     type: object
                     properties:
                       id:
                         type: integer
-                      label:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                          color:
-                            type: string
-                          description:
-                            type: string
-                      position:
+                      name:
+                        type: string
+                      web_url:
+                        type: string
+                  milestone:
+                    type: string
+                  assignee:
+                    type: string
+                  labels:
+                    type: array
+                    items: {}
+                  weight:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
+  '/groups/{id}/boards/{board_id}':
+    get:
+      summary: Single group issue board
+      description: Gets a single group issue board.
+      operationId: singleGroupIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  group:
+                    type: object
+                    properties:
+                      id:
                         type: integer
-  - '/groups/{id}/boards/{board_id}/lists/{list_id}':
-      get:
-        summary: Single group issue board list
-        description: Get a single board list.
-        operationId: singleGroupIssueBoardList
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-          - name: list_id
-            in: path
-            description: The ID of a board’s list
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    label:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        color:
-                          type: string
-                        description:
-                          type: string
-                    position:
-                      type: integer
-  - '/groups/{id}/boards/{board_id}/lists':
-      post:
-        summary: New group issue board list
-        description: Creates an issue board list.
-        operationId: newGroupIssueBoardList
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
-            schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    label:
-                      type: string
-                    position:
-                      type: integer
-                    milestone:
+                      name:
+                        type: string
+                      web_url:
+                        type: string
+                  milestone:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                  lists:
+                    type: array
+                    items:
                       type: object
                       properties:
                         id:
                           type: integer
-                        iid:
+                        label:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            color:
+                              type: string
+                            description:
+                              type: string
+                        position:
                           type: integer
-                        group_id:
-                          type: integer
-                        title:
-                          type: string
-                        description:
-                          type: string
-                        state:
-                          type: string
-                        created_at:
-                          type: string
-                        updated_at:
-                          type: string
-                        due_date:
-                          type: string
-                        start_date:
-                          type: string
-                        web_url:
-                          type: string
-        requestBody:
+    put:
+      summary: Update a group issue board
+      description: Updates a group issue board.
+      operationId: updateAGroupIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  label_id:
+                  id:
                     type: integer
-                required:
-                  - label_id
-  - '/groups/{id}/boards/{board_id}/lists/{list_id}':
-      put:
-        summary: Edit group issue board list
-        description: >-
-          Updates an existing issue board list. This call is used to change list
-          position.
-        operationId: editGroupIssueBoardList
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
+                  project:
+                    type: string
+                  lists:
+                    type: array
+                    items: {}
+                  name:
+                    type: string
+                  group:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      web_url:
+                        type: string
+                  milestone:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      iid:
+                        type: integer
+                      group_id:
+                        type: integer
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      state:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      due_date:
+                        type: string
+                      start_date:
+                        type: string
+                      web_url:
+                        type: string
+                  assignee:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      username:
+                        type: string
+                      state:
+                        type: string
+                      avatar_url:
+                        type: string
+                      web_url:
+                        type: string
+                  labels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        color:
+                          type: string
+                        description:
+                          type: string
+                  weight:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
-            schema:
-              type: integer
-          - name: list_id
-            in: path
-            description: The ID of a board’s list
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                hide_backlog_list:
+                  type: boolean
+                hide_closed_list:
+                  type: boolean
+                assignee_id:
+                  type: integer
+                milestone_id:
+                  type: integer
+                labels:
+                  type: string
+                weight:
+                  type: integer
+              required: []
+    delete:
+      summary: Delete a group issue board
+      description: Deletes a group issue board.
+      operationId: deleteAGroupIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+  '/groups/{id}/boards/{board_id}/lists':
+    get:
+      summary: List group issue board lists
+      description: Get a list of the board’s lists. Does not include open and closed lists
+      operationId: listGroupIssueBoardLists
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     id:
@@ -545,48 +375,210 @@ endpoints:
                           type: string
                     position:
                       type: integer
-        requestBody:
+    post:
+      summary: New group issue board list
+      description: Creates an issue board list.
+      operationId: newGroupIssueBoardList
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
+                  label:
+                    type: string
                   position:
                     type: integer
-                required:
-                  - position
-  - '/groups/{id}/boards/{board_id}/lists/{list_id}':
-      delete:
-        summary: Delete a group issue board list
-        description: >-
-          Only for administrators and group owners. Deletes the board list in
-          question.
-        operationId: deleteAGroupIssueBoardList
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the group owned by the authenticated
-              user
-            required: true
+                  milestone:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      iid:
+                        type: integer
+                      group_id:
+                        type: integer
+                      title:
+                        type: string
+                      description:
+                        type: string
+                      state:
+                        type: string
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+                      due_date:
+                        type: string
+                      start_date:
+                        type: string
+                      web_url:
+                        type: string
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: board_id
-            in: path
-            description: The ID of a board
-            required: true
+              type: object
+              properties:
+                label_id:
+                  type: integer
+              required:
+                - label_id
+  '/groups/{id}/boards/{board_id}/lists/{list_id}':
+    get:
+      summary: Single group issue board list
+      description: Get a single board list.
+      operationId: singleGroupIssueBoardList
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  label:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      color:
+                        type: string
+                      description:
+                        type: string
+                  position:
+                    type: integer
+    put:
+      summary: Edit group issue board list
+      description: >-
+        Updates an existing issue board list. This call is used to change list
+        position.
+      operationId: editGroupIssueBoardList
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  label:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      color:
+                        type: string
+                      description:
+                        type: string
+                  position:
+                    type: integer
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: integer
-          - name: list_id
-            in: path
-            description: The ID of a board’s list
-            required: true
-            schema:
-              type: integer
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: string
+              type: object
+              properties:
+                position:
+                  type: integer
+              required:
+                - position
+    delete:
+      summary: Delete a group issue board list
+      description: >-
+        Only for administrators and group owners. Deletes the board list in
+        question.
+      operationId: deleteAGroupIssueBoardList
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string

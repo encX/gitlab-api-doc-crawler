@@ -1,82 +1,82 @@
-endpoints:
-  - /import/github:
-      post:
-        summary: Import repository from GitHub
-        description: Import your projects from GitHub to GitLab via the API.
-        operationId: importRepositoryFromGithub
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    full_path:
-                      type: string
-                    full_name:
-                      type: string
-        requestBody:
+paths:
+  /import/github:
+    post:
+      summary: Import repository from GitHub
+      description: Import your projects from GitHub to GitLab via the API.
+      operationId: importRepositoryFromGithub
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  personal_access_token:
-                    type: string
-                  repo_id:
+                  id:
                     type: integer
-                  new_name:
+                  name:
                     type: string
-                  target_namespace:
+                  full_path:
                     type: string
-                  github_hostname:
+                  full_name:
                     type: string
-                required:
-                  - personal_access_token
-                  - repo_id
-                  - target_namespace
-  - /import/bitbucket_server:
-      post:
-        summary: Import repository from Bitbucket Server
-        description: Import your projects from Bitbucket Server to GitLab via the API.
-        operationId: importRepositoryFromBitbucketServer
-        parameters: []
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                personal_access_token:
                   type: string
-        requestBody:
+                repo_id:
+                  type: integer
+                new_name:
+                  type: string
+                target_namespace:
+                  type: string
+                github_hostname:
+                  type: string
+              required:
+                - personal_access_token
+                - repo_id
+                - target_namespace
+  /import/bitbucket_server:
+    post:
+      summary: Import repository from Bitbucket Server
+      description: Import your projects from Bitbucket Server to GitLab via the API.
+      operationId: importRepositoryFromBitbucketServer
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  bitbucket_server_url:
-                    type: string
-                  bitbucket_server_username:
-                    type: string
-                  personal_access_token:
-                    type: string
-                  bitbucket_server_project:
-                    type: string
-                  bitbucket_server_repo:
-                    type: string
-                  new_name:
-                    type: string
-                  target_namespace:
-                    type: string
-                required:
-                  - bitbucket_server_url
-                  - bitbucket_server_username
-                  - personal_access_token
-                  - bitbucket_server_project
-                  - bitbucket_server_repo
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bitbucket_server_url:
+                  type: string
+                bitbucket_server_username:
+                  type: string
+                personal_access_token:
+                  type: string
+                bitbucket_server_project:
+                  type: string
+                bitbucket_server_repo:
+                  type: string
+                new_name:
+                  type: string
+                target_namespace:
+                  type: string
+              required:
+                - bitbucket_server_url
+                - bitbucket_server_username
+                - personal_access_token
+                - bitbucket_server_project
+                - bitbucket_server_repo

@@ -1,58 +1,24 @@
-endpoints:
-  - '/projects/{id}/managed_licenses':
-      get:
-        summary: List managed licenses
-        description: Get all managed licenses for a given project.
-        operationId: listManagedLicenses
-        parameters:
-          - name: id
-            in: path
-            description: The ID or URL-encoded path of the project
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      approval_status:
-                        type: string
-  - '/projects/{id}/managed_licenses/{managed_license_id}':
-      get:
-        summary: Show an existing managed license
-        description: Shows an existing managed license.
-        operationId: showAnExistingManagedLicense
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user
-            required: true
-            schema:
-              type: string
-          - name: managed_license_id
-            in: path
-            description: The ID or URL-encoded name of the license belonging to the project
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+paths:
+  '/projects/{id}/managed_licenses':
+    get:
+      summary: List managed licenses
+      description: Get all managed licenses for a given project.
+      operationId: listManagedLicenses
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
                   type: object
                   properties:
                     id:
@@ -61,117 +27,148 @@ endpoints:
                       type: string
                     approval_status:
                       type: string
-  - '/projects/{id}/managed_licenses':
-      post:
-        summary: Create a new managed license
-        description: >-
-          Creates a new managed license for the given project with the given
-          name and approval status.
-        operationId: createANewManagedLicense
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    approval_status:
-                      type: string
-        requestBody:
+    post:
+      summary: Create a new managed license
+      description: >-
+        Creates a new managed license for the given project with the given name
+        and approval status.
+      operationId: createANewManagedLicense
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
                   name:
                     type: string
                   approval_status:
                     type: string
-                required:
-                  - name
-                  - approval_status
-  - '/projects/{id}/managed_licenses/{managed_license_id}':
-      delete:
-        summary: Delete a managed license
-        description: Deletes a managed license with a given ID.
-        operationId: deleteAManagedLicense
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user
-            required: true
+      requestBody:
+        content:
+          application/json:
             schema:
-              type: string
-          - name: managed_license_id
-            in: path
-            description: The ID or URL-encoded name of the license belonging to the project
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
+              type: object
+              properties:
+                name:
                   type: string
-  - '/projects/{id}/managed_licenses/{managed_license_id}':
-      patch:
-        summary: Edit an existing managed license
-        description: Updates an existing managed license with a new approval status.
-        operationId: editAnExistingManagedLicense
-        parameters:
-          - name: id
-            in: path
-            description: >-
-              The ID or URL-encoded path of the project owned by the
-              authenticated user
-            required: true
-            schema:
-              type: string
-          - name: managed_license_id
-            in: path
-            description: The ID or URL-encoded name of the license belonging to the project
-            required: true
-            schema:
-              type: string
-        responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    approval_status:
-                      type: string
-        requestBody:
+                approval_status:
+                  type: string
+              required:
+                - name
+                - approval_status
+  '/projects/{id}/managed_licenses/{managed_license_id}':
+    get:
+      summary: Show an existing managed license
+      description: Shows an existing managed license.
+      operationId: showAnExistingManagedLicense
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: managed_license_id
+          in: path
+          description: The ID or URL-encoded name of the license belonging to the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
           content:
             application/json:
               schema:
                 type: object
                 properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
                   approval_status:
                     type: string
-                required:
-                  - approval_status
+    delete:
+      summary: Delete a managed license
+      description: Deletes a managed license with a given ID.
+      operationId: deleteAManagedLicense
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: managed_license_id
+          in: path
+          description: The ID or URL-encoded name of the license belonging to the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+    patch:
+      summary: Edit an existing managed license
+      description: Updates an existing managed license with a new approval status.
+      operationId: editAnExistingManagedLicense
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          required: true
+          schema:
+            type: string
+        - name: managed_license_id
+          in: path
+          description: The ID or URL-encoded name of the license belonging to the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  approval_status:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approval_status:
+                  type: string
+              required:
+                - approval_status
