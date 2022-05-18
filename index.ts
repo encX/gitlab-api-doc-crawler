@@ -49,5 +49,7 @@ for await (const page of pages) {
   if (Array.isArray(apis)) swaggerBuilder.push(apis, pageSlug);
 }
 
+swaggerBuilder.saveMain();
+
 console.log("done");
 Deno.exit(0);

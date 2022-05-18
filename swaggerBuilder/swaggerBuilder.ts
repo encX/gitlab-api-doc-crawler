@@ -12,6 +12,16 @@ import { Endpoint } from "./endpoint.ts";
 export class SwaggerBuilder {
   constructor() {}
 
+  private mainSwagger: Document = {
+    openapi: "3.0.2",
+    info: {
+      title: `GitLabKit: REST API`,
+      version: "1.0",
+    },
+    paths: {},
+    components: { schemas: {} },
+  };
+
   async push(_apis: Api[], _pageSlug: string): Promise<void> {
     console.log(_pageSlug);
 
@@ -39,6 +49,9 @@ export class SwaggerBuilder {
       components: { schemas },
     };
 
+    Object.assign(this.mainSwagger.paths, paths);
+    Object.assign(this.mainSwagger.components?.schemas, schemas);
+
     try {
       await file.writeText(
         `swagger/${_pageSlug}.yml`,
@@ -54,5 +67,15 @@ export class SwaggerBuilder {
         JSON.stringify(endpoints, null, 2)
       );
     }
+  }
+
+  async saveMain() {
+    await file.writeText(
+      `swagger.yml`,
+      stringify(this.mainSwagger as Record<string, any>, {
+        skipInvalid: true,
+        lineWidth: 120,
+      }) // todo check yaml errors
+    );
   }
 }
