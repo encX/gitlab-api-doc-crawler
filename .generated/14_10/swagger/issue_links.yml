@@ -166,6 +166,14 @@ components:
     createAnIssueLinkRequest:
       type: object
       properties:
+        target_project_id:
+          oneOf:
+            - type: integer
+            - type: string
+        target_issue_iid:
+          oneOf:
+            - type: integer
+            - type: string
         link_type:
           type: string
       required:

@@ -579,7 +579,15 @@ components:
                   type: string
     updateEpic-IssueAssociationRequest:
       type: object
-      properties: {}
+      properties:
+        move_before_id:
+          oneOf:
+            - type: integer
+            - type: string
+        move_after_id:
+          oneOf:
+            - type: integer
+            - type: string
     updateEpic-IssueAssociationResponse:
       type: array
       items:

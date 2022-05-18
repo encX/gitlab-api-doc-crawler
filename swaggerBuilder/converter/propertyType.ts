@@ -14,6 +14,9 @@ export function asPropertyType(_type: string): SchemaObject | undefined {
   )
     return { type };
 
+  if (type === "integer/string")
+    return { oneOf: [{ type: "integer" }, { type: "string" }] };
+
   if (type === "float") return { type: "number" };
   // if (type === "hash") return { type: "string" }; // hash = key[someprop] = val
   if (strArr.test(type)) return { type: "array", items: { type: "string" } };

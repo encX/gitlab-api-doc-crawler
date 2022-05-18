@@ -475,6 +475,10 @@ components:
           type: boolean
         due_date_fixed:
           type: string
+        parent_id:
+          oneOf:
+            - type: integer
+            - type: string
       required:
         - title
     newEpicResponse:
@@ -589,6 +593,10 @@ components:
           type: boolean
         labels:
           type: string
+        parent_id:
+          oneOf:
+            - type: integer
+            - type: string
         remove_labels:
           type: string
         start_date_fixed:

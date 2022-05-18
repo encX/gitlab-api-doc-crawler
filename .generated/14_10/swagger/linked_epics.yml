@@ -184,6 +184,14 @@ components:
     createARelatedEpicLinkRequest:
       type: object
       properties:
+        target_epic_iid:
+          oneOf:
+            - type: integer
+            - type: string
+        target_group_id:
+          oneOf:
+            - type: integer
+            - type: string
         link_type:
           type: string
     createARelatedEpicLinkResponse:

@@ -41,7 +41,7 @@ export class SwaggerBuilder {
 
     try {
       await file.writeText(
-        `swagger/${_pageSlug}.tmp.yml`,
+        `swagger/${_pageSlug}.yml`,
         stringify(swagger as Record<string, any>, {
           skipInvalid: true,
           lineWidth: 120,

@@ -126,6 +126,10 @@ components:
     setOrCreateAFeatureRequest:
       type: object
       properties:
+        value:
+          oneOf:
+            - type: integer
+            - type: string
         key:
           type: string
         feature_group:

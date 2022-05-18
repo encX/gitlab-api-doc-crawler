@@ -650,6 +650,10 @@ components:
     addAMemberToAGroupOrProjectRequest:
       type: object
       properties:
+        user_id:
+          oneOf:
+            - type: integer
+            - type: string
         access_level:
           type: integer
         expires_at:

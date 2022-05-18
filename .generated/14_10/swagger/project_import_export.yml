@@ -189,6 +189,10 @@ components:
     importAFileRequest:
       type: object
       properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
         name:
           type: string
         file:
@@ -227,6 +231,10 @@ components:
     importAFileFromARemoteObjectStorageRequest:
       type: object
       properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
         name:
           type: string
         url:
@@ -267,6 +275,10 @@ components:
     importAFileFromAwsS3Request:
       type: object
       properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
         name:
           type: string
         path:
