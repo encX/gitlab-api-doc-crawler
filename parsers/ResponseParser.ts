@@ -1,7 +1,8 @@
 import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
-import { ensureDirSync } from "https://deno.land/std@0.139.0/fs/mod.ts";
+import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
 import { Parser } from "./Parser.ts";
+import { file } from "../helper/file.ts";
 
 export class ResponseParser implements Parser<any> {
   constructor(
@@ -39,15 +40,15 @@ export class ResponseParser implements Parser<any> {
     try {
       return JSON.parse(sanitized);
     } catch {
-      ensureDirSync(`.generated/unparsable`);
-      Deno.writeTextFileSync(
-        ".generated/unparsable/" +
-          this.page.replace(/\.html/, "") +
-          "__" +
-          this.apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() +
-          ".json",
-        sanitized
-      );
+      const unparseableDir = "unparsable_response";
+      const filename =
+        this.page.replace(/\.html/, "") +
+        "__" +
+        this.apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() +
+        ".json";
+
+      file.ensureDirSync(unparseableDir);
+      file.writeTextSync(join(unparseableDir, filename), sanitized);
       return sanitized;
     }
   }

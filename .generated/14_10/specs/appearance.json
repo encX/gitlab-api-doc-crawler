@@ -1,0 +1,149 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/appearance.html",
+  "pageSlug": "appearance",
+  "pageName": "Appearance",
+  "apis": [
+    {
+      "name": "Get current appearance configuration",
+      "description": "List the current appearance configuration of the GitLab instance.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/application/appearance"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "title": "GitLab Test Instance",
+        "description": "gitlab-test.example.com",
+        "logo": "/uploads/-/system/appearance/logo/1/logo.png",
+        "header_logo": "/uploads/-/system/appearance/header_logo/1/header.png",
+        "favicon": "/uploads/-/system/appearance/favicon/1/favicon.png",
+        "new_project_guidelines": "Please read the FAQs for help.",
+        "profile_image_guidelines": "Custom profile image guidelines",
+        "header_message": "",
+        "footer_message": "",
+        "message_background_color": "#e75e40",
+        "message_font_color": "#ffffff",
+        "email_header_and_footer_enabled": false
+      }
+    },
+    {
+      "name": "Change appearance configuration",
+      "description": "Use an API call to modify GitLab instance appearance configuration.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/application/appearance"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "Instance title on the sign in / sign up page"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Markdown text shown on the sign in / sign up page"
+        },
+        {
+          "name": "logo",
+          "type": "mixed",
+          "required": false,
+          "description": "Instance image used on the sign in / sign up page. See Change logo"
+        },
+        {
+          "name": "header_logo",
+          "type": "mixed",
+          "required": false,
+          "description": "Instance image used for the main navigation bar"
+        },
+        {
+          "name": "favicon",
+          "type": "mixed",
+          "required": false,
+          "description": "Instance favicon in .ico or .png format"
+        },
+        {
+          "name": "new_project_guidelines",
+          "type": "string",
+          "required": false,
+          "description": "Markdown text shown on the new project page"
+        },
+        {
+          "name": "profile_image_guidelines",
+          "type": "string",
+          "required": false,
+          "description": "Markdown text shown on the profile page below Public Avatar"
+        },
+        {
+          "name": "header_message",
+          "type": "string",
+          "required": false,
+          "description": "Message in the system header bar"
+        },
+        {
+          "name": "footer_message",
+          "type": "string",
+          "required": false,
+          "description": "Message in the system footer bar"
+        },
+        {
+          "name": "message_background_color",
+          "type": "string",
+          "required": false,
+          "description": "Background color for the system header / footer bar"
+        },
+        {
+          "name": "message_font_color",
+          "type": "string",
+          "required": false,
+          "description": "Font color for the system header / footer bar"
+        },
+        {
+          "name": "email_header_and_footer_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Add header and footer to all outgoing emails if enabled"
+        }
+      ],
+      "response": {
+        "title": "GitLab Test Instance",
+        "description": "gitlab-test.example.com",
+        "logo": "/uploads/-/system/appearance/logo/1/logo.png",
+        "header_logo": "/uploads/-/system/appearance/header_logo/1/header.png",
+        "favicon": "/uploads/-/system/appearance/favicon/1/favicon.png",
+        "new_project_guidelines": "Please read the FAQs for help.",
+        "profile_image_guidelines": "Custom profile image guidelines",
+        "header_message": "test",
+        "footer_message": "",
+        "message_background_color": "#e75e40",
+        "message_font_color": "#ffffff",
+        "email_header_and_footer_enabled": true
+      }
+    },
+    {
+      "name": "Change logo",
+      "description": "Upload a logo to your GitLab instance.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/application/appearance"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "logo",
+          "type": "string",
+          "required": false,
+          "description": "File to upload"
+        }
+      ],
+      "response": "{   \"logo\":\"/uploads/-/system/appearance/logo/1/logo.png\""
+    }
+  ]
+}

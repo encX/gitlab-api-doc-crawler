@@ -1,14 +1,17 @@
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 import { DocVer } from "../enums/docVer.ts";
 
+import * as settings from "../settings.ts";
+
 class GLUrl {
-  private docVer = DocVer.current;
   private host = "docs.gitlab.com";
 
   constructor() {}
 
   pageUrl(path: string): string {
-    switch (this.docVer) {
+    switch (settings.docVer) {
+      case DocVer.v14_10:
+        return `https://${join(this.host, "/14.10/ee/api/", path)}`;
       case DocVer.v14_8:
         return `https://${join(this.host, "/14.8/ee/api/", path)}`;
       case DocVer.v14_7:
@@ -21,10 +24,6 @@ class GLUrl {
       default:
         return `https://${join(this.host, "/ee/api/", path)}`;
     }
-  }
-
-  setDocVer(ver: DocVer): void {
-    this.docVer = ver;
   }
 }
 

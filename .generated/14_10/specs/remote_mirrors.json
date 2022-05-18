@@ -1,0 +1,170 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/remote_mirrors.html",
+  "pageSlug": "remote_mirrors",
+  "pageName": "Remote mirrors",
+  "apis": [
+    {
+      "name": "List a project’s remote mirrors",
+      "description": "Returns an Array of remote mirrors and their statuses:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/remote_mirrors"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "enabled": true,
+          "id": 101486,
+          "last_error": null,
+          "last_successful_update_at": "2020-01-06T17:32:02.823Z",
+          "last_update_at": "2020-01-06T17:32:02.823Z",
+          "last_update_started_at": "2020-01-06T17:31:55.864Z",
+          "only_protected_branches": true,
+          "keep_divergent_refs": true,
+          "update_status": "finished",
+          "url": "https://*****:*****@gitlab.com/gitlab-org/security/gitlab.git"
+        }
+      ]
+    },
+    {
+      "name": "Get a single project’s remote mirror",
+      "description": "Returns a remote mirror and its statuses:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/remote_mirrors/:mirror_id"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "enabled": true,
+        "id": 101486,
+        "last_error": null,
+        "last_successful_update_at": "2020-01-06T17:32:02.823Z",
+        "last_update_at": "2020-01-06T17:32:02.823Z",
+        "last_update_started_at": "2020-01-06T17:31:55.864Z",
+        "only_protected_branches": true,
+        "keep_divergent_refs": true,
+        "update_status": "finished",
+        "url": "https://*****:*****@gitlab.com/gitlab-org/security/gitlab.git"
+      }
+    },
+    {
+      "name": "Create a push mirror",
+      "description": "Push mirroring is disabled by default. You can enable it by including the optional parameter enabled when creating it:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/remote_mirrors"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "url",
+          "type": "String",
+          "required": true,
+          "description": "The target URL to which the repository is mirrored."
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if the mirror is enabled."
+        },
+        {
+          "name": "only_protected_branches",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if only protected branches are mirrored."
+        },
+        {
+          "name": "keep_divergent_refs",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if divergent refs are skipped."
+        }
+      ],
+      "response": {
+        "enabled": false,
+        "id": 101486,
+        "last_error": null,
+        "last_successful_update_at": null,
+        "last_update_at": null,
+        "last_update_started_at": null,
+        "only_protected_branches": false,
+        "keep_divergent_refs": false,
+        "update_status": "none",
+        "url": "https://*****:*****@example.com/gitlab/example.git"
+      }
+    },
+    {
+      "name": "Update a remote mirror’s attributes",
+      "description": "Toggle a remote mirror on or off, or change which types of branches are mirrored:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/remote_mirrors/:mirror_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "mirror_id",
+          "type": "Integer",
+          "required": true,
+          "description": "The remote mirror ID."
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if the mirror is enabled."
+        },
+        {
+          "name": "only_protected_branches",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if only protected branches are mirrored."
+        },
+        {
+          "name": "keep_divergent_refs",
+          "type": "Boolean",
+          "required": false,
+          "description": "Determines if divergent refs are skipped."
+        }
+      ],
+      "response": {
+        "enabled": false,
+        "id": 101486,
+        "last_error": null,
+        "last_successful_update_at": "2020-01-06T17:32:02.823Z",
+        "last_update_at": "2020-01-06T17:32:02.823Z",
+        "last_update_started_at": "2020-01-06T17:31:55.864Z",
+        "only_protected_branches": true,
+        "keep_divergent_refs": true,
+        "update_status": "finished",
+        "url": "https://*****:*****@gitlab.com/gitlab-org/security/gitlab.git"
+      }
+    },
+    {
+      "name": "Delete a remote mirror",
+      "description": "Delete a remote mirror.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/remote_mirrors/:mirror_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "mirror_id",
+          "type": "Integer",
+          "required": true,
+          "description": "Remote mirror ID."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

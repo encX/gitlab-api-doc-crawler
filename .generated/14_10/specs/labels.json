@@ -1,0 +1,400 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/labels.html",
+  "pageSlug": "labels",
+  "pageName": "Labels",
+  "apis": [
+    {
+      "name": "List labels",
+      "description": "Get all labels for a given project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/labels"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "with_counts",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether or not to include issue and merge request counts. Defaults to false. (Introduced in GitLab 12.2)"
+        },
+        {
+          "name": "include_ancestor_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include ancestor groups. Defaults to true."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Keyword to filter labels by. Introduced in GitLab 13.6"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "bug",
+          "color": "#d9534f",
+          "text_color": "#FFFFFF",
+          "description": "Bug reported by user",
+          "description_html": "Bug reported by user",
+          "open_issues_count": 1,
+          "closed_issues_count": 0,
+          "open_merge_requests_count": 1,
+          "subscribed": false,
+          "priority": 10,
+          "is_project_label": true
+        },
+        {
+          "id": 4,
+          "color": "#d9534f",
+          "text_color": "#FFFFFF",
+          "name": "confirmed",
+          "description": "Confirmed issue",
+          "description_html": "Confirmed issue",
+          "open_issues_count": 2,
+          "closed_issues_count": 5,
+          "open_merge_requests_count": 0,
+          "subscribed": false,
+          "priority": null,
+          "is_project_label": true
+        },
+        {
+          "id": 7,
+          "name": "critical",
+          "color": "#d9534f",
+          "text_color": "#FFFFFF",
+          "description": "Critical issue. Need fix ASAP",
+          "description_html": "Critical issue. Need fix ASAP",
+          "open_issues_count": 1,
+          "closed_issues_count": 3,
+          "open_merge_requests_count": 1,
+          "subscribed": false,
+          "priority": null,
+          "is_project_label": true
+        },
+        {
+          "id": 8,
+          "name": "documentation",
+          "color": "#f0ad4e",
+          "text_color": "#FFFFFF",
+          "description": "Issue about documentation",
+          "description_html": "Issue about documentation",
+          "open_issues_count": 1,
+          "closed_issues_count": 0,
+          "open_merge_requests_count": 2,
+          "subscribed": false,
+          "priority": null,
+          "is_project_label": false
+        },
+        {
+          "id": 9,
+          "color": "#5cb85c",
+          "text_color": "#FFFFFF",
+          "name": "enhancement",
+          "description": "Enhancement proposal",
+          "description_html": "Enhancement proposal",
+          "open_issues_count": 1,
+          "closed_issues_count": 0,
+          "open_merge_requests_count": 1,
+          "subscribed": true,
+          "priority": null,
+          "is_project_label": true
+        }
+      ]
+    },
+    {
+      "name": "Get a single project label",
+      "description": "Get a single label for a given project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/labels/:label_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a project’s label."
+        },
+        {
+          "name": "include_ancestor_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include ancestor groups. Defaults to true."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "bug",
+        "color": "#d9534f",
+        "text_color": "#FFFFFF",
+        "description": "Bug reported by user",
+        "description_html": "Bug reported by user",
+        "open_issues_count": 1,
+        "closed_issues_count": 0,
+        "open_merge_requests_count": 1,
+        "subscribed": false,
+        "priority": 10,
+        "is_project_label": true
+      }
+    },
+    {
+      "name": "Create a new label",
+      "description": "Creates a new label for the given repository with the given name and color.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/labels"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the label"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": true,
+          "description": "The color of the label given in 6-digit hex notation with leading ‘#’ sign (for example, #FFAABB) or one of the CSS color names"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of the label"
+        },
+        {
+          "name": "priority",
+          "type": "integer",
+          "required": false,
+          "description": "The priority of the label. Must be greater or equal than zero or null to remove the priority."
+        }
+      ],
+      "response": {
+        "id": 10,
+        "name": "feature",
+        "color": "#5843AD",
+        "text_color": "#FFFFFF",
+        "description": null,
+        "description_html": null,
+        "open_issues_count": 0,
+        "closed_issues_count": 0,
+        "open_merge_requests_count": 0,
+        "subscribed": false,
+        "priority": null,
+        "is_project_label": true
+      }
+    },
+    {
+      "name": "Delete a label",
+      "description": "Deletes a label with a given name.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/labels/:label_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a group’s label."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Edit an existing label",
+      "description": "Updates an existing label with new name or new color. At least one parameter is required, to update the label.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/labels/:label_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a group’s label."
+        },
+        {
+          "name": "new_name",
+          "type": "string",
+          "required": false,
+          "description": "The new name of the label"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "description": "The color of the label given in 6-digit hex notation with leading ‘#’ sign (for example, #FFAABB) or one of the CSS color names"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The new description of the label"
+        },
+        {
+          "name": "priority",
+          "type": "integer",
+          "required": false,
+          "description": "The new priority of the label. Must be greater or equal than zero or null to remove the priority."
+        }
+      ],
+      "response": {
+        "id": 8,
+        "name": "docs",
+        "color": "#8E44AD",
+        "text_color": "#FFFFFF",
+        "description": "Documentation",
+        "description_html": "Documentation",
+        "open_issues_count": 1,
+        "closed_issues_count": 0,
+        "open_merge_requests_count": 2,
+        "subscribed": false,
+        "priority": null,
+        "is_project_label": true
+      }
+    },
+    {
+      "name": "Promote a project label to a group label",
+      "description": "Promotes a project label to a group label. The label keeps its ID.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/labels/:label_id/promote"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a group’s label."
+        }
+      ],
+      "response": {
+        "id": 8,
+        "name": "documentation",
+        "color": "#8E44AD",
+        "description": "Documentation",
+        "description_html": "Documentation",
+        "open_issues_count": 1,
+        "closed_issues_count": 0,
+        "open_merge_requests_count": 2,
+        "subscribed": false
+      }
+    },
+    {
+      "name": "Subscribe to a label",
+      "description": "Subscribes the authenticated user to a label to receive notifications. If the user is already subscribed to the label, the status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/labels/:label_id/subscribe"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a project’s label"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "bug",
+        "color": "#d9534f",
+        "text_color": "#FFFFFF",
+        "description": "Bug reported by user",
+        "description_html": "Bug reported by user",
+        "open_issues_count": 1,
+        "closed_issues_count": 0,
+        "open_merge_requests_count": 1,
+        "subscribed": true,
+        "priority": null,
+        "is_project_label": true
+      }
+    },
+    {
+      "name": "Unsubscribe from a label",
+      "description": "Unsubscribes the authenticated user from a label to not receive notifications from it. If the user is not subscribed to the label, the status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/labels/:label_id/unsubscribe"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "label_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or title of a project’s label"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

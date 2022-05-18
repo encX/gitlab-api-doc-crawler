@@ -1,0 +1,129 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/sidekiq_metrics.html",
+  "pageSlug": "sidekiq_metrics",
+  "pageName": "Sidekiq metrics",
+  "apis": [
+    {
+      "name": "Get the current Queue Metrics",
+      "description": "List information about all the registered queues, their backlog and their latency.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/sidekiq/queue_metrics"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "queues": {
+          "default": {
+            "backlog": 0,
+            "latency": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Get the current Process Metrics",
+      "description": "List information about all the Sidekiq workers registered to process your queues.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/sidekiq/process_metrics"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "processes": [
+          {
+            "hostname": "gitlab.example.com",
+            "pid": 5649,
+            "tag": "gitlab",
+            "started_at": "2016-06-14T10:45:07.159-05:00",
+            "queues": [
+              "post_receive",
+              "mailers",
+              "archive_repo",
+              "system_hook",
+              "project_web_hook",
+              "gitlab_shell",
+              "incoming_email",
+              "runner",
+              "common",
+              "default"
+            ],
+            "labels": [],
+            "concurrency": 25,
+            "busy": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Get the current Job Statistics",
+      "description": "List information about the jobs that Sidekiq has performed.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/sidekiq/job_stats"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "jobs": {
+          "processed": 2,
+          "failed": 0,
+          "enqueued": 0,
+          "dead": 0
+        }
+      }
+    },
+    {
+      "name": "Get a compound response of all the previously mentioned metrics",
+      "description": "List all the currently available information about Sidekiq.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/sidekiq/compound_metrics"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "queues": {
+          "default": {
+            "backlog": 0,
+            "latency": 0
+          }
+        },
+        "processes": [
+          {
+            "hostname": "gitlab.example.com",
+            "pid": 5649,
+            "tag": "gitlab",
+            "started_at": "2016-06-14T10:45:07.159-05:00",
+            "queues": [
+              "post_receive",
+              "mailers",
+              "archive_repo",
+              "system_hook",
+              "project_web_hook",
+              "gitlab_shell",
+              "incoming_email",
+              "runner",
+              "common",
+              "default"
+            ],
+            "labels": [],
+            "concurrency": 25,
+            "busy": 0
+          }
+        ],
+        "jobs": {
+          "processed": 2,
+          "failed": 0,
+          "enqueued": 0,
+          "dead": 0
+        }
+      }
+    }
+  ]
+}

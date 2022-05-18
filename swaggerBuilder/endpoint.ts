@@ -15,7 +15,6 @@ import { parseSchema } from "./converter/schema.ts";
 import { operationIDify } from "./converter/text.ts";
 
 export class Endpoint {
-  // private pathsObject: PathsObject = {};
   private method: string;
   private path: string;
   private operation: OperationObject;

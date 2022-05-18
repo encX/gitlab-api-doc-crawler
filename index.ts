@@ -5,10 +5,9 @@ import { SwaggerBuilder } from "./swaggerBuilder/swaggerBuilder.ts";
 import { PagesLister } from "./pageLister.ts";
 import { PageParser } from "./pageParser.ts";
 import { glUrl } from "./helper/url.ts";
-import { DocVer } from "./enums/docVer.ts";
 import { Api } from "./types/models.ts";
+import { file } from "./helper/file.ts";
 
-glUrl.setDocVer(DocVer.current);
 const pages = (await new PagesLister().getPages())
   .sort((a, b) => (a.path > b.path ? 1 : -1))
   .filter((x, i, a) => {
@@ -18,23 +17,17 @@ const pages = (await new PagesLister().getPages())
   });
 console.log(`Got ${pages.length} pages or APIs`);
 
-await ensureDir(".generated/specs");
-await ensureDir(".generated/swagger");
+await file.ensureDir("specs");
+await file.ensureDir("swagger");
 
-await Deno.writeTextFile(
-  ".generated/allPages.json",
-  JSON.stringify(pages, null, 2)
-);
+await file.writeText("allPages.json", JSON.stringify(pages, null, 2));
 
 const swaggerBuilder = new SwaggerBuilder();
 
 for await (const page of pages) {
-  const specPath = join(
-    ".generated",
-    "specs",
-    page.path.replace(/\.html/, ".json")
-  );
-  await ensureFile(specPath);
+  const pageSlug = page.path.replace(/\//g, "__").replace(/\.\w+$/, "");
+  const specPath = join("specs", `${pageSlug}.json`);
+  await file.ensureFile(specPath);
 
   let apis: Api[] | string = "failed";
 
@@ -47,14 +40,14 @@ for await (const page of pages) {
 
   const wrapper = {
     origin: glUrl.pageUrl(page.path),
-    pageSlug: page.path.replace(/\.\w+$/, ""),
+    pageSlug,
     pageName: page.name,
     apis,
   };
 
-  await Deno.writeTextFile(specPath, JSON.stringify(wrapper, null, 2));
+  await file.writeText(specPath, JSON.stringify(wrapper, null, 2));
 
-  if (Array.isArray(apis)) swaggerBuilder.push(apis, wrapper.pageSlug);
+  if (Array.isArray(apis)) swaggerBuilder.push(apis, pageSlug);
 }
 
 console.log("done");

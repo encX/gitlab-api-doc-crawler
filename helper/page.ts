@@ -4,24 +4,21 @@ import {
   cheerio,
 } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
-import { ensureDir } from "https://deno.land/std@0.139.0/fs/mod.ts";
+
+import { file } from "./file.ts";
 
 export const load = async (
   url: string,
   ignoreCache = false
 ): Promise<Cheerio & Root> => {
-  await ensureDir(".generated/cache");
+  await file.ensureDir("cache");
 
   const uObj = new URL(url);
-  const cacheFileName = join(
-    ".generated",
-    "cache",
-    uObj.pathname.replace(/\//g, "_")
-  );
+  const cacheFileName = join("cache", uObj.pathname.replace(/\//g, "_"));
   let cachedContent = "";
 
   try {
-    cachedContent = await Deno.readTextFile(cacheFileName);
+    cachedContent = await file.readText(cacheFileName);
   } catch {}
 
   if (cachedContent && !ignoreCache) {
@@ -30,7 +27,7 @@ export const load = async (
   const res = await fetch(url);
   const body = new Uint8Array(await res.arrayBuffer());
   const htmlText = new TextDecoder().decode(body);
-  await Deno.writeTextFile(cacheFileName, htmlText);
+  await file.writeText(cacheFileName, htmlText);
 
   return cheerio.load(htmlText);
 };

@@ -1,0 +1,162 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/namespaces.html",
+  "pageSlug": "namespaces",
+  "pageName": "Namespaces",
+  "apis": [
+    {
+      "name": "List namespaces",
+      "description": "Get a list of the namespaces of the authenticated user. If the user is an administrator, a list of all namespaces in the GitLab instance is shown.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/namespaces"
+        },
+        {
+          "method": "GET",
+          "path": "/namespaces?search=foobar"
+        },
+        {
+          "method": "GET",
+          "path": "/namespaces?owned_only=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Returns a list of namespaces the user is authorized to view based on the search criteria"
+        },
+        {
+          "name": "owned_only",
+          "type": "boolean",
+          "required": false,
+          "description": "In GitLab 14.2 and later, returns a list of owned namespaces only"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "user1",
+          "billable_members_count": 2,
+          "max_seats_used": 3,
+          "seats_in_use": 2
+        },
+        {
+          "id": 1,
+          "name": "user1",
+          "plan": "silver"
+        },
+        {
+          "id": 1,
+          "name": "user1",
+          "path": "user1",
+          "kind": "user",
+          "full_path": "user1",
+          "parent_id": null,
+          "avatar_url": "https://secure.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/user1",
+          "billable_members_count": 1,
+          "plan": "default",
+          "trial_ends_on": null,
+          "trial": false
+        },
+        {
+          "id": 2,
+          "name": "group1",
+          "path": "group1",
+          "kind": "group",
+          "full_path": "group1",
+          "parent_id": null,
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/groups/group1",
+          "members_count_with_descendants": 2,
+          "billable_members_count": 2,
+          "plan": "default",
+          "trial_ends_on": null,
+          "trial": false
+        },
+        {
+          "id": 3,
+          "name": "bar",
+          "path": "bar",
+          "kind": "group",
+          "full_path": "foo/bar",
+          "parent_id": 9,
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/groups/foo/bar",
+          "members_count_with_descendants": 5,
+          "billable_members_count": 5,
+          "plan": "default",
+          "trial_ends_on": null,
+          "trial": false
+        }
+      ]
+    },
+    {
+      "name": "Get namespace by ID",
+      "description": "Get a namespace by ID.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/namespaces/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "ID or URL-encoded path of the namespace"
+        }
+      ],
+      "response": {
+        "id": 2,
+        "name": "group1",
+        "path": "group1",
+        "kind": "group",
+        "full_path": "group1",
+        "parent_id": null,
+        "avatar_url": null,
+        "web_url": "https://gitlab.example.com/groups/group1",
+        "members_count_with_descendants": 2,
+        "billable_members_count": 2,
+        "max_seats_used": 0,
+        "seats_in_use": 0,
+        "plan": "default",
+        "trial_ends_on": null,
+        "trial": false
+      }
+    },
+    {
+      "name": "Get existence of a namespace",
+      "description": "Get existence of a namespace by path. Suggests a new namespace path that does not already exist.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/namespaces/:namespace/exists"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "namespace",
+          "type": "string",
+          "required": true,
+          "description": "Namespace’s path."
+        },
+        {
+          "name": "parent_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of the parent namespace. If no ID is specified, only top-level namespaces are considered."
+        }
+      ],
+      "response": {
+        "exists": true,
+        "suggests": [
+          "my-group1"
+        ]
+      }
+    }
+  ]
+}

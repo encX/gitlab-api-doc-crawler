@@ -1,0 +1,107 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_releases'
+  version: '1.0'
+paths:
+  '/groups/{id}/releases':
+    get:
+      summary: List group releases
+      description: Returns a list of group releases.
+      operationId: listGroupReleases
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: The direction of the order. Either desc (default) for descending order or asc for ascending order.
+          required: false
+          schema:
+            type: string
+        - name: simple
+          in: query
+          description: Return only limited fields for each release.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listGroupReleasesResponse'
+components:
+  schemas:
+    listGroupReleasesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          tag_name:
+            type: string
+          description:
+            type: string
+          created_at:
+            type: string
+          released_at:
+            type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              username:
+                type: string
+              name:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          commit:
+            type: object
+            properties:
+              id:
+                type: string
+              short_id:
+                type: string
+              created_at:
+                type: string
+              parent_ids:
+                type: array
+                items: {}
+              title:
+                type: string
+              message:
+                type: string
+              author_name:
+                type: string
+              author_email:
+                type: string
+              authored_date:
+                type: string
+              committer_name:
+                type: string
+              committer_email:
+                type: string
+              committed_date:
+                type: string
+              trailers:
+                type: object
+                properties: {}
+              web_url:
+                type: string
+          upcoming_release:
+            type: boolean
+          commit_path:
+            type: string
+          tag_path:
+            type: string

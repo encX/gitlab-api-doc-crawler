@@ -1,0 +1,224 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/group_level_variables.html",
+  "pageSlug": "group_level_variables",
+  "pageName": "Group-level variables",
+  "apis": [
+    {
+      "name": "List group variables",
+      "description": "Get list of a group’s variables.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/variables"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a group or URL-encoded path of the group owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "key": "TEST_VARIABLE_1",
+          "variable_type": "env_var",
+          "value": "TEST_1",
+          "protected": false,
+          "masked": false,
+          "environment_scope": "*"
+        },
+        {
+          "key": "TEST_VARIABLE_2",
+          "variable_type": "env_var",
+          "value": "TEST_2",
+          "protected": false,
+          "masked": false,
+          "environment_scope": "*"
+        }
+      ]
+    },
+    {
+      "name": "Show variable details",
+      "description": "Get the details of a group’s specific variable.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a group or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        }
+      ],
+      "response": {
+        "key": "TEST_VARIABLE_1",
+        "variable_type": "env_var",
+        "value": "TEST_1",
+        "protected": false,
+        "masked": false,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Create variable",
+      "description": "Create a new variable.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/variables"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a group or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable; must have no more than 255 characters; only A-Z, a-z, 0-9, and _ are allowed"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable"
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file"
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected"
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The environment scope of a variable"
+        }
+      ],
+      "response": {
+        "key": "NEW_VARIABLE",
+        "value": "new value",
+        "variable_type": "env_var",
+        "protected": false,
+        "masked": false,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Update variable",
+      "description": "Update a group’s variable.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a group or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable"
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file"
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected"
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The environment scope of a variable"
+        }
+      ],
+      "response": {
+        "key": "NEW_VARIABLE",
+        "value": "updated value",
+        "variable_type": "env_var",
+        "protected": true,
+        "masked": true,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Remove variable",
+      "description": "Remove a group’s variable.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a group or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

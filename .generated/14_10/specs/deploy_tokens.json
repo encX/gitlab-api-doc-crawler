@@ -1,0 +1,345 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/deploy_tokens.html",
+  "pageSlug": "deploy_tokens",
+  "pageName": "Deploy tokens",
+  "apis": [
+    {
+      "name": "List all deploy tokens",
+      "description": "Get a list of all deploy tokens across the GitLab instance. This endpoint requires administrator access.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/deploy_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by active status."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "MyToken",
+          "username": "gitlab+deploy-token-1",
+          "expires_at": "2020-02-14T00:00:00.000Z",
+          "revoked": false,
+          "expired": false,
+          "scopes": [
+            "read_repository",
+            "read_registry"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "List project deploy tokens",
+      "description": "Get a list of a project’s deploy tokens.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deploy_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by active status."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "MyToken",
+          "username": "gitlab+deploy-token-1",
+          "expires_at": "2020-02-14T00:00:00.000Z",
+          "revoked": false,
+          "expired": false,
+          "scopes": [
+            "read_repository",
+            "read_registry"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get a project deploy token",
+      "description": "Get a single project’s deploy token by ID.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deploy_tokens/:token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "token_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the deploy token"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "MyToken",
+        "username": "gitlab+deploy-token-1",
+        "expires_at": "2020-02-14T00:00:00.000Z",
+        "revoked": false,
+        "expired": false,
+        "scopes": [
+          "read_repository",
+          "read_registry"
+        ]
+      }
+    },
+    {
+      "name": "Create a project deploy token",
+      "description": "Creates a new deploy token for a project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/deploy_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "New deploy token’s name"
+        },
+        {
+          "name": "expires_at",
+          "type": "datetime",
+          "required": false,
+          "description": "Expiration date for the deploy token. Does not expire if no value is provided. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "Username for deploy token. Default is gitlab+deploy-token-{n}"
+        },
+        {
+          "name": "scopes",
+          "type": "array of strings",
+          "required": false,
+          "description": "Indicates the deploy token scopes. Must be at least one of read_repository, read_registry, write_registry, read_package_registry, or write_package_registry."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "My deploy token",
+        "username": "custom-user",
+        "expires_at": "2021-01-01T00:00:00.000Z",
+        "token": "jMRvtPNxrn3crTAGukpZ",
+        "revoked": false,
+        "expired": false,
+        "scopes": [
+          "read_repository"
+        ]
+      }
+    },
+    {
+      "name": "Delete a project deploy token",
+      "description": "Removes a deploy token from the project.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/deploy_tokens/:token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "token_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the deploy token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List group deploy tokens",
+      "description": "Get a list of a group’s deploy tokens",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/deploy_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit by active status."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "MyToken",
+          "username": "gitlab+deploy-token-1",
+          "expires_at": "2020-02-14T00:00:00.000Z",
+          "revoked": false,
+          "expired": false,
+          "scopes": [
+            "read_repository",
+            "read_registry"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get a group deploy token",
+      "description": "Get a single group’s deploy token by ID.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/deploy_tokens/:token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "token_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the deploy token"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "MyToken",
+        "username": "gitlab+deploy-token-1",
+        "expires_at": "2020-02-14T00:00:00.000Z",
+        "revoked": false,
+        "expired": false,
+        "scopes": [
+          "read_repository",
+          "read_registry"
+        ]
+      }
+    },
+    {
+      "name": "Create a group deploy token",
+      "description": "Creates a new deploy token for a group.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/deploy_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "New deploy token’s name"
+        },
+        {
+          "name": "expires_at",
+          "type": "datetime",
+          "required": false,
+          "description": "Expiration date for the deploy token. Does not expire if no value is provided. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "Username for deploy token. Default is gitlab+deploy-token-{n}"
+        },
+        {
+          "name": "scopes",
+          "type": "array of strings",
+          "required": false,
+          "description": "Indicates the deploy token scopes. Must be at least one of read_repository, read_registry, write_registry, read_package_registry, or write_package_registry."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "My deploy token",
+        "username": "custom-user",
+        "expires_at": "2021-01-01T00:00:00.000Z",
+        "token": "jMRvtPNxrn3crTAGukpZ",
+        "revoked": false,
+        "expired": false,
+        "scopes": [
+          "read_registry"
+        ]
+      }
+    },
+    {
+      "name": "Delete a group deploy token",
+      "description": "Removes a deploy token from the group.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/deploy_tokens/:token_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "token_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the deploy token"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

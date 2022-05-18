@@ -1,0 +1,325 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/packages/debian_project_distributions.html",
+  "pageSlug": "packages__debian_project_distributions",
+  "pageName": "Debian distributions",
+  "apis": [
+    {
+      "name": "List all Debian distributions in a project",
+      "description": "Lists Debian distributions in the given project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/debian_distributions"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": false,
+          "description": "Filter with a specific codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "Filter with a specific suite."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "codename": "unstable",
+          "suite": null,
+          "origin": null,
+          "label": null,
+          "version": null,
+          "description": null,
+          "valid_time_duration_seconds": null,
+          "components": [
+            "main"
+          ],
+          "architectures": [
+            "all",
+            "amd64"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single Debian project distribution",
+      "description": "Gets a single Debian project distribution.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The codename of a distribution."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": null,
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": null,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Single Debian project distribution key",
+      "description": "Gets a single Debian project distribution key.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/debian_distributions/:codename/key.asc"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The codename of a distribution."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Create a Debian project distribution",
+      "description": "Creates a Debian project distribution.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/debian_distributions"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s suite."
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s origin."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s label."
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s version."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The new Debian distribution’s description."
+        },
+        {
+          "name": "valid_time_duration_seconds",
+          "type": "integer",
+          "required": false,
+          "description": "The new Debian distribution’s valid time duration (in seconds)."
+        },
+        {
+          "name": "components",
+          "type": "architectures",
+          "required": false,
+          "description": "The new Debian distribution’s list of components."
+        },
+        {
+          "name": "architectures",
+          "type": "architectures",
+          "required": false,
+          "description": "The new Debian distribution’s list of architectures."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": null,
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": null,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Update a Debian project distribution",
+      "description": "Updates a Debian project distribution.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "string",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        },
+        {
+          "name": "suite",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new suite."
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new origin."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new label."
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new version."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The Debian distribution’s new description."
+        },
+        {
+          "name": "valid_time_duration_seconds",
+          "type": "integer",
+          "required": false,
+          "description": "The Debian distribution’s new valid time duration (in seconds)."
+        },
+        {
+          "name": "components",
+          "type": "architectures",
+          "required": false,
+          "description": "The Debian distribution’s new list of components."
+        },
+        {
+          "name": "architectures",
+          "type": "architectures",
+          "required": false,
+          "description": "The Debian distribution’s new list of architectures."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "codename": "unstable",
+        "suite": "new-suite",
+        "origin": null,
+        "label": null,
+        "version": null,
+        "description": null,
+        "valid_time_duration_seconds": 604800,
+        "components": [
+          "main"
+        ],
+        "architectures": [
+          "all",
+          "amd64"
+        ]
+      }
+    },
+    {
+      "name": "Delete a Debian project distribution",
+      "description": "Deletes a Debian project distribution.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/debian_distributions/:codename"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "codename",
+          "type": "integer",
+          "required": true,
+          "description": "The Debian distribution’s codename."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

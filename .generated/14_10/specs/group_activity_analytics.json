@@ -1,0 +1,70 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/group_activity_analytics.html",
+  "pageSlug": "group_activity_analytics",
+  "pageName": "Group Activity Analytics",
+  "apis": [
+    {
+      "name": "Get count of recently created issues for group",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/analytics/group_activity/issues_count"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_path",
+          "type": "string",
+          "required": true,
+          "description": "Group path"
+        }
+      ],
+      "response": {
+        "issues_count": 10
+      }
+    },
+    {
+      "name": "Get count of recently created merge requests for group",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/analytics/group_activity/merge_requests_count"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_path",
+          "type": "string",
+          "required": true,
+          "description": "Group path"
+        }
+      ],
+      "response": {
+        "merge_requests_count": 10
+      }
+    },
+    {
+      "name": "Get count of members recently added to group",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/analytics/group_activity/new_members_count"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "group_path",
+          "type": "string",
+          "required": true,
+          "description": "Group path"
+        }
+      ],
+      "response": {
+        "new_members_count": 10
+      }
+    }
+  ]
+}

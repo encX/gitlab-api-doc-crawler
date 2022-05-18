@@ -1,0 +1,187 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / protected_environments'
+  version: '1.0'
+paths:
+  '/projects/{id}/protected_environments':
+    get:
+      summary: List protected environments
+      description: 'Gets a list of protected environments from a project:'
+      operationId: listProtectedEnvironments
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProtectedEnvironmentsResponse'
+    post:
+      summary: Protect repository environments
+      description: 'Protects a single environment:'
+      operationId: protectRepositoryEnvironments
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectRepositoryEnvironmentsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectRepositoryEnvironmentsRequest'
+  '/projects/{id}/protected_environments/{name}':
+    get:
+      summary: Get a single protected environment
+      description: 'Gets a single protected environment:'
+      operationId: getASingleProtectedEnvironment
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the protected environment
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProtectedEnvironmentResponse'
+    delete:
+      summary: Unprotect environment
+      description: 'Unprotects the given protected environment:'
+      operationId: unprotectEnvironment
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the protected environment.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unprotectEnvironmentResponse'
+components:
+  schemas:
+    listProtectedEnvironmentsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          deploy_access_levels:
+            type: array
+            items:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                access_level_description:
+                  type: string
+                user_id:
+                  type: string
+                group_id:
+                  type: string
+          required_approval_count:
+            type: integer
+    getASingleProtectedEnvironmentResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        deploy_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+              user_id:
+                type: string
+              group_id:
+                type: string
+        required_approval_count:
+          type: integer
+    protectRepositoryEnvironmentsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        required_approval_count:
+          type: integer
+      required:
+        - name
+        - deploy_access_levels
+    protectRepositoryEnvironmentsResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        deploy_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+              user_id:
+                type: string
+              group_id:
+                type: integer
+        required_approval_count:
+          type: integer
+        approval_rules:
+          type: array
+          items:
+            type: object
+            properties:
+              user_id:
+                type: string
+              group_id:
+                type: integer
+              access_level:
+                type: string
+              access_level_description:
+                type: string
+              required_approvals:
+                type: integer
+    unprotectEnvironmentResponse:
+      type: string

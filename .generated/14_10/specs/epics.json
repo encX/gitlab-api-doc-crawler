@@ -1,0 +1,695 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/epics.html",
+  "pageSlug": "epics",
+  "pageName": "Epics",
+  "apis": [
+    {
+      "name": "List epics for a group",
+      "description": "Gets all epics of the requested group and its subgroups.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics?labels=bug,reproduced"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics?state=opened"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return epics created by the given user id"
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return epics created by the user with the given username. Available in GitLab 14.7 and later"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Return epics matching a comma-separated list of labels names. Label names from the epic group or a parent group can be used"
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. Available in GitLab 12.7 and later"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return epics ordered by created_at, updated_at, or title fields. Default is created_at"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return epics sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search epics against their title and description"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Search epics against their state, possible filters: opened, closed and all, default: all"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return epics updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "include_ancestor_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include epics from the requested group’s ancestors. Default is false"
+        },
+        {
+          "name": "include_descendant_groups",
+          "type": "boolean",
+          "required": false,
+          "description": "Include epics from the requested group’s descendants. Default is true"
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return epics reacted by the authenticated user by the given emoji. None returns epics not given a reaction. Any returns epics given at least one reaction. Available in GitLab 13.0 and later"
+        },
+        {
+          "name": "not",
+          "type": "Hash",
+          "required": false,
+          "description": "Return epics that do not match the parameters supplied. Accepts: author_id, author_username (GitLab 14.7 and later) and labels. Available in GitLab 14.6 and later"
+        }
+      ],
+      "response": [
+        {
+          "id": 29,
+          "iid": 4,
+          "group_id": 7,
+          "parent_id": 23,
+          "parent_iid": 3,
+          "title": "Accusamus iste et ullam ratione voluptatem omnis debitis dolor est.",
+          "description": "Molestias dolorem eos vitae expedita impedit necessitatibus quo voluptatum.",
+          "state": "opened",
+          "confidential": "false",
+          "web_url": "http://gitlab.example.com/groups/test/-/epics/4",
+          "reference": "&4",
+          "references": {
+            "short": "&4",
+            "relative": "&4",
+            "full": "test&4"
+          },
+          "author": {
+            "id": 10,
+            "name": "Lu Mayer",
+            "username": "kam",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/018729e129a6f31c80a6327a30196823?s=80&d=identicon",
+            "web_url": "http://gitlab.example.com/kam"
+          },
+          "start_date": null,
+          "start_date_is_fixed": false,
+          "start_date_fixed": null,
+          "start_date_from_milestones": null,
+          "start_date_from_inherited_source": null,
+          "end_date": "2018-07-31",
+          "due_date": "2018-07-31",
+          "due_date_is_fixed": false,
+          "due_date_fixed": null,
+          "due_date_from_milestones": "2018-07-31",
+          "due_date_from_inherited_source": "2018-07-31",
+          "created_at": "2018-07-17T13:36:22.770Z",
+          "updated_at": "2018-07-18T12:22:05.239Z",
+          "closed_at": "2018-08-18T12:22:05.239Z",
+          "labels": [],
+          "upvotes": 4,
+          "downvotes": 0,
+          "color": "#1068bf",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/groups/7/epics/4",
+            "epic_issues": "http://gitlab.example.com/api/v4/groups/7/epics/4/issues",
+            "group": "http://gitlab.example.com/api/v4/groups/7",
+            "parent": "http://gitlab.example.com/api/v4/groups/7/epics/3"
+          }
+        },
+        {
+          "id": 50,
+          "iid": 35,
+          "group_id": 17,
+          "parent_id": 19,
+          "parent_iid": 1,
+          "title": "Accusamus iste et ullam ratione voluptatem omnis debitis dolor est.",
+          "description": "Molestias dolorem eos vitae expedita impedit necessitatibus quo voluptatum.",
+          "state": "opened",
+          "web_url": "http://gitlab.example.com/groups/test/sample/-/epics/35",
+          "reference": "&4",
+          "references": {
+            "short": "&4",
+            "relative": "sample&4",
+            "full": "test/sample&4"
+          },
+          "author": {
+            "id": 10,
+            "name": "Lu Mayer",
+            "username": "kam",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/018729e129a6f31c80a6327a30196823?s=80&d=identicon",
+            "web_url": "http://gitlab.example.com/kam"
+          },
+          "start_date": null,
+          "start_date_is_fixed": false,
+          "start_date_fixed": null,
+          "start_date_from_milestones": null,
+          "start_date_from_inherited_source": null,
+          "end_date": "2018-07-31",
+          "due_date": "2018-07-31",
+          "due_date_is_fixed": false,
+          "due_date_fixed": null,
+          "due_date_from_milestones": "2018-07-31",
+          "due_date_from_inherited_source": "2018-07-31",
+          "created_at": "2018-07-17T13:36:22.770Z",
+          "updated_at": "2018-07-18T12:22:05.239Z",
+          "closed_at": "2018-08-18T12:22:05.239Z",
+          "labels": [],
+          "upvotes": 4,
+          "downvotes": 0,
+          "color": "#1068bf",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/groups/17/epics/35",
+            "epic_issues": "http://gitlab.example.com/api/v4/groups/17/epics/35/issues",
+            "group": "http://gitlab.example.com/api/v4/groups/17",
+            "parent": "http://gitlab.example.com/api/v4/groups/17/epics/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Single epic",
+      "description": "Gets a single epic",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics/:epic_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer/string",
+          "required": true,
+          "description": "The internal ID of the epic."
+        }
+      ],
+      "response": {
+        "id": 30,
+        "iid": 5,
+        "group_id": 7,
+        "parent_id": null,
+        "parent_iid": null,
+        "title": "Ea cupiditate dolores ut vero consequatur quasi veniam voluptatem et non.",
+        "description": "Molestias dolorem eos vitae expedita impedit necessitatibus quo voluptatum.",
+        "state": "opened",
+        "web_url": "http://gitlab.example.com/groups/test/-/epics/5",
+        "reference": "&5",
+        "references": {
+          "short": "&5",
+          "relative": "&5",
+          "full": "test&5"
+        },
+        "author": {
+          "id": 7,
+          "name": "Pamella Huel",
+          "username": "arnita",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/a2f5c6fcef64c9c69cb8779cb292be1b?s=80&d=identicon",
+          "web_url": "http://gitlab.example.com/arnita"
+        },
+        "start_date": null,
+        "start_date_is_fixed": false,
+        "start_date_fixed": null,
+        "start_date_from_milestones": null,
+        "start_date_from_inherited_source": null,
+        "end_date": "2018-07-31",
+        "due_date": "2018-07-31",
+        "due_date_is_fixed": false,
+        "due_date_fixed": null,
+        "due_date_from_milestones": "2018-07-31",
+        "due_date_from_inherited_source": "2018-07-31",
+        "created_at": "2018-07-17T13:36:22.770Z",
+        "updated_at": "2018-07-18T12:22:05.239Z",
+        "closed_at": "2018-08-18T12:22:05.239Z",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "color": "#1068bf",
+        "subscribed": true,
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/groups/7/epics/5",
+          "epic_issues": "http://gitlab.example.com/api/v4/groups/7/epics/5/issues",
+          "group": "http://gitlab.example.com/api/v4/groups/7",
+          "parent": null
+        }
+      }
+    },
+    {
+      "name": "New epic",
+      "description": "Creates a new epic.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/epics"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "The title of the epic"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "The comma-separated list of labels"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of the epic. Limited to 1,048,576 characters."
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "description": "The color of the epic. Introduced in GitLab 14.8, behind a feature flag named epic_highlight_color (disabled by default)"
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the epic should be confidential"
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "When the epic was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z . Requires administrator or project/group owner privileges (available in GitLab 13.5 and later)"
+        },
+        {
+          "name": "start_date_is_fixed",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether start date should be sourced from start_date_fixed or from milestones (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "start_date_fixed",
+          "type": "string",
+          "required": false,
+          "description": "The fixed start date of an epic (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "due_date_is_fixed",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether due date should be sourced from due_date_fixed or from milestones (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "due_date_fixed",
+          "type": "string",
+          "required": false,
+          "description": "The fixed due date of an epic (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "parent_id",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID of a parent epic (in GitLab 11.11 and later)"
+        }
+      ],
+      "response": {
+        "id": 33,
+        "iid": 6,
+        "group_id": 7,
+        "parent_id": 29,
+        "parent_iid": 4,
+        "title": "Epic",
+        "description": "Epic description",
+        "state": "opened",
+        "confidential": "false",
+        "web_url": "http://gitlab.example.com/groups/test/-/epics/6",
+        "reference": "&6",
+        "references": {
+          "short": "&6",
+          "relative": "&6",
+          "full": "test&6"
+        },
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe",
+          "id": 18,
+          "username": "eileen.lowe"
+        },
+        "start_date": null,
+        "start_date_is_fixed": false,
+        "start_date_fixed": null,
+        "start_date_from_milestones": null,
+        "start_date_from_inherited_source": null,
+        "end_date": "2018-07-31",
+        "due_date": "2018-07-31",
+        "due_date_is_fixed": false,
+        "due_date_fixed": null,
+        "due_date_from_milestones": "2018-07-31",
+        "due_date_from_inherited_source": "2018-07-31",
+        "created_at": "2018-07-17T13:36:22.770Z",
+        "updated_at": "2018-07-18T12:22:05.239Z",
+        "closed_at": "2018-08-18T12:22:05.239Z",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "color": "#1068bf",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/groups/7/epics/6",
+          "epic_issues": "http://gitlab.example.com/api/v4/groups/7/epics/6/issues",
+          "group": "http://gitlab.example.com/api/v4/groups/7",
+          "parent": "http://gitlab.example.com/api/v4/groups/7/epics/4"
+        }
+      }
+    },
+    {
+      "name": "Update epic",
+      "description": "Updates an epic.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/epics/:epic_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer/string",
+          "required": true,
+          "description": "The internal ID of the epic"
+        },
+        {
+          "name": "add_labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names to add to an issue."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the epic should be confidential"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of an epic. Limited to 1,048,576 characters."
+        },
+        {
+          "name": "due_date_fixed",
+          "type": "string",
+          "required": false,
+          "description": "The fixed due date of an epic (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "due_date_is_fixed",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether due date should be sourced from due_date_fixed or from milestones (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names for an issue. Set to an empty string to unassign all labels."
+        },
+        {
+          "name": "parent_id",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID of a parent epic. Available in GitLab 14.6 and later"
+        },
+        {
+          "name": "remove_labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names to remove from an issue."
+        },
+        {
+          "name": "start_date_fixed",
+          "type": "string",
+          "required": false,
+          "description": "The fixed start date of an epic (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "start_date_is_fixed",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether start date should be sourced from start_date_fixed or from milestones (in GitLab 11.3 and later)"
+        },
+        {
+          "name": "state_event",
+          "type": "string",
+          "required": false,
+          "description": "State event for an epic. Set close to close the epic and reopen to reopen it (in GitLab 11.4 and later)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "The title of an epic"
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "required": false,
+          "description": "When the epic was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z . Requires administrator or project/group owner privileges (available in GitLab 13.5 and later)"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "required": false,
+          "description": "The color of the epic. Introduced in GitLab 14.8, behind a feature flag named epic_highlight_color (disabled by default)"
+        }
+      ],
+      "response": {
+        "id": 33,
+        "iid": 6,
+        "group_id": 7,
+        "parent_id": 29,
+        "parent_iid": 4,
+        "title": "New Title",
+        "description": "Epic description",
+        "state": "opened",
+        "confidential": "false",
+        "web_url": "http://gitlab.example.com/groups/test/-/epics/6",
+        "reference": "&6",
+        "references": {
+          "short": "&6",
+          "relative": "&6",
+          "full": "test&6"
+        },
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe",
+          "id": 18,
+          "username": "eileen.lowe"
+        },
+        "start_date": null,
+        "start_date_is_fixed": false,
+        "start_date_fixed": null,
+        "start_date_from_milestones": null,
+        "start_date_from_inherited_source": null,
+        "end_date": "2018-07-31",
+        "due_date": "2018-07-31",
+        "due_date_is_fixed": false,
+        "due_date_fixed": null,
+        "due_date_from_milestones": "2018-07-31",
+        "due_date_from_inherited_source": "2018-07-31",
+        "created_at": "2018-07-17T13:36:22.770Z",
+        "updated_at": "2018-07-18T12:22:05.239Z",
+        "closed_at": "2018-08-18T12:22:05.239Z",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "color": "#1068bf"
+      }
+    },
+    {
+      "name": "Delete epic",
+      "description": "Deletes an epic",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/epics/:epic_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer/string",
+          "required": true,
+          "description": "The internal ID of the epic."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Create a to-do item",
+      "description": "Manually creates a to-do item for the current user on an epic. If there already exists a to-do item for the user on that epic, status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/epics/:epic_iid/todo"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a group’s epic"
+        }
+      ],
+      "response": {
+        "id": 112,
+        "group": {
+          "id": 1,
+          "name": "Gitlab",
+          "path": "gitlab",
+          "kind": "group",
+          "full_path": "base/gitlab",
+          "parent_id": null
+        },
+        "author": {
+          "name": "Administrator",
+          "username": "root",
+          "id": 1,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "action_name": "marked",
+        "target_type": "epic",
+        "target": {
+          "id": 30,
+          "iid": 5,
+          "group_id": 1,
+          "title": "Ea cupiditate dolores ut vero consequatur quasi veniam voluptatem et non.",
+          "description": "Molestias dolorem eos vitae expedita impedit necessitatibus quo voluptatum.",
+          "author": {
+            "id": 7,
+            "name": "Pamella Huel",
+            "username": "arnita",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/a2f5c6fcef64c9c69cb8779cb292be1b?s=80&d=identicon",
+            "web_url": "http://gitlab.example.com/arnita"
+          },
+          "web_url": "http://gitlab.example.com/groups/test/-/epics/5",
+          "reference": "&5",
+          "references": {
+            "short": "&5",
+            "relative": "&5",
+            "full": "test&5"
+          },
+          "start_date": null,
+          "end_date": null,
+          "created_at": "2018-01-21T06:21:13.165Z",
+          "updated_at": "2018-01-22T12:41:41.166Z",
+          "closed_at": "2018-08-18T12:22:05.239Z"
+        },
+        "target_url": "https://gitlab.example.com/groups/epics/5",
+        "body": "Vel voluptas atque dicta mollitia adipisci qui at.",
+        "state": "pending",
+        "created_at": "2016-07-01T11:09:13.992Z"
+      }
+    }
+  ]
+}

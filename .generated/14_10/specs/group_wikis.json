@@ -1,0 +1,253 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/group_wikis.html",
+  "pageSlug": "group_wikis",
+  "pageName": "Group wikis",
+  "apis": [
+    {
+      "name": "List wiki pages",
+      "description": "List all wiki pages for a given group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/wikis"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "with_content",
+          "type": "boolean",
+          "required": false,
+          "description": "Include pages’ content"
+        }
+      ],
+      "response": [
+        {
+          "content": "Here is an instruction how to deploy this project.",
+          "format": "markdown",
+          "slug": "deploy",
+          "title": "deploy",
+          "encoding": "UTF-8"
+        },
+        {
+          "content": "Our development process is described here.",
+          "format": "markdown",
+          "slug": "development",
+          "title": "development",
+          "encoding": "UTF-8"
+        },
+        {
+          "content": "*  [Deploy](deploy)\n*  [Development](development)",
+          "format": "markdown",
+          "slug": "home",
+          "title": "home",
+          "encoding": "UTF-8"
+        }
+      ]
+    },
+    {
+      "name": "Get a wiki page",
+      "description": "Get a wiki page for a given group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/wikis/:slug"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded slug (a unique string) of the wiki page, such as dir%2Fpage_name"
+        },
+        {
+          "name": "render_html",
+          "type": "boolean",
+          "required": false,
+          "description": "Return the rendered HTML of the wiki page"
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "description": "Wiki page version sha"
+        }
+      ],
+      "response": {
+        "content": "home page",
+        "format": "markdown",
+        "slug": "home",
+        "title": "home",
+        "encoding": "UTF-8"
+      }
+    },
+    {
+      "name": "Create a new wiki page",
+      "description": "Create a new wiki page for the given repository with the given title, slug, and content.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/wikis"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true,
+          "description": "The content of the wiki page"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "The title of the wiki page"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "required": false,
+          "description": "The format of the wiki page. Available formats are: markdown (default), rdoc, asciidoc and org"
+        }
+      ],
+      "response": {
+        "content": "Hello world",
+        "format": "markdown",
+        "slug": "Hello",
+        "title": "Hello",
+        "encoding": "UTF-8"
+      }
+    },
+    {
+      "name": "Edit an existing wiki page",
+      "description": "Update an existing wiki page. At least one parameter is required to update the wiki page.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/wikis/:slug"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": false,
+          "description": "The content of the wiki page"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "The title of the wiki page"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "required": false,
+          "description": "The format of the wiki page. Available formats are: markdown (default), rdoc, asciidoc and org"
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "required": true,
+          "description": "URL encoded slug (a unique string) of the wiki page. Ex. dir%2Fpage_name"
+        }
+      ],
+      "response": {
+        "content": "documentation",
+        "format": "markdown",
+        "slug": "Docs",
+        "title": "Docs",
+        "encoding": "UTF-8"
+      }
+    },
+    {
+      "name": "Delete a wiki page",
+      "description": "Delete a wiki page with a given slug.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/wikis/:slug"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded slug (a unique string) of the wiki page, such as dir%2Fpage_name"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Upload an attachment to the wiki repository",
+      "description": "Upload a file to the attachment folder inside the wiki’s repository. The attachment folder is the uploads folder.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/wikis/attachments"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "file",
+          "type": "string",
+          "required": true,
+          "description": "The attachment to be uploaded"
+        },
+        {
+          "name": "branch",
+          "type": "string",
+          "required": false,
+          "description": "The name of the branch. Defaults to the wiki repository default branch"
+        }
+      ],
+      "response": {
+        "file_name": "dk.png",
+        "file_path": "uploads/6a061c4cf9f1c28cb22c384b4b8d4e3c/dk.png",
+        "branch": "master",
+        "link": {
+          "url": "uploads/6a061c4cf9f1c28cb22c384b4b8d4e3c/dk.png",
+          "markdown": "![dk](uploads/6a061c4cf9f1c28cb22c384b4b8d4e3c/dk.png)"
+        }
+      }
+    }
+  ]
+}

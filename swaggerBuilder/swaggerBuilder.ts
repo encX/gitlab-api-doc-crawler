@@ -1,4 +1,5 @@
 import { stringify } from "https://deno.land/std@0.139.0/encoding/yaml.ts";
+import { file } from "../helper/file.ts";
 
 import { Api } from "../types/models.ts";
 import {
@@ -26,6 +27,8 @@ export class SwaggerBuilder {
       schemas = { ...schemas, ...request, ...response };
     });
 
+    // todo merge like-schemas
+
     const swagger: Document = {
       openapi: "3.0.2",
       info: {
@@ -37,8 +40,8 @@ export class SwaggerBuilder {
     };
 
     try {
-      await Deno.writeTextFile(
-        `.generated/swagger/.${_pageSlug}.tmp.yml`,
+      await file.writeText(
+        `swagger/${_pageSlug}.tmp.yml`,
         stringify(swagger as Record<string, any>, {
           skipInvalid: true,
           lineWidth: 120,
@@ -46,13 +49,10 @@ export class SwaggerBuilder {
       );
     } catch (e) {
       console.error(e);
-      await Deno.writeTextFile(
-        `.generated/swagger/error.${_pageSlug}.tmp.json`,
+      await file.writeText(
+        `.generated/swagger_gen_file/${_pageSlug}.json`,
         JSON.stringify(endpoints, null, 2)
       );
     }
-
-    // todo
-    // - merge response object with same properties
   }
 }

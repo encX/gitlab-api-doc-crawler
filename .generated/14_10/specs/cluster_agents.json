@@ -1,0 +1,310 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/cluster_agents.html",
+  "pageSlug": "cluster_agents",
+  "pageName": "Agents",
+  "apis": [
+    {
+      "name": "List the agents for a project",
+      "description": "Returns the list of agents registered for the project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/cluster_agents"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "config_project.id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "config_project.description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_by_user_id",
+          "type": "integer",
+          "required": false
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "agent-1",
+          "config_project": {
+            "id": 20,
+            "description": "",
+            "name": "test",
+            "name_with_namespace": "Administrator / test",
+            "path": "test",
+            "path_with_namespace": "root/test",
+            "created_at": "2022-03-20T20:42:40.221Z"
+          },
+          "created_at": "2022-04-20T20:42:40.221Z",
+          "created_by_user_id": 42
+        },
+        {
+          "id": 2,
+          "name": "agent-2",
+          "config_project": {
+            "id": 20,
+            "description": "",
+            "name": "test",
+            "name_with_namespace": "Administrator / test",
+            "path": "test",
+            "path_with_namespace": "root/test",
+            "created_at": "2022-03-20T20:42:40.221Z"
+          },
+          "created_at": "2022-04-20T20:42:40.221Z",
+          "created_by_user_id": 42
+        }
+      ]
+    },
+    {
+      "name": "Get details about an agent",
+      "description": "Gets a single agent details.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/cluster_agents/:agent_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "config_project.id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "config_project.description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_by_user_id",
+          "type": "integer",
+          "required": false
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "agent-1",
+        "config_project": {
+          "id": 20,
+          "description": "",
+          "name": "test",
+          "name_with_namespace": "Administrator / test",
+          "path": "test",
+          "path_with_namespace": "root/test",
+          "created_at": "2022-03-20T20:42:40.221Z"
+        },
+        "created_at": "2022-04-20T20:42:40.221Z",
+        "created_by_user_id": 42
+      }
+    },
+    {
+      "name": "Register an agent with a project",
+      "description": "Registers an agent to the project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/cluster_agents"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "config_project.id",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "name": "config_project.description",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.name_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.path_with_namespace",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "config_project.created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "created_by_user_id",
+          "type": "integer",
+          "required": false
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "agent-1",
+        "config_project": {
+          "id": 20,
+          "description": "",
+          "name": "test",
+          "name_with_namespace": "Administrator / test",
+          "path": "test",
+          "path_with_namespace": "root/test",
+          "created_at": "2022-03-20T20:42:40.221Z"
+        },
+        "created_at": "2022-04-20T20:42:40.221Z",
+        "created_by_user_id": 42
+      }
+    },
+    {
+      "name": "Delete a registered agent",
+      "description": "Deletes an existing agent registration.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/cluster_agents/:agent_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "ID or URL-encoded path of the project maintained by the authenticated user"
+        },
+        {
+          "name": "agent_id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of the agent"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

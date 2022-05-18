@@ -1,0 +1,310 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / cluster_agents'
+  version: '1.0'
+paths:
+  '/projects/{id}/cluster_agents':
+    get:
+      summary: List the agents for a project
+      description: Returns the list of agents registered for the project.
+      operationId: listTheAgentsForAProject
+      parameters:
+        - name: id
+          in: path
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.id
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: config_project.description
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.name_with_namespace
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.path
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.path_with_namespace
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.created_at
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: created_at
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: created_by_user_id
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listTheAgentsForAProjectResponse'
+    post:
+      summary: Register an agent with a project
+      description: Registers an agent to the project.
+      operationId: registerAnAgentWithAProject
+      parameters:
+        - name: id
+          in: path
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registerAnAgentWithAProjectResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registerAnAgentWithAProjectRequest'
+  '/projects/{id}/cluster_agents/{agent_id}':
+    get:
+      summary: Get details about an agent
+      description: Gets a single agent details.
+      operationId: getDetailsAboutAnAgent
+      parameters:
+        - name: id
+          in: path
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.id
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: config_project.description
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.name_with_namespace
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.path
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.path_with_namespace
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: config_project.created_at
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: created_at
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: created_by_user_id
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
+    delete:
+      summary: Delete a registered agent
+      description: Deletes an existing agent registration.
+      operationId: deleteARegisteredAgent
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleteARegisteredAgentResponse'
+components:
+  schemas:
+    listTheAgentsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          config_project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+          created_at:
+            type: string
+          created_by_user_id:
+            type: integer
+    getDetailsAboutAnAgentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        config_project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+        created_at:
+          type: string
+        created_by_user_id:
+          type: integer
+    registerAnAgentWithAProjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        config_project.id:
+          type: integer
+        config_project.description:
+          type: string
+        config_project.name:
+          type: string
+        config_project.name_with_namespace:
+          type: string
+        config_project.path:
+          type: string
+        config_project.path_with_namespace:
+          type: string
+        config_project.created_at:
+          type: string
+        created_at:
+          type: string
+        created_by_user_id:
+          type: integer
+    registerAnAgentWithAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        config_project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+        created_at:
+          type: string
+        created_by_user_id:
+          type: integer
+    deleteARegisteredAgentResponse:
+      type: string

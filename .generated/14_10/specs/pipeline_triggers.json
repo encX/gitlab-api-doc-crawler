@@ -1,0 +1,166 @@
+{
+  "origin": "https://docs.gitlab.com/14.10/ee/api/pipeline_triggers.html",
+  "pageSlug": "pipeline_triggers",
+  "pageName": "Pipeline triggers",
+  "apis": [
+    {
+      "name": "List project triggers",
+      "description": "Get a list of project’s build triggers.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/triggers"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "id": 10,
+          "description": "my trigger",
+          "created_at": "2016-01-07T09:53:58.235Z",
+          "last_used": null,
+          "token": "6d056f63e50fe6f8c5f8f4aa10edb7",
+          "updated_at": "2016-01-07T09:53:58.235Z",
+          "owner": null
+        }
+      ]
+    },
+    {
+      "name": "Get trigger details",
+      "description": "Get details of project’s build trigger.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/triggers/:trigger_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "trigger_id",
+          "type": "integer",
+          "required": true,
+          "description": "The trigger ID"
+        }
+      ],
+      "response": {
+        "id": 10,
+        "description": "my trigger",
+        "created_at": "2016-01-07T09:53:58.235Z",
+        "last_used": null,
+        "token": "6d056f63e50fe6f8c5f8f4aa10edb7",
+        "updated_at": "2016-01-07T09:53:58.235Z",
+        "owner": null
+      }
+    },
+    {
+      "name": "Create a project trigger",
+      "description": "Create a trigger for a project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/triggers"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": true,
+          "description": "The trigger name"
+        }
+      ],
+      "response": {
+        "id": 10,
+        "description": "my trigger",
+        "created_at": "2016-01-07T09:53:58.235Z",
+        "last_used": null,
+        "token": "6d056f63e50fe6f8c5f8f4aa10edb7",
+        "updated_at": "2016-01-07T09:53:58.235Z",
+        "owner": null
+      }
+    },
+    {
+      "name": "Update a project trigger",
+      "description": "Update a trigger for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/triggers/:trigger_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "trigger_id",
+          "type": "integer",
+          "required": true,
+          "description": "The trigger ID"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The trigger name"
+        }
+      ],
+      "response": {
+        "id": 10,
+        "description": "my trigger",
+        "created_at": "2016-01-07T09:53:58.235Z",
+        "last_used": null,
+        "token": "6d056f63e50fe6f8c5f8f4aa10edb7",
+        "updated_at": "2016-01-07T09:53:58.235Z",
+        "owner": null
+      }
+    },
+    {
+      "name": "Remove a project trigger",
+      "description": "Remove a project’s build trigger.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/triggers/:trigger_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "trigger_id",
+          "type": "integer",
+          "required": true,
+          "description": "The trigger ID"
+        }
+      ],
+      "response": null
+    }
+  ]
+}
