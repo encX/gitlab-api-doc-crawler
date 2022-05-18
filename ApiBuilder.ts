@@ -29,7 +29,7 @@ export class ApiBuilder {
     return this;
   }
 
-  withResponse(response: any): ApiBuilder {
+  withResponse(response: unknown): ApiBuilder {
     if (this.api.response === null || typeof this.api.response === "string") {
       this.api.response = response;
     } else if (Array.isArray(this.api.response) && Array.isArray(response)) {
