@@ -46,10 +46,10 @@ for await (const page of pages) {
 
   await file.writeText(specPath, JSON.stringify(wrapper, null, 2));
 
-  if (Array.isArray(apis)) swaggerBuilder.push(apis, pageSlug);
+  if (Array.isArray(apis)) await swaggerBuilder.push(apis, pageSlug);
 }
 
-swaggerBuilder.saveMain();
+await swaggerBuilder.saveMain();
 
 console.log("done");
 Deno.exit(0);
