@@ -95,6 +95,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectPipelinesResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}':
     get:
       summary: Get a single pipeline
@@ -120,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASinglePipelineResponse'
+      tags:
+        - pipelines
     delete:
       summary: Delete a pipeline
       description: ''
@@ -144,6 +148,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAPipelineResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/variables':
     get:
       summary: Get variables of a pipeline
@@ -169,6 +175,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getVariablesOfAPipelineResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/test_report':
     get:
       summary: Get a pipeline’s test report
@@ -194,6 +202,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAPipelineTestReportResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/test_report_summary':
     get:
       summary: Get a pipeline’s test report summary
@@ -219,6 +229,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAPipelineTestReportSummaryResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipeline':
     post:
       summary: Create a new pipeline
@@ -243,6 +255,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewPipelineRequest'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/retry':
     post:
       summary: Retry jobs in a pipeline
@@ -268,6 +282,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retryJobsInAPipelineResponse'
+      tags:
+        - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/cancel':
     post:
       summary: Cancel a pipeline’s jobs
@@ -293,6 +309,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/cancelAPipelineJobsResponse'
+      tags:
+        - pipelines
 components:
   schemas:
     listProjectPipelinesResponse:

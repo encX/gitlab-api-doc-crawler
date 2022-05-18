@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listWikiPagesResponse'
+      tags:
+        - group_wikis
   '/groups/{id}/wikis/{slug}':
     get:
       summary: Get a wiki page
@@ -65,6 +67,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAWikiPageResponse'
+      tags:
+        - group_wikis
     put:
       summary: Edit an existing wiki page
       description: Update an existing wiki page. At least one parameter is required to update the wiki page.
@@ -94,6 +98,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editAnExistingWikiPageRequest'
+      tags:
+        - group_wikis
     delete:
       summary: Delete a wiki page
       description: Delete a wiki page with a given slug.
@@ -118,6 +124,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAWikiPageResponse'
+      tags:
+        - group_wikis
   '/projects/{id}/wikis':
     post:
       summary: Create a new wiki page
@@ -142,6 +150,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewWikiPageRequest'
+      tags:
+        - group_wikis
   '/groups/{id}/wikis/attachments':
     post:
       summary: Upload an attachment to the wiki repository
@@ -168,6 +178,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/uploadAnAttachmentToTheWikiRepositoryRequest'
+      tags:
+        - group_wikis
 components:
   schemas:
     listWikiPagesResponse:

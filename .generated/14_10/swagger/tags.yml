@@ -44,6 +44,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectRepositoryTagsResponse'
+      tags:
+        - tags
     post:
       summary: Create a new tag
       description: Creates a new tag in the repository that points to the supplied ref.
@@ -67,6 +69,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewTagRequest'
+      tags:
+        - tags
   '/projects/{id}/repository/tags/{tag_name}':
     get:
       summary: Get a single repository tag
@@ -94,6 +98,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleRepositoryTagResponse'
+      tags:
+        - tags
     delete:
       summary: Delete a tag
       description: Deletes a tag of a repository with given name.
@@ -118,6 +124,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteATagResponse'
+      tags:
+        - tags
 components:
   schemas:
     listProjectRepositoryTagsResponse:

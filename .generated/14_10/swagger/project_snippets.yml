@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listSnippetsResponse'
+      tags:
+        - project_snippets
     post:
       summary: Create new snippet
       description: Creates a new project snippet. The user must have permission to create new snippets.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewSnippetRequest'
+      tags:
+        - project_snippets
   '/projects/{id}/snippets/{snippet_id}':
     get:
       summary: Single snippet
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleSnippetResponse'
+      tags:
+        - project_snippets
     put:
       summary: Update snippet
       description: Updates an existing project snippet. The user must have permission to change an existing snippet.
@@ -99,6 +105,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateSnippetRequest'
+      tags:
+        - project_snippets
     delete:
       summary: Delete snippet
       description: >-
@@ -125,6 +133,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteSnippetResponse'
+      tags:
+        - project_snippets
   '/projects/{id}/snippets/{snippet_id}/raw':
     get:
       summary: Snippet content
@@ -150,6 +160,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/snippetContentResponse'
+      tags:
+        - project_snippets
   '/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw':
     get:
       summary: Snippet repository file content
@@ -187,6 +199,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
+      tags:
+        - project_snippets
   '/projects/{id}/snippets/{snippet_id}/user_agent_detail':
     get:
       summary: Get user agent details
@@ -212,6 +226,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserAgentDetailsResponse'
+      tags:
+        - project_snippets
 components:
   schemas:
     listSnippetsResponse:

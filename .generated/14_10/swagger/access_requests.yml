@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAccessRequestsForAGroupOrProjectResponse'
+      tags:
+        - access_requests
     post:
       summary: Request access to a group or project
       description: Requests access for the authenticated user to a group or project.
@@ -40,6 +42,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/requestAccessToAGroupOrProjectResponse'
+      tags:
+        - access_requests
   '/groups/{id}/access_requests/{user_id}/approve':
     put:
       summary: Approve an access request
@@ -70,6 +74,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/approveAnAccessRequestRequest'
+      tags:
+        - access_requests
   '/groups/{id}/access_requests/{user_id}':
     delete:
       summary: Deny an access request
@@ -95,6 +101,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/denyAnAccessRequestResponse'
+      tags:
+        - access_requests
 components:
   schemas:
     listAccessRequestsForAGroupOrProjectResponse:

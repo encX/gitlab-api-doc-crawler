@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllFeaturesResponse'
+      tags:
+        - features
   /features/definitions:
     get:
       summary: List all feature definitions
@@ -29,6 +31,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllFeatureDefinitionsResponse'
+      tags:
+        - features
   '/features/{name}':
     post:
       summary: Set or create a feature
@@ -55,6 +59,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setOrCreateAFeatureRequest'
+      tags:
+        - features
     delete:
       summary: Delete a feature
       description: 'Removes a feature gate. Response is equal when the gate exists, or doesn’t.'
@@ -67,6 +73,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAFeatureResponse'
+      tags:
+        - features
   'https://gitlab.example.com/api/v4/features/my_user_feature':
     post:
       summary: Set percentage of actors rollout
@@ -80,6 +88,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/setPercentageOfActorsRolloutResponse'
+      tags:
+        - features
 components:
   schemas:
     listAllFeaturesResponse:

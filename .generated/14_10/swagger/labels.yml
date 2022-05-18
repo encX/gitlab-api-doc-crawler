@@ -40,6 +40,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listLabelsResponse'
+      tags:
+        - labels
     post:
       summary: Create a new label
       description: Creates a new label for the given repository with the given name and color.
@@ -63,6 +65,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewLabelRequest'
+      tags:
+        - labels
   '/projects/{id}/labels/{label_id}':
     get:
       summary: Get a single project label
@@ -94,6 +98,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProjectLabelResponse'
+      tags:
+        - labels
     delete:
       summary: Delete a label
       description: Deletes a label with a given name.
@@ -118,6 +124,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteALabelResponse'
+      tags:
+        - labels
     put:
       summary: Edit an existing label
       description: 'Updates an existing label with new name or new color. At least one parameter is required, to update the label.'
@@ -147,6 +155,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editAnExistingLabelRequest'
+      tags:
+        - labels
   '/projects/{id}/labels/{label_id}/promote':
     put:
       summary: Promote a project label to a group label
@@ -172,6 +182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/promoteAProjectLabelToAGroupLabelResponse'
+      tags:
+        - labels
   '/projects/{id}/labels/{label_id}/subscribe':
     post:
       summary: Subscribe to a label
@@ -199,6 +211,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/subscribeToALabelResponse'
+      tags:
+        - labels
   '/projects/{id}/labels/{label_id}/unsubscribe':
     post:
       summary: Unsubscribe from a label
@@ -226,6 +240,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unsubscribeFromALabelResponse'
+      tags:
+        - labels
 components:
   schemas:
     listLabelsResponse:

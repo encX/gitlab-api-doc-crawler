@@ -52,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupLabelsResponse'
+      tags:
+        - group_labels
     post:
       summary: Create a new group label
       description: Create a new group label for a given group.
@@ -75,6 +77,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewGroupLabelRequest'
+      tags:
+        - group_labels
   '/groups/{id}/labels/{label_id}':
     get:
       summary: Get a single group label
@@ -118,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleGroupLabelResponse'
+      tags:
+        - group_labels
     put:
       summary: Update a group label
       description: 'Updates an existing group label. At least one parameter is required, to update the group label.'
@@ -147,6 +153,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAGroupLabelRequest'
+      tags:
+        - group_labels
     delete:
       summary: Delete a group label
       description: Deletes a group label with a given name.
@@ -171,6 +179,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGroupLabelResponse'
+      tags:
+        - group_labels
   '/groups/{id}/labels/{label_id}/subscribe':
     post:
       summary: Subscribe to a group label
@@ -198,6 +208,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/subscribeToAGroupLabelResponse'
+      tags:
+        - group_labels
   '/groups/{id}/labels/{label_id}/unsubscribe':
     post:
       summary: Unsubscribe from a group label
@@ -225,6 +237,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unsubscribeFromAGroupLabelResponse'
+      tags:
+        - group_labels
 components:
   schemas:
     listGroupLabelsResponse:

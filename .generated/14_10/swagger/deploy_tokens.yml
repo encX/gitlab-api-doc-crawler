@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllDeployTokensResponse'
+      tags:
+        - deploy_tokens
   '/projects/{id}/deploy_tokens':
     get:
       summary: List project deploy tokens
@@ -31,7 +33,7 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: active
@@ -47,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectDeployTokensResponse'
+      tags:
+        - deploy_tokens
     post:
       summary: Create a project deploy token
       description: Creates a new deploy token for a project.
@@ -55,7 +59,7 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -70,6 +74,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAProjectDeployTokenRequest'
+      tags:
+        - deploy_tokens
   '/projects/{id}/deploy_tokens/{token_id}':
     get:
       summary: Get a project deploy token
@@ -79,13 +85,13 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
         - name: token_id
           in: path
           description: ID of the deploy token
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -95,6 +101,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAProjectDeployTokenResponse'
+      tags:
+        - deploy_tokens
     delete:
       summary: Delete a project deploy token
       description: Removes a deploy token from the project.
@@ -103,13 +111,13 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
         - name: token_id
           in: path
           description: ID of the deploy token
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -119,6 +127,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAProjectDeployTokenResponse'
+      tags:
+        - deploy_tokens
   '/groups/{id}/deploy_tokens':
     get:
       summary: List group deploy tokens
@@ -128,7 +138,7 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: active
@@ -144,6 +154,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupDeployTokensResponse'
+      tags:
+        - deploy_tokens
     post:
       summary: Create a group deploy token
       description: Creates a new deploy token for a group.
@@ -152,7 +164,7 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the group owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -167,6 +179,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAGroupDeployTokenRequest'
+      tags:
+        - deploy_tokens
   '/groups/{id}/deploy_tokens/{token_id}':
     get:
       summary: Get a group deploy token
@@ -176,13 +190,13 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the group owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
         - name: token_id
           in: path
           description: ID of the deploy token
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -192,6 +206,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAGroupDeployTokenResponse'
+      tags:
+        - deploy_tokens
     delete:
       summary: Delete a group deploy token
       description: Removes a deploy token from the group.
@@ -200,13 +216,13 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the group owned by the authenticated user
-          required: false
+          required: true
           schema:
             type: string
         - name: token_id
           in: path
           description: ID of the deploy token
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -216,6 +232,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGroupDeployTokenResponse'
+      tags:
+        - deploy_tokens
 components:
   schemas:
     listAllDeployTokensResponse:

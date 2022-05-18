@@ -21,6 +21,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAnApplicationRequest'
+      tags:
+        - applications
     get:
       summary: List all applications
       description: List all registered applications.
@@ -33,6 +35,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllApplicationsResponse'
+      tags:
+        - applications
   '/applications/{id}':
     delete:
       summary: Delete an application
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnApplicationResponse'
+      tags:
+        - applications
 components:
   schemas:
     createAnApplicationRequest:

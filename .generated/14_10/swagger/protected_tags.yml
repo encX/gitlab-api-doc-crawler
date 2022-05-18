@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProtectedTagsResponse'
+      tags:
+        - protected_tags
     post:
       summary: Protect repository tags
       description: Protects a single repository tag or several project repository tags using a wildcard protected tag.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/protectRepositoryTagsRequest'
+      tags:
+        - protected_tags
   '/projects/{id}/protected_tags/{name}':
     get:
       summary: Get a single protected tag or wildcard protected tag
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
+      tags:
+        - protected_tags
     delete:
       summary: Unprotect repository tags
       description: Unprotects the given protected tag or wildcard protected tag.
@@ -94,6 +100,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unprotectRepositoryTagsResponse'
+      tags:
+        - protected_tags
 components:
   schemas:
     listProtectedTagsResponse:

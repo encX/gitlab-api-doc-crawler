@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllBadgesOfAProjectResponse'
+      tags:
+        - project_badges
     post:
       summary: Add a badge to a project
       description: Adds a badge to a project.
@@ -51,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addABadgeToAProjectRequest'
+      tags:
+        - project_badges
   '/projects/{id}/badges/{badge_id}':
     get:
       summary: Get a badge of a project
@@ -76,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getABadgeOfAProjectResponse'
+      tags:
+        - project_badges
     put:
       summary: Edit a badge of a project
       description: Updates a badge of a project.
@@ -105,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editABadgeOfAProjectRequest'
+      tags:
+        - project_badges
     delete:
       summary: Remove a badge from a project
       description: Removes a badge from a project. Only project badges are removed by using this endpoint.
@@ -129,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeABadgeFromAProjectResponse'
+      tags:
+        - project_badges
   '/projects/{id}/badges/render':
     get:
       summary: Preview a badge from a project
@@ -160,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/previewABadgeFromAProjectResponse'
+      tags:
+        - project_badges
 components:
   schemas:
     listAllBadgesOfAProjectResponse:

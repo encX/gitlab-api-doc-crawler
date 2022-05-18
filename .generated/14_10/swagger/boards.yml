@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectIssueBoardsResponse'
+      tags:
+        - boards
     post:
       summary: Create an issue board
       description: Creates a project issue board.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAnIssueBoardRequest'
+      tags:
+        - boards
   '/projects/{id}/boards/{board_id}':
     get:
       summary: Show a single issue board
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/showASingleIssueBoardResponse'
+      tags:
+        - boards
     put:
       summary: Update an issue board
       description: Updates a project issue board.
@@ -99,6 +105,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAnIssueBoardRequest'
+      tags:
+        - boards
     delete:
       summary: Delete an issue board
       description: Deletes a project issue board.
@@ -123,6 +131,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnIssueBoardResponse'
+      tags:
+        - boards
   '/projects/{id}/boards/{board_id}/lists':
     get:
       summary: List board lists in a project issue board
@@ -148,6 +158,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listBoardListsInAProjectIssueBoardResponse'
+      tags:
+        - boards
     post:
       summary: Create a board list
       description: Creates a new issue board list.
@@ -177,6 +189,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createABoardListRequest'
+      tags:
+        - boards
   '/projects/{id}/boards/{board_id}/lists/{list_id}':
     get:
       summary: Show a single board list
@@ -208,6 +222,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/showASingleBoardListResponse'
+      tags:
+        - boards
     put:
       summary: Reorder a list in a board
       description: Updates an existing issue board list. This call is used to change list position.
@@ -243,6 +259,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/reorderAListInABoardRequest'
+      tags:
+        - boards
     delete:
       summary: Delete a board list from a board
       description: Only for administrators and project owners. Deletes a board list.
@@ -273,6 +291,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteABoardListFromABoardResponse'
+      tags:
+        - boards
 components:
   schemas:
     listProjectIssueBoardsResponse:

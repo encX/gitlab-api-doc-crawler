@@ -21,6 +21,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewGeoNodeRequest'
+      tags:
+        - geo_nodes
     get:
       summary: Retrieve configuration about all Geo nodes
       description: ''
@@ -33,6 +35,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveConfigurationAboutAllGeoNodesResponse'
+      tags:
+        - geo_nodes
   '/geo_nodes/{id}':
     get:
       summary: Retrieve configuration about a specific Geo node
@@ -46,6 +50,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveConfigurationAboutASpecificGeoNodeResponse'
+      tags:
+        - geo_nodes
     put:
       summary: Edit a Geo node
       description: Updates settings of an existing Geo node.
@@ -69,6 +75,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editAGeoNodeRequest'
+      tags:
+        - geo_nodes
     delete:
       summary: Delete a Geo node
       description: Removes the Geo node.
@@ -87,6 +95,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGeoNodeResponse'
+      tags:
+        - geo_nodes
   '/geo_nodes/{id}/repair':
     post:
       summary: Repair a Geo node
@@ -100,6 +110,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/repairAGeoNodeResponse'
+      tags:
+        - geo_nodes
   /geo_nodes/status:
     get:
       summary: Retrieve status about all Geo nodes
@@ -113,6 +125,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveStatusAboutAllGeoNodesResponse'
+      tags:
+        - geo_nodes
   '/geo_nodes/{id}/status':
     get:
       summary: Retrieve status about a specific Geo node
@@ -126,6 +140,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveStatusAboutASpecificGeoNodeResponse'
+      tags:
+        - geo_nodes
   /geo_nodes/current/failures:
     get:
       summary: Retrieve project sync or verification failures that occurred on the current node
@@ -151,6 +167,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNodeResponse'
+      tags:
+        - geo_nodes
 components:
   schemas:
     createANewGeoNodeRequest:

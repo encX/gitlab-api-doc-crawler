@@ -78,6 +78,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listRepositoryCommitsResponse'
+      tags:
+        - commits
     post:
       summary: Create a commit with multiple files and actions
       description: Create a commit by posting a JSON payload
@@ -95,6 +97,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createACommitWithMultipleFilesAndActionsRequest'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}':
     get:
       summary: Get a single commit
@@ -126,6 +130,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleCommitResponse'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/refs':
     get:
       summary: Get references a commit is pushed to
@@ -157,6 +163,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getReferencesACommitIsPushedToResponse'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/cherry_pick':
     post:
       summary: Cherry-pick a commit
@@ -187,6 +195,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/cherry-pickACommitRequest'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/revert':
     post:
       summary: Revert a commit
@@ -217,6 +227,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/revertACommitRequest'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/diff':
     get:
       summary: Get the diff of a commit
@@ -242,6 +254,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheDiffOfACommitResponse'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/comments':
     get:
       summary: Get the comments of a commit
@@ -267,6 +281,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheCommentsOfACommitResponse'
+      tags:
+        - commits
     post:
       summary: Post comment to commit
       description: Adds a comment to a commit.
@@ -296,6 +312,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/postCommentToCommitRequest'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/discussions':
     get:
       summary: Get the discussions of a commit
@@ -321,6 +339,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheDiscussionsOfACommitResponse'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/statuses':
     get:
       summary: List the statuses of a commit
@@ -370,6 +390,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listTheStatusesOfACommitResponse'
+      tags:
+        - commits
   '/projects/{id}/statuses/{sha}':
     post:
       summary: Post the build status to a commit
@@ -400,6 +422,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/postTheBuildStatusToACommitRequest'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/merge_requests':
     get:
       summary: List merge requests associated with a commit
@@ -425,6 +449,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMergeRequestsAssociatedWithACommitResponse'
+      tags:
+        - commits
   '/projects/{id}/repository/commits/{sha}/signature':
     get:
       summary: Get GPG signature of a commit
@@ -450,6 +476,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getGpgSignatureOfACommitResponse'
+      tags:
+        - commits
 components:
   schemas:
     listRepositoryCommitsResponse:

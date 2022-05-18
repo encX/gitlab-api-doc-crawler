@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listSystemHooksResponse'
+      tags:
+        - system_hooks
     post:
       summary: Add new system hook
       description: Add a new system hook.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNewSystemHookRequest'
+      tags:
+        - system_hooks
   '/hooks/{id}':
     get:
       summary: Get system hook
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSystemHookResponse'
+      tags:
+        - system_hooks
     post:
       summary: Test system hook
       description: ''
@@ -70,6 +76,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/testSystemHookResponse'
+      tags:
+        - system_hooks
     delete:
       summary: Delete system hook
       description: Deletes a system hook.
@@ -88,6 +96,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteSystemHookResponse'
+      tags:
+        - system_hooks
 components:
   schemas:
     listSystemHooksResponse:

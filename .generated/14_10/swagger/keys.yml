@@ -24,6 +24,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSshKeyWithUserByIdOfAnSshKeyResponse'
+      tags:
+        - keys
   /keys:
     get:
       summary: Get user by fingerprint of SSH key
@@ -45,6 +47,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserByFingerprintOfSshKeyResponse'
+      tags:
+        - keys
 components:
   schemas:
     getSshKeyWithUserByIdOfAnSshKeyResponse:

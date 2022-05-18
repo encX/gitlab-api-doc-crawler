@@ -24,6 +24,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllDeployKeysResponse'
+      tags:
+        - deploy_keys
   '/projects/{id}/deploy_keys':
     get:
       summary: List project deploy keys
@@ -43,6 +45,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectDeployKeysResponse'
+      tags:
+        - deploy_keys
     post:
       summary: Add deploy key
       description: Creates a new deploy key for a project.
@@ -66,6 +70,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addDeployKeyRequest'
+      tags:
+        - deploy_keys
   '/projects/{id}/deploy_keys/{key_id}':
     get:
       summary: Get a single deploy key
@@ -91,6 +97,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleDeployKeyResponse'
+      tags:
+        - deploy_keys
     put:
       summary: Update deploy key
       description: Updates a deploy key for a project.
@@ -114,6 +122,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateDeployKeyRequest'
+      tags:
+        - deploy_keys
     delete:
       summary: Delete deploy key
       description: >-
@@ -140,6 +150,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteDeployKeyResponse'
+      tags:
+        - deploy_keys
 components:
   schemas:
     listAllDeployKeysResponse:

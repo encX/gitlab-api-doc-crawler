@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/exportMetricDefinitionsAsASingleYamlFileResponse'
+      tags:
+        - usage_data
   /usage_data/queries:
     get:
       summary: Export Service Ping SQL queries
@@ -29,6 +31,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/exportServicePingSqlQueriesResponse'
+      tags:
+        - usage_data
 components:
   schemas:
     exportMetricDefinitionsAsASingleYamlFileResponse:

@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listFreezePeriodsResponse'
+      tags:
+        - freeze_periods
     post:
       summary: Create a Freeze Period
       description: Create a Freeze Period.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAFreezePeriodRequest'
+      tags:
+        - freeze_periods
   '/projects/{id}/freeze_periods/{freeze_period_id}':
     get:
       summary: Get a Freeze Period by a freeze_period_id
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAFreezePeriodByAFreeze_period_idResponse'
+      tags:
+        - freeze_periods
     put:
       summary: Update a Freeze Period
       description: Update a Freeze Period for the given freeze_period_id.
@@ -99,6 +105,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAFreezePeriodRequest'
+      tags:
+        - freeze_periods
     delete:
       summary: Delete a Freeze Period
       description: Delete a Freeze Period for the given freeze_period_id.
@@ -123,6 +131,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAFreezePeriodResponse'
+      tags:
+        - freeze_periods
 components:
   schemas:
     listFreezePeriodsResponse:

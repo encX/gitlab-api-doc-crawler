@@ -30,6 +30,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllTemplatesOfAParticularTypeResponse'
+      tags:
+        - project_templates
   '/projects/{id}/templates/{type}/{name}':
     get:
       summary: Get one template of a particular type
@@ -86,6 +88,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getOneTemplateOfAParticularTypeResponse'
+      tags:
+        - project_templates
 components:
   schemas:
     getAllTemplatesOfAParticularTypeResponse:

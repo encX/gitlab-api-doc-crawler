@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listPersonalAccessTokensResponse'
+      tags:
+        - personal_access_tokens
   '/personal_access_tokens/{id}':
     delete:
       summary: Revoke a personal access token
@@ -41,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/revokeAPersonalAccessTokenResponse'
+      tags:
+        - personal_access_tokens
 components:
   schemas:
     listPersonalAccessTokensResponse:

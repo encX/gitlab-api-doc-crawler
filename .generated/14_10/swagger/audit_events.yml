@@ -40,6 +40,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllInstanceAuditEventsResponse'
+      tags:
+        - audit_events
   '/audit_events/{id}':
     get:
       summary: Retrieve single instance audit event
@@ -59,6 +61,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveSingleInstanceAuditEventResponse'
+      tags:
+        - audit_events
   '/groups/{id}/audit_events':
     get:
       summary: Retrieve all group audit events
@@ -90,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllGroupAuditEventsResponse'
+      tags:
+        - audit_events
   '/groups/{id}/audit_events/{audit_event_id}':
     get:
       summary: Retrieve a specific group audit event
@@ -115,6 +121,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveASpecificGroupAuditEventResponse'
+      tags:
+        - audit_events
   '/projects/{id}/audit_events':
     get:
       summary: Retrieve all project audit events
@@ -146,6 +154,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllProjectAuditEventsResponse'
+      tags:
+        - audit_events
   '/projects/{id}/audit_events/{audit_event_id}':
     get:
       summary: Retrieve a specific project audit event
@@ -171,6 +181,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveASpecificProjectAuditEventResponse'
+      tags:
+        - audit_events
 components:
   schemas:
     retrieveAllInstanceAuditEventsResponse:

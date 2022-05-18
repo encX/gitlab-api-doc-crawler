@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllInstanceVariablesResponse'
+      tags:
+        - instance_level_ci_variables
     post:
       summary: Create instance variable
       description: Create a new instance-level variable.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createInstanceVariableRequest'
+      tags:
+        - instance_level_ci_variables
   '/admin/ci/variables/{key}':
     get:
       summary: Show instance variable details
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
+      tags:
+        - instance_level_ci_variables
     put:
       summary: Update instance variable
       description: Update an instance-level variable.
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateInstanceVariableRequest'
+      tags:
+        - instance_level_ci_variables
     delete:
       summary: Remove instance variable
       description: Remove an instance-level variable.
@@ -93,6 +101,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeInstanceVariableResponse'
+      tags:
+        - instance_level_ci_variables
 components:
   schemas:
     listAllInstanceVariablesResponse:

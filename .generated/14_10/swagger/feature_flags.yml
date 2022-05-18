@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listFeatureFlagsForAProjectResponse'
+      tags:
+        - feature_flags
     post:
       summary: Create a feature flag
       description: Creates a new feature flag.
@@ -51,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAFeatureFlagRequest'
+      tags:
+        - feature_flags
   '/projects/{id}/feature_flags/{feature_flag_name}':
     get:
       summary: Get a single feature flag
@@ -76,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleFeatureFlagResponse'
+      tags:
+        - feature_flags
     put:
       summary: Update a feature flag
       description: Updates a feature flag.
@@ -105,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAFeatureFlagRequest'
+      tags:
+        - feature_flags
     delete:
       summary: Delete a feature flag
       description: Deletes a feature flag.
@@ -129,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAFeatureFlagResponse'
+      tags:
+        - feature_flags
 components:
   schemas:
     listFeatureFlagsForAProjectResponse:

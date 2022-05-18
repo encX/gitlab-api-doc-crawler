@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllFeatureFlagUserListsForAProjectResponse'
+      tags:
+        - feature_flag_user_lists
     post:
       summary: Create a feature flag user list
       description: Creates a feature flag user list.
@@ -51,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAFeatureFlagUserListRequest'
+      tags:
+        - feature_flag_user_lists
   '/projects/{id}/feature_flags_user_lists/{iid}':
     get:
       summary: Get a feature flag user list
@@ -76,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAFeatureFlagUserListResponse'
+      tags:
+        - feature_flag_user_lists
     put:
       summary: Update a feature flag user list
       description: Updates a feature flag user list.
@@ -105,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAFeatureFlagUserListRequest'
+      tags:
+        - feature_flag_user_lists
     delete:
       summary: Delete feature flag user list
       description: Deletes a feature flag user list.
@@ -129,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteFeatureFlagUserListResponse'
+      tags:
+        - feature_flag_user_lists
 components:
   schemas:
     listAllFeatureFlagUserListsForAProjectResponse:

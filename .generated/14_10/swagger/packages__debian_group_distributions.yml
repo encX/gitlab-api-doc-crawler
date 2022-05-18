@@ -34,6 +34,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllDebianDistributionsInAGroupResponse'
+      tags:
+        - packages__debian_group_distributions
     post:
       summary: Create a Debian group distribution
       description: Creates a Debian group distribution.
@@ -57,6 +59,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createADebianGroupDistributionRequest'
+      tags:
+        - packages__debian_group_distributions
   '/groups/{id}/debian_distributions/{codename}':
     get:
       summary: Single Debian group distribution
@@ -82,6 +86,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleDebianGroupDistributionResponse'
+      tags:
+        - packages__debian_group_distributions
     put:
       summary: Update a Debian group distribution
       description: Updates a Debian group distribution.
@@ -111,6 +117,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateADebianGroupDistributionRequest'
+      tags:
+        - packages__debian_group_distributions
     delete:
       summary: Delete a Debian group distribution
       description: Deletes a Debian group distribution.
@@ -135,6 +143,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteADebianGroupDistributionResponse'
+      tags:
+        - packages__debian_group_distributions
   '/groups/{id}/debian_distributions/{codename}/key.asc':
     get:
       summary: Single Debian group distribution key
@@ -160,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleDebianGroupDistributionKeyResponse'
+      tags:
+        - packages__debian_group_distributions
 components:
   schemas:
     listAllDebianDistributionsInAGroupResponse:

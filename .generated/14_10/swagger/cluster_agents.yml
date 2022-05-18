@@ -11,7 +11,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: false
+          required: true
           schema:
             type: integer
         - name: name
@@ -76,6 +76,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listTheAgentsForAProjectResponse'
+      tags:
+        - cluster_agents
     post:
       summary: Register an agent with a project
       description: Registers an agent to the project.
@@ -83,7 +85,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -98,6 +100,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/registerAnAgentWithAProjectRequest'
+      tags:
+        - cluster_agents
   '/projects/{id}/cluster_agents/{agent_id}':
     get:
       summary: Get details about an agent
@@ -106,7 +110,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: false
+          required: true
           schema:
             type: integer
         - name: name
@@ -171,6 +175,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
+      tags:
+        - cluster_agents
     delete:
       summary: Delete a registered agent
       description: Deletes an existing agent registration.
@@ -195,6 +201,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteARegisteredAgentResponse'
+      tags:
+        - cluster_agents
 components:
   schemas:
     listTheAgentsForAProjectResponse:

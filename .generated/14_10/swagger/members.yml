@@ -36,6 +36,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllMembersOfAGroupOrProjectResponse'
+      tags:
+        - members
     post:
       summary: Add a member to a group or project
       description: Adds a member to a group or project.
@@ -59,6 +61,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addAMemberToAGroupOrProjectRequest'
+      tags:
+        - members
   '/groups/{id}/members/all':
     get:
       summary: List all members of a group or project including inherited and invited members
@@ -98,6 +102,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllMembersOfAGroupOrProjectIncludingInheritedAndInvitedMembersResponse'
+      tags:
+        - members
   '/groups/{id}/members/{user_id}':
     get:
       summary: Get a member of a group or project
@@ -125,6 +131,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAMemberOfAGroupOrProjectResponse'
+      tags:
+        - members
     put:
       summary: Edit a member of a group or project
       description: Updates a member of a group or project.
@@ -154,6 +162,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editAMemberOfAGroupOrProjectRequest'
+      tags:
+        - members
     delete:
       summary: Remove a member from a group or project
       description: Removes a user from a group or project where the user has been explicitly assigned a role.
@@ -194,6 +204,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeAMemberFromAGroupOrProjectResponse'
+      tags:
+        - members
   '/groups/{id}/members/all/{user_id}':
     get:
       summary: 'Get a member of a group or project, including inherited and invited members'
@@ -221,6 +233,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAMemberOfAGroupOrProject,IncludingInheritedAndInvitedMembersResponse'
+      tags:
+        - members
   '/groups/{id}/billable_members':
     get:
       summary: List all billable members of a group
@@ -258,6 +272,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllBillableMembersOfAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/billable_members/{user_id}/memberships':
     get:
       summary: List memberships for a billable member of a group
@@ -283,6 +299,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMembershipsForABillableMemberOfAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/billable_members/{user_id}':
     delete:
       summary: Remove a billable member from a group
@@ -308,6 +326,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeABillableMemberFromAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/members/{user_id}/override':
     post:
       summary: Set override flag for a member of a group
@@ -335,6 +355,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/setOverrideFlagForAMemberOfAGroupResponse'
+      tags:
+        - members
     delete:
       summary: Remove override for a member of a group
       description: >-
@@ -361,6 +383,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeOverrideForAMemberOfAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/members/{member_id}/approve':
     put:
       summary: Approve a member for a group
@@ -386,6 +410,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/approveAMemberForAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/members/approve_all':
     post:
       summary: Approve all pending members for a group
@@ -405,6 +431,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/approveAllPendingMembersForAGroupResponse'
+      tags:
+        - members
   '/groups/{id}/pending_members':
     get:
       summary: List pending members of a group and its subgroups and projects
@@ -426,6 +454,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listPendingMembersOfAGroupAndItsSubgroupsAndProjectsResponse'
+      tags:
+        - members
 components:
   schemas:
     listAllMembersOfAGroupOrProjectResponse:

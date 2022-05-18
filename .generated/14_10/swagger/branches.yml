@@ -30,6 +30,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listRepositoryBranchesResponse'
+      tags:
+        - branches
     post:
       summary: Create repository branch
       description: Create a new branch in the repository.
@@ -53,6 +55,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createRepositoryBranchRequest'
+      tags:
+        - branches
   '/projects/{id}/repository/branches/{branch}':
     get:
       summary: Get single repository branch
@@ -78,6 +82,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleRepositoryBranchResponse'
+      tags:
+        - branches
     delete:
       summary: Delete repository branch
       description: Delete a branch from the repository.
@@ -102,6 +108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteRepositoryBranchResponse'
+      tags:
+        - branches
   '/projects/{id}/repository/merged_branches':
     delete:
       summary: Delete merged branches
@@ -121,6 +129,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteMergedBranchesResponse'
+      tags:
+        - branches
 components:
   schemas:
     listRepositoryBranchesResponse:

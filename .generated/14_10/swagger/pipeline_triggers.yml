@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectTriggersResponse'
+      tags:
+        - pipeline_triggers
     post:
       summary: Create a project trigger
       description: Create a trigger for a project.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAProjectTriggerRequest'
+      tags:
+        - pipeline_triggers
   '/projects/{id}/triggers/{trigger_id}':
     get:
       summary: Get trigger details
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTriggerDetailsResponse'
+      tags:
+        - pipeline_triggers
     put:
       summary: Update a project trigger
       description: Update a trigger for a project.
@@ -99,6 +105,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAProjectTriggerRequest'
+      tags:
+        - pipeline_triggers
     delete:
       summary: Remove a project trigger
       description: Remove a project’s build trigger.
@@ -123,6 +131,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeAProjectTriggerResponse'
+      tags:
+        - pipeline_triggers
 components:
   schemas:
     listProjectTriggersResponse:

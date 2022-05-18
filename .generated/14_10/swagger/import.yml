@@ -21,6 +21,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/importRepositoryFromGithubRequest'
+      tags:
+        - import
   /import/bitbucket_server:
     post:
       summary: Import repository from Bitbucket Server
@@ -39,6 +41,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/importRepositoryFromBitbucketServerRequest'
+      tags:
+        - import
 components:
   schemas:
     importRepositoryFromGithubRequest:

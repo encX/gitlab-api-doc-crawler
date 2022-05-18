@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/searchForGroupResponse'
+      tags:
+        - groups
     post:
       summary: New group
       description: Creates a new project group. Available only for users who can create groups.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/newGroupRequest'
+      tags:
+        - groups
   '/groups/{id}/subgroups':
     get:
       summary: List a group’s subgroups
@@ -112,6 +116,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAGroupSubgroupsResponse'
+      tags:
+        - groups
   '/groups/{id}/descendant_groups':
     get:
       summary: List a group’s descendant groups
@@ -191,6 +197,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAGroupDescendantGroupsResponse'
+      tags:
+        - groups
   '/groups/{id}/projects':
     get:
       summary: List a group’s projects
@@ -304,6 +312,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAGroupProjectsResponse'
+      tags:
+        - groups
   '/groups/{id}/projects/shared':
     get:
       summary: List a group’s shared projects
@@ -393,6 +403,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAGroupSharedProjectsResponse'
+      tags:
+        - groups
   '/groups/{id}':
     get:
       summary: Details of a group
@@ -430,6 +442,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/detailsOfAGroupResponse'
+      tags:
+        - groups
     put:
       summary: Update group
       description: Updates the project group. Only available to group owners and administrators.
@@ -453,6 +467,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateGroupRequest'
+      tags:
+        - groups
     delete:
       summary: Remove group
       description: Only available to group owners and administrators.
@@ -471,6 +487,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeGroupResponse'
+      tags:
+        - groups
   '/groups/{id}/avatar':
     get:
       summary: Download a Group avatar
@@ -490,6 +508,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/downloadAGroupAvatarResponse'
+      tags:
+        - groups
   '/groups/{id}/projects/{project_id}':
     post:
       summary: Transfer project to group
@@ -518,6 +538,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/transferProjectToGroupResponse'
+      tags:
+        - groups
   '/groups/{id}/transfer':
     post:
       summary: Transfer a group to a new parent group / Turn a subgroup to a top-level group
@@ -544,6 +566,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupRequest'
+      tags:
+        - groups
   '/groups/{id}/restore':
     post:
       summary: Restore group marked for deletion
@@ -563,6 +587,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/restoreGroupMarkedForDeletionResponse'
+      tags:
+        - groups
   '/groups/{id}/provisioned_users':
     get:
       summary: List provisioned users
@@ -618,6 +644,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProvisionedUsersResponse'
+      tags:
+        - groups
   '/groups/{id}/hooks':
     get:
       summary: List group hooks
@@ -637,6 +665,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupHooksResponse'
+      tags:
+        - groups
     post:
       summary: Add group hook
       description: Adds a hook to a specified group.
@@ -660,6 +690,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addGroupHookRequest'
+      tags:
+        - groups
   '/groups/{id}/hooks/{hook_id}':
     get:
       summary: Get group hook
@@ -685,6 +717,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getGroupHookResponse'
+      tags:
+        - groups
     put:
       summary: Edit group hook
       description: Edits a hook for a specified group.
@@ -714,6 +748,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editGroupHookRequest'
+      tags:
+        - groups
     delete:
       summary: Delete group hook
       description: >-
@@ -740,6 +776,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteGroupHookResponse'
+      tags:
+        - groups
   '/groups/{id}/ldap_sync':
     post:
       summary: Sync group with LDAP
@@ -753,6 +791,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/syncGroupWithLdapResponse'
+      tags:
+        - groups
   '/groups/{id}/ldap_group_links':
     get:
       summary: List LDAP group links
@@ -772,6 +812,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listLdapGroupLinksResponse'
+      tags:
+        - groups
     post:
       summary: Add LDAP group link with CN or filter
       description: >-
@@ -797,6 +839,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addLdapGroupLinkWithCnOrFilterRequest'
+      tags:
+        - groups
     delete:
       summary: Delete LDAP group link with CN or filter
       description: >-
@@ -835,6 +879,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteLdapGroupLinkWithCnOrFilterResponse'
+      tags:
+        - groups
   '/groups/{id}/ldap_group_links/{cn}':
     delete:
       summary: Delete LDAP group link
@@ -866,6 +912,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteLdapGroupLinkResponse'
+      tags:
+        - groups
   '/groups/{id}/share':
     post:
       summary: Create a link to share a group with another group
@@ -890,6 +938,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createALinkToShareAGroupWithAnotherGroupRequest'
+      tags:
+        - groups
   '/groups/{id}/share/{group_id}':
     delete:
       summary: Delete link sharing group with another group
@@ -915,6 +965,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteLinkSharingGroupWithAnotherGroupResponse'
+      tags:
+        - groups
   '/groups/{id}/push_rule':
     get:
       summary: Get group push rules
@@ -934,6 +986,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getGroupPushRulesResponse'
+      tags:
+        - groups
     post:
       summary: Add group push rule
       description: Adds push rules to the specified group.
@@ -957,6 +1011,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addGroupPushRuleRequest'
+      tags:
+        - groups
     put:
       summary: Edit group push rule
       description: Edit push rules for a specified group.
@@ -980,6 +1036,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editGroupPushRuleRequest'
+      tags:
+        - groups
     delete:
       summary: Delete group push rule
       description: Deletes the push rules of a group.
@@ -998,6 +1056,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteGroupPushRuleResponse'
+      tags:
+        - groups
 components:
   schemas:
     listGroupsResponse:

@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllPagesDomainsResponse'
+      tags:
+        - pages_domains
   '/projects/{id}/pages/domains':
     get:
       summary: List Pages domains
@@ -35,6 +37,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listPagesDomainsResponse'
+      tags:
+        - pages_domains
     post:
       summary: Create new Pages domain
       description: Creates a new Pages domain. The user must have permissions to create new Pages domains.
@@ -58,6 +62,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewPagesDomainRequest'
+      tags:
+        - pages_domains
   '/projects/{id}/pages/domains/{domain}':
     get:
       summary: Single Pages domain
@@ -83,6 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singlePagesDomainResponse'
+      tags:
+        - pages_domains
     put:
       summary: Update Pages domain
       description: Updates an existing project Pages domain. The user must have permissions to change an existing Pages domains.
@@ -112,6 +120,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updatePagesDomainRequest'
+      tags:
+        - pages_domains
     delete:
       summary: Delete Pages domain
       description: Deletes an existing project Pages domain.
@@ -136,6 +146,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deletePagesDomainResponse'
+      tags:
+        - pages_domains
 components:
   schemas:
     listAllPagesDomainsResponse:

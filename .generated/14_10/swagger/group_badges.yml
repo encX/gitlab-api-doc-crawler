@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllBadgesOfAGroupResponse'
+      tags:
+        - group_badges
     post:
       summary: Add a badge to a group
       description: Adds a badge to a group.
@@ -51,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addABadgeToAGroupRequest'
+      tags:
+        - group_badges
   '/groups/{id}/badges/{badge_id}':
     get:
       summary: Get a badge of a group
@@ -76,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getABadgeOfAGroupResponse'
+      tags:
+        - group_badges
     put:
       summary: Edit a badge of a group
       description: Updates a badge of a group.
@@ -105,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editABadgeOfAGroupRequest'
+      tags:
+        - group_badges
     delete:
       summary: Remove a badge from a group
       description: Removes a badge from a group.
@@ -129,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeABadgeFromAGroupResponse'
+      tags:
+        - group_badges
   '/groups/{id}/badges/render':
     get:
       summary: Preview a badge from a group
@@ -160,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/previewABadgeFromAGroupResponse'
+      tags:
+        - group_badges
 components:
   schemas:
     listAllBadgesOfAGroupResponse:

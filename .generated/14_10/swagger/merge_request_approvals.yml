@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getConfigurationResponse'
+      tags:
+        - merge_request_approvals
     post:
       summary: Change configuration
       description: 'If you are allowed to, you can change approval configuration using the following endpoint:'
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/changeConfigurationRequest'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/approval_rules':
     get:
       summary: Get project-level rules
@@ -64,6 +68,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getProject-levelRulesResponse'
+      tags:
+        - merge_request_approvals
     post:
       summary: Create project-level rule
       description: 'You can create project approval rules using the following endpoint:'
@@ -87,6 +93,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createProject-levelRuleRequest'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/approval_rules/{approval_rule_id}':
     get:
       summary: Get a single project-level rule
@@ -112,6 +120,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProject-levelRuleResponse'
+      tags:
+        - merge_request_approvals
     put:
       summary: Update project-level rule
       description: 'You can update project approval rules using the following endpoint:'
@@ -141,6 +151,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateProject-levelRuleRequest'
+      tags:
+        - merge_request_approvals
     delete:
       summary: Delete project-level rule
       description: 'You can delete project approval rules using the following endpoint:'
@@ -165,6 +177,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteProject-levelRuleResponse'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
     get:
       summary: Get Configuration
@@ -190,6 +204,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getConfigurationResponse'
+      tags:
+        - merge_request_approvals
     post:
       summary: Change approval configuration
       description: 'If you are allowed to, you can change approvals_required using the following endpoint:'
@@ -219,6 +235,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/changeApprovalConfigurationRequest'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approval_state':
     get:
       summary: Get the approval state of merge requests
@@ -244,6 +262,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheApprovalStateOfMergeRequestsResponse'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules':
     get:
       summary: Get merge request level rules
@@ -269,6 +289,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getMergeRequestLevelRulesResponse'
+      tags:
+        - merge_request_approvals
     post:
       summary: Create merge request level rule
       description: 'You can create merge request approval rules using the following endpoint:'
@@ -298,6 +320,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createMergeRequestLevelRuleRequest'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approval_rules/{approval_rule_id}':
     get:
       summary: Get a single merge request level rule
@@ -329,6 +353,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleMergeRequestLevelRuleResponse'
+      tags:
+        - merge_request_approvals
     put:
       summary: Update merge request level rule
       description: 'You can update merge request approval rules using the following endpoint:'
@@ -364,6 +390,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateMergeRequestLevelRuleRequest'
+      tags:
+        - merge_request_approvals
     delete:
       summary: Delete merge request level rule
       description: 'You can delete merge request approval rules using the following endpoint:'
@@ -394,6 +422,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteMergeRequestLevelRuleResponse'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approve':
     post:
       summary: Approve merge request
@@ -424,6 +454,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/approveMergeRequestRequest'
+      tags:
+        - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/unapprove':
     post:
       summary: Unapprove merge request
@@ -449,6 +481,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unapproveMergeRequestResponse'
+      tags:
+        - merge_request_approvals
 components:
   schemas:
     getConfigurationResponse:

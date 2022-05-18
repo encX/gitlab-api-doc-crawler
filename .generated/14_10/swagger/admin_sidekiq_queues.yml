@@ -66,6 +66,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/sidekiqQueuesAdministrationApiResponse'
+      tags:
+        - admin_sidekiq_queues
 components:
   schemas:
     sidekiqQueuesAdministrationApiResponse:

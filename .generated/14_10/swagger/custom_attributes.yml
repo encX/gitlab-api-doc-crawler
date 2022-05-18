@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listCustomAttributesResponse'
+      tags:
+        - custom_attributes
   '/users/{id}/custom_attributes/{key}':
     get:
       summary: Single custom attribute
@@ -47,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleCustomAttributeResponse'
+      tags:
+        - custom_attributes
     put:
       summary: Set custom attribute
       description: 'Set a custom attribute on a resource. The attribute is updated if it already exists, or newly created otherwise.'
@@ -76,6 +80,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setCustomAttributeRequest'
+      tags:
+        - custom_attributes
     delete:
       summary: Delete custom attribute
       description: Delete a custom attribute on a resource.
@@ -100,6 +106,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteCustomAttributeResponse'
+      tags:
+        - custom_attributes
 components:
   schemas:
     listCustomAttributesResponse:

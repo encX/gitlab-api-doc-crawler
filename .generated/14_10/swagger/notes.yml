@@ -40,6 +40,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectIssueNotesResponse'
+      tags:
+        - notes
     post:
       summary: Create new issue note
       description: Creates a new note to a single project issue.
@@ -69,6 +71,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewIssueNoteRequest'
+      tags:
+        - notes
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}':
     get:
       summary: Get single issue note
@@ -100,6 +104,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleIssueNoteResponse'
+      tags:
+        - notes
     put:
       summary: Modify existing issue note
       description: Modify existing note of an issue.
@@ -135,6 +141,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
+      tags:
+        - notes
     delete:
       summary: Delete an issue note
       description: Deletes an existing note of an issue.
@@ -165,6 +173,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnIssueNoteResponse'
+      tags:
+        - notes
   '/projects/{id}/snippets/{snippet_id}/notes':
     get:
       summary: List all snippet notes
@@ -202,6 +212,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllSnippetNotesResponse'
+      tags:
+        - notes
     post:
       summary: Create new snippet note
       description: >-
@@ -233,6 +245,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewSnippetNoteRequest'
+      tags:
+        - notes
   '/projects/{id}/snippets/{snippet_id}/notes/{note_id}':
     get:
       summary: Get single snippet note
@@ -264,6 +278,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleSnippetNoteResponse'
+      tags:
+        - notes
     put:
       summary: Modify existing snippet note
       description: Modify existing note of a snippet.
@@ -299,6 +315,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingSnippetNoteRequest'
+      tags:
+        - notes
     delete:
       summary: Delete a snippet note
       description: Deletes an existing note of a snippet.
@@ -329,6 +347,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteASnippetNoteResponse'
+      tags:
+        - notes
   '/projects/{id}/merge_requests/{merge_request_iid}/notes':
     get:
       summary: List all merge request notes
@@ -366,6 +386,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllMergeRequestNotesResponse'
+      tags:
+        - notes
     post:
       summary: Create new merge request note
       description: >-
@@ -397,6 +419,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewMergeRequestNoteRequest'
+      tags:
+        - notes
   '/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}':
     get:
       summary: Get single merge request note
@@ -428,6 +452,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMergeRequestNoteResponse'
+      tags:
+        - notes
     put:
       summary: Modify existing merge request note
       description: Modify existing note of a merge request.
@@ -448,7 +474,7 @@ paths:
         - name: note_id
           in: path
           description: The ID of a note
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -463,6 +489,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingMergeRequestNoteRequest'
+      tags:
+        - notes
     delete:
       summary: Delete a merge request note
       description: Deletes an existing note of a merge request.
@@ -493,6 +521,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAMergeRequestNoteResponse'
+      tags:
+        - notes
   '/groups/{id}/epics/{epic_id}/notes':
     get:
       summary: List all epic notes
@@ -530,6 +560,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllEpicNotesResponse'
+      tags:
+        - notes
     post:
       summary: Create new epic note
       description: >-
@@ -561,6 +593,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewEpicNoteRequest'
+      tags:
+        - notes
   '/groups/{id}/epics/{epic_id}/notes/{note_id}':
     get:
       summary: Get single epic note
@@ -592,6 +626,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleEpicNoteResponse'
+      tags:
+        - notes
     put:
       summary: Modify existing epic note
       description: Modify existing note of an epic.
@@ -627,6 +663,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingEpicNoteRequest'
+      tags:
+        - notes
     delete:
       summary: Delete an epic note
       description: Deletes an existing note of an epic.
@@ -657,6 +695,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnEpicNoteResponse'
+      tags:
+        - notes
 components:
   schemas:
     listProjectIssueNotesResponse:

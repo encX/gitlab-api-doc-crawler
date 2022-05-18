@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectClustersResponse'
+      tags:
+        - project_clusters
   '/projects/{id}/clusters/{cluster_id}':
     get:
       summary: Get a single project cluster
@@ -47,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProjectClusterResponse'
+      tags:
+        - project_clusters
     put:
       summary: Edit project cluster
       description: Updates an existing project cluster.
@@ -76,6 +80,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editProjectClusterRequest'
+      tags:
+        - project_clusters
     delete:
       summary: Delete project cluster
       description: Deletes an existing project cluster.
@@ -100,6 +106,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteProjectClusterResponse'
+      tags:
+        - project_clusters
   '/projects/{id}/clusters/user':
     post:
       summary: Add existing cluster to project
@@ -124,6 +132,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addExistingClusterToProjectRequest'
+      tags:
+        - project_clusters
 components:
   schemas:
     listProjectClustersResponse:

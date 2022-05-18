@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCurrentAppearanceConfigurationResponse'
+      tags:
+        - appearance
     put:
       summary: Change logo
       description: Upload a logo to your GitLab instance.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/changeLogoRequest'
+      tags:
+        - appearance
 components:
   schemas:
     getCurrentAppearanceConfigurationResponse:

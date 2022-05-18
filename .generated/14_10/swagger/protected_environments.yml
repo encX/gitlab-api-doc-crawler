@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProtectedEnvironmentsResponse'
+      tags:
+        - protected_environments
     post:
       summary: Protect repository environments
       description: 'Protects a single environment:'
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/protectRepositoryEnvironmentsRequest'
+      tags:
+        - protected_environments
   '/projects/{id}/protected_environments/{name}':
     get:
       summary: Get a single protected environment
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProtectedEnvironmentResponse'
+      tags:
+        - protected_environments
     delete:
       summary: Unprotect environment
       description: 'Unprotects the given protected environment:'
@@ -94,6 +100,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unprotectEnvironmentResponse'
+      tags:
+        - protected_environments
 components:
   schemas:
     listProtectedEnvironmentsResponse:

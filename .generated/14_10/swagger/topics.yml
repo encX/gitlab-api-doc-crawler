@@ -34,6 +34,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listTopicsResponse'
+      tags:
+        - topics
     post:
       summary: Create a project topic
       description: Create a new project topic. Only available to administrators.
@@ -51,6 +53,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAProjectTopicRequest'
+      tags:
+        - topics
   '/topics/{id}':
     get:
       summary: Get a topic
@@ -60,7 +64,7 @@ paths:
         - name: id
           in: path
           description: ID of project topic
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getATopicResponse'
+      tags:
+        - topics
     put:
       summary: Update a project topic
       description: Update a project topic. Only available to administrators.
@@ -78,7 +84,7 @@ paths:
         - name: id
           in: path
           description: ID of project topic
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -93,6 +99,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAProjectTopicRequest'
+      tags:
+        - topics
     delete:
       summary: Delete a project topic
       description: >-
@@ -103,7 +111,7 @@ paths:
         - name: id
           in: path
           description: ID of project topic
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -113,6 +121,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAProjectTopicResponse'
+      tags:
+        - topics
   /projects:
     get:
       summary: List projects assigned to a topic
@@ -126,6 +136,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectsAssignedToATopicResponse'
+      tags:
+        - topics
 components:
   schemas:
     listTopicsResponse:

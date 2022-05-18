@@ -27,6 +27,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addAStarToADashboardRequest'
+      tags:
+        - metrics_user_starred_dashboards
     delete:
       summary: Remove a star from a dashboard
       description: ''
@@ -53,6 +55,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeAStarFromADashboardResponse'
+      tags:
+        - metrics_user_starred_dashboards
 components:
   schemas:
     addAStarToADashboardRequest:

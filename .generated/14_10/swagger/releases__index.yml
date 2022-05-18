@@ -40,6 +40,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listReleasesResponse'
+      tags:
+        - releases__index
     post:
       summary: Create a release
       description: Create a release. Developer level access to the project is required to create a release.
@@ -63,6 +65,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAReleaseRequest'
+      tags:
+        - releases__index
   '/projects/{id}/releases/{tag_name}':
     get:
       summary: Get a Release by a tag name
@@ -94,6 +98,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAReleaseByATagNameResponse'
+      tags:
+        - releases__index
     put:
       summary: Update a release
       description: Update a release. Developer level access to the project is required to update a release.
@@ -123,6 +129,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAReleaseRequest'
+      tags:
+        - releases__index
     delete:
       summary: Delete a Release
       description: >-
@@ -149,6 +157,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAReleaseResponse'
+      tags:
+        - releases__index
   '/projects/{id}/releases/{tag_name}/evidence':
     post:
       summary: Collect release evidence
@@ -174,6 +184,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/collectReleaseEvidenceResponse'
+      tags:
+        - releases__index
 components:
   schemas:
     listReleasesResponse:

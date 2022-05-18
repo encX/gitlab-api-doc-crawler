@@ -36,6 +36,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/searchForProjectsByNameResponse'
+      tags:
+        - projects
     post:
       summary: Create project
       description: Creates a new project owned by the authenticated user.
@@ -53,6 +55,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createProjectRequest'
+      tags:
+        - projects
   '/users/{user_id}/projects':
     get:
       summary: List user projects
@@ -64,7 +68,7 @@ paths:
         - name: user_id
           in: path
           description: The ID or username of the user.
-          required: false
+          required: true
           schema:
             type: string
         - name: archived
@@ -180,6 +184,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listUserProjectsResponse'
+      tags:
+        - projects
   '/users/{user_id}/starred_projects':
     get:
       summary: List projects starred by a user
@@ -191,7 +197,7 @@ paths:
         - name: user_id
           in: path
           description: The ID or username of the user.
-          required: false
+          required: true
           schema:
             type: string
         - name: archived
@@ -289,6 +295,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectsStarredByAUserResponse'
+      tags:
+        - projects
   '/projects/{id}':
     get:
       summary: Get single project
@@ -300,7 +308,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: license
@@ -328,6 +336,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleProjectResponse'
+      tags:
+        - projects
     put:
       summary: Upload a project avatar
       description: Uploads an avatar to the specified project.
@@ -336,7 +346,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -351,6 +361,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/uploadAProjectAvatarRequest'
+      tags:
+        - projects
     delete:
       summary: Delete project
       description: 'This endpoint:'
@@ -359,7 +371,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -369,6 +381,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/users':
     get:
       summary: Get project users
@@ -378,7 +392,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: search
@@ -400,6 +414,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getProjectUsersResponse'
+      tags:
+        - projects
   '/projects/{id}/groups':
     get:
       summary: List a project’s groups
@@ -409,7 +425,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: search
@@ -449,6 +465,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAProjectGroupsResponse'
+      tags:
+        - projects
   '/projects/user/{user_id}':
     post:
       summary: Create project for user
@@ -458,7 +476,7 @@ paths:
         - name: user_id
           in: path
           description: The user ID of the project owner.
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -473,6 +491,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createProjectForUserRequest'
+      tags:
+        - projects
   '/projects/{id}/fork':
     post:
       summary: Fork project
@@ -482,7 +502,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -497,6 +517,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/forkProjectRequest'
+      tags:
+        - projects
     delete:
       summary: Delete an existing forked from relationship
       description: ''
@@ -505,7 +527,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -515,6 +537,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnExistingForkedFromRelationshipResponse'
+      tags:
+        - projects
   '/projects/{id}/forks':
     get:
       summary: List forks of a project
@@ -526,7 +550,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: archived
@@ -624,6 +648,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listForksOfAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/star':
     post:
       summary: Star a project
@@ -633,7 +659,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -643,6 +669,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/starAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/unstar':
     post:
       summary: Unstar a project
@@ -652,7 +680,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -662,6 +690,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unstarAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/starrers':
     get:
       summary: List starrers of a project
@@ -671,7 +701,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: search
@@ -687,6 +717,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listStarrersOfAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/languages':
     get:
       summary: Languages
@@ -696,7 +728,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -706,6 +738,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/languagesResponse'
+      tags:
+        - projects
   '/projects/{id}/archive':
     post:
       summary: Archive a project
@@ -717,7 +751,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -727,6 +761,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/archiveAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/unarchive':
     post:
       summary: Unarchive a project
@@ -738,7 +774,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -748,6 +784,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unarchiveAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/restore':
     post:
       summary: Restore project marked for deletion
@@ -757,7 +795,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -767,6 +805,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/restoreProjectMarkedForDeletionResponse'
+      tags:
+        - projects
   '/projects/{id}/uploads':
     post:
       summary: Upload a file
@@ -778,7 +818,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -793,6 +833,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/uploadAFileRequest'
+      tags:
+        - projects
   '/projects/{id}/share':
     post:
       summary: Share project with group
@@ -802,7 +844,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -817,6 +859,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/shareProjectWithGroupRequest'
+      tags:
+        - projects
   '/projects/{id}/share/{group_id}':
     delete:
       summary: Delete a shared project link within a group
@@ -826,13 +870,13 @@ paths:
         - name: group_id
           in: path
           description: The ID of the group.
-          required: false
+          required: true
           schema:
             type: integer
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -842,6 +886,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteASharedProjectLinkWithinAGroupResponse'
+      tags:
+        - projects
   '/projects/{id}/import_project_members/{project_id}':
     post:
       summary: Import project members
@@ -851,13 +897,13 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the target project to receive the members.
-          required: false
+          required: true
           schema:
             type: string
         - name: project_id
           in: path
           description: The ID or URL-encoded path of the source project to import the members from.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -867,6 +913,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/importProjectMembersResponse'
+      tags:
+        - projects
   '/projects/{id}/hooks':
     get:
       summary: List project hooks
@@ -876,7 +924,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -886,6 +934,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectHooksResponse'
+      tags:
+        - projects
     post:
       summary: Add project hook
       description: Adds a hook to a specified project.
@@ -894,7 +944,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -909,6 +959,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addProjectHookRequest'
+      tags:
+        - projects
   '/projects/{id}/hooks/{hook_id}':
     get:
       summary: Get project hook
@@ -918,13 +970,13 @@ paths:
         - name: hook_id
           in: path
           description: The ID of a project hook.
-          required: false
+          required: true
           schema:
             type: integer
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -934,6 +986,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getProjectHookResponse'
+      tags:
+        - projects
     put:
       summary: Edit project hook
       description: Edits a hook for a specified project.
@@ -942,13 +996,13 @@ paths:
         - name: hook_id
           in: path
           description: The ID of the project hook.
-          required: false
+          required: true
           schema:
             type: integer
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -963,6 +1017,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editProjectHookRequest'
+      tags:
+        - projects
     delete:
       summary: Delete project hook
       description: >-
@@ -973,13 +1029,13 @@ paths:
         - name: hook_id
           in: path
           description: The ID of the project hook.
-          required: false
+          required: true
           schema:
             type: integer
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -989,6 +1045,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteProjectHookResponse'
+      tags:
+        - projects
   '/projects/{id}/fork/{forked_from_id}':
     post:
       summary: Create a forked from/to relation between existing projects
@@ -998,13 +1056,13 @@ paths:
         - name: forked_from_id
           in: path
           description: The ID of the project that was forked from.
-          required: false
+          required: true
           schema:
             type: string
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1014,6 +1072,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createAForkedFrom/toRelationBetweenExistingProjectsResponse'
+      tags:
+        - projects
   '/projects/{id}/housekeeping':
     post:
       summary: Start the Housekeeping task for a project
@@ -1023,7 +1083,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1033,6 +1093,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/startTheHousekeepingTaskForAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/push_rule':
     get:
       summary: Get project push rules
@@ -1042,7 +1104,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1052,6 +1114,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getProjectPushRulesResponse'
+      tags:
+        - projects
     post:
       summary: Add project push rule
       description: Adds a push rule to a specified project.
@@ -1060,7 +1124,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1075,6 +1139,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addProjectPushRuleRequest'
+      tags:
+        - projects
     put:
       summary: Edit project push rule
       description: Edits a push rule for a specified project.
@@ -1083,7 +1149,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1098,6 +1164,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editProjectPushRuleRequest'
+      tags:
+        - projects
     delete:
       summary: Delete project push rule
       description: >-
@@ -1108,7 +1176,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1118,6 +1186,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteProjectPushRuleResponse'
+      tags:
+        - projects
   '/projects/{id}/transfer':
     put:
       summary: Transfer a project to a new namespace
@@ -1127,7 +1197,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1142,6 +1212,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/transferAProjectToANewNamespaceRequest'
+      tags:
+        - projects
   '/projects/{id}/mirror/pull':
     post:
       summary: Start the pull mirroring process for a Project
@@ -1151,7 +1223,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1161,6 +1233,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/startThePullMirroringProcessForAProjectResponse'
+      tags:
+        - projects
   '/projects/{id}/snapshot':
     get:
       summary: Download snapshot of a Git repository
@@ -1170,7 +1244,7 @@ paths:
         - name: id
           in: path
           description: The ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
         - name: wiki
@@ -1186,6 +1260,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/downloadSnapshotOfAGitRepositoryResponse'
+      tags:
+        - projects
   '/projects/{id}/storage':
     get:
       summary: Get the path to repository storage
@@ -1195,7 +1271,7 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project.
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -1205,6 +1281,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getThePathToRepositoryStorageResponse'
+      tags:
+        - projects
 components:
   schemas:
     listAllProjectsResponse:

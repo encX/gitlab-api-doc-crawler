@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listIssuesForAnEpicResponse'
+      tags:
+        - epic_issues
   '/groups/{id}/epics/{epic_iid}/issues/{issue_id}':
     post:
       summary: Assign an issue to the epic
@@ -61,6 +63,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assignAnIssueToTheEpicResponse'
+      tags:
+        - epic_issues
   '/groups/{id}/epics/{epic_iid}/issues/{epic_issue_id}':
     delete:
       summary: Remove an issue from the epic
@@ -92,6 +96,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeAnIssueFromTheEpicResponse'
+      tags:
+        - epic_issues
     put:
       summary: Update epic - issue association
       description: Updates an epic - issue association.
@@ -127,6 +133,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateEpic-IssueAssociationRequest'
+      tags:
+        - epic_issues
 components:
   schemas:
     listIssuesForAnEpicResponse:

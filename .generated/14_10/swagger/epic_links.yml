@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listEpicsRelatedToAGivenEpicResponse'
+      tags:
+        - epic_links
     post:
       summary: Create and assign a child epic
       description: Creates a new epic and associates it with provided parent epic. The response is LinkedEpic object.
@@ -57,6 +59,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAndAssignAChildEpicRequest'
+      tags:
+        - epic_links
   '/groups/{id}/epics/{epic_iid}/epics/{child_epic_id}':
     post:
       summary: Assign a child epic
@@ -93,6 +97,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/assignAChildEpicResponse'
+      tags:
+        - epic_links
     put:
       summary: Re-order a child epic
       description: ''
@@ -130,6 +136,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/re-orderAChildEpicRequest'
+      tags:
+        - epic_links
     delete:
       summary: Unassign a child epic
       description: Unassigns a child epic from a parent epic.
@@ -162,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unassignAChildEpicResponse'
+      tags:
+        - epic_links
 components:
   schemas:
     listEpicsRelatedToAGivenEpicResponse:

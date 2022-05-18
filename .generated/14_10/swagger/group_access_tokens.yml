@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupAccessTokensResponse'
+      tags:
+        - group_access_tokens
     post:
       summary: Create a group access token
       description: Create a group access token.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAGroupAccessTokenRequest'
+      tags:
+        - group_access_tokens
   'groups/{id}/access_tokens/{token_id}':
     get:
       summary: Get a group access token
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAGroupAccessTokenResponse'
+      tags:
+        - group_access_tokens
     delete:
       summary: Revoke a group access token
       description: Revoke a group access token.
@@ -94,6 +100,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/revokeAGroupAccessTokenResponse'
+      tags:
+        - group_access_tokens
 components:
   schemas:
     listGroupAccessTokensResponse:

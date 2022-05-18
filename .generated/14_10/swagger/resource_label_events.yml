@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectIssueLabelEventsResponse'
+      tags:
+        - resource_label_events
   '/projects/{id}/issues/{issue_iid}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single issue label event
@@ -59,6 +61,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleIssueLabelEventResponse'
+      tags:
+        - resource_label_events
   '/groups/{id}/epics/{epic_id}/resource_label_events':
     get:
       summary: List group epic label events
@@ -84,6 +88,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupEpicLabelEventsResponse'
+      tags:
+        - resource_label_events
   '/groups/{id}/epics/{epic_id}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single epic label event
@@ -115,6 +121,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleEpicLabelEventResponse'
+      tags:
+        - resource_label_events
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events':
     get:
       summary: List project merge request label events
@@ -140,6 +148,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectMergeRequestLabelEventsResponse'
+      tags:
+        - resource_label_events
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events/{resource_label_event_id}':
     get:
       summary: Get single merge request label event
@@ -171,6 +181,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMergeRequestLabelEventResponse'
+      tags:
+        - resource_label_events
 components:
   schemas:
     listProjectIssueLabelEventsResponse:

@@ -28,7 +28,9 @@ export class SwaggerBuilder {
     const paths: PathsObject = {};
     let schemas: NamedSchemaObject = {};
 
-    const endpoints = _apis.map((api) => new Endpoint(api).getSwaggerDef());
+    const endpoints = _apis.map((api) =>
+      new Endpoint(api, _pageSlug).getSwaggerDef()
+    );
     endpoints.forEach(([path, request, response]) => {
       Object.keys(path).forEach(
         (p) => (paths[p] = { ...paths[p], ...path[p] })

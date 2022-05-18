@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAProjectRemoteMirrorsResponse'
+      tags:
+        - remote_mirrors
     post:
       summary: Create a push mirror
       description: >-
@@ -35,6 +37,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAPushMirrorRequest'
+      tags:
+        - remote_mirrors
   '/projects/{id}/remote_mirrors/{mirror_id}':
     get:
       summary: Get a single project’s remote mirror
@@ -48,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProjectRemoteMirrorResponse'
+      tags:
+        - remote_mirrors
     put:
       summary: Update a remote mirror’s attributes
       description: 'Toggle a remote mirror on or off, or change which types of branches are mirrored:'
@@ -71,6 +77,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateARemoteMirrorAttributesRequest'
+      tags:
+        - remote_mirrors
     delete:
       summary: Delete a remote mirror
       description: Delete a remote mirror.
@@ -89,6 +97,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteARemoteMirrorResponse'
+      tags:
+        - remote_mirrors
 components:
   schemas:
     listAProjectRemoteMirrorsResponse:

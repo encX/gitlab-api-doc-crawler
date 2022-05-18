@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllSnippetsForAUserResponse'
+      tags:
+        - snippets
     post:
       summary: Create new snippet
       description: Create a new snippet.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewSnippetRequest'
+      tags:
+        - snippets
   '/snippets/{id}':
     get:
       summary: Get a single snippet
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleSnippetResponse'
+      tags:
+        - snippets
     put:
       summary: Update snippet
       description: Update an existing snippet.
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateSnippetRequest'
+      tags:
+        - snippets
     delete:
       summary: Delete snippet
       description: Delete an existing snippet.
@@ -93,6 +101,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteSnippetResponse'
+      tags:
+        - snippets
   '/snippets/{id}/raw':
     get:
       summary: Single snippet contents
@@ -112,6 +122,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleSnippetContentsResponse'
+      tags:
+        - snippets
   '/snippets/{id}/files/{ref}/{file_path}/raw':
     get:
       summary: Snippet repository file content
@@ -143,6 +155,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
+      tags:
+        - snippets
   /snippets/public:
     get:
       summary: List all public snippets
@@ -168,6 +182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllPublicSnippetsResponse'
+      tags:
+        - snippets
   '/snippets/{id}/user_agent_detail':
     get:
       summary: Get user agent details
@@ -187,6 +203,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserAgentDetailsResponse'
+      tags:
+        - snippets
 components:
   schemas:
     listAllSnippetsForAUserResponse:

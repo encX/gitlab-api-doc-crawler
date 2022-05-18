@@ -58,6 +58,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAListOfTo-doItemsResponse'
+      tags:
+        - todos
   '/todos/{id}/mark_as_done':
     post:
       summary: Mark a to-do item as done
@@ -79,6 +81,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/markATo-doItemAsDoneResponse'
+      tags:
+        - todos
   /todos/mark_as_done:
     post:
       summary: Mark all to-do items as done
@@ -94,6 +98,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/markAllTo-doItemsAsDoneResponse'
+      tags:
+        - todos
 components:
   schemas:
     getAListOfTo-doItemsResponse:

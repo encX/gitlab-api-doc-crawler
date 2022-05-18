@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheCurrentQueueMetricsResponse'
+      tags:
+        - sidekiq_metrics
   /sidekiq/process_metrics:
     get:
       summary: Get the current Process Metrics
@@ -29,6 +31,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheCurrentProcessMetricsResponse'
+      tags:
+        - sidekiq_metrics
   /sidekiq/job_stats:
     get:
       summary: Get the current Job Statistics
@@ -42,6 +46,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheCurrentJobStatisticsResponse'
+      tags:
+        - sidekiq_metrics
   /sidekiq/compound_metrics:
     get:
       summary: Get a compound response of all the previously mentioned metrics
@@ -55,6 +61,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getACompoundResponseOfAllThePreviouslyMentionedMetricsResponse'
+      tags:
+        - sidekiq_metrics
 components:
   schemas:
     getTheCurrentQueueMetricsResponse:

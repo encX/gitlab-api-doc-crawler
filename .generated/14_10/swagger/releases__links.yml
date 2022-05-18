@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getLinksResponse'
+      tags:
+        - releases__links
     post:
       summary: Create a link
       description: Create an asset as a link from a Release.
@@ -57,6 +59,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createALinkRequest'
+      tags:
+        - releases__links
   '/projects/{id}/releases/{tag_name}/assets/links/{link_id}':
     get:
       summary: Get a link
@@ -88,6 +92,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getALinkResponse'
+      tags:
+        - releases__links
     put:
       summary: Update a link
       description: Update an asset as a link from a Release.
@@ -123,6 +129,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateALinkRequest'
+      tags:
+        - releases__links
     delete:
       summary: Delete a link
       description: Delete an asset as a link from a Release.
@@ -153,6 +161,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteALinkResponse'
+      tags:
+        - releases__links
 components:
   schemas:
     getLinksResponse:

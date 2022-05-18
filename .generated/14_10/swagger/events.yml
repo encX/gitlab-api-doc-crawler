@@ -54,6 +54,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listCurrentlyAuthenticatedUserEventsResponse'
+      tags:
+        - events
   '/users/{id}/events':
     get:
       summary: Get user contribution events
@@ -117,6 +119,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserContributionEventsResponse'
+      tags:
+        - events
   '/projects/{project_id}/events':
     get:
       summary: List a Project’s visible events
@@ -166,6 +170,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAProjectVisibleEventsResponse'
+      tags:
+        - events
 components:
   schemas:
     listCurrentlyAuthenticatedUserEventsResponse:

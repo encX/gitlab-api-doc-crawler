@@ -27,6 +27,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/scheduleAnExportRequest'
+      tags:
+        - project_import_export
     get:
       summary: Export status
       description: Get the status of export.
@@ -45,6 +47,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/exportStatusResponse'
+      tags:
+        - project_import_export
   '/projects/{id}/export/download':
     get:
       summary: Export download
@@ -64,6 +68,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/exportDownloadResponse'
+      tags:
+        - project_import_export
   /projects/import:
     post:
       summary: Import a file
@@ -85,6 +91,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/importAFileRequest'
+      tags:
+        - project_import_export
   /projects/remote-import:
     post:
       summary: Import a file from a remote object storage
@@ -103,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/importAFileFromARemoteObjectStorageRequest'
+      tags:
+        - project_import_export
   /projects/remote-import-s3:
     post:
       summary: Import a file from AWS S3
@@ -121,6 +131,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/importAFileFromAwsS3Request'
+      tags:
+        - project_import_export
   '/projects/{id}/import':
     get:
       summary: Import status
@@ -140,6 +152,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/importStatusResponse'
+      tags:
+        - project_import_export
 components:
   schemas:
     scheduleAnExportRequest:

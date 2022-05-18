@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCurrentPlanLimitsResponse'
+      tags:
+        - plan_limits
     put:
       summary: Change plan limits
       description: Modify the limits of a plan on the GitLab instance.
@@ -39,6 +41,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/changePlanLimitsRequest'
+      tags:
+        - plan_limits
 components:
   schemas:
     getCurrentPlanLimitsResponse:

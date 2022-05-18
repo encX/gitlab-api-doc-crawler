@@ -30,6 +30,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProtectedBranchesResponse'
+      tags:
+        - protected_branches
     post:
       summary: Protect repository branches
       description: Protects a single repository branch or several project repository branches using a wildcard protected branch.
@@ -53,6 +55,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/protectRepositoryBranchesRequest'
+      tags:
+        - protected_branches
   '/projects/{id}/protected_branches/{name}':
     get:
       summary: Get a single protected branch or wildcard protected branch
@@ -78,6 +82,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProtectedBranchOrWildcardProtectedBranchResponse'
+      tags:
+        - protected_branches
     delete:
       summary: Unprotect repository branches
       description: Unprotects the given protected branch or wildcard protected branch.
@@ -102,6 +108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unprotectRepositoryBranchesResponse'
+      tags:
+        - protected_branches
     patch:
       summary: Require code owner approvals for a single branch
       description: Update the “code owner approval required” option for the given protected branch.
@@ -131,6 +139,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/requireCodeOwnerApprovalsForASingleBranchRequest'
+      tags:
+        - protected_branches
 components:
   schemas:
     listProtectedBranchesResponse:

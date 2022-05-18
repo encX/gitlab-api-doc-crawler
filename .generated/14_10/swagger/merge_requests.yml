@@ -237,6 +237,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMergeRequestsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests':
     get:
       summary: List project merge requests
@@ -409,6 +411,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectMergeRequestsResponse'
+      tags:
+        - merge_requests
     post:
       summary: Create MR
       description: Creates a new merge request.
@@ -432,6 +436,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createMrRequest'
+      tags:
+        - merge_requests
   '/groups/{id}/merge_requests':
     get:
       summary: List group merge requests
@@ -642,6 +648,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupMergeRequestsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}':
     get:
       summary: Get single MR
@@ -685,6 +693,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrResponse'
+      tags:
+        - merge_requests
     put:
       summary: Update MR
       description: 'Updates an existing merge request. You can change the target branch, title, or even close the MR.'
@@ -714,6 +724,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateMrRequest'
+      tags:
+        - merge_requests
     delete:
       summary: Delete a merge request
       description: Only for administrators and project owners. Deletes the merge request in question.
@@ -738,6 +750,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAMergeRequestResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/participants':
     get:
       summary: Get single MR participants
@@ -763,6 +777,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrParticipantsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/commits':
     get:
       summary: Get single MR commits
@@ -788,6 +804,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrCommitsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/changes':
     get:
       summary: Get single MR changes
@@ -819,6 +837,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrChangesResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/pipelines':
     get:
       summary: List MR pipelines
@@ -844,6 +864,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMrPipelinesResponse'
+      tags:
+        - merge_requests
     post:
       summary: Create MR Pipeline
       description: >-
@@ -870,6 +892,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createMrPipelineResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/merge':
     put:
       summary: Merge a merge request
@@ -900,6 +924,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/mergeAMergeRequestRequest'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/merge_ref':
     get:
       summary: Merge to default merge ref path
@@ -928,6 +954,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/mergeToDefaultMergeRefPathResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/cancel_merge_when_pipeline_succeeds':
     post:
       summary: Cancel Merge When Pipeline Succeeds
@@ -953,6 +981,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/cancelMergeWhenPipelineSucceedsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/rebase':
     put:
       summary: Rebase a merge request
@@ -983,6 +1013,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/rebaseAMergeRequestRequest'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/closes_issues':
     get:
       summary: List issues that close on merge
@@ -1008,6 +1040,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listIssuesThatCloseOnMergeResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/subscribe':
     post:
       summary: Subscribe to a merge request
@@ -1035,6 +1069,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/subscribeToAMergeRequestResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/unsubscribe':
     post:
       summary: Unsubscribe from a merge request
@@ -1062,6 +1098,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unsubscribeFromAMergeRequestResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/todo':
     post:
       summary: Create a to-do item
@@ -1089,6 +1127,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createATo-doItemResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/versions':
     get:
       summary: Get MR diff versions
@@ -1116,6 +1156,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getMrDiffVersionsResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/versions/{version_id}':
     get:
       summary: Get a single MR diff version
@@ -1149,6 +1191,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleMrDiffVersionResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/time_estimate':
     post:
       summary: Set a time estimate for a merge request
@@ -1179,6 +1223,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setATimeEstimateForAMergeRequestRequest'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/reset_time_estimate':
     post:
       summary: Reset the time estimate for a merge request
@@ -1204,6 +1250,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetTheTimeEstimateForAMergeRequestResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time':
     post:
       summary: Add spent time for a merge request
@@ -1234,6 +1282,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addSpentTimeForAMergeRequestRequest'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/reset_spent_time':
     post:
       summary: Reset spent time for a merge request
@@ -1259,6 +1309,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetSpentTimeForAMergeRequestResponse'
+      tags:
+        - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/time_stats':
     get:
       summary: Get time tracking stats
@@ -1284,6 +1336,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTimeTrackingStatsResponse'
+      tags:
+        - merge_requests
 components:
   schemas:
     listMergeRequestsResponse:

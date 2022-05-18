@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleVulnerabilityResponse'
+      tags:
+        - vulnerabilities
   '/vulnerabilities/{id}/confirm':
     post:
       summary: Confirm vulnerability
@@ -41,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/confirmVulnerabilityResponse'
+      tags:
+        - vulnerabilities
   '/vulnerabilities/{id}/resolve':
     post:
       summary: Resolve vulnerability
@@ -60,6 +64,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resolveVulnerabilityResponse'
+      tags:
+        - vulnerabilities
   '/vulnerabilities/{id}/dismiss':
     post:
       summary: Dismiss vulnerability
@@ -79,6 +85,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/dismissVulnerabilityResponse'
+      tags:
+        - vulnerabilities
   '/vulnerabilities/{id}/revert':
     post:
       summary: Revert vulnerability to detected state
@@ -100,6 +108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/revertVulnerabilityToDetectedStateResponse'
+      tags:
+        - vulnerabilities
 components:
   schemas:
     singleVulnerabilityResponse:

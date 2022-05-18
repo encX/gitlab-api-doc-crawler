@@ -36,6 +36,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getFileFromRepositoryResponse'
+      tags:
+        - repository_files
     post:
       summary: Create new file in repository
       description: This allows you to create a single file. For creating multiple files with a single request see the commits API.
@@ -65,6 +67,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewFileInRepositoryRequest'
+      tags:
+        - repository_files
     put:
       summary: Update existing file in repository
       description: This allows you to update a single file. For updating multiple files with a single request see the commits API.
@@ -94,6 +98,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateExistingFileInRepositoryRequest'
+      tags:
+        - repository_files
     delete:
       summary: Delete existing file in repository
       description: 'This allows you to delete a single file. For deleting multiple files with a single request, see the commits API.'
@@ -154,6 +160,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteExistingFileInRepositoryResponse'
+      tags:
+        - repository_files
   '/projects/{id}/repository/files/{file_path}/blame':
     get:
       summary: Get file blame from repository
@@ -185,6 +193,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getFileBlameFromRepositoryResponse'
+      tags:
+        - repository_files
   '/projects/{id}/repository/files/{file_path}/raw':
     get:
       summary: Get raw file from repository
@@ -216,6 +226,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getRawFileFromRepositoryResponse'
+      tags:
+        - repository_files
 components:
   schemas:
     getFileFromRepositoryResponse:

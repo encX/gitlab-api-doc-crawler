@@ -23,6 +23,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/validateTheCiYamlConfigurationRequest'
+      tags:
+        - lint
   '/projects/{id}/ci/lint':
     post:
       summary: Validate a CI YAML configuration with a namespace
@@ -41,6 +43,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/validateACiYamlConfigurationWithANamespaceRequest'
+      tags:
+        - lint
     get:
       summary: Validate a project’s CI configuration
       description: >-
@@ -75,6 +79,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/validateAProjectCiConfigurationResponse'
+      tags:
+        - lint
 components:
   schemas:
     validateTheCiYamlConfigurationRequest:

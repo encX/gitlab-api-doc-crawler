@@ -27,6 +27,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addAMemberToAGroupOrProjectRequest'
+      tags:
+        - invitations
     get:
       summary: List all invitations pending for a group or project
       description: >-
@@ -67,6 +69,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllInvitationsPendingForAGroupOrProjectResponse'
+      tags:
+        - invitations
   '/groups/{id}/invitations/{email}':
     put:
       summary: Update an invitation to a group or project
@@ -97,6 +101,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAnInvitationToAGroupOrProjectRequest'
+      tags:
+        - invitations
     delete:
       summary: Delete an invitation to a group or project
       description: Deletes a pending invitation by email address.
@@ -121,6 +127,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnInvitationToAGroupOrProjectResponse'
+      tags:
+        - invitations
 components:
   schemas:
     addAMemberToAGroupOrProjectRequest:

@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllProjectRepositoryStorageMovesResponse'
+      tags:
+        - project_repository_storage_moves
     post:
       summary: Schedule repository storage moves for all projects on a storage shard
       description: Schedules repository storage moves for each project repository stored on the source storage shard.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardRequest'
+      tags:
+        - project_repository_storage_moves
   '/projects/{project_id}/repository_storage_moves':
     get:
       summary: Retrieve all repository storage moves for a project
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForAProjectResponse'
+      tags:
+        - project_repository_storage_moves
     post:
       summary: Schedule a repository storage move for a project
       description: ''
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAProjectRequest'
+      tags:
+        - project_repository_storage_moves
   '/project_repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single project repository storage move
@@ -94,6 +102,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleProjectRepositoryStorageMoveResponse'
+      tags:
+        - project_repository_storage_moves
   '/projects/{project_id}/repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single repository storage move for a project
@@ -119,6 +129,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAProjectResponse'
+      tags:
+        - project_repository_storage_moves
 components:
   schemas:
     retrieveAllProjectRepositoryStorageMovesResponse:

@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectVulnerabilitiesResponse'
+      tags:
+        - project_vulnerabilities
     post:
       summary: New vulnerability
       description: Creates a new vulnerability.
@@ -39,6 +41,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/newVulnerabilityRequest'
+      tags:
+        - project_vulnerabilities
 components:
   schemas:
     listProjectVulnerabilitiesResponse:

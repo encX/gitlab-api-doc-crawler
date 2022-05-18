@@ -234,6 +234,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listIssuesResponse'
+      tags:
+        - issues
   '/groups/{id}/issues':
     get:
       summary: List group issues
@@ -448,6 +450,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupIssuesResponse'
+      tags:
+        - issues
   '/projects/{id}/issues':
     get:
       summary: List project issues
@@ -655,6 +659,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectIssuesResponse'
+      tags:
+        - issues
     post:
       summary: New issue
       description: Creates a new project issue.
@@ -678,6 +684,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/newIssueRequest'
+      tags:
+        - issues
   '/issues/{id}':
     get:
       summary: Single issue
@@ -697,6 +705,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}':
     get:
       summary: Single project issue
@@ -722,6 +732,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleProjectIssueResponse'
+      tags:
+        - issues
     put:
       summary: Edit issue
       description: Updates an existing project issue. This call is also used to mark an issue as closed.
@@ -751,6 +763,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editIssueRequest'
+      tags:
+        - issues
     delete:
       summary: Delete an issue
       description: Only for administrators and project owners. Deletes an issue.
@@ -775,6 +789,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/reorder':
     put:
       summary: Reorder an issue
@@ -805,6 +821,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/reorderAnIssueRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/move':
     post:
       summary: Move an issue
@@ -837,6 +855,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/moveAnIssueRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/clone':
     post:
       summary: Clone an issue
@@ -848,13 +868,13 @@ paths:
         - name: id
           in: path
           description: ID or URL-encoded path of the project owned by the authenticated user.
-          required: false
+          required: true
           schema:
             type: string
         - name: issue_iid
           in: path
           description: Internal ID of a project’s issue.
-          required: false
+          required: true
           schema:
             type: integer
       responses:
@@ -869,6 +889,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/cloneAnIssueRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/subscribe':
     post:
       summary: Subscribe to an issue
@@ -896,6 +918,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/subscribeToAnIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/unsubscribe':
     post:
       summary: Unsubscribe from an issue
@@ -923,6 +947,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unsubscribeFromAnIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/todo':
     post:
       summary: Create a to-do item
@@ -950,6 +976,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createATo-doItemResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/notes':
     post:
       summary: Promote an issue to an epic
@@ -980,6 +1008,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/promoteAnIssueToAnEpicRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/time_estimate':
     post:
       summary: Set a time estimate for an issue
@@ -1010,6 +1040,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setATimeEstimateForAnIssueRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/reset_time_estimate':
     post:
       summary: Reset the time estimate for an issue
@@ -1035,6 +1067,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetTheTimeEstimateForAnIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/add_spent_time':
     post:
       summary: Add spent time for an issue
@@ -1065,6 +1099,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addSpentTimeForAnIssueRequest'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/reset_spent_time':
     post:
       summary: Reset spent time for an issue
@@ -1090,6 +1126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetSpentTimeForAnIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/time_stats':
     get:
       summary: Get time tracking stats
@@ -1117,6 +1155,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTimeTrackingStatsResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/related_merge_requests':
     get:
       summary: List merge requests related to issue
@@ -1142,6 +1182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMergeRequestsRelatedToIssueResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/closed_by':
     get:
       summary: List merge requests that close a particular issue on merge
@@ -1167,6 +1209,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMergeRequestsThatCloseAParticularIssueOnMergeResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/participants':
     get:
       summary: Participants on issues
@@ -1194,6 +1238,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/participantsOnIssuesResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/user_agent_detail':
     get:
       summary: Get user agent details
@@ -1219,6 +1265,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserAgentDetailsResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/metric_images':
     post:
       summary: Upload metric image
@@ -1249,6 +1297,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/uploadMetricImageRequest'
+      tags:
+        - issues
     get:
       summary: List metric images
       description: Available only for Incident issues.
@@ -1273,6 +1323,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listMetricImagesResponse'
+      tags:
+        - issues
   '/projects/{id}/issues/{issue_iid}/metric_images/{image_id}':
     put:
       summary: Update metric image
@@ -1309,6 +1361,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateMetricImageRequest'
+      tags:
+        - issues
     delete:
       summary: Delete metric image
       description: Available only for Incident issues.
@@ -1339,6 +1393,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteMetricImageResponse'
+      tags:
+        - issues
 components:
   schemas:
     listIssuesResponse:

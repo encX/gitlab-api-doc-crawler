@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listManagedLicensesResponse'
+      tags:
+        - managed_licenses
     post:
       summary: Create a new managed license
       description: Creates a new managed license for the given project with the given name and approval status.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createANewManagedLicenseRequest'
+      tags:
+        - managed_licenses
   '/projects/{id}/managed_licenses/{managed_license_id}':
     get:
       summary: Show an existing managed license
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/showAnExistingManagedLicenseResponse'
+      tags:
+        - managed_licenses
     delete:
       summary: Delete a managed license
       description: Deletes a managed license with a given ID.
@@ -94,6 +100,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAManagedLicenseResponse'
+      tags:
+        - managed_licenses
     patch:
       summary: Edit an existing managed license
       description: Updates an existing managed license with a new approval status.
@@ -123,6 +131,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editAnExistingManagedLicenseRequest'
+      tags:
+        - managed_licenses
 components:
   schemas:
     listManagedLicensesResponse:

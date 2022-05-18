@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectVariablesResponse'
+      tags:
+        - project_level_variables
     post:
       summary: Create variable
       description: Create a new variable.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createVariableRequest'
+      tags:
+        - project_level_variables
   '/projects/{id}/variables/{key}':
     get:
       summary: Show variable details
@@ -76,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/showVariableDetailsResponse'
+      tags:
+        - project_level_variables
     put:
       summary: Update variable
       description: Update a project’s variable.
@@ -105,6 +111,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateVariableRequest'
+      tags:
+        - project_level_variables
     delete:
       summary: Remove variable
       description: Remove a project’s variable.
@@ -135,6 +143,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/removeVariableResponse'
+      tags:
+        - project_level_variables
 components:
   schemas:
     listProjectVariablesResponse:

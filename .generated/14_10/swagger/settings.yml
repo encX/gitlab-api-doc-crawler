@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCurrentApplicationSettingsResponse'
+      tags:
+        - settings
     put:
       summary: Change application settings
       description: Use an API call to modify GitLab instance application settings.
@@ -28,6 +30,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/changeApplicationSettingsResponse'
+      tags:
+        - settings
 components:
   schemas:
     getCurrentApplicationSettingsResponse:

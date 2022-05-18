@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/globalNotificationSettingsResponse'
+      tags:
+        - notification_settings
     put:
       summary: Update global notification settings
       description: Update current notification settings and email address.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateGlobalNotificationSettingsRequest'
+      tags:
+        - notification_settings
   '/groups/{id}/notification_settings':
     get:
       summary: Group / project level notification settings
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/group/ProjectLevelNotificationSettingsResponse'
+      tags:
+        - notification_settings
     put:
       summary: Update group/project level notification settings
       description: Update current group/project notification settings.
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateGroup/projectLevelNotificationSettingsRequest'
+      tags:
+        - notification_settings
 components:
   schemas:
     globalNotificationSettingsResponse:

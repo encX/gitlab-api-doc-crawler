@@ -58,6 +58,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectDeploymentsResponse'
+      tags:
+        - deployments
     post:
       summary: Create a deployment
       description: >-
@@ -83,6 +85,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createADeploymentRequest'
+      tags:
+        - deployments
   '/projects/{id}/deployments/{deployment_id}':
     get:
       summary: Get a specific deployment
@@ -110,6 +114,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASpecificDeploymentResponse'
+      tags:
+        - deployments
     put:
       summary: Update a deployment
       description: >-
@@ -141,6 +147,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateADeploymentRequest'
+      tags:
+        - deployments
   '/projects/{id}/deployments/{deployment_id}/merge_requests':
     get:
       summary: List of merge requests associated with a deployment
@@ -154,6 +162,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listOfMergeRequestsAssociatedWithADeploymentResponse'
+      tags:
+        - deployments
   '/projects/{id}/deployments/{deployment_id}/approval':
     post:
       summary: Approve or reject a blocked deployment
@@ -184,6 +194,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/approveOrRejectABlockedDeploymentRequest'
+      tags:
+        - deployments
 components:
   schemas:
     listProjectDeploymentsResponse:

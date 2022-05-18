@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectIssueDiscussionItemsResponse'
+      tags:
+        - discussions
     post:
       summary: Create new issue thread
       description: >-
@@ -59,6 +61,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewIssueThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/issues/{issue_iid}/discussions/{discussion_id}':
     get:
       summary: Get single issue discussion item
@@ -90,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleIssueDiscussionItemResponse'
+      tags:
+        - discussions
   '/projects/{id}/issues/{issue_iid}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing issue thread
@@ -126,6 +132,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/issues/{issue_iid}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify existing issue thread note
@@ -168,6 +176,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingIssueThreadNoteRequest'
+      tags:
+        - discussions
     delete:
       summary: Delete an issue thread note
       description: Deletes an existing thread note of an issue.
@@ -204,6 +214,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnIssueThreadNoteResponse'
+      tags:
+        - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions':
     get:
       summary: List project snippet discussion items
@@ -229,6 +241,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectSnippetDiscussionItemsResponse'
+      tags:
+        - discussions
     post:
       summary: Create new snippet thread
       description: >-
@@ -260,6 +274,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewSnippetThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}':
     get:
       summary: Get single snippet discussion item
@@ -291,6 +307,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleSnippetDiscussionItemResponse'
+      tags:
+        - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing snippet thread
@@ -327,6 +345,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNoteToExistingSnippetThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify existing snippet thread note
@@ -369,6 +389,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingSnippetThreadNoteRequest'
+      tags:
+        - discussions
     delete:
       summary: Delete a snippet thread note
       description: Deletes an existing thread note of a snippet.
@@ -405,6 +427,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteASnippetThreadNoteResponse'
+      tags:
+        - discussions
   '/groups/{id}/epics/{epic_id}/discussions':
     get:
       summary: List group epic discussion items
@@ -430,6 +454,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupEpicDiscussionItemsResponse'
+      tags:
+        - discussions
     post:
       summary: Create new epic thread
       description: >-
@@ -461,6 +487,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewEpicThreadRequest'
+      tags:
+        - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}':
     get:
       summary: Get single epic discussion item
@@ -492,6 +520,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleEpicDiscussionItemResponse'
+      tags:
+        - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing epic thread
@@ -528,6 +558,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNoteToExistingEpicThreadRequest'
+      tags:
+        - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify existing epic thread note
@@ -570,6 +602,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyExistingEpicThreadNoteRequest'
+      tags:
+        - discussions
     delete:
       summary: Delete an epic thread note
       description: Deletes an existing thread note of an epic.
@@ -606,6 +640,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAnEpicThreadNoteResponse'
+      tags:
+        - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions':
     get:
       summary: List project merge request discussion items
@@ -631,6 +667,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectMergeRequestDiscussionItemsResponse'
+      tags:
+        - discussions
     post:
       summary: Create new merge request thread
       description: >-
@@ -650,6 +688,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewMergeRequestThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions/{discussion_id}':
     get:
       summary: Get single merge request discussion item
@@ -681,6 +721,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMergeRequestDiscussionItemResponse'
+      tags:
+        - discussions
     put:
       summary: Resolve a merge request thread
       description: Resolve or unresolve a thread of discussion in a merge request.
@@ -716,6 +758,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/resolveAMergeRequestThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing merge request thread
@@ -752,6 +796,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNoteToExistingMergeRequestThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify an existing merge request thread note
@@ -794,6 +840,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyAnExistingMergeRequestThreadNoteRequest'
+      tags:
+        - discussions
     delete:
       summary: Delete a merge request thread note
       description: Deletes an existing thread note of a merge request.
@@ -830,6 +878,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAMergeRequestThreadNoteResponse'
+      tags:
+        - discussions
   '/projects/{id}/commits/{commit_id}/discussions':
     get:
       summary: List project commit discussion items
@@ -855,6 +905,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectCommitDiscussionItemsResponse'
+      tags:
+        - discussions
     post:
       summary: Create new commit thread
       description: >-
@@ -886,6 +938,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewCommitThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}':
     get:
       summary: Get single commit discussion item
@@ -917,6 +971,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleCommitDiscussionItemResponse'
+      tags:
+        - discussions
   '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing commit thread
@@ -953,6 +1009,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addNoteToExistingCommitThreadRequest'
+      tags:
+        - discussions
   '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify an existing commit thread note
@@ -995,6 +1053,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/modifyAnExistingCommitThreadNoteRequest'
+      tags:
+        - discussions
     delete:
       summary: Delete a commit thread note
       description: Deletes an existing thread note of a commit.
@@ -1031,6 +1091,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteACommitThreadNoteResponse'
+      tags:
+        - discussions
 components:
   schemas:
     listProjectIssueDiscussionItemsResponse:

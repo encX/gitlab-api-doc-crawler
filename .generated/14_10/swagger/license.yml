@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveInformationAboutTheCurrentLicenseResponse'
+      tags:
+        - license
     post:
       summary: Add a new license
       description: 'Returns:'
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addANewLicenseRequest'
+      tags:
+        - license
   /licenses:
     get:
       summary: Retrieve information about all licenses
@@ -48,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveInformationAboutAllLicensesResponse'
+      tags:
+        - license
   '/license/{id}':
     delete:
       summary: Delete a license
@@ -67,6 +73,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteALicenseResponse'
+      tags:
+        - license
 components:
   schemas:
     retrieveInformationAboutTheCurrentLicenseResponse:

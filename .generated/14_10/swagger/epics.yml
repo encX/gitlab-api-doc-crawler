@@ -126,6 +126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listEpicsForAGroupResponse'
+      tags:
+        - epics
     post:
       summary: New epic
       description: Creates a new epic.
@@ -149,6 +151,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/newEpicRequest'
+      tags:
+        - epics
   '/groups/{id}/epics/{epic_iid}':
     get:
       summary: Single epic
@@ -174,6 +178,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleEpicResponse'
+      tags:
+        - epics
     put:
       summary: Update epic
       description: Updates an epic.
@@ -203,6 +209,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateEpicRequest'
+      tags:
+        - epics
     delete:
       summary: Delete epic
       description: Deletes an epic
@@ -227,6 +235,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteEpicResponse'
+      tags:
+        - epics
   '/groups/{id}/epics/{epic_iid}/todo':
     post:
       summary: Create a to-do item
@@ -254,6 +264,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createATo-doItemResponse'
+      tags:
+        - epics
 components:
   schemas:
     listEpicsForAGroupResponse:

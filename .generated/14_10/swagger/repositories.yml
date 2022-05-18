@@ -60,6 +60,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listRepositoryTreeResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/blobs/{sha}':
     get:
       summary: Get a blob from repository
@@ -87,6 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getABlobFromRepositoryResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/blobs/{sha}/raw':
     get:
       summary: Raw blob content
@@ -114,6 +118,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rawBlobContentResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/archive[.format]':
     get:
       summary: Get file archive
@@ -149,6 +155,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getFileArchiveResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/compare':
     get:
       summary: 'Compare branches, tags or commits'
@@ -196,6 +204,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/compareBranches,TagsOrCommitsResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/contributors':
     get:
       summary: Contributors
@@ -229,6 +239,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/contributorsResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/merge_base':
     get:
       summary: Merge Base
@@ -254,6 +266,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/mergeBaseResponse'
+      tags:
+        - repositories
   '/projects/{id}/repository/changelog':
     post:
       summary: Add changelog data to a changelog file
@@ -272,6 +286,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addChangelogDataToAChangelogFileRequest'
+      tags:
+        - repositories
     get:
       summary: Generate changelog data
       description: 'Generate changelog data based on commits in a repository, without committing them to a changelog file.'
@@ -320,6 +336,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/generateChangelogDataResponse'
+      tags:
+        - repositories
 components:
   schemas:
     listRepositoryTreeResponse:

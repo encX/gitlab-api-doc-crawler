@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getErrorTrackingSettingsResponse'
+      tags:
+        - error_tracking
     patch:
       summary: Enable or disable the Error Tracking project settings
       description: >-
@@ -47,6 +49,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/enableOrDisableTheErrorTrackingProjectSettingsRequest'
+      tags:
+        - error_tracking
   '/projects/{id}/error_tracking/client_keys':
     get:
       summary: List project client keys
@@ -66,6 +70,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectClientKeysResponse'
+      tags:
+        - error_tracking
     post:
       summary: Create a client key
       description: Creates a new client key for a project. The public key attribute is generated automatically.
@@ -84,6 +90,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createAClientKeyResponse'
+      tags:
+        - error_tracking
   '/projects/{id}/error_tracking/client_keys/{key_id}':
     delete:
       summary: Delete a client key
@@ -109,6 +117,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAClientKeyResponse'
+      tags:
+        - error_tracking
 components:
   schemas:
     getErrorTrackingSettingsResponse:

@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllGroupIssueBoardsInAGroupResponse'
+      tags:
+        - group_boards
     post:
       summary: Create a group issue board
       description: Creates a group issue board.
@@ -45,6 +47,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAGroupIssueBoardRequest'
+      tags:
+        - group_boards
   '/groups/{id}/boards/{board_id}':
     get:
       summary: Single group issue board
@@ -70,6 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleGroupIssueBoardResponse'
+      tags:
+        - group_boards
     put:
       summary: Update a group issue board
       description: Updates a group issue board.
@@ -99,6 +105,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateAGroupIssueBoardRequest'
+      tags:
+        - group_boards
     delete:
       summary: Delete a group issue board
       description: Deletes a group issue board.
@@ -123,6 +131,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGroupIssueBoardResponse'
+      tags:
+        - group_boards
   '/groups/{id}/boards/{board_id}/lists':
     get:
       summary: List group issue board lists
@@ -148,6 +158,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupIssueBoardListsResponse'
+      tags:
+        - group_boards
     post:
       summary: New group issue board list
       description: Creates an issue board list.
@@ -177,6 +189,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/newGroupIssueBoardListRequest'
+      tags:
+        - group_boards
   '/groups/{id}/boards/{board_id}/lists/{list_id}':
     get:
       summary: Single group issue board list
@@ -208,6 +222,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleGroupIssueBoardListResponse'
+      tags:
+        - group_boards
     put:
       summary: Edit group issue board list
       description: Updates an existing issue board list. This call is used to change list position.
@@ -243,6 +259,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editGroupIssueBoardListRequest'
+      tags:
+        - group_boards
     delete:
       summary: Delete a group issue board list
       description: Only for administrators and group owners. Deletes the board list in question.
@@ -273,6 +291,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGroupIssueBoardListResponse'
+      tags:
+        - group_boards
 components:
   schemas:
     listAllGroupIssueBoardsInAGroupResponse:

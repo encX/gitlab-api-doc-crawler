@@ -22,6 +22,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCountOfRecentlyCreatedIssuesForGroupResponse'
+      tags:
+        - group_activity_analytics
   /analytics/group_activity/merge_requests_count:
     get:
       summary: Get count of recently created merge requests for group
@@ -41,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCountOfRecentlyCreatedMergeRequestsForGroupResponse'
+      tags:
+        - group_activity_analytics
   /analytics/group_activity/new_members_count:
     get:
       summary: Get count of members recently added to group
@@ -60,6 +64,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getCountOfMembersRecentlyAddedToGroupResponse'
+      tags:
+        - group_activity_analytics
 components:
   schemas:
     getCountOfRecentlyCreatedIssuesForGroupResponse:

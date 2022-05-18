@@ -137,6 +137,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getIssuesStatisticsResponse'
+      tags:
+        - issues_statistics
   '/groups/{id}/issues_statistics':
     get:
       summary: Get group issues statistics
@@ -259,6 +261,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getGroupIssuesStatisticsResponse'
+      tags:
+        - issues_statistics
   '/projects/{id}/issues_statistics':
     get:
       summary: Get project issues statistics
@@ -381,6 +385,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getProjectIssuesStatisticsResponse'
+      tags:
+        - issues_statistics
 components:
   schemas:
     getIssuesStatisticsResponse:

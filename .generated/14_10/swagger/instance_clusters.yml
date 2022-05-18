@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listInstanceClustersResponse'
+      tags:
+        - instance_clusters
   '/admin/clusters/{cluster_id}':
     get:
       summary: Get a single instance cluster
@@ -35,6 +37,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleInstanceClusterResponse'
+      tags:
+        - instance_clusters
     put:
       summary: Edit instance cluster
       description: Updates an existing instance cluster.
@@ -58,6 +62,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editInstanceClusterRequest'
+      tags:
+        - instance_clusters
     delete:
       summary: Delete instance cluster
       description: Deletes an existing instance cluster.
@@ -76,6 +82,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteInstanceClusterResponse'
+      tags:
+        - instance_clusters
   /admin/clusters/add:
     post:
       summary: Add existing instance cluster
@@ -94,6 +102,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addExistingInstanceClusterRequest'
+      tags:
+        - instance_clusters
 components:
   schemas:
     listInstanceClustersResponse:

@@ -30,6 +30,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listNamespacesResponse'
+      tags:
+        - namespaces
   '/namespaces/{id}':
     get:
       summary: Get namespace by ID
@@ -49,6 +51,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getNamespaceByIdResponse'
+      tags:
+        - namespaces
   '/namespaces/{namespace}/exists':
     get:
       summary: Get existence of a namespace
@@ -74,6 +78,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getExistenceOfANamespaceResponse'
+      tags:
+        - namespaces
 components:
   schemas:
     listNamespacesResponse:

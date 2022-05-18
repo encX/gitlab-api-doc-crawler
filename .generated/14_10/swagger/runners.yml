@@ -50,6 +50,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listOwnedRunnersResponse'
+      tags:
+        - runners
     post:
       summary: Register a new runner
       description: Register a new runner for the instance.
@@ -67,6 +69,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/registerANewRunnerRequest'
+      tags:
+        - runners
     delete:
       summary: Delete a runner by authentication token
       description: 'To delete the runner by using its authentication token:'
@@ -85,6 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteARunnerByAuthenticationTokenResponse'
+      tags:
+        - runners
   /runners/all:
     get:
       summary: List all runners
@@ -134,6 +140,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllRunnersResponse'
+      tags:
+        - runners
   '/runners/{id}':
     get:
       summary: Get runner’s details
@@ -153,6 +161,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getRunnerDetailsResponse'
+      tags:
+        - runners
     put:
       summary: Update runner’s details
       description: Update details of a runner.
@@ -176,6 +186,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateRunnerDetailsRequest'
+      tags:
+        - runners
     delete:
       summary: Delete a runner by ID
       description: 'To delete the runner by ID, use your access token with the runner’s ID:'
@@ -196,6 +208,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteARunnerByIdResponse'
+      tags:
+        - runners
   '/runners/{id}/jobs':
     get:
       summary: List runner’s jobs
@@ -233,6 +247,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listRunnerJobsResponse'
+      tags:
+        - runners
   '/projects/{id}/runners':
     get:
       summary: List project’s runners
@@ -286,6 +302,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listProjectRunnersResponse'
+      tags:
+        - runners
     post:
       summary: Enable a runner in project
       description: Enable an available specific runner in the project.
@@ -309,6 +327,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/enableARunnerInProjectRequest'
+      tags:
+        - runners
   '/projects/{id}/runners/{runner_id}':
     delete:
       summary: Disable a runner from project
@@ -336,6 +356,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/disableARunnerFromProjectResponse'
+      tags:
+        - runners
   '/groups/{id}/runners':
     get:
       summary: List group’s runners
@@ -383,6 +405,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupRunnersResponse'
+      tags:
+        - runners
   /runners/verify:
     post:
       summary: Verify authentication for a registered runner
@@ -401,6 +425,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerRequest'
+      tags:
+        - runners
   /runners/reset_registration_token:
     post:
       summary: Reset instance’s runner registration token
@@ -414,6 +440,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetInstanceRunnerRegistrationTokenResponse'
+      tags:
+        - runners
   '/projects/{id}/runners/reset_registration_token':
     post:
       summary: Reset project’s runner registration token
@@ -427,6 +455,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetProjectRunnerRegistrationTokenResponse'
+      tags:
+        - runners
   '/groups/{id}/runners/reset_registration_token':
     post:
       summary: Reset group’s runner registration token
@@ -440,6 +470,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetGroupRunnerRegistrationTokenResponse'
+      tags:
+        - runners
   '/runners/{id}/reset_authentication_token':
     post:
       summary: Reset runner’s authentication token by using the runner ID
@@ -459,6 +491,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse'
+      tags:
+        - runners
   /runners/reset_authentication_token:
     post:
       summary: Reset runner’s authentication token by using the current token
@@ -477,6 +511,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheCurrentTokenRequest'
+      tags:
+        - runners
 components:
   schemas:
     listOwnedRunnersResponse:

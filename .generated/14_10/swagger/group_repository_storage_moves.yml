@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllGroupRepositoryStorageMovesResponse'
+      tags:
+        - group_repository_storage_moves
     post:
       summary: Schedule repository storage moves for all groups on a storage shard
       description: Schedules repository storage moves for each group repository stored on the source storage shard.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardRequest'
+      tags:
+        - group_repository_storage_moves
   '/groups/{group_id}/repository_storage_moves':
     get:
       summary: Retrieve all repository storage moves for a single group
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForASingleGroupResponse'
+      tags:
+        - group_repository_storage_moves
     post:
       summary: Schedule a repository storage move for a group
       description: 'Supported attributes:'
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAGroupRequest'
+      tags:
+        - group_repository_storage_moves
   '/group_repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single group repository storage move
@@ -96,6 +104,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleGroupRepositoryStorageMoveResponse'
+      tags:
+        - group_repository_storage_moves
   '/groups/{group_id}/repository_storage_moves/{repository_storage_id}':
     get:
       summary: Get a single repository storage move for a group
@@ -123,6 +133,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAGroupResponse'
+      tags:
+        - group_repository_storage_moves
 components:
   schemas:
     retrieveAllGroupRepositoryStorageMovesResponse:

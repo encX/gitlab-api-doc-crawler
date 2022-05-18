@@ -52,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listGroupMilestonesResponse'
+      tags:
+        - group_milestones
     post:
       summary: Create new milestone
       description: Creates a new group milestone.
@@ -75,6 +77,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createNewMilestoneRequest'
+      tags:
+        - group_milestones
   '/groups/{id}/milestones/{milestone_id}':
     get:
       summary: Get single milestone
@@ -100,6 +104,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMilestoneResponse'
+      tags:
+        - group_milestones
     put:
       summary: Edit milestone
       description: Updates an existing group milestone.
@@ -129,6 +135,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/editMilestoneRequest'
+      tags:
+        - group_milestones
     delete:
       summary: Delete group milestone
       description: Only for users with the Developer role in the group.
@@ -153,6 +161,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteGroupMilestoneResponse'
+      tags:
+        - group_milestones
   '/groups/{id}/milestones/{milestone_id}/issues':
     get:
       summary: Get all issues assigned to a single milestone
@@ -178,6 +188,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllIssuesAssignedToASingleMilestoneResponse'
+      tags:
+        - group_milestones
   '/groups/{id}/milestones/{milestone_id}/merge_requests':
     get:
       summary: Get all merge requests assigned to a single milestone
@@ -203,6 +215,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllMergeRequestsAssignedToASingleMilestoneResponse'
+      tags:
+        - group_milestones
   '/groups/{id}/milestones/{milestone_id}/burndown_events':
     get:
       summary: Get all burndown chart events for a single milestone
@@ -228,6 +242,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllBurndownChartEventsForASingleMilestoneResponse'
+      tags:
+        - group_milestones
 components:
   schemas:
     listGroupMilestonesResponse:

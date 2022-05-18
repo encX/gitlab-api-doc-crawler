@@ -56,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/forAdminsResponse'
+      tags:
+        - users
     post:
       summary: User creation
       description: >-
@@ -76,6 +78,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/userCreationRequest'
+      tags:
+        - users
   '/users/{id}':
     get:
       summary: For admin
@@ -95,6 +99,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/forAdminResponse'
+      tags:
+        - users
     put:
       summary: User modification
       description: Modifies an existing user. Only administrators can change attributes of a user.
@@ -102,7 +108,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -117,6 +123,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/userModificationRequest'
+      tags:
+        - users
     delete:
       summary: User deletion
       description: >-
@@ -145,6 +153,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/userDeletionResponse'
+      tags:
+        - users
   '/users/{id}/identities/{provider}':
     delete:
       summary: Delete authentication identity from user
@@ -172,6 +182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAuthenticationIdentityFromUserResponse'
+      tags:
+        - users
   /user:
     get:
       summary: List current user (for admins)
@@ -191,6 +203,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listCurrentUser(forAdmins)Response'
+      tags:
+        - users
   /user/status:
     get:
       summary: User status
@@ -204,6 +218,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/userStatusResponse'
+      tags:
+        - users
     put:
       summary: Set user status
       description: Set the status of the current user.
@@ -221,6 +237,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/setUserStatusRequest'
+      tags:
+        - users
   '/users/{id_or_username}/status':
     get:
       summary: Get the status of a user
@@ -240,6 +258,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getTheStatusOfAUserResponse'
+      tags:
+        - users
   /user/preferences:
     get:
       summary: Get user preferences
@@ -253,6 +273,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserPreferencesResponse'
+      tags:
+        - users
     put:
       summary: User preference modification
       description: Update the current user’s preferences.
@@ -270,6 +292,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/userPreferenceModificationRequest'
+      tags:
+        - users
   '/users/{id}/follow':
     post:
       summary: Follow and unfollow users
@@ -289,6 +313,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/followAndUnfollowUsersResponse'
+      tags:
+        - users
   '/users/{id}/followers':
     get:
       summary: Followers and following
@@ -308,6 +334,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/followersAndFollowingResponse'
+      tags:
+        - users
   /user_counts:
     get:
       summary: User counts
@@ -346,6 +374,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/userCountsResponse'
+      tags:
+        - users
   /user/keys:
     get:
       summary: List SSH keys
@@ -359,6 +389,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listSshKeysResponse'
+      tags:
+        - users
     post:
       summary: Add SSH key
       description: Creates a new key owned by the currently authenticated user.
@@ -376,6 +408,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addSshKeyRequest'
+      tags:
+        - users
   '/users/{id_or_username}/keys':
     get:
       summary: List SSH keys for user
@@ -395,6 +429,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listSshKeysForUserResponse'
+      tags:
+        - users
   '/user/keys/{key_id}':
     get:
       summary: Single SSH key
@@ -414,6 +450,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleSshKeyResponse'
+      tags:
+        - users
     delete:
       summary: Delete SSH key for current user
       description: >-
@@ -434,6 +472,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteSshKeyForCurrentUserResponse'
+      tags:
+        - users
   '/users/{id}/keys/{key_id}':
     get:
       summary: Single SSH key for given user
@@ -459,6 +499,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleSshKeyForGivenUserResponse'
+      tags:
+        - users
     delete:
       summary: Delete SSH key for given user
       description: Deletes key owned by a specified user. Available only for administrator.
@@ -483,6 +525,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteSshKeyForGivenUserResponse'
+      tags:
+        - users
   '/users/{id}/keys':
     post:
       summary: Add SSH key for user
@@ -507,6 +551,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addSshKeyForUserRequest'
+      tags:
+        - users
   /user/gpg_keys:
     get:
       summary: List all GPG keys
@@ -520,6 +566,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllGpgKeysResponse'
+      tags:
+        - users
     post:
       summary: Add a GPG key
       description: Creates a new GPG key owned by the currently authenticated user.
@@ -537,6 +585,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addAGpgKeyRequest'
+      tags:
+        - users
   '/user/gpg_keys/{key_id}':
     get:
       summary: Get a specific GPG key
@@ -556,6 +606,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASpecificGpgKeyResponse'
+      tags:
+        - users
     delete:
       summary: Delete a GPG key
       description: Delete a GPG key owned by currently authenticated user.
@@ -574,6 +626,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGpgKeyResponse'
+      tags:
+        - users
   '/users/{id}/gpg_keys':
     get:
       summary: List all GPG keys for given user
@@ -593,6 +647,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listAllGpgKeysForGivenUserResponse'
+      tags:
+        - users
     post:
       summary: Add a GPG key for a given user
       description: Create new GPG key owned by the specified user. Available only for administrator.
@@ -616,6 +672,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addAGpgKeyForAGivenUserRequest'
+      tags:
+        - users
   '/users/{id}/gpg_keys/{key_id}':
     get:
       summary: Get a specific GPG key for a given user
@@ -643,6 +701,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASpecificGpgKeyForAGivenUserResponse'
+      tags:
+        - users
     delete:
       summary: Delete a GPG key for a given user
       description: Delete a GPG key owned by a specified user. Available only for administrator.
@@ -667,6 +727,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAGpgKeyForAGivenUserResponse'
+      tags:
+        - users
   /user/emails:
     get:
       summary: List emails
@@ -680,6 +742,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listEmailsResponse'
+      tags:
+        - users
     post:
       summary: Add email
       description: Creates a new email owned by the currently authenticated user.
@@ -697,6 +761,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addEmailRequest'
+      tags:
+        - users
   '/users/{id}/emails':
     get:
       summary: List emails for user
@@ -716,6 +782,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listEmailsForUserResponse'
+      tags:
+        - users
     post:
       summary: Add email for user
       description: Create new email owned by specified user. Available only for administrator
@@ -739,6 +807,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/addEmailForUserRequest'
+      tags:
+        - users
   '/user/emails/{email_id}':
     get:
       summary: Single email
@@ -758,6 +828,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/singleEmailResponse'
+      tags:
+        - users
     delete:
       summary: Delete email for current user
       description: >-
@@ -778,6 +850,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteEmailForCurrentUserResponse'
+      tags:
+        - users
   '/users/{id}/emails/{email_id}':
     delete:
       summary: Delete email for given user
@@ -803,6 +877,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteEmailForGivenUserResponse'
+      tags:
+        - users
   '/users/{id}/block':
     post:
       summary: Block user
@@ -822,6 +898,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/blockUserResponse'
+      tags:
+        - users
   '/users/{id}/unblock':
     post:
       summary: Unblock user
@@ -841,6 +919,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unblockUserResponse'
+      tags:
+        - users
   '/users/{id}/deactivate':
     post:
       summary: Deactivate user
@@ -860,6 +940,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deactivateUserResponse'
+      tags:
+        - users
   '/users/{id}/activate':
     post:
       summary: Activate user
@@ -879,6 +961,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/activateUserResponse'
+      tags:
+        - users
   '/users/{id}/ban':
     post:
       summary: Ban user
@@ -892,6 +976,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/banUserResponse'
+      tags:
+        - users
   '/users/{id}/unban':
     post:
       summary: Unban user
@@ -905,6 +991,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/unbanUserResponse'
+      tags:
+        - users
   '/users/{user_id}/impersonation_tokens':
     get:
       summary: Get all impersonation tokens of a user
@@ -930,6 +1018,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllImpersonationTokensOfAUserResponse'
+      tags:
+        - users
     post:
       summary: Create an impersonation token
       description: >-
@@ -955,6 +1045,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAnImpersonationTokenRequest'
+      tags:
+        - users
   '/users/{id}/approve':
     post:
       summary: Approve user
@@ -974,6 +1066,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/approveUserResponse'
+      tags:
+        - users
   '/users/{id}/reject':
     post:
       summary: Reject user
@@ -987,6 +1081,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/rejectUserResponse'
+      tags:
+        - users
   '/users/{user_id}/impersonation_tokens/{impersonation_token_id}':
     get:
       summary: Get an impersonation token of a user
@@ -1012,6 +1108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAnImpersonationTokenOfAUserResponse'
+      tags:
+        - users
     delete:
       summary: Revoke an impersonation token
       description: Requires administrator access.
@@ -1036,6 +1134,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/revokeAnImpersonationTokenResponse'
+      tags:
+        - users
   '/users/{user_id}/personal_access_tokens':
     post:
       summary: Create a personal access token
@@ -1062,6 +1162,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createAPersonalAccessTokenRequest'
+      tags:
+        - users
   /user/activities:
     get:
       summary: Get user activities (admin only)
@@ -1081,6 +1183,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getUserActivities(adminOnly)Response'
+      tags:
+        - users
   '/users/{id}/memberships':
     get:
       summary: User memberships (admin only)
@@ -1111,6 +1215,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/userMemberships(adminOnly)Response'
+      tags:
+        - users
 components:
   schemas:
     forNormalUsersResponse:

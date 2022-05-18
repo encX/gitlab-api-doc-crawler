@@ -23,7 +23,7 @@ export class Endpoint {
   private response?: NamedSchemaObject;
   private operationId: string;
 
-  constructor(private readonly api: Api) {
+  constructor(private readonly api: Api, private readonly pageSlug?: string) {
     [this.method, this.path, this.pathParams] = extractEndpointInfo(
       this.api.resources
     );
@@ -39,6 +39,7 @@ export class Endpoint {
 
     const requestBody = this.setRequestBody();
     if (requestBody) this.operation.requestBody = requestBody;
+    if (pageSlug) this.operation.tags = [pageSlug];
   }
 
   getSwaggerDef(): [
@@ -62,7 +63,7 @@ export class Endpoint {
         name: a.name,
         in: this.isPathParam(a.name) ? "path" : "query",
         description: a.description,
-        required: a.required,
+        required: a.required || this.isPathParam(a.name),
         schema: { type: a.type === "integer" ? "integer" : "string" },
       }));
   }

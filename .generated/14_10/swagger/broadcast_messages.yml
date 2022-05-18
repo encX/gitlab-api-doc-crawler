@@ -16,6 +16,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAllBroadcastMessagesResponse'
+      tags:
+        - broadcast_messages
     post:
       summary: Create a broadcast message
       description: Create a new broadcast message.
@@ -33,6 +35,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/createABroadcastMessageRequest'
+      tags:
+        - broadcast_messages
   '/broadcast_messages/{id}':
     get:
       summary: Get a specific broadcast message
@@ -52,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
+      tags:
+        - broadcast_messages
     put:
       summary: Update a broadcast message
       description: Update an existing broadcast message.
@@ -75,6 +81,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateABroadcastMessageRequest'
+      tags:
+        - broadcast_messages
     delete:
       summary: Delete a broadcast message
       description: Delete a broadcast message.
@@ -93,6 +101,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteABroadcastMessageResponse'
+      tags:
+        - broadcast_messages
 components:
   schemas:
     getAllBroadcastMessagesResponse:

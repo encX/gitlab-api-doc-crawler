@@ -27,6 +27,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/changeTheVisibilityOfTheContainerRegistryRequest'
+      tags:
+        - container_registry
   '/projects/{id}/registry/repositories':
     get:
       summary: Within a project
@@ -60,6 +62,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/withinAProjectResponse'
+      tags:
+        - container_registry
   '/groups/{id}/registry/repositories':
     get:
       summary: Within a group
@@ -93,6 +97,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/withinAGroupResponse'
+      tags:
+        - container_registry
   '/registry/repositories/{id}':
     get:
       summary: Get details of a single repository
@@ -134,6 +140,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getDetailsOfASingleRepositoryResponse'
+      tags:
+        - container_registry
   '/projects/{id}/registry/repositories/{repository_id}':
     delete:
       summary: Delete registry repository
@@ -159,6 +167,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteRegistryRepositoryResponse'
+      tags:
+        - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags':
     get:
       summary: Within a project
@@ -184,6 +194,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/withinAProjectResponse'
+      tags:
+        - container_registry
     delete:
       summary: Delete registry repository tags in bulk
       description: Delete registry repository tags in bulk based on given criteria.
@@ -242,6 +254,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteRegistryRepositoryTagsInBulkResponse'
+      tags:
+        - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}':
     get:
       summary: Get details of a registry repository tag
@@ -273,6 +287,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getDetailsOfARegistryRepositoryTagResponse'
+      tags:
+        - container_registry
     delete:
       summary: Delete a registry repository tag
       description: Delete a registry repository tag.
@@ -303,6 +319,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteARegistryRepositoryTagResponse'
+      tags:
+        - container_registry
   /v2/_catalog:
     get:
       summary: Listing all container repositories
@@ -316,6 +334,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listingAllContainerRepositoriesResponse'
+      tags:
+        - container_registry
 components:
   schemas:
     changeTheVisibilityOfTheContainerRegistryRequest:

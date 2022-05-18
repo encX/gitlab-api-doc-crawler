@@ -64,6 +64,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/withinAProjectResponse'
+      tags:
+        - packages
   '/groups/{id}/packages':
     get:
       summary: Within a group
@@ -133,6 +135,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/withinAGroupResponse'
+      tags:
+        - packages
   '/projects/{id}/packages/{package_id}':
     get:
       summary: Get a project package
@@ -158,6 +162,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getAProjectPackageResponse'
+      tags:
+        - packages
     delete:
       summary: Delete a project package
       description: Deletes a project package.
@@ -182,6 +188,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAProjectPackageResponse'
+      tags:
+        - packages
   '/projects/{id}/packages/{package_id}/package_files':
     get:
       summary: List package files
@@ -207,6 +215,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/listPackageFilesResponse'
+      tags:
+        - packages
   '/projects/{id}/packages/{package_id}/package_files/{package_file_id}':
     delete:
       summary: Delete a package file
@@ -238,6 +248,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deleteAPackageFileResponse'
+      tags:
+        - packages
 components:
   schemas:
     withinAProjectResponse:
