@@ -2,6 +2,7 @@ import { SchemaObject } from "../../types/OpenAPIV3.ts";
 
 const intArr = /integer array|array of integers?/i;
 const strArr = /array of (strings?|hash(es)?)|string array/i;
+const intOrStr = /integer( or |\/)string/i;
 
 export function asPropertyType(_type: string): SchemaObject | undefined {
   const type = _type.toLowerCase();
@@ -14,7 +15,7 @@ export function asPropertyType(_type: string): SchemaObject | undefined {
   )
     return { type };
 
-  if (type === "integer/string")
+  if (intOrStr.test(type))
     return { oneOf: [{ type: "integer" }, { type: "string" }] };
 
   if (type === "float") return { type: "number" };

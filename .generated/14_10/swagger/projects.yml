@@ -2283,6 +2283,10 @@ components:
           type: integer
         namespace_path:
           type: string
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
         path:
           type: string
         visibility:
@@ -3381,7 +3385,11 @@ components:
       type: string
     transferAProjectToANewNamespaceRequest:
       type: object
-      properties: {}
+      properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
     transferAProjectToANewNamespaceResponse:
       type: object
       properties:
