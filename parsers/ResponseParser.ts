@@ -4,7 +4,7 @@ import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 import { Parser } from "./Parser.ts";
 import { file } from "../helper/file.ts";
 
-export class ResponseParser implements Parser<any> {
+export class ResponseParser implements Parser<unknown> {
   constructor(
     private readonly elem: TagElement,
     private readonly page: string,
@@ -21,7 +21,7 @@ export class ResponseParser implements Parser<any> {
     );
   }
 
-  private sanitizeAndParse(json: string): any {
+  private sanitizeAndParse(json: string): unknown {
     const sanitized = json
       // truncated list/objects
       .replace(/\.\.\. *(]|})/g, "$1")
