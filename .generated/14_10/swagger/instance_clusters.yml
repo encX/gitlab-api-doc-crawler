@@ -78,10 +78,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteInstanceClusterResponse'
       tags:
         - instance_clusters
   /admin/clusters/add:
@@ -374,5 +370,3 @@ components:
           type: string
         project:
           type: string
-    deleteInstanceClusterResponse:
-      type: string

@@ -200,10 +200,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeAMemberFromAGroupOrProjectResponse'
       tags:
         - members
   '/groups/{id}/members/all/{user_id}':
@@ -322,10 +318,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeABillableMemberFromAGroupResponse'
       tags:
         - members
   '/groups/{id}/members/{user_id}/override':
@@ -406,10 +398,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/approveAMemberForAGroupResponse'
       tags:
         - members
   '/groups/{id}/members/approve_all':
@@ -427,10 +415,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/approveAllPendingMembersForAGroupResponse'
       tags:
         - members
   '/groups/{id}/pending_members':
@@ -675,8 +659,6 @@ components:
                 type: string
               integer_value:
                 type: integer
-    removeABillableMemberFromAGroupResponse:
-      type: string
     addAMemberToAGroupOrProjectRequest:
       type: object
       properties:
@@ -868,12 +850,6 @@ components:
           type: string
         override:
           type: boolean
-    removeAMemberFromAGroupOrProjectResponse:
-      type: string
-    approveAMemberForAGroupResponse:
-      type: string
-    approveAllPendingMembersForAGroupResponse:
-      type: string
     listPendingMembersOfAGroupAndItsSubgroupsAndProjectsResponse:
       type: array
       items:

@@ -120,10 +120,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAWikiPageResponse'
       tags:
         - group_wikis
   '/projects/{id}/wikis':
@@ -257,8 +253,6 @@ components:
           type: string
         encoding:
           type: string
-    deleteAWikiPageResponse:
-      type: string
     uploadAnAttachmentToTheWikiRepositoryRequest:
       type: object
       properties:

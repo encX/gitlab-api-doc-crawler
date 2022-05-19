@@ -32,10 +32,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/searchForProjectsByNameResponse'
       tags:
         - projects
     post:
@@ -46,10 +42,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createProjectResponse'
       requestBody:
         content:
           application/json:
@@ -377,10 +369,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectResponse'
       tags:
         - projects
   '/projects/{id}/users':
@@ -482,10 +470,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createProjectForUserResponse'
       requestBody:
         content:
           application/json:
@@ -508,10 +492,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/forkProjectResponse'
       requestBody:
         content:
           application/json:
@@ -533,10 +513,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnExistingForkedFromRelationshipResponse'
       tags:
         - projects
   '/projects/{id}/forks':
@@ -801,10 +777,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/restoreProjectMarkedForDeletionResponse'
       tags:
         - projects
   '/projects/{id}/uploads':
@@ -850,10 +822,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/shareProjectWithGroupResponse'
       requestBody:
         content:
           application/json:
@@ -882,10 +850,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASharedProjectLinkWithinAGroupResponse'
       tags:
         - projects
   '/projects/{id}/import_project_members/{project_id}':
@@ -909,10 +873,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/importProjectMembersResponse'
       tags:
         - projects
   '/projects/{id}/hooks':
@@ -930,10 +890,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listProjectHooksResponse'
       tags:
         - projects
     post:
@@ -950,10 +906,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addProjectHookResponse'
       requestBody:
         content:
           application/json:
@@ -1008,10 +960,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editProjectHookResponse'
       requestBody:
         content:
           application/json:
@@ -1041,10 +989,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectHookResponse'
       tags:
         - projects
   '/projects/{id}/fork/{forked_from_id}':
@@ -1068,10 +1012,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createAForkedFrom/toRelationBetweenExistingProjectsResponse'
       tags:
         - projects
   '/projects/{id}/housekeeping':
@@ -1089,10 +1029,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/startTheHousekeepingTaskForAProjectResponse'
       tags:
         - projects
   '/projects/{id}/push_rule':
@@ -1130,10 +1066,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
@@ -1155,10 +1087,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
@@ -1182,10 +1110,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectPushRuleResponse'
       tags:
         - projects
   '/projects/{id}/transfer':
@@ -1229,10 +1153,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/startThePullMirroringProcessForAProjectResponse'
       tags:
         - projects
   '/projects/{id}/snapshot':
@@ -1256,10 +1176,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/downloadSnapshotOfAGitRepositoryResponse'
       tags:
         - projects
   '/projects/{id}/storage':
@@ -2080,8 +1996,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    createProjectResponse:
-      type: string
     createProjectForUserRequest:
       type: object
       properties:
@@ -2205,8 +2119,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    createProjectForUserResponse:
-      type: string
     editProjectRequest:
       type: object
       properties:
@@ -2346,8 +2258,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    editProjectResponse:
-      type: string
     forkProjectRequest:
       type: object
       properties:
@@ -2369,8 +2279,6 @@ components:
           type: string
         visibility:
           type: string
-    forkProjectResponse:
-      type: string
     listForksOfAProjectResponse:
       type: array
       items:
@@ -3204,10 +3112,6 @@ components:
               type: string
             members:
               type: string
-    deleteProjectResponse:
-      type: string
-    restoreProjectMarkedForDeletionResponse:
-      type: string
     uploadAFileRequest:
       type: object
       properties:
@@ -3243,14 +3147,6 @@ components:
           type: integer
         expires_at:
           type: string
-    shareProjectWithGroupResponse:
-      type: string
-    deleteASharedProjectLinkWithinAGroupResponse:
-      type: string
-    importProjectMembersResponse:
-      type: string
-    listProjectHooksResponse:
-      type: string
     getProjectHookResponse:
       type: object
       properties:
@@ -3325,8 +3221,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    addProjectHookResponse:
-      type: string
     editProjectHookRequest:
       type: object
       properties:
@@ -3362,18 +3256,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    editProjectHookResponse:
-      type: string
-    deleteProjectHookResponse:
-      type: string
-    createAForkedFrom/toRelationBetweenExistingProjectsResponse:
-      type: string
-    deleteAnExistingForkedFromRelationshipResponse:
-      type: string
-    searchForProjectsByNameResponse:
-      type: string
-    startTheHousekeepingTaskForAProjectResponse:
-      type: string
     getProjectPushRulesResponse:
       type: object
       properties:
@@ -3430,8 +3312,6 @@ components:
           type: boolean
         reject_unsigned_commits:
           type: boolean
-    addProjectPushRuleResponse:
-      type: string
     editProjectPushRuleRequest:
       type: object
       properties:
@@ -3457,10 +3337,6 @@ components:
           type: boolean
         reject_unsigned_commits:
           type: boolean
-    editProjectPushRuleResponse:
-      type: string
-    deleteProjectPushRuleResponse:
-      type: string
     transferAProjectToANewNamespaceRequest:
       type: object
       properties:
@@ -3676,10 +3552,6 @@ components:
         compliance_frameworks:
           type: array
           items: {}
-    startThePullMirroringProcessForAProjectResponse:
-      type: string
-    downloadSnapshotOfAGitRepositoryResponse:
-      type: string
     getThePathToRepositoryStorageResponse:
       type: array
       items:

@@ -184,10 +184,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectPackageResponse'
       tags:
         - packages
   '/projects/{id}/packages/{package_id}/package_files':
@@ -244,10 +240,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAPackageFileResponse'
       tags:
         - packages
 components:
@@ -445,7 +437,3 @@ components:
                       type: string
                     avatar_url:
                       type: string
-    deleteAProjectPackageResponse:
-      type: string
-    deleteAPackageFileResponse:
-      type: string

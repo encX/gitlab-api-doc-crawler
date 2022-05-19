@@ -156,10 +156,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteExistingFileInRepositoryResponse'
       tags:
         - repository_files
   '/projects/{id}/repository/files/{file_path}/blame':
@@ -222,10 +218,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getRawFileFromRepositoryResponse'
       tags:
         - repository_files
 components:
@@ -287,8 +279,6 @@ components:
             type: array
             items:
               type: string
-    getRawFileFromRepositoryResponse:
-      type: string
     createNewFileInRepositoryRequest:
       type: object
       properties:
@@ -351,5 +341,3 @@ components:
           type: string
         branch:
           type: string
-    deleteExistingFileInRepositoryResponse:
-      type: string

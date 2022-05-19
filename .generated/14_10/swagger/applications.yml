@@ -52,10 +52,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnApplicationResponse'
       tags:
         - applications
 components:
@@ -105,5 +101,3 @@ components:
             type: string
           confidential:
             type: boolean
-    deleteAnApplicationResponse:
-      type: string

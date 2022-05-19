@@ -69,10 +69,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFeatureResponse'
       tags:
         - features
   'https://gitlab.example.com/api/v4/features/my_user_feature':
@@ -216,5 +212,3 @@ components:
               type: string
             default_enabled:
               type: boolean
-    deleteAFeatureResponse:
-      type: string

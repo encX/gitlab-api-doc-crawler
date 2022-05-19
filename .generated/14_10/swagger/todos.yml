@@ -94,10 +94,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/markAllToDoItemsAsDoneResponse'
       tags:
         - todos
 components:
@@ -390,5 +386,3 @@ components:
           type: string
         updated_at:
           type: string
-    markAllToDoItemsAsDoneResponse:
-      type: string

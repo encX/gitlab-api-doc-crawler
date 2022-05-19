@@ -57,10 +57,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleIssueLabelEventResponse'
       tags:
         - resource_label_events
   '/groups/{id}/epics/{epic_id}/resource_label_events':
@@ -117,10 +113,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleEpicLabelEventResponse'
       tags:
         - resource_label_events
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events':
@@ -177,10 +169,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMergeRequestLabelEventResponse'
       tags:
         - resource_label_events
 components:
@@ -226,8 +214,6 @@ components:
                 type: string
           action:
             type: string
-    getSingleIssueLabelEventResponse:
-      type: string
     listGroupEpicLabelEventsResponse:
       type: array
       items:
@@ -269,8 +255,6 @@ components:
                 type: string
           action:
             type: string
-    getSingleEpicLabelEventResponse:
-      type: string
     listProjectMergeRequestLabelEventsResponse:
       type: array
       items:
@@ -312,5 +296,3 @@ components:
                 type: string
           action:
             type: string
-    getSingleMergeRequestLabelEventResponse:
-      type: string

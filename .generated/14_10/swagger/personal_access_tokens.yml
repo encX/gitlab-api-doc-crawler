@@ -39,10 +39,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/revokeAPersonalAccessTokenResponse'
       tags:
         - personal_access_tokens
 components:
@@ -72,5 +68,3 @@ components:
             type: boolean
           expires_at:
             type: string
-    revokeAPersonalAccessTokenResponse:
-      type: string

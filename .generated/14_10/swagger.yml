@@ -97,10 +97,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/denyAnAccessRequestResponse'
       tags:
         - access_requests
   '/admin/sidekiq/queues/{queue_name}':
@@ -251,10 +247,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnApplicationResponse'
       tags:
         - applications
   /audit_events:
@@ -577,10 +569,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnAwardEmojiResponse'
       tags:
         - award_emoji
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji':
@@ -724,10 +712,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnAwardEmojiFromACommentResponse'
       tags:
         - award_emoji
   '/projects/{id}/boards':
@@ -854,10 +838,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueBoardResponse'
       tags:
         - boards
   '/projects/{id}/boards/{board_id}/lists':
@@ -1014,10 +994,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteABoardListFromABoardResponse'
       tags:
         - boards
   '/projects/{id}/repository/branches':
@@ -1121,10 +1097,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRepositoryBranchResponse'
       tags:
         - branches
   '/projects/{id}/repository/merged_branches':
@@ -1142,10 +1114,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMergedBranchesResponse'
       tags:
         - branches
   /broadcast_messages:
@@ -1242,10 +1210,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteABroadcastMessageResponse'
       tags:
         - broadcast_messages
   '/projects/{id}/cluster_agents':
@@ -1442,10 +1406,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARegisteredAgentResponse'
       tags:
         - cluster_agents
   '/projects/{id}/repository/commits':
@@ -2083,10 +2043,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRegistryRepositoryResponse'
       tags:
         - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags':
@@ -2170,10 +2126,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRegistryRepositoryTagsInBulkResponse'
       tags:
         - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}':
@@ -2235,10 +2187,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARegistryRepositoryTagResponse'
       tags:
         - container_registry
   /v2/_catalog:
@@ -2250,10 +2198,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listingAllContainerRepositoriesResponse'
       tags:
         - container_registry
   '/users/{id}/custom_attributes':
@@ -2355,10 +2299,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteCustomAttributeResponse'
       tags:
         - custom_attributes
   '/projects/{id}/dependencies':
@@ -2535,10 +2475,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteDeployKeyResponse'
       tags:
         - deploy_keys
   /deploy_tokens:
@@ -2661,10 +2597,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectDeployTokenResponse'
       tags:
         - deploy_tokens
   '/groups/{id}/deploy_tokens':
@@ -2766,10 +2698,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupDeployTokenResponse'
       tags:
         - deploy_tokens
   '/projects/{id}/deployments':
@@ -2927,10 +2855,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listOfMergeRequestsAssociatedWithADeploymentResponse'
       tags:
         - deployments
   '/projects/{id}/deployments/{deployment_id}/approval':
@@ -3014,10 +2938,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewIssueThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3052,10 +2972,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleIssueDiscussionItemResponse'
       tags:
         - discussions
   '/projects/{id}/issues/{issue_iid}/discussions/{discussion_id}/notes':
@@ -3085,10 +3001,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addNoteToExistingIssueThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3129,10 +3041,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingIssueThreadNoteResponse'
       requestBody:
         content:
           application/json:
@@ -3172,10 +3080,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueThreadNoteResponse'
       tags:
         - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions':
@@ -3227,10 +3131,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewSnippetThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3265,10 +3165,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleSnippetDiscussionItemResponse'
       tags:
         - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}/notes':
@@ -3298,10 +3194,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addNoteToExistingSnippetThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3342,10 +3234,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingSnippetThreadNoteResponse'
       requestBody:
         content:
           application/json:
@@ -3385,10 +3273,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASnippetThreadNoteResponse'
       tags:
         - discussions
   '/groups/{id}/epics/{epic_id}/discussions':
@@ -3440,10 +3324,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewEpicThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3478,10 +3358,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleEpicDiscussionItemResponse'
       tags:
         - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}/notes':
@@ -3511,10 +3387,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addNoteToExistingEpicThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3555,10 +3427,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingEpicThreadNoteResponse'
       requestBody:
         content:
           application/json:
@@ -3598,10 +3466,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnEpicThreadNoteResponse'
       tags:
         - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions':
@@ -3641,10 +3505,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3679,10 +3539,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMergeRequestDiscussionItemResponse'
       tags:
         - discussions
     put:
@@ -3711,10 +3567,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resolveAMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3749,10 +3601,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addNoteToExistingMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3793,10 +3641,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyAnExistingMergeRequestThreadNoteResponse'
       requestBody:
         content:
           application/json:
@@ -3836,10 +3680,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAMergeRequestThreadNoteResponse'
       tags:
         - discussions
   '/projects/{id}/commits/{commit_id}/discussions':
@@ -3891,10 +3731,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewCommitThreadResponse'
       requestBody:
         content:
           application/json:
@@ -3929,10 +3765,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleCommitDiscussionItemResponse'
       tags:
         - discussions
   '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes':
@@ -3962,10 +3794,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addNoteToExistingCommitThreadResponse'
       requestBody:
         content:
           application/json:
@@ -4006,10 +3834,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyAnExistingCommitThreadNoteResponse'
       requestBody:
         content:
           application/json:
@@ -4049,10 +3873,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteACommitThreadNoteResponse'
       tags:
         - discussions
   '/projects/{id}/environments':
@@ -4168,10 +3988,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnEnvironmentResponse'
       tags:
         - environments
   '/projects/{id}/environments/{environments_id}':
@@ -4801,10 +4617,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteEpicResponse'
       tags:
         - epics
   '/groups/{id}/epics/{epic_iid}/todo':
@@ -4946,10 +4758,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAClientKeyResponse'
       tags:
         - error_tracking
   /events:
@@ -5251,10 +5059,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteFeatureFlagUserListResponse'
       tags:
         - feature_flag_user_lists
   '/projects/{id}/feature_flags':
@@ -5387,10 +5191,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFeatureFlagResponse'
       tags:
         - feature_flags
   /features:
@@ -5459,10 +5259,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFeatureResponse'
       tags:
         - features
   'https://gitlab.example.com/api/v4/features/my_user_feature':
@@ -5604,10 +5400,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFreezePeriodResponse'
       tags:
         - freeze_periods
   /geo_nodes:
@@ -5698,10 +5490,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGeoNodeResponse'
       tags:
         - geo_nodes
   '/geo_nodes/{id}/repair':
@@ -5869,10 +5657,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/revokeAGroupAccessTokenResponse'
       tags:
         - group_access_tokens
   /analytics/group_activity/issues_count:
@@ -6068,10 +5852,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeABadgeFromAGroupResponse'
       tags:
         - group_badges
   '/groups/{id}/badges/render':
@@ -6231,10 +6011,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupIssueBoardResponse'
       tags:
         - group_boards
   '/groups/{id}/boards/{board_id}/lists':
@@ -6391,10 +6167,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupIssueBoardListResponse'
       tags:
         - group_boards
   '/groups/{id}/iterations':
@@ -6604,10 +6376,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupLabelResponse'
       tags:
         - group_labels
   '/groups/{id}/labels/{label_id}/subscribe':
@@ -6792,10 +6560,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeVariableResponse'
       tags:
         - group_level_variables
   '/groups/{id}/milestones':
@@ -6863,10 +6627,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -6895,10 +6655,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMilestoneResponse'
       tags:
         - group_milestones
     put:
@@ -6921,10 +6677,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -6952,10 +6704,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteGroupMilestoneResponse'
       tags:
         - group_milestones
   '/groups/{id}/milestones/{milestone_id}/issues':
@@ -6979,10 +6727,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllIssuesAssignedToASingleMilestoneResponse'
       tags:
         - group_milestones
   '/groups/{id}/milestones/{milestone_id}/merge_requests':
@@ -7006,10 +6750,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllMergeRequestsAssignedToASingleMilestoneResponse'
       tags:
         - group_milestones
   '/groups/{id}/milestones/{milestone_id}/burndown_events':
@@ -7033,10 +6773,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllBurndownChartEventsForASingleMilestoneResponse'
       tags:
         - group_milestones
   '/groups/{id}/releases':
@@ -7321,10 +7057,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAWikiPageResponse'
       tags:
         - group_wikis
   '/projects/{id}/wikis':
@@ -7404,10 +7136,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/newGroupResponse'
       requestBody:
         content:
           application/json:
@@ -7861,10 +7589,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeGroupResponse'
       tags:
         - groups
   '/groups/{id}/avatar':
@@ -7882,10 +7606,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/downloadAGroupAvatarResponse'
       tags:
         - groups
   '/groups/{id}/projects/{project_id}':
@@ -7912,10 +7632,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/transferProjectToGroupResponse'
       tags:
         - groups
   '/groups/{id}/transfer':
@@ -7935,10 +7651,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse'
       requestBody:
         content:
           application/json:
@@ -7961,10 +7673,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/restoreGroupMarkedForDeletionResponse'
       tags:
         - groups
   '/groups/{id}/provisioned_users':
@@ -8039,10 +7747,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listGroupHooksResponse'
       tags:
         - groups
     post:
@@ -8059,10 +7763,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addGroupHookResponse'
       requestBody:
         content:
           application/json:
@@ -8117,10 +7817,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editGroupHookResponse'
       requestBody:
         content:
           application/json:
@@ -8150,10 +7846,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteGroupHookResponse'
       tags:
         - groups
   '/groups/{id}/ldap_sync':
@@ -8165,10 +7857,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/syncGroupWithLdapResponse'
       tags:
         - groups
   '/groups/{id}/ldap_group_links':
@@ -8186,10 +7874,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listLdapGroupLinksResponse'
       tags:
         - groups
     post:
@@ -8208,10 +7892,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addLdapGroupLinkWithCnOrFilterResponse'
       requestBody:
         content:
           application/json:
@@ -8253,10 +7933,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLdapGroupLinkWithCnOrFilterResponse'
       tags:
         - groups
   '/groups/{id}/ldap_group_links/{cn}':
@@ -8286,10 +7962,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLdapGroupLinkResponse'
       tags:
         - groups
   '/groups/{id}/share':
@@ -8307,10 +7979,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createALinkToShareAGroupWithAnotherGroupResponse'
       requestBody:
         content:
           application/json:
@@ -8339,10 +8007,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLinkSharingGroupWithAnotherGroupResponse'
       tags:
         - groups
   '/groups/{id}/push_rule':
@@ -8430,10 +8094,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteGroupPushRuleResponse'
       tags:
         - groups
   /import/github:
@@ -8465,10 +8125,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/importRepositoryFromBitbucketServerResponse'
       requestBody:
         content:
           application/json:
@@ -8551,10 +8207,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteInstanceClusterResponse'
       tags:
         - instance_clusters
   /admin/clusters/add:
@@ -8671,10 +8323,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeInstanceVariableResponse'
       tags:
         - instance_level_ci_variables
   '/projects/{id}/integrations':
@@ -8701,10 +8349,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAsanaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8720,10 +8364,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAsanaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8734,10 +8374,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAsanaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/assembla':
@@ -8749,10 +8385,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAssemblaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8768,10 +8400,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAssemblaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8782,10 +8410,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAssemblaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/bamboo':
@@ -8797,10 +8421,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAtlassianBambooCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8816,10 +8436,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAtlassianBambooCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8830,10 +8446,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAtlassianBambooCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/bugzilla':
@@ -8845,10 +8457,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editBugzillaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8864,10 +8472,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableBugzillaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8878,10 +8482,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getBugzillaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/buildkite':
@@ -8893,10 +8493,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editBuildkiteIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8912,10 +8508,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableBuildkiteIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8926,10 +8518,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getBuildkiteIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/campfire':
@@ -8941,10 +8529,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editCampfireIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -8960,10 +8544,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableCampfireIntegrationResponse'
       tags:
         - integrations
     get:
@@ -8974,10 +8554,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getCampfireIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/datadog':
@@ -8989,10 +8565,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDatadogIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9008,10 +8580,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDatadogIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9022,10 +8590,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDatadogIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/unify-circuit':
@@ -9037,10 +8601,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editUnifyCircuitIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9056,10 +8616,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableUnifyCircuitIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9070,10 +8626,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getUnifyCircuitIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/webex-teams':
@@ -9085,10 +8637,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editWebexTeamsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9104,10 +8652,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableWebexTeamsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9118,10 +8662,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getWebexTeamsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/custom-issue-tracker':
@@ -9133,10 +8673,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editCustomIssueTrackerIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9152,10 +8688,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableCustomIssueTrackerIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9166,10 +8698,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getCustomIssueTrackerIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/discord':
@@ -9181,10 +8709,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDiscordIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9200,10 +8724,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDiscordIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9214,10 +8734,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDiscordIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/drone-ci':
@@ -9229,10 +8745,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDroneCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9248,10 +8760,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDroneCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9262,10 +8770,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDroneCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/emails-on-push':
@@ -9277,10 +8781,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editEmailsOnPushIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9296,10 +8796,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableEmailsOnPushIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9310,10 +8806,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getEmailsOnPushIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/ewm':
@@ -9325,10 +8817,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editEwmIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9344,10 +8832,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableEwmIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9358,10 +8842,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getEwmIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/confluence':
@@ -9373,10 +8853,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editConfluenceIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9392,10 +8868,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableConfluenceIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9406,10 +8878,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getConfluenceIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/external-wiki':
@@ -9421,10 +8889,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editExternalWikiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9440,10 +8904,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableExternalWikiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9454,10 +8914,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getExternalWikiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/flowdock':
@@ -9469,10 +8925,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editFlowdockIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9488,10 +8940,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableFlowdockIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9502,10 +8950,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getFlowdockIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/github':
@@ -9517,10 +8961,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editGithubIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9536,10 +8976,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableGithubIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9550,10 +8986,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getGithubIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/hangouts-chat':
@@ -9565,10 +8997,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editHangoutsChatIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9584,10 +9012,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableHangoutsChatIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9598,10 +9022,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getHangoutsChatIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/irker':
@@ -9613,10 +9033,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editIrker(ircGateway)IntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9632,10 +9048,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableIrker(ircGateway)IntegrationResponse'
       tags:
         - integrations
     get:
@@ -9646,10 +9058,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getIrker(ircGateway)IntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jira':
@@ -9661,10 +9069,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJiraIntegrationSettingsResponse'
       tags:
         - integrations
     put:
@@ -9675,10 +9079,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJiraIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9694,10 +9094,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJiraIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/slack-slash-commands':
@@ -9723,10 +9119,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editSlackSlashCommandsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9742,10 +9134,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableSlackSlashCommandIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mattermost-slash-commands':
@@ -9757,10 +9145,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMattermostSlashCommandIntegrationSettingsResponse'
       tags:
         - integrations
     put:
@@ -9771,10 +9155,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMattermostSlashCommandIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9790,10 +9170,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMattermostSlashCommandIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/packagist':
@@ -9805,10 +9181,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPackagistIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9824,10 +9196,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePackagistIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9838,10 +9206,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPackagistIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pipelines-email':
@@ -9853,10 +9217,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPipelineEmailsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9872,10 +9232,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePipelineEmailsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9886,10 +9242,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPipelineEmailsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pivotaltracker':
@@ -9901,10 +9253,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPivotalTrackerIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9920,10 +9268,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePivotalTrackerIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9934,10 +9278,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPivotalTrackerIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/prometheus':
@@ -9949,10 +9289,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPrometheusIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -9968,10 +9304,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePrometheusIntegrationResponse'
       tags:
         - integrations
     get:
@@ -9982,10 +9314,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPrometheusIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pushover':
@@ -9997,10 +9325,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPushoverIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10016,10 +9340,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePushoverIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10030,10 +9350,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPushoverIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/redmine':
@@ -10045,10 +9361,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editRedmineIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10064,10 +9376,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableRedmineIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10078,10 +9386,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getRedmineIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/slack':
@@ -10093,10 +9397,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editSlackIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10112,10 +9412,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableSlackIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10126,10 +9422,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSlackIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/microsoft-teams':
@@ -10141,10 +9433,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMicrosoftTeamsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10160,10 +9448,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMicrosoftTeamsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10174,10 +9458,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMicrosoftTeamsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mattermost':
@@ -10189,10 +9469,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMattermostNotificationsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10208,10 +9484,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMattermostNotificationsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10222,10 +9494,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMattermostNotificationsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/teamcity':
@@ -10237,10 +9505,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJetbrainsTeamcityCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10256,10 +9520,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJetbrainsTeamcityCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10270,10 +9530,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJetbrainsTeamcityCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jenkins':
@@ -10285,10 +9541,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJenkinsCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10304,10 +9556,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJenkinsCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10318,10 +9566,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJenkinsCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jenkins-deprecated':
@@ -10333,10 +9577,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJenkinsCi(deprecated)IntegrationResponse'
       tags:
         - integrations
     delete:
@@ -10347,10 +9587,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJenkinsCi(deprecated)IntegrationResponse'
       tags:
         - integrations
     get:
@@ -10361,10 +9597,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJenkinsCi(deprecated)IntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mock-ci':
@@ -10376,10 +9608,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMockciIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10395,10 +9623,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMockciIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10409,10 +9633,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMockciIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/youtrack':
@@ -10424,10 +9644,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editYoutrackIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -10443,10 +9659,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableYoutrackIntegrationResponse'
       tags:
         - integrations
     get:
@@ -10457,10 +9669,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getYoutrackIntegrationSettingsResponse'
       tags:
         - integrations
   '/groups/{id}/invitations':
@@ -10583,10 +9791,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnInvitationToAGroupOrProjectResponse'
       tags:
         - invitations
   '/projects/{id}/issues/{issue_iid}/links':
@@ -11470,10 +10674,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/reorder':
@@ -11497,10 +10697,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/reorderAnIssueResponse'
       requestBody:
         content:
           application/json:
@@ -11722,10 +10918,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewIssueNoteResponse'
       requestBody:
         content:
           application/json:
@@ -12112,10 +11304,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMetricImageResponse'
       tags:
         - issues
   /issues_statistics:
@@ -12726,10 +11914,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getALogFileResponse'
       tags:
         - jobs
   '/projects/{id}/jobs/{job_id}/cancel':
@@ -13008,10 +12192,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteALabelResponse'
       tags:
         - labels
     put:
@@ -13124,10 +12304,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unsubscribeFromALabelResponse'
       tags:
         - labels
   /license:
@@ -13304,10 +12480,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/validateTheCiYamlConfigurationResponse'
       requestBody:
         content:
           application/json:
@@ -13324,10 +12496,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/validateACiYamlConfigurationWithANamespaceResponse'
       requestBody:
         content:
           application/json:
@@ -13464,10 +12632,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAManagedLicenseResponse'
       tags:
         - managed_licenses
     patch:
@@ -13718,10 +12882,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeAMemberFromAGroupOrProjectResponse'
       tags:
         - members
   '/groups/{id}/members/all/{user_id}':
@@ -13840,10 +13000,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeABillableMemberFromAGroupResponse'
       tags:
         - members
   '/groups/{id}/members/{user_id}/override':
@@ -13924,10 +13080,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/approveAMemberForAGroupResponse'
       tags:
         - members
   '/groups/{id}/members/approve_all':
@@ -13945,10 +13097,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/approveAllPendingMembersForAGroupResponse'
       tags:
         - members
   '/groups/{id}/pending_members':
@@ -14144,10 +13292,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
@@ -14389,10 +13533,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMergeRequestLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approve':
@@ -14448,10 +13588,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unapproveMergeRequestResponse'
       tags:
         - merge_request_approvals
   /merge_requests:
@@ -15197,10 +14333,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAMergeRequestResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/participants':
@@ -15963,10 +15095,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -15995,10 +15123,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMilestoneResponse'
       tags:
         - milestones
     put:
@@ -16021,10 +15145,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -16052,10 +15172,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/issues':
@@ -16079,10 +15195,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllIssuesAssignedToASingleMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/merge_requests':
@@ -16106,10 +15218,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllMergeRequestsAssignedToASingleMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/promote':
@@ -16133,10 +15241,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/promoteProjectMilestoneToAGroupMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/burndown_events':
@@ -16160,10 +15264,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllBurndownChartEventsForASingleMilestoneResponse'
       tags:
         - milestones
   /namespaces:
@@ -16270,10 +15370,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleIssueNoteResponse'
       tags:
         - notes
     put:
@@ -16302,10 +15398,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingIssueNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16339,10 +15431,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueNoteResponse'
       tags:
         - notes
   '/projects/{id}/snippets/{snippet_id}/notes':
@@ -16378,10 +15466,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllSnippetNotesResponse'
       tags:
         - notes
     post:
@@ -16406,10 +15490,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewSnippetNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16476,10 +15556,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingSnippetNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16513,10 +15589,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASnippetNoteResponse'
       tags:
         - notes
   '/projects/{id}/merge_requests/{merge_request_iid}/notes':
@@ -16552,10 +15624,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllMergeRequestNotesResponse'
       tags:
         - notes
     post:
@@ -16580,10 +15648,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16650,10 +15714,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16687,10 +15747,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAMergeRequestNoteResponse'
       tags:
         - notes
   '/groups/{id}/epics/{epic_id}/notes':
@@ -16726,10 +15782,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllEpicNotesResponse'
       tags:
         - notes
     post:
@@ -16754,10 +15806,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewEpicNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16824,10 +15872,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingEpicNoteResponse'
       requestBody:
         content:
           application/json:
@@ -16861,10 +15905,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnEpicNoteResponse'
       tags:
         - notes
   /notification_settings:
@@ -17128,10 +16168,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectPackageResponse'
       tags:
         - packages
   '/projects/{id}/packages/{package_id}/package_files':
@@ -17188,10 +16224,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAPackageFileResponse'
       tags:
         - packages
   '/groups/{id}/debian_distributions':
@@ -17330,10 +16362,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteADebianGroupDistributionResponse'
       tags:
         - packages__debian_group_distributions
   '/groups/{id}/debian_distributions/{codename}/key.asc':
@@ -17357,10 +16385,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleDebianGroupDistributionKeyResponse'
       tags:
         - packages__debian_group_distributions
   '/projects/{id}/debian_distributions':
@@ -17499,10 +16523,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteADebianProjectDistributionResponse'
       tags:
         - packages__debian_project_distributions
   '/projects/{id}/debian_distributions/{codename}/key.asc':
@@ -17526,10 +16546,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleDebianProjectDistributionKeyResponse'
       tags:
         - packages__debian_project_distributions
   /pages/domains:
@@ -17640,10 +16656,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/updatePagesDomainResponse'
       requestBody:
         content:
           application/json:
@@ -17671,10 +16683,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deletePagesDomainResponse'
       tags:
         - pages_domains
   /personal_access_tokens:
@@ -17713,10 +16721,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/revokeAPersonalAccessTokenResponse'
       tags:
         - personal_access_tokens
   '/projects/{id}/pipeline_schedules':
@@ -18137,10 +17141,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeAProjectTriggerResponse'
       tags:
         - pipeline_triggers
   '/projects/{id}/pipelines':
@@ -18284,10 +17284,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAPipelineResponse'
       tags:
         - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/variables':
@@ -18621,10 +17617,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeABadgeFromAProjectResponse'
       tags:
         - project_badges
   '/projects/{id}/badges/render':
@@ -18759,10 +17751,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectClusterResponse'
       tags:
         - project_clusters
   '/projects/{id}/clusters/user':
@@ -18852,10 +17840,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/exportDownloadResponse'
       tags:
         - project_import_export
   /projects/import:
@@ -19078,10 +18062,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeVariableResponse'
       tags:
         - project_level_variables
   /project_repository_storage_moves:
@@ -19227,10 +18207,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listSnippetsResponse'
       tags:
         - project_snippets
     post:
@@ -19338,10 +18314,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSnippetResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/raw':
@@ -19365,10 +18337,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetContentResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw':
@@ -19404,10 +18372,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/user_agent_detail':
@@ -19573,10 +18537,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listProjectsAssignedToATopicResponse'
       tags:
         - topics
   '/users/{user_id}/projects':
@@ -19899,10 +18859,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectResponse'
       tags:
         - projects
   '/projects/{id}/users':
@@ -20004,10 +18960,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createProjectForUserResponse'
       requestBody:
         content:
           application/json:
@@ -20030,10 +18982,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/forkProjectResponse'
       requestBody:
         content:
           application/json:
@@ -20055,10 +19003,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnExistingForkedFromRelationshipResponse'
       tags:
         - projects
   '/projects/{id}/forks':
@@ -20323,10 +19267,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/restoreProjectMarkedForDeletionResponse'
       tags:
         - projects
   '/projects/{id}/uploads':
@@ -20372,10 +19312,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/shareProjectWithGroupResponse'
       requestBody:
         content:
           application/json:
@@ -20404,10 +19340,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASharedProjectLinkWithinAGroupResponse'
       tags:
         - projects
   '/projects/{id}/import_project_members/{project_id}':
@@ -20431,10 +19363,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/importProjectMembersResponse'
       tags:
         - projects
   '/projects/{id}/hooks':
@@ -20452,10 +19380,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listProjectHooksResponse'
       tags:
         - projects
     post:
@@ -20472,10 +19396,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addProjectHookResponse'
       requestBody:
         content:
           application/json:
@@ -20530,10 +19450,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editProjectHookResponse'
       requestBody:
         content:
           application/json:
@@ -20563,10 +19479,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectHookResponse'
       tags:
         - projects
   '/projects/{id}/fork/{forked_from_id}':
@@ -20590,10 +19502,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createAForkedFrom/toRelationBetweenExistingProjectsResponse'
       tags:
         - projects
   '/projects/{id}/housekeeping':
@@ -20611,10 +19519,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/startTheHousekeepingTaskForAProjectResponse'
       tags:
         - projects
   '/projects/{id}/push_rule':
@@ -20652,10 +19556,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
@@ -20677,10 +19577,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editProjectPushRuleResponse'
       requestBody:
         content:
           application/json:
@@ -20704,10 +19600,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectPushRuleResponse'
       tags:
         - projects
   '/projects/{id}/transfer':
@@ -20751,10 +19643,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/startThePullMirroringProcessForAProjectResponse'
       tags:
         - projects
   '/projects/{id}/snapshot':
@@ -20778,10 +19666,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/downloadSnapshotOfAGitRepositoryResponse'
       tags:
         - projects
   '/projects/{id}/storage':
@@ -20906,10 +19790,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectRepositoryBranchesResponse'
       tags:
         - protected_branches
     patch:
@@ -20932,10 +19812,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/requireCodeOwnerApprovalsForASingleBranchResponse'
       requestBody:
         content:
           application/json:
@@ -21036,10 +19912,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectEnvironmentResponse'
       tags:
         - protected_environments
   '/projects/{id}/protected_tags':
@@ -21135,10 +20007,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectRepositoryTagsResponse'
       tags:
         - protected_tags
   '/projects/{id}/releases':
@@ -21574,10 +20442,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARemoteMirrorResponse'
       tags:
         - remote_mirrors
   '/projects/{id}/repository/tree':
@@ -21662,10 +20526,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getABlobFromRepositoryResponse'
       tags:
         - repositories
   '/projects/{id}/repository/blobs/{sha}/raw':
@@ -21691,10 +20551,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rawBlobContentResponse'
       tags:
         - repositories
   '/projects/{id}/repository/archive[.format]':
@@ -21728,10 +20584,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getFileArchiveResponse'
       tags:
         - repositories
   '/projects/{id}/repository/compare':
@@ -21854,10 +20706,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addChangelogDataToAChangelogFileResponse'
       requestBody:
         content:
           application/json:
@@ -22068,10 +20916,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteExistingFileInRepositoryResponse'
       tags:
         - repository_files
   '/projects/{id}/repository/files/{file_path}/blame':
@@ -22134,10 +20978,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getRawFileFromRepositoryResponse'
       tags:
         - repository_files
   '/projects/{id}/repository/submodules/{submodule}':
@@ -22229,10 +21069,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleIssueLabelEventResponse'
       tags:
         - resource_label_events
   '/groups/{id}/epics/{epic_id}/resource_label_events':
@@ -22289,10 +21125,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleEpicLabelEventResponse'
       tags:
         - resource_label_events
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events':
@@ -22349,10 +21181,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMergeRequestLabelEventResponse'
       tags:
         - resource_label_events
   /runners:
@@ -22437,10 +21265,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARunnerByAuthenticationTokenResponse'
       tags:
         - runners
   /runners/all:
@@ -22556,10 +21380,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARunnerByIdResponse'
       tags:
         - runners
   '/runners/{id}/jobs':
@@ -22704,10 +21524,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableARunnerFromProjectResponse'
       tags:
         - runners
   '/groups/{id}/runners':
@@ -22768,10 +21584,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerResponse'
       requestBody:
         content:
           application/json:
@@ -22788,10 +21600,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetInstanceRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/projects/{id}/runners/reset_registration_token':
@@ -22803,10 +21611,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetProjectRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/groups/{id}/runners/reset_registration_token':
@@ -22818,10 +21622,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetGroupRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/runners/{id}/reset_authentication_token':
@@ -22914,10 +21714,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/advancedSearchApiResponse'
       tags:
         - search
   '/groups/{id}/search':
@@ -22975,10 +21771,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/groupSearchApiResponse'
       tags:
         - search
   '/projects/{id}/search':
@@ -23044,10 +21836,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/projectSearchApiResponse'
       tags:
         - search
   /application/settings:
@@ -23361,10 +22149,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSnippetResponse'
       tags:
         - snippets
   '/snippets/{id}/raw':
@@ -23382,10 +22166,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleSnippetContentsResponse'
       tags:
         - snippets
   '/snippets/{id}/files/{ref}/{file_path}/raw':
@@ -23415,10 +22195,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
       tags:
         - snippets
   /snippets/public:
@@ -23603,10 +22379,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSystemHookResponse'
       tags:
         - system_hooks
   '/projects/{id}/repository/tags':
@@ -23726,10 +22498,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteATagResponse'
       tags:
         - tags
   /todos:
@@ -23823,10 +22591,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/markAllToDoItemsAsDoneResponse'
       tags:
         - todos
   /topics:
@@ -23943,10 +22707,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectTopicResponse'
       tags:
         - topics
   /usage_data/metric_definitions:
@@ -23958,10 +22718,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/exportMetricDefinitionsAsASingleYamlFileResponse'
       tags:
         - usage_data
   /usage_data/queries:
@@ -24045,10 +22801,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/userCreationResponse'
       requestBody:
         content:
           application/json:
@@ -24090,10 +22842,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/userModificationResponse'
       requestBody:
         content:
           application/json:
@@ -24125,10 +22873,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/userDeletionResponse'
       tags:
         - users
   '/users/{id}/identities/{provider}':
@@ -24154,10 +22898,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAuthenticationIdentityFromUserResponse'
       tags:
         - users
   /user:
@@ -24401,10 +23141,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listSshKeysForUserResponse'
       tags:
         - users
   '/user/keys/{key_id}':
@@ -24444,10 +23180,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSshKeyForCurrentUserResponse'
       tags:
         - users
   '/users/{id}/keys/{key_id}':
@@ -24497,10 +23229,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSshKeyForGivenUserResponse'
       tags:
         - users
   '/users/{id}/keys':
@@ -24518,10 +23246,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addSshKeyForUserResponse'
       requestBody:
         content:
           application/json:
@@ -24598,10 +23322,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGpgKeyResponse'
       tags:
         - users
   '/users/{id}/gpg_keys':
@@ -24699,10 +23419,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGpgKeyForAGivenUserResponse'
       tags:
         - users
   /user/emails:
@@ -24754,10 +23470,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listEmailsForUserResponse'
       tags:
         - users
     post:
@@ -24774,10 +23486,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addEmailForUserResponse'
       requestBody:
         content:
           application/json:
@@ -24822,10 +23530,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteEmailForCurrentUserResponse'
       tags:
         - users
   '/users/{id}/emails/{email_id}':
@@ -24849,10 +23553,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteEmailForGivenUserResponse'
       tags:
         - users
   '/users/{id}/block':
@@ -24870,10 +23570,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/blockUserResponse'
       tags:
         - users
   '/users/{id}/unblock':
@@ -24891,10 +23587,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unblockUserResponse'
       tags:
         - users
   '/users/{id}/deactivate':
@@ -24912,10 +23604,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deactivateUserResponse'
       tags:
         - users
   '/users/{id}/activate':
@@ -24933,10 +23621,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/activateUserResponse'
       tags:
         - users
   '/users/{id}/ban':
@@ -24948,10 +23632,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/banUserResponse'
       tags:
         - users
   '/users/{id}/unban':
@@ -24963,10 +23643,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unbanUserResponse'
       tags:
         - users
   '/users/{user_id}/impersonation_tokens':
@@ -25106,10 +23782,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/revokeAnImpersonationTokenResponse'
       tags:
         - users
   '/users/{user_id}/personal_access_tokens':
@@ -25231,10 +23903,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
@@ -25442,10 +24110,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/downloadVulnerabilityExportResponse'
       tags:
         - vulnerability_exports
   '/projects/{id}/vulnerability_findings':
@@ -25559,8 +24223,6 @@ components:
           type: string
         access_level:
           type: integer
-    denyAnAccessRequestResponse:
-      type: string
     sidekiqQueuesAdministrationApiResponse:
       type: object
       properties:
@@ -25697,8 +24359,6 @@ components:
             type: string
           confidential:
             type: boolean
-    deleteAnApplicationResponse:
-      type: string
     retrieveAllInstanceAuditEventsResponse:
       type: array
       items:
@@ -26000,8 +24660,6 @@ components:
           type: integer
         awardable_type:
           type: string
-    deleteAnAwardEmojiResponse:
-      type: string
     listACommentAwardEmojisResponse:
       type: array
       items:
@@ -26101,8 +24759,6 @@ components:
           type: integer
         awardable_type:
           type: string
-    deleteAnAwardEmojiFromACommentResponse:
-      type: string
     listProjectIssueBoardsResponse:
       type: array
       items:
@@ -26379,8 +25035,6 @@ components:
                 type: string
         weight:
           type: integer
-    deleteAnIssueBoardResponse:
-      type: string
     listBoardListsInAProjectIssueBoardResponse:
       type: array
       items:
@@ -26487,8 +25141,6 @@ components:
           type: integer
         limit_metric:
           type: string
-    deleteABoardListFromABoardResponse:
-      type: string
     listRepositoryBranchesResponse:
       type: array
       items:
@@ -26639,10 +25291,6 @@ components:
           type: boolean
         web_url:
           type: string
-    deleteRepositoryBranchResponse:
-      type: string
-    deleteMergedBranchesResponse:
-      type: string
     getAllBroadcastMessagesResponse:
       type: array
       items:
@@ -26805,8 +25453,6 @@ components:
           type: string
         dismissable:
           type: boolean
-    deleteABroadcastMessageResponse:
-      type: string
     listTheAgentsForAProjectResponse:
       type: array
       items:
@@ -26916,8 +25562,6 @@ components:
           type: string
         created_by_user_id:
           type: integer
-    deleteARegisteredAgentResponse:
-      type: string
     listRepositoryCommitsResponse:
       type: array
       items:
@@ -27654,8 +26298,6 @@ components:
                 type: string
         size:
           type: integer
-    deleteRegistryRepositoryResponse:
-      type: string
     getDetailsOfARegistryRepositoryTagResponse:
       type: object
       properties:
@@ -27675,12 +26317,6 @@ components:
           type: string
         total_size:
           type: integer
-    deleteARegistryRepositoryTagResponse:
-      type: string
-    deleteRegistryRepositoryTagsInBulkResponse:
-      type: string
-    listingAllContainerRepositoriesResponse:
-      type: string
     listCustomAttributesResponse:
       type: array
       items:
@@ -27711,8 +26347,6 @@ components:
           type: string
         value:
           type: string
-    deleteCustomAttributeResponse:
-      type: string
     listProjectDependenciesResponse:
       type: array
       items:
@@ -27842,8 +26476,6 @@ components:
           type: string
         can_push:
           type: boolean
-    deleteDeployKeyResponse:
-      type: string
     listAllDeployTokensResponse:
       type: array
       items:
@@ -27940,8 +26572,6 @@ components:
           type: array
           items:
             type: string
-    deleteAProjectDeployTokenResponse:
-      type: string
     listGroupDeployTokensResponse:
       type: array
       items:
@@ -28017,8 +26647,6 @@ components:
           type: array
           items:
             type: string
-    deleteAGroupDeployTokenResponse:
-      type: string
     listProjectDeploymentsResponse:
       type: array
       items:
@@ -28472,8 +27100,6 @@ components:
               type: string
         deployable:
           type: string
-    listOfMergeRequestsAssociatedWithADeploymentResponse:
-      type: string
     approveOrRejectABlockedDeploymentRequest:
       type: object
       properties:
@@ -28558,8 +27184,6 @@ components:
                   type: string
                 noteable_iid:
                   type: string
-    getSingleIssueDiscussionItemResponse:
-      type: string
     createNewIssueThreadRequest:
       type: object
       properties:
@@ -28569,8 +27193,6 @@ components:
           type: string
       required:
         - body
-    createNewIssueThreadResponse:
-      type: string
     addNoteToExistingIssueThreadRequest:
       type: object
       properties:
@@ -28583,8 +27205,6 @@ components:
       required:
         - note_id
         - body
-    addNoteToExistingIssueThreadResponse:
-      type: string
     modifyExistingIssueThreadNoteRequest:
       type: object
       properties:
@@ -28592,10 +27212,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingIssueThreadNoteResponse:
-      type: string
-    deleteAnIssueThreadNoteResponse:
-      type: string
     listProjectSnippetDiscussionItemsResponse:
       type: array
       items:
@@ -28645,8 +27261,6 @@ components:
                   type: string
                 noteable_iid:
                   type: string
-    getSingleSnippetDiscussionItemResponse:
-      type: string
     createNewSnippetThreadRequest:
       type: object
       properties:
@@ -28656,8 +27270,6 @@ components:
           type: string
       required:
         - body
-    createNewSnippetThreadResponse:
-      type: string
     addNoteToExistingSnippetThreadRequest:
       type: object
       properties:
@@ -28670,8 +27282,6 @@ components:
       required:
         - note_id
         - body
-    addNoteToExistingSnippetThreadResponse:
-      type: string
     modifyExistingSnippetThreadNoteRequest:
       type: object
       properties:
@@ -28679,10 +27289,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingSnippetThreadNoteResponse:
-      type: string
-    deleteASnippetThreadNoteResponse:
-      type: string
     listGroupEpicDiscussionItemsResponse:
       type: array
       items:
@@ -28734,8 +27340,6 @@ components:
                   type: string
                 resolvable:
                   type: boolean
-    getSingleEpicDiscussionItemResponse:
-      type: string
     createNewEpicThreadRequest:
       type: object
       properties:
@@ -28745,8 +27349,6 @@ components:
           type: string
       required:
         - body
-    createNewEpicThreadResponse:
-      type: string
     addNoteToExistingEpicThreadRequest:
       type: object
       properties:
@@ -28759,8 +27361,6 @@ components:
       required:
         - note_id
         - body
-    addNoteToExistingEpicThreadResponse:
-      type: string
     modifyExistingEpicThreadNoteRequest:
       type: object
       properties:
@@ -28768,10 +27368,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingEpicThreadNoteResponse:
-      type: string
-    deleteAnEpicThreadNoteResponse:
-      type: string
     listProjectMergeRequestDiscussionItemsResponse:
       type: array
       items:
@@ -28865,8 +27461,6 @@ components:
                   type: boolean
                 resolved_by:
                   type: string
-    getSingleMergeRequestDiscussionItemResponse:
-      type: string
     createNewMergeRequestThreadRequest:
       type: object
       properties:
@@ -28902,8 +27496,6 @@ components:
         - 'position[start_sha]'
         - 'position[head_sha]'
         - 'position[position_type]'
-    createNewMergeRequestThreadResponse:
-      type: string
     resolveAMergeRequestThreadRequest:
       type: object
       properties:
@@ -28911,8 +27503,6 @@ components:
           type: boolean
       required:
         - resolved
-    resolveAMergeRequestThreadResponse:
-      type: string
     addNoteToExistingMergeRequestThreadRequest:
       type: object
       properties:
@@ -28925,8 +27515,6 @@ components:
       required:
         - note_id
         - body
-    addNoteToExistingMergeRequestThreadResponse:
-      type: string
     modifyAnExistingMergeRequestThreadNoteRequest:
       type: object
       properties:
@@ -28934,10 +27522,6 @@ components:
           type: string
         resolved:
           type: boolean
-    modifyAnExistingMergeRequestThreadNoteResponse:
-      type: string
-    deleteAMergeRequestThreadNoteResponse:
-      type: string
     listProjectCommitDiscussionItemsResponse:
       type: array
       items:
@@ -29008,8 +27592,6 @@ components:
                       type: integer
                 resolvable:
                   type: boolean
-    getSingleCommitDiscussionItemResponse:
-      type: string
     createNewCommitThreadRequest:
       type: object
       properties:
@@ -29047,8 +27629,6 @@ components:
         - 'position[start_sha]'
         - 'position[head_sha]'
         - 'position[position_type]'
-    createNewCommitThreadResponse:
-      type: string
     addNoteToExistingCommitThreadRequest:
       type: object
       properties:
@@ -29061,17 +27641,11 @@ components:
       required:
         - note_id
         - body
-    addNoteToExistingCommitThreadResponse:
-      type: string
     modifyAnExistingCommitThreadNoteRequest:
       type: object
       properties:
         body:
           type: string
-    modifyAnExistingCommitThreadNoteResponse:
-      type: string
-    deleteACommitThreadNoteResponse:
-      type: string
     listEnvironmentsResponse:
       type: string
     getASpecificEnvironmentResponse:
@@ -29298,8 +27872,6 @@ components:
           type: string
         updated_at:
           type: string
-    deleteAnEnvironmentResponse:
-      type: string
     deleteMultipleStoppedReviewAppsResponse:
       type: object
       properties:
@@ -30655,8 +29227,6 @@ components:
           type: integer
         color:
           type: string
-    deleteEpicResponse:
-      type: string
     createAToDoItemResponse:
       type: object
       properties:
@@ -30919,8 +29489,6 @@ components:
           type: string
         sentry_dsn:
           type: string
-    deleteAClientKeyResponse:
-      type: string
     listCurrentlyAuthenticatedUserEventsResponse:
       type: array
       items:
@@ -31128,8 +29696,6 @@ components:
           type: string
         updated_at:
           type: string
-    deleteFeatureFlagUserListResponse:
-      type: string
     listFeatureFlagsForAProjectResponse:
       type: array
       items:
@@ -31321,8 +29887,6 @@ components:
                       type: integer
                     environment_scope:
                       type: string
-    deleteAFeatureFlagResponse:
-      type: string
     listAllFeaturesResponse:
       type: array
       items:
@@ -31447,8 +30011,6 @@ components:
               type: string
             default_enabled:
               type: boolean
-    deleteAFeatureResponse:
-      type: string
     listFreezePeriodsResponse:
       type: array
       items:
@@ -31532,8 +30094,6 @@ components:
           type: string
         updated_at:
           type: string
-    deleteAFreezePeriodResponse:
-      type: string
     createANewGeoNodeRequest:
       type: object
       properties:
@@ -31802,8 +30362,6 @@ components:
               type: string
             repair:
               type: string
-    deleteAGeoNodeResponse:
-      type: string
     repairAGeoNodeResponse:
       type: object
       properties:
@@ -32605,8 +31163,6 @@ components:
           type: string
         access_level:
           type: integer
-    revokeAGroupAccessTokenResponse:
-      type: string
     getCountOfRecentlyCreatedIssuesForGroupResponse:
       type: object
       properties:
@@ -32703,8 +31259,6 @@ components:
           type: string
         kind:
           type: string
-    removeABadgeFromAGroupResponse:
-      type: string
     previewABadgeFromAGroupResponse:
       type: object
       properties:
@@ -32930,8 +31484,6 @@ components:
                 type: string
         weight:
           type: integer
-    deleteAGroupIssueBoardResponse:
-      type: string
     listGroupIssueBoardListsResponse:
       type: array
       items:
@@ -33030,8 +31582,6 @@ components:
               type: string
         position:
           type: integer
-    deleteAGroupIssueBoardListResponse:
-      type: string
     listGroupIterationsResponse:
       type: array
       items:
@@ -33176,8 +31726,6 @@ components:
           type: integer
         subscribed:
           type: boolean
-    deleteAGroupLabelResponse:
-      type: string
     subscribeToAGroupLabelResponse:
       type: object
       properties:
@@ -33319,8 +31867,6 @@ components:
           type: boolean
         environment_scope:
           type: string
-    removeVariableResponse:
-      type: string
     listGroupMilestonesResponse:
       type: array
       items:
@@ -33350,8 +31896,6 @@ components:
             type: boolean
           web_url:
             type: string
-    getSingleMilestoneResponse:
-      type: string
     createNewMilestoneRequest:
       type: object
       properties:
@@ -33365,8 +31909,6 @@ components:
           type: string
       required:
         - title
-    createNewMilestoneResponse:
-      type: string
     editMilestoneRequest:
       type: object
       properties:
@@ -33380,16 +31922,6 @@ components:
           type: string
         state_event:
           type: string
-    editMilestoneResponse:
-      type: string
-    deleteGroupMilestoneResponse:
-      type: string
-    getAllIssuesAssignedToASingleMilestoneResponse:
-      type: string
-    getAllMergeRequestsAssignedToASingleMilestoneResponse:
-      type: string
-    getAllBurndownChartEventsForASingleMilestoneResponse:
-      type: string
     listGroupReleasesResponse:
       type: array
       items:
@@ -33667,8 +32199,6 @@ components:
           type: string
         encoding:
           type: string
-    deleteAWikiPageResponse:
-      type: string
     uploadAnAttachmentToTheWikiRepositoryRequest:
       type: object
       properties:
@@ -34374,8 +32904,6 @@ components:
                       type: integer
                     expires_at:
                       type: string
-    downloadAGroupAvatarResponse:
-      type: string
     newGroupRequest:
       type: object
       properties:
@@ -34420,17 +32948,11 @@ components:
       required:
         - name
         - path
-    newGroupResponse:
-      type: string
-    transferProjectToGroupResponse:
-      type: string
     transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest:
       type: object
       properties:
         group_id:
           type: integer
-    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse:
-      type: string
     updateGroupRequest:
       type: object
       properties:
@@ -34590,10 +33112,6 @@ components:
                 items: {}
               request_access_enabled:
                 type: boolean
-    removeGroupResponse:
-      type: string
-    restoreGroupMarkedForDeletionResponse:
-      type: string
     searchForGroupResponse:
       type: array
       items:
@@ -34691,8 +33209,6 @@ components:
             type: string
           extra_shared_runners_minutes_limit:
             type: string
-    listGroupHooksResponse:
-      type: string
     getGroupHookResponse:
       type: object
       properties:
@@ -34769,8 +33285,6 @@ components:
           type: string
       required:
         - url
-    addGroupHookResponse:
-      type: string
     editGroupHookRequest:
       type: object
       properties:
@@ -34808,14 +33322,6 @@ components:
           type: string
       required:
         - url
-    editGroupHookResponse:
-      type: string
-    deleteGroupHookResponse:
-      type: string
-    syncGroupWithLdapResponse:
-      type: string
-    listLdapGroupLinksResponse:
-      type: string
     addLdapGroupLinkWithCnOrFilterRequest:
       type: object
       properties:
@@ -34830,12 +33336,6 @@ components:
       required:
         - group_access
         - provider
-    addLdapGroupLinkWithCnOrFilterResponse:
-      type: string
-    deleteLdapGroupLinkResponse:
-      type: string
-    deleteLdapGroupLinkWithCnOrFilterResponse:
-      type: string
     createALinkToShareAGroupWithAnotherGroupRequest:
       type: object
       properties:
@@ -34848,10 +33348,6 @@ components:
       required:
         - group_id
         - group_access
-    createALinkToShareAGroupWithAnotherGroupResponse:
-      type: string
-    deleteLinkSharingGroupWithAnotherGroupResponse:
-      type: string
     getGroupPushRulesResponse:
       type: object
       properties:
@@ -34981,8 +33477,6 @@ components:
           type: string
         max_file_size:
           type: integer
-    deleteGroupPushRuleResponse:
-      type: string
     importRepositoryFromGithubRequest:
       type: object
       properties:
@@ -35034,8 +33528,6 @@ components:
         - personal_access_token
         - bitbucket_server_project
         - bitbucket_server_repo
-    importRepositoryFromBitbucketServerResponse:
-      type: string
     listInstanceClustersResponse:
       type: array
       items:
@@ -35304,8 +33796,6 @@ components:
           type: string
         project:
           type: string
-    deleteInstanceClusterResponse:
-      type: string
     listAllInstanceVariablesResponse:
       type: array
       items:
@@ -35389,8 +33879,6 @@ components:
           type: boolean
         masked:
           type: boolean
-    removeInstanceVariableResponse:
-      type: string
     listAllActiveIntegrationsResponse:
       type: array
       items:
@@ -35441,12 +33929,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAsanaIntegrationResponse:
-      type: string
-    disableAsanaIntegrationResponse:
-      type: string
-    getAsanaIntegrationSettingsResponse:
-      type: string
     create/editAssemblaIntegrationRequest:
       type: object
       properties:
@@ -35456,12 +33938,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAssemblaIntegrationResponse:
-      type: string
-    disableAssemblaIntegrationResponse:
-      type: string
-    getAssemblaIntegrationSettingsResponse:
-      type: string
     create/editAtlassianBambooCiIntegrationRequest:
       type: object
       properties:
@@ -35477,12 +33953,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAtlassianBambooCiIntegrationResponse:
-      type: string
-    disableAtlassianBambooCiIntegrationResponse:
-      type: string
-    getAtlassianBambooCiIntegrationSettingsResponse:
-      type: string
     create/editBugzillaIntegrationRequest:
       type: object
       properties:
@@ -35498,12 +33968,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editBugzillaIntegrationResponse:
-      type: string
-    disableBugzillaIntegrationResponse:
-      type: string
-    getBugzillaIntegrationSettingsResponse:
-      type: string
     create/editBuildkiteIntegrationRequest:
       type: object
       properties:
@@ -35515,12 +33979,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editBuildkiteIntegrationResponse:
-      type: string
-    disableBuildkiteIntegrationResponse:
-      type: string
-    getBuildkiteIntegrationSettingsResponse:
-      type: string
     create/editCampfireIntegrationRequest:
       type: object
       properties:
@@ -35532,12 +33990,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editCampfireIntegrationResponse:
-      type: string
-    disableCampfireIntegrationResponse:
-      type: string
-    getCampfireIntegrationSettingsResponse:
-      type: string
     create/editDatadogIntegrationRequest:
       type: object
       properties:
@@ -35553,12 +34005,6 @@ components:
           type: string
         datadog_tags:
           type: string
-    create/editDatadogIntegrationResponse:
-      type: string
-    disableDatadogIntegrationResponse:
-      type: string
-    getDatadogIntegrationSettingsResponse:
-      type: string
     create/editUnifyCircuitIntegrationRequest:
       type: object
       properties:
@@ -35586,12 +34032,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editUnifyCircuitIntegrationResponse:
-      type: string
-    disableUnifyCircuitIntegrationResponse:
-      type: string
-    getUnifyCircuitIntegrationSettingsResponse:
-      type: string
     create/editWebexTeamsIntegrationRequest:
       type: object
       properties:
@@ -35619,12 +34059,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editWebexTeamsIntegrationResponse:
-      type: string
-    disableWebexTeamsIntegrationResponse:
-      type: string
-    getWebexTeamsIntegrationSettingsResponse:
-      type: string
     create/editCustomIssueTrackerIntegrationRequest:
       type: object
       properties:
@@ -35640,23 +34074,11 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editCustomIssueTrackerIntegrationResponse:
-      type: string
-    disableCustomIssueTrackerIntegrationResponse:
-      type: string
-    getCustomIssueTrackerIntegrationSettingsResponse:
-      type: string
     create/editDiscordIntegrationRequest:
       type: object
       properties:
         webhook:
           type: string
-    create/editDiscordIntegrationResponse:
-      type: string
-    disableDiscordIntegrationResponse:
-      type: string
-    getDiscordIntegrationSettingsResponse:
-      type: string
     create/editDroneCiIntegrationRequest:
       type: object
       properties:
@@ -35672,12 +34094,6 @@ components:
           type: boolean
         tag_push_events:
           type: boolean
-    create/editDroneCiIntegrationResponse:
-      type: string
-    disableDroneCiIntegrationResponse:
-      type: string
-    getDroneCiIntegrationSettingsResponse:
-      type: string
     create/editEmailsOnPushIntegrationRequest:
       type: object
       properties:
@@ -35693,12 +34109,6 @@ components:
           type: boolean
         branches_to_be_notified:
           type: string
-    create/editEmailsOnPushIntegrationResponse:
-      type: string
-    disableEmailsOnPushIntegrationResponse:
-      type: string
-    getEmailsOnPushIntegrationSettingsResponse:
-      type: string
     create/editEwmIntegrationRequest:
       type: object
       properties:
@@ -35708,34 +34118,16 @@ components:
           type: string
         issues_url:
           type: string
-    create/editEwmIntegrationResponse:
-      type: string
-    disableEwmIntegrationResponse:
-      type: string
-    getEwmIntegrationSettingsResponse:
-      type: string
     create/editConfluenceIntegrationRequest:
       type: object
       properties:
         confluence_url:
           type: string
-    create/editConfluenceIntegrationResponse:
-      type: string
-    disableConfluenceIntegrationResponse:
-      type: string
-    getConfluenceIntegrationSettingsResponse:
-      type: string
     create/editExternalWikiIntegrationRequest:
       type: object
       properties:
         external_wiki_url:
           type: string
-    create/editExternalWikiIntegrationResponse:
-      type: string
-    disableExternalWikiIntegrationResponse:
-      type: string
-    getExternalWikiIntegrationSettingsResponse:
-      type: string
     create/editFlowdockIntegrationRequest:
       type: object
       properties:
@@ -35743,12 +34135,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editFlowdockIntegrationResponse:
-      type: string
-    disableFlowdockIntegrationResponse:
-      type: string
-    getFlowdockIntegrationSettingsResponse:
-      type: string
     create/editGithubIntegrationRequest:
       type: object
       properties:
@@ -35758,12 +34144,6 @@ components:
           type: string
         static_context:
           type: boolean
-    create/editGithubIntegrationResponse:
-      type: string
-    disableGithubIntegrationResponse:
-      type: string
-    getGithubIntegrationSettingsResponse:
-      type: string
     create/editHangoutsChatIntegrationRequest:
       type: object
       properties:
@@ -35793,12 +34173,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editHangoutsChatIntegrationResponse:
-      type: string
-    disableHangoutsChatIntegrationResponse:
-      type: string
-    getHangoutsChatIntegrationSettingsResponse:
-      type: string
     create/editIrker(ircGateway)IntegrationRequest:
       type: object
       properties:
@@ -35814,14 +34188,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editIrker(ircGateway)IntegrationResponse:
-      type: string
-    disableIrker(ircGateway)IntegrationResponse:
-      type: string
-    getIrker(ircGateway)IntegrationSettingsResponse:
-      type: string
-    getJiraIntegrationSettingsResponse:
-      type: string
     create/editJiraIntegrationRequest:
       type: object
       properties:
@@ -35849,10 +34215,6 @@ components:
         - url
         - username
         - password
-    create/editJiraIntegrationResponse:
-      type: string
-    disableJiraIntegrationResponse:
-      type: string
     getSlackSlashCommandIntegrationSettingsResponse:
       type: object
       properties:
@@ -35898,12 +34260,6 @@ components:
           type: string
       required:
         - token
-    create/editSlackSlashCommandsIntegrationResponse:
-      type: string
-    disableSlackSlashCommandIntegrationResponse:
-      type: string
-    getMattermostSlashCommandIntegrationSettingsResponse:
-      type: string
     create/editMattermostSlashCommandIntegrationRequest:
       type: object
       properties:
@@ -35913,10 +34269,6 @@ components:
           type: string
       required:
         - token
-    create/editMattermostSlashCommandIntegrationResponse:
-      type: string
-    disableMattermostSlashCommandIntegrationResponse:
-      type: string
     create/editPackagistIntegrationRequest:
       type: object
       properties:
@@ -35935,12 +34287,6 @@ components:
       required:
         - username
         - token
-    create/editPackagistIntegrationResponse:
-      type: string
-    disablePackagistIntegrationResponse:
-      type: string
-    getPackagistIntegrationSettingsResponse:
-      type: string
     create/editPipelineEmailsIntegrationRequest:
       type: object
       properties:
@@ -35958,12 +34304,6 @@ components:
           type: boolean
       required:
         - recipients
-    create/editPipelineEmailsIntegrationResponse:
-      type: string
-    disablePipelineEmailsIntegrationResponse:
-      type: string
-    getPipelineEmailsIntegrationSettingsResponse:
-      type: string
     create/editPivotalTrackerIntegrationRequest:
       type: object
       properties:
@@ -35973,12 +34313,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editPivotalTrackerIntegrationResponse:
-      type: string
-    disablePivotalTrackerIntegrationResponse:
-      type: string
-    getPivotalTrackerIntegrationSettingsResponse:
-      type: string
     create/editPrometheusIntegrationRequest:
       type: object
       properties:
@@ -35988,12 +34322,6 @@ components:
           type: string
         google_iap_service_account_json:
           type: string
-    create/editPrometheusIntegrationResponse:
-      type: string
-    disablePrometheusIntegrationResponse:
-      type: string
-    getPrometheusIntegrationSettingsResponse:
-      type: string
     create/editPushoverIntegrationRequest:
       type: object
       properties:
@@ -36009,12 +34337,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editPushoverIntegrationResponse:
-      type: string
-    disablePushoverIntegrationResponse:
-      type: string
-    getPushoverIntegrationSettingsResponse:
-      type: string
     create/editRedmineIntegrationRequest:
       type: object
       properties:
@@ -36028,12 +34350,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editRedmineIntegrationResponse:
-      type: string
-    disableRedmineIntegrationResponse:
-      type: string
-    getRedmineIntegrationSettingsResponse:
-      type: string
     create/editSlackIntegrationRequest:
       type: object
       properties:
@@ -36093,12 +34409,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    create/editSlackIntegrationResponse:
-      type: string
-    disableSlackIntegrationResponse:
-      type: string
-    getSlackIntegrationSettingsResponse:
-      type: string
     create/editMicrosoftTeamsIntegrationRequest:
       type: object
       properties:
@@ -36128,12 +34438,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editMicrosoftTeamsIntegrationResponse:
-      type: string
-    disableMicrosoftTeamsIntegrationResponse:
-      type: string
-    getMicrosoftTeamsIntegrationSettingsResponse:
-      type: string
     create/editMattermostNotificationsIntegrationRequest:
       type: object
       properties:
@@ -36185,12 +34489,6 @@ components:
           type: string
         wiki_page_channel:
           type: string
-    create/editMattermostNotificationsIntegrationResponse:
-      type: string
-    disableMattermostNotificationsIntegrationResponse:
-      type: string
-    getMattermostNotificationsIntegrationSettingsResponse:
-      type: string
     create/editJetbrainsTeamcityCiIntegrationRequest:
       type: object
       properties:
@@ -36206,12 +34504,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editJetbrainsTeamcityCiIntegrationResponse:
-      type: string
-    disableJetbrainsTeamcityCiIntegrationResponse:
-      type: string
-    getJetbrainsTeamcityCiIntegrationSettingsResponse:
-      type: string
     create/editJenkinsCiIntegrationRequest:
       type: object
       properties:
@@ -36231,18 +34523,6 @@ components:
           type: boolean
         tag_push_events:
           type: boolean
-    create/editJenkinsCiIntegrationResponse:
-      type: string
-    disableJenkinsCiIntegrationResponse:
-      type: string
-    getJenkinsCiIntegrationSettingsResponse:
-      type: string
-    create/editJenkinsCi(deprecated)IntegrationResponse:
-      type: string
-    disableJenkinsCi(deprecated)IntegrationResponse:
-      type: string
-    getJenkinsCi(deprecated)IntegrationSettingsResponse:
-      type: string
     create/editMockciIntegrationRequest:
       type: object
       properties:
@@ -36250,12 +34530,6 @@ components:
           type: string
         enable_ssl_verification:
           type: boolean
-    create/editMockciIntegrationResponse:
-      type: string
-    disableMockciIntegrationResponse:
-      type: string
-    getMockciIntegrationSettingsResponse:
-      type: string
     create/editYoutrackIntegrationRequest:
       type: object
       properties:
@@ -36267,12 +34541,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editYoutrackIntegrationResponse:
-      type: string
-    disableYoutrackIntegrationResponse:
-      type: string
-    getYoutrackIntegrationSettingsResponse:
-      type: string
     addAMemberToAGroupOrProjectRequest:
       type: object
       properties:
@@ -36368,8 +34636,6 @@ components:
           type: string
         access_level:
           type: integer
-    deleteAnInvitationToAGroupOrProjectResponse:
-      type: string
     listIssueRelationsResponse:
       type: array
       items:
@@ -37408,8 +35674,6 @@ components:
               type: integer
             completed_count:
               type: integer
-    deleteAnIssueResponse:
-      type: string
     reorderAnIssueRequest:
       type: object
       properties:
@@ -37417,8 +35681,6 @@ components:
           type: integer
         move_before_id:
           type: integer
-    reorderAnIssueResponse:
-      type: string
     moveAnIssueRequest:
       type: object
       properties:
@@ -38545,8 +36807,6 @@ components:
           type: string
         url_text:
           type: string
-    deleteMetricImageResponse:
-      type: string
     getIssuesStatisticsResponse:
       type: object
       properties:
@@ -39272,8 +37532,6 @@ components:
               type: string
             organization:
               type: string
-    getALogFileResponse:
-      type: string
     cancelAJobResponse:
       type: object
       properties:
@@ -39763,8 +38021,6 @@ components:
           type: string
         is_project_label:
           type: boolean
-    deleteALabelResponse:
-      type: string
     editAnExistingLabelRequest:
       type: object
       properties:
@@ -39851,8 +38107,6 @@ components:
           type: string
         is_project_label:
           type: boolean
-    unsubscribeFromALabelResponse:
-      type: string
     retrieveInformationAboutTheCurrentLicenseResponse:
       type: object
       properties:
@@ -40455,8 +38709,6 @@ components:
           type: boolean
       required:
         - content
-    validateTheCiYamlConfigurationResponse:
-      type: string
     validateACiYamlConfigurationWithANamespaceRequest:
       type: object
       properties:
@@ -40470,8 +38722,6 @@ components:
           type: string
       required:
         - content
-    validateACiYamlConfigurationWithANamespaceResponse:
-      type: string
     validateAProjectCiConfigurationResponse:
       type: object
       properties:
@@ -40524,8 +38774,6 @@ components:
           type: string
         approval_status:
           type: string
-    deleteAManagedLicenseResponse:
-      type: string
     editAnExistingManagedLicenseRequest:
       type: object
       properties:
@@ -40775,8 +39023,6 @@ components:
                 type: string
               integer_value:
                 type: integer
-    removeABillableMemberFromAGroupResponse:
-      type: string
     editAMemberOfAGroupOrProjectRequest:
       type: object
       properties:
@@ -40906,12 +39152,6 @@ components:
           type: string
         override:
           type: boolean
-    removeAMemberFromAGroupOrProjectResponse:
-      type: string
-    approveAMemberForAGroupResponse:
-      type: string
-    approveAllPendingMembersForAGroupResponse:
-      type: string
     listPendingMembersOfAGroupAndItsSubgroupsAndProjectsResponse:
       type: array
       items:
@@ -41510,8 +39750,6 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    deleteProjectLevelRuleResponse:
-      type: string
     changeApprovalConfigurationRequest:
       type: object
       properties:
@@ -41987,8 +40225,6 @@ components:
           type: boolean
         overridden:
           type: boolean
-    deleteMergeRequestLevelRuleResponse:
-      type: string
     approveMergeRequestRequest:
       type: object
       properties:
@@ -42041,8 +40277,6 @@ components:
                     type: string
                   web_url:
                     type: string
-    unapproveMergeRequestResponse:
-      type: string
     listMergeRequestsResponse:
       type: array
       items:
@@ -43217,8 +41451,6 @@ components:
               type: integer
             completed_count:
               type: integer
-    deleteAMergeRequestResponse:
-      type: string
     mergeAMergeRequestRequest:
       type: object
       properties:
@@ -44570,10 +42802,6 @@ components:
             type: string
           expired:
             type: boolean
-    deleteProjectMilestoneResponse:
-      type: string
-    promoteProjectMilestoneToAGroupMilestoneResponse:
-      type: string
     listNamespacesResponse:
       type: array
       items:
@@ -44673,8 +42901,6 @@ components:
             type: boolean
           confidential:
             type: boolean
-    getSingleIssueNoteResponse:
-      type: string
     createNewIssueNoteRequest:
       type: object
       properties:
@@ -44686,8 +42912,6 @@ components:
           type: string
       required:
         - body
-    createNewIssueNoteResponse:
-      type: string
     modifyExistingIssueNoteRequest:
       type: object
       properties:
@@ -44695,12 +42919,6 @@ components:
           type: string
         confidential:
           type: boolean
-    modifyExistingIssueNoteResponse:
-      type: string
-    deleteAnIssueNoteResponse:
-      type: string
-    listAllSnippetNotesResponse:
-      type: string
     getSingleSnippetNoteResponse:
       type: object
       properties:
@@ -44740,8 +42958,6 @@ components:
           type: string
       required:
         - body
-    createNewSnippetNoteResponse:
-      type: string
     modifyExistingSnippetNoteRequest:
       type: object
       properties:
@@ -44749,12 +42965,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingSnippetNoteResponse:
-      type: string
-    deleteASnippetNoteResponse:
-      type: string
-    listAllMergeRequestNotesResponse:
-      type: string
     getSingleMergeRequestNoteResponse:
       type: object
       properties:
@@ -44806,8 +43016,6 @@ components:
           type: string
       required:
         - body
-    createNewMergeRequestNoteResponse:
-      type: string
     modifyExistingMergeRequestNoteRequest:
       type: object
       properties:
@@ -44817,12 +43025,6 @@ components:
           type: boolean
       required:
         - body
-    modifyExistingMergeRequestNoteResponse:
-      type: string
-    deleteAMergeRequestNoteResponse:
-      type: string
-    listAllEpicNotesResponse:
-      type: string
     getSingleEpicNoteResponse:
       type: object
       properties:
@@ -44864,8 +43066,6 @@ components:
           type: boolean
       required:
         - body
-    createNewEpicNoteResponse:
-      type: string
     modifyExistingEpicNoteRequest:
       type: object
       properties:
@@ -44875,10 +43075,6 @@ components:
           type: boolean
       required:
         - body
-    modifyExistingEpicNoteResponse:
-      type: string
-    deleteAnEpicNoteResponse:
-      type: string
     globalNotificationSettingsResponse:
       type: object
       properties:
@@ -45150,10 +43346,6 @@ components:
                       type: string
                     avatar_url:
                       type: string
-    deleteAProjectPackageResponse:
-      type: string
-    deleteAPackageFileResponse:
-      type: string
     listAllDebianDistributionsInAGroupResponse:
       type: array
       items:
@@ -45210,8 +43402,6 @@ components:
           type: array
           items:
             type: string
-    singleDebianGroupDistributionKeyResponse:
-      type: string
     createADebianGroupDistributionRequest:
       type: object
       properties:
@@ -45300,8 +43490,6 @@ components:
           type: array
           items:
             type: string
-    deleteADebianGroupDistributionResponse:
-      type: string
     listAllDebianDistributionsInAProjectResponse:
       type: array
       items:
@@ -45358,8 +43546,6 @@ components:
           type: array
           items:
             type: string
-    singleDebianProjectDistributionKeyResponse:
-      type: string
     createADebianProjectDistributionRequest:
       type: object
       properties:
@@ -45448,8 +43634,6 @@ components:
           type: array
           items:
             type: string
-    deleteADebianProjectDistributionResponse:
-      type: string
     listAllPagesDomainsResponse:
       type: array
       items:
@@ -45533,10 +43717,6 @@ components:
       properties:
         auto_ssl_enabled:
           type: boolean
-    updatePagesDomainResponse:
-      type: string
-    deletePagesDomainResponse:
-      type: string
     listPersonalAccessTokensResponse:
       type: array
       items:
@@ -45562,8 +43742,6 @@ components:
             type: boolean
           expires_at:
             type: string
-    revokeAPersonalAccessTokenResponse:
-      type: string
     getAllPipelineSchedulesResponse:
       type: array
       items:
@@ -46002,8 +44180,6 @@ components:
           type: string
         owner:
           type: string
-    removeAProjectTriggerResponse:
-      type: string
     listProjectPipelinesResponse:
       type: array
       items:
@@ -46359,8 +44535,6 @@ components:
           type: string
         web_url:
           type: string
-    deleteAPipelineResponse:
-      type: string
     getCurrentPlanLimitsResponse:
       type: object
       properties:
@@ -46511,8 +44685,6 @@ components:
           type: string
         kind:
           type: string
-    removeABadgeFromAProjectResponse:
-      type: string
     previewABadgeFromAProjectResponse:
       type: object
       properties:
@@ -46993,8 +45165,6 @@ components:
                   type: string
                 parent_id:
                   type: string
-    deleteProjectClusterResponse:
-      type: string
     scheduleAnExportRequest:
       type: object
       properties:
@@ -47037,8 +45207,6 @@ components:
               type: string
             web_url:
               type: string
-    exportDownloadResponse:
-      type: string
     importAFileRequest:
       type: object
       properties:
@@ -47448,8 +45616,6 @@ components:
       properties:
         message:
           type: string
-    listSnippetsResponse:
-      type: string
     singleSnippetResponse:
       type: object
       properties:
@@ -47646,12 +45812,6 @@ components:
                 type: string
               file_path:
                 type: string
-    deleteSnippetResponse:
-      type: string
-    snippetContentResponse:
-      type: string
-    snippetRepositoryFileContentResponse:
-      type: string
     getAllTemplatesOfAParticularTypeResponse:
       type: array
       items:
@@ -48686,8 +46846,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    createProjectResponse:
-      type: string
     createProjectForUserRequest:
       type: object
       properties:
@@ -48811,8 +46969,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    createProjectForUserResponse:
-      type: string
     editProjectRequest:
       type: object
       properties:
@@ -48952,8 +47108,6 @@ components:
           type: string
         wiki_enabled:
           type: boolean
-    editProjectResponse:
-      type: string
     forkProjectRequest:
       type: object
       properties:
@@ -48975,8 +47129,6 @@ components:
           type: string
         visibility:
           type: string
-    forkProjectResponse:
-      type: string
     listForksOfAProjectResponse:
       type: array
       items:
@@ -49810,10 +47962,6 @@ components:
               type: string
             members:
               type: string
-    deleteProjectResponse:
-      type: string
-    restoreProjectMarkedForDeletionResponse:
-      type: string
     uploadAFileRequest:
       type: object
       properties:
@@ -49849,14 +47997,6 @@ components:
           type: integer
         expires_at:
           type: string
-    shareProjectWithGroupResponse:
-      type: string
-    deleteASharedProjectLinkWithinAGroupResponse:
-      type: string
-    importProjectMembersResponse:
-      type: string
-    listProjectHooksResponse:
-      type: string
     getProjectHookResponse:
       type: object
       properties:
@@ -49931,8 +48071,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    addProjectHookResponse:
-      type: string
     editProjectHookRequest:
       type: object
       properties:
@@ -49968,18 +48106,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    editProjectHookResponse:
-      type: string
-    deleteProjectHookResponse:
-      type: string
-    createAForkedFrom/toRelationBetweenExistingProjectsResponse:
-      type: string
-    deleteAnExistingForkedFromRelationshipResponse:
-      type: string
-    searchForProjectsByNameResponse:
-      type: string
-    startTheHousekeepingTaskForAProjectResponse:
-      type: string
     getProjectPushRulesResponse:
       type: object
       properties:
@@ -50036,8 +48162,6 @@ components:
           type: boolean
         reject_unsigned_commits:
           type: boolean
-    addProjectPushRuleResponse:
-      type: string
     editProjectPushRuleRequest:
       type: object
       properties:
@@ -50063,10 +48187,6 @@ components:
           type: boolean
         reject_unsigned_commits:
           type: boolean
-    editProjectPushRuleResponse:
-      type: string
-    deleteProjectPushRuleResponse:
-      type: string
     transferAProjectToANewNamespaceRequest:
       type: object
       properties:
@@ -50282,10 +48402,6 @@ components:
         compliance_frameworks:
           type: array
           items: {}
-    startThePullMirroringProcessForAProjectResponse:
-      type: string
-    downloadSnapshotOfAGitRepositoryResponse:
-      type: string
     getThePathToRepositoryStorageResponse:
       type: array
       items:
@@ -50422,15 +48538,11 @@ components:
           type: boolean
         code_owner_approval_required:
           type: boolean
-    unprotectRepositoryBranchesResponse:
-      type: string
     requireCodeOwnerApprovalsForASingleBranchRequest:
       type: object
       properties:
         code_owner_approval_required:
           type: boolean
-    requireCodeOwnerApprovalsForASingleBranchResponse:
-      type: string
     listProtectedEnvironmentsResponse:
       type: array
       items:
@@ -50518,8 +48630,6 @@ components:
                 type: string
               required_approvals:
                 type: integer
-    unprotectEnvironmentResponse:
-      type: string
     listProtectedTagsResponse:
       type: array
       items:
@@ -50573,8 +48683,6 @@ components:
                 type: integer
               access_level_description:
                 type: string
-    unprotectRepositoryTagsResponse:
-      type: string
     listReleasesResponse:
       type: array
       items:
@@ -51430,8 +49538,6 @@ components:
           type: string
         url:
           type: string
-    deleteARemoteMirrorResponse:
-      type: string
     listRepositoryTreeResponse:
       type: array
       items:
@@ -51447,12 +49553,6 @@ components:
             type: string
           mode:
             type: string
-    getABlobFromRepositoryResponse:
-      type: string
-    rawBlobContentResponse:
-      type: string
-    getFileArchiveResponse:
-      type: string
     'compareBranches,TagsOrCommitsResponse':
       type: object
       properties:
@@ -51580,8 +49680,6 @@ components:
           type: string
       required:
         - version
-    addChangelogDataToAChangelogFileResponse:
-      type: string
     generateChangelogDataResponse:
       type: object
       properties:
@@ -51644,8 +49742,6 @@ components:
             type: array
             items:
               type: string
-    getRawFileFromRepositoryResponse:
-      type: string
     createNewFileInRepositoryRequest:
       type: object
       properties:
@@ -51708,8 +49804,6 @@ components:
           type: string
         branch:
           type: string
-    deleteExistingFileInRepositoryResponse:
-      type: string
     updateExistingSubmoduleReferenceInRepositoryRequest:
       type: object
       properties:
@@ -51794,8 +49888,6 @@ components:
                 type: string
           action:
             type: string
-    getSingleIssueLabelEventResponse:
-      type: string
     listGroupEpicLabelEventsResponse:
       type: array
       items:
@@ -51837,8 +49929,6 @@ components:
                 type: string
           action:
             type: string
-    getSingleEpicLabelEventResponse:
-      type: string
     listProjectMergeRequestLabelEventsResponse:
       type: array
       items:
@@ -51880,8 +49970,6 @@ components:
                 type: string
           action:
             type: string
-    getSingleMergeRequestLabelEventResponse:
-      type: string
     listOwnedRunnersResponse:
       type: array
       items:
@@ -52231,8 +50319,6 @@ components:
           type: boolean
         status:
           type: string
-    disableARunnerFromProjectResponse:
-      type: string
     listGroupRunnersResponse:
       type: array
       items:
@@ -52296,10 +50382,6 @@ components:
           type: string
         token_expires_at:
           type: string
-    deleteARunnerByIdResponse:
-      type: string
-    deleteARunnerByAuthenticationTokenResponse:
-      type: string
     verifyAuthenticationForARegisteredRunnerRequest:
       type: object
       properties:
@@ -52307,14 +50389,6 @@ components:
           type: string
       required:
         - token
-    verifyAuthenticationForARegisteredRunnerResponse:
-      type: string
-    resetInstanceRunnerRegistrationTokenResponse:
-      type: string
-    resetProjectRunnerRegistrationTokenResponse:
-      type: string
-    resetGroupRunnerRegistrationTokenResponse:
-      type: string
     resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse:
       type: object
       properties:
@@ -52336,12 +50410,6 @@ components:
           type: string
         token_expires_at:
           type: string
-    advancedSearchApiResponse:
-      type: string
-    groupSearchApiResponse:
-      type: string
-    projectSearchApiResponse:
-      type: string
     getCurrentApplicationSettingsResponse:
       type: object
       properties:
@@ -53058,8 +51126,6 @@ components:
           type: string
         raw_url:
           type: string
-    singleSnippetContentsResponse:
-      type: string
     listAllPublicSnippetsResponse:
       type: array
       items:
@@ -53240,8 +51306,6 @@ components:
           type: string
         event_name:
           type: string
-    deleteSystemHookResponse:
-      type: string
     listProjectRepositoryTagsResponse:
       type: array
       items:
@@ -53387,8 +51451,6 @@ components:
           type: string
         protected:
           type: boolean
-    deleteATagResponse:
-      type: string
     getAListOfToDoItemsResponse:
       type: array
       items:
@@ -53677,8 +51739,6 @@ components:
           type: string
         updated_at:
           type: string
-    markAllToDoItemsAsDoneResponse:
-      type: string
     listTopicsResponse:
       type: array
       items:
@@ -53707,8 +51767,6 @@ components:
           type: integer
         avatar_url:
           type: string
-    listProjectsAssignedToATopicResponse:
-      type: string
     createAProjectTopicRequest:
       type: object
       properties:
@@ -53749,10 +51807,6 @@ components:
           type: integer
         avatar_url:
           type: string
-    deleteAProjectTopicResponse:
-      type: string
-    exportMetricDefinitionsAsASingleYamlFileResponse:
-      type: string
     exportServicePingSqlQueriesResponse:
       type: string
     forNormalUsersResponse:
@@ -54008,17 +52062,9 @@ components:
     userCreationRequest:
       type: object
       properties: {}
-    userCreationResponse:
-      type: string
     userModificationRequest:
       type: object
       properties: {}
-    userModificationResponse:
-      type: string
-    deleteAuthenticationIdentityFromUserResponse:
-      type: string
-    userDeletionResponse:
-      type: string
     listCurrentUser(forNormalUsers)Response:
       type: object
       properties:
@@ -54314,8 +52360,6 @@ components:
             type: string
           created_at:
             type: string
-    listSshKeysForUserResponse:
-      type: string
     singleSshKeyResponse:
       type: object
       properties:
@@ -54382,12 +52426,6 @@ components:
       required:
         - title
         - key
-    addSshKeyForUserResponse:
-      type: string
-    deleteSshKeyForCurrentUserResponse:
-      type: string
-    deleteSshKeyForGivenUserResponse:
-      type: string
     listAllGpgKeysResponse:
       type: array
       items:
@@ -54426,8 +52464,6 @@ components:
             type: string
           created_at:
             type: string
-    deleteAGpgKeyResponse:
-      type: string
     listAllGpgKeysForGivenUserResponse:
       type: array
       items:
@@ -54466,8 +52502,6 @@ components:
             type: string
           created_at:
             type: string
-    deleteAGpgKeyForAGivenUserResponse:
-      type: string
     listEmailsResponse:
       type: array
       items:
@@ -54479,8 +52513,6 @@ components:
             type: string
           confirmed_at:
             type: string
-    listEmailsForUserResponse:
-      type: string
     singleEmailResponse:
       type: object
       properties:
@@ -54522,24 +52554,6 @@ components:
           type: boolean
       required:
         - email
-    addEmailForUserResponse:
-      type: string
-    deleteEmailForCurrentUserResponse:
-      type: string
-    deleteEmailForGivenUserResponse:
-      type: string
-    blockUserResponse:
-      type: string
-    unblockUserResponse:
-      type: string
-    deactivateUserResponse:
-      type: string
-    activateUserResponse:
-      type: string
-    banUserResponse:
-      type: string
-    unbanUserResponse:
-      type: string
     getAllImpersonationTokensOfAUserResponse:
       type: array
       items:
@@ -54634,8 +52648,6 @@ components:
           type: string
         expires_at:
           type: string
-    revokeAnImpersonationTokenResponse:
-      type: string
     createAPersonalAccessTokenRequest:
       type: object
       properties:
@@ -55045,8 +53057,6 @@ components:
               type: string
             download:
               type: string
-    downloadVulnerabilityExportResponse:
-      type: string
     listProjectVulnerabilityFindingsResponse:
       type: array
       items:

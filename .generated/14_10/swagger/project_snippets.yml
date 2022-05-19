@@ -18,10 +18,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listSnippetsResponse'
       tags:
         - project_snippets
     post:
@@ -129,10 +125,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSnippetResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/raw':
@@ -156,10 +148,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetContentResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw':
@@ -195,10 +183,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
       tags:
         - project_snippets
   '/projects/{id}/snippets/{snippet_id}/user_agent_detail':
@@ -230,8 +214,6 @@ paths:
         - project_snippets
 components:
   schemas:
-    listSnippetsResponse:
-      type: string
     singleSnippetResponse:
       type: object
       properties:
@@ -358,12 +340,6 @@ components:
                 type: string
               content:
                 type: string
-    deleteSnippetResponse:
-      type: string
-    snippetContentResponse:
-      type: string
-    snippetRepositoryFileContentResponse:
-      type: string
     getUserAgentDetailsResponse:
       type: object
       properties:

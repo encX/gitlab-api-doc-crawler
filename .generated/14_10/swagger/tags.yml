@@ -120,10 +120,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteATagResponse'
       tags:
         - tags
 components:
@@ -273,5 +269,3 @@ components:
           type: string
         protected:
           type: boolean
-    deleteATagResponse:
-      type: string

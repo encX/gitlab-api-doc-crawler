@@ -139,10 +139,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteADebianProjectDistributionResponse'
       tags:
         - packages__debian_project_distributions
   '/projects/{id}/debian_distributions/{codename}/key.asc':
@@ -166,10 +162,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleDebianProjectDistributionKeyResponse'
       tags:
         - packages__debian_project_distributions
 components:
@@ -230,8 +222,6 @@ components:
           type: array
           items:
             type: string
-    singleDebianProjectDistributionKeyResponse:
-      type: string
     createADebianProjectDistributionRequest:
       type: object
       properties:
@@ -320,5 +310,3 @@ components:
           type: array
           items:
             type: string
-    deleteADebianProjectDistributionResponse:
-      type: string

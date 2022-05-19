@@ -62,10 +62,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewIssueNoteResponse'
       requestBody:
         content:
           application/json:
@@ -100,10 +96,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleIssueNoteResponse'
       tags:
         - notes
     put:
@@ -132,10 +124,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingIssueNoteResponse'
       requestBody:
         content:
           application/json:
@@ -169,10 +157,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueNoteResponse'
       tags:
         - notes
   '/projects/{id}/snippets/{snippet_id}/notes':
@@ -208,10 +192,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllSnippetNotesResponse'
       tags:
         - notes
     post:
@@ -236,10 +216,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewSnippetNoteResponse'
       requestBody:
         content:
           application/json:
@@ -306,10 +282,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingSnippetNoteResponse'
       requestBody:
         content:
           application/json:
@@ -343,10 +315,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASnippetNoteResponse'
       tags:
         - notes
   '/projects/{id}/merge_requests/{merge_request_iid}/notes':
@@ -382,10 +350,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllMergeRequestNotesResponse'
       tags:
         - notes
     post:
@@ -410,10 +374,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
@@ -480,10 +440,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingMergeRequestNoteResponse'
       requestBody:
         content:
           application/json:
@@ -517,10 +473,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAMergeRequestNoteResponse'
       tags:
         - notes
   '/groups/{id}/epics/{epic_id}/notes':
@@ -556,10 +508,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAllEpicNotesResponse'
       tags:
         - notes
     post:
@@ -584,10 +532,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewEpicNoteResponse'
       requestBody:
         content:
           application/json:
@@ -654,10 +598,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/modifyExistingEpicNoteResponse'
       requestBody:
         content:
           application/json:
@@ -691,10 +631,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnEpicNoteResponse'
       tags:
         - notes
 components:
@@ -741,8 +677,6 @@ components:
             type: boolean
           confidential:
             type: boolean
-    getSingleIssueNoteResponse:
-      type: string
     createNewIssueNoteRequest:
       type: object
       properties:
@@ -754,8 +688,6 @@ components:
           type: string
       required:
         - body
-    createNewIssueNoteResponse:
-      type: string
     modifyExistingIssueNoteRequest:
       type: object
       properties:
@@ -763,12 +695,6 @@ components:
           type: string
         confidential:
           type: boolean
-    modifyExistingIssueNoteResponse:
-      type: string
-    deleteAnIssueNoteResponse:
-      type: string
-    listAllSnippetNotesResponse:
-      type: string
     getSingleSnippetNoteResponse:
       type: object
       properties:
@@ -808,8 +734,6 @@ components:
           type: string
       required:
         - body
-    createNewSnippetNoteResponse:
-      type: string
     modifyExistingSnippetNoteRequest:
       type: object
       properties:
@@ -817,12 +741,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingSnippetNoteResponse:
-      type: string
-    deleteASnippetNoteResponse:
-      type: string
-    listAllMergeRequestNotesResponse:
-      type: string
     getSingleMergeRequestNoteResponse:
       type: object
       properties:
@@ -874,8 +792,6 @@ components:
           type: string
       required:
         - body
-    createNewMergeRequestNoteResponse:
-      type: string
     modifyExistingMergeRequestNoteRequest:
       type: object
       properties:
@@ -885,12 +801,6 @@ components:
           type: boolean
       required:
         - body
-    modifyExistingMergeRequestNoteResponse:
-      type: string
-    deleteAMergeRequestNoteResponse:
-      type: string
-    listAllEpicNotesResponse:
-      type: string
     getSingleEpicNoteResponse:
       type: object
       properties:
@@ -932,8 +842,6 @@ components:
           type: boolean
       required:
         - body
-    createNewEpicNoteResponse:
-      type: string
     modifyExistingEpicNoteRequest:
       type: object
       properties:
@@ -943,7 +851,3 @@ components:
           type: boolean
       required:
         - body
-    modifyExistingEpicNoteResponse:
-      type: string
-    deleteAnEpicNoteResponse:
-      type: string

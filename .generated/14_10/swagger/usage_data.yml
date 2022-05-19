@@ -12,10 +12,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/exportMetricDefinitionsAsASingleYamlFileResponse'
       tags:
         - usage_data
   /usage_data/queries:
@@ -35,7 +31,5 @@ paths:
         - usage_data
 components:
   schemas:
-    exportMetricDefinitionsAsASingleYamlFileResponse:
-      type: string
     exportServicePingSqlQueriesResponse:
       type: string

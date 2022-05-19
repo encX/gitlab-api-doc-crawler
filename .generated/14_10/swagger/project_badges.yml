@@ -133,10 +133,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeABadgeFromAProjectResponse'
       tags:
         - project_badges
   '/projects/{id}/badges/render':
@@ -263,8 +259,6 @@ components:
           type: string
         kind:
           type: string
-    removeABadgeFromAProjectResponse:
-      type: string
     previewABadgeFromAProjectResponse:
       type: object
       properties:

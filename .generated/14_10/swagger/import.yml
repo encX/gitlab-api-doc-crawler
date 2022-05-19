@@ -32,10 +32,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/importRepositoryFromBitbucketServerResponse'
       requestBody:
         content:
           application/json:
@@ -96,5 +92,3 @@ components:
         - personal_access_token
         - bitbucket_server_project
         - bitbucket_server_repo
-    importRepositoryFromBitbucketServerResponse:
-      type: string

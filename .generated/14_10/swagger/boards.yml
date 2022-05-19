@@ -127,10 +127,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueBoardResponse'
       tags:
         - boards
   '/projects/{id}/boards/{board_id}/lists':
@@ -287,10 +283,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteABoardListFromABoardResponse'
       tags:
         - boards
 components:
@@ -571,8 +563,6 @@ components:
                 type: string
         weight:
           type: integer
-    deleteAnIssueBoardResponse:
-      type: string
     listBoardListsInAProjectIssueBoardResponse:
       type: array
       items:
@@ -679,5 +669,3 @@ components:
           type: integer
         limit_metric:
           type: string
-    deleteABoardListFromABoardResponse:
-      type: string

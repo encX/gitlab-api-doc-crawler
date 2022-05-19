@@ -120,10 +120,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteALabelResponse'
       tags:
         - labels
     put:
@@ -236,10 +232,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unsubscribeFromALabelResponse'
       tags:
         - labels
 components:
@@ -341,8 +333,6 @@ components:
           type: string
         is_project_label:
           type: boolean
-    deleteALabelResponse:
-      type: string
     editAnExistingLabelRequest:
       type: object
       properties:
@@ -429,5 +419,3 @@ components:
           type: string
         is_project_label:
           type: boolean
-    unsubscribeFromALabelResponse:
-      type: string

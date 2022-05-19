@@ -746,10 +746,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAMergeRequestResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/participants':
@@ -2514,8 +2510,6 @@ components:
               type: integer
             completed_count:
               type: integer
-    deleteAMergeRequestResponse:
-      type: string
     mergeAMergeRequestRequest:
       type: object
       properties:

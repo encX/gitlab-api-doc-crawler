@@ -102,10 +102,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectClusterResponse'
       tags:
         - project_clusters
   '/projects/{id}/clusters/user':
@@ -605,5 +601,3 @@ components:
                   type: string
                 parent_id:
                   type: string
-    deleteProjectClusterResponse:
-      type: string

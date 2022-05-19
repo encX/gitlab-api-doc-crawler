@@ -4,8 +4,12 @@ import { PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
 
 Deno.test("Endpoint converstion test - with path params", () => {
-  const result = new Endpoint(input).getEndpoint();
-  assertEquals(result, expected);
+  const [actualPath, actualRequest, actualResponse] = new Endpoint(
+    input
+  ).getSwaggerDef();
+  assertEquals(actualPath, expected);
+  assertEquals(actualRequest, expectedRequestBody);
+  assertEquals(actualResponse, expectedResponse);
 });
 
 const input: Api = {
@@ -59,16 +63,11 @@ const expected: PathsObject = {
       responses: {
         "200": {
           description: "successful operation",
-          content: {
-            "application/json": {
-              schema: {
-                type: "object",
-                properties: {},
-              },
-            },
-          },
         },
       },
     },
   },
 };
+
+const expectedRequestBody = undefined;
+const expectedResponse = undefined;

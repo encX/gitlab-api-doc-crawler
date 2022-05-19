@@ -27,10 +27,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAsanaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -46,10 +42,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAsanaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -60,10 +52,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAsanaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/assembla':
@@ -75,10 +63,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAssemblaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -94,10 +78,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAssemblaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -108,10 +88,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAssemblaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/bamboo':
@@ -123,10 +99,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editAtlassianBambooCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -142,10 +114,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableAtlassianBambooCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -156,10 +124,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAtlassianBambooCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/bugzilla':
@@ -171,10 +135,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editBugzillaIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -190,10 +150,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableBugzillaIntegrationResponse'
       tags:
         - integrations
     get:
@@ -204,10 +160,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getBugzillaIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/buildkite':
@@ -219,10 +171,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editBuildkiteIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -238,10 +186,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableBuildkiteIntegrationResponse'
       tags:
         - integrations
     get:
@@ -252,10 +196,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getBuildkiteIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/campfire':
@@ -267,10 +207,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editCampfireIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -286,10 +222,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableCampfireIntegrationResponse'
       tags:
         - integrations
     get:
@@ -300,10 +232,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getCampfireIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/datadog':
@@ -315,10 +243,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDatadogIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -334,10 +258,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDatadogIntegrationResponse'
       tags:
         - integrations
     get:
@@ -348,10 +268,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDatadogIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/unify-circuit':
@@ -363,10 +279,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editUnifyCircuitIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -382,10 +294,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableUnifyCircuitIntegrationResponse'
       tags:
         - integrations
     get:
@@ -396,10 +304,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getUnifyCircuitIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/webex-teams':
@@ -411,10 +315,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editWebexTeamsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -430,10 +330,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableWebexTeamsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -444,10 +340,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getWebexTeamsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/custom-issue-tracker':
@@ -459,10 +351,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editCustomIssueTrackerIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -478,10 +366,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableCustomIssueTrackerIntegrationResponse'
       tags:
         - integrations
     get:
@@ -492,10 +376,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getCustomIssueTrackerIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/discord':
@@ -507,10 +387,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDiscordIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -526,10 +402,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDiscordIntegrationResponse'
       tags:
         - integrations
     get:
@@ -540,10 +412,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDiscordIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/drone-ci':
@@ -555,10 +423,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editDroneCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -574,10 +438,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableDroneCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -588,10 +448,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getDroneCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/emails-on-push':
@@ -603,10 +459,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editEmailsOnPushIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -622,10 +474,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableEmailsOnPushIntegrationResponse'
       tags:
         - integrations
     get:
@@ -636,10 +484,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getEmailsOnPushIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/ewm':
@@ -651,10 +495,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editEwmIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -670,10 +510,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableEwmIntegrationResponse'
       tags:
         - integrations
     get:
@@ -684,10 +520,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getEwmIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/confluence':
@@ -699,10 +531,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editConfluenceIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -718,10 +546,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableConfluenceIntegrationResponse'
       tags:
         - integrations
     get:
@@ -732,10 +556,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getConfluenceIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/external-wiki':
@@ -747,10 +567,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editExternalWikiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -766,10 +582,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableExternalWikiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -780,10 +592,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getExternalWikiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/flowdock':
@@ -795,10 +603,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editFlowdockIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -814,10 +618,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableFlowdockIntegrationResponse'
       tags:
         - integrations
     get:
@@ -828,10 +628,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getFlowdockIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/github':
@@ -843,10 +639,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editGithubIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -862,10 +654,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableGithubIntegrationResponse'
       tags:
         - integrations
     get:
@@ -876,10 +664,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getGithubIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/hangouts-chat':
@@ -891,10 +675,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editHangoutsChatIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -910,10 +690,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableHangoutsChatIntegrationResponse'
       tags:
         - integrations
     get:
@@ -924,10 +700,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getHangoutsChatIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/irker':
@@ -939,10 +711,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editIrker(ircGateway)IntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -958,10 +726,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableIrker(ircGateway)IntegrationResponse'
       tags:
         - integrations
     get:
@@ -972,10 +736,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getIrker(ircGateway)IntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jira':
@@ -987,10 +747,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJiraIntegrationSettingsResponse'
       tags:
         - integrations
     put:
@@ -1001,10 +757,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJiraIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1020,10 +772,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJiraIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/slack-slash-commands':
@@ -1049,10 +797,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editSlackSlashCommandsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1068,10 +812,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableSlackSlashCommandIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mattermost-slash-commands':
@@ -1083,10 +823,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMattermostSlashCommandIntegrationSettingsResponse'
       tags:
         - integrations
     put:
@@ -1097,10 +833,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMattermostSlashCommandIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1116,10 +848,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMattermostSlashCommandIntegrationResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/packagist':
@@ -1131,10 +859,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPackagistIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1150,10 +874,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePackagistIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1164,10 +884,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPackagistIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pipelines-email':
@@ -1179,10 +895,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPipelineEmailsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1198,10 +910,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePipelineEmailsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1212,10 +920,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPipelineEmailsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pivotaltracker':
@@ -1227,10 +931,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPivotalTrackerIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1246,10 +946,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePivotalTrackerIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1260,10 +956,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPivotalTrackerIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/prometheus':
@@ -1275,10 +967,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPrometheusIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1294,10 +982,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePrometheusIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1308,10 +992,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPrometheusIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pushover':
@@ -1323,10 +1003,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editPushoverIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1342,10 +1018,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disablePushoverIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1356,10 +1028,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getPushoverIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/redmine':
@@ -1371,10 +1039,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editRedmineIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1390,10 +1054,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableRedmineIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1404,10 +1064,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getRedmineIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/slack':
@@ -1419,10 +1075,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editSlackIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1438,10 +1090,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableSlackIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1452,10 +1100,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSlackIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/microsoft-teams':
@@ -1467,10 +1111,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMicrosoftTeamsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1486,10 +1126,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMicrosoftTeamsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1500,10 +1136,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMicrosoftTeamsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mattermost':
@@ -1515,10 +1147,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMattermostNotificationsIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1534,10 +1162,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMattermostNotificationsIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1548,10 +1172,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMattermostNotificationsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/teamcity':
@@ -1563,10 +1183,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJetbrainsTeamcityCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1582,10 +1198,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJetbrainsTeamcityCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1596,10 +1208,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJetbrainsTeamcityCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jenkins':
@@ -1611,10 +1219,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJenkinsCiIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1630,10 +1234,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJenkinsCiIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1644,10 +1244,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJenkinsCiIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/jenkins-deprecated':
@@ -1659,10 +1255,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editJenkinsCi(deprecated)IntegrationResponse'
       tags:
         - integrations
     delete:
@@ -1673,10 +1265,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableJenkinsCi(deprecated)IntegrationResponse'
       tags:
         - integrations
     get:
@@ -1687,10 +1275,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getJenkinsCi(deprecated)IntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/mock-ci':
@@ -1702,10 +1286,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editMockciIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1721,10 +1301,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableMockciIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1735,10 +1311,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getMockciIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/youtrack':
@@ -1750,10 +1322,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/create/editYoutrackIntegrationResponse'
       requestBody:
         content:
           application/json:
@@ -1769,10 +1337,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableYoutrackIntegrationResponse'
       tags:
         - integrations
     get:
@@ -1783,10 +1347,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getYoutrackIntegrationSettingsResponse'
       tags:
         - integrations
 components:
@@ -1841,12 +1401,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAsanaIntegrationResponse:
-      type: string
-    disableAsanaIntegrationResponse:
-      type: string
-    getAsanaIntegrationSettingsResponse:
-      type: string
     create/editAssemblaIntegrationRequest:
       type: object
       properties:
@@ -1856,12 +1410,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAssemblaIntegrationResponse:
-      type: string
-    disableAssemblaIntegrationResponse:
-      type: string
-    getAssemblaIntegrationSettingsResponse:
-      type: string
     create/editAtlassianBambooCiIntegrationRequest:
       type: object
       properties:
@@ -1877,12 +1425,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editAtlassianBambooCiIntegrationResponse:
-      type: string
-    disableAtlassianBambooCiIntegrationResponse:
-      type: string
-    getAtlassianBambooCiIntegrationSettingsResponse:
-      type: string
     create/editBugzillaIntegrationRequest:
       type: object
       properties:
@@ -1898,12 +1440,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editBugzillaIntegrationResponse:
-      type: string
-    disableBugzillaIntegrationResponse:
-      type: string
-    getBugzillaIntegrationSettingsResponse:
-      type: string
     create/editBuildkiteIntegrationRequest:
       type: object
       properties:
@@ -1915,12 +1451,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editBuildkiteIntegrationResponse:
-      type: string
-    disableBuildkiteIntegrationResponse:
-      type: string
-    getBuildkiteIntegrationSettingsResponse:
-      type: string
     create/editCampfireIntegrationRequest:
       type: object
       properties:
@@ -1932,12 +1462,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editCampfireIntegrationResponse:
-      type: string
-    disableCampfireIntegrationResponse:
-      type: string
-    getCampfireIntegrationSettingsResponse:
-      type: string
     create/editDatadogIntegrationRequest:
       type: object
       properties:
@@ -1953,12 +1477,6 @@ components:
           type: string
         datadog_tags:
           type: string
-    create/editDatadogIntegrationResponse:
-      type: string
-    disableDatadogIntegrationResponse:
-      type: string
-    getDatadogIntegrationSettingsResponse:
-      type: string
     create/editUnifyCircuitIntegrationRequest:
       type: object
       properties:
@@ -1986,12 +1504,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editUnifyCircuitIntegrationResponse:
-      type: string
-    disableUnifyCircuitIntegrationResponse:
-      type: string
-    getUnifyCircuitIntegrationSettingsResponse:
-      type: string
     create/editWebexTeamsIntegrationRequest:
       type: object
       properties:
@@ -2019,12 +1531,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editWebexTeamsIntegrationResponse:
-      type: string
-    disableWebexTeamsIntegrationResponse:
-      type: string
-    getWebexTeamsIntegrationSettingsResponse:
-      type: string
     create/editCustomIssueTrackerIntegrationRequest:
       type: object
       properties:
@@ -2040,23 +1546,11 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editCustomIssueTrackerIntegrationResponse:
-      type: string
-    disableCustomIssueTrackerIntegrationResponse:
-      type: string
-    getCustomIssueTrackerIntegrationSettingsResponse:
-      type: string
     create/editDiscordIntegrationRequest:
       type: object
       properties:
         webhook:
           type: string
-    create/editDiscordIntegrationResponse:
-      type: string
-    disableDiscordIntegrationResponse:
-      type: string
-    getDiscordIntegrationSettingsResponse:
-      type: string
     create/editDroneCiIntegrationRequest:
       type: object
       properties:
@@ -2072,12 +1566,6 @@ components:
           type: boolean
         tag_push_events:
           type: boolean
-    create/editDroneCiIntegrationResponse:
-      type: string
-    disableDroneCiIntegrationResponse:
-      type: string
-    getDroneCiIntegrationSettingsResponse:
-      type: string
     create/editEmailsOnPushIntegrationRequest:
       type: object
       properties:
@@ -2093,12 +1581,6 @@ components:
           type: boolean
         branches_to_be_notified:
           type: string
-    create/editEmailsOnPushIntegrationResponse:
-      type: string
-    disableEmailsOnPushIntegrationResponse:
-      type: string
-    getEmailsOnPushIntegrationSettingsResponse:
-      type: string
     create/editEwmIntegrationRequest:
       type: object
       properties:
@@ -2108,34 +1590,16 @@ components:
           type: string
         issues_url:
           type: string
-    create/editEwmIntegrationResponse:
-      type: string
-    disableEwmIntegrationResponse:
-      type: string
-    getEwmIntegrationSettingsResponse:
-      type: string
     create/editConfluenceIntegrationRequest:
       type: object
       properties:
         confluence_url:
           type: string
-    create/editConfluenceIntegrationResponse:
-      type: string
-    disableConfluenceIntegrationResponse:
-      type: string
-    getConfluenceIntegrationSettingsResponse:
-      type: string
     create/editExternalWikiIntegrationRequest:
       type: object
       properties:
         external_wiki_url:
           type: string
-    create/editExternalWikiIntegrationResponse:
-      type: string
-    disableExternalWikiIntegrationResponse:
-      type: string
-    getExternalWikiIntegrationSettingsResponse:
-      type: string
     create/editFlowdockIntegrationRequest:
       type: object
       properties:
@@ -2143,12 +1607,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editFlowdockIntegrationResponse:
-      type: string
-    disableFlowdockIntegrationResponse:
-      type: string
-    getFlowdockIntegrationSettingsResponse:
-      type: string
     create/editGithubIntegrationRequest:
       type: object
       properties:
@@ -2158,12 +1616,6 @@ components:
           type: string
         static_context:
           type: boolean
-    create/editGithubIntegrationResponse:
-      type: string
-    disableGithubIntegrationResponse:
-      type: string
-    getGithubIntegrationSettingsResponse:
-      type: string
     create/editHangoutsChatIntegrationRequest:
       type: object
       properties:
@@ -2193,12 +1645,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editHangoutsChatIntegrationResponse:
-      type: string
-    disableHangoutsChatIntegrationResponse:
-      type: string
-    getHangoutsChatIntegrationSettingsResponse:
-      type: string
     create/editIrker(ircGateway)IntegrationRequest:
       type: object
       properties:
@@ -2214,14 +1660,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editIrker(ircGateway)IntegrationResponse:
-      type: string
-    disableIrker(ircGateway)IntegrationResponse:
-      type: string
-    getIrker(ircGateway)IntegrationSettingsResponse:
-      type: string
-    getJiraIntegrationSettingsResponse:
-      type: string
     create/editJiraIntegrationRequest:
       type: object
       properties:
@@ -2249,10 +1687,6 @@ components:
         - url
         - username
         - password
-    create/editJiraIntegrationResponse:
-      type: string
-    disableJiraIntegrationResponse:
-      type: string
     getSlackSlashCommandIntegrationSettingsResponse:
       type: object
       properties:
@@ -2298,12 +1732,6 @@ components:
           type: string
       required:
         - token
-    create/editSlackSlashCommandsIntegrationResponse:
-      type: string
-    disableSlackSlashCommandIntegrationResponse:
-      type: string
-    getMattermostSlashCommandIntegrationSettingsResponse:
-      type: string
     create/editMattermostSlashCommandIntegrationRequest:
       type: object
       properties:
@@ -2313,10 +1741,6 @@ components:
           type: string
       required:
         - token
-    create/editMattermostSlashCommandIntegrationResponse:
-      type: string
-    disableMattermostSlashCommandIntegrationResponse:
-      type: string
     create/editPackagistIntegrationRequest:
       type: object
       properties:
@@ -2335,12 +1759,6 @@ components:
       required:
         - username
         - token
-    create/editPackagistIntegrationResponse:
-      type: string
-    disablePackagistIntegrationResponse:
-      type: string
-    getPackagistIntegrationSettingsResponse:
-      type: string
     create/editPipelineEmailsIntegrationRequest:
       type: object
       properties:
@@ -2358,12 +1776,6 @@ components:
           type: boolean
       required:
         - recipients
-    create/editPipelineEmailsIntegrationResponse:
-      type: string
-    disablePipelineEmailsIntegrationResponse:
-      type: string
-    getPipelineEmailsIntegrationSettingsResponse:
-      type: string
     create/editPivotalTrackerIntegrationRequest:
       type: object
       properties:
@@ -2373,12 +1785,6 @@ components:
           type: boolean
         push_events:
           type: boolean
-    create/editPivotalTrackerIntegrationResponse:
-      type: string
-    disablePivotalTrackerIntegrationResponse:
-      type: string
-    getPivotalTrackerIntegrationSettingsResponse:
-      type: string
     create/editPrometheusIntegrationRequest:
       type: object
       properties:
@@ -2388,12 +1794,6 @@ components:
           type: string
         google_iap_service_account_json:
           type: string
-    create/editPrometheusIntegrationResponse:
-      type: string
-    disablePrometheusIntegrationResponse:
-      type: string
-    getPrometheusIntegrationSettingsResponse:
-      type: string
     create/editPushoverIntegrationRequest:
       type: object
       properties:
@@ -2409,12 +1809,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editPushoverIntegrationResponse:
-      type: string
-    disablePushoverIntegrationResponse:
-      type: string
-    getPushoverIntegrationSettingsResponse:
-      type: string
     create/editRedmineIntegrationRequest:
       type: object
       properties:
@@ -2428,12 +1822,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editRedmineIntegrationResponse:
-      type: string
-    disableRedmineIntegrationResponse:
-      type: string
-    getRedmineIntegrationSettingsResponse:
-      type: string
     create/editSlackIntegrationRequest:
       type: object
       properties:
@@ -2493,12 +1881,6 @@ components:
           type: string
         wiki_page_events:
           type: boolean
-    create/editSlackIntegrationResponse:
-      type: string
-    disableSlackIntegrationResponse:
-      type: string
-    getSlackIntegrationSettingsResponse:
-      type: string
     create/editMicrosoftTeamsIntegrationRequest:
       type: object
       properties:
@@ -2528,12 +1910,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editMicrosoftTeamsIntegrationResponse:
-      type: string
-    disableMicrosoftTeamsIntegrationResponse:
-      type: string
-    getMicrosoftTeamsIntegrationSettingsResponse:
-      type: string
     create/editMattermostNotificationsIntegrationRequest:
       type: object
       properties:
@@ -2585,12 +1961,6 @@ components:
           type: string
         wiki_page_channel:
           type: string
-    create/editMattermostNotificationsIntegrationResponse:
-      type: string
-    disableMattermostNotificationsIntegrationResponse:
-      type: string
-    getMattermostNotificationsIntegrationSettingsResponse:
-      type: string
     create/editJetbrainsTeamcityCiIntegrationRequest:
       type: object
       properties:
@@ -2606,12 +1976,6 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editJetbrainsTeamcityCiIntegrationResponse:
-      type: string
-    disableJetbrainsTeamcityCiIntegrationResponse:
-      type: string
-    getJetbrainsTeamcityCiIntegrationSettingsResponse:
-      type: string
     create/editJenkinsCiIntegrationRequest:
       type: object
       properties:
@@ -2631,18 +1995,6 @@ components:
           type: boolean
         tag_push_events:
           type: boolean
-    create/editJenkinsCiIntegrationResponse:
-      type: string
-    disableJenkinsCiIntegrationResponse:
-      type: string
-    getJenkinsCiIntegrationSettingsResponse:
-      type: string
-    create/editJenkinsCi(deprecated)IntegrationResponse:
-      type: string
-    disableJenkinsCi(deprecated)IntegrationResponse:
-      type: string
-    getJenkinsCi(deprecated)IntegrationSettingsResponse:
-      type: string
     create/editMockciIntegrationRequest:
       type: object
       properties:
@@ -2650,12 +2002,6 @@ components:
           type: string
         enable_ssl_verification:
           type: boolean
-    create/editMockciIntegrationResponse:
-      type: string
-    disableMockciIntegrationResponse:
-      type: string
-    getMockciIntegrationSettingsResponse:
-      type: string
     create/editYoutrackIntegrationRequest:
       type: object
       properties:
@@ -2667,9 +2013,3 @@ components:
           type: string
         push_events:
           type: boolean
-    create/editYoutrackIntegrationResponse:
-      type: string
-    disableYoutrackIntegrationResponse:
-      type: string
-    getYoutrackIntegrationSettingsResponse:
-      type: string

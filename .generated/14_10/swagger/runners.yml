@@ -85,10 +85,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARunnerByAuthenticationTokenResponse'
       tags:
         - runners
   /runners/all:
@@ -204,10 +200,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARunnerByIdResponse'
       tags:
         - runners
   '/runners/{id}/jobs':
@@ -352,10 +344,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/disableARunnerFromProjectResponse'
       tags:
         - runners
   '/groups/{id}/runners':
@@ -416,10 +404,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerResponse'
       requestBody:
         content:
           application/json:
@@ -436,10 +420,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetInstanceRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/projects/{id}/runners/reset_registration_token':
@@ -451,10 +431,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetProjectRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/groups/{id}/runners/reset_registration_token':
@@ -466,10 +442,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/resetGroupRunnerRegistrationTokenResponse'
       tags:
         - runners
   '/runners/{id}/reset_authentication_token':
@@ -864,8 +836,6 @@ components:
           type: boolean
         status:
           type: string
-    disableARunnerFromProjectResponse:
-      type: string
     listGroupRunnersResponse:
       type: array
       items:
@@ -929,10 +899,6 @@ components:
           type: string
         token_expires_at:
           type: string
-    deleteARunnerByIdResponse:
-      type: string
-    deleteARunnerByAuthenticationTokenResponse:
-      type: string
     verifyAuthenticationForARegisteredRunnerRequest:
       type: object
       properties:
@@ -940,14 +906,6 @@ components:
           type: string
       required:
         - token
-    verifyAuthenticationForARegisteredRunnerResponse:
-      type: string
-    resetInstanceRunnerRegistrationTokenResponse:
-      type: string
-    resetProjectRunnerRegistrationTokenResponse:
-      type: string
-    resetGroupRunnerRegistrationTokenResponse:
-      type: string
     resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse:
       type: object
       properties:

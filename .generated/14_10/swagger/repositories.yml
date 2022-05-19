@@ -85,10 +85,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getABlobFromRepositoryResponse'
       tags:
         - repositories
   '/projects/{id}/repository/blobs/{sha}/raw':
@@ -114,10 +110,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rawBlobContentResponse'
       tags:
         - repositories
   '/projects/{id}/repository/archive[.format]':
@@ -151,10 +143,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getFileArchiveResponse'
       tags:
         - repositories
   '/projects/{id}/repository/compare':
@@ -277,10 +265,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addChangelogDataToAChangelogFileResponse'
       requestBody:
         content:
           application/json:
@@ -355,12 +339,6 @@ components:
             type: string
           mode:
             type: string
-    getABlobFromRepositoryResponse:
-      type: string
-    rawBlobContentResponse:
-      type: string
-    getFileArchiveResponse:
-      type: string
     'compareBranches,TagsOrCommitsResponse':
       type: object
       properties:
@@ -488,8 +466,6 @@ components:
           type: string
       required:
         - version
-    addChangelogDataToAChangelogFileResponse:
-      type: string
     generateChangelogDataResponse:
       type: object
       properties:

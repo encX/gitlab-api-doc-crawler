@@ -192,10 +192,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getALogFileResponse'
       tags:
         - jobs
   '/projects/{id}/jobs/{job_id}/cancel':
@@ -966,8 +962,6 @@ components:
               type: string
             organization:
               type: string
-    getALogFileResponse:
-      type: string
     cancelAJobResponse:
       type: object
       properties:

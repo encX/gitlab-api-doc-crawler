@@ -102,10 +102,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteCustomAttributeResponse'
       tags:
         - custom_attributes
 components:
@@ -140,5 +136,3 @@ components:
           type: string
         value:
           type: string
-    deleteCustomAttributeResponse:
-      type: string

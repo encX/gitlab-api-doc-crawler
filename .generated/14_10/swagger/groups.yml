@@ -26,10 +26,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/newGroupResponse'
       requestBody:
         content:
           application/json:
@@ -483,10 +479,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeGroupResponse'
       tags:
         - groups
   '/groups/{id}/avatar':
@@ -504,10 +496,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/downloadAGroupAvatarResponse'
       tags:
         - groups
   '/groups/{id}/projects/{project_id}':
@@ -534,10 +522,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/transferProjectToGroupResponse'
       tags:
         - groups
   '/groups/{id}/transfer':
@@ -557,10 +541,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse'
       requestBody:
         content:
           application/json:
@@ -583,10 +563,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/restoreGroupMarkedForDeletionResponse'
       tags:
         - groups
   '/groups/{id}/provisioned_users':
@@ -661,10 +637,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listGroupHooksResponse'
       tags:
         - groups
     post:
@@ -681,10 +653,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addGroupHookResponse'
       requestBody:
         content:
           application/json:
@@ -739,10 +707,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editGroupHookResponse'
       requestBody:
         content:
           application/json:
@@ -772,10 +736,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteGroupHookResponse'
       tags:
         - groups
   '/groups/{id}/ldap_sync':
@@ -787,10 +747,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/syncGroupWithLdapResponse'
       tags:
         - groups
   '/groups/{id}/ldap_group_links':
@@ -808,10 +764,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listLdapGroupLinksResponse'
       tags:
         - groups
     post:
@@ -830,10 +782,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/addLdapGroupLinkWithCnOrFilterResponse'
       requestBody:
         content:
           application/json:
@@ -875,10 +823,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLdapGroupLinkWithCnOrFilterResponse'
       tags:
         - groups
   '/groups/{id}/ldap_group_links/{cn}':
@@ -908,10 +852,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLdapGroupLinkResponse'
       tags:
         - groups
   '/groups/{id}/share':
@@ -929,10 +869,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createALinkToShareAGroupWithAnotherGroupResponse'
       requestBody:
         content:
           application/json:
@@ -961,10 +897,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteLinkSharingGroupWithAnotherGroupResponse'
       tags:
         - groups
   '/groups/{id}/push_rule':
@@ -1052,10 +984,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteGroupPushRuleResponse'
       tags:
         - groups
 components:
@@ -1740,8 +1668,6 @@ components:
                       type: integer
                     expires_at:
                       type: string
-    downloadAGroupAvatarResponse:
-      type: string
     newGroupRequest:
       type: object
       properties:
@@ -1786,17 +1712,11 @@ components:
       required:
         - name
         - path
-    newGroupResponse:
-      type: string
-    transferProjectToGroupResponse:
-      type: string
     transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest:
       type: object
       properties:
         group_id:
           type: integer
-    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse:
-      type: string
     updateGroupRequest:
       type: object
       properties:
@@ -1956,10 +1876,6 @@ components:
                 items: {}
               request_access_enabled:
                 type: boolean
-    removeGroupResponse:
-      type: string
-    restoreGroupMarkedForDeletionResponse:
-      type: string
     searchForGroupResponse:
       type: array
       items:
@@ -2057,8 +1973,6 @@ components:
             type: string
           extra_shared_runners_minutes_limit:
             type: string
-    listGroupHooksResponse:
-      type: string
     getGroupHookResponse:
       type: object
       properties:
@@ -2135,8 +2049,6 @@ components:
           type: string
       required:
         - url
-    addGroupHookResponse:
-      type: string
     editGroupHookRequest:
       type: object
       properties:
@@ -2174,14 +2086,6 @@ components:
           type: string
       required:
         - url
-    editGroupHookResponse:
-      type: string
-    deleteGroupHookResponse:
-      type: string
-    syncGroupWithLdapResponse:
-      type: string
-    listLdapGroupLinksResponse:
-      type: string
     addLdapGroupLinkWithCnOrFilterRequest:
       type: object
       properties:
@@ -2196,12 +2100,6 @@ components:
       required:
         - group_access
         - provider
-    addLdapGroupLinkWithCnOrFilterResponse:
-      type: string
-    deleteLdapGroupLinkResponse:
-      type: string
-    deleteLdapGroupLinkWithCnOrFilterResponse:
-      type: string
     createALinkToShareAGroupWithAnotherGroupRequest:
       type: object
       properties:
@@ -2214,10 +2112,6 @@ components:
       required:
         - group_id
         - group_access
-    createALinkToShareAGroupWithAnotherGroupResponse:
-      type: string
-    deleteLinkSharingGroupWithAnotherGroupResponse:
-      type: string
     getGroupPushRulesResponse:
       type: object
       properties:
@@ -2347,5 +2241,3 @@ components:
           type: string
         max_file_size:
           type: integer
-    deleteGroupPushRuleResponse:
-      type: string

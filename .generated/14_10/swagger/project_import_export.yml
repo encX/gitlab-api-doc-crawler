@@ -64,10 +64,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/exportDownloadResponse'
       tags:
         - project_import_export
   /projects/import:
@@ -198,8 +194,6 @@ components:
               type: string
             web_url:
               type: string
-    exportDownloadResponse:
-      type: string
     importAFileRequest:
       type: object
       properties:

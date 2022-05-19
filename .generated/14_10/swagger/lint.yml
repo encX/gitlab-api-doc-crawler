@@ -14,10 +14,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/validateTheCiYamlConfigurationResponse'
       requestBody:
         content:
           application/json:
@@ -34,10 +30,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/validateACiYamlConfigurationWithANamespaceResponse'
       requestBody:
         content:
           application/json:
@@ -94,8 +86,6 @@ components:
           type: boolean
       required:
         - content
-    validateTheCiYamlConfigurationResponse:
-      type: string
     validateACiYamlConfigurationWithANamespaceRequest:
       type: object
       properties:
@@ -109,8 +99,6 @@ components:
           type: string
       required:
         - content
-    validateACiYamlConfigurationWithANamespaceResponse:
-      type: string
     validateAProjectCiConfigurationResponse:
       type: object
       properties:

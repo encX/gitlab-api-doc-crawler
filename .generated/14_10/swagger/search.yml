@@ -52,10 +52,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/advancedSearchApiResponse'
       tags:
         - search
   '/groups/{id}/search':
@@ -113,10 +109,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/groupSearchApiResponse'
       tags:
         - search
   '/projects/{id}/search':
@@ -182,17 +174,7 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/projectSearchApiResponse'
       tags:
         - search
 components:
-  schemas:
-    advancedSearchApiResponse:
-      type: string
-    groupSearchApiResponse:
-      type: string
-    projectSearchApiResponse:
-      type: string
+  schemas: {}

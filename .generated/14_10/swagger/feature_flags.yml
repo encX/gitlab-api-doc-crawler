@@ -133,10 +133,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFeatureFlagResponse'
       tags:
         - feature_flags
 components:
@@ -332,5 +328,3 @@ components:
                       type: integer
                     environment_scope:
                       type: string
-    deleteAFeatureFlagResponse:
-      type: string

@@ -96,10 +96,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectEnvironmentResponse'
       tags:
         - protected_environments
 components:
@@ -191,5 +187,3 @@ components:
                 type: string
               required_approvals:
                 type: integer
-    unprotectEnvironmentResponse:
-      type: string

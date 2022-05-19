@@ -127,10 +127,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAFreezePeriodResponse'
       tags:
         - freeze_periods
 components:
@@ -218,5 +214,3 @@ components:
           type: string
         updated_at:
           type: string
-    deleteAFreezePeriodResponse:
-      type: string

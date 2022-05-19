@@ -93,10 +93,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARemoteMirrorResponse'
       tags:
         - remote_mirrors
 components:
@@ -217,5 +213,3 @@ components:
           type: string
         url:
           type: string
-    deleteARemoteMirrorResponse:
-      type: string

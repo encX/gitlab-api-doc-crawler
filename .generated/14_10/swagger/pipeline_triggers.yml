@@ -127,10 +127,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeAProjectTriggerResponse'
       tags:
         - pipeline_triggers
 components:
@@ -217,5 +213,3 @@ components:
           type: string
         owner:
           type: string
-    removeAProjectTriggerResponse:
-      type: string

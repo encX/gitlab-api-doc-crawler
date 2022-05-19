@@ -173,10 +173,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
@@ -418,10 +414,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMergeRequestLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approve':
@@ -477,10 +469,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unapproveMergeRequestResponse'
       tags:
         - merge_request_approvals
 components:
@@ -1062,8 +1050,6 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    deleteProjectLevelRuleResponse:
-      type: string
     changeApprovalConfigurationRequest:
       type: object
       properties:
@@ -1539,8 +1525,6 @@ components:
           type: boolean
         overridden:
           type: boolean
-    deleteMergeRequestLevelRuleResponse:
-      type: string
     approveMergeRequestRequest:
       type: object
       properties:
@@ -1593,5 +1577,3 @@ components:
                     type: string
                   web_url:
                     type: string
-    unapproveMergeRequestResponse:
-      type: string

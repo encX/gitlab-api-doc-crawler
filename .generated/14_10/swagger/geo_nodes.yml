@@ -91,10 +91,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGeoNodeResponse'
       tags:
         - geo_nodes
   '/geo_nodes/{id}/repair':
@@ -439,8 +435,6 @@ components:
               type: string
             repair:
               type: string
-    deleteAGeoNodeResponse:
-      type: string
     repairAGeoNodeResponse:
       type: object
       properties:

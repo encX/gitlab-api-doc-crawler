@@ -785,10 +785,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/reorder':
@@ -812,10 +808,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/reorderAnIssueResponse'
       requestBody:
         content:
           application/json:
@@ -1389,10 +1381,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMetricImageResponse'
       tags:
         - issues
 components:
@@ -2116,8 +2104,6 @@ components:
               type: integer
             completed_count:
               type: integer
-    deleteAnIssueResponse:
-      type: string
     reorderAnIssueRequest:
       type: object
       properties:
@@ -2125,8 +2111,6 @@ components:
           type: integer
         move_before_id:
           type: integer
-    reorderAnIssueResponse:
-      type: string
     moveAnIssueRequest:
       type: object
       properties:
@@ -3428,5 +3412,3 @@ components:
           type: string
         url_text:
           type: string
-    deleteMetricImageResponse:
-      type: string

@@ -231,10 +231,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteEpicResponse'
       tags:
         - epics
   '/groups/{id}/epics/{epic_iid}/todo':
@@ -709,8 +705,6 @@ components:
           type: integer
         color:
           type: string
-    deleteEpicResponse:
-      type: string
     createAToDoItemResponse:
       type: object
       properties:

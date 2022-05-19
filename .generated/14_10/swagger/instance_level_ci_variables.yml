@@ -97,10 +97,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/removeInstanceVariableResponse'
       tags:
         - instance_level_ci_variables
 components:
@@ -188,5 +184,3 @@ components:
           type: boolean
         masked:
           type: boolean
-    removeInstanceVariableResponse:
-      type: string

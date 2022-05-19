@@ -26,10 +26,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMergeRequestThreadResponse'
       requestBody:
         content:
           application/json:
@@ -74,5 +70,3 @@ components:
         - 'position[start_sha]'
         - 'position[head_sha]'
         - 'position[position_type]'
-    createNewMergeRequestThreadResponse:
-      type: string

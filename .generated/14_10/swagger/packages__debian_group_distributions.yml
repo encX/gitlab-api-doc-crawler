@@ -139,10 +139,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteADebianGroupDistributionResponse'
       tags:
         - packages__debian_group_distributions
   '/groups/{id}/debian_distributions/{codename}/key.asc':
@@ -166,10 +162,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleDebianGroupDistributionKeyResponse'
       tags:
         - packages__debian_group_distributions
 components:
@@ -230,8 +222,6 @@ components:
           type: array
           items:
             type: string
-    singleDebianGroupDistributionKeyResponse:
-      type: string
     createADebianGroupDistributionRequest:
       type: object
       properties:
@@ -320,5 +310,3 @@ components:
           type: array
           items:
             type: string
-    deleteADebianGroupDistributionResponse:
-      type: string

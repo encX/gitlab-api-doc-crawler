@@ -146,10 +146,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteDeployKeyResponse'
       tags:
         - deploy_keys
 components:
@@ -261,5 +257,3 @@ components:
           type: string
         can_push:
           type: boolean
-    deleteDeployKeyResponse:
-      type: string

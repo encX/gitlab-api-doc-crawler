@@ -97,10 +97,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSnippetResponse'
       tags:
         - snippets
   '/snippets/{id}/raw':
@@ -118,10 +114,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/singleSnippetContentsResponse'
       tags:
         - snippets
   '/snippets/{id}/files/{ref}/{file_path}/raw':
@@ -151,10 +143,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/snippetRepositoryFileContentResponse'
       tags:
         - snippets
   /snippets/public:
@@ -287,10 +275,6 @@ components:
           type: string
         raw_url:
           type: string
-    singleSnippetContentsResponse:
-      type: string
-    snippetRepositoryFileContentResponse:
-      type: string
     createNewSnippetRequest:
       type: object
       properties:
@@ -451,8 +435,6 @@ components:
                 type: string
               file_path:
                 type: string
-    deleteSnippetResponse:
-      type: string
     listAllPublicSnippetsResponse:
       type: array
       items:

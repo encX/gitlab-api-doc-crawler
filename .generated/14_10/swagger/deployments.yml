@@ -158,10 +158,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listOfMergeRequestsAssociatedWithADeploymentResponse'
       tags:
         - deployments
   '/projects/{id}/deployments/{deployment_id}/approval':
@@ -651,8 +647,6 @@ components:
               type: string
         deployable:
           type: string
-    listOfMergeRequestsAssociatedWithADeploymentResponse:
-      type: string
     approveOrRejectABlockedDeploymentRequest:
       type: object
       properties:

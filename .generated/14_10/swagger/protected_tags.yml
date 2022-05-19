@@ -96,10 +96,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectRepositoryTagsResponse'
       tags:
         - protected_tags
 components:
@@ -157,5 +153,3 @@ components:
                 type: integer
               access_level_description:
                 type: string
-    unprotectRepositoryTagsResponse:
-      type: string

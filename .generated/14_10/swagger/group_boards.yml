@@ -127,10 +127,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupIssueBoardResponse'
       tags:
         - group_boards
   '/groups/{id}/boards/{board_id}/lists':
@@ -287,10 +283,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupIssueBoardListResponse'
       tags:
         - group_boards
 components:
@@ -509,8 +501,6 @@ components:
                 type: string
         weight:
           type: integer
-    deleteAGroupIssueBoardResponse:
-      type: string
     listGroupIssueBoardListsResponse:
       type: array
       items:
@@ -609,5 +599,3 @@ components:
               type: string
         position:
           type: integer
-    deleteAGroupIssueBoardListResponse:
-      type: string

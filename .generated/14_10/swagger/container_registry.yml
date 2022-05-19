@@ -163,10 +163,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRegistryRepositoryResponse'
       tags:
         - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags':
@@ -250,10 +246,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRegistryRepositoryTagsInBulkResponse'
       tags:
         - container_registry
   '/projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}':
@@ -315,10 +307,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARegistryRepositoryTagResponse'
       tags:
         - container_registry
   /v2/_catalog:
@@ -330,10 +318,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listingAllContainerRepositoriesResponse'
       tags:
         - container_registry
 components:
@@ -427,8 +411,6 @@ components:
                 type: string
         size:
           type: integer
-    deleteRegistryRepositoryResponse:
-      type: string
     getDetailsOfARegistryRepositoryTagResponse:
       type: object
       properties:
@@ -448,9 +430,3 @@ components:
           type: string
         total_size:
           type: integer
-    deleteARegistryRepositoryTagResponse:
-      type: string
-    deleteRegistryRepositoryTagsInBulkResponse:
-      type: string
-    listingAllContainerRepositoriesResponse:
-      type: string

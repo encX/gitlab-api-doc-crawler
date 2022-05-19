@@ -92,10 +92,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteSystemHookResponse'
       tags:
         - system_hooks
 components:
@@ -197,5 +193,3 @@ components:
           type: string
         event_name:
           type: string
-    deleteSystemHookResponse:
-      type: string

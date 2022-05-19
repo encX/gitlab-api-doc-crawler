@@ -117,10 +117,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectTopicResponse'
       tags:
         - topics
   /projects:
@@ -132,10 +128,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listProjectsAssignedToATopicResponse'
       tags:
         - topics
 components:
@@ -168,8 +160,6 @@ components:
           type: integer
         avatar_url:
           type: string
-    listProjectsAssignedToATopicResponse:
-      type: string
     createAProjectTopicRequest:
       type: object
       properties:
@@ -210,5 +200,3 @@ components:
           type: integer
         avatar_url:
           type: string
-    deleteAProjectTopicResponse:
-      type: string

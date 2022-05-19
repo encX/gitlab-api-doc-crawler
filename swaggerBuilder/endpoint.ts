@@ -6,6 +6,7 @@ import {
   PathsObject,
   PropertiesObject,
   RequestBodyObject,
+  ResponseObject,
   ResponsesObject,
   SchemaObject,
 } from "../types/OpenAPIV3.ts";
@@ -119,17 +120,27 @@ export class Endpoint {
     this.pathParams.some((p) => p === param);
 
   private setResponse(): ResponsesObject {
-    const schemaName = `${this.operationId}Response`;
-    this.response = { [schemaName]: parseSchema(this.api.response) };
-    return {
-      "200": {
-        description: "successful operation",
-        content: {
-          "application/json": {
-            schema: { $ref: `#/components/schemas/${schemaName}` },
-          },
-        },
-      },
+    const responseBase: ResponseObject = {
+      description: "successful operation",
     };
+
+    if (!this.api.response) return { "200": responseBase };
+
+    const schemaName = `${this.operationId}Response`;
+    const schema = parseSchema(this.api.response);
+
+    if (
+      schema.type !== "object" ||
+      Object.keys(schema.properties ?? {}).length > 0
+    ) {
+      responseBase.content = {
+        "application/json": {
+          schema: { $ref: `#/components/schemas/${schemaName}` },
+        },
+      };
+
+      this.response = { [schemaName]: schema };
+    }
+    return { "200": responseBase };
   }
 }

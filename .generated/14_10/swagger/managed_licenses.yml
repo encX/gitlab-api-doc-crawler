@@ -96,10 +96,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAManagedLicenseResponse'
       tags:
         - managed_licenses
     patch:
@@ -174,8 +170,6 @@ components:
           type: string
         approval_status:
           type: string
-    deleteAManagedLicenseResponse:
-      type: string
     editAnExistingManagedLicenseRequest:
       type: object
       properties:

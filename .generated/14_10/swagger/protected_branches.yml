@@ -104,10 +104,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/unprotectRepositoryBranchesResponse'
       tags:
         - protected_branches
     patch:
@@ -130,10 +126,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/requireCodeOwnerApprovalsForASingleBranchResponse'
       requestBody:
         content:
           application/json:
@@ -266,12 +258,8 @@ components:
           type: boolean
         code_owner_approval_required:
           type: boolean
-    unprotectRepositoryBranchesResponse:
-      type: string
     requireCodeOwnerApprovalsForASingleBranchRequest:
       type: object
       properties:
         code_owner_approval_required:
           type: boolean
-    requireCodeOwnerApprovalsForASingleBranchResponse:
-      type: string

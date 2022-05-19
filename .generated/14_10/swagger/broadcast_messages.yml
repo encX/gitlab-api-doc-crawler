@@ -97,10 +97,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteABroadcastMessageResponse'
       tags:
         - broadcast_messages
 components:
@@ -267,5 +263,3 @@ components:
           type: string
         dismissable:
           type: boolean
-    deleteABroadcastMessageResponse:
-      type: string

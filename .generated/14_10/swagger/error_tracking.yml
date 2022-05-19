@@ -113,10 +113,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAClientKeyResponse'
       tags:
         - error_tracking
 components:
@@ -180,5 +176,3 @@ components:
           type: string
         sentry_dsn:
           type: string
-    deleteAClientKeyResponse:
-      type: string

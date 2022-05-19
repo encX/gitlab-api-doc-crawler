@@ -175,10 +175,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupLabelResponse'
       tags:
         - group_labels
   '/groups/{id}/labels/{label_id}/subscribe':
@@ -356,8 +352,6 @@ components:
           type: integer
         subscribed:
           type: boolean
-    deleteAGroupLabelResponse:
-      type: string
     subscribeToAGroupLabelResponse:
       type: object
       properties:

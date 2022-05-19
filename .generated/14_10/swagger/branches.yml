@@ -104,10 +104,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteRepositoryBranchResponse'
       tags:
         - branches
   '/projects/{id}/repository/merged_branches':
@@ -125,10 +121,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteMergedBranchesResponse'
       tags:
         - branches
 components:
@@ -283,7 +275,3 @@ components:
           type: boolean
         web_url:
           type: string
-    deleteRepositoryBranchResponse:
-      type: string
-    deleteMergedBranchesResponse:
-      type: string

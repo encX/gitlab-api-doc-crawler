@@ -144,10 +144,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAPipelineResponse'
       tags:
         - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/variables':
@@ -668,5 +664,3 @@ components:
           type: string
         web_url:
           type: string
-    deleteAPipelineResponse:
-      type: string

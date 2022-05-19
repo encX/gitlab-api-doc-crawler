@@ -123,10 +123,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAnInvitationToAGroupOrProjectResponse'
       tags:
         - invitations
 components:
@@ -201,5 +197,3 @@ components:
           type: string
         access_level:
           type: integer
-    deleteAnInvitationToAGroupOrProjectResponse:
-      type: string

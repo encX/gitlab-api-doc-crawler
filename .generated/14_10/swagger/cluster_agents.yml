@@ -197,10 +197,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteARegisteredAgentResponse'
       tags:
         - cluster_agents
 components:
@@ -314,5 +310,3 @@ components:
           type: string
         created_by_user_id:
           type: integer
-    deleteARegisteredAgentResponse:
-      type: string

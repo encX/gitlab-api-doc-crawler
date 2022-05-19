@@ -97,10 +97,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/denyAnAccessRequestResponse'
       tags:
         - access_requests
 components:
@@ -157,5 +153,3 @@ components:
           type: string
         access_level:
           type: integer
-    denyAnAccessRequestResponse:
-      type: string

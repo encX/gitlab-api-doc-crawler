@@ -68,10 +68,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/createNewMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -100,10 +96,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMilestoneResponse'
       tags:
         - milestones
     put:
@@ -126,10 +118,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/editMilestoneResponse'
       requestBody:
         content:
           application/json:
@@ -157,10 +145,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteProjectMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/issues':
@@ -184,10 +168,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllIssuesAssignedToASingleMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/merge_requests':
@@ -211,10 +191,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllMergeRequestsAssignedToASingleMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/promote':
@@ -238,10 +214,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/promoteProjectMilestoneToAGroupMilestoneResponse'
       tags:
         - milestones
   '/projects/{id}/milestones/{milestone_id}/burndown_events':
@@ -265,10 +237,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllBurndownChartEventsForASingleMilestoneResponse'
       tags:
         - milestones
 components:
@@ -300,8 +268,6 @@ components:
             type: string
           expired:
             type: boolean
-    getSingleMilestoneResponse:
-      type: string
     createNewMilestoneRequest:
       type: object
       properties:
@@ -315,8 +281,6 @@ components:
           type: string
       required:
         - title
-    createNewMilestoneResponse:
-      type: string
     editMilestoneRequest:
       type: object
       properties:
@@ -330,15 +294,3 @@ components:
           type: string
         state_event:
           type: string
-    editMilestoneResponse:
-      type: string
-    deleteProjectMilestoneResponse:
-      type: string
-    getAllIssuesAssignedToASingleMilestoneResponse:
-      type: string
-    getAllMergeRequestsAssignedToASingleMilestoneResponse:
-      type: string
-    promoteProjectMilestoneToAGroupMilestoneResponse:
-      type: string
-    getAllBurndownChartEventsForASingleMilestoneResponse:
-      type: string

@@ -111,10 +111,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/updatePagesDomainResponse'
       requestBody:
         content:
           application/json:
@@ -142,10 +138,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deletePagesDomainResponse'
       tags:
         - pages_domains
 components:
@@ -233,7 +225,3 @@ components:
       properties:
         auto_ssl_enabled:
           type: boolean
-    updatePagesDomainResponse:
-      type: string
-    deletePagesDomainResponse:
-      type: string

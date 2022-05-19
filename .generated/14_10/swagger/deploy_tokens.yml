@@ -123,10 +123,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAProjectDeployTokenResponse'
       tags:
         - deploy_tokens
   '/groups/{id}/deploy_tokens':
@@ -228,10 +224,6 @@ paths:
       responses:
         '200':
           description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteAGroupDeployTokenResponse'
       tags:
         - deploy_tokens
 components:
@@ -332,8 +324,6 @@ components:
           type: array
           items:
             type: string
-    deleteAProjectDeployTokenResponse:
-      type: string
     listGroupDeployTokensResponse:
       type: array
       items:
@@ -409,5 +399,3 @@ components:
           type: array
           items:
             type: string
-    deleteAGroupDeployTokenResponse:
-      type: string
