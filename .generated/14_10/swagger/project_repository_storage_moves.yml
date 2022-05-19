@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForAProjectResponse'
+                $ref: '#/components/schemas/retrieveAllProjectRepositoryStorageMovesResponse'
       tags:
         - project_repository_storage_moves
     post:
@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAProjectResponse'
+                $ref: '#/components/schemas/getASingleProjectRepositoryStorageMoveResponse'
       requestBody:
         content:
           application/json:
@@ -128,44 +128,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAProjectResponse'
+                $ref: '#/components/schemas/getASingleProjectRepositoryStorageMoveResponse'
       tags:
         - project_repository_storage_moves
 components:
   schemas:
     retrieveAllProjectRepositoryStorageMovesResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          project:
-            type: object
-            properties:
-              id:
-                type: integer
-              description:
-                type: string
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-              created_at:
-                type: string
-    retrieveAllRepositoryStorageMovesForAProjectResponse:
       type: array
       items:
         type: object
@@ -227,71 +195,11 @@ components:
               type: string
             created_at:
               type: string
-    getASingleRepositoryStorageMoveForAProjectResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            description:
-              type: string
-            name:
-              type: string
-            name_with_namespace:
-              type: string
-            path:
-              type: string
-            path_with_namespace:
-              type: string
-            created_at:
-              type: string
     scheduleARepositoryStorageMoveForAProjectRequest:
       type: object
       properties:
         destination_storage_name:
           type: string
-    scheduleARepositoryStorageMoveForAProjectResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            description:
-              type: string
-            name:
-              type: string
-            name_with_namespace:
-              type: string
-            path:
-              type: string
-            path_with_namespace:
-              type: string
-            created_at:
-              type: string
     scheduleRepositoryStorageMovesForAllProjectsOnAStorageShardRequest:
       type: object
       properties:

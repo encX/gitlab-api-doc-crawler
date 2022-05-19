@@ -53,7 +53,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createADebianGroupDistributionResponse'
+                $ref: '#/components/schemas/singleDebianGroupDistributionResponse'
       requestBody:
         content:
           application/json:
@@ -111,7 +111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateADebianGroupDistributionResponse'
+                $ref: '#/components/schemas/singleDebianGroupDistributionResponse'
       requestBody:
         content:
           application/json:
@@ -241,33 +241,6 @@ components:
           type: integer
       required:
         - codename
-    createADebianGroupDistributionResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        codename:
-          type: string
-        suite:
-          type: string
-        origin:
-          type: string
-        label:
-          type: string
-        version:
-          type: string
-        description:
-          type: string
-        valid_time_duration_seconds:
-          type: string
-        components:
-          type: array
-          items:
-            type: string
-        architectures:
-          type: array
-          items:
-            type: string
     updateADebianGroupDistributionRequest:
       type: object
       properties:
@@ -283,30 +256,3 @@ components:
           type: string
         valid_time_duration_seconds:
           type: integer
-    updateADebianGroupDistributionResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        codename:
-          type: string
-        suite:
-          type: string
-        origin:
-          type: string
-        label:
-          type: string
-        version:
-          type: string
-        description:
-          type: string
-        valid_time_duration_seconds:
-          type: integer
-        components:
-          type: array
-          items:
-            type: string
-        architectures:
-          type: array
-          items:
-            type: string

@@ -48,7 +48,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectDeployTokensResponse'
+                $ref: '#/components/schemas/listAllDeployTokensResponse'
       tags:
         - deploy_tokens
     post:
@@ -149,7 +149,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listGroupDeployTokensResponse'
+                $ref: '#/components/schemas/listAllDeployTokensResponse'
       tags:
         - deploy_tokens
     post:
@@ -169,12 +169,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAGroupDeployTokenResponse'
+                $ref: '#/components/schemas/createAProjectDeployTokenResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createAGroupDeployTokenRequest'
+              $ref: '#/components/schemas/createAProjectDeployTokenRequest'
       tags:
         - deploy_tokens
   '/groups/{id}/deploy_tokens/{token_id}':
@@ -201,7 +201,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getAGroupDeployTokenResponse'
+                $ref: '#/components/schemas/getAProjectDeployTokenResponse'
       tags:
         - deploy_tokens
     delete:
@@ -229,27 +229,6 @@ paths:
 components:
   schemas:
     listAllDeployTokensResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          expires_at:
-            type: string
-          revoked:
-            type: boolean
-          expired:
-            type: boolean
-          scopes:
-            type: array
-            items:
-              type: string
-    listProjectDeployTokensResponse:
       type: array
       items:
         type: object
@@ -304,81 +283,6 @@ components:
           items:
             type: string
     createAProjectDeployTokenResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        username:
-          type: string
-        expires_at:
-          type: string
-        token:
-          type: string
-        revoked:
-          type: boolean
-        expired:
-          type: boolean
-        scopes:
-          type: array
-          items:
-            type: string
-    listGroupDeployTokensResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          expires_at:
-            type: string
-          revoked:
-            type: boolean
-          expired:
-            type: boolean
-          scopes:
-            type: array
-            items:
-              type: string
-    getAGroupDeployTokenResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        username:
-          type: string
-        expires_at:
-          type: string
-        revoked:
-          type: boolean
-        expired:
-          type: boolean
-        scopes:
-          type: array
-          items:
-            type: string
-    createAGroupDeployTokenRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        expires_at:
-          type: string
-          format: date-time
-        username:
-          type: string
-        scopes:
-          type: array
-          items:
-            type: string
-    createAGroupDeployTokenResponse:
       type: object
       properties:
         id:

@@ -123,7 +123,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAReleaseResponse'
+                $ref: '#/components/schemas/createAReleaseResponse'
       requestBody:
         content:
           application/json:
@@ -637,121 +637,6 @@ components:
         released_at:
           type: string
           format: date-time
-    updateAReleaseResponse:
-      type: object
-      properties:
-        tag_name:
-          type: string
-        description:
-          type: string
-        name:
-          type: string
-        created_at:
-          type: string
-        released_at:
-          type: string
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        commit:
-          type: object
-          properties:
-            id:
-              type: string
-            short_id:
-              type: string
-            title:
-              type: string
-            created_at:
-              type: string
-            parent_ids:
-              type: array
-              items: {}
-            message:
-              type: string
-            author_name:
-              type: string
-            author_email:
-              type: string
-            authored_date:
-              type: string
-            committer_name:
-              type: string
-            committer_email:
-              type: string
-            committed_date:
-              type: string
-        milestones:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              iid:
-                type: integer
-              project_id:
-                type: integer
-              title:
-                type: string
-              description:
-                type: string
-              state:
-                type: string
-              created_at:
-                type: string
-              updated_at:
-                type: string
-              due_date:
-                type: string
-              start_date:
-                type: string
-              web_url:
-                type: string
-              issue_stats:
-                type: object
-                properties:
-                  opened:
-                    type: integer
-                  closed:
-                    type: integer
-        commit_path:
-          type: string
-        tag_path:
-          type: string
-        evidence_sha:
-          type: string
-        assets:
-          type: object
-          properties:
-            count:
-              type: integer
-            sources:
-              type: array
-              items:
-                type: object
-                properties:
-                  format:
-                    type: string
-                  url:
-                    type: string
-            links:
-              type: array
-              items: {}
-            evidence_file_path:
-              type: string
     deleteAReleaseResponse:
       type: object
       properties:

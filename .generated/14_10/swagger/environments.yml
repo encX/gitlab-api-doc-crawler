@@ -136,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAnExistingEnvironmentResponse'
+                $ref: '#/components/schemas/createANewEnvironmentResponse'
       requestBody:
         content:
           application/json:
@@ -213,7 +213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/stopAnEnvironmentResponse'
+                $ref: '#/components/schemas/createANewEnvironmentResponse'
       tags:
         - environments
 components:
@@ -427,23 +427,6 @@ components:
           type: string
       required:
         - environment_id
-    editAnExistingEnvironmentResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        slug:
-          type: string
-        external_url:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
     deleteMultipleStoppedReviewAppsResponse:
       type: object
       properties:
@@ -463,20 +446,3 @@ components:
         unprocessable_entries:
           type: array
           items: {}
-    stopAnEnvironmentResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        slug:
-          type: string
-        external_url:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string

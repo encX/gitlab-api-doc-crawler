@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/changePlanLimitsResponse'
+                $ref: '#/components/schemas/getCurrentPlanLimitsResponse'
       requestBody:
         content:
           application/json:
@@ -87,22 +87,3 @@ components:
           type: integer
       required:
         - plan_name
-    changePlanLimitsResponse:
-      type: object
-      properties:
-        conan_max_file_size:
-          type: integer
-        generic_packages_max_file_size:
-          type: integer
-        helm_max_file_size:
-          type: integer
-        maven_max_file_size:
-          type: integer
-        npm_max_file_size:
-          type: integer
-        nuget_max_file_size:
-          type: integer
-        pypi_max_file_size:
-          type: integer
-        terraform_module_max_file_size:
-          type: integer

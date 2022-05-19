@@ -95,7 +95,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAnInvitationToAGroupOrProjectResponse'
+                $ref: '#/components/schemas/updateAnInvitationToAGroupOrProjectRequest'
       requestBody:
         content:
           application/json:
@@ -190,10 +190,3 @@ components:
           type: integer
         expires_at:
           type: string
-    updateAnInvitationToAGroupOrProjectResponse:
-      type: object
-      properties:
-        expires_at:
-          type: string
-        access_level:
-          type: integer

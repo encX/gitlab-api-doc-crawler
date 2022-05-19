@@ -95,7 +95,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateSnippetResponse'
+                $ref: '#/components/schemas/createNewSnippetResponse'
       requestBody:
         content:
           application/json:
@@ -320,26 +320,6 @@ components:
           type: string
       required:
         - 'files:action'
-    updateSnippetResponse:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        visibility:
-          type: string
-        files:
-          type: array
-          items:
-            type: object
-            properties:
-              action:
-                type: string
-              file_path:
-                type: string
-              content:
-                type: string
     getUserAgentDetailsResponse:
       type: object
       properties:

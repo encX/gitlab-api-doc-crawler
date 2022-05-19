@@ -135,7 +135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAllRunnersResponse'
+                $ref: '#/components/schemas/listOwnedRunnersResponse'
       tags:
         - runners
   '/runners/{id}':
@@ -293,7 +293,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectRunnersResponse'
+                $ref: '#/components/schemas/listOwnedRunnersResponse'
       tags:
         - runners
     post:
@@ -392,7 +392,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listGroupRunnersResponse'
+                $ref: '#/components/schemas/listOwnedRunnersResponse'
       tags:
         - runners
   /runners/verify:
@@ -477,42 +477,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheCurrentTokenResponse'
+                $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/resetRunnerAuthenticationTokenByUsingTheCurrentTokenRequest'
+              $ref: '#/components/schemas/verifyAuthenticationForARegisteredRunnerRequest'
       tags:
         - runners
 components:
   schemas:
     listOwnedRunnersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          active:
-            type: boolean
-          paused:
-            type: boolean
-          description:
-            type: string
-          id:
-            type: integer
-          ip_address:
-            type: string
-          is_shared:
-            type: boolean
-          runner_type:
-            type: string
-          name:
-            type: string
-          online:
-            type: boolean
-          status:
-            type: string
-    listAllRunnersResponse:
       type: array
       items:
         type: object
@@ -783,31 +758,6 @@ components:
                 type: string
               created_at:
                 type: string
-    listProjectRunnersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          active:
-            type: boolean
-          paused:
-            type: boolean
-          description:
-            type: string
-          id:
-            type: integer
-          ip_address:
-            type: string
-          is_shared:
-            type: boolean
-          runner_type:
-            type: string
-          name:
-            type: string
-          online:
-            type: boolean
-          status:
-            type: string
     enableARunnerInProjectRequest:
       type: object
       properties:
@@ -836,31 +786,6 @@ components:
           type: boolean
         status:
           type: string
-    listGroupRunnersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          description:
-            type: string
-          ip_address:
-            type: string
-          active:
-            type: boolean
-          paused:
-            type: boolean
-          is_shared:
-            type: boolean
-          runner_type:
-            type: string
-          name:
-            type: string
-          online:
-            type: string
-          status:
-            type: string
     registerANewRunnerRequest:
       type: object
       properties:
@@ -907,20 +832,6 @@ components:
       required:
         - token
     resetRunnerAuthenticationTokenByUsingTheRunnerIdResponse:
-      type: object
-      properties:
-        token:
-          type: string
-        token_expires_at:
-          type: string
-    resetRunnerAuthenticationTokenByUsingTheCurrentTokenRequest:
-      type: object
-      properties:
-        token:
-          type: string
-      required:
-        - token
-    resetRunnerAuthenticationTokenByUsingTheCurrentTokenResponse:
       type: object
       properties:
         token:

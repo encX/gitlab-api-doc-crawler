@@ -658,7 +658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectIssuesResponse'
+                $ref: '#/components/schemas/listGroupIssuesResponse'
       tags:
         - issues
     post:
@@ -678,7 +678,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/newIssueResponse'
+                $ref: '#/components/schemas/singleProjectIssueResponse'
       requestBody:
         content:
           application/json:
@@ -909,7 +909,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/subscribeToAnIssueResponse'
+                $ref: '#/components/schemas/moveAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/unsubscribe':
@@ -1058,7 +1058,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resetTheTimeEstimateForAnIssueResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/add_spent_time':
@@ -1085,7 +1085,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addSpentTimeForAnIssueResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAnIssueResponse'
       requestBody:
         content:
           application/json:
@@ -1117,7 +1117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resetSpentTimeForAnIssueResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/time_stats':
@@ -1146,7 +1146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTimeTrackingStatsResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAnIssueResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/related_merge_requests':
@@ -1347,12 +1347,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateMetricImageResponse'
+                $ref: '#/components/schemas/uploadMetricImageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateMetricImageRequest'
+              $ref: '#/components/schemas/uploadMetricImageRequest'
       tags:
         - issues
     delete:
@@ -1397,17 +1397,6 @@ components:
           health_status:
             type: string
     listGroupIssuesResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          project_id:
-            type: integer
-          description:
-            type: string
-          health_status:
-            type: string
-    listProjectIssuesResponse:
       type: array
       items:
         type: object
@@ -1800,134 +1789,6 @@ components:
           type: integer
       required:
         - title
-    newIssueResponse:
-      type: object
-      properties:
-        project_id:
-          type: integer
-        description:
-          type: string
-        epic_iid:
-          type: integer
-        epic:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            title:
-              type: string
-            url:
-              type: string
-            group_id:
-              type: integer
-        weight:
-          type: string
-        id:
-          type: integer
-        created_at:
-          type: string
-        iid:
-          type: integer
-        title:
-          type: string
-        state:
-          type: string
-        assignees:
-          type: array
-          items: {}
-        assignee:
-          type: string
-        type:
-          type: string
-        labels:
-          type: array
-          items:
-            type: string
-        upvotes:
-          type: integer
-        downvotes:
-          type: integer
-        merge_requests_count:
-          type: integer
-        author:
-          type: object
-          properties:
-            name:
-              type: string
-            avatar_url:
-              type: string
-            state:
-              type: string
-            web_url:
-              type: string
-            id:
-              type: integer
-            username:
-              type: string
-        updated_at:
-          type: string
-        closed_at:
-          type: string
-        closed_by:
-          type: string
-        milestone:
-          type: string
-        subscribed:
-          type: boolean
-        user_notes_count:
-          type: integer
-        due_date:
-          type: string
-        web_url:
-          type: string
-        references:
-          type: object
-          properties:
-            short:
-              type: string
-            relative:
-              type: string
-            full:
-              type: string
-        time_stats:
-          type: object
-          properties:
-            time_estimate:
-              type: integer
-            total_time_spent:
-              type: integer
-            human_time_estimate:
-              type: string
-            human_total_time_spent:
-              type: string
-        confidential:
-          type: boolean
-        discussion_locked:
-          type: boolean
-        issue_type:
-          type: string
-        severity:
-          type: string
-        _links:
-          type: object
-          properties:
-            self:
-              type: string
-            notes:
-              type: string
-            award_emoji:
-              type: string
-            project:
-              type: string
-        task_completion_status:
-          type: object
-          properties:
-            count:
-              type: integer
-            completed_count:
-              type: integer
     editIssueRequest:
       type: object
       properties:
@@ -2420,156 +2281,6 @@ components:
           type: string
         service_desk_reply_to:
           type: string
-    subscribeToAnIssueResponse:
-      type: object
-      properties:
-        project_id:
-          type: integer
-        description:
-          type: string
-        epic_iid:
-          type: integer
-        epic:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            title:
-              type: string
-            url:
-              type: string
-            group_id:
-              type: integer
-        weight:
-          type: string
-        id:
-          type: integer
-        iid:
-          type: integer
-        title:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        closed_at:
-          type: string
-        closed_by:
-          type: string
-        labels:
-          type: array
-          items: {}
-        upvotes:
-          type: integer
-        downvotes:
-          type: integer
-        merge_requests_count:
-          type: integer
-        milestone:
-          type: string
-        assignees:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        assignee:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        type:
-          type: string
-        author:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        due_date:
-          type: string
-        web_url:
-          type: string
-        references:
-          type: object
-          properties:
-            short:
-              type: string
-            relative:
-              type: string
-            full:
-              type: string
-        time_stats:
-          type: object
-          properties:
-            time_estimate:
-              type: integer
-            total_time_spent:
-              type: integer
-            human_time_estimate:
-              type: string
-            human_total_time_spent:
-              type: string
-        confidential:
-          type: boolean
-        discussion_locked:
-          type: boolean
-        issue_type:
-          type: string
-        severity:
-          type: string
-        _links:
-          type: object
-          properties:
-            self:
-              type: string
-            notes:
-              type: string
-            award_emoji:
-              type: string
-            project:
-              type: string
-        task_completion_status:
-          type: object
-          properties:
-            count:
-              type: integer
-            completed_count:
-              type: integer
     unsubscribeFromAnIssueResponse:
       type: object
       properties:
@@ -2913,17 +2624,6 @@ components:
           type: integer
         total_time_spent:
           type: integer
-    resetTheTimeEstimateForAnIssueResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
     addSpentTimeForAnIssueRequest:
       type: object
       properties:
@@ -2933,39 +2633,6 @@ components:
           type: string
       required:
         - duration
-    addSpentTimeForAnIssueResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
-    resetSpentTimeForAnIssueResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
-    getTimeTrackingStatsResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
     listMergeRequestsRelatedToIssueResponse:
       type: array
       items:
@@ -3390,25 +3057,3 @@ components:
             type: string
           url:
             type: string
-    updateMetricImageRequest:
-      type: object
-      properties:
-        url:
-          type: string
-        url_text:
-          type: string
-    updateMetricImageResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        filename:
-          type: string
-        file_path:
-          type: string
-        url:
-          type: string
-        url_text:
-          type: string

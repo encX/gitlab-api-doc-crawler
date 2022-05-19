@@ -49,7 +49,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createRepositoryBranchResponse'
+                $ref: '#/components/schemas/getSingleRepositoryBranchResponse'
       requestBody:
         content:
           application/json:
@@ -229,49 +229,3 @@ components:
       required:
         - branch
         - ref
-    createRepositoryBranchResponse:
-      type: object
-      properties:
-        commit:
-          type: object
-          properties:
-            author_email:
-              type: string
-            author_name:
-              type: string
-            authored_date:
-              type: string
-            committed_date:
-              type: string
-            committer_email:
-              type: string
-            committer_name:
-              type: string
-            id:
-              type: string
-            short_id:
-              type: string
-            title:
-              type: string
-            message:
-              type: string
-            parent_ids:
-              type: array
-              items:
-                type: string
-        name:
-          type: string
-        merged:
-          type: boolean
-        protected:
-          type: boolean
-        default:
-          type: boolean
-        developers_can_push:
-          type: boolean
-        developers_can_merge:
-          type: boolean
-        can_push:
-          type: boolean
-        web_url:
-          type: string

@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForASingleGroupResponse'
+                $ref: '#/components/schemas/retrieveAllGroupRepositoryStorageMovesResponse'
       tags:
         - group_repository_storage_moves
     post:
@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/scheduleARepositoryStorageMoveForAGroupResponse'
+                $ref: '#/components/schemas/getASingleGroupRepositoryStorageMoveResponse'
       requestBody:
         content:
           application/json:
@@ -132,36 +132,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleRepositoryStorageMoveForAGroupResponse'
+                $ref: '#/components/schemas/getASingleGroupRepositoryStorageMoveResponse'
       tags:
         - group_repository_storage_moves
 components:
   schemas:
     retrieveAllGroupRepositoryStorageMovesResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          group:
-            type: object
-            properties:
-              id:
-                type: integer
-              web_url:
-                type: string
-              name:
-                type: string
-    retrieveAllRepositoryStorageMovesForASingleGroupResponse:
       type: array
       items:
         type: object
@@ -207,55 +183,11 @@ components:
               type: string
             name:
               type: string
-    getASingleRepositoryStorageMoveForAGroupResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        group:
-          type: object
-          properties:
-            id:
-              type: integer
-            web_url:
-              type: string
-            name:
-              type: string
     scheduleARepositoryStorageMoveForAGroupRequest:
       type: object
       properties:
         destination_storage_name:
           type: string
-    scheduleARepositoryStorageMoveForAGroupResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        group:
-          type: object
-          properties:
-            id:
-              type: integer
-            web_url:
-              type: string
-            name:
-              type: string
     scheduleRepositoryStorageMovesForAllGroupsOnAStorageShardRequest:
       type: object
       properties:

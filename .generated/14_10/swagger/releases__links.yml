@@ -123,12 +123,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateALinkResponse'
+                $ref: '#/components/schemas/getALinkResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateALinkRequest'
+              $ref: '#/components/schemas/createALinkRequest'
       tags:
         - releases__links
     delete:
@@ -160,7 +160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleteALinkResponse'
+                $ref: '#/components/schemas/getALinkResponse'
       tags:
         - releases__links
 components:
@@ -217,43 +217,6 @@ components:
         url:
           type: string
         direct_asset_url:
-          type: string
-        external:
-          type: boolean
-        link_type:
-          type: string
-    updateALinkRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-        filepath:
-          type: string
-        link_type:
-          type: string
-    updateALinkResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        external:
-          type: boolean
-        link_type:
-          type: string
-    deleteALinkResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
           type: string
         external:
           type: boolean

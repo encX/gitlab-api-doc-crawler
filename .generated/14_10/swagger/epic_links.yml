@@ -130,7 +130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reOrderAChildEpicResponse'
+                $ref: '#/components/schemas/listEpicsRelatedToAGivenEpicResponse'
       requestBody:
         content:
           application/json:
@@ -169,7 +169,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/unassignAChildEpicResponse'
+                $ref: '#/components/schemas/assignAChildEpicResponse'
       tags:
         - epic_links
 components:
@@ -333,123 +333,3 @@ components:
           type: integer
         move_after_id:
           type: integer
-    reOrderAChildEpicResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          iid:
-            type: integer
-          group_id:
-            type: integer
-          parent_id:
-            type: integer
-          title:
-            type: string
-          description:
-            type: string
-          author:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          start_date:
-            type: string
-          start_date_is_fixed:
-            type: boolean
-          start_date_fixed:
-            type: string
-          start_date_from_milestones:
-            type: string
-          start_date_from_inherited_source:
-            type: string
-          end_date:
-            type: string
-          due_date:
-            type: string
-          due_date_is_fixed:
-            type: boolean
-          due_date_fixed:
-            type: string
-          due_date_from_milestones:
-            type: string
-          due_date_from_inherited_source:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          labels:
-            type: array
-            items: {}
-    unassignAChildEpicResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        group_id:
-          type: integer
-        parent_id:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        start_date:
-          type: string
-        start_date_is_fixed:
-          type: boolean
-        start_date_fixed:
-          type: string
-        start_date_from_milestones:
-          type: string
-        start_date_from_inherited_source:
-          type: string
-        end_date:
-          type: string
-        due_date:
-          type: string
-        due_date_is_fixed:
-          type: boolean
-        due_date_fixed:
-          type: string
-        due_date_from_milestones:
-          type: string
-        due_date_from_inherited_source:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        labels:
-          type: array
-          items: {}

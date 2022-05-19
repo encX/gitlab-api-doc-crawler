@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveAllRepositoryStorageMovesForASnippetResponse'
+                $ref: '#/components/schemas/retrieveAllSnippetRepositoryStorageMovesResponse'
       tags:
         - snippet_repository_storage_moves
     post:
@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/scheduleARepositoryStorageMoveForASnippetResponse'
+                $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
       requestBody:
         content:
           application/json:
@@ -128,52 +128,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleRepositoryStorageMoveForASnippetResponse'
+                $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
       tags:
         - snippet_repository_storage_moves
 components:
   schemas:
     retrieveAllSnippetRepositoryStorageMovesResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          snippet:
-            type: object
-            properties:
-              id:
-                type: integer
-              title:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              updated_at:
-                type: string
-              created_at:
-                type: string
-              project_id:
-                type: string
-              web_url:
-                type: string
-              raw_url:
-                type: string
-              ssh_url_to_repo:
-                type: string
-              http_url_to_repo:
-                type: string
-    retrieveAllRepositoryStorageMovesForASnippetResponse:
       type: array
       items:
         type: object
@@ -251,87 +211,11 @@ components:
               type: string
             http_url_to_repo:
               type: string
-    getASingleRepositoryStorageMoveForASnippetResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        snippet:
-          type: object
-          properties:
-            id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            visibility:
-              type: string
-            updated_at:
-              type: string
-            created_at:
-              type: string
-            project_id:
-              type: string
-            web_url:
-              type: string
-            raw_url:
-              type: string
-            ssh_url_to_repo:
-              type: string
-            http_url_to_repo:
-              type: string
     scheduleARepositoryStorageMoveForASnippetRequest:
       type: object
       properties:
         destination_storage_name:
           type: string
-    scheduleARepositoryStorageMoveForASnippetResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        state:
-          type: string
-        source_storage_name:
-          type: string
-        destination_storage_name:
-          type: string
-        snippet:
-          type: object
-          properties:
-            id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            visibility:
-              type: string
-            updated_at:
-              type: string
-            created_at:
-              type: string
-            project_id:
-              type: string
-            web_url:
-              type: string
-            raw_url:
-              type: string
-            ssh_url_to_repo:
-              type: string
-            http_url_to_repo:
-              type: string
     scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShardRequest:
       type: object
       properties:

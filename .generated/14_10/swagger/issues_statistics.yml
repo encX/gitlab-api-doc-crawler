@@ -260,7 +260,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getGroupIssuesStatisticsResponse'
+                $ref: '#/components/schemas/getIssuesStatisticsResponse'
       tags:
         - issues_statistics
   '/projects/{id}/issues_statistics':
@@ -384,42 +384,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getProjectIssuesStatisticsResponse'
+                $ref: '#/components/schemas/getIssuesStatisticsResponse'
       tags:
         - issues_statistics
 components:
   schemas:
     getIssuesStatisticsResponse:
-      type: object
-      properties:
-        statistics:
-          type: object
-          properties:
-            counts:
-              type: object
-              properties:
-                all:
-                  type: integer
-                closed:
-                  type: integer
-                opened:
-                  type: integer
-    getGroupIssuesStatisticsResponse:
-      type: object
-      properties:
-        statistics:
-          type: object
-          properties:
-            counts:
-              type: object
-              properties:
-                all:
-                  type: integer
-                closed:
-                  type: integer
-                opened:
-                  type: integer
-    getProjectIssuesStatisticsResponse:
       type: object
       properties:
         statistics:

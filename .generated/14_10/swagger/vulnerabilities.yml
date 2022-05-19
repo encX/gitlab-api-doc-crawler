@@ -42,7 +42,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/confirmVulnerabilityResponse'
+                $ref: '#/components/schemas/singleVulnerabilityResponse'
       tags:
         - vulnerabilities
   '/vulnerabilities/{id}/resolve':
@@ -63,7 +63,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resolveVulnerabilityResponse'
+                $ref: '#/components/schemas/singleVulnerabilityResponse'
       tags:
         - vulnerabilities
   '/vulnerabilities/{id}/dismiss':
@@ -84,7 +84,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dismissVulnerabilityResponse'
+                $ref: '#/components/schemas/singleVulnerabilityResponse'
       tags:
         - vulnerabilities
   '/vulnerabilities/{id}/revert':
@@ -107,204 +107,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/revertVulnerabilityToDetectedStateResponse'
+                $ref: '#/components/schemas/singleVulnerabilityResponse'
       tags:
         - vulnerabilities
 components:
   schemas:
     singleVulnerabilityResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        severity:
-          type: string
-        confidence:
-          type: string
-        report_type:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            full_path:
-              type: string
-            full_name:
-              type: string
-        author_id:
-          type: integer
-        updated_by_id:
-          type: string
-        last_edited_by_id:
-          type: string
-        closed_by_id:
-          type: string
-        start_date:
-          type: string
-        due_date:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_edited_at:
-          type: string
-        closed_at:
-          type: string
-    confirmVulnerabilityResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        severity:
-          type: string
-        confidence:
-          type: string
-        report_type:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            full_path:
-              type: string
-            full_name:
-              type: string
-        author_id:
-          type: integer
-        updated_by_id:
-          type: string
-        last_edited_by_id:
-          type: string
-        closed_by_id:
-          type: string
-        start_date:
-          type: string
-        due_date:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_edited_at:
-          type: string
-        closed_at:
-          type: string
-    resolveVulnerabilityResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        severity:
-          type: string
-        confidence:
-          type: string
-        report_type:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            full_path:
-              type: string
-            full_name:
-              type: string
-        author_id:
-          type: integer
-        updated_by_id:
-          type: string
-        last_edited_by_id:
-          type: string
-        closed_by_id:
-          type: string
-        start_date:
-          type: string
-        due_date:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_edited_at:
-          type: string
-        closed_at:
-          type: string
-    dismissVulnerabilityResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        severity:
-          type: string
-        confidence:
-          type: string
-        report_type:
-          type: string
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            full_path:
-              type: string
-            full_name:
-              type: string
-        author_id:
-          type: integer
-        updated_by_id:
-          type: string
-        last_edited_by_id:
-          type: string
-        closed_by_id:
-          type: string
-        start_date:
-          type: string
-        due_date:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_edited_at:
-          type: string
-        closed_at:
-          type: string
-    revertVulnerabilityToDetectedStateResponse:
       type: object
       properties:
         id:

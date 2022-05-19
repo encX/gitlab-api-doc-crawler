@@ -101,7 +101,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAllMembersOfAGroupOrProjectIncludingInheritedAndInvitedMembersResponse'
+                $ref: '#/components/schemas/listAllMembersOfAGroupOrProjectResponse'
       tags:
         - members
   '/groups/{id}/members/{user_id}':
@@ -156,7 +156,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAMemberOfAGroupOrProjectResponse'
+                $ref: '#/components/schemas/addAMemberToAGroupOrProjectResponse'
       requestBody:
         content:
           application/json:
@@ -228,7 +228,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getAMemberOfAGroupOrProject,IncludingInheritedAndInvitedMembersResponse'
+                $ref: '#/components/schemas/getAMemberOfAGroupOrProjectResponse'
       tags:
         - members
   '/groups/{id}/billable_members':
@@ -374,7 +374,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/removeOverrideForAMemberOfAGroupResponse'
+                $ref: '#/components/schemas/setOverrideFlagForAMemberOfAGroupResponse'
       tags:
         - members
   '/groups/{id}/members/{member_id}/approve':
@@ -484,48 +484,6 @@ components:
             type: string
           membership_state:
             type: string
-    listAllMembersOfAGroupOrProjectIncludingInheritedAndInvitedMembersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          username:
-            type: string
-          name:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
-          created_at:
-            type: string
-          created_by:
-            type: object
-            properties:
-              id:
-                type: integer
-              username:
-                type: string
-              name:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          expires_at:
-            type: string
-          access_level:
-            type: integer
-          group_saml_identity:
-            type: string
-          membership_state:
-            type: string
     getAMemberOfAGroupOrProjectResponse:
       type: object
       properties:
@@ -562,48 +520,6 @@ components:
               type: string
             web_url:
               type: string
-        expires_at:
-          type: string
-        group_saml_identity:
-          type: string
-        membership_state:
-          type: string
-    'getAMemberOfAGroupOrProject,IncludingInheritedAndInvitedMembersResponse':
-      type: object
-      properties:
-        id:
-          type: integer
-        username:
-          type: string
-        name:
-          type: string
-        state:
-          type: string
-        avatar_url:
-          type: string
-        web_url:
-          type: string
-        access_level:
-          type: integer
-        created_at:
-          type: string
-        created_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            username:
-              type: string
-            name:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        email:
-          type: string
         expires_at:
           type: string
         group_saml_identity:
@@ -730,87 +646,7 @@ components:
           type: string
       required:
         - access_level
-    editAMemberOfAGroupOrProjectResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        username:
-          type: string
-        name:
-          type: string
-        state:
-          type: string
-        avatar_url:
-          type: string
-        web_url:
-          type: string
-        created_at:
-          type: string
-        created_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            username:
-              type: string
-            name:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        expires_at:
-          type: string
-        access_level:
-          type: integer
-        email:
-          type: string
-        group_saml_identity:
-          type: string
     setOverrideFlagForAMemberOfAGroupResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        username:
-          type: string
-        name:
-          type: string
-        state:
-          type: string
-        avatar_url:
-          type: string
-        web_url:
-          type: string
-        created_at:
-          type: string
-        created_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            username:
-              type: string
-            name:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        expires_at:
-          type: string
-        access_level:
-          type: integer
-        email:
-          type: string
-        override:
-          type: boolean
-    removeOverrideForAMemberOfAGroupResponse:
       type: object
       properties:
         id:

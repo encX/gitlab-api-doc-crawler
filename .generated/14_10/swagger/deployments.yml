@@ -141,7 +141,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateADeploymentResponse'
+                $ref: '#/components/schemas/createADeploymentResponse'
       requestBody:
         content:
           application/json:
@@ -577,75 +577,6 @@ components:
       type: object
       properties:
         status:
-          type: string
-    updateADeploymentResponse:
-      type: object
-      properties:
-        status:
-          type: string
-        pending_approval_count:
-          type: integer
-        approvals:
-          type: array
-          items:
-            type: object
-            properties:
-              user:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  username:
-                    type: string
-                  name:
-                    type: string
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
-              status:
-                type: string
-              created_at:
-                type: string
-              comment:
-                type: string
-        id:
-          type: integer
-        iid:
-          type: integer
-        ref:
-          type: string
-        sha:
-          type: string
-        created_at:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        environment:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            external_url:
-              type: string
-        deployable:
           type: string
     approveOrRejectABlockedDeploymentRequest:
       type: object

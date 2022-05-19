@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/awardANewEmojiResponse'
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
       requestBody:
         content:
           application/json:
@@ -146,7 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listACommentAwardEmojisResponse'
+                $ref: '#/components/schemas/listAnAwardableAwardEmojisResponse'
       tags:
         - award_emoji
     post:
@@ -178,7 +178,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/awardANewEmojiOnACommentResponse'
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
       requestBody:
         content:
           application/json:
@@ -222,7 +222,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getAnAwardEmojiForACommentResponse'
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
       tags:
         - award_emoji
     delete:
@@ -333,98 +333,6 @@ components:
       required:
         - issue_iid/merge_request_iid/snippet_id
         - name
-    awardANewEmojiResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        awardable_id:
-          type: integer
-        awardable_type:
-          type: string
-    listACommentAwardEmojisResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          user:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          awardable_id:
-            type: integer
-          awardable_type:
-            type: string
-    getAnAwardEmojiForACommentResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        awardable_id:
-          type: integer
-        awardable_type:
-          type: string
     awardANewEmojiOnACommentRequest:
       type: object
       properties:
@@ -432,33 +340,3 @@ components:
           type: string
       required:
         - name
-    awardANewEmojiOnACommentResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        awardable_id:
-          type: integer
-        awardable_type:
-          type: string

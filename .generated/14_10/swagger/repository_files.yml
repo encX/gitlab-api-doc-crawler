@@ -92,7 +92,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateExistingFileInRepositoryResponse'
+                $ref: '#/components/schemas/createNewFileInRepositoryResponse'
       requestBody:
         content:
           application/json:
@@ -334,10 +334,3 @@ components:
         - branch
         - content
         - commit_message
-    updateExistingFileInRepositoryResponse:
-      type: object
-      properties:
-        file_path:
-          type: string
-        branch:
-          type: string

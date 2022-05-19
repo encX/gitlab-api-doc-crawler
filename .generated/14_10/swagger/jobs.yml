@@ -245,7 +245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retryAJobResponse'
+                $ref: '#/components/schemas/cancelAJobResponse'
       tags:
         - jobs
   '/projects/{id}/jobs/{job_id}/erase':
@@ -994,61 +994,6 @@ components:
           type: string
         duration:
           type: integer
-        queued_duration:
-          type: number
-        id:
-          type: integer
-        name:
-          type: string
-        ref:
-          type: string
-        artifacts:
-          type: array
-          items: {}
-        runner:
-          type: string
-        stage:
-          type: string
-        status:
-          type: string
-        tag:
-          type: boolean
-        web_url:
-          type: string
-        user:
-          type: string
-    retryAJobResponse:
-      type: object
-      properties:
-        commit:
-          type: object
-          properties:
-            author_email:
-              type: string
-            author_name:
-              type: string
-            created_at:
-              type: string
-            id:
-              type: string
-            message:
-              type: string
-            short_id:
-              type: string
-            title:
-              type: string
-        coverage:
-          type: string
-        allow_failure:
-          type: boolean
-        created_at:
-          type: string
-        started_at:
-          type: string
-        finished_at:
-          type: string
-        duration:
-          type: string
         queued_duration:
           type: number
         id:

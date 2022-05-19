@@ -92,7 +92,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addExistingInstanceClusterResponse'
+                $ref: '#/components/schemas/getASingleInstanceClusterResponse'
       requestBody:
         content:
           application/json:
@@ -239,59 +239,6 @@ components:
         - name
         - 'platform_kubernetes_attributes[api_url]'
         - 'platform_kubernetes_attributes[token]'
-    addExistingInstanceClusterResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        created_at:
-          type: string
-        managed:
-          type: boolean
-        enabled:
-          type: boolean
-        domain:
-          type: string
-        provider_type:
-          type: string
-        platform_type:
-          type: string
-        environment_scope:
-          type: string
-        cluster_type:
-          type: string
-        user:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        platform_kubernetes:
-          type: object
-          properties:
-            api_url:
-              type: string
-            namespace:
-              type: string
-            authorization_type:
-              type: string
-            ca_cert:
-              type: string
-        provider_gcp:
-          type: string
-        management_project:
-          type: string
     editInstanceClusterRequest:
       type: object
       properties:

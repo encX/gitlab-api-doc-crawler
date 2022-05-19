@@ -105,12 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editABadgeOfAProjectResponse'
+                $ref: '#/components/schemas/addABadgeToAProjectResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editABadgeOfAProjectRequest'
+              $ref: '#/components/schemas/addABadgeToAProjectRequest'
       tags:
         - project_badges
     delete:
@@ -217,32 +217,6 @@ components:
         - link_url
         - image_url
     addABadgeToAProjectResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        link_url:
-          type: string
-        image_url:
-          type: string
-        rendered_link_url:
-          type: string
-        rendered_image_url:
-          type: string
-        kind:
-          type: string
-    editABadgeOfAProjectRequest:
-      type: object
-      properties:
-        link_url:
-          type: string
-        image_url:
-          type: string
-        name:
-          type: string
-    editABadgeOfAProjectResponse:
       type: object
       properties:
         id:

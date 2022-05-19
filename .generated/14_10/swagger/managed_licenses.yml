@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createANewManagedLicenseResponse'
+                $ref: '#/components/schemas/showAnExistingManagedLicenseResponse'
       requestBody:
         content:
           application/json:
@@ -121,7 +121,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAnExistingManagedLicenseResponse'
+                $ref: '#/components/schemas/showAnExistingManagedLicenseResponse'
       requestBody:
         content:
           application/json:
@@ -161,15 +161,6 @@ components:
       required:
         - name
         - approval_status
-    createANewManagedLicenseResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        approval_status:
-          type: string
     editAnExistingManagedLicenseRequest:
       type: object
       properties:
@@ -177,12 +168,3 @@ components:
           type: string
       required:
         - approval_status
-    editAnExistingManagedLicenseResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        approval_status:
-          type: string

@@ -64,7 +64,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -116,7 +116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -224,36 +224,10 @@ components:
       required:
         - title
         - key
-    addDeployKeyResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        id:
-          type: integer
-        title:
-          type: string
-        can_push:
-          type: boolean
-        created_at:
-          type: string
     updateDeployKeyRequest:
       type: object
       properties:
         title:
-          type: string
-        can_push:
-          type: boolean
-    updateDeployKeyResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        key:
-          type: string
-        created_at:
           type: string
         can_push:
           type: boolean

@@ -319,7 +319,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/create/editWebexTeamsIntegrationRequest'
+              $ref: '#/components/schemas/create/editUnifyCircuitIntegrationRequest'
       tags:
         - integrations
     delete:
@@ -355,7 +355,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/create/editCustomIssueTrackerIntegrationRequest'
+              $ref: '#/components/schemas/create/editBugzillaIntegrationRequest'
       tags:
         - integrations
     delete:
@@ -1115,7 +1115,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/create/editMicrosoftTeamsIntegrationRequest'
+              $ref: '#/components/schemas/create/editHangoutsChatIntegrationRequest'
       tags:
         - integrations
     delete:
@@ -1504,48 +1504,6 @@ components:
           type: boolean
         wiki_page_events:
           type: boolean
-    create/editWebexTeamsIntegrationRequest:
-      type: object
-      properties:
-        webhook:
-          type: string
-        notify_only_broken_pipelines:
-          type: boolean
-        branches_to_be_notified:
-          type: string
-        push_events:
-          type: boolean
-        issues_events:
-          type: boolean
-        confidential_issues_events:
-          type: boolean
-        merge_requests_events:
-          type: boolean
-        tag_push_events:
-          type: boolean
-        note_events:
-          type: boolean
-        confidential_note_events:
-          type: boolean
-        pipeline_events:
-          type: boolean
-        wiki_page_events:
-          type: boolean
-    create/editCustomIssueTrackerIntegrationRequest:
-      type: object
-      properties:
-        new_issue_url:
-          type: string
-        issues_url:
-          type: string
-        project_url:
-          type: string
-        description:
-          type: string
-        title:
-          type: string
-        push_events:
-          type: boolean
     create/editDiscordIntegrationRequest:
       type: object
       properties:
@@ -1879,35 +1837,6 @@ components:
           type: boolean
         wiki_page_channel:
           type: string
-        wiki_page_events:
-          type: boolean
-    create/editMicrosoftTeamsIntegrationRequest:
-      type: object
-      properties:
-        webhook:
-          type: string
-        notify_only_broken_pipelines:
-          type: boolean
-        notify_only_default_branch:
-          type: boolean
-        branches_to_be_notified:
-          type: string
-        push_events:
-          type: boolean
-        issues_events:
-          type: boolean
-        confidential_issues_events:
-          type: boolean
-        merge_requests_events:
-          type: boolean
-        tag_push_events:
-          type: boolean
-        note_events:
-          type: boolean
-        confidential_note_events:
-          type: boolean
-        pipeline_events:
-          type: boolean
         wiki_page_events:
           type: boolean
     create/editMattermostNotificationsIntegrationRequest:

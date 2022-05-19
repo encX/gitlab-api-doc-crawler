@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addANewLicenseResponse'
+                $ref: '#/components/schemas/retrieveInformationAboutTheCurrentLicenseResponse'
       requestBody:
         content:
           application/json:
@@ -158,43 +158,6 @@ components:
           type: string
       required:
         - license
-    addANewLicenseResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        plan:
-          type: string
-        created_at:
-          type: string
-        starts_at:
-          type: string
-        expires_at:
-          type: string
-        historical_max:
-          type: integer
-        maximum_user_count:
-          type: integer
-        expired:
-          type: boolean
-        overage:
-          type: integer
-        user_limit:
-          type: integer
-        active_users:
-          type: integer
-        licensee:
-          type: object
-          properties:
-            Name:
-              type: string
-        add_ons:
-          type: object
-          properties:
-            GitLab_FileLocks:
-              type: integer
-            GitLab_Auditor_User:
-              type: integer
     deleteALicenseResponse:
       type: object
       properties:

@@ -444,7 +444,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/modifyExistingMergeRequestNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
       tags:
         - notes
     delete:
@@ -536,7 +536,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createNewEpicNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
       tags:
         - notes
   '/groups/{id}/epics/{epic_id}/notes/{note_id}':
@@ -602,7 +602,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/modifyExistingEpicNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
       tags:
         - notes
     delete:
@@ -792,15 +792,6 @@ components:
           type: string
       required:
         - body
-    modifyExistingMergeRequestNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        confidential:
-          type: boolean
-      required:
-        - body
     getSingleEpicNoteResponse:
       type: object
       properties:
@@ -833,21 +824,3 @@ components:
           type: string
         confidential:
           type: boolean
-    createNewEpicNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        confidential:
-          type: boolean
-      required:
-        - body
-    modifyExistingEpicNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        confidential:
-          type: boolean
-      required:
-        - body

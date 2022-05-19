@@ -94,7 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/registerAnAgentWithAProjectResponse'
+                $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
       requestBody:
         content:
           application/json:
@@ -278,34 +278,6 @@ components:
           type: string
         config_project.created_at:
           type: string
-        created_at:
-          type: string
-        created_by_user_id:
-          type: integer
-    registerAnAgentWithAProjectResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        config_project:
-          type: object
-          properties:
-            id:
-              type: integer
-            description:
-              type: string
-            name:
-              type: string
-            name_with_namespace:
-              type: string
-            path:
-              type: string
-            path_with_namespace:
-              type: string
-            created_at:
-              type: string
         created_at:
           type: string
         created_by_user_id:

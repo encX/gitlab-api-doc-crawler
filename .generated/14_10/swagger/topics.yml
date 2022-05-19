@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAProjectTopicResponse'
+                $ref: '#/components/schemas/getATopicResponse'
       requestBody:
         content:
           application/json:
@@ -93,12 +93,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAProjectTopicResponse'
+                $ref: '#/components/schemas/getATopicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAProjectTopicRequest'
+              $ref: '#/components/schemas/createAProjectTopicRequest'
       tags:
         - topics
     delete:
@@ -166,37 +166,4 @@ components:
         name:
           type: string
         description:
-          type: string
-    createAProjectTopicResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        total_projects_count:
-          type: integer
-        avatar_url:
-          type: string
-    updateAProjectTopicRequest:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-    updateAProjectTopicResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        total_projects_count:
-          type: integer
-        avatar_url:
           type: string

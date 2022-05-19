@@ -99,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAGroupIssueBoardResponse'
+                $ref: '#/components/schemas/createAGroupIssueBoardResponse'
       requestBody:
         content:
           application/json:
@@ -249,7 +249,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editGroupIssueBoardListResponse'
+                $ref: '#/components/schemas/singleGroupIssueBoardListResponse'
       requestBody:
         content:
           application/json:
@@ -425,82 +425,6 @@ components:
           type: string
         weight:
           type: integer
-    updateAGroupIssueBoardResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        project:
-          type: string
-        lists:
-          type: array
-          items: {}
-        name:
-          type: string
-        group:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            web_url:
-              type: string
-        milestone:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            group_id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-            updated_at:
-              type: string
-            due_date:
-              type: string
-            start_date:
-              type: string
-            web_url:
-              type: string
-        assignee:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        labels:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-        weight:
-          type: integer
     listGroupIssueBoardListsResponse:
       type: array
       items:
@@ -583,19 +507,3 @@ components:
           type: integer
       required:
         - position
-    editGroupIssueBoardListResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        label:
-          type: object
-          properties:
-            name:
-              type: string
-            color:
-              type: string
-            description:
-              type: string
-        position:
-          type: integer

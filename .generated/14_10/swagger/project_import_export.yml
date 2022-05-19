@@ -121,7 +121,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/importAFileFromAwsS3Response'
+                $ref: '#/components/schemas/importAFileFromARemoteObjectStorageResponse'
       requestBody:
         content:
           application/json:
@@ -308,32 +308,6 @@ components:
         - file_key
         - access_key_id
         - secret_access_key
-    importAFileFromAwsS3Response:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        name:
-          type: string
-        name_with_namespace:
-          type: string
-        path:
-          type: string
-        path_with_namespace:
-          type: string
-        created_at:
-          type: string
-        import_status:
-          type: string
-        correlation_id:
-          type: string
-        failed_relations:
-          type: array
-          items: {}
-        import_error:
-          type: string
     importStatusResponse:
       type: object
       properties:

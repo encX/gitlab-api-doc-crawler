@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addNewSystemHookResponse'
+                $ref: '#/components/schemas/listSystemHooksResponse'
       requestBody:
         content:
           application/json:
@@ -55,7 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getSystemHookResponse'
+                $ref: '#/components/schemas/listSystemHooksResponse'
       tags:
         - system_hooks
     post:
@@ -117,27 +117,6 @@ components:
             type: boolean
           enable_ssl_verification:
             type: boolean
-    getSystemHookResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          url:
-            type: string
-          created_at:
-            type: string
-          push_events:
-            type: boolean
-          tag_push_events:
-            type: boolean
-          merge_requests_events:
-            type: boolean
-          repository_update_events:
-            type: boolean
-          enable_ssl_verification:
-            type: boolean
     addNewSystemHookRequest:
       type: object
       properties:
@@ -157,27 +136,6 @@ components:
           type: boolean
       required:
         - url
-    addNewSystemHookResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          url:
-            type: string
-          created_at:
-            type: string
-          push_events:
-            type: boolean
-          tag_push_events:
-            type: boolean
-          merge_requests_events:
-            type: boolean
-          repository_update_events:
-            type: boolean
-          enable_ssl_verification:
-            type: boolean
     testSystemHookResponse:
       type: object
       properties:

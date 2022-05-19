@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createABroadcastMessageResponse'
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
       requestBody:
         content:
           application/json:
@@ -75,12 +75,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateABroadcastMessageResponse'
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateABroadcastMessageRequest'
+              $ref: '#/components/schemas/createABroadcastMessageRequest'
       tags:
         - broadcast_messages
     delete:
@@ -184,82 +184,3 @@ components:
           type: boolean
       required:
         - message
-    createABroadcastMessageResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        starts_at:
-          type: string
-        ends_at:
-          type: string
-        color:
-          type: string
-        font:
-          type: string
-        id:
-          type: integer
-        active:
-          type: boolean
-        target_access_levels:
-          type: array
-          items:
-            type: integer
-        target_path:
-          type: string
-        broadcast_type:
-          type: string
-        dismissable:
-          type: boolean
-    updateABroadcastMessageRequest:
-      type: object
-      properties:
-        message:
-          type: string
-        starts_at:
-          type: string
-          format: date-time
-        ends_at:
-          type: string
-          format: date-time
-        color:
-          type: string
-        font:
-          type: string
-        target_access_levels:
-          type: array
-          items:
-            type: integer
-        target_path:
-          type: string
-        broadcast_type:
-          type: string
-        dismissable:
-          type: boolean
-    updateABroadcastMessageResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        starts_at:
-          type: string
-        ends_at:
-          type: string
-        color:
-          type: string
-        font:
-          type: string
-        id:
-          type: integer
-        active:
-          type: boolean
-        target_access_levels:
-          type: array
-          items:
-            type: integer
-        target_path:
-          type: string
-        broadcast_type:
-          type: string
-        dismissable:
-          type: boolean

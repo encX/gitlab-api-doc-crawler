@@ -31,7 +31,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAPushMirrorResponse'
+                $ref: '#/components/schemas/getASingleProjectRemoteMirrorResponse'
       requestBody:
         content:
           application/json:
@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateARemoteMirrorAttributesResponse'
+                $ref: '#/components/schemas/getASingleProjectRemoteMirrorResponse'
       requestBody:
         content:
           application/json:
@@ -158,29 +158,6 @@ components:
           type: boolean
       required:
         - url
-    createAPushMirrorResponse:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        id:
-          type: integer
-        last_error:
-          type: string
-        last_successful_update_at:
-          type: string
-        last_update_at:
-          type: string
-        last_update_started_at:
-          type: string
-        only_protected_branches:
-          type: boolean
-        keep_divergent_refs:
-          type: boolean
-        update_status:
-          type: string
-        url:
-          type: string
     updateARemoteMirrorAttributesRequest:
       type: object
       properties:
@@ -190,26 +167,3 @@ components:
           type: boolean
         keep_divergent_refs:
           type: boolean
-    updateARemoteMirrorAttributesResponse:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        id:
-          type: integer
-        last_error:
-          type: string
-        last_successful_update_at:
-          type: string
-        last_update_at:
-          type: string
-        last_update_started_at:
-          type: string
-        only_protected_branches:
-          type: boolean
-        keep_divergent_refs:
-          type: boolean
-        update_status:
-          type: string
-        url:
-          type: string

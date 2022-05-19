@@ -114,7 +114,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userModificationRequest'
+              $ref: '#/components/schemas/userCreationRequest'
       tags:
         - users
     delete:
@@ -241,7 +241,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTheStatusOfAUserResponse'
+                $ref: '#/components/schemas/userStatusResponse'
       tags:
         - users
   /user/preferences:
@@ -270,12 +270,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userPreferenceModificationResponse'
+                $ref: '#/components/schemas/getUserPreferencesResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/userPreferenceModificationRequest'
+              $ref: '#/components/schemas/userCreationRequest'
       tags:
         - users
   '/users/{id}/follow':
@@ -317,7 +317,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/followersAndFollowingResponse'
+                $ref: '#/components/schemas/forNormalUsersResponse'
       tags:
         - users
   /user_counts:
@@ -474,7 +474,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/singleSshKeyForGivenUserResponse'
+                $ref: '#/components/schemas/singleSshKeyResponse'
       tags:
         - users
     delete:
@@ -518,7 +518,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addSshKeyForUserRequest'
+              $ref: '#/components/schemas/addSshKeyRequest'
       tags:
         - users
   /user/gpg_keys:
@@ -547,7 +547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addAGpgKeyResponse'
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
       requestBody:
         content:
           application/json:
@@ -610,7 +610,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAllGpgKeysForGivenUserResponse'
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
       tags:
         - users
     post:
@@ -630,7 +630,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addAGpgKeyForAGivenUserResponse'
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
       requestBody:
         content:
           application/json:
@@ -664,7 +664,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASpecificGpgKeyForAGivenUserResponse'
+                $ref: '#/components/schemas/getASpecificGpgKeyResponse'
       tags:
         - users
     delete:
@@ -1000,7 +1000,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rejectUserResponse'
+                $ref: '#/components/schemas/approveUserResponse'
       tags:
         - users
   '/users/{user_id}/impersonation_tokens/{impersonation_token_id}':
@@ -1077,7 +1077,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createAPersonalAccessTokenRequest'
+              $ref: '#/components/schemas/createAnImpersonationTokenRequest'
       tags:
         - users
   /user/activities:
@@ -1388,9 +1388,6 @@ components:
     userCreationRequest:
       type: object
       properties: {}
-    userModificationRequest:
-      type: object
-      properties: {}
     listCurrentUser(forNormalUsers)Response:
       type: object
       properties:
@@ -1570,19 +1567,6 @@ components:
           type: string
         clear_status_at:
           type: string
-    getTheStatusOfAUserResponse:
-      type: object
-      properties:
-        emoji:
-          type: string
-        availability:
-          type: string
-        message:
-          type: string
-        message_html:
-          type: string
-        clear_status_at:
-          type: string
     setUserStatusRequest:
       type: object
       properties:
@@ -1614,20 +1598,6 @@ components:
           type: boolean
         show_whitespace_in_diffs:
           type: boolean
-    userPreferenceModificationRequest:
-      type: object
-      properties: {}
-    userPreferenceModificationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        user_id:
-          type: integer
-        view_diffs_file_by_file:
-          type: boolean
-        show_whitespace_in_diffs:
-          type: boolean
     followAndUnfollowUsersResponse:
       type: object
       properties:
@@ -1643,23 +1613,6 @@ components:
           type: string
         web_url:
           type: string
-    followersAndFollowingResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
     userCountsResponse:
       type: object
       properties:
@@ -1687,17 +1640,6 @@ components:
           created_at:
             type: string
     singleSshKeyResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        key:
-          type: string
-        created_at:
-          type: string
-    singleSshKeyForGivenUserResponse:
       type: object
       properties:
         id:
@@ -1740,18 +1682,6 @@ components:
           type: string
         expires_at:
           type: string
-    addSshKeyForUserRequest:
-      type: object
-      properties:
-        title:
-          type: string
-        key:
-          type: string
-        expires_at:
-          type: string
-      required:
-        - title
-        - key
     listAllGpgKeysResponse:
       type: array
       items:
@@ -1779,37 +1709,6 @@ components:
           type: string
       required:
         - key
-    addAGpgKeyResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          key:
-            type: string
-          created_at:
-            type: string
-    listAllGpgKeysForGivenUserResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          key:
-            type: string
-          created_at:
-            type: string
-    getASpecificGpgKeyForAGivenUserResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        key:
-          type: string
-        created_at:
-          type: string
     addAGpgKeyForAGivenUserRequest:
       type: object
       properties:
@@ -1817,17 +1716,6 @@ components:
           type: integer
       required:
         - key_id
-    addAGpgKeyForAGivenUserResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          key:
-            type: string
-          created_at:
-            type: string
     listEmailsResponse:
       type: array
       items:
@@ -1910,11 +1798,6 @@ components:
       properties:
         message:
           type: string
-    rejectUserResponse:
-      type: object
-      properties:
-        message:
-          type: string
     getAnImpersonationTokenOfAUserResponse:
       type: object
       properties:
@@ -1974,17 +1857,6 @@ components:
           type: string
         expires_at:
           type: string
-    createAPersonalAccessTokenRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        expires_at:
-          type: string
-          format: date
-      required:
-        - name
-        - scopes
     createAPersonalAccessTokenResponse:
       type: object
       properties:

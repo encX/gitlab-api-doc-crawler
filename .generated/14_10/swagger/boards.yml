@@ -99,7 +99,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAnIssueBoardResponse'
+                $ref: '#/components/schemas/createAnIssueBoardResponse'
       requestBody:
         content:
           application/json:
@@ -179,7 +179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createABoardListResponse'
+                $ref: '#/components/schemas/showASingleBoardListResponse'
       requestBody:
         content:
           application/json:
@@ -249,7 +249,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reorderAListInABoardResponse'
+                $ref: '#/components/schemas/showASingleBoardListResponse'
       requestBody:
         content:
           application/json:
@@ -457,112 +457,6 @@ components:
           type: string
         weight:
           type: integer
-    updateAnIssueBoardResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        project:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            name_with_namespace:
-              type: string
-            path:
-              type: string
-            path_with_namespace:
-              type: string
-            created_at:
-              type: string
-            default_branch:
-              type: string
-            tag_list:
-              type: array
-              items: {}
-            topics:
-              type: array
-              items: {}
-            ssh_url_to_repo:
-              type: string
-            http_url_to_repo:
-              type: string
-            web_url:
-              type: string
-            readme_url:
-              type: string
-            avatar_url:
-              type: string
-            star_count:
-              type: integer
-            forks_count:
-              type: integer
-            last_activity_at:
-              type: string
-        lists:
-          type: array
-          items: {}
-        name:
-          type: string
-        group:
-          type: string
-        milestone:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            project_id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-            updated_at:
-              type: string
-            due_date:
-              type: string
-            start_date:
-              type: string
-            web_url:
-              type: string
-        assignee:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        labels:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-        weight:
-          type: integer
     listBoardListsInAProjectIssueBoardResponse:
       type: array
       items:
@@ -618,28 +512,6 @@ components:
           type: integer
         milestone_id:
           type: integer
-    createABoardListResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        label:
-          type: object
-          properties:
-            name:
-              type: string
-            color:
-              type: string
-            description:
-              type: string
-        position:
-          type: integer
-        max_issue_count:
-          type: integer
-        max_issue_weight:
-          type: integer
-        limit_metric:
-          type: string
     reorderAListInABoardRequest:
       type: object
       properties:
@@ -647,25 +519,3 @@ components:
           type: integer
       required:
         - position
-    reorderAListInABoardResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        label:
-          type: object
-          properties:
-            name:
-              type: string
-            color:
-              type: string
-            description:
-              type: string
-        position:
-          type: integer
-        max_issue_count:
-          type: integer
-        max_issue_weight:
-          type: integer
-        limit_metric:
-          type: string

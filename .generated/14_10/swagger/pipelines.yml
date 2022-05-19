@@ -245,7 +245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createANewPipelineResponse'
+                $ref: '#/components/schemas/getASinglePipelineResponse'
       requestBody:
         content:
           application/json:
@@ -277,7 +277,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retryJobsInAPipelineResponse'
+                $ref: '#/components/schemas/getASinglePipelineResponse'
       tags:
         - pipelines
   '/projects/{id}/pipelines/{pipeline_id}/cancel':
@@ -304,7 +304,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/cancelAPipelineJobsResponse'
+                $ref: '#/components/schemas/getASinglePipelineResponse'
       tags:
         - pipelines
 components:
@@ -502,165 +502,3 @@ components:
           type: string
       required:
         - ref
-    createANewPipelineResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        sha:
-          type: string
-        ref:
-          type: string
-        status:
-          type: string
-        before_sha:
-          type: string
-        tag:
-          type: boolean
-        yaml_errors:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        started_at:
-          type: string
-        finished_at:
-          type: string
-        committed_at:
-          type: string
-        duration:
-          type: string
-        queued_duration:
-          type: number
-        coverage:
-          type: string
-        web_url:
-          type: string
-    retryJobsInAPipelineResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        status:
-          type: string
-        ref:
-          type: string
-        sha:
-          type: string
-        before_sha:
-          type: string
-        tag:
-          type: boolean
-        yaml_errors:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        started_at:
-          type: string
-        finished_at:
-          type: string
-        committed_at:
-          type: string
-        duration:
-          type: string
-        queued_duration:
-          type: number
-        coverage:
-          type: string
-        web_url:
-          type: string
-    cancelAPipelineJobsResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        status:
-          type: string
-        ref:
-          type: string
-        sha:
-          type: string
-        before_sha:
-          type: string
-        tag:
-          type: boolean
-        yaml_errors:
-          type: string
-        user:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        started_at:
-          type: string
-        finished_at:
-          type: string
-        committed_at:
-          type: string
-        duration:
-          type: string
-        queued_duration:
-          type: number
-        coverage:
-          type: string
-        web_url:
-          type: string

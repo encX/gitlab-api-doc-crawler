@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/changeConfigurationResponse'
+                $ref: '#/components/schemas/changeConfigurationRequest'
       requestBody:
         content:
           application/json:
@@ -87,7 +87,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createProjectLevelRuleResponse'
+                $ref: '#/components/schemas/getASingleProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
@@ -145,7 +145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateProjectLevelRuleResponse'
+                $ref: '#/components/schemas/getASingleProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
@@ -225,7 +225,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/changeApprovalConfigurationResponse'
+                $ref: '#/components/schemas/getConfigurationResponse'
       requestBody:
         content:
           application/json:
@@ -310,7 +310,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createMergeRequestLevelRuleResponse'
+                $ref: '#/components/schemas/getASingleMergeRequestLevelRuleResponse'
       requestBody:
         content:
           application/json:
@@ -380,7 +380,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateMergeRequestLevelRuleResponse'
+                $ref: '#/components/schemas/getASingleMergeRequestLevelRuleResponse'
       requestBody:
         content:
           application/json:
@@ -440,7 +440,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/approveMergeRequestResponse'
+                $ref: '#/components/schemas/getConfigurationResponse'
       requestBody:
         content:
           application/json:
@@ -519,21 +519,6 @@ components:
                   web_url:
                     type: string
     changeConfigurationRequest:
-      type: object
-      properties:
-        approvals_before_merge:
-          type: integer
-        reset_approvals_on_push:
-          type: boolean
-        disable_overriding_approvers_per_merge_request:
-          type: boolean
-        merge_requests_author_approval:
-          type: boolean
-        merge_requests_disable_committers_approval:
-          type: boolean
-        require_password_to_approve:
-          type: boolean
-    changeConfigurationResponse:
       type: object
       properties:
         approvals_before_merge:
@@ -802,124 +787,6 @@ components:
       required:
         - name
         - approvals_required
-    createProjectLevelRuleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        rule_type:
-          type: string
-        eligible_approvers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        approvals_required:
-          type: integer
-        users:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        groups:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              path:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              lfs_enabled:
-                type: boolean
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-              request_access_enabled:
-                type: boolean
-              full_name:
-                type: string
-              full_path:
-                type: string
-              parent_id:
-                type: string
-              ldap_cn:
-                type: string
-              ldap_access:
-                type: string
-        protected_branches:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              push_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              merge_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              unprotect_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              code_owner_approval_required:
-                type: string
-        contains_hidden_groups:
-          type: boolean
     updateProjectLevelRuleRequest:
       type: object
       properties:
@@ -932,124 +799,6 @@ components:
       required:
         - name
         - approvals_required
-    updateProjectLevelRuleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        rule_type:
-          type: string
-        eligible_approvers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        approvals_required:
-          type: integer
-        users:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        groups:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              path:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              lfs_enabled:
-                type: boolean
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-              request_access_enabled:
-                type: boolean
-              full_name:
-                type: string
-              full_path:
-                type: string
-              parent_id:
-                type: string
-              ldap_cn:
-                type: string
-              ldap_access:
-                type: string
-        protected_branches:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              push_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              merge_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              unprotect_access_levels:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    access_level:
-                      type: integer
-                    access_level_description:
-                      type: string
-              code_owner_approval_required:
-                type: string
-        contains_hidden_groups:
-          type: boolean
     changeApprovalConfigurationRequest:
       type: object
       properties:
@@ -1057,34 +806,6 @@ components:
           type: integer
       required:
         - approvals_required
-    changeApprovalConfigurationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        merge_status:
-          type: string
-        approvals_required:
-          type: integer
-        approvals_left:
-          type: integer
-        approved_by:
-          type: array
-          items: {}
     getTheApprovalStateOfMergeRequestsResponse:
       type: object
       properties:
@@ -1347,90 +1068,6 @@ components:
       required:
         - name
         - approvals_required
-    createMergeRequestLevelRuleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        rule_type:
-          type: string
-        eligible_approvers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        approvals_required:
-          type: integer
-        source_rule:
-          type: string
-        users:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        groups:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              path:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              lfs_enabled:
-                type: boolean
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-              request_access_enabled:
-                type: boolean
-              full_name:
-                type: string
-              full_path:
-                type: string
-              parent_id:
-                type: string
-              ldap_cn:
-                type: string
-              ldap_access:
-                type: string
-        contains_hidden_groups:
-          type: boolean
-        overridden:
-          type: boolean
     updateMergeRequestLevelRuleRequest:
       type: object
       properties:
@@ -1441,90 +1078,6 @@ components:
       required:
         - name
         - approvals_required
-    updateMergeRequestLevelRuleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        rule_type:
-          type: string
-        eligible_approvers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        approvals_required:
-          type: integer
-        source_rule:
-          type: string
-        users:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        groups:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              path:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              lfs_enabled:
-                type: boolean
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-              request_access_enabled:
-                type: boolean
-              full_name:
-                type: string
-              full_path:
-                type: string
-              parent_id:
-                type: string
-              ldap_cn:
-                type: string
-              ldap_access:
-                type: string
-        contains_hidden_groups:
-          type: boolean
-        overridden:
-          type: boolean
     approveMergeRequestRequest:
       type: object
       properties:
@@ -1532,48 +1085,3 @@ components:
           type: string
         approval_password:
           type: string
-    approveMergeRequestResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        merge_status:
-          type: string
-        approvals_required:
-          type: integer
-        approvals_left:
-          type: integer
-        approved_by:
-          type: array
-          items:
-            type: object
-            properties:
-              user:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  id:
-                    type: integer
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string

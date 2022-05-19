@@ -192,7 +192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAGroupDescendantGroupsResponse'
+                $ref: '#/components/schemas/listAGroupSubgroupsResponse'
       tags:
         - groups
   '/groups/{id}/projects':
@@ -711,7 +711,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editGroupHookRequest'
+              $ref: '#/components/schemas/addGroupHookRequest'
       tags:
         - groups
     delete:
@@ -962,12 +962,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editGroupPushRuleResponse'
+                $ref: '#/components/schemas/addGroupPushRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editGroupPushRuleRequest'
+              $ref: '#/components/schemas/addGroupPushRuleRequest'
       tags:
         - groups
     delete:
@@ -1061,57 +1061,6 @@ components:
               uploads_size:
                 type: integer
     listAGroupSubgroupsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          path:
-            type: string
-          description:
-            type: string
-          visibility:
-            type: string
-          share_with_group_lock:
-            type: boolean
-          require_two_factor_authentication:
-            type: boolean
-          two_factor_grace_period:
-            type: integer
-          project_creation_level:
-            type: string
-          auto_devops_enabled:
-            type: string
-          subgroup_creation_level:
-            type: string
-          emails_disabled:
-            type: string
-          mentions_disabled:
-            type: string
-          lfs_enabled:
-            type: boolean
-          default_branch_protection:
-            type: integer
-          avatar_url:
-            type: string
-          web_url:
-            type: string
-          request_access_enabled:
-            type: boolean
-          full_name:
-            type: string
-          full_path:
-            type: string
-          file_template_project_id:
-            type: integer
-          parent_id:
-            type: integer
-          created_at:
-            type: string
-    listAGroupDescendantGroupsResponse:
       type: array
       items:
         type: object
@@ -2049,43 +1998,6 @@ components:
           type: string
       required:
         - url
-    editGroupHookRequest:
-      type: object
-      properties:
-        url:
-          type: string
-        push_events:
-          type: boolean
-        issues_events:
-          type: boolean
-        confidential_issues_events:
-          type: boolean
-        merge_requests_events:
-          type: boolean
-        tag_push_events:
-          type: boolean
-        note_events:
-          type: boolean
-        confidential_note_events:
-          type: boolean
-        job_events:
-          type: boolean
-        pipeline_events:
-          type: boolean
-        wiki_page_events:
-          type: boolean
-        deployment_events:
-          type: boolean
-        releases_events:
-          type: boolean
-        subgroup_events:
-          type: boolean
-        enable_ssl_verification:
-          type: boolean
-        token:
-          type: string
-      required:
-        - url
     addLdapGroupLinkWithCnOrFilterRequest:
       type: object
       properties:
@@ -2167,56 +2079,6 @@ components:
         reject_unsigned_commits:
           type: boolean
     addGroupPushRuleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-        commit_message_regex:
-          type: string
-        commit_message_negative_regex:
-          type: string
-        branch_name_regex:
-          type: string
-        deny_delete_tag:
-          type: boolean
-        member_check:
-          type: boolean
-        prevent_secrets:
-          type: boolean
-        author_email_regex:
-          type: string
-        file_name_regex:
-          type: string
-        max_file_size:
-          type: integer
-    editGroupPushRuleRequest:
-      type: object
-      properties:
-        deny_delete_tag:
-          type: boolean
-        member_check:
-          type: boolean
-        prevent_secrets:
-          type: boolean
-        commit_message_regex:
-          type: string
-        commit_message_negative_regex:
-          type: string
-        branch_name_regex:
-          type: string
-        author_email_regex:
-          type: string
-        file_name_regex:
-          type: string
-        max_file_size:
-          type: integer
-        commit_committer_check:
-          type: boolean
-        reject_unsigned_commits:
-          type: boolean
-    editGroupPushRuleResponse:
       type: object
       properties:
         id:

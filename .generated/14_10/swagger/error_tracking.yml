@@ -43,7 +43,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/enableOrDisableTheErrorTrackingProjectSettingsResponse'
+                $ref: '#/components/schemas/getErrorTrackingSettingsResponse'
       requestBody:
         content:
           application/json:
@@ -139,19 +139,6 @@ components:
           type: boolean
       required:
         - active
-    enableOrDisableTheErrorTrackingProjectSettingsResponse:
-      type: object
-      properties:
-        active:
-          type: boolean
-        project_name:
-          type: string
-        sentry_external_url:
-          type: string
-        api_url:
-          type: string
-        integrated:
-          type: boolean
     listProjectClientKeysResponse:
       type: array
       items:

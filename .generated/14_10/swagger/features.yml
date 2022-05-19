@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/setPercentageOfActorsRolloutResponse'
+                $ref: '#/components/schemas/setOrCreateAFeatureResponse'
       tags:
         - features
 components:
@@ -151,37 +151,6 @@ components:
       required:
         - value
     setOrCreateAFeatureResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        state:
-          type: string
-        gates:
-          type: array
-          items:
-            type: object
-            properties:
-              key:
-                type: string
-              value:
-                type: boolean
-        definition:
-          type: object
-          properties:
-            name:
-              type: string
-            introduced_by_url:
-              type: string
-            rollout_issue_url:
-              type: string
-            group:
-              type: string
-            type:
-              type: string
-            default_enabled:
-              type: boolean
-    setPercentageOfActorsRolloutResponse:
       type: object
       properties:
         name:

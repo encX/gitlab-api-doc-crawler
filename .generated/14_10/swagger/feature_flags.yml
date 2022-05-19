@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAFeatureFlagResponse'
+                $ref: '#/components/schemas/getASingleFeatureFlagResponse'
       requestBody:
         content:
           application/json:
@@ -105,7 +105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAFeatureFlagResponse'
+                $ref: '#/components/schemas/getASingleFeatureFlagResponse'
       requestBody:
         content:
           application/json:
@@ -235,45 +235,6 @@ components:
       required:
         - name
         - version
-    createAFeatureFlagResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        active:
-          type: boolean
-        version:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        scopes:
-          type: array
-          items: {}
-        strategies:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              parameters:
-                type: object
-                properties: {}
-              scopes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    environment_scope:
-                      type: string
     updateAFeatureFlagRequest:
       type: object
       properties:
@@ -285,46 +246,3 @@ components:
           type: string
         'strategies:scopes:environment_scope':
           type: string
-    updateAFeatureFlagResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        active:
-          type: boolean
-        version:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        scopes:
-          type: array
-          items: {}
-        strategies:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              parameters:
-                type: object
-                properties:
-                  groupId:
-                    type: string
-                  percentage:
-                    type: string
-              scopes:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    environment_scope:
-                      type: string

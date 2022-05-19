@@ -29,12 +29,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createInstanceVariableResponse'
+                $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createInstanceVariableRequest'
+              $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
       tags:
         - instance_level_ci_variables
   '/admin/ci/variables/{key}':
@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateInstanceVariableResponse'
+                $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
       requestBody:
         content:
           application/json:
@@ -129,35 +129,6 @@ components:
           type: boolean
         masked:
           type: boolean
-    createInstanceVariableRequest:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        variable_type:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-      required:
-        - key
-        - value
-    createInstanceVariableResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        variable_type:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
     updateInstanceVariableRequest:
       type: object
       properties:
@@ -171,16 +142,3 @@ components:
           type: boolean
       required:
         - value
-    updateInstanceVariableResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        variable_type:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean

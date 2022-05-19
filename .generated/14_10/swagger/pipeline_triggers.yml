@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAProjectTriggerResponse'
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
       requestBody:
         content:
           application/json:
@@ -99,12 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAProjectTriggerResponse'
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAProjectTriggerRequest'
+              $ref: '#/components/schemas/createAProjectTriggerRequest'
       tags:
         - pipeline_triggers
     delete:
@@ -174,42 +174,3 @@ components:
           type: string
       required:
         - description
-    createAProjectTriggerResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        created_at:
-          type: string
-        last_used:
-          type: string
-        token:
-          type: string
-        updated_at:
-          type: string
-        owner:
-          type: string
-    updateAProjectTriggerRequest:
-      type: object
-      properties:
-        description:
-          type: string
-    updateAProjectTriggerResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        created_at:
-          type: string
-        last_used:
-          type: string
-        token:
-          type: string
-        updated_at:
-          type: string
-        owner:
-          type: string

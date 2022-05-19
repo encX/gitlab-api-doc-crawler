@@ -79,7 +79,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getAFeatureFlagUserListResponse'
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
       tags:
         - feature_flag_user_lists
     put:
@@ -105,12 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAFeatureFlagUserListResponse'
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAFeatureFlagUserListRequest'
+              $ref: '#/components/schemas/createAFeatureFlagUserListRequest'
       tags:
         - feature_flag_user_lists
     delete:
@@ -167,47 +167,6 @@ components:
         - name
         - user_xids
     createAFeatureFlagUserListResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        user_xids:
-          type: string
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        created_at:
-          type: string
-        updated_at:
-          type: string
-    getAFeatureFlagUserListResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        user_xids:
-          type: string
-        id:
-          type: integer
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        created_at:
-          type: string
-        updated_at:
-          type: string
-    updateAFeatureFlagUserListRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        user_xids:
-          type: string
-    updateAFeatureFlagUserListResponse:
       type: object
       properties:
         name:

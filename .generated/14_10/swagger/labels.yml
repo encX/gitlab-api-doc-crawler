@@ -59,7 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createANewLabelResponse'
+                $ref: '#/components/schemas/getASingleProjectLabelResponse'
       requestBody:
         content:
           application/json:
@@ -145,7 +145,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAnExistingLabelResponse'
+                $ref: '#/components/schemas/getASingleProjectLabelResponse'
       requestBody:
         content:
           application/json:
@@ -206,7 +206,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/subscribeToALabelResponse'
+                $ref: '#/components/schemas/getASingleProjectLabelResponse'
       tags:
         - labels
   '/projects/{id}/labels/{label_id}/unsubscribe':
@@ -306,33 +306,6 @@ components:
       required:
         - name
         - color
-    createANewLabelResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-        text_color:
-          type: string
-        description:
-          type: string
-        description_html:
-          type: string
-        open_issues_count:
-          type: integer
-        closed_issues_count:
-          type: integer
-        open_merge_requests_count:
-          type: integer
-        subscribed:
-          type: boolean
-        priority:
-          type: string
-        is_project_label:
-          type: boolean
     editAnExistingLabelRequest:
       type: object
       properties:
@@ -344,33 +317,6 @@ components:
           type: string
         priority:
           type: integer
-    editAnExistingLabelResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-        text_color:
-          type: string
-        description:
-          type: string
-        description_html:
-          type: string
-        open_issues_count:
-          type: integer
-        closed_issues_count:
-          type: integer
-        open_merge_requests_count:
-          type: integer
-        subscribed:
-          type: boolean
-        priority:
-          type: string
-        is_project_label:
-          type: boolean
     promoteAProjectLabelToAGroupLabelResponse:
       type: object
       properties:
@@ -391,31 +337,4 @@ components:
         open_merge_requests_count:
           type: integer
         subscribed:
-          type: boolean
-    subscribeToALabelResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-        text_color:
-          type: string
-        description:
-          type: string
-        description_html:
-          type: string
-        open_issues_count:
-          type: integer
-        closed_issues_count:
-          type: integer
-        open_merge_requests_count:
-          type: integer
-        subscribed:
-          type: boolean
-        priority:
-          type: string
-        is_project_label:
           type: boolean

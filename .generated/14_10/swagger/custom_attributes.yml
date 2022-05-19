@@ -74,7 +74,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/setCustomAttributeResponse'
+                $ref: '#/components/schemas/singleCustomAttributeResponse'
       requestBody:
         content:
           application/json:
@@ -129,10 +129,3 @@ components:
           type: string
       required:
         - value
-    setCustomAttributeResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string

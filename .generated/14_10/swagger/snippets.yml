@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateSnippetResponse'
+                $ref: '#/components/schemas/createNewSnippetResponse'
       requestBody:
         content:
           application/json:
@@ -380,61 +380,6 @@ components:
           type: string
       required:
         - 'files:action'
-    updateSnippetResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        description:
-          type: string
-        visibility:
-          type: string
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            username:
-              type: string
-            email:
-              type: string
-            name:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-        expires_at:
-          type: string
-        updated_at:
-          type: string
-        created_at:
-          type: string
-        project_id:
-          type: string
-        web_url:
-          type: string
-        raw_url:
-          type: string
-        ssh_url_to_repo:
-          type: string
-        http_url_to_repo:
-          type: string
-        file_name:
-          type: string
-        files:
-          type: array
-          items:
-            type: object
-            properties:
-              action:
-                type: string
-              previous_path:
-                type: string
-              file_path:
-                type: string
     listAllPublicSnippetsResponse:
       type: array
       items:

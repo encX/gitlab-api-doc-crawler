@@ -105,12 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAPipelineScheduleResponse'
+                $ref: '#/components/schemas/createANewPipelineScheduleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editAPipelineScheduleRequest'
+              $ref: '#/components/schemas/createANewPipelineScheduleRequest'
       tags:
         - pipeline_schedules
     delete:
@@ -136,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleteAPipelineScheduleResponse'
+                $ref: '#/components/schemas/createANewPipelineScheduleResponse'
       tags:
         - pipeline_schedules
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership':
@@ -163,7 +163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/takeOwnershipOfAPipelineScheduleResponse'
+                $ref: '#/components/schemas/createANewPipelineScheduleResponse'
       tags:
         - pipeline_schedules
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/play':
@@ -219,7 +219,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createANewPipelineScheduleVariableResponse'
+                $ref: '#/components/schemas/createANewPipelineScheduleVariableRequest'
       requestBody:
         content:
           application/json:
@@ -257,7 +257,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAPipelineScheduleVariableResponse'
+                $ref: '#/components/schemas/createANewPipelineScheduleVariableRequest'
       requestBody:
         content:
           application/json:
@@ -450,160 +450,6 @@ components:
               type: string
             web_url:
               type: string
-    editAPipelineScheduleRequest:
-      type: object
-      properties:
-        description:
-          type: string
-        ref:
-          type: string
-        cron:
-          type: string
-        cron_timezone:
-          type: string
-        active:
-          type: boolean
-    editAPipelineScheduleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        ref:
-          type: string
-        cron:
-          type: string
-        cron_timezone:
-          type: string
-        next_run_at:
-          type: string
-        active:
-          type: boolean
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-        owner:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-    takeOwnershipOfAPipelineScheduleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        ref:
-          type: string
-        cron:
-          type: string
-        cron_timezone:
-          type: string
-        next_run_at:
-          type: string
-        active:
-          type: boolean
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-        owner:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-    deleteAPipelineScheduleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        ref:
-          type: string
-        cron:
-          type: string
-        cron_timezone:
-          type: string
-        next_run_at:
-          type: string
-        active:
-          type: boolean
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        last_pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-        owner:
-          type: object
-          properties:
-            name:
-              type: string
-            username:
-              type: string
-            id:
-              type: integer
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
     runAScheduledPipelineImmediatelyResponse:
       type: object
       properties:
@@ -621,15 +467,6 @@ components:
       required:
         - key
         - value
-    createANewPipelineScheduleVariableResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        variable_type:
-          type: string
-        value:
-          type: string
     editAPipelineScheduleVariableRequest:
       type: object
       properties:
@@ -639,15 +476,6 @@ components:
           type: string
       required:
         - value
-    editAPipelineScheduleVariableResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        variable_type:
-          type: string
     deleteAPipelineScheduleVariableResponse:
       type: object
       properties:

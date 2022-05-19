@@ -41,12 +41,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createVariableRequest'
+              $ref: '#/components/schemas/showVariableDetailsResponse'
       tags:
         - project_level_variables
   '/projects/{id}/variables/{key}':
@@ -105,7 +105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
@@ -175,39 +175,6 @@ components:
           type: boolean
         environment_scope:
           type: string
-    createVariableRequest:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        variable_type:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-        environment_scope:
-          type: string
-      required:
-        - key
-        - value
-    createVariableResponse:
-      type: object
-      properties:
-        variable_type:
-          type: string
-        key:
-          type: string
-        value:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-        environment_scope:
-          type: string
     updateVariableRequest:
       type: object
       properties:
@@ -223,18 +190,3 @@ components:
           type: string
       required:
         - value
-    updateVariableResponse:
-      type: object
-      properties:
-        variable_type:
-          type: string
-        key:
-          type: string
-        value:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-        environment_scope:
-          type: string

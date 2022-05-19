@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/protectRepositoryTagsResponse'
+                $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
       requestBody:
         content:
           application/json:
@@ -139,17 +139,3 @@ components:
           type: string
       required:
         - name
-    protectRepositoryTagsResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        create_access_levels:
-          type: array
-          items:
-            type: object
-            properties:
-              access_level:
-                type: integer
-              access_level_description:
-                type: string

@@ -410,7 +410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectMergeRequestsResponse'
+                $ref: '#/components/schemas/listMergeRequestsResponse'
       tags:
         - merge_requests
     post:
@@ -647,7 +647,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listGroupMergeRequestsResponse'
+                $ref: '#/components/schemas/listMergeRequestsResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}':
@@ -914,7 +914,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/mergeAMergeRequestResponse'
+                $ref: '#/components/schemas/updateMrResponse'
       requestBody:
         content:
           application/json:
@@ -976,7 +976,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/cancelMergeWhenPipelineSucceedsResponse'
+                $ref: '#/components/schemas/updateMrResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/rebase':
@@ -1093,7 +1093,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/unsubscribeFromAMergeRequestResponse'
+                $ref: '#/components/schemas/subscribeToAMergeRequestResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/todo':
@@ -1245,7 +1245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resetTheTimeEstimateForAMergeRequestResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAMergeRequestResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/add_spent_time':
@@ -1272,7 +1272,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addSpentTimeForAMergeRequestResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAMergeRequestResponse'
       requestBody:
         content:
           application/json:
@@ -1304,7 +1304,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/resetSpentTimeForAMergeRequestResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAMergeRequestResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/time_stats':
@@ -1331,34 +1331,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTimeTrackingStatsResponse'
+                $ref: '#/components/schemas/setATimeEstimateForAMergeRequestResponse'
       tags:
         - merge_requests
 components:
   schemas:
     listMergeRequestsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          title:
-            type: string
-          approvals_before_merge:
-            type: string
-    listProjectMergeRequestsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          title:
-            type: string
-          approvals_before_merge:
-            type: string
-    listGroupMergeRequestsResponse:
       type: array
       items:
         type: object
@@ -2525,521 +2503,11 @@ components:
           type: boolean
         sha:
           type: string
-    mergeAMergeRequestResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        approvals_before_merge:
-          type: string
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        description:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        target_branch:
-          type: string
-        source_branch:
-          type: string
-        upvotes:
-          type: integer
-        downvotes:
-          type: integer
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignee:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignees:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        reviewers:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        source_project_id:
-          type: integer
-        target_project_id:
-          type: integer
-        labels:
-          type: array
-          items:
-            type: string
-        draft:
-          type: boolean
-        work_in_progress:
-          type: boolean
-        milestone:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            project_id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-            updated_at:
-              type: string
-            due_date:
-              type: string
-            start_date:
-              type: string
-            web_url:
-              type: string
-        merge_when_pipeline_succeeds:
-          type: boolean
-        merge_status:
-          type: string
-        merge_error:
-          type: string
-        sha:
-          type: string
-        merge_commit_sha:
-          type: string
-        squash_commit_sha:
-          type: string
-        user_notes_count:
-          type: integer
-        discussion_locked:
-          type: string
-        should_remove_source_branch:
-          type: boolean
-        force_remove_source_branch:
-          type: boolean
-        allow_collaboration:
-          type: boolean
-        allow_maintainer_to_push:
-          type: boolean
-        web_url:
-          type: string
-        references:
-          type: object
-          properties:
-            short:
-              type: string
-            relative:
-              type: string
-            full:
-              type: string
-        time_stats:
-          type: object
-          properties:
-            time_estimate:
-              type: integer
-            total_time_spent:
-              type: integer
-            human_time_estimate:
-              type: string
-            human_total_time_spent:
-              type: string
-        squash:
-          type: boolean
-        subscribed:
-          type: boolean
-        changes_count:
-          type: string
-        merged_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merge_user:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merged_at:
-          type: string
-        closed_by:
-          type: string
-        closed_at:
-          type: string
-        latest_build_started_at:
-          type: string
-        latest_build_finished_at:
-          type: string
-        first_deployed_to_production_at:
-          type: string
-        pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-            web_url:
-              type: string
-        diff_refs:
-          type: object
-          properties:
-            base_sha:
-              type: string
-            head_sha:
-              type: string
-            start_sha:
-              type: string
-        diverged_commits_count:
-          type: integer
-        task_completion_status:
-          type: object
-          properties:
-            count:
-              type: integer
-            completed_count:
-              type: integer
     mergeToDefaultMergeRefPathResponse:
       type: object
       properties:
         commit_id:
           type: string
-    cancelMergeWhenPipelineSucceedsResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        approvals_before_merge:
-          type: string
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        description:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        target_branch:
-          type: string
-        source_branch:
-          type: string
-        upvotes:
-          type: integer
-        downvotes:
-          type: integer
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignee:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignees:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        reviewers:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        source_project_id:
-          type: integer
-        target_project_id:
-          type: integer
-        labels:
-          type: array
-          items:
-            type: string
-        draft:
-          type: boolean
-        work_in_progress:
-          type: boolean
-        milestone:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            project_id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-            updated_at:
-              type: string
-            due_date:
-              type: string
-            start_date:
-              type: string
-            web_url:
-              type: string
-        merge_when_pipeline_succeeds:
-          type: boolean
-        merge_status:
-          type: string
-        merge_error:
-          type: string
-        sha:
-          type: string
-        merge_commit_sha:
-          type: string
-        squash_commit_sha:
-          type: string
-        user_notes_count:
-          type: integer
-        discussion_locked:
-          type: string
-        should_remove_source_branch:
-          type: boolean
-        force_remove_source_branch:
-          type: boolean
-        allow_collaboration:
-          type: boolean
-        allow_maintainer_to_push:
-          type: boolean
-        web_url:
-          type: string
-        references:
-          type: object
-          properties:
-            short:
-              type: string
-            relative:
-              type: string
-            full:
-              type: string
-        time_stats:
-          type: object
-          properties:
-            time_estimate:
-              type: integer
-            total_time_spent:
-              type: integer
-            human_time_estimate:
-              type: string
-            human_total_time_spent:
-              type: string
-        squash:
-          type: boolean
-        subscribed:
-          type: boolean
-        changes_count:
-          type: string
-        merged_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merge_user:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merged_at:
-          type: string
-        closed_by:
-          type: string
-        closed_at:
-          type: string
-        latest_build_started_at:
-          type: string
-        latest_build_finished_at:
-          type: string
-        first_deployed_to_production_at:
-          type: string
-        pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-            web_url:
-              type: string
-        diff_refs:
-          type: object
-          properties:
-            base_sha:
-              type: string
-            head_sha:
-              type: string
-            start_sha:
-              type: string
-        diverged_commits_count:
-          type: integer
-        task_completion_status:
-          type: object
-          properties:
-            count:
-              type: integer
-            completed_count:
-              type: integer
     rebaseAMergeRequestRequest:
       type: object
       properties:
@@ -3062,259 +2530,6 @@ components:
           title:
             type: string
     subscribeToAMergeRequestResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        approvals_before_merge:
-          type: string
-        iid:
-          type: integer
-        project_id:
-          type: integer
-        description:
-          type: string
-        state:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        target_branch:
-          type: string
-        source_branch:
-          type: string
-        upvotes:
-          type: integer
-        downvotes:
-          type: integer
-        author:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignee:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        assignees:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        reviewers:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-        source_project_id:
-          type: integer
-        target_project_id:
-          type: integer
-        labels:
-          type: array
-          items:
-            type: string
-        draft:
-          type: boolean
-        work_in_progress:
-          type: boolean
-        milestone:
-          type: object
-          properties:
-            id:
-              type: integer
-            iid:
-              type: integer
-            project_id:
-              type: integer
-            title:
-              type: string
-            description:
-              type: string
-            state:
-              type: string
-            created_at:
-              type: string
-            updated_at:
-              type: string
-            due_date:
-              type: string
-            start_date:
-              type: string
-            web_url:
-              type: string
-        merge_when_pipeline_succeeds:
-          type: boolean
-        merge_status:
-          type: string
-        sha:
-          type: string
-        merge_commit_sha:
-          type: string
-        squash_commit_sha:
-          type: string
-        user_notes_count:
-          type: integer
-        discussion_locked:
-          type: string
-        should_remove_source_branch:
-          type: boolean
-        force_remove_source_branch:
-          type: boolean
-        allow_collaboration:
-          type: boolean
-        allow_maintainer_to_push:
-          type: boolean
-        web_url:
-          type: string
-        references:
-          type: object
-          properties:
-            short:
-              type: string
-            relative:
-              type: string
-            full:
-              type: string
-        time_stats:
-          type: object
-          properties:
-            time_estimate:
-              type: integer
-            total_time_spent:
-              type: integer
-            human_time_estimate:
-              type: string
-            human_total_time_spent:
-              type: string
-        squash:
-          type: boolean
-        subscribed:
-          type: boolean
-        changes_count:
-          type: string
-        merged_by:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merge_user:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            username:
-              type: string
-            state:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        merged_at:
-          type: string
-        closed_by:
-          type: string
-        closed_at:
-          type: string
-        latest_build_started_at:
-          type: string
-        latest_build_finished_at:
-          type: string
-        first_deployed_to_production_at:
-          type: string
-        pipeline:
-          type: object
-          properties:
-            id:
-              type: integer
-            sha:
-              type: string
-            ref:
-              type: string
-            status:
-              type: string
-            web_url:
-              type: string
-        diff_refs:
-          type: object
-          properties:
-            base_sha:
-              type: string
-            head_sha:
-              type: string
-            start_sha:
-              type: string
-        diverged_commits_count:
-          type: integer
-        task_completion_status:
-          type: object
-          properties:
-            count:
-              type: integer
-            completed_count:
-              type: integer
-    unsubscribeFromAMergeRequestResponse:
       type: object
       properties:
         id:
@@ -3868,17 +3083,6 @@ components:
           type: integer
         total_time_spent:
           type: integer
-    resetTheTimeEstimateForAMergeRequestResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
     addSpentTimeForAMergeRequestRequest:
       type: object
       properties:
@@ -3888,36 +3092,3 @@ components:
           type: string
       required:
         - duration
-    addSpentTimeForAMergeRequestResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
-    resetSpentTimeForAMergeRequestResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer
-    getTimeTrackingStatsResponse:
-      type: object
-      properties:
-        human_time_estimate:
-          type: string
-        human_total_time_spent:
-          type: string
-        time_estimate:
-          type: integer
-        total_time_spent:
-          type: integer

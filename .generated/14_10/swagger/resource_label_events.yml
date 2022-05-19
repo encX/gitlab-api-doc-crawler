@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listGroupEpicLabelEventsResponse'
+                $ref: '#/components/schemas/listProjectIssueLabelEventsResponse'
       tags:
         - resource_label_events
   '/groups/{id}/epics/{epic_id}/resource_label_events/{resource_label_event_id}':
@@ -139,7 +139,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectMergeRequestLabelEventsResponse'
+                $ref: '#/components/schemas/listProjectIssueLabelEventsResponse'
       tags:
         - resource_label_events
   '/projects/{id}/merge_requests/{merge_request_iid}/resource_label_events/{resource_label_event_id}':
@@ -174,88 +174,6 @@ paths:
 components:
   schemas:
     listProjectIssueLabelEventsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          user:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          created_at:
-            type: string
-          resource_type:
-            type: string
-          resource_id:
-            type: integer
-          label:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-          action:
-            type: string
-    listGroupEpicLabelEventsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          user:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          created_at:
-            type: string
-          resource_type:
-            type: string
-          resource_id:
-            type: integer
-          label:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-          action:
-            type: string
-    listProjectMergeRequestLabelEventsResponse:
       type: array
       items:
         type: object

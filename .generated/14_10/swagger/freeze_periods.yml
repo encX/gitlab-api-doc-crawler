@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAFreezePeriodResponse'
+                $ref: '#/components/schemas/getAFreezePeriodByAFreeze_period_idResponse'
       requestBody:
         content:
           application/json:
@@ -99,12 +99,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateAFreezePeriodResponse'
+                $ref: '#/components/schemas/getAFreezePeriodByAFreeze_period_idResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAFreezePeriodRequest'
+              $ref: '#/components/schemas/createAFreezePeriodRequest'
       tags:
         - freeze_periods
     delete:
@@ -175,42 +175,3 @@ components:
       required:
         - freeze_start
         - freeze_end
-    createAFreezePeriodResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        freeze_start:
-          type: string
-        freeze_end:
-          type: string
-        cron_timezone:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-    updateAFreezePeriodRequest:
-      type: object
-      properties:
-        freeze_start:
-          type: string
-        freeze_end:
-          type: string
-        cron_timezone:
-          type: string
-    updateAFreezePeriodResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        freeze_start:
-          type: string
-        freeze_end:
-          type: string
-        cron_timezone:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string

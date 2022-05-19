@@ -47,7 +47,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addABadgeToAGroupResponse'
+                $ref: '#/components/schemas/getABadgeOfAGroupResponse'
       requestBody:
         content:
           application/json:
@@ -105,12 +105,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editABadgeOfAGroupResponse'
+                $ref: '#/components/schemas/getABadgeOfAGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editABadgeOfAGroupRequest'
+              $ref: '#/components/schemas/addABadgeToAGroupRequest'
       tags:
         - group_badges
     delete:
@@ -214,43 +214,6 @@ components:
       required:
         - link_url
         - image_url
-    addABadgeToAGroupResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        link_url:
-          type: string
-        image_url:
-          type: string
-        rendered_link_url:
-          type: string
-        rendered_image_url:
-          type: string
-        kind:
-          type: string
-    editABadgeOfAGroupRequest:
-      type: object
-      properties:
-        link_url:
-          type: string
-        image_url:
-          type: string
-    editABadgeOfAGroupResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        link_url:
-          type: string
-        image_url:
-          type: string
-        rendered_link_url:
-          type: string
-        rendered_image_url:
-          type: string
-        kind:
-          type: string
     previewABadgeFromAGroupResponse:
       type: object
       properties:

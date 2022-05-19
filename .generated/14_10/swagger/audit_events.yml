@@ -93,7 +93,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveAllGroupAuditEventsResponse'
+                $ref: '#/components/schemas/retrieveAllInstanceAuditEventsResponse'
       tags:
         - audit_events
   '/groups/{id}/audit_events/{audit_event_id}':
@@ -120,7 +120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveASpecificGroupAuditEventResponse'
+                $ref: '#/components/schemas/retrieveSingleInstanceAuditEventResponse'
       tags:
         - audit_events
   '/projects/{id}/audit_events':
@@ -153,7 +153,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveAllProjectAuditEventsResponse'
+                $ref: '#/components/schemas/retrieveAllInstanceAuditEventsResponse'
       tags:
         - audit_events
   '/projects/{id}/audit_events/{audit_event_id}':
@@ -180,7 +180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/retrieveASpecificProjectAuditEventResponse'
+                $ref: '#/components/schemas/retrieveSingleInstanceAuditEventResponse'
       tags:
         - audit_events
 components:
@@ -237,138 +237,6 @@ components:
               type: string
             target_id:
               type: string
-            target_type:
-              type: string
-            target_details:
-              type: string
-            ip_address:
-              type: string
-            entity_path:
-              type: string
-        created_at:
-          type: string
-    retrieveAllGroupAuditEventsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          author_id:
-            type: integer
-          entity_id:
-            type: integer
-          entity_type:
-            type: string
-          details:
-            type: object
-            properties:
-              custom_message:
-                type: string
-              author_name:
-                type: string
-              target_id:
-                type: string
-              target_type:
-                type: string
-              target_details:
-                type: string
-              ip_address:
-                type: string
-              entity_path:
-                type: string
-          created_at:
-            type: string
-    retrieveASpecificGroupAuditEventResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        author_id:
-          type: integer
-        entity_id:
-          type: integer
-        entity_type:
-          type: string
-        details:
-          type: object
-          properties:
-            custom_message:
-              type: string
-            author_name:
-              type: string
-            target_id:
-              type: string
-            target_type:
-              type: string
-            target_details:
-              type: string
-            ip_address:
-              type: string
-            entity_path:
-              type: string
-        created_at:
-          type: string
-    retrieveAllProjectAuditEventsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          author_id:
-            type: integer
-          entity_id:
-            type: integer
-          entity_type:
-            type: string
-          details:
-            type: object
-            properties:
-              change:
-                type: string
-              from:
-                type: string
-              to:
-                type: string
-              author_name:
-                type: string
-              target_id:
-                type: integer
-              target_type:
-                type: string
-              target_details:
-                type: string
-              ip_address:
-                type: string
-              entity_path:
-                type: string
-          created_at:
-            type: string
-    retrieveASpecificProjectAuditEventResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        author_id:
-          type: integer
-        entity_id:
-          type: integer
-        entity_type:
-          type: string
-        details:
-          type: object
-          properties:
-            change:
-              type: string
-            from:
-              type: string
-            to:
-              type: string
-            author_name:
-              type: string
-            target_id:
-              type: integer
             target_type:
               type: string
             target_details:

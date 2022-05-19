@@ -221,7 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/revertACommitResponse'
+                $ref: '#/components/schemas/cherryPickACommitResponse'
       requestBody:
         content:
           application/json:
@@ -692,41 +692,6 @@ components:
           type: boolean
       required:
         - branch
-    revertACommitResponse:
-      type: object
-      properties:
-        dry_run:
-          type: string
-        message:
-          type: string
-        error_code:
-          type: string
-        id:
-          type: string
-        short_id:
-          type: string
-        title:
-          type: string
-        created_at:
-          type: string
-        parent_ids:
-          type: array
-          items:
-            type: string
-        author_name:
-          type: string
-        author_email:
-          type: string
-        authored_date:
-          type: string
-        committer_name:
-          type: string
-        committer_email:
-          type: string
-        committed_date:
-          type: string
-        web_url:
-          type: string
     getTheDiffOfACommitResponse:
       type: array
       items:

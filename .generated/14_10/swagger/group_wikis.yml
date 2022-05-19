@@ -92,12 +92,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/editAnExistingWikiPageResponse'
+                $ref: '#/components/schemas/getAWikiPageResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editAnExistingWikiPageRequest'
+              $ref: '#/components/schemas/createANewWikiPageRequest'
       tags:
         - group_wikis
     delete:
@@ -140,7 +140,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createANewWikiPageResponse'
+                $ref: '#/components/schemas/getAWikiPageResponse'
       requestBody:
         content:
           application/json:
@@ -218,41 +218,6 @@ components:
       required:
         - content
         - title
-    createANewWikiPageResponse:
-      type: object
-      properties:
-        content:
-          type: string
-        format:
-          type: string
-        slug:
-          type: string
-        title:
-          type: string
-        encoding:
-          type: string
-    editAnExistingWikiPageRequest:
-      type: object
-      properties:
-        content:
-          type: string
-        title:
-          type: string
-        format:
-          type: string
-    editAnExistingWikiPageResponse:
-      type: object
-      properties:
-        content:
-          type: string
-        format:
-          type: string
-        slug:
-          type: string
-        title:
-          type: string
-        encoding:
-          type: string
     uploadAnAttachmentToTheWikiRepositoryRequest:
       type: object
       properties:

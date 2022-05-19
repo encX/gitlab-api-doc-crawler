@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateGlobalNotificationSettingsResponse'
+                $ref: '#/components/schemas/globalNotificationSettingsResponse'
       requestBody:
         content:
           application/json:
@@ -135,13 +135,6 @@ components:
           type: boolean
         new_epic:
           type: boolean
-    updateGlobalNotificationSettingsResponse:
-      type: object
-      properties:
-        level:
-          type: string
-        notification_email:
-          type: string
     group/ProjectLevelNotificationSettingsResponse:
       type: object
       properties:

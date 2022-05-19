@@ -220,7 +220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectSnippetDiscussionItemsResponse'
+                $ref: '#/components/schemas/listProjectIssueDiscussionItemsResponse'
       tags:
         - discussions
     post:
@@ -249,7 +249,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createNewSnippetThreadRequest'
+              $ref: '#/components/schemas/createNewIssueThreadRequest'
       tags:
         - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}':
@@ -312,7 +312,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addNoteToExistingSnippetThreadRequest'
+              $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
   '/projects/{id}/snippets/{snippet_id}/discussions/{discussion_id}/notes/{note_id}':
@@ -352,7 +352,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/modifyExistingSnippetThreadNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueThreadNoteRequest'
       tags:
         - discussions
     delete:
@@ -413,7 +413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listGroupEpicDiscussionItemsResponse'
+                $ref: '#/components/schemas/listProjectIssueDiscussionItemsResponse'
       tags:
         - discussions
     post:
@@ -442,7 +442,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createNewEpicThreadRequest'
+              $ref: '#/components/schemas/createNewIssueThreadRequest'
       tags:
         - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}':
@@ -505,7 +505,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addNoteToExistingEpicThreadRequest'
+              $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
   '/groups/{id}/epics/{epic_id}/discussions/{discussion_id}/notes/{note_id}':
@@ -545,7 +545,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/modifyExistingEpicThreadNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueThreadNoteRequest'
       tags:
         - discussions
     delete:
@@ -606,7 +606,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectMergeRequestDiscussionItemsResponse'
+                $ref: '#/components/schemas/listProjectIssueDiscussionItemsResponse'
       tags:
         - discussions
     post:
@@ -719,7 +719,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addNoteToExistingMergeRequestThreadRequest'
+              $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
   '/projects/{id}/merge_requests/{merge_request_iid}/discussions/{discussion_id}/notes/{note_id}':
@@ -820,7 +820,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listProjectCommitDiscussionItemsResponse'
+                $ref: '#/components/schemas/listProjectIssueDiscussionItemsResponse'
       tags:
         - discussions
     post:
@@ -912,7 +912,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addNoteToExistingCommitThreadRequest'
+              $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
   '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
@@ -952,7 +952,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/modifyAnExistingCommitThreadNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueThreadNoteRequest'
       tags:
         - discussions
     delete:
@@ -1068,255 +1068,6 @@ components:
           type: string
       required:
         - body
-    listProjectSnippetDiscussionItemsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          individual_note:
-            type: boolean
-          notes:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                type:
-                  type: string
-                body:
-                  type: string
-                attachment:
-                  type: string
-                author:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                created_at:
-                  type: string
-                updated_at:
-                  type: string
-                system:
-                  type: boolean
-                noteable_id:
-                  type: integer
-                noteable_type:
-                  type: string
-                noteable_iid:
-                  type: string
-    createNewSnippetThreadRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - body
-    addNoteToExistingSnippetThreadRequest:
-      type: object
-      properties:
-        note_id:
-          type: integer
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - note_id
-        - body
-    modifyExistingSnippetThreadNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-      required:
-        - body
-    listGroupEpicDiscussionItemsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          individual_note:
-            type: boolean
-          notes:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                type:
-                  type: string
-                body:
-                  type: string
-                attachment:
-                  type: string
-                author:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                created_at:
-                  type: string
-                updated_at:
-                  type: string
-                system:
-                  type: boolean
-                noteable_id:
-                  type: integer
-                noteable_type:
-                  type: string
-                noteable_iid:
-                  type: string
-                resolvable:
-                  type: boolean
-    createNewEpicThreadRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - body
-    addNoteToExistingEpicThreadRequest:
-      type: object
-      properties:
-        note_id:
-          type: integer
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - note_id
-        - body
-    modifyExistingEpicThreadNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-      required:
-        - body
-    listProjectMergeRequestDiscussionItemsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          individual_note:
-            type: boolean
-          notes:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                type:
-                  type: string
-                body:
-                  type: string
-                attachment:
-                  type: string
-                author:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                created_at:
-                  type: string
-                updated_at:
-                  type: string
-                system:
-                  type: boolean
-                noteable_id:
-                  type: integer
-                noteable_type:
-                  type: string
-                noteable_iid:
-                  type: string
-                commit_id:
-                  type: string
-                position:
-                  type: object
-                  properties:
-                    base_sha:
-                      type: string
-                    start_sha:
-                      type: string
-                    head_sha:
-                      type: string
-                    old_path:
-                      type: string
-                    new_path:
-                      type: string
-                    position_type:
-                      type: string
-                    old_line:
-                      type: integer
-                    new_line:
-                      type: integer
-                    line_range:
-                      type: object
-                      properties:
-                        start:
-                          type: object
-                          properties:
-                            line_code:
-                              type: string
-                            type:
-                              type: string
-                        end:
-                          type: object
-                          properties:
-                            line_code:
-                              type: string
-                            type:
-                              type: string
-                resolved:
-                  type: boolean
-                resolvable:
-                  type: boolean
-                resolved_by:
-                  type: string
     createNewMergeRequestThreadRequest:
       type: object
       properties:
@@ -1340,18 +1091,6 @@ components:
           type: boolean
       required:
         - resolved
-    addNoteToExistingMergeRequestThreadRequest:
-      type: object
-      properties:
-        note_id:
-          type: integer
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - note_id
-        - body
     modifyAnExistingMergeRequestThreadNoteRequest:
       type: object
       properties:
@@ -1359,76 +1098,6 @@ components:
           type: string
         resolved:
           type: boolean
-    listProjectCommitDiscussionItemsResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-          individual_note:
-            type: boolean
-          notes:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                type:
-                  type: string
-                body:
-                  type: string
-                attachment:
-                  type: string
-                author:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    username:
-                      type: string
-                    state:
-                      type: string
-                    avatar_url:
-                      type: string
-                    web_url:
-                      type: string
-                created_at:
-                  type: string
-                updated_at:
-                  type: string
-                system:
-                  type: boolean
-                noteable_id:
-                  type: integer
-                noteable_type:
-                  type: string
-                noteable_iid:
-                  type: string
-                position:
-                  type: object
-                  properties:
-                    base_sha:
-                      type: string
-                    start_sha:
-                      type: string
-                    head_sha:
-                      type: string
-                    old_path:
-                      type: string
-                    new_path:
-                      type: string
-                    position_type:
-                      type: string
-                    old_line:
-                      type: integer
-                    new_line:
-                      type: integer
-                resolvable:
-                  type: boolean
     createNewCommitThreadRequest:
       type: object
       properties:
@@ -1466,20 +1135,3 @@ components:
         - 'position[start_sha]'
         - 'position[head_sha]'
         - 'position[position_type]'
-    addNoteToExistingCommitThreadRequest:
-      type: object
-      properties:
-        note_id:
-          type: integer
-        body:
-          type: string
-        created_at:
-          type: string
-      required:
-        - note_id
-        - body
-    modifyAnExistingCommitThreadNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
