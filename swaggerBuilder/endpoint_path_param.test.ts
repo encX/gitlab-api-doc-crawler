@@ -35,7 +35,7 @@ const input: Api = {
       description: "Another ID",
     },
   ],
-  response: {},
+  response: null,
 };
 
 const expected: PathsObject = {

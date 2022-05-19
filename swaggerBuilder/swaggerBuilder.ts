@@ -39,7 +39,10 @@ export class SwaggerBuilder {
       schemas = { ...schemas, ...request, ...response };
     });
 
-    // todo merge like-schemas
+    // // todo merge like-schemas
+    // Object.keys(schemas).forEach(s => {
+    //   schemas[s]
+    // })
 
     const swagger: Document = {
       openapi: "3.0.2",

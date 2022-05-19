@@ -120,27 +120,24 @@ export class Endpoint {
     this.pathParams.some((p) => p === param);
 
   private setResponse(): ResponsesObject {
-    const responseBase: ResponseObject = {
+    const response200Base: ResponseObject = {
       description: "successful operation",
     };
 
-    if (!this.api.response) return { "200": responseBase };
+    // if response is null in the first place, return only respons code
+    if (!this.api.response) return { "200": response200Base };
 
     const schemaName = `${this.operationId}Response`;
     const schema = parseSchema(this.api.response);
 
-    if (
-      schema.type !== "object" ||
-      Object.keys(schema.properties ?? {}).length > 0
-    ) {
-      responseBase.content = {
-        "application/json": {
-          schema: { $ref: `#/components/schemas/${schemaName}` },
-        },
-      };
+    response200Base.content = {
+      "application/json": {
+        schema: { $ref: `#/components/schemas/${schemaName}` },
+      },
+    };
 
-      this.response = { [schemaName]: schema };
-    }
-    return { "200": responseBase };
+    this.response = { [schemaName]: schema };
+
+    return { "200": response200Base };
   }
 }
