@@ -124,19 +124,18 @@ export class Endpoint {
       description: "successful operation",
     };
 
-    // if response is null in the first place, return only respons code
-    if (!this.api.response) return { "200": response200Base };
+    if (this.api.response) {
+      const schemaName = `${this.operationId}Response`;
+      const schema = parseSchema(this.api.response);
 
-    const schemaName = `${this.operationId}Response`;
-    const schema = parseSchema(this.api.response);
+      response200Base.content = {
+        "application/json": {
+          schema: { $ref: `#/components/schemas/${schemaName}` },
+        },
+      };
 
-    response200Base.content = {
-      "application/json": {
-        schema: { $ref: `#/components/schemas/${schemaName}` },
-      },
-    };
-
-    this.response = { [schemaName]: schema };
+      this.response = { [schemaName]: schema };
+    }
 
     return { "200": response200Base };
   }
