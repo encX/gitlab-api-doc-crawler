@@ -1,7 +1,4 @@
-import {
-  assertEquals,
-  assertThrows,
-} from "https://deno.land/std@0.139.0/testing/asserts.ts";
+import { assertEquals, assertThrows } from "https://deno.land/std@0.139.0/testing/asserts.ts";
 import { extractEndpointInfo, formatPath, getPathParams } from "./path.ts";
 
 Deno.test("extractEndpointInfo - normal", () => {

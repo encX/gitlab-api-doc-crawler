@@ -4,9 +4,7 @@ import { PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
 
 Deno.test("Endpoint converstion test - with path params", () => {
-  const [actualPath, actualRequest, actualResponse] = new Endpoint(
-    input
-  ).getSwaggerDef();
+  const [actualPath, actualRequest, actualResponse] = new Endpoint(input).getSwaggerDef();
   assertEquals(actualPath, expected);
   assertEquals(actualRequest, expectedRequestBody);
   assertEquals(actualResponse, expectedResponse);

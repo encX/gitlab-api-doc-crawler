@@ -2,9 +2,7 @@ import { Resource } from "../../types/models.ts";
 
 const paramRegex = /\/:(\w+)/g;
 
-export function extractEndpointInfo(
-  resources: Resource[]
-): [string, string, string[]] {
+export function extractEndpointInfo(resources: Resource[]): [string, string, string[]] {
   const methods = new Set<string>();
   const paths = new Set<string>();
 

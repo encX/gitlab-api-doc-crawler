@@ -1,16 +1,9 @@
-import {
-  Cheerio,
-  Root,
-  cheerio,
-} from "https://deno.land/x/cheerio@1.0.4/mod.ts";
+import { Cheerio, Root, cheerio } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
 import { file } from "./file.ts";
 
-export const load = async (
-  url: string,
-  ignoreCache = false
-): Promise<Cheerio & Root> => {
+export const load = async (url: string, ignoreCache = false): Promise<Cheerio & Root> => {
   await file.ensureDir("cache");
 
   const uObj = new URL(url);

@@ -5,20 +5,14 @@ import { Parser } from "./Parser.ts";
 import { file } from "../helper/file.ts";
 
 export class ResponseParser implements Parser<unknown> {
-  constructor(
-    private readonly elem: TagElement,
-    private readonly page: string,
-    private readonly apiName: string
-  ) {}
+  constructor(private readonly elem: TagElement, private readonly page: string, private readonly apiName: string) {}
 
   isValid(): boolean {
     return /language-json/gi.test(this.elem.attribs["class"]);
   }
 
   parse() {
-    return this.sanitizeAndParse(
-      cheerio(this.elem).find("code").text().replace(/\n/g, "")
-    );
+    return this.sanitizeAndParse(cheerio(this.elem).find("code").text().replace(/\n/g, ""));
   }
 
   private sanitizeAndParse(json: string): unknown {
@@ -42,10 +36,7 @@ export class ResponseParser implements Parser<unknown> {
     } catch {
       const unparseableDir = "unparsable_response";
       const filename =
-        this.page.replace(/\.html/, "") +
-        "__" +
-        this.apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() +
-        ".json";
+        this.page.replace(/\.html/, "") + "__" + this.apiName.replace(/[ \\\/\.]/g, "_").toLowerCase() + ".json";
 
       file.ensureDirSync(unparseableDir);
       file.writeTextSync(join(unparseableDir, filename), sanitized);

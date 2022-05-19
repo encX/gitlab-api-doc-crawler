@@ -7,16 +7,9 @@ const intOrStr = /integer( or |\/)string/i;
 export function asPropertyType(_type: string): SchemaObject | undefined {
   const type = _type.toLowerCase();
 
-  if (
-    type === "string" ||
-    type === "boolean" ||
-    type === "number" ||
-    type === "integer"
-  )
-    return { type };
+  if (type === "string" || type === "boolean" || type === "number" || type === "integer") return { type };
 
-  if (intOrStr.test(type))
-    return { oneOf: [{ type: "integer" }, { type: "string" }] };
+  if (intOrStr.test(type)) return { oneOf: [{ type: "integer" }, { type: "string" }] };
 
   if (type === "float") return { type: "number" };
   // if (type === "hash") return { type: "string" }; // hash = key[someprop] = val

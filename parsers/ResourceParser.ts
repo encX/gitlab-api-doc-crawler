@@ -7,10 +7,7 @@ export class ResourceParser implements Parser<Resource[]> {
   constructor(private readonly elem: TagElement) {}
 
   isValid(): boolean {
-    return (
-      this.elem.name === "div" &&
-      /language-(plaintext|shell)/gi.test(this.elem.attribs["class"])
-    );
+    return this.elem.name === "div" && /language-(plaintext|shell)/gi.test(this.elem.attribs["class"]);
   }
 
   parse(): Resource[] {
@@ -27,9 +24,6 @@ export class ResourceParser implements Parser<Resource[]> {
 
   private isResource(str: string): boolean {
     const [method, path] = str.split(/ +/);
-    return (
-      /^(GET|POST|PUT|PATCH|DELETE)$/i.test(method) &&
-      /^(\/?:?\w+)((\/:?\w+))*/.test(path)
-    );
+    return /^(GET|POST|PUT|PATCH|DELETE)$/i.test(method) && /^(\/?:?\w+)((\/:?\w+))*/.test(path);
   }
 }

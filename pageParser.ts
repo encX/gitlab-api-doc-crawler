@@ -1,8 +1,4 @@
-import {
-  TextElement,
-  TagElement,
-  cheerio,
-} from "https://deno.land/x/cheerio@1.0.4/mod.ts";
+import { TextElement, TagElement, cheerio } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 
 import { Api } from "./types/models.ts";
 import { load } from "./helper/page.ts";
@@ -27,16 +23,12 @@ export class PageParser {
 
     const chunks = PageParser.getChunksByHElem(tagElems);
 
-    const apis = chunks
-      .map((c) => this.tryParseApi(c))
-      .filter((a) => a) as Api[];
+    const apis = chunks.map((c) => this.tryParseApi(c)).filter((a) => a) as Api[];
 
     return apis;
   }
 
-  private static getTagElem(
-    elem: TagElement | TextElement | null
-  ): TagElement | undefined {
+  private static getTagElem(elem: TagElement | TextElement | null): TagElement | undefined {
     if (!elem || elem.type !== "tag") return undefined;
     return elem;
   }
@@ -71,28 +63,19 @@ export class PageParser {
     elems.forEach((e) => {
       const resourceParser = new ResourceParser(e);
       const attributesParser = new AttributesParser(e);
-      const responseParser = new ResponseParser(
-        e,
-        this.pagePath,
-        apiBuilder.getName()
-      );
+      const responseParser = new ResponseParser(e, this.pagePath, apiBuilder.getName());
 
       if (PageParser.shouldSkip(e)) return;
 
-      if (PageParser.isHElem(e))
-        apiBuilder.withName(PageParser.getElementText(e));
+      if (PageParser.isHElem(e)) apiBuilder.withName(PageParser.getElementText(e));
 
-      if (e.name === "p")
-        apiBuilder.withDescription(PageParser.getElementText(e));
+      if (e.name === "p") apiBuilder.withDescription(PageParser.getElementText(e));
 
-      if (resourceParser.isValid())
-        apiBuilder.withResources(resourceParser.parse());
+      if (resourceParser.isValid()) apiBuilder.withResources(resourceParser.parse());
 
-      if (attributesParser.isValid())
-        apiBuilder.withAttributes(attributesParser.parse());
+      if (attributesParser.isValid()) apiBuilder.withAttributes(attributesParser.parse());
 
-      if (responseParser.isValid())
-        apiBuilder.withResponse(responseParser.parse());
+      if (responseParser.isValid()) apiBuilder.withResponse(responseParser.parse());
     });
 
     const api = apiBuilder.build();
@@ -114,10 +97,7 @@ export class PageParser {
   }
 
   private static isBlockTitle(elem: TagElement): boolean {
-    return (
-      elem.name === "p" &&
-      /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text())
-    );
+    return elem.name === "p" && /Parameters|(Example (request|response)):?/gi.test(cheerio(elem).text());
   }
 
   private static isInfoBubble(elem: TagElement): boolean {

@@ -25,9 +25,7 @@ export class Endpoint {
   private operationId: string;
 
   constructor(private readonly api: Api, private readonly pageSlug?: string) {
-    [this.method, this.path, this.pathParams] = extractEndpointInfo(
-      this.api.resources
-    );
+    [this.method, this.path, this.pathParams] = extractEndpointInfo(this.api.resources);
     this.operationId = operationIDify(this.api.name);
 
     this.operation = {
@@ -43,11 +41,7 @@ export class Endpoint {
     if (pageSlug) this.operation.tags = [pageSlug];
   }
 
-  getSwaggerDef(): [
-    PathsObject,
-    NamedSchemaObject | undefined,
-    NamedSchemaObject | undefined
-  ] {
+  getSwaggerDef(): [PathsObject, NamedSchemaObject | undefined, NamedSchemaObject | undefined] {
     const path = {
       [this.path]: {
         [this.method]: this.operation,
@@ -73,9 +67,7 @@ export class Endpoint {
   private setRequestBody(): RequestBodyObject | undefined {
     if (!this.isMethodHasbody()) return undefined;
 
-    const nonPathParams = this.api.attributes.filter(
-      (a) => !this.isPathParam(a.name)
-    );
+    const nonPathParams = this.api.attributes.filter((a) => !this.isPathParam(a.name));
     if (nonPathParams.length === 0) return undefined;
 
     const properties: PropertiesObject = {};
@@ -90,9 +82,7 @@ export class Endpoint {
       }
     });
 
-    const required = nonPathParams
-      .filter((a) => a.required)
-      .map<string>((a) => a.name);
+    const required = nonPathParams.filter((a) => a.required).map<string>((a) => a.name);
 
     const schemaName = `${this.operationId}Request`;
     const schema: SchemaObject = {
@@ -113,11 +103,9 @@ export class Endpoint {
     };
   }
 
-  private isMethodHasbody = (): boolean =>
-    ["post", "put", "patch"].includes(this.method);
+  private isMethodHasbody = (): boolean => ["post", "put", "patch"].includes(this.method);
 
-  private isPathParam = (param: string): boolean =>
-    this.pathParams.some((p) => p === param);
+  private isPathParam = (param: string): boolean => this.pathParams.some((p) => p === param);
 
   private setResponse(): ResponsesObject {
     const response200Base: ResponseObject = {

@@ -33,73 +33,21 @@ export class SwaggerBuilder {
     const paths: PathsObject = {};
     let schemas: NamedSchemaObject = {};
 
-    const endpoints = _apis.map((api) =>
-      new Endpoint(api, _pageSlug).getSwaggerDef()
-    );
+    const endpoints = _apis.map((api) => new Endpoint(api, _pageSlug).getSwaggerDef());
     endpoints.forEach(([path, request, response]) => {
-      Object.keys(path).forEach(
-        (p) => (paths[p] = { ...paths[p], ...path[p] })
-      );
-
+      Object.keys(path).forEach((p) => (paths[p] = { ...paths[p], ...path[p] }));
       schemas = { ...schemas, ...request, ...response };
     });
 
-    // todo merge like-schemas
     Object.entries(schemas).forEach(([sname, s], i, entries) => {
       // compare s with entries [i+1, ]
       const toCheck = entries.slice(i + 1);
-      const matches = toCheck
-        .filter(([_, m]) => deepCompareSchema(s, m))
-        .map(([mname]) => mname);
+      const matches = toCheck.filter(([_, m]) => deepCompareSchema(s, m)).map(([mname]) => mname);
 
-      // if find match m, find $ref with name of m and replace with sname
-      const regex = new RegExp(matches.join("|"), "ig");
-      const json = "application/json";
+      // if find matches, replace refs and delete schema
       if (matches.length) {
-        /* REF REPLACEMENT LOGIC*/
-        Object.keys(paths).forEach((p) => {
-          paths[p] &&
-            Object.keys(paths[p]!).forEach((method) => {
-              const reqRef = (
-                (
-                  paths[p]![method as HttpMethods]!
-                    .requestBody as RequestBodyObject
-                )?.content[json].schema as ReferenceObject
-              )?.$ref;
-
-              if (reqRef && regex.test(reqRef)) {
-                (
-                  (
-                    paths[p]![method as HttpMethods]!
-                      .requestBody as RequestBodyObject
-                  ).content[json].schema as ReferenceObject
-                ).$ref = reqRef.replace(regex, sname);
-              }
-
-              const resRef = (
-                (
-                  paths[p]![method as HttpMethods]!.responses?.[
-                    "200"
-                  ] as ResponseObject
-                )?.content?.[json].schema as ReferenceObject
-              )?.$ref;
-
-              if (resRef && regex.test(resRef)) {
-                (
-                  (
-                    paths[p]![method as HttpMethods]!.responses[
-                      "200"
-                    ] as ResponseObject
-                  ).content![json].schema as ReferenceObject
-                ).$ref = resRef.replace(regex, sname);
-              }
-            });
-        });
-
-        /* END REF REPLACEMENT LOGIC*/
-        matches.forEach((m) => {
-          delete schemas[m];
-        });
+        replaceRefs(paths, sname, matches);
+        matches.forEach((m) => delete schemas[m]);
       }
     });
 
@@ -126,10 +74,7 @@ export class SwaggerBuilder {
       );
     } catch (e) {
       console.error(e);
-      await file.writeText(
-        `.generated/swagger_gen_file/${_pageSlug}.json`,
-        JSON.stringify(endpoints, null, 2)
-      );
+      await file.writeText(`.generated/swagger_gen_file/${_pageSlug}.json`, JSON.stringify(endpoints, null, 2));
     }
   }
 
@@ -159,10 +104,7 @@ function deepCompareSchema(a: SchemaObject, b: SchemaObject): boolean {
       if (!a.properties && !b.properties) return true;
       if (!a.properties || !b.properties) return false;
 
-      return deepCompareSchema(
-        a.properties[k] as SchemaObject,
-        b.properties[k] as SchemaObject
-      );
+      return deepCompareSchema(a.properties[k] as SchemaObject, b.properties[k] as SchemaObject);
     }, true);
   }
 
@@ -173,4 +115,30 @@ function deepCompareSchema(a: SchemaObject, b: SchemaObject): boolean {
 
   // only same type of primitives left
   return true;
+}
+
+function replaceRefs(paths: PathsObject, ref: string, replaces: string[]) {
+  const replaceRegex = new RegExp(replaces.join("|"), "ig");
+  const json = "application/json";
+
+  Object.keys(paths).forEach((p) => {
+    paths[p] &&
+      Object.keys(paths[p]!).forEach((method) => {
+        // prettier-ignore
+        const reqRef = ((paths[p]![method as HttpMethods]!.requestBody as RequestBodyObject)?.content[json].schema as ReferenceObject)?.$ref;
+
+        if (reqRef && replaceRegex.test(reqRef)) {
+          // prettier-ignore
+          ((paths[p]![method as HttpMethods]!.requestBody as RequestBodyObject).content[json].schema as ReferenceObject).$ref = reqRef.replace(replaceRegex, ref);
+        }
+
+        // prettier-ignore
+        const resRef = ((paths[p]![method as HttpMethods]!.responses?.["200"] as ResponseObject)?.content?.[json].schema as ReferenceObject)?.$ref;
+
+        if (resRef && replaceRegex.test(resRef)) {
+          // prettier-ignore
+          ((paths[p]![method as HttpMethods]!.responses["200"] as ResponseObject).content![json].schema as ReferenceObject).$ref = resRef.replace(replaceRegex, ref);
+        }
+      });
+  });
 }

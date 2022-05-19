@@ -23,8 +23,5 @@ Deno.test("operationIDify - dash between words", () => {
 });
 
 Deno.test("operationIDify - dash surrounded by space", () => {
-  assertEquals(
-    operationIDify("Update epic - issue association"),
-    "updateEpicIssueAssociation"
-  );
+  assertEquals(operationIDify("Update epic - issue association"), "updateEpicIssueAssociation");
 });
