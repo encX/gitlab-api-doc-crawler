@@ -53,7 +53,7 @@ paths:
     get:
       summary: Get project-level rules
       description: 'You can request information about a project’s approval rules using the following endpoint:'
-      operationId: getProject-levelRules
+      operationId: getProjectLevelRules
       parameters:
         - name: id
           in: path
@@ -67,13 +67,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getProject-levelRulesResponse'
+                $ref: '#/components/schemas/getProjectLevelRulesResponse'
       tags:
         - merge_request_approvals
     post:
       summary: Create project-level rule
       description: 'You can create project approval rules using the following endpoint:'
-      operationId: createProject-levelRule
+      operationId: createProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -87,19 +87,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createProject-levelRuleResponse'
+                $ref: '#/components/schemas/createProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createProject-levelRuleRequest'
+              $ref: '#/components/schemas/createProjectLevelRuleRequest'
       tags:
         - merge_request_approvals
   '/projects/{id}/approval_rules/{approval_rule_id}':
     get:
       summary: Get a single project-level rule
       description: 'You can request information about a single project approval rules using the following endpoint:'
-      operationId: getASingleProject-levelRule
+      operationId: getASingleProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -119,13 +119,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleProject-levelRuleResponse'
+                $ref: '#/components/schemas/getASingleProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
     put:
       summary: Update project-level rule
       description: 'You can update project approval rules using the following endpoint:'
-      operationId: updateProject-levelRule
+      operationId: updateProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -145,18 +145,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateProject-levelRuleResponse'
+                $ref: '#/components/schemas/updateProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateProject-levelRuleRequest'
+              $ref: '#/components/schemas/updateProjectLevelRuleRequest'
       tags:
         - merge_request_approvals
     delete:
       summary: Delete project-level rule
       description: 'You can delete project approval rules using the following endpoint:'
-      operationId: deleteProject-levelRule
+      operationId: deleteProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -176,7 +176,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleteProject-levelRuleResponse'
+                $ref: '#/components/schemas/deleteProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
@@ -560,7 +560,7 @@ components:
           type: boolean
         require_password_to_approve:
           type: boolean
-    getProject-levelRulesResponse:
+    getProjectLevelRulesResponse:
       type: array
       items:
         type: object
@@ -680,7 +680,7 @@ components:
                   type: string
           contains_hidden_groups:
             type: boolean
-    getASingleProject-levelRuleResponse:
+    getASingleProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -798,7 +798,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    createProject-levelRuleRequest:
+    createProjectLevelRuleRequest:
       type: object
       properties:
         name:
@@ -814,7 +814,7 @@ components:
       required:
         - name
         - approvals_required
-    createProject-levelRuleResponse:
+    createProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -932,7 +932,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    updateProject-levelRuleRequest:
+    updateProjectLevelRuleRequest:
       type: object
       properties:
         name:
@@ -944,7 +944,7 @@ components:
       required:
         - name
         - approvals_required
-    updateProject-levelRuleResponse:
+    updateProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -1062,7 +1062,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    deleteProject-levelRuleResponse:
+    deleteProjectLevelRuleResponse:
       type: string
     changeApprovalConfigurationRequest:
       type: object

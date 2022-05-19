@@ -1614,7 +1614,7 @@ paths:
     post:
       summary: Cherry-pick a commit
       description: Cherry-picks a commit to a given branch.
-      operationId: cherry-pickACommit
+      operationId: cherryPickACommit
       parameters:
         - name: id
           in: path
@@ -1634,12 +1634,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/cherry-pickACommitResponse'
+                $ref: '#/components/schemas/cherryPickACommitResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/cherry-pickACommitRequest'
+              $ref: '#/components/schemas/cherryPickACommitRequest'
       tags:
         - commits
   '/projects/{id}/repository/commits/{sha}/revert':
@@ -4370,7 +4370,7 @@ paths:
     put:
       summary: Update epic - issue association
       description: Updates an epic - issue association.
-      operationId: updateEpic-IssueAssociation
+      operationId: updateEpicIssueAssociation
       parameters:
         - name: id
           in: path
@@ -4396,12 +4396,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateEpic-IssueAssociationResponse'
+                $ref: '#/components/schemas/updateEpicIssueAssociationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateEpic-IssueAssociationRequest'
+              $ref: '#/components/schemas/updateEpicIssueAssociationRequest'
       tags:
         - epic_issues
   '/groups/{id}/epics/{epic_iid}/epics':
@@ -4503,7 +4503,7 @@ paths:
     put:
       summary: Re-order a child epic
       description: ''
-      operationId: re-orderAChildEpic
+      operationId: reOrderAChildEpic
       parameters:
         - name: id
           in: path
@@ -4531,12 +4531,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/re-orderAChildEpicResponse'
+                $ref: '#/components/schemas/reOrderAChildEpicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/re-orderAChildEpicRequest'
+              $ref: '#/components/schemas/reOrderAChildEpicRequest'
       tags:
         - epic_links
     delete:
@@ -4813,7 +4813,7 @@ paths:
       description: >-
         Manually creates a to-do item for the current user on an epic. If there already exists a to-do item for the user
         on that epic, status code 304 is returned.
-      operationId: createATo-doItem
+      operationId: createAToDoItem
       parameters:
         - name: id
           in: path
@@ -4833,7 +4833,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createATo-doItemResponse'
+                $ref: '#/components/schemas/createAToDoItemResponse'
       tags:
         - epics
   '/projects/{id}/error_tracking/settings':
@@ -7924,7 +7924,7 @@ paths:
       description: >-
         Transfer a group to a new parent group or turn a subgroup to a top-level group. Available to administrators and
         users:
-      operationId: transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroup
+      operationId: transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroup
       parameters:
         - name: id
           in: path
@@ -7938,12 +7938,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupResponse'
+                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupRequest'
+              $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest'
       tags:
         - groups
   '/groups/{id}/restore':
@@ -9848,7 +9848,7 @@ paths:
     put:
       summary: Create/Edit Pipeline-Emails integration
       description: Set Pipeline-Emails integration for a project.
-      operationId: create/editPipeline-emailsIntegration
+      operationId: create/editPipelineEmailsIntegration
       parameters: []
       responses:
         '200':
@@ -9856,18 +9856,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/create/editPipeline-emailsIntegrationResponse'
+                $ref: '#/components/schemas/create/editPipelineEmailsIntegrationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/create/editPipeline-emailsIntegrationRequest'
+              $ref: '#/components/schemas/create/editPipelineEmailsIntegrationRequest'
       tags:
         - integrations
     delete:
       summary: Disable Pipeline-Emails integration
       description: Disable the Pipeline-Emails integration for a project. Integration settings are preserved.
-      operationId: disablePipeline-emailsIntegration
+      operationId: disablePipelineEmailsIntegration
       parameters: []
       responses:
         '200':
@@ -9875,13 +9875,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/disablePipeline-emailsIntegrationResponse'
+                $ref: '#/components/schemas/disablePipelineEmailsIntegrationResponse'
       tags:
         - integrations
     get:
       summary: Get Pipeline-Emails integration settings
       description: Get Pipeline-Emails integration settings for a project.
-      operationId: getPipeline-emailsIntegrationSettings
+      operationId: getPipelineEmailsIntegrationSettings
       parameters: []
       responses:
         '200':
@@ -9889,7 +9889,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getPipeline-emailsIntegrationSettingsResponse'
+                $ref: '#/components/schemas/getPipelineEmailsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pivotaltracker':
@@ -11640,7 +11640,7 @@ paths:
       description: >-
         Manually creates a to-do item for the current user on an issue. If there already exists a to-do item for the
         user on that issue, status code 304 is returned.
-      operationId: createATo-doItem
+      operationId: createAToDoItem
       parameters:
         - name: id
           in: path
@@ -11660,7 +11660,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createATo-doItemResponse'
+                $ref: '#/components/schemas/createAToDoItemResponse'
       tags:
         - issues
   '/projects/{id}/issues/{issue_iid}/notes':
@@ -14024,7 +14024,7 @@ paths:
     get:
       summary: Get project-level rules
       description: 'You can request information about a project’s approval rules using the following endpoint:'
-      operationId: getProject-levelRules
+      operationId: getProjectLevelRules
       parameters:
         - name: id
           in: path
@@ -14038,13 +14038,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getProject-levelRulesResponse'
+                $ref: '#/components/schemas/getProjectLevelRulesResponse'
       tags:
         - merge_request_approvals
     post:
       summary: Create project-level rule
       description: 'You can create project approval rules using the following endpoint:'
-      operationId: createProject-levelRule
+      operationId: createProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -14058,19 +14058,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createProject-levelRuleResponse'
+                $ref: '#/components/schemas/createProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createProject-levelRuleRequest'
+              $ref: '#/components/schemas/createProjectLevelRuleRequest'
       tags:
         - merge_request_approvals
   '/projects/{id}/approval_rules/{approval_rule_id}':
     get:
       summary: Get a single project-level rule
       description: 'You can request information about a single project approval rules using the following endpoint:'
-      operationId: getASingleProject-levelRule
+      operationId: getASingleProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -14090,13 +14090,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleProject-levelRuleResponse'
+                $ref: '#/components/schemas/getASingleProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
     put:
       summary: Update project-level rule
       description: 'You can update project approval rules using the following endpoint:'
-      operationId: updateProject-levelRule
+      operationId: updateProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -14116,18 +14116,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateProject-levelRuleResponse'
+                $ref: '#/components/schemas/updateProjectLevelRuleResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateProject-levelRuleRequest'
+              $ref: '#/components/schemas/updateProjectLevelRuleRequest'
       tags:
         - merge_request_approvals
     delete:
       summary: Delete project-level rule
       description: 'You can delete project approval rules using the following endpoint:'
-      operationId: deleteProject-levelRule
+      operationId: deleteProjectLevelRule
       parameters:
         - name: id
           in: path
@@ -14147,7 +14147,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleteProject-levelRuleResponse'
+                $ref: '#/components/schemas/deleteProjectLevelRuleResponse'
       tags:
         - merge_request_approvals
   '/projects/{id}/merge_requests/{merge_request_iid}/approvals':
@@ -15557,7 +15557,7 @@ paths:
       description: >-
         Manually creates a to-do item for the current user on a merge request. If there already exists a to-do item for
         the user on that merge request, status code HTTP 304 Not Modified is returned.
-      operationId: createATo-doItem
+      operationId: createAToDoItem
       parameters:
         - name: id
           in: path
@@ -15577,7 +15577,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createATo-doItemResponse'
+                $ref: '#/components/schemas/createAToDoItemResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/versions':
@@ -23738,7 +23738,7 @@ paths:
       description: >-
         Returns a list of to-do items. When no filter is applied, it returns all pending to-do items for the current
         user. Different filters allow the user to refine the request.
-      operationId: getAListOfTo-doItems
+      operationId: getAListOfToDoItems
       parameters:
         - name: action
           in: query
@@ -23786,7 +23786,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getAListOfTo-doItemsResponse'
+                $ref: '#/components/schemas/getAListOfToDoItemsResponse'
       tags:
         - todos
   '/todos/{id}/mark_as_done':
@@ -23795,7 +23795,7 @@ paths:
       description: >-
         Marks a single pending to-do item given by its ID for the current user as done. The to-do item marked as done is
         returned in the response.
-      operationId: markATo-doItemAsDone
+      operationId: markAToDoItemAsDone
       parameters:
         - name: id
           in: path
@@ -23809,7 +23809,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/markATo-doItemAsDoneResponse'
+                $ref: '#/components/schemas/markAToDoItemAsDoneResponse'
       tags:
         - todos
   /todos/mark_as_done:
@@ -23818,7 +23818,7 @@ paths:
       description: >-
         Marks all pending to-do items for the current user as done. It returns the HTTP status code 204 with an empty
         response.
-      operationId: markAllTo-doItemsAsDone
+      operationId: markAllToDoItemsAsDone
       parameters: []
       responses:
         '200':
@@ -23826,7 +23826,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/markAllTo-doItemsAsDoneResponse'
+                $ref: '#/components/schemas/markAllToDoItemsAsDoneResponse'
       tags:
         - todos
   /topics:
@@ -25353,7 +25353,7 @@ paths:
     post:
       summary: Create a project-level vulnerability export
       description: Creates a new vulnerability export for a project.
-      operationId: createAProject-levelVulnerabilityExport
+      operationId: createAProjectLevelVulnerabilityExport
       parameters:
         - name: id
           in: path
@@ -25367,14 +25367,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAProject-levelVulnerabilityExportResponse'
+                $ref: '#/components/schemas/createAProjectLevelVulnerabilityExportResponse'
       tags:
         - vulnerability_exports
   '/security/groups/{id}/vulnerability_exports':
     post:
       summary: Create a group-level vulnerability export
       description: Creates a new vulnerability export for a group.
-      operationId: createAGroup-levelVulnerabilityExport
+      operationId: createAGroupLevelVulnerabilityExport
       parameters:
         - name: id
           in: path
@@ -25388,14 +25388,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAGroup-levelVulnerabilityExportResponse'
+                $ref: '#/components/schemas/createAGroupLevelVulnerabilityExportResponse'
       tags:
         - vulnerability_exports
   /security/vulnerability_exports:
     post:
       summary: Create an instance-level vulnerability export
       description: Creates a new vulnerability export for the projects of the user selected in the Security Dashboard.
-      operationId: createAnInstance-levelVulnerabilityExport
+      operationId: createAnInstanceLevelVulnerabilityExport
       parameters: []
       responses:
         '200':
@@ -25403,7 +25403,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createAnInstance-levelVulnerabilityExportResponse'
+                $ref: '#/components/schemas/createAnInstanceLevelVulnerabilityExportResponse'
       tags:
         - vulnerability_exports
   '/security/vulnerability_exports/{id}':
@@ -27075,7 +27075,7 @@ components:
             type: string
           name:
             type: string
-    cherry-pickACommitRequest:
+    cherryPickACommitRequest:
       type: object
       properties:
         branch:
@@ -27086,7 +27086,7 @@ components:
           type: string
       required:
         - branch
-    cherry-pickACommitResponse:
+    cherryPickACommitResponse:
       type: object
       properties:
         dry_run:
@@ -29784,7 +29784,7 @@ components:
                   type: string
                 human_total_time_spent:
                   type: string
-    updateEpic-IssueAssociationRequest:
+    updateEpicIssueAssociationRequest:
       type: object
       properties:
         move_before_id:
@@ -29795,7 +29795,7 @@ components:
           oneOf:
             - type: integer
             - type: string
-    updateEpic-IssueAssociationResponse:
+    updateEpicIssueAssociationResponse:
       type: array
       items:
         type: object
@@ -30087,14 +30087,14 @@ components:
           type: string
         relation_url:
           type: string
-    re-orderAChildEpicRequest:
+    reOrderAChildEpicRequest:
       type: object
       properties:
         move_before_id:
           type: integer
         move_after_id:
           type: integer
-    re-orderAChildEpicResponse:
+    reOrderAChildEpicResponse:
       type: array
       items:
         type: object
@@ -30657,7 +30657,7 @@ components:
           type: string
     deleteEpicResponse:
       type: string
-    createATo-doItemResponse:
+    createAToDoItemResponse:
       type: object
       properties:
         id:
@@ -34424,12 +34424,12 @@ components:
       type: string
     transferProjectToGroupResponse:
       type: string
-    transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupRequest:
+    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest:
       type: object
       properties:
         group_id:
           type: integer
-    transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupResponse:
+    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse:
       type: string
     updateGroupRequest:
       type: object
@@ -35941,7 +35941,7 @@ components:
       type: string
     getPackagistIntegrationSettingsResponse:
       type: string
-    create/editPipeline-emailsIntegrationRequest:
+    create/editPipelineEmailsIntegrationRequest:
       type: object
       properties:
         recipients:
@@ -35958,11 +35958,11 @@ components:
           type: boolean
       required:
         - recipients
-    create/editPipeline-emailsIntegrationResponse:
+    create/editPipelineEmailsIntegrationResponse:
       type: string
-    disablePipeline-emailsIntegrationResponse:
+    disablePipelineEmailsIntegrationResponse:
       type: string
-    getPipeline-emailsIntegrationSettingsResponse:
+    getPipelineEmailsIntegrationSettingsResponse:
       type: string
     create/editPivotalTrackerIntegrationRequest:
       type: object
@@ -41008,7 +41008,7 @@ components:
           type: boolean
         require_password_to_approve:
           type: boolean
-    getProject-levelRulesResponse:
+    getProjectLevelRulesResponse:
       type: array
       items:
         type: object
@@ -41128,7 +41128,7 @@ components:
                   type: string
           contains_hidden_groups:
             type: boolean
-    getASingleProject-levelRuleResponse:
+    getASingleProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -41246,7 +41246,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    createProject-levelRuleRequest:
+    createProjectLevelRuleRequest:
       type: object
       properties:
         name:
@@ -41262,7 +41262,7 @@ components:
       required:
         - name
         - approvals_required
-    createProject-levelRuleResponse:
+    createProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -41380,7 +41380,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    updateProject-levelRuleRequest:
+    updateProjectLevelRuleRequest:
       type: object
       properties:
         name:
@@ -41392,7 +41392,7 @@ components:
       required:
         - name
         - approvals_required
-    updateProject-levelRuleResponse:
+    updateProjectLevelRuleResponse:
       type: object
       properties:
         id:
@@ -41510,7 +41510,7 @@ components:
                 type: string
         contains_hidden_groups:
           type: boolean
-    deleteProject-levelRuleResponse:
+    deleteProjectLevelRuleResponse:
       type: string
     changeApprovalConfigurationRequest:
       type: object
@@ -53389,7 +53389,7 @@ components:
           type: boolean
     deleteATagResponse:
       type: string
-    getAListOfTo-doItemsResponse:
+    getAListOfToDoItemsResponse:
       type: array
       items:
         type: object
@@ -53533,7 +53533,7 @@ components:
             type: string
           updated_at:
             type: string
-    markATo-doItemAsDoneResponse:
+    markAToDoItemAsDoneResponse:
       type: object
       properties:
         id:
@@ -53677,7 +53677,7 @@ components:
           type: string
         updated_at:
           type: string
-    markAllTo-doItemsAsDoneResponse:
+    markAllToDoItemsAsDoneResponse:
       type: string
     listTopicsResponse:
       type: array
@@ -54941,7 +54941,7 @@ components:
           type: string
         closed_at:
           type: string
-    createAProject-levelVulnerabilityExportResponse:
+    createAProjectLevelVulnerabilityExportResponse:
       type: object
       properties:
         id:
@@ -54967,7 +54967,7 @@ components:
               type: string
             download:
               type: string
-    createAGroup-levelVulnerabilityExportResponse:
+    createAGroupLevelVulnerabilityExportResponse:
       type: object
       properties:
         id:
@@ -54993,7 +54993,7 @@ components:
               type: string
             download:
               type: string
-    createAnInstance-levelVulnerabilityExportResponse:
+    createAnInstanceLevelVulnerabilityExportResponse:
       type: object
       properties:
         id:

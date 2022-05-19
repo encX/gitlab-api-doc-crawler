@@ -1174,7 +1174,7 @@ paths:
     put:
       summary: Create/Edit Pipeline-Emails integration
       description: Set Pipeline-Emails integration for a project.
-      operationId: create/editPipeline-emailsIntegration
+      operationId: create/editPipelineEmailsIntegration
       parameters: []
       responses:
         '200':
@@ -1182,18 +1182,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/create/editPipeline-emailsIntegrationResponse'
+                $ref: '#/components/schemas/create/editPipelineEmailsIntegrationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/create/editPipeline-emailsIntegrationRequest'
+              $ref: '#/components/schemas/create/editPipelineEmailsIntegrationRequest'
       tags:
         - integrations
     delete:
       summary: Disable Pipeline-Emails integration
       description: Disable the Pipeline-Emails integration for a project. Integration settings are preserved.
-      operationId: disablePipeline-emailsIntegration
+      operationId: disablePipelineEmailsIntegration
       parameters: []
       responses:
         '200':
@@ -1201,13 +1201,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/disablePipeline-emailsIntegrationResponse'
+                $ref: '#/components/schemas/disablePipelineEmailsIntegrationResponse'
       tags:
         - integrations
     get:
       summary: Get Pipeline-Emails integration settings
       description: Get Pipeline-Emails integration settings for a project.
-      operationId: getPipeline-emailsIntegrationSettings
+      operationId: getPipelineEmailsIntegrationSettings
       parameters: []
       responses:
         '200':
@@ -1215,7 +1215,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getPipeline-emailsIntegrationSettingsResponse'
+                $ref: '#/components/schemas/getPipelineEmailsIntegrationSettingsResponse'
       tags:
         - integrations
   '/projects/{id}/integrations/pivotaltracker':
@@ -2341,7 +2341,7 @@ components:
       type: string
     getPackagistIntegrationSettingsResponse:
       type: string
-    create/editPipeline-emailsIntegrationRequest:
+    create/editPipelineEmailsIntegrationRequest:
       type: object
       properties:
         recipients:
@@ -2358,11 +2358,11 @@ components:
           type: boolean
       required:
         - recipients
-    create/editPipeline-emailsIntegrationResponse:
+    create/editPipelineEmailsIntegrationResponse:
       type: string
-    disablePipeline-emailsIntegrationResponse:
+    disablePipelineEmailsIntegrationResponse:
       type: string
-    getPipeline-emailsIntegrationSettingsResponse:
+    getPipelineEmailsIntegrationSettingsResponse:
       type: string
     create/editPivotalTrackerIntegrationRequest:
       type: object

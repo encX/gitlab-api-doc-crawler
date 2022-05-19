@@ -102,7 +102,7 @@ paths:
     put:
       summary: Re-order a child epic
       description: ''
-      operationId: re-orderAChildEpic
+      operationId: reOrderAChildEpic
       parameters:
         - name: id
           in: path
@@ -130,12 +130,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/re-orderAChildEpicResponse'
+                $ref: '#/components/schemas/reOrderAChildEpicResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/re-orderAChildEpicRequest'
+              $ref: '#/components/schemas/reOrderAChildEpicRequest'
       tags:
         - epic_links
     delete:
@@ -326,14 +326,14 @@ components:
           type: string
         relation_url:
           type: string
-    re-orderAChildEpicRequest:
+    reOrderAChildEpicRequest:
       type: object
       properties:
         move_before_id:
           type: integer
         move_after_id:
           type: integer
-    re-orderAChildEpicResponse:
+    reOrderAChildEpicResponse:
       type: array
       items:
         type: object

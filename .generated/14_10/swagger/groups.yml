@@ -546,7 +546,7 @@ paths:
       description: >-
         Transfer a group to a new parent group or turn a subgroup to a top-level group. Available to administrators and
         users:
-      operationId: transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroup
+      operationId: transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroup
       parameters:
         - name: id
           in: path
@@ -560,12 +560,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupResponse'
+                $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupRequest'
+              $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest'
       tags:
         - groups
   '/groups/{id}/restore':
@@ -1790,12 +1790,12 @@ components:
       type: string
     transferProjectToGroupResponse:
       type: string
-    transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupRequest:
+    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest:
       type: object
       properties:
         group_id:
           type: integer
-    transferAGroupToANewParentGroup/TurnASubgroupToATop-levelGroupResponse:
+    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupResponse:
       type: string
     updateGroupRequest:
       type: object

@@ -169,7 +169,7 @@ paths:
     post:
       summary: Cherry-pick a commit
       description: Cherry-picks a commit to a given branch.
-      operationId: cherry-pickACommit
+      operationId: cherryPickACommit
       parameters:
         - name: id
           in: path
@@ -189,12 +189,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/cherry-pickACommitResponse'
+                $ref: '#/components/schemas/cherryPickACommitResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/cherry-pickACommitRequest'
+              $ref: '#/components/schemas/cherryPickACommitRequest'
       tags:
         - commits
   '/projects/{id}/repository/commits/{sha}/revert':
@@ -637,7 +637,7 @@ components:
             type: string
           name:
             type: string
-    cherry-pickACommitRequest:
+    cherryPickACommitRequest:
       type: object
       properties:
         branch:
@@ -648,7 +648,7 @@ components:
           type: string
       required:
         - branch
-    cherry-pickACommitResponse:
+    cherryPickACommitResponse:
       type: object
       properties:
         dry_run:

@@ -17,3 +17,14 @@ Deno.test("operationIDify - apostrophe U+2019 s", () => {
 Deno.test("operationIDify - single word", () => {
   assertEquals(operationIDify("word"), "word");
 });
+
+Deno.test("operationIDify - dash between words", () => {
+  assertEquals(operationIDify("Create a to-do item"), "createAToDoItem");
+});
+
+Deno.test("operationIDify - dash surrounded by space", () => {
+  assertEquals(
+    operationIDify("Update epic - issue association"),
+    "updateEpicIssueAssociation"
+  );
+});

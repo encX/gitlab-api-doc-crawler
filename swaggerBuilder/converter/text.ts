@@ -1,6 +1,8 @@
 export function operationIDify(text: string): string {
   const out = text
     .replace(/[’'"]s/g, "")
+    .replace(/\-/g, " ")
+    .replace(/ {2,}/g, " ")
     .split(" ")
     .map((t) => [t[0].toUpperCase(), t.slice(1).toLowerCase()].join(""))
     .join("");

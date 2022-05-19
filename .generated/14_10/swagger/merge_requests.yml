@@ -1106,7 +1106,7 @@ paths:
       description: >-
         Manually creates a to-do item for the current user on a merge request. If there already exists a to-do item for
         the user on that merge request, status code HTTP 304 Not Modified is returned.
-      operationId: createATo-doItem
+      operationId: createAToDoItem
       parameters:
         - name: id
           in: path
@@ -1126,7 +1126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createATo-doItemResponse'
+                $ref: '#/components/schemas/createAToDoItemResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/versions':
@@ -3573,7 +3573,7 @@ components:
               type: integer
             completed_count:
               type: integer
-    createATo-doItemResponse:
+    createAToDoItemResponse:
       type: object
       properties:
         id:

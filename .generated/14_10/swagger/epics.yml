@@ -243,7 +243,7 @@ paths:
       description: >-
         Manually creates a to-do item for the current user on an epic. If there already exists a to-do item for the user
         on that epic, status code 304 is returned.
-      operationId: createATo-doItem
+      operationId: createAToDoItem
       parameters:
         - name: id
           in: path
@@ -263,7 +263,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createATo-doItemResponse'
+                $ref: '#/components/schemas/createAToDoItemResponse'
       tags:
         - epics
 components:
@@ -711,7 +711,7 @@ components:
           type: string
     deleteEpicResponse:
       type: string
-    createATo-doItemResponse:
+    createAToDoItemResponse:
       type: object
       properties:
         id:

@@ -101,7 +101,7 @@ paths:
     put:
       summary: Update epic - issue association
       description: Updates an epic - issue association.
-      operationId: updateEpic-IssueAssociation
+      operationId: updateEpicIssueAssociation
       parameters:
         - name: id
           in: path
@@ -127,12 +127,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateEpic-IssueAssociationResponse'
+                $ref: '#/components/schemas/updateEpicIssueAssociationResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateEpic-IssueAssociationRequest'
+              $ref: '#/components/schemas/updateEpicIssueAssociationRequest'
       tags:
         - epic_issues
 components:
@@ -585,7 +585,7 @@ components:
                   type: string
                 human_total_time_spent:
                   type: string
-    updateEpic-IssueAssociationRequest:
+    updateEpicIssueAssociationRequest:
       type: object
       properties:
         move_before_id:
@@ -596,7 +596,7 @@ components:
           oneOf:
             - type: integer
             - type: string
-    updateEpic-IssueAssociationResponse:
+    updateEpicIssueAssociationResponse:
       type: array
       items:
         type: object
