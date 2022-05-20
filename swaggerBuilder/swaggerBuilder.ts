@@ -70,6 +70,12 @@ export class SwaggerBuilder {
     }
   }
 
+  renameDuplicatedOpId() {
+    // 1. put `x-pageslug` in every endpoint
+    // 2. find dupplicates
+    // 3. rename duplicates with <pageslug><opname>
+  }
+
   async saveMain() {
     await file.writeText(
       `swagger.yml`,
