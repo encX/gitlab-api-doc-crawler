@@ -2,7 +2,7 @@ import { stringify } from "https://deno.land/std@0.139.0/encoding/yaml.ts";
 import { file } from "../helper/file.ts";
 
 import { Api } from "../types/models.ts";
-import { Document, NamedSchemaObject, PathsObject } from "../types/OpenAPIV3.ts";
+import { Document, NamedSchemaObject, OperationObject, PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
 import { deepCompareSchema, replaceRefs } from "./schemaUtils.ts";
 
@@ -23,14 +23,17 @@ export class SwaggerBuilder {
     console.log(_pageSlug);
 
     const paths: PathsObject = {};
-    let schemas: NamedSchemaObject = {};
+    const schemas: NamedSchemaObject = {};
 
     const endpoints = _apis.map((api) => new Endpoint(api, _pageSlug).getSwaggerDef());
+
+    // merge paths and schemas
     endpoints.forEach(([path, request, response]) => {
       Object.keys(path).forEach((p) => (paths[p] = { ...paths[p], ...path[p] }));
-      schemas = { ...schemas, ...request, ...response };
+      Object.assign(schemas, request, response);
     });
 
+    // dedupe schemas
     Object.entries(schemas).forEach(([sname, s], i, entries) => {
       // compare s with entries [i+1, ]
       const toCheck = entries.slice(i + 1);
@@ -72,11 +75,20 @@ export class SwaggerBuilder {
 
   renameDuplicatedOpId() {
     // 1. put `x-pageslug` in every endpoint
-    // 2. find dupplicates
+    // 2. find duplicates
+    const opIds = Object.entries(this.mainSwagger.paths).flatMap(([_, pathitem]) =>
+      Object.entries(pathitem!)
+        .filter(([method]) => ["get", "post", "put", "patch", "delete"].includes(method))
+        .map(([_, op]) => (op as OperationObject).operationId)
+    );
+
+    file.writeText("opIds.txt", opIds.join("\n"));
     // 3. rename duplicates with <pageslug><opname>
   }
 
   async saveMain() {
+    this.renameDuplicatedOpId();
+
     await file.writeText(
       `swagger.yml`,
       stringify(this.mainSwagger as Record<string, any>, {

@@ -24,7 +24,7 @@ export class Endpoint {
   private response?: NamedSchemaObject;
   private operationId: string;
 
-  constructor(private readonly api: Api, private readonly pageSlug?: string) {
+  constructor(private readonly api: Api, private readonly pageSlug: string) {
     [this.method, this.path, this.pathParams] = extractEndpointInfo(this.api.resources);
     this.operationId = operationIDify(this.api.name);
 

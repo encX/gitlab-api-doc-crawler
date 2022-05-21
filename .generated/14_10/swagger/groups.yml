@@ -530,7 +530,7 @@ paths:
       description: >-
         Transfer a group to a new parent group or turn a subgroup to a top-level group. Available to administrators and
         users:
-      operationId: transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroup
+      operationId: transferAGroupToANewParentGroupTurnASubgroupToATopLevelGroup
       parameters:
         - name: id
           in: path
@@ -545,7 +545,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest'
+              $ref: '#/components/schemas/transferAGroupToANewParentGroupTurnASubgroupToATopLevelGroupRequest'
       tags:
         - groups
   '/groups/{id}/restore':
@@ -1661,7 +1661,7 @@ components:
       required:
         - name
         - path
-    transferAGroupToANewParentGroup/TurnASubgroupToATopLevelGroupRequest:
+    transferAGroupToANewParentGroupTurnASubgroupToATopLevelGroupRequest:
       type: object
       properties:
         group_id:

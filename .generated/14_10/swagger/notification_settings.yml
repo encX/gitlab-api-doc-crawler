@@ -41,7 +41,7 @@ paths:
     get:
       summary: Group / project level notification settings
       description: Get current group or project notification settings.
-      operationId: group/ProjectLevelNotificationSettings
+      operationId: groupProjectLevelNotificationSettings
       parameters:
         - name: id
           in: path
@@ -55,13 +55,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/group/ProjectLevelNotificationSettingsResponse'
+                $ref: '#/components/schemas/groupProjectLevelNotificationSettingsResponse'
       tags:
         - notification_settings
     put:
       summary: Update group/project level notification settings
       description: Update current group/project notification settings.
-      operationId: updateGroup/projectLevelNotificationSettings
+      operationId: updateGroupProjectLevelNotificationSettings
       parameters:
         - name: id
           in: path
@@ -75,12 +75,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateGroup/projectLevelNotificationSettingsResponse'
+                $ref: '#/components/schemas/updateGroupProjectLevelNotificationSettingsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateGroup/projectLevelNotificationSettingsRequest'
+              $ref: '#/components/schemas/updateGroupProjectLevelNotificationSettingsRequest'
       tags:
         - notification_settings
 components:
@@ -135,12 +135,12 @@ components:
           type: boolean
         new_epic:
           type: boolean
-    group/ProjectLevelNotificationSettingsResponse:
+    groupProjectLevelNotificationSettingsResponse:
       type: object
       properties:
         level:
           type: string
-    updateGroup/projectLevelNotificationSettingsRequest:
+    updateGroupProjectLevelNotificationSettingsRequest:
       type: object
       properties:
         level:
@@ -181,7 +181,7 @@ components:
           type: boolean
         new_epic:
           type: boolean
-    updateGroup/projectLevelNotificationSettingsResponse:
+    updateGroupProjectLevelNotificationSettingsResponse:
       type: object
       properties:
         level:

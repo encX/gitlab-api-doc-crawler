@@ -172,7 +172,7 @@ paths:
     get:
       summary: List current user (for admins)
       description: ''
-      operationId: listCurrentUser(forAdmins)
+      operationId: listCurrentUserForAdmins
       parameters:
         - name: sudo
           in: query
@@ -186,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listCurrentUser(forAdmins)Response'
+                $ref: '#/components/schemas/listCurrentUserForAdminsResponse'
       tags:
         - users
   /user/status:
@@ -1084,7 +1084,7 @@ paths:
     get:
       summary: Get user activities (admin only)
       description: 'Get the last activity date for all users, sorted from oldest to newest.'
-      operationId: getUserActivities(adminOnly)
+      operationId: getUserActivitiesAdminOnly
       parameters:
         - name: from
           in: query
@@ -1098,7 +1098,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getUserActivities(adminOnly)Response'
+                $ref: '#/components/schemas/getUserActivitiesAdminOnlyResponse'
       tags:
         - users
   '/users/{id}/memberships':
@@ -1110,7 +1110,7 @@ paths:
         Namespace (representing a group) or Project. The response represents only direct memberships. Inherited
         memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For
         more details, read about the meaning of access level values.
-      operationId: userMemberships(adminOnly)
+      operationId: userMembershipsAdminOnly
       parameters:
         - name: id
           in: path
@@ -1130,7 +1130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userMemberships(adminOnly)Response'
+                $ref: '#/components/schemas/userMembershipsAdminOnlyResponse'
       tags:
         - users
 components:
@@ -1388,7 +1388,7 @@ components:
     userCreationRequest:
       type: object
       properties: {}
-    listCurrentUser(forNormalUsers)Response:
+    listCurrentUserForNormalUsersResponse:
       type: object
       properties:
         id:
@@ -1472,7 +1472,7 @@ components:
           type: boolean
         commit_email:
           type: string
-    listCurrentUser(forAdmins)Response:
+    listCurrentUserForAdminsResponse:
       type: object
       properties:
         id:
@@ -1880,7 +1880,7 @@ components:
           type: string
         token:
           type: string
-    getUserActivities(adminOnly)Response:
+    getUserActivitiesAdminOnlyResponse:
       type: array
       items:
         type: object
@@ -1891,7 +1891,7 @@ components:
             type: string
           last_activity_at:
             type: string
-    userMemberships(adminOnly)Response:
+    userMembershipsAdminOnlyResponse:
       type: array
       items:
         type: object
