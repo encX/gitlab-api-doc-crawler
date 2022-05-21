@@ -12,7 +12,9 @@ export const load = async (url: string, ignoreCache = false): Promise<Cheerio & 
 
   try {
     cachedContent = await file.readText(cacheFileName);
-  } catch {}
+  } catch (e) {
+    console.warn(`Error reading cache ${cacheFileName}`, e);
+  }
 
   if (cachedContent && !ignoreCache) {
     return cheerio.load(cachedContent);
