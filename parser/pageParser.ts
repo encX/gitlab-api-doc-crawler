@@ -1,19 +1,19 @@
 import { TagElement, cheerio } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 
-import { Api } from "./types/models.ts";
-import { load } from "./helper/page.ts";
-import { glUrl } from "./helper/url.ts";
-import { ResourceParser } from "./parsers/ResourceParser.ts";
-import { AttributesParser } from "./parsers/AttributesParser.ts";
-import { ResponseParser } from "./parsers/ResponseParser.ts";
 import { ApiBuilder } from "./ApiBuilder.ts";
-import { getChunksByHElem, getElementText, getTagElem, isHElem } from "./helper/dom.ts";
+import { ResourceParser } from "./parts/ResourceParser.ts";
+import { AttributesParser } from "./parts/AttributesParser.ts";
+import { ResponseParser } from "./parts/ResponseParser.ts";
+import { loadPage } from "../helper/page.ts";
+import { getChunksByHElem, getElementText, getTagElem, isHElem } from "../helper/dom.ts";
+import { glUrl } from "../helper/url.ts";
+import { Api } from "../types/models.ts";
 
 export class PageParser {
   constructor(private pagePath: string) {}
 
   async getApis(): Promise<Api[]> {
-    const $ = await load(glUrl.pageUrl(this.pagePath));
+    const $ = await loadPage(glUrl.pageUrl(this.pagePath));
     const content = $("div.article-content");
 
     const tagElems = content

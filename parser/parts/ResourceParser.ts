@@ -1,7 +1,7 @@
 import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 
-import { Resource } from "../types/models.ts";
-import { Parser } from "./Parser.ts";
+import { Resource } from "../../types/models.ts";
+import { Parser } from "../../types/Parser.ts";
 
 export class ResourceParser implements Parser<Resource[]> {
   constructor(private readonly elem: TagElement) {}

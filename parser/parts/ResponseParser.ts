@@ -1,8 +1,8 @@
 import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
-import { Parser } from "./Parser.ts";
-import { file } from "../helper/file.ts";
+import { Parser } from "../../types/Parser.ts";
+import { file } from "../../helper/file.ts";
 
 export class ResponseParser implements Parser<unknown> {
   constructor(private readonly elem: TagElement, private readonly page: string, private readonly apiName: string) {}

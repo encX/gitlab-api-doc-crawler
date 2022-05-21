@@ -1,6 +1,6 @@
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
-import { DocVer } from "../enums/docVer.ts";
 
+import { DocVer } from "../enums/docVer.ts";
 import * as settings from "../settings.ts";
 
 class GLUrl {

@@ -8,7 +8,7 @@ export interface Api {
   description: string;
   resources: Resource[];
   attributes: Attribute[];
-  response: any;
+  response: unknown;
 }
 
 export interface Resource {

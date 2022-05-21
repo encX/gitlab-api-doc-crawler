@@ -1,4 +1,4 @@
-import { Api, Attribute, Resource } from "./types/models.ts";
+import { Api, Attribute, Resource } from "../types/models.ts";
 
 export class ApiBuilder {
   private api: Api = {

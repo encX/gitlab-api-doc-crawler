@@ -1,11 +1,11 @@
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
+import { getPages } from "./parser/pagesListing.ts";
+import { PageParser } from "./parser/pageParser.ts";
 import { SwaggerBuilder } from "./swaggerBuilder/swaggerBuilder.ts";
-import { getPages } from "./pagesListing.ts";
-import { PageParser } from "./pageParser.ts";
 import { glUrl } from "./helper/url.ts";
-import { Api } from "./types/models.ts";
 import { file } from "./helper/file.ts";
+import { Api } from "./types/models.ts";
 
 const pages = await getPages();
 console.log(`Got ${pages.length} pages`);

@@ -3,7 +3,7 @@ import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
 import { file } from "./file.ts";
 
-export const load = async (url: string, ignoreCache = false): Promise<Cheerio & Root> => {
+export async function loadPage(url: string, ignoreCache = false): Promise<Cheerio & Root> {
   await file.ensureDir("cache");
 
   const uObj = new URL(url);
@@ -25,4 +25,4 @@ export const load = async (url: string, ignoreCache = false): Promise<Cheerio & 
   await file.writeText(cacheFileName, htmlText);
 
   return cheerio.load(htmlText);
-};
+}

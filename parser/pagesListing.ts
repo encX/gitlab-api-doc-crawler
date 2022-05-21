@@ -1,9 +1,9 @@
-import { Page } from "./types/models.ts";
-import { load } from "./helper/page.ts";
-import { glUrl } from "./helper/url.ts";
+import { loadPage } from "../helper/page.ts";
+import { glUrl } from "../helper/url.ts";
+import { Page } from "../types/models.ts";
 
 export async function getPages(): Promise<Page[]> {
-  const $ = await load(glUrl.pageUrl("api_resources.html"));
+  const $ = await loadPage(glUrl.pageUrl("api_resources.html"));
   const links = $("h2+p+table tr>td:first-child>a");
 
   const recs: Page[] = [];
