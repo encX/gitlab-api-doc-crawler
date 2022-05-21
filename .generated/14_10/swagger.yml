@@ -24174,20 +24174,7 @@ components:
     listAccessRequestsForAGroupOrProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          username:
-            type: string
-          name:
-            type: string
-          state:
-            type: string
-          created_at:
-            type: string
-          requested_at:
-            type: string
+        $ref: '#/components/schemas/requestAccessToAGroupOrProjectResponse'
     requestAccessToAGroupOrProjectResponse:
       type: object
       properties:
@@ -24335,35 +24322,7 @@ components:
     retrieveAllInstanceAuditEventsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          author_id:
-            type: integer
-          entity_id:
-            type: integer
-          entity_type:
-            type: string
-          details:
-            type: object
-            properties:
-              custom_message:
-                type: string
-              author_name:
-                type: string
-              target_id:
-                type: string
-              target_type:
-                type: string
-              target_details:
-                type: string
-              ip_address:
-                type: string
-              entity_path:
-                type: string
-          created_at:
-            type: string
+        $ref: '#/components/schemas/retrieveSingleInstanceAuditEventResponse'
     retrieveSingleInstanceAuditEventResponse:
       type: object
       properties:
@@ -24402,35 +24361,7 @@ components:
     listAnAwardableAwardEmojisResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          user:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          awardable_id:
-            type: integer
-          awardable_type:
-            type: string
+        $ref: '#/components/schemas/getSingleAwardEmojiResponse'
     getSingleAwardEmojiResponse:
       type: object
       properties:
@@ -24481,60 +24412,7 @@ components:
     listProjectIssueBoardsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          project:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-              http_url_to_repo:
-                type: string
-              web_url:
-                type: string
-          milestone:
-            type: object
-            properties:
-              id:
-                type: integer
-              title:
-                type: string
-          lists:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                label:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    color:
-                      type: string
-                    description:
-                      type: string
-                position:
-                  type: integer
-                max_issue_count:
-                  type: integer
-                max_issue_weight:
-                  type: integer
-                limit_metric:
-                  type: string
+        $ref: '#/components/schemas/showASingleIssueBoardResponse'
     showASingleIssueBoardResponse:
       type: object
       properties:
@@ -24651,27 +24529,7 @@ components:
     listBoardListsInAProjectIssueBoardResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          label:
-            type: object
-            properties:
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-          position:
-            type: integer
-          max_issue_count:
-            type: integer
-          max_issue_weight:
-            type: integer
-          limit_metric:
-            type: string
+        $ref: '#/components/schemas/showASingleBoardListResponse'
     showASingleBoardListResponse:
       type: object
       properties:
@@ -24713,51 +24571,7 @@ components:
     listRepositoryBranchesResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          merged:
-            type: boolean
-          protected:
-            type: boolean
-          default:
-            type: boolean
-          developers_can_push:
-            type: boolean
-          developers_can_merge:
-            type: boolean
-          can_push:
-            type: boolean
-          web_url:
-            type: string
-          commit:
-            type: object
-            properties:
-              author_email:
-                type: string
-              author_name:
-                type: string
-              authored_date:
-                type: string
-              committed_date:
-                type: string
-              committer_email:
-                type: string
-              committer_name:
-                type: string
-              id:
-                type: string
-              short_id:
-                type: string
-              title:
-                type: string
-              message:
-                type: string
-              parent_ids:
-                type: array
-                items:
-                  type: string
+        $ref: '#/components/schemas/getSingleRepositoryBranchResponse'
     getSingleRepositoryBranchResponse:
       type: object
       properties:
@@ -24817,32 +24631,7 @@ components:
     getAllBroadcastMessagesResponse:
       type: array
       items:
-        type: object
-        properties:
-          message:
-            type: string
-          starts_at:
-            type: string
-          ends_at:
-            type: string
-          color:
-            type: string
-          font:
-            type: string
-          id:
-            type: integer
-          active:
-            type: boolean
-          target_access_levels:
-            type: array
-            items:
-              type: integer
-          target_path:
-            type: string
-          broadcast_type:
-            type: string
-          dismissable:
-            type: boolean
+        $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
     getASpecificBroadcastMessageResponse:
       type: object
       properties:
@@ -24900,33 +24689,7 @@ components:
     listTheAgentsForAProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          config_project:
-            type: object
-            properties:
-              id:
-                type: integer
-              description:
-                type: string
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-              created_at:
-                type: string
-          created_at:
-            type: string
-          created_by_user_id:
-            type: integer
+        $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
     getDetailsAboutAnAgentResponse:
       type: object
       properties:
@@ -25701,12 +25464,7 @@ components:
     listCustomAttributesResponse:
       type: array
       items:
-        type: object
-        properties:
-          key:
-            type: string
-          value:
-            type: string
+        $ref: '#/components/schemas/deleteAPipelineScheduleVariableResponse'
     singleCustomAttributeResponse:
       type: object
       properties:
@@ -25780,18 +25538,7 @@ components:
     listProjectDeployKeysResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          title:
-            type: string
-          key:
-            type: string
-          created_at:
-            type: string
-          can_push:
-            type: boolean
+        $ref: '#/components/schemas/getASingleDeployKeyResponse'
     getASingleDeployKeyResponse:
       type: object
       properties:
@@ -25827,24 +25574,7 @@ components:
     listAllDeployTokensResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          expires_at:
-            type: string
-          revoked:
-            type: boolean
-          expired:
-            type: boolean
-          scopes:
-            type: array
-            items:
-              type: string
+        $ref: '#/components/schemas/getAProjectDeployTokenResponse'
     getAProjectDeployTokenResponse:
       type: object
       properties:
@@ -27155,64 +26885,7 @@ components:
     listEpicsRelatedToAGivenEpicResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          iid:
-            type: integer
-          group_id:
-            type: integer
-          parent_id:
-            type: integer
-          title:
-            type: string
-          description:
-            type: string
-          author:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          start_date:
-            type: string
-          start_date_is_fixed:
-            type: boolean
-          start_date_fixed:
-            type: string
-          start_date_from_milestones:
-            type: string
-          start_date_from_inherited_source:
-            type: string
-          end_date:
-            type: string
-          due_date:
-            type: string
-          due_date_is_fixed:
-            type: boolean
-          due_date_fixed:
-            type: string
-          due_date_from_milestones:
-            type: string
-          due_date_from_inherited_source:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          labels:
-            type: array
-            items: {}
+        $ref: '#/components/schemas/assignAChildEpicResponse'
     assignAChildEpicResponse:
       type: object
       properties:
@@ -27314,102 +26987,7 @@ components:
     listEpicsForAGroupResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          iid:
-            type: integer
-          group_id:
-            type: integer
-          parent_id:
-            type: integer
-          parent_iid:
-            type: integer
-          title:
-            type: string
-          description:
-            type: string
-          state:
-            type: string
-          confidential:
-            type: string
-          web_url:
-            type: string
-          reference:
-            type: string
-          references:
-            type: object
-            properties:
-              short:
-                type: string
-              relative:
-                type: string
-              full:
-                type: string
-          author:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          start_date:
-            type: string
-          start_date_is_fixed:
-            type: boolean
-          start_date_fixed:
-            type: string
-          start_date_from_milestones:
-            type: string
-          start_date_from_inherited_source:
-            type: string
-          end_date:
-            type: string
-          due_date:
-            type: string
-          due_date_is_fixed:
-            type: boolean
-          due_date_fixed:
-            type: string
-          due_date_from_milestones:
-            type: string
-          due_date_from_inherited_source:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          closed_at:
-            type: string
-          labels:
-            type: array
-            items: {}
-          upvotes:
-            type: integer
-          downvotes:
-            type: integer
-          color:
-            type: string
-          _links:
-            type: object
-            properties:
-              self:
-                type: string
-              epic_issues:
-                type: string
-              group:
-                type: string
-              parent:
-                type: string
+        $ref: '#/components/schemas/newEpicResponse'
     singleEpicResponse:
       type: object
       properties:
@@ -27980,16 +27558,7 @@ components:
     listProjectClientKeysResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          active:
-            type: boolean
-          public_key:
-            type: string
-          sentry_dsn:
-            type: string
+        $ref: '#/components/schemas/createAClientKeyResponse'
     createAClientKeyResponse:
       type: object
       properties:
@@ -28124,22 +27693,7 @@ components:
     listAllFeatureFlagUserListsForAProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          user_xids:
-            type: string
-          id:
-            type: integer
-          iid:
-            type: integer
-          project_id:
-            type: integer
-          created_at:
-            type: string
-          updated_at:
-            type: string
+        $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
     createAFeatureFlagUserListRequest:
       type: object
       properties:
@@ -28170,46 +27724,7 @@ components:
     listFeatureFlagsForAProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          description:
-            type: string
-          active:
-            type: boolean
-          version:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          scopes:
-            type: array
-            items: {}
-          strategies:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                parameters:
-                  type: object
-                  properties:
-                    userIds:
-                      type: string
-                scopes:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      environment_scope:
-                        type: string
+        $ref: '#/components/schemas/getASingleFeatureFlagResponse'
     getASingleFeatureFlagResponse:
       type: object
       properties:
@@ -28279,23 +27794,7 @@ components:
     listAllFeaturesResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          state:
-            type: string
-          gates:
-            type: array
-            items:
-              type: object
-              properties:
-                key:
-                  type: string
-                value:
-                  type: boolean
-          definition:
-            type: string
+        $ref: '#/components/schemas/setOrCreateAFeatureResponse'
     listAllFeatureDefinitionsResponse:
       type: array
       items:
@@ -28372,20 +27871,7 @@ components:
     listFreezePeriodsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          freeze_start:
-            type: string
-          freeze_end:
-            type: string
-          cron_timezone:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
+        $ref: '#/components/schemas/getAFreezePeriodByAFreeze_period_idResponse'
     getAFreezePeriodByAFreeze_period_idResponse:
       type: object
       properties:
@@ -28501,54 +27987,7 @@ components:
     retrieveConfigurationAboutAllGeoNodesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          url:
-            type: string
-          internal_url:
-            type: string
-          primary:
-            type: boolean
-          enabled:
-            type: boolean
-          current:
-            type: boolean
-          files_max_capacity:
-            type: integer
-          repos_max_capacity:
-            type: integer
-          container_repositories_max_capacity:
-            type: integer
-          verification_max_capacity:
-            type: integer
-          selective_sync_type:
-            type: string
-          selective_sync_shards:
-            type: array
-            items: {}
-          selective_sync_namespace_ids:
-            type: array
-            items:
-              type: integer
-          minimum_reverification_interval:
-            type: integer
-          clone_protocol:
-            type: string
-          web_edit_url:
-            type: string
-          _links:
-            type: object
-            properties:
-              self:
-                type: string
-              status:
-                type: string
-              repair:
-                type: string
+        $ref: '#/components/schemas/retrieveConfigurationAboutASpecificGeoNodeResponse'
     retrieveConfigurationAboutASpecificGeoNodeResponse:
       type: object
       properties:
@@ -29344,28 +28783,7 @@ components:
     listGroupAccessTokensResponse:
       type: array
       items:
-        type: object
-        properties:
-          user_id:
-            type: integer
-          scopes:
-            type: array
-            items:
-              type: string
-          name:
-            type: string
-          expires_at:
-            type: string
-          id:
-            type: integer
-          active:
-            type: boolean
-          created_at:
-            type: string
-          revoked:
-            type: boolean
-          access_level:
-            type: integer
+        $ref: '#/components/schemas/getAGroupAccessTokenResponse'
     getAGroupAccessTokenResponse:
       type: object
       properties:
@@ -29445,22 +28863,7 @@ components:
     listAllBadgesOfAGroupResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          id:
-            type: integer
-          link_url:
-            type: string
-          image_url:
-            type: string
-          rendered_link_url:
-            type: string
-          rendered_image_url:
-            type: string
-          kind:
-            type: string
+        $ref: '#/components/schemas/addABadgeToAProjectResponse'
     getABadgeOfAGroupResponse:
       type: object
       properties:
@@ -29500,46 +28903,7 @@ components:
     listAllGroupIssueBoardsInAGroupResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          group:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              web_url:
-                type: string
-          milestone:
-            type: object
-            properties:
-              id:
-                type: integer
-              title:
-                type: string
-          lists:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                label:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    color:
-                      type: string
-                    description:
-                      type: string
-                position:
-                  type: integer
+        $ref: '#/components/schemas/singleGroupIssueBoardResponse'
     singleGroupIssueBoardResponse:
       type: object
       properties:
@@ -29638,21 +29002,7 @@ components:
     listGroupIssueBoardListsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          label:
-            type: object
-            properties:
-              name:
-                type: string
-              color:
-                type: string
-              description:
-                type: string
-          position:
-            type: integer
+        $ref: '#/components/schemas/singleGroupIssueBoardListResponse'
     singleGroupIssueBoardListResponse:
       type: object
       properties:
@@ -29749,28 +29099,7 @@ components:
     listGroupLabelsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          color:
-            type: string
-          text_color:
-            type: string
-          description:
-            type: string
-          description_html:
-            type: string
-          open_issues_count:
-            type: integer
-          closed_issues_count:
-            type: integer
-          open_merge_requests_count:
-            type: integer
-          subscribed:
-            type: boolean
+        $ref: '#/components/schemas/getASingleGroupLabelResponse'
     getASingleGroupLabelResponse:
       type: object
       properties:
@@ -29818,20 +29147,7 @@ components:
     listGroupVariablesResponse:
       type: array
       items:
-        type: object
-        properties:
-          key:
-            type: string
-          variable_type:
-            type: string
-          value:
-            type: string
-          protected:
-            type: boolean
-          masked:
-            type: boolean
-          environment_scope:
-            type: string
+        $ref: '#/components/schemas/showVariableDetailsResponse'
     showVariableDetailsResponse:
       type: object
       properties:
@@ -29989,27 +29305,7 @@ components:
     retrieveAllGroupRepositoryStorageMovesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          group:
-            type: object
-            properties:
-              id:
-                type: integer
-              web_url:
-                type: string
-              name:
-                type: string
+        $ref: '#/components/schemas/getASingleGroupRepositoryStorageMoveResponse'
     getASingleGroupRepositoryStorageMoveResponse:
       type: object
       properties:
@@ -30054,18 +29350,7 @@ components:
     listWikiPagesResponse:
       type: array
       items:
-        type: object
-        properties:
-          content:
-            type: string
-          format:
-            type: string
-          slug:
-            type: string
-          title:
-            type: string
-          encoding:
-            type: string
+        $ref: '#/components/schemas/getAWikiPageResponse'
     getAWikiPageResponse:
       type: object
       properties:
@@ -31285,58 +30570,7 @@ components:
     listInstanceClustersResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          created_at:
-            type: string
-          managed:
-            type: boolean
-          enabled:
-            type: boolean
-          domain:
-            type: string
-          provider_type:
-            type: string
-          platform_type:
-            type: string
-          environment_scope:
-            type: string
-          cluster_type:
-            type: string
-          user:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          platform_kubernetes:
-            type: object
-            properties:
-              api_url:
-                type: string
-              namespace:
-                type: string
-              authorization_type:
-                type: string
-              ca_cert:
-                type: string
-          provider_gcp:
-            type: string
-          management_project:
-            type: string
+        $ref: '#/components/schemas/getASingleInstanceClusterResponse'
     getASingleInstanceClusterResponse:
       type: object
       properties:
@@ -31500,18 +30734,7 @@ components:
     listAllInstanceVariablesResponse:
       type: array
       items:
-        type: object
-        properties:
-          key:
-            type: string
-          variable_type:
-            type: string
-          value:
-            type: string
-          protected:
-            type: boolean
-          masked:
-            type: boolean
+        $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
     showInstanceVariableDetailsResponse:
       type: object
       properties:
@@ -33852,20 +33075,7 @@ components:
     participantsOnIssuesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
+        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
     getUserAgentDetailsResponse:
       type: object
       properties:
@@ -34870,32 +34080,7 @@ components:
     listLabelsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          color:
-            type: string
-          text_color:
-            type: string
-          description:
-            type: string
-          description_html:
-            type: string
-          open_issues_count:
-            type: integer
-          closed_issues_count:
-            type: integer
-          open_merge_requests_count:
-            type: integer
-          subscribed:
-            type: boolean
-          priority:
-            type: integer
-          is_project_label:
-            type: boolean
+        $ref: '#/components/schemas/getASingleProjectLabelResponse'
     getASingleProjectLabelResponse:
       type: object
       properties:
@@ -35009,40 +34194,7 @@ components:
     retrieveInformationAboutAllLicensesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          plan:
-            type: string
-          created_at:
-            type: string
-          starts_at:
-            type: string
-          expires_at:
-            type: string
-          historical_max:
-            type: integer
-          maximum_user_count:
-            type: integer
-          expired:
-            type: boolean
-          overage:
-            type: integer
-          user_limit:
-            type: integer
-          licensee:
-            type: object
-            properties:
-              Name:
-                type: string
-          add_ons:
-            type: object
-            properties:
-              GitLab_FileLocks:
-                type: integer
-              GitLab_Auditor_User:
-                type: integer
+        $ref: '#/components/schemas/deleteALicenseResponse'
     addANewLicenseRequest:
       type: object
       properties:
@@ -35396,14 +34548,7 @@ components:
     listManagedLicensesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          approval_status:
-            type: string
+        $ref: '#/components/schemas/showAnExistingManagedLicenseResponse'
     showAnExistingManagedLicenseResponse:
       type: object
       properties:
@@ -35712,123 +34857,7 @@ components:
     getProjectLevelRulesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          rule_type:
-            type: string
-          eligible_approvers:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                username:
-                  type: string
-                state:
-                  type: string
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-          approvals_required:
-            type: integer
-          users:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                username:
-                  type: string
-                state:
-                  type: string
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-          groups:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                path:
-                  type: string
-                description:
-                  type: string
-                visibility:
-                  type: string
-                lfs_enabled:
-                  type: boolean
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-                request_access_enabled:
-                  type: boolean
-                full_name:
-                  type: string
-                full_path:
-                  type: string
-                parent_id:
-                  type: string
-                ldap_cn:
-                  type: string
-                ldap_access:
-                  type: string
-          protected_branches:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                push_access_levels:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      access_level:
-                        type: integer
-                      access_level_description:
-                        type: string
-                merge_access_levels:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      access_level:
-                        type: integer
-                      access_level_description:
-                        type: string
-                unprotect_access_levels:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      access_level:
-                        type: integer
-                      access_level_description:
-                        type: string
-                code_owner_approval_required:
-                  type: string
-          contains_hidden_groups:
-            type: boolean
+        $ref: '#/components/schemas/getASingleProjectLevelRuleResponse'
     getASingleProjectLevelRuleResponse:
       type: object
       properties:
@@ -36065,89 +35094,7 @@ components:
     getMergeRequestLevelRulesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          rule_type:
-            type: string
-          eligible_approvers:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                username:
-                  type: string
-                state:
-                  type: string
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-          approvals_required:
-            type: integer
-          source_rule:
-            type: string
-          users:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                username:
-                  type: string
-                state:
-                  type: string
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-          groups:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                path:
-                  type: string
-                description:
-                  type: string
-                visibility:
-                  type: string
-                lfs_enabled:
-                  type: boolean
-                avatar_url:
-                  type: string
-                web_url:
-                  type: string
-                request_access_enabled:
-                  type: boolean
-                full_name:
-                  type: string
-                full_path:
-                  type: string
-                parent_id:
-                  type: string
-                ldap_cn:
-                  type: string
-                ldap_access:
-                  type: string
-          contains_hidden_groups:
-            type: boolean
-          overridden:
-            type: boolean
+        $ref: '#/components/schemas/getASingleMergeRequestLevelRuleResponse'
     getASingleMergeRequestLevelRuleResponse:
       type: object
       properties:
@@ -36543,20 +35490,7 @@ components:
     getSingleMrParticipantsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
+        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
     getSingleMrCommitsResponse:
       type: array
       items:
@@ -38028,45 +36962,7 @@ components:
     listProjectIssueNotesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          body:
-            type: string
-          attachment:
-            type: string
-          author:
-            type: object
-            properties:
-              id:
-                type: integer
-              username:
-                type: string
-              email:
-                type: string
-              name:
-                type: string
-              state:
-                type: string
-              created_at:
-                type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
-          system:
-            type: boolean
-          noteable_id:
-            type: integer
-          noteable_type:
-            type: string
-          noteable_iid:
-            type: integer
-          resolvable:
-            type: boolean
-          confidential:
-            type: boolean
+        $ref: '#/components/schemas/getSingleMergeRequestNoteResponse'
     createNewIssueNoteRequest:
       type: object
       properties:
@@ -38481,32 +37377,7 @@ components:
     listAllDebianDistributionsInAGroupResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          codename:
-            type: string
-          suite:
-            type: string
-          origin:
-            type: string
-          label:
-            type: string
-          version:
-            type: string
-          description:
-            type: string
-          valid_time_duration_seconds:
-            type: string
-          components:
-            type: array
-            items:
-              type: string
-          architectures:
-            type: array
-            items:
-              type: string
+        $ref: '#/components/schemas/singleDebianProjectDistributionResponse'
     singleDebianGroupDistributionResponse:
       type: object
       properties:
@@ -38571,32 +37442,7 @@ components:
     listAllDebianDistributionsInAProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          codename:
-            type: string
-          suite:
-            type: string
-          origin:
-            type: string
-          label:
-            type: string
-          version:
-            type: string
-          description:
-            type: string
-          valid_time_duration_seconds:
-            type: string
-          components:
-            type: array
-            items:
-              type: string
-          architectures:
-            type: array
-            items:
-              type: string
+        $ref: '#/components/schemas/singleDebianProjectDistributionResponse'
     singleDebianProjectDistributionResponse:
       type: object
       properties:
@@ -38933,22 +37779,7 @@ components:
     listProjectTriggersResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          description:
-            type: string
-          created_at:
-            type: string
-          last_used:
-            type: string
-          token:
-            type: string
-          updated_at:
-            type: string
-          owner:
-            type: string
+        $ref: '#/components/schemas/getTriggerDetailsResponse'
     getTriggerDetailsResponse:
       type: object
       properties:
@@ -39055,14 +37886,7 @@ components:
     getVariablesOfAPipelineResponse:
       type: array
       items:
-        type: object
-        properties:
-          key:
-            type: string
-          variable_type:
-            type: string
-          value:
-            type: string
+        $ref: '#/components/schemas/createANewPipelineScheduleVariableRequest'
     getAPipelineTestReportResponse:
       type: object
       properties:
@@ -39211,22 +38035,7 @@ components:
     listAllBadgesOfAProjectResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          id:
-            type: integer
-          link_url:
-            type: string
-          image_url:
-            type: string
-          rendered_link_url:
-            type: string
-          rendered_image_url:
-            type: string
-          kind:
-            type: string
+        $ref: '#/components/schemas/addABadgeToAProjectResponse'
     getABadgeOfAProjectResponse:
       type: object
       properties:
@@ -39867,52 +38676,11 @@ components:
     listProjectVariablesResponse:
       type: array
       items:
-        type: object
-        properties:
-          variable_type:
-            type: string
-          key:
-            type: string
-          value:
-            type: string
-          protected:
-            type: boolean
-          masked:
-            type: boolean
-          environment_scope:
-            type: string
+        $ref: '#/components/schemas/showVariableDetailsResponse'
     retrieveAllProjectRepositoryStorageMovesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          project:
-            type: object
-            properties:
-              id:
-                type: integer
-              description:
-                type: string
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-              created_at:
-                type: string
+        $ref: '#/components/schemas/getASingleProjectRepositoryStorageMoveResponse'
     getASingleProjectRepositoryStorageMoveResponse:
       type: object
       properties:
@@ -40146,102 +38914,7 @@ components:
     listProjectVulnerabilitiesResponse:
       type: array
       items:
-        type: object
-        properties:
-          author_id:
-            type: integer
-          confidence:
-            type: string
-          created_at:
-            type: string
-          description:
-            type: string
-          dismissed_at:
-            type: string
-          dismissed_by_id:
-            type: string
-          due_date:
-            type: string
-          finding:
-            type: object
-            properties:
-              confidence:
-                type: string
-              created_at:
-                type: string
-              id:
-                type: integer
-              location_fingerprint:
-                type: string
-              metadata_version:
-                type: string
-              name:
-                type: string
-              primary_identifier_id:
-                type: integer
-              project_fingerprint:
-                type: string
-              project_id:
-                type: integer
-              raw_metadata:
-                type: string
-              report_type:
-                type: string
-              scanner_id:
-                type: integer
-              severity:
-                type: string
-              updated_at:
-                type: string
-              uuid:
-                type: string
-              vulnerability_id:
-                type: integer
-          id:
-            type: integer
-          last_edited_at:
-            type: string
-          last_edited_by_id:
-            type: string
-          project:
-            type: object
-            properties:
-              created_at:
-                type: string
-              description:
-                type: string
-              id:
-                type: integer
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-          project_default_branch:
-            type: string
-          report_type:
-            type: string
-          resolved_at:
-            type: string
-          resolved_by_id:
-            type: string
-          resolved_on_default_branch:
-            type: boolean
-          severity:
-            type: string
-          start_date:
-            type: string
-          state:
-            type: string
-          title:
-            type: string
-          updated_at:
-            type: string
-          updated_by_id:
-            type: string
+        $ref: '#/components/schemas/newVulnerabilityResponse'
     newVulnerabilityRequest:
       type: object
       properties: {}
@@ -40983,20 +39656,7 @@ components:
     getProjectUsersResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          username:
-            type: string
-          name:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
+        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
     listAProjectGroupsResponse:
       type: array
       items:
@@ -42317,42 +40977,7 @@ components:
     listProtectedBranchesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          push_access_levels:
-            type: array
-            items:
-              type: object
-              properties:
-                access_level:
-                  type: integer
-                user_id:
-                  type: string
-                group_id:
-                  type: string
-                access_level_description:
-                  type: string
-          merge_access_levels:
-            type: array
-            items:
-              type: object
-              properties:
-                access_level:
-                  type: string
-                user_id:
-                  type: string
-                group_id:
-                  type: integer
-                access_level_description:
-                  type: string
-          allow_force_push:
-            type: boolean
-          code_owner_approval_required:
-            type: boolean
+        $ref: '#/components/schemas/getASingleProtectedBranchOrWildcardProtectedBranchResponse'
     getASingleProtectedBranchOrWildcardProtectedBranchResponse:
       type: object
       properties:
@@ -42445,25 +41070,7 @@ components:
     listProtectedEnvironmentsResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          deploy_access_levels:
-            type: array
-            items:
-              type: object
-              properties:
-                access_level:
-                  type: integer
-                access_level_description:
-                  type: string
-                user_id:
-                  type: string
-                group_id:
-                  type: string
-          required_approval_count:
-            type: integer
+        $ref: '#/components/schemas/getASingleProtectedEnvironmentResponse'
     getASingleProtectedEnvironmentResponse:
       type: object
       properties:
@@ -42532,19 +41139,7 @@ components:
     listProtectedTagsResponse:
       type: array
       items:
-        type: object
-        properties:
-          name:
-            type: string
-          create_access_levels:
-            type: array
-            items:
-              type: object
-              properties:
-                access_level:
-                  type: integer
-                access_level_description:
-                  type: string
+        $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
     getASingleProtectedTagOrWildcardProtectedTagResponse:
       type: object
       properties:
@@ -42571,142 +41166,7 @@ components:
     listReleasesResponse:
       type: array
       items:
-        type: object
-        properties:
-          tag_name:
-            type: string
-          description:
-            type: string
-          name:
-            type: string
-          created_at:
-            type: string
-          released_at:
-            type: string
-          author:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          commit:
-            type: object
-            properties:
-              id:
-                type: string
-              short_id:
-                type: string
-              title:
-                type: string
-              created_at:
-                type: string
-              parent_ids:
-                type: array
-                items:
-                  type: string
-              message:
-                type: string
-              author_name:
-                type: string
-              author_email:
-                type: string
-              authored_date:
-                type: string
-              committer_name:
-                type: string
-              committer_email:
-                type: string
-              committed_date:
-                type: string
-          milestones:
-            type: array
-            items:
-              type: object
-              properties:
-                id:
-                  type: integer
-                iid:
-                  type: integer
-                project_id:
-                  type: integer
-                title:
-                  type: string
-                description:
-                  type: string
-                state:
-                  type: string
-                created_at:
-                  type: string
-                updated_at:
-                  type: string
-                due_date:
-                  type: string
-                start_date:
-                  type: string
-                web_url:
-                  type: string
-                issue_stats:
-                  type: object
-                  properties:
-                    total:
-                      type: integer
-                    closed:
-                      type: integer
-          commit_path:
-            type: string
-          tag_path:
-            type: string
-          assets:
-            type: object
-            properties:
-              count:
-                type: integer
-              sources:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    format:
-                      type: string
-                    url:
-                      type: string
-              links:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    name:
-                      type: string
-                    url:
-                      type: string
-                    external:
-                      type: boolean
-                    link_type:
-                      type: string
-              evidence_file_path:
-                type: string
-          evidences:
-            type: array
-            items:
-              type: object
-              properties:
-                sha:
-                  type: string
-                filepath:
-                  type: string
-                collected_at:
-                  type: string
+        $ref: '#/components/schemas/getAReleaseByATagNameResponse'
     getAReleaseByATagNameResponse:
       type: object
       properties:
@@ -43101,18 +41561,7 @@ components:
     getLinksResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          url:
-            type: string
-          external:
-            type: boolean
-          link_type:
-            type: string
+        $ref: '#/components/schemas/getALinkResponse'
     getALinkResponse:
       type: object
       properties:
@@ -43158,28 +41607,7 @@ components:
     listAProjectRemoteMirrorsResponse:
       type: array
       items:
-        type: object
-        properties:
-          enabled:
-            type: boolean
-          id:
-            type: integer
-          last_error:
-            type: string
-          last_successful_update_at:
-            type: string
-          last_update_at:
-            type: string
-          last_update_started_at:
-            type: string
-          only_protected_branches:
-            type: boolean
-          keep_divergent_refs:
-            type: boolean
-          update_status:
-            type: string
-          url:
-            type: string
+        $ref: '#/components/schemas/getASingleProjectRemoteMirrorResponse'
     getASingleProjectRemoteMirrorResponse:
       type: object
       properties:
@@ -44345,43 +42773,7 @@ components:
     retrieveAllSnippetRepositoryStorageMovesResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          created_at:
-            type: string
-          state:
-            type: string
-          source_storage_name:
-            type: string
-          destination_storage_name:
-            type: string
-          snippet:
-            type: object
-            properties:
-              id:
-                type: integer
-              title:
-                type: string
-              description:
-                type: string
-              visibility:
-                type: string
-              updated_at:
-                type: string
-              created_at:
-                type: string
-              project_id:
-                type: string
-              web_url:
-                type: string
-              raw_url:
-                type: string
-              ssh_url_to_repo:
-                type: string
-              http_url_to_repo:
-                type: string
+        $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
     getASingleSnippetRepositoryStorageMoveResponse:
       type: object
       properties:
@@ -44660,52 +43052,7 @@ components:
     listProjectRepositoryTagsResponse:
       type: array
       items:
-        type: object
-        properties:
-          commit:
-            type: object
-            properties:
-              id:
-                type: string
-              short_id:
-                type: string
-              title:
-                type: string
-              created_at:
-                type: string
-              parent_ids:
-                type: array
-                items:
-                  type: string
-              message:
-                type: string
-              author_name:
-                type: string
-              author_email:
-                type: string
-              authored_date:
-                type: string
-              committer_name:
-                type: string
-              committer_email:
-                type: string
-              committed_date:
-                type: string
-          release:
-            type: object
-            properties:
-              tag_name:
-                type: string
-              description:
-                type: string
-          name:
-            type: string
-          target:
-            type: string
-          message:
-            type: string
-          protected:
-            type: boolean
+        $ref: '#/components/schemas/getASingleRepositoryTagResponse'
     getASingleRepositoryTagResponse:
       type: object
       properties:
@@ -44763,147 +43110,7 @@ components:
     getAListOfToDoItemsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          project:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              name_with_namespace:
-                type: string
-              path:
-                type: string
-              path_with_namespace:
-                type: string
-          author:
-            type: object
-            properties:
-              name:
-                type: string
-              username:
-                type: string
-              id:
-                type: integer
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          action_name:
-            type: string
-          target_type:
-            type: string
-          target:
-            type: object
-            properties:
-              id:
-                type: integer
-              iid:
-                type: integer
-              project_id:
-                type: integer
-              title:
-                type: string
-              description:
-                type: string
-              state:
-                type: string
-              created_at:
-                type: string
-              updated_at:
-                type: string
-              target_branch:
-                type: string
-              source_branch:
-                type: string
-              upvotes:
-                type: integer
-              downvotes:
-                type: integer
-              author:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  id:
-                    type: integer
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
-              assignee:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  id:
-                    type: integer
-                  state:
-                    type: string
-                  avatar_url:
-                    type: string
-                  web_url:
-                    type: string
-              source_project_id:
-                type: integer
-              target_project_id:
-                type: integer
-              labels:
-                type: array
-                items: {}
-              draft:
-                type: boolean
-              work_in_progress:
-                type: boolean
-              milestone:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  iid:
-                    type: integer
-                  project_id:
-                    type: integer
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  state:
-                    type: string
-                  created_at:
-                    type: string
-                  updated_at:
-                    type: string
-                  due_date:
-                    type: string
-              merge_when_pipeline_succeeds:
-                type: boolean
-              merge_status:
-                type: string
-              user_notes_count:
-                type: integer
-          target_url:
-            type: string
-          body:
-            type: string
-          state:
-            type: string
-          created_at:
-            type: string
-          updated_at:
-            type: string
+        $ref: '#/components/schemas/markAToDoItemAsDoneResponse'
     markAToDoItemAsDoneResponse:
       type: object
       properties:
@@ -45051,18 +43258,7 @@ components:
     listTopicsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          description:
-            type: string
-          total_projects_count:
-            type: integer
-          avatar_url:
-            type: string
+        $ref: '#/components/schemas/getATopicResponse'
     getATopicResponse:
       type: object
       properties:
@@ -45088,20 +43284,7 @@ components:
     forNormalUsersResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          username:
-            type: string
-          name:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
+        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
     forAdminsResponse:
       type: array
       items:
@@ -45579,16 +43762,7 @@ components:
     listSshKeysResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          title:
-            type: string
-          key:
-            type: string
-          created_at:
-            type: string
+        $ref: '#/components/schemas/singleSshKeyResponse'
     singleSshKeyResponse:
       type: object
       properties:
@@ -45635,14 +43809,7 @@ components:
     listAllGpgKeysResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          key:
-            type: string
-          created_at:
-            type: string
+        $ref: '#/components/schemas/getASpecificGpgKeyResponse'
     getASpecificGpgKeyResponse:
       type: object
       properties:
@@ -45669,14 +43836,7 @@ components:
     listEmailsResponse:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-          email:
-            type: string
-          confirmed_at:
-            type: string
+        $ref: '#/components/schemas/singleEmailResponse'
     singleEmailResponse:
       type: object
       properties:
@@ -45721,28 +43881,7 @@ components:
     getAllImpersonationTokensOfAUserResponse:
       type: array
       items:
-        type: object
-        properties:
-          active:
-            type: boolean
-          user_id:
-            type: integer
-          scopes:
-            type: array
-            items:
-              type: string
-          revoked:
-            type: boolean
-          name:
-            type: string
-          id:
-            type: integer
-          created_at:
-            type: string
-          impersonation:
-            type: boolean
-          expires_at:
-            type: string
+        $ref: '#/components/schemas/getAnImpersonationTokenOfAUserResponse'
     approveUserResponse:
       type: object
       properties:
