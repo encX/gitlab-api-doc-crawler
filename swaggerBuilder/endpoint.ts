@@ -12,7 +12,7 @@ import {
 } from "../types/OpenAPIV3.ts";
 import { extractEndpointInfo } from "./converter/path.ts";
 import { asPropertyType } from "./converter/propertyType.ts";
-import { parseSchema } from "./converter/schema.ts";
+import { makeSchemaFrom } from "./converter/schema.ts";
 import { operationIDify } from "./converter/text.ts";
 
 export class Endpoint {
@@ -114,7 +114,7 @@ export class Endpoint {
 
     if (this.api.response) {
       const schemaName = `${this.operationId}Response`;
-      const schema = parseSchema(this.api.response);
+      const schema = makeSchemaFrom(this.api.response);
 
       response200Base.content = {
         "application/json": {

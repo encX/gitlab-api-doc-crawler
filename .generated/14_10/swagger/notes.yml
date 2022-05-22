@@ -661,10 +661,13 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           system:
             type: boolean
           noteable_id:
@@ -719,12 +722,15 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
     createNewSnippetNoteRequest:
       type: object
       properties:
@@ -765,10 +771,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         system:
           type: boolean
         noteable_id:
@@ -816,11 +825,14 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         confidential:
           type: boolean

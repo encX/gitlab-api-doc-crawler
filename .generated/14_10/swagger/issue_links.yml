@@ -119,6 +119,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           title:
             type: string
           state:
@@ -151,6 +152,7 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           milestone:
             type: string
           user_notes_count:
@@ -167,8 +169,10 @@ components:
             type: string
           link_created_at:
             type: string
+            format: date-time
           link_updated_at:
             type: string
+            format: date-time
     createAnIssueLinkRequest:
       type: object
       properties:
@@ -199,6 +203,7 @@ components:
               type: integer
             created_at:
               type: string
+              format: date-time
             title:
               type: string
             state:
@@ -231,6 +236,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             milestone:
               type: string
             subscribed:
@@ -256,6 +262,7 @@ components:
               type: integer
             created_at:
               type: string
+              format: date-time
             title:
               type: string
             state:
@@ -288,6 +295,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             milestone:
               type: string
             subscribed:

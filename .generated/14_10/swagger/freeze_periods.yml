@@ -146,8 +146,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
     getAFreezePeriodByAFreeze_period_idResponse:
       type: object
       properties:
@@ -161,8 +163,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     createAFreezePeriodRequest:
       type: object
       properties:

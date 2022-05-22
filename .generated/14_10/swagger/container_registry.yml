@@ -364,8 +364,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           cleanup_policy_started_at:
             type: string
+            format: date-time
           tags_count:
             type: integer
           tags:
@@ -394,8 +396,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         cleanup_policy_started_at:
           type: string
+          format: date-time
         tags_count:
           type: integer
         tags:
@@ -428,5 +432,6 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         total_size:
           type: integer

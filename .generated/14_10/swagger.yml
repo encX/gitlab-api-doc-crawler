@@ -24188,8 +24188,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         requested_at:
           type: string
+          format: date-time
     approveAnAccessRequestRequest:
       type: object
       properties:
@@ -24208,6 +24210,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         access_level:
           type: integer
     sidekiqQueuesAdministrationApiResponse:
@@ -24353,6 +24356,7 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
     getASingleAvatarUrlResponse:
       type: object
       properties:
@@ -24386,8 +24390,10 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         awardable_id:
           type: integer
         awardable_type:
@@ -24639,8 +24645,10 @@ components:
           type: string
         starts_at:
           type: string
+          format: date-time
         ends_at:
           type: string
+          format: date-time
         color:
           type: string
         font:
@@ -24714,8 +24722,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         created_by_user_id:
           type: integer
     registerAnAgentWithAProjectRequest:
@@ -24766,6 +24776,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           message:
             type: string
           parent_ids:
@@ -24813,6 +24824,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         message:
           type: string
         parent_ids:
@@ -24855,6 +24867,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         message:
           type: string
         committed_date:
@@ -24930,6 +24943,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         committer_name:
           type: string
         committer_email:
@@ -24996,6 +25010,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     postCommentToCommitRequest:
       type: object
       properties:
@@ -25029,6 +25044,7 @@ components:
               type: integer
         created_at:
           type: string
+          format: date-time
         line_type:
           type: string
         path:
@@ -25076,8 +25092,10 @@ components:
                       type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 system:
                   type: boolean
                 noteable_id:
@@ -25102,6 +25120,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
           name:
@@ -25192,10 +25211,12 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         allow_failure:
           type: boolean
         finished_at:
           type: string
+          format: date-time
     listMergeRequestsAssociatedWithACommitResponse:
       type: array
       items:
@@ -25215,8 +25236,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           target_branch:
             type: string
           source_branch:
@@ -25362,6 +25385,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
     withinAGroupResponse:
       type: array
       items:
@@ -25384,6 +25408,7 @@ components:
                 type: string
           created_at:
             type: string
+            format: date-time
           pipelines:
             type: array
             items:
@@ -25401,8 +25426,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 user:
                   type: object
                   properties:
@@ -25425,8 +25452,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         cleanup_policy_started_at:
           type: string
+          format: date-time
         tags_count:
           type: integer
         tags:
@@ -25459,6 +25488,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         total_size:
           type: integer
     listCustomAttributesResponse:
@@ -25516,6 +25546,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           projects_with_write_access:
             type: array
             items:
@@ -25535,6 +25566,7 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
     listProjectDeployKeysResponse:
       type: array
       items:
@@ -25550,6 +25582,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         can_push:
           type: boolean
     addDeployKeyRequest:
@@ -25586,6 +25619,7 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
         revoked:
           type: boolean
         expired:
@@ -25619,6 +25653,7 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
         token:
           type: string
         revoked:
@@ -25636,8 +25671,10 @@ components:
         properties:
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           status:
             type: string
           deployable:
@@ -25652,6 +25689,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
                   id:
                     type: string
                   message:
@@ -25664,8 +25702,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               finished_at:
                 type: string
+                format: date-time
               id:
                 type: integer
               name:
@@ -25699,6 +25739,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
                   bio:
                     type: string
                   location:
@@ -25720,6 +25761,7 @@ components:
                 properties:
                   created_at:
                     type: string
+                    format: date-time
                   id:
                     type: integer
                   ref:
@@ -25730,6 +25772,7 @@ components:
                     type: string
                   updated_at:
                     type: string
+                    format: date-time
                   web_url:
                     type: string
           environment:
@@ -25816,6 +25859,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               comment:
                 type: string
         id:
@@ -25828,8 +25872,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -25873,10 +25919,12 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             started_at:
               type: string
             finished_at:
               type: string
+              format: date-time
             user:
               type: object
               properties:
@@ -25894,6 +25942,7 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 bio:
                   type: string
                 location:
@@ -25923,6 +25972,7 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 message:
                   type: string
             pipeline:
@@ -25930,6 +25980,7 @@ components:
               properties:
                 created_at:
                   type: string
+                  format: date-time
                 id:
                   type: integer
                 ref:
@@ -25940,6 +25991,7 @@ components:
                   type: string
                 updated_at:
                   type: string
+                  format: date-time
                 web_url:
                   type: string
             runner:
@@ -25982,6 +26034,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -26046,6 +26099,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         comment:
           type: string
     listProjectIssueDiscussionItemsResponse:
@@ -26087,8 +26141,10 @@ components:
                       type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 system:
                   type: boolean
                 noteable_id:
@@ -26228,8 +26284,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         enable_advanced_logs_querying:
           type: boolean
         logs_api_path:
@@ -26247,6 +26305,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             status:
               type: string
             user:
@@ -26283,10 +26342,13 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 started_at:
                   type: string
+                  format: date-time
                 finished_at:
                   type: string
+                  format: date-time
                 duration:
                   type: number
                 user:
@@ -26306,6 +26368,7 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     bio:
                       type: string
                     location:
@@ -26331,6 +26394,7 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     parent_ids:
                       type: array
                       items:
@@ -26407,8 +26471,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     editAnExistingEnvironmentRequest:
       type: object
       properties:
@@ -26458,8 +26524,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           closed_at:
             type: string
           labels:
@@ -26482,8 +26550,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -26627,8 +26697,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
             labels:
@@ -26651,8 +26723,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
                 start_date:
@@ -26761,8 +26835,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           closed_at:
             type: string
           labels:
@@ -26785,8 +26861,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -26940,8 +27018,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -27059,10 +27139,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -27187,10 +27270,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -27317,10 +27403,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -27384,8 +27473,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             target_branch:
               type: string
             source_branch:
@@ -27488,8 +27579,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
             merge_when_pipeline_succeeds:
@@ -27533,6 +27626,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     getErrorTrackingSettingsResponse:
       type: object
       properties:
@@ -27593,6 +27687,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           author:
             type: object
             properties:
@@ -27673,6 +27768,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           author:
             type: object
             properties:
@@ -27719,8 +27815,10 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     listFeatureFlagsForAProjectResponse:
       type: array
       items:
@@ -27738,8 +27836,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         scopes:
           type: array
           items: {}
@@ -27885,8 +27985,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     createAFreezePeriodRequest:
       type: object
       properties:
@@ -28754,12 +28856,16 @@ components:
             type: integer
           last_repository_synced_at:
             type: string
+            format: date-time
           last_repository_successful_sync_at:
             type: string
+            format: date-time
           last_wiki_synced_at:
             type: string
+            format: date-time
           last_wiki_successful_sync_at:
             type: string
+            format: date-time
           repository_retry_count:
             type: string
           wiki_retry_count:
@@ -28797,12 +28903,14 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
         id:
           type: integer
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         revoked:
           type: boolean
         access_level:
@@ -28835,12 +28943,14 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         user_id:
           type: integer
         id:
           type: integer
         expires_at:
           type: string
+          format: date-time
         token:
           type: string
         access_level:
@@ -29052,8 +29162,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -29088,8 +29200,10 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           due_date:
             type: string
           start_date:
@@ -29201,8 +29315,10 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           created_at:
             type: string
+            format: date-time
           expired:
             type: boolean
           web_url:
@@ -29246,8 +29362,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           released_at:
             type: string
+            format: date-time
           author:
             type: object
             properties:
@@ -29272,6 +29390,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               parent_ids:
                 type: array
                 items: {}
@@ -29313,6 +29432,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         state:
           type: string
         source_storage_name:
@@ -29452,6 +29572,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           statistics:
             type: object
             properties:
@@ -29524,6 +29645,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
     listAGroupProjectsResponse:
       type: array
       items:
@@ -29571,8 +29693,10 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           shared_runners_enabled:
             type: boolean
           creator_id:
@@ -29622,6 +29746,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           default_branch:
             type: string
           tag_list:
@@ -29646,6 +29771,7 @@ components:
             type: integer
           last_activity_at:
             type: string
+            format: date-time
           namespace:
             type: object
             properties:
@@ -29709,6 +29835,7 @@ components:
                 type: string
               next_run_at:
                 type: string
+                format: date-time
           issues_enabled:
             type: boolean
           merge_requests_enabled:
@@ -29841,6 +29968,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         shared_with_groups:
           type: array
           items:
@@ -29907,8 +30035,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -29988,8 +30118,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -30155,6 +30287,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         prevent_sharing_groups_outside_hierarchy:
           type: boolean
         projects:
@@ -30206,8 +30339,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -30270,6 +30405,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           bio:
             type: string
           location:
@@ -30304,6 +30440,7 @@ components:
             type: string
           confirmed_at:
             type: string
+            format: date-time
           last_activity_on:
             type: string
           email:
@@ -30374,6 +30511,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
     addGroupHookRequest:
       type: object
       properties:
@@ -30444,6 +30582,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         commit_committer_check:
           type: boolean
         reject_unsigned_commits:
@@ -30498,6 +30637,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         commit_message_regex:
           type: string
         commit_message_negative_regex:
@@ -30580,6 +30720,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -30685,6 +30826,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -30774,8 +30916,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           active:
             type: boolean
           commit_events:
@@ -31066,8 +31210,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         active:
           type: boolean
         push_events:
@@ -31391,6 +31537,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -31408,6 +31555,7 @@ components:
               type: string
         expires_at:
           type: string
+          format: date-time
         access_level:
           type: integer
         email:
@@ -31425,10 +31573,12 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           access_level:
             type: integer
           expires_at:
             type: string
+            format: date-time
           user_name:
             type: string
           created_by_name:
@@ -31455,6 +31605,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           title:
             type: string
           state:
@@ -31487,6 +31638,7 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           milestone:
             type: string
           user_notes_count:
@@ -31503,8 +31655,10 @@ components:
             type: string
           link_created_at:
             type: string
+            format: date-time
           link_updated_at:
             type: string
+            format: date-time
     createAnIssueLinkRequest:
       type: object
       properties:
@@ -31535,6 +31689,7 @@ components:
               type: integer
             created_at:
               type: string
+              format: date-time
             title:
               type: string
             state:
@@ -31567,6 +31722,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             milestone:
               type: string
             subscribed:
@@ -31592,6 +31748,7 @@ components:
               type: integer
             created_at:
               type: string
+              format: date-time
             title:
               type: string
             state:
@@ -31624,6 +31781,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             milestone:
               type: string
             subscribed:
@@ -31692,10 +31850,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
+              format: date-time
         author:
           type: object
           properties:
@@ -31762,8 +31923,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -31871,10 +32034,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
+              format: date-time
         author:
           type: object
           properties:
@@ -31943,8 +32109,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -32107,6 +32275,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -32128,8 +32297,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
+          format: date-time
         closed_by:
           type: object
           properties:
@@ -32268,8 +32439,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -32408,8 +32581,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -32553,8 +32728,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -32667,8 +32844,10 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         system:
           type: boolean
         noteable_id:
@@ -32732,8 +32911,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           closed_by:
             type: string
           closed_at:
@@ -32806,8 +32987,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -32867,8 +33050,10 @@ components:
             type: string
           latest_build_started_at:
             type: string
+            format: date-time
           latest_build_finished_at:
             type: string
+            format: date-time
           first_deployed_to_production_at:
             type: string
           pipeline:
@@ -32920,12 +33105,16 @@ components:
                     type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               started_at:
                 type: string
+                format: date-time
               finished_at:
                 type: string
+                format: date-time
               committed_at:
                 type: string
               duration:
@@ -32988,8 +33177,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           target_branch:
             type: string
           source_branch:
@@ -33101,6 +33292,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         filename:
           type: string
         file_path:
@@ -33118,6 +33310,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           filename:
             type: string
           file_path:
@@ -33158,8 +33351,10 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           due_date:
             type: string
           start_date:
@@ -33180,6 +33375,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -33194,10 +33390,13 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: number
           queued_duration:
@@ -33224,6 +33423,7 @@ components:
                   type: string
           artifacts_expire_at:
             type: string
+            format: date-time
           tag_list:
             type: array
             items:
@@ -33276,6 +33476,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -33306,6 +33507,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -33320,16 +33522,20 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: number
           queued_duration:
             type: number
           artifacts_expire_at:
             type: string
+            format: date-time
           tag_list:
             type: array
             items:
@@ -33385,6 +33591,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -33415,6 +33622,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -33429,10 +33637,13 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: integer
           queued_duration:
@@ -33456,8 +33667,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
           ref:
@@ -33487,6 +33700,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -33516,8 +33730,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
     getJobTokenJobResponse:
@@ -33532,6 +33748,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -33546,16 +33763,20 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: number
         queued_duration:
           type: number
         artifacts_expire_at:
           type: string
+          format: date-time
         id:
           type: integer
         name:
@@ -33607,6 +33828,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -33650,6 +33872,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
         job:
           type: object
           properties:
@@ -33678,8 +33901,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             web_url:
               type: string
         project:
@@ -33699,6 +33924,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         user:
           type: object
           properties:
@@ -33726,6 +33952,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -33740,16 +33967,20 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: number
         queued_duration:
           type: number
         artifacts_expire_at:
           type: string
+          format: date-time
         tag_list:
           type: array
           items:
@@ -33803,6 +34034,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -33831,6 +34063,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -33845,8 +34078,10 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
         duration:
@@ -33886,6 +34121,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -33915,10 +34151,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: integer
         queued_duration:
@@ -33950,6 +34189,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -33964,6 +34204,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:
@@ -34013,8 +34254,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -34032,6 +34275,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -34050,8 +34294,10 @@ components:
               type: string
             last_sign_in_at:
               type: string
+              format: date-time
             confirmed_at:
               type: string
+              format: date-time
             last_activity_on:
               type: string
             email:
@@ -34163,10 +34409,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         starts_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
         historical_max:
           type: integer
         maximum_user_count:
@@ -34211,10 +34460,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         starts_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
         historical_max:
           type: integer
         maximum_user_count:
@@ -34298,8 +34550,10 @@ components:
                 type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           closed_at:
             type: string
           labels:
@@ -34326,8 +34580,10 @@ components:
             type: string
           link_created_at:
             type: string
+            format: date-time
           link_updated_at:
             type: string
+            format: date-time
     createARelatedEpicLinkRequest:
       type: object
       properties:
@@ -34403,8 +34659,10 @@ components:
                   type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
             labels:
@@ -34484,8 +34742,10 @@ components:
                   type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
             labels:
@@ -34610,6 +34870,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           created_by:
             type: object
             properties:
@@ -34627,6 +34888,7 @@ components:
                 type: string
           expires_at:
             type: string
+            format: date-time
           access_level:
             type: integer
           group_saml_identity:
@@ -34654,6 +34916,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -34700,6 +34963,7 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
     listMembershipsForABillableMemberOfAGroupResponse:
       type: array
       items:
@@ -34715,8 +34979,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           expires_at:
             type: string
+            format: date-time
           access_level:
             type: object
             properties:
@@ -34750,6 +35016,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -34767,6 +35034,7 @@ components:
               type: string
         expires_at:
           type: string
+          format: date-time
         access_level:
           type: integer
         email:
@@ -34811,8 +35079,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         merge_status:
           type: string
         approvals_required:
@@ -35238,8 +35508,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -35346,8 +35618,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -35438,14 +35712,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -35508,6 +35785,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           message:
             type: string
     getSingleMrChangesResponse:
@@ -35525,8 +35803,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -35629,8 +35909,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
         merge_when_pipeline_succeeds:
@@ -35758,8 +36040,10 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:
@@ -35851,8 +36135,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -35920,8 +36206,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -36012,14 +36300,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -36111,8 +36402,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -36214,8 +36507,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -36306,14 +36601,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -36407,8 +36705,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -36510,8 +36810,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -36600,14 +36902,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -36656,6 +36961,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           merge_request_id:
             type: integer
           state:
@@ -36675,6 +36981,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         merge_request_id:
           type: integer
         state:
@@ -36698,6 +37005,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               message:
                 type: string
         diffs:
@@ -36772,8 +37080,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
           user:
@@ -36804,20 +37114,25 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           target_branch:
             type: string
           status:
             type: string
           merged_at:
             type: string
+            format: date-time
           duration:
             type: integer
     createANewAnnotationRequest:
@@ -36842,6 +37157,7 @@ components:
           type: integer
         starting_at:
           type: string
+          format: date-time
         ending_at:
           type: string
         dashboard_path:
@@ -36898,8 +37214,10 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           created_at:
             type: string
+            format: date-time
           expired:
             type: boolean
     listNamespacesResponse:
@@ -37005,12 +37323,15 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
     createNewSnippetNoteRequest:
       type: object
       properties:
@@ -37051,10 +37372,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         system:
           type: boolean
         noteable_id:
@@ -37102,12 +37426,15 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         confidential:
           type: boolean
     globalNotificationSettingsResponse:
@@ -37264,6 +37591,7 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         pipelines:
           type: array
           items:
@@ -37281,8 +37609,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               user:
                 type: object
                 properties:
@@ -37301,6 +37631,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               pipelines:
                 type: array
                 items:
@@ -37318,8 +37649,10 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     updated_at:
                       type: string
+                      format: date-time
                     user:
                       type: object
                       properties:
@@ -37338,6 +37671,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           file_name:
             type: string
           size:
@@ -37365,8 +37699,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 user:
                   type: object
                   properties:
@@ -37580,6 +37916,7 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           scopes:
             type: array
             items:
@@ -37588,6 +37925,7 @@ components:
             type: integer
           last_used_at:
             type: string
+            format: date-time
           active:
             type: boolean
           expires_at:
@@ -37609,12 +37947,15 @@ components:
             type: string
           next_run_at:
             type: string
+            format: date-time
           active:
             type: boolean
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           owner:
             type: object
             properties:
@@ -37645,12 +37986,15 @@ components:
           type: string
         next_run_at:
           type: string
+          format: date-time
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         last_pipeline:
           type: object
           properties:
@@ -37720,12 +38064,15 @@ components:
           type: string
         next_run_at:
           type: string
+          format: date-time
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         last_pipeline:
           type: string
         owner:
@@ -37789,12 +38136,14 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_used:
           type: string
         token:
           type: string
         updated_at:
           type: string
+          format: date-time
         owner:
           type: string
     createAProjectTriggerRequest:
@@ -37827,8 +38176,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
     getASinglePipelineResponse:
       type: object
       properties:
@@ -37867,12 +38218,15 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:
           type: string
+          format: date-time
         committed_at:
           type: string
         duration:
@@ -38104,6 +38458,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           managed:
             type: boolean
           enabled:
@@ -38159,6 +38514,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     getASingleProjectClusterResponse:
       type: object
       properties:
@@ -38170,6 +38526,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -38225,6 +38582,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         project:
           type: object
           properties:
@@ -38242,6 +38600,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             default_branch:
               type: string
             tag_list:
@@ -38266,6 +38625,7 @@ components:
               type: integer
             last_activity_at:
               type: string
+              format: date-time
             namespace:
               type: object
               properties:
@@ -38319,6 +38679,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -38376,6 +38737,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             default_branch:
               type: string
             tag_list:
@@ -38400,6 +38762,7 @@ components:
               type: integer
             last_activity_at:
               type: string
+              format: date-time
             namespace:
               type: object
               properties:
@@ -38471,6 +38834,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         export_status:
           type: string
         _links:
@@ -38515,6 +38879,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         import_status:
           type: string
         correlation_id:
@@ -38557,6 +38922,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         import_status:
           type: string
         correlation_id:
@@ -38611,6 +38977,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         import_status:
           type: string
         import_type:
@@ -38626,6 +38993,7 @@ components:
                 type: integer
               created_at:
                 type: string
+                format: date-time
               exception_class:
                 type: string
               exception_message:
@@ -38688,6 +39056,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         state:
           type: string
         source_storage_name:
@@ -38711,6 +39080,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
     scheduleARepositoryStorageMoveForAProjectRequest:
       type: object
       properties:
@@ -38756,10 +39126,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         project_id:
           type: integer
         web_url:
@@ -38817,12 +39190,15 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         project_id:
           type: string
         web_url:
@@ -38927,6 +39303,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         description:
           type: string
         dismissed_at:
@@ -38942,6 +39319,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: integer
             location_fingerprint:
@@ -38966,6 +39344,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             uuid:
               type: string
             vulnerability_id:
@@ -38981,6 +39360,7 @@ components:
           properties:
             created_at:
               type: string
+              format: date-time
             description:
               type: string
             id:
@@ -39013,6 +39393,7 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         updated_by_id:
           type: string
     listAllProjectsResponse:
@@ -39064,6 +39445,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           name:
             type: string
           name_with_namespace:
@@ -39096,8 +39478,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -39162,6 +39546,7 @@ components:
             type: string
           marked_for_deletion_at:
             type: string
+            format: date-time
           marked_for_deletion_on:
             type: string
           statistics:
@@ -39244,6 +39629,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           name:
             type: string
           name_with_namespace:
@@ -39276,8 +39662,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -39414,6 +39802,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         name:
           type: string
         name_with_namespace:
@@ -39463,10 +39852,13 @@ components:
               type: string
             next_run_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -39605,6 +39997,7 @@ components:
           type: string
         marked_for_deletion_at:
           type: string
+          format: date-time
         marked_for_deletion_on:
           type: string
         compliance_frameworks:
@@ -40141,8 +40534,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -40275,8 +40670,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -40434,6 +40831,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         name:
           type: string
         name_with_namespace:
@@ -40466,8 +40864,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -40655,6 +41055,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
     addProjectHookRequest:
       type: object
       properties:
@@ -40711,6 +41112,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         member_check:
           type: boolean
         prevent_secrets:
@@ -40770,6 +41172,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         default_branch:
           type: string
         tag_list:
@@ -40794,6 +41197,7 @@ components:
           type: integer
         last_activity_at:
           type: string
+          format: date-time
         namespace:
           type: object
           properties:
@@ -40863,6 +41267,7 @@ components:
               type: string
             next_run_at:
               type: string
+              format: date-time
         issues_enabled:
           type: boolean
         merge_requests_enabled:
@@ -40972,6 +41377,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           repository_storage:
             type: string
     listProtectedBranchesResponse:
@@ -41178,8 +41584,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -41206,6 +41614,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items: {}
@@ -41242,8 +41651,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -41301,6 +41712,7 @@ components:
                 type: string
               collected_at:
                 type: string
+                format: date-time
     createAReleaseRequest:
       type: object
       properties:
@@ -41344,8 +41756,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -41372,6 +41786,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items:
@@ -41409,8 +41824,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -41488,8 +41905,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -41516,6 +41935,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items: {}
@@ -41619,10 +42039,13 @@ components:
           type: string
         last_successful_update_at:
           type: string
+          format: date-time
         last_update_at:
           type: string
+          format: date-time
         last_update_started_at:
           type: string
+          format: date-time
         only_protected_branches:
           type: boolean
         keep_divergent_refs:
@@ -41686,6 +42109,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         commits:
           type: array
           items:
@@ -41703,6 +42127,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
         diffs:
           type: array
           items:
@@ -41756,6 +42181,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         parent_ids:
           type: array
           items: {}
@@ -41943,6 +42369,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         message:
           type: string
         parent_ids:
@@ -41979,6 +42406,7 @@ components:
                 type: string
           created_at:
             type: string
+            format: date-time
           resource_type:
             type: string
           resource_id:
@@ -42042,6 +42470,7 @@ components:
           type: string
         contacted_at:
           type: string
+          format: date-time
         name:
           type: string
         online:
@@ -42113,6 +42542,7 @@ components:
           type: string
         contacted_at:
           type: string
+          format: date-time
         name:
           type: string
         online:
@@ -42171,10 +42601,13 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: integer
           user:
@@ -42194,6 +42627,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -42221,6 +42655,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               parent_ids:
                 type: array
                 items:
@@ -42267,6 +42702,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     enableARunnerInProjectRequest:
       type: object
       properties:
@@ -42333,6 +42769,7 @@ components:
           type: string
         token_expires_at:
           type: string
+          format: date-time
     verifyAuthenticationForARegisteredRunnerRequest:
       type: object
       properties:
@@ -42347,6 +42784,7 @@ components:
           type: string
         token_expires_at:
           type: string
+          format: date-time
     getCurrentApplicationSettingsResponse:
       type: object
       properties:
@@ -42381,6 +42819,7 @@ components:
           type: boolean
         updated_at:
           type: string
+          format: date-time
         session_expire_delay:
           type: integer
         home_page_url:
@@ -42400,6 +42839,7 @@ components:
           items: {}
         created_at:
           type: string
+          format: date-time
         default_ci_config_path:
           type: string
         default_project_visibility:
@@ -42528,8 +42968,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         home_page_url:
           type: string
         default_branch_protection:
@@ -42697,6 +43139,7 @@ components:
                 type: string
               started_at:
                 type: string
+                format: date-time
               queues:
                 type: array
                 items:
@@ -42748,6 +43191,7 @@ components:
                 type: string
               started_at:
                 type: string
+                format: date-time
               queues:
                 type: array
                 items:
@@ -42781,6 +43225,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         state:
           type: string
         source_storage_name:
@@ -42800,8 +43245,10 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             created_at:
               type: string
+              format: date-time
             project_id:
               type: string
             web_url:
@@ -42863,8 +43310,10 @@ components:
                 type: string
           updated_at:
             type: string
+            format: date-time
           created_at:
             type: string
+            format: date-time
           project_id:
             type: string
           web_url:
@@ -42899,12 +43348,15 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         expires_at:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         project_id:
           type: string
         web_url:
@@ -42933,6 +43385,7 @@ components:
                 type: string
           created_at:
             type: string
+            format: date-time
           file_name:
             type: string
           id:
@@ -42941,6 +43394,7 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           project_id:
             type: string
           web_url:
@@ -43005,6 +43459,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           push_events:
             type: boolean
           tag_push_events:
@@ -43073,6 +43528,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items:
@@ -43165,8 +43621,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             target_branch:
               type: string
             source_branch:
@@ -43233,8 +43691,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
             merge_when_pipeline_succeeds:
@@ -43253,8 +43713,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     listTopicsResponse:
       type: array
       items:
@@ -43306,6 +43768,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           is_admin:
             type: boolean
           bio:
@@ -43326,8 +43789,10 @@ components:
             type: string
           last_sign_in_at:
             type: string
+            format: date-time
           confirmed_at:
             type: string
+            format: date-time
           theme_id:
             type: integer
           last_activity_on:
@@ -43338,6 +43803,7 @@ components:
             type: integer
           current_sign_in_at:
             type: string
+            format: date-time
           note:
             type: string
           identities:
@@ -43382,6 +43848,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         bio:
           type: string
         bot:
@@ -43448,6 +43915,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         is_admin:
           type: boolean
         bio:
@@ -43480,8 +43948,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -43492,6 +43962,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         note:
           type: string
         can_create_group:
@@ -43540,6 +44011,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         bio:
           type: string
         location:
@@ -43572,8 +44044,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -43584,6 +44058,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         identities:
           type: array
           items:
@@ -43624,6 +44099,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         is_admin:
           type: boolean
         bio:
@@ -43646,8 +44122,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -43658,6 +44136,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         identities:
           type: array
           items:
@@ -43720,6 +44199,7 @@ components:
           type: string
         clear_status_at:
           type: string
+          format: date-time
     getUserPreferencesResponse:
       type: object
       properties:
@@ -43774,6 +44254,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     addSshKeyRequest:
       type: object
       properties:
@@ -43806,6 +44287,7 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
     listAllGpgKeysResponse:
       type: array
       items:
@@ -43819,6 +44301,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     addAGpgKeyRequest:
       type: object
       properties:
@@ -43846,6 +44329,7 @@ components:
           type: string
         confirmed_at:
           type: string
+          format: date-time
     addEmailRequest:
       type: object
       properties:
@@ -43869,6 +44353,7 @@ components:
           type: string
         confirmed_at:
           type: string
+          format: date-time
     addEmailForUserRequest:
       type: object
       properties:
@@ -43906,10 +44391,12 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         impersonation:
           type: boolean
         expires_at:
           type: string
+          format: date-time
     createAnImpersonationTokenRequest:
       type: object
       properties:
@@ -43944,8 +44431,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
     createAPersonalAccessTokenResponse:
       type: object
       properties:
@@ -43957,6 +44446,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         scopes:
           type: array
           items:
@@ -43967,6 +44457,7 @@ components:
           type: boolean
         expires_at:
           type: string
+          format: date-time
         token:
           type: string
     getUserActivitiesAdminOnlyResponse:
@@ -43980,6 +44471,7 @@ components:
             type: string
           last_activity_at:
             type: string
+            format: date-time
     userMembershipsAdminOnlyResponse:
       type: array
       items:
@@ -44042,8 +44534,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         last_edited_at:
           type: string
         closed_at:
@@ -44055,6 +44549,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         project_id:
           type: integer
         group_id:

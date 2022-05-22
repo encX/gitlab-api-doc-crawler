@@ -62,8 +62,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -81,6 +83,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -99,8 +102,10 @@ components:
               type: string
             last_sign_in_at:
               type: string
+              format: date-time
             confirmed_at:
               type: string
+              format: date-time
             last_activity_on:
               type: string
             email:

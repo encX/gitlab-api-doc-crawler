@@ -1366,8 +1366,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -1474,8 +1476,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -1566,14 +1570,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -1649,6 +1656,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           message:
             type: string
     getSingleMrChangesResponse:
@@ -1666,8 +1674,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -1770,8 +1780,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
         merge_when_pipeline_succeeds:
@@ -1899,8 +1911,10 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:
@@ -1992,8 +2006,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -2061,8 +2077,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -2153,14 +2171,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -2252,8 +2273,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -2355,8 +2378,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -2447,14 +2472,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -2548,8 +2576,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         target_branch:
           type: string
         source_branch:
@@ -2651,8 +2681,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             due_date:
               type: string
             start_date:
@@ -2741,14 +2773,17 @@ components:
               type: string
         merged_at:
           type: string
+          format: date-time
         closed_by:
           type: string
         closed_at:
           type: string
         latest_build_started_at:
           type: string
+          format: date-time
         latest_build_finished_at:
           type: string
+          format: date-time
         first_deployed_to_production_at:
           type: string
         pipeline:
@@ -2836,8 +2871,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             target_branch:
               type: string
             source_branch:
@@ -2940,8 +2977,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
             merge_when_pipeline_succeeds:
@@ -2985,6 +3024,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     getMrDiffVersionsResponse:
       type: array
       items:
@@ -3000,6 +3040,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           merge_request_id:
             type: integer
           state:
@@ -3019,6 +3060,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         merge_request_id:
           type: integer
         state:
@@ -3042,6 +3084,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               message:
                 type: string
         diffs:

@@ -154,8 +154,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               target_branch:
                 type: string
               source_branch:
@@ -222,8 +224,10 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
                   updated_at:
                     type: string
+                    format: date-time
                   due_date:
                     type: string
               merge_when_pipeline_succeeds:
@@ -240,8 +244,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
     markAToDoItemAsDoneResponse:
       type: object
       properties:
@@ -296,8 +302,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             target_branch:
               type: string
             source_branch:
@@ -364,8 +372,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
             merge_when_pipeline_succeeds:
@@ -384,5 +394,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time

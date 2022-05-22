@@ -227,8 +227,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           created_at:
             type: string
+            format: date-time
           created_by_user_id:
             type: integer
     getDetailsAboutAnAgentResponse:
@@ -255,8 +257,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         created_by_user_id:
           type: integer
     registerAnAgentWithAProjectRequest:

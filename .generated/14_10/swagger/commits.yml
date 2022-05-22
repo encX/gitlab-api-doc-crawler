@@ -505,6 +505,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           message:
             type: string
           parent_ids:
@@ -552,6 +553,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         message:
           type: string
         parent_ids:
@@ -594,6 +596,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         message:
           type: string
         committed_date:
@@ -669,6 +672,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         committer_name:
           type: string
         committer_email:
@@ -735,6 +739,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     postCommentToCommitRequest:
       type: object
       properties:
@@ -768,6 +773,7 @@ components:
               type: integer
         created_at:
           type: string
+          format: date-time
         line_type:
           type: string
         path:
@@ -815,8 +821,10 @@ components:
                       type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 system:
                   type: boolean
                 noteable_id:
@@ -841,6 +849,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
           name:
@@ -931,10 +940,12 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         allow_failure:
           type: boolean
         finished_at:
           type: string
+          format: date-time
     listMergeRequestsAssociatedWithACommitResponse:
       type: array
       items:
@@ -954,8 +965,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           target_branch:
             type: string
           source_branch:

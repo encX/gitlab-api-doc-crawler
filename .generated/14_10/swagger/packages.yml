@@ -259,6 +259,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
     withinAGroupResponse:
       type: array
       items:
@@ -281,6 +282,7 @@ components:
                 type: string
           created_at:
             type: string
+            format: date-time
           pipelines:
             type: array
             items:
@@ -298,8 +300,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 user:
                   type: object
                   properties:
@@ -327,6 +331,7 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         pipelines:
           type: array
           items:
@@ -344,8 +349,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               user:
                 type: object
                 properties:
@@ -364,6 +371,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               pipelines:
                 type: array
                 items:
@@ -381,8 +389,10 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     updated_at:
                       type: string
+                      format: date-time
                     user:
                       type: object
                       properties:
@@ -401,6 +411,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           file_name:
             type: string
           size:
@@ -428,8 +439,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 user:
                   type: object
                   properties:

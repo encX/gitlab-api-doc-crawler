@@ -145,6 +145,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           managed:
             type: boolean
           enabled:
@@ -200,6 +201,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     getASingleProjectClusterResponse:
       type: object
       properties:
@@ -211,6 +213,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -266,6 +269,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         project:
           type: object
           properties:
@@ -283,6 +287,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             default_branch:
               type: string
             tag_list:
@@ -307,6 +312,7 @@ components:
               type: integer
             last_activity_at:
               type: string
+              format: date-time
             namespace:
               type: object
               properties:
@@ -360,6 +366,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         managed:
           type: boolean
         enabled:
@@ -417,6 +424,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             default_branch:
               type: string
             tag_list:
@@ -441,6 +449,7 @@ components:
               type: integer
             last_activity_at:
               type: string
+              format: date-time
             namespace:
               type: object
               properties:

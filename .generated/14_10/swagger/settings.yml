@@ -68,6 +68,7 @@ components:
           type: boolean
         updated_at:
           type: string
+          format: date-time
         session_expire_delay:
           type: integer
         home_page_url:
@@ -87,6 +88,7 @@ components:
           items: {}
         created_at:
           type: string
+          format: date-time
         default_ci_config_path:
           type: string
         default_project_visibility:
@@ -215,8 +217,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         home_page_url:
           type: string
         default_branch_protection:

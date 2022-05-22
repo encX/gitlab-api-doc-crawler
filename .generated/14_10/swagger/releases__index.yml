@@ -201,8 +201,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           released_at:
             type: string
+            format: date-time
           author:
             type: object
             properties:
@@ -229,6 +231,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               parent_ids:
                 type: array
                 items:
@@ -266,8 +269,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
                 start_date:
@@ -327,6 +332,7 @@ components:
                   type: string
                 collected_at:
                   type: string
+                  format: date-time
     getAReleaseByATagNameResponse:
       type: object
       properties:
@@ -338,8 +344,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -366,6 +374,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items: {}
@@ -402,8 +411,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -461,6 +472,7 @@ components:
                 type: string
               collected_at:
                 type: string
+                format: date-time
     createAReleaseRequest:
       type: object
       properties:
@@ -504,8 +516,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -532,6 +546,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items:
@@ -569,8 +584,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -648,8 +665,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         released_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -676,6 +695,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             parent_ids:
               type: array
               items: {}

@@ -235,8 +235,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         enable_advanced_logs_querying:
           type: boolean
         logs_api_path:
@@ -254,6 +256,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             status:
               type: string
             user:
@@ -290,10 +293,13 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 started_at:
                   type: string
+                  format: date-time
                 finished_at:
                   type: string
+                  format: date-time
                 duration:
                   type: number
                 user:
@@ -313,6 +319,7 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     bio:
                       type: string
                     location:
@@ -338,6 +345,7 @@ components:
                       type: string
                     created_at:
                       type: string
+                      format: date-time
                     parent_ids:
                       type: array
                       items:
@@ -414,8 +422,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
     editAnExistingEnvironmentRequest:
       type: object
       properties:

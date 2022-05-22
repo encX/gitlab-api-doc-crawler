@@ -154,8 +154,10 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
     createAFeatureFlagUserListRequest:
       type: object
       properties:
@@ -181,5 +183,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time

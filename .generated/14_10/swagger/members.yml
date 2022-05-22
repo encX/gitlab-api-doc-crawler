@@ -461,6 +461,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           created_by:
             type: object
             properties:
@@ -478,6 +479,7 @@ components:
                 type: string
           expires_at:
             type: string
+            format: date-time
           access_level:
             type: integer
           group_saml_identity:
@@ -505,6 +507,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -551,6 +554,7 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
     listMembershipsForABillableMemberOfAGroupResponse:
       type: array
       items:
@@ -566,8 +570,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           expires_at:
             type: string
+            format: date-time
           access_level:
             type: object
             properties:
@@ -614,6 +620,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -631,6 +638,7 @@ components:
               type: string
         expires_at:
           type: string
+          format: date-time
         access_level:
           type: integer
         email:
@@ -663,6 +671,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         created_by:
           type: object
           properties:
@@ -680,6 +689,7 @@ components:
               type: string
         expires_at:
           type: string
+          format: date-time
         access_level:
           type: integer
         email:

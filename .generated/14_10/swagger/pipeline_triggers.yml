@@ -142,12 +142,14 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_used:
             type: string
           token:
             type: string
           updated_at:
             type: string
+            format: date-time
           owner:
             type: string
     getTriggerDetailsResponse:
@@ -159,12 +161,14 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_used:
           type: string
         token:
           type: string
         updated_at:
           type: string
+          format: date-time
         owner:
           type: string
     createAProjectTriggerRequest:

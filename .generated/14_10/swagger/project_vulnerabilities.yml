@@ -56,6 +56,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           description:
             type: string
           dismissed_at:
@@ -71,6 +72,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: integer
               location_fingerprint:
@@ -95,6 +97,7 @@ components:
                 type: string
               updated_at:
                 type: string
+                format: date-time
               uuid:
                 type: string
               vulnerability_id:
@@ -110,6 +113,7 @@ components:
             properties:
               created_at:
                 type: string
+                format: date-time
               description:
                 type: string
               id:
@@ -142,6 +146,7 @@ components:
             type: string
           updated_at:
             type: string
+            format: date-time
           updated_by_id:
             type: string
     newVulnerabilityRequest:
@@ -156,6 +161,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         description:
           type: string
         dismissed_at:
@@ -171,6 +177,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: integer
             location_fingerprint:
@@ -195,6 +202,7 @@ components:
               type: string
             updated_at:
               type: string
+              format: date-time
             uuid:
               type: string
             vulnerability_id:
@@ -210,6 +218,7 @@ components:
           properties:
             created_at:
               type: string
+              format: date-time
             description:
               type: string
             id:
@@ -242,5 +251,6 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         updated_by_id:
           type: string

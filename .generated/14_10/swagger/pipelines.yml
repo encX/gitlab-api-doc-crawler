@@ -332,8 +332,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
     getASinglePipelineResponse:
       type: object
       properties:
@@ -372,12 +374,15 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:
           type: string
+          format: date-time
         committed_at:
           type: string
         duration:

@@ -115,12 +115,14 @@ components:
             type: string
           expires_at:
             type: string
+            format: date-time
           id:
             type: integer
           active:
             type: boolean
           created_at:
             type: string
+            format: date-time
           revoked:
             type: boolean
           access_level:
@@ -138,12 +140,14 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
         id:
           type: integer
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         revoked:
           type: boolean
         access_level:
@@ -176,12 +180,14 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         user_id:
           type: integer
         id:
           type: integer
         expires_at:
           type: string
+          format: date-time
         token:
           type: string
         access_level:

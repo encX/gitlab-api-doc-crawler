@@ -116,8 +116,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           requested_at:
             type: string
+            format: date-time
     requestAccessToAGroupOrProjectResponse:
       type: object
       properties:
@@ -131,8 +133,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         requested_at:
           type: string
+          format: date-time
     approveAnAccessRequestRequest:
       type: object
       properties:
@@ -151,5 +155,6 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         access_level:
           type: integer

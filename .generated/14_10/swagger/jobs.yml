@@ -323,6 +323,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -337,10 +338,13 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: number
           queued_duration:
@@ -367,6 +371,7 @@ components:
                   type: string
           artifacts_expire_at:
             type: string
+            format: date-time
           tag_list:
             type: array
             items:
@@ -419,6 +424,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -449,6 +455,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -463,16 +470,20 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: number
           queued_duration:
             type: number
           artifacts_expire_at:
             type: string
+            format: date-time
           tag_list:
             type: array
             items:
@@ -528,6 +539,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -558,6 +570,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               id:
                 type: string
               message:
@@ -572,10 +585,13 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: integer
           queued_duration:
@@ -599,8 +615,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
           ref:
@@ -630,6 +648,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -659,8 +678,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               web_url:
                 type: string
     getJobTokenJobResponse:
@@ -675,6 +696,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -689,16 +711,20 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: number
         queued_duration:
           type: number
         artifacts_expire_at:
           type: string
+          format: date-time
         id:
           type: integer
         name:
@@ -750,6 +776,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -793,6 +820,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
         job:
           type: object
           properties:
@@ -821,8 +849,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             web_url:
               type: string
         project:
@@ -842,6 +872,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         user:
           type: object
           properties:
@@ -869,6 +900,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -883,16 +915,20 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: number
         queued_duration:
           type: number
         artifacts_expire_at:
           type: string
+          format: date-time
         tag_list:
           type: array
           items:
@@ -946,6 +982,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             bio:
               type: string
             location:
@@ -974,6 +1011,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -988,8 +1026,10 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
         duration:
@@ -1029,6 +1069,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -1058,10 +1099,13 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
+          format: date-time
         finished_at:
           type: string
+          format: date-time
         duration:
           type: integer
         queued_duration:
@@ -1093,6 +1137,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             id:
               type: string
             message:
@@ -1107,6 +1152,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         started_at:
           type: string
         finished_at:

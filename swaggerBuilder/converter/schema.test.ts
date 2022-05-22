@@ -1,37 +1,37 @@
 import { assertEquals, assertThrows } from "https://deno.land/std@0.139.0/testing/asserts.ts";
 import { SchemaObject } from "../../types/OpenAPIV3.ts";
-import { parseSchema } from "./schema.ts";
+import { makeSchemaFrom } from "./schema.ts";
 
-Deno.test("parseSchema - string", () => {
-  assertEquals(parseSchema("foo"), { type: "string" });
+Deno.test("makeSchemaFrom - string", () => {
+  assertEquals(makeSchemaFrom("foo"), { type: "string" });
 });
 
-Deno.test("parseSchema - integer", () => {
-  assertEquals(parseSchema(1), { type: "integer" });
+Deno.test("makeSchemaFrom - integer", () => {
+  assertEquals(makeSchemaFrom(1), { type: "integer" });
 });
 
-Deno.test("parseSchema - number", () => {
-  assertEquals(parseSchema(1.2), { type: "number" });
+Deno.test("makeSchemaFrom - number", () => {
+  assertEquals(makeSchemaFrom(1.2), { type: "number" });
 });
 
-Deno.test("parseSchema - boolean", () => {
-  assertEquals(parseSchema(false), { type: "boolean" });
+Deno.test("makeSchemaFrom - boolean", () => {
+  assertEquals(makeSchemaFrom(false), { type: "boolean" });
 });
 
-Deno.test("parseSchema - null", () => {
-  assertEquals(parseSchema(null), { type: "string" }, "type null should be treated as string");
+Deno.test("makeSchemaFrom - null", () => {
+  assertEquals(makeSchemaFrom(null), { type: "string" }, "type null should be treated as string");
 });
 
-Deno.test("parseSchema - function (throw)", () => {
-  assertThrows(() => parseSchema(() => {}));
+Deno.test("makeSchemaFrom - function (throw)", () => {
+  assertThrows(() => makeSchemaFrom(() => {}));
 });
 
-Deno.test("parseSchema - symbol (throw)", () => {
-  assertThrows(() => parseSchema(Symbol));
+Deno.test("makeSchemaFrom - symbol (throw)", () => {
+  assertThrows(() => makeSchemaFrom(Symbol));
 });
 
-Deno.test("parseSchema - object - flat", () => {
-  const actual = parseSchema({
+Deno.test("makeSchemaFrom - object - flat", () => {
+  const actual = makeSchemaFrom({
     bool: true,
     str: "test-1-20150125",
     int: 6,
@@ -53,8 +53,8 @@ Deno.test("parseSchema - object - flat", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("parseSchema - object - nested", () => {
-  const actual = parseSchema({ foo: { bar: { baz: "value" } } });
+Deno.test("makeSchemaFrom - object - nested", () => {
+  const actual = makeSchemaFrom({ foo: { bar: { baz: "value" } } });
 
   const expected: SchemaObject = {
     type: "object",
@@ -76,41 +76,41 @@ Deno.test("parseSchema - object - nested", () => {
   assertEquals(actual, expected);
 });
 
-Deno.test("parseSchema - array of primitives", () => {
-  assertEquals(parseSchema([1]), {
+Deno.test("makeSchemaFrom - array of primitives", () => {
+  assertEquals(makeSchemaFrom([1]), {
     type: "array",
     items: { type: "integer" },
   });
-  assertEquals(parseSchema(["1"]), {
+  assertEquals(makeSchemaFrom(["1"]), {
     type: "array",
     items: { type: "string" },
   });
-  assertEquals(parseSchema([1.1]), {
+  assertEquals(makeSchemaFrom([1.1]), {
     type: "array",
     items: { type: "number" },
   });
-  assertEquals(parseSchema([false]), {
+  assertEquals(makeSchemaFrom([false]), {
     type: "array",
     items: { type: "boolean" },
   });
 });
 
-Deno.test("parseSchema - array of arrays", () => {
-  assertEquals(parseSchema([[1]]), {
+Deno.test("makeSchemaFrom - array of arrays", () => {
+  assertEquals(makeSchemaFrom([[1]]), {
     type: "array",
     items: { type: "array", items: { type: "integer" } },
   });
 });
 
-Deno.test("parseSchema - array of objects", () => {
-  assertEquals(parseSchema([{ foo: 1 }]), {
+Deno.test("makeSchemaFrom - array of objects", () => {
+  assertEquals(makeSchemaFrom([{ foo: 1 }]), {
     type: "array",
     items: { type: "object", properties: { foo: { type: "integer" } } },
   });
 });
 
-Deno.test("parseSchema - real example", () => {
-  const actual = parseSchema({
+Deno.test("makeSchemaFrom - real example", () => {
+  const actual = makeSchemaFrom({
     active: true,
     paused: false,
     architecture: null,

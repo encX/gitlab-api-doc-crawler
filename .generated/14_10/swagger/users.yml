@@ -1173,6 +1173,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           is_admin:
             type: boolean
           bio:
@@ -1193,8 +1194,10 @@ components:
             type: string
           last_sign_in_at:
             type: string
+            format: date-time
           confirmed_at:
             type: string
+            format: date-time
           theme_id:
             type: integer
           last_activity_on:
@@ -1205,6 +1208,7 @@ components:
             type: integer
           current_sign_in_at:
             type: string
+            format: date-time
           note:
             type: string
           identities:
@@ -1249,6 +1253,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         bio:
           type: string
         bot:
@@ -1315,6 +1320,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         is_admin:
           type: boolean
         bio:
@@ -1347,8 +1353,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -1359,6 +1367,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         note:
           type: string
         can_create_group:
@@ -1407,6 +1416,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         bio:
           type: string
         location:
@@ -1439,8 +1449,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -1451,6 +1463,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         identities:
           type: array
           items:
@@ -1491,6 +1504,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         is_admin:
           type: boolean
         bio:
@@ -1513,8 +1527,10 @@ components:
           type: string
         last_sign_in_at:
           type: string
+          format: date-time
         confirmed_at:
           type: string
+          format: date-time
         theme_id:
           type: integer
         last_activity_on:
@@ -1525,6 +1541,7 @@ components:
           type: integer
         current_sign_in_at:
           type: string
+          format: date-time
         identities:
           type: array
           items:
@@ -1587,6 +1604,7 @@ components:
           type: string
         clear_status_at:
           type: string
+          format: date-time
     getUserPreferencesResponse:
       type: object
       properties:
@@ -1639,6 +1657,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
     singleSshKeyResponse:
       type: object
       properties:
@@ -1650,6 +1669,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     addSshKeyRequest:
       type: object
       properties:
@@ -1682,6 +1702,7 @@ components:
           type: string
         expires_at:
           type: string
+          format: date-time
     listAllGpgKeysResponse:
       type: array
       items:
@@ -1693,6 +1714,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
     getASpecificGpgKeyResponse:
       type: object
       properties:
@@ -1702,6 +1724,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     addAGpgKeyRequest:
       type: object
       properties:
@@ -1727,6 +1750,7 @@ components:
             type: string
           confirmed_at:
             type: string
+            format: date-time
     singleEmailResponse:
       type: object
       properties:
@@ -1736,6 +1760,7 @@ components:
           type: string
         confirmed_at:
           type: string
+          format: date-time
     addEmailRequest:
       type: object
       properties:
@@ -1759,6 +1784,7 @@ components:
           type: string
         confirmed_at:
           type: string
+          format: date-time
     addEmailForUserRequest:
       type: object
       properties:
@@ -1789,10 +1815,12 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           impersonation:
             type: boolean
           expires_at:
             type: string
+            format: date-time
     approveUserResponse:
       type: object
       properties:
@@ -1817,10 +1845,12 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         impersonation:
           type: boolean
         expires_at:
           type: string
+          format: date-time
     createAnImpersonationTokenRequest:
       type: object
       properties:
@@ -1855,8 +1885,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date-time
     createAPersonalAccessTokenResponse:
       type: object
       properties:
@@ -1868,6 +1900,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         scopes:
           type: array
           items:
@@ -1878,6 +1911,7 @@ components:
           type: boolean
         expires_at:
           type: string
+          format: date-time
         token:
           type: string
     getUserActivitiesAdminOnlyResponse:
@@ -1891,6 +1925,7 @@ components:
             type: string
           last_activity_at:
             type: string
+            format: date-time
     userMembershipsAdminOnlyResponse:
       type: array
       items:

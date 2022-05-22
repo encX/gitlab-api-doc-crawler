@@ -533,6 +533,7 @@ components:
           type: string
         contacted_at:
           type: string
+          format: date-time
         name:
           type: string
         online:
@@ -604,6 +605,7 @@ components:
           type: string
         contacted_at:
           type: string
+          format: date-time
         name:
           type: string
         online:
@@ -662,10 +664,13 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           started_at:
             type: string
+            format: date-time
           finished_at:
             type: string
+            format: date-time
           duration:
             type: integer
           user:
@@ -685,6 +690,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               bio:
                 type: string
               location:
@@ -712,6 +718,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               parent_ids:
                 type: array
                 items:
@@ -758,6 +765,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     enableARunnerInProjectRequest:
       type: object
       properties:
@@ -824,6 +832,7 @@ components:
           type: string
         token_expires_at:
           type: string
+          format: date-time
     verifyAuthenticationForARegisteredRunnerRequest:
       type: object
       properties:
@@ -838,3 +847,4 @@ components:
           type: string
         token_expires_at:
           type: string
+          format: date-time

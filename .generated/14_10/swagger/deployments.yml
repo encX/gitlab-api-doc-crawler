@@ -201,8 +201,10 @@ components:
         properties:
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           status:
             type: string
           deployable:
@@ -217,6 +219,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
                   id:
                     type: string
                   message:
@@ -229,8 +232,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               finished_at:
                 type: string
+                format: date-time
               id:
                 type: integer
               name:
@@ -264,6 +269,7 @@ components:
                     type: string
                   created_at:
                     type: string
+                    format: date-time
                   bio:
                     type: string
                   location:
@@ -285,6 +291,7 @@ components:
                 properties:
                   created_at:
                     type: string
+                    format: date-time
                   id:
                     type: integer
                   ref:
@@ -295,6 +302,7 @@ components:
                     type: string
                   updated_at:
                     type: string
+                    format: date-time
                   web_url:
                     type: string
           environment:
@@ -381,6 +389,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               comment:
                 type: string
         id:
@@ -393,8 +402,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -438,10 +449,12 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             started_at:
               type: string
             finished_at:
               type: string
+              format: date-time
             user:
               type: object
               properties:
@@ -459,6 +472,7 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 bio:
                   type: string
                 location:
@@ -488,6 +502,7 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 message:
                   type: string
             pipeline:
@@ -495,6 +510,7 @@ components:
               properties:
                 created_at:
                   type: string
+                  format: date-time
                 id:
                   type: integer
                 ref:
@@ -505,6 +521,7 @@ components:
                   type: string
                 updated_at:
                   type: string
+                  format: date-time
                 web_url:
                   type: string
             runner:
@@ -547,6 +564,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         user:
           type: object
           properties:
@@ -611,5 +629,6 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         comment:
           type: string

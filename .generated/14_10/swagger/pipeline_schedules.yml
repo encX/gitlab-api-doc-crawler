@@ -316,12 +316,15 @@ components:
             type: string
           next_run_at:
             type: string
+            format: date-time
           active:
             type: boolean
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           owner:
             type: object
             properties:
@@ -352,12 +355,15 @@ components:
           type: string
         next_run_at:
           type: string
+          format: date-time
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         last_pipeline:
           type: object
           properties:
@@ -427,12 +433,15 @@ components:
           type: string
         next_run_at:
           type: string
+          format: date-time
         active:
           type: boolean
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         last_pipeline:
           type: string
         owner:

@@ -1039,6 +1039,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           statistics:
             type: object
             properties:
@@ -1111,6 +1112,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
     listAGroupProjectsResponse:
       type: array
       items:
@@ -1158,8 +1160,10 @@ components:
             type: boolean
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           shared_runners_enabled:
             type: boolean
           creator_id:
@@ -1209,6 +1213,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           default_branch:
             type: string
           tag_list:
@@ -1233,6 +1238,7 @@ components:
             type: integer
           last_activity_at:
             type: string
+            format: date-time
           namespace:
             type: object
             properties:
@@ -1296,6 +1302,7 @@ components:
                 type: string
               next_run_at:
                 type: string
+                format: date-time
           issues_enabled:
             type: boolean
           merge_requests_enabled:
@@ -1428,6 +1435,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         shared_with_groups:
           type: array
           items:
@@ -1494,8 +1502,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -1575,8 +1585,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -1742,6 +1754,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         prevent_sharing_groups_outside_hierarchy:
           type: boolean
         projects:
@@ -1793,8 +1806,10 @@ components:
                 type: boolean
               created_at:
                 type: string
+                format: date-time
               last_activity_at:
                 type: string
+                format: date-time
               shared_runners_enabled:
                 type: boolean
               creator_id:
@@ -1857,6 +1872,7 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           bio:
             type: string
           location:
@@ -1891,6 +1907,7 @@ components:
             type: string
           confirmed_at:
             type: string
+            format: date-time
           last_activity_on:
             type: string
           email:
@@ -1961,6 +1978,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
     addGroupHookRequest:
       type: object
       properties:
@@ -2031,6 +2049,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         commit_committer_check:
           type: boolean
         reject_unsigned_commits:
@@ -2085,6 +2104,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         commit_message_regex:
           type: string
         commit_message_negative_regex:

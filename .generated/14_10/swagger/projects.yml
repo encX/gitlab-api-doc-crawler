@@ -1250,6 +1250,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           name:
             type: string
           name_with_namespace:
@@ -1282,8 +1283,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -1348,6 +1351,7 @@ components:
             type: string
           marked_for_deletion_at:
             type: string
+            format: date-time
           marked_for_deletion_on:
             type: string
           statistics:
@@ -1430,6 +1434,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
           name:
             type: string
           name_with_namespace:
@@ -1462,8 +1467,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -1600,6 +1607,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         name:
           type: string
         name_with_namespace:
@@ -1649,10 +1657,13 @@ components:
               type: string
             next_run_at:
               type: string
+              format: date-time
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -1791,6 +1802,7 @@ components:
           type: string
         marked_for_deletion_at:
           type: string
+          format: date-time
         marked_for_deletion_on:
           type: string
         compliance_frameworks:
@@ -2340,8 +2352,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           last_activity_at:
             type: string
+            format: date-time
           creator_id:
             type: integer
           namespace:
@@ -2474,8 +2488,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -2633,6 +2649,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
         name:
           type: string
         name_with_namespace:
@@ -2665,8 +2682,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         last_activity_at:
           type: string
+          format: date-time
         creator_id:
           type: integer
         namespace:
@@ -2854,6 +2873,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
     addProjectHookRequest:
       type: object
       properties:
@@ -2910,6 +2930,7 @@ components:
           type: boolean
         created_at:
           type: string
+          format: date-time
         member_check:
           type: boolean
         prevent_secrets:
@@ -2969,6 +2990,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         default_branch:
           type: string
         tag_list:
@@ -2993,6 +3015,7 @@ components:
           type: integer
         last_activity_at:
           type: string
+          format: date-time
         namespace:
           type: object
           properties:
@@ -3062,6 +3085,7 @@ components:
               type: string
             next_run_at:
               type: string
+              format: date-time
         issues_enabled:
           type: boolean
         merge_requests_enabled:
@@ -3171,5 +3195,6 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           repository_storage:
             type: string

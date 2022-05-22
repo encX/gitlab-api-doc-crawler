@@ -1437,10 +1437,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
+              format: date-time
         author:
           type: object
           properties:
@@ -1507,8 +1510,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -1616,10 +1621,13 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             closed_at:
               type: string
+              format: date-time
         author:
           type: object
           properties:
@@ -1688,8 +1696,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         created_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -1852,6 +1862,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         author:
           type: object
           properties:
@@ -1873,8 +1884,10 @@ components:
           type: string
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
+          format: date-time
         closed_by:
           type: object
           properties:
@@ -2013,8 +2026,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -2153,8 +2168,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         closed_at:
           type: string
         closed_by:
@@ -2298,8 +2315,10 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         labels:
           type: array
           items: {}
@@ -2431,8 +2450,10 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
             updated_at:
               type: string
+              format: date-time
             labels:
               type: array
               items: {}
@@ -2453,8 +2474,10 @@ components:
                   type: string
                 created_at:
                   type: string
+                  format: date-time
                 updated_at:
                   type: string
+                  format: date-time
                 due_date:
                   type: string
             assignees:
@@ -2552,6 +2575,7 @@ components:
           type: string
         created_at:
           type: string
+          format: date-time
     promoteAnIssueToAnEpicRequest:
       type: object
       properties:
@@ -2587,8 +2611,10 @@ components:
               type: string
         created_at:
           type: string
+          format: date-time
         updated_at:
           type: string
+          format: date-time
         system:
           type: boolean
         noteable_id:
@@ -2652,8 +2678,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           closed_by:
             type: string
           closed_at:
@@ -2726,8 +2754,10 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               due_date:
                 type: string
               start_date:
@@ -2787,8 +2817,10 @@ components:
             type: string
           latest_build_started_at:
             type: string
+            format: date-time
           latest_build_finished_at:
             type: string
+            format: date-time
           first_deployed_to_production_at:
             type: string
           pipeline:
@@ -2840,12 +2872,16 @@ components:
                     type: string
               created_at:
                 type: string
+                format: date-time
               updated_at:
                 type: string
+                format: date-time
               started_at:
                 type: string
+                format: date-time
               finished_at:
                 type: string
+                format: date-time
               committed_at:
                 type: string
               duration:
@@ -2908,8 +2944,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           updated_at:
             type: string
+            format: date-time
           target_branch:
             type: string
           source_branch:
@@ -3034,6 +3072,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         filename:
           type: string
         file_path:
@@ -3051,6 +3090,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           filename:
             type: string
           file_path:

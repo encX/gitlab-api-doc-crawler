@@ -51,8 +51,10 @@ components:
             type: string
           created_at:
             type: string
+            format: date-time
           released_at:
             type: string
+            format: date-time
           author:
             type: object
             properties:
@@ -77,6 +79,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
               parent_ids:
                 type: array
                 items: {}

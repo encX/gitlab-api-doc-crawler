@@ -142,6 +142,7 @@ components:
             type: integer
           created_at:
             type: string
+            format: date-time
           state:
             type: string
           source_storage_name:
@@ -165,6 +166,7 @@ components:
                 type: string
               created_at:
                 type: string
+                format: date-time
     getASingleProjectRepositoryStorageMoveResponse:
       type: object
       properties:
@@ -172,6 +174,7 @@ components:
           type: integer
         created_at:
           type: string
+          format: date-time
         state:
           type: string
         source_storage_name:
@@ -195,6 +198,7 @@ components:
               type: string
             created_at:
               type: string
+              format: date-time
     scheduleARepositoryStorageMoveForAProjectRequest:
       type: object
       properties:
