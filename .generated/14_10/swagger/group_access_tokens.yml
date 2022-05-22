@@ -3,7 +3,7 @@ info:
   title: 'GitLabKit: REST API / group_access_tokens'
   version: '1.0'
 paths:
-  'groups/{id}/access_tokens':
+  '/groups/{id}/access_tokens':
     get:
       summary: List group access tokens
       description: Get a list of group access tokens.
@@ -49,7 +49,7 @@ paths:
               $ref: '#/components/schemas/createAGroupAccessTokenRequest'
       tags:
         - group_access_tokens
-  'groups/{id}/access_tokens/{token_id}':
+  '/groups/{id}/access_tokens/{token_id}':
     get:
       summary: Get a group access token
       description: Get a group access token by ID.

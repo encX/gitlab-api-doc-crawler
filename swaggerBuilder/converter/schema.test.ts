@@ -168,6 +168,7 @@ Deno.test("makeSchemaFrom - real example", () => {
       },
       contacted_at: {
         type: "string",
+        format: "date-time",
       },
       name: {
         type: "string",

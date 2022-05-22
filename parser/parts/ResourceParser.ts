@@ -17,7 +17,8 @@ export class ResourceParser implements Parser<Resource[]> {
       .split("\n")
       .filter((u) => u && this.isResource(u))
       .map((u) => {
-        const [method, path] = u.split(/ +/);
+        const [method, _path] = u.split(/ +/);
+        const path = _path.replace(/https:\/\/gitlab.example.com\/api\/v4(.+)/, "$1").replace(/^(?!\/)(.+)/, "/$1");
         return { method, path };
       });
   }

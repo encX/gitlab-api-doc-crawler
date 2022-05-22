@@ -5261,7 +5261,7 @@ paths:
           description: successful operation
       tags:
         - features
-  'https://gitlab.example.com/api/v4/features/my_user_feature':
+  /features/my_user_feature:
     post:
       summary: Set percentage of actors rollout
       description: Rollout to percentage of actors.
@@ -5564,7 +5564,7 @@ paths:
                 $ref: '#/components/schemas/retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNodeResponse'
       tags:
         - geo_nodes
-  'groups/{id}/access_tokens':
+  '/groups/{id}/access_tokens':
     get:
       summary: List group access tokens
       description: Get a list of group access tokens.
@@ -5610,7 +5610,7 @@ paths:
               $ref: '#/components/schemas/createAGroupAccessTokenRequest'
       tags:
         - group_access_tokens
-  'groups/{id}/access_tokens/{token_id}':
+  '/groups/{id}/access_tokens/{token_id}':
     get:
       summary: Get a group access token
       description: Get a group access token by ID.
