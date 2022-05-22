@@ -192,6 +192,14 @@ components:
           type: boolean
         selective_sync_type:
           type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
         minimum_reverification_interval:
           type: integer
       required:
@@ -375,6 +383,14 @@ components:
           type: boolean
         selective_sync_type:
           type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
         minimum_reverification_interval:
           type: integer
       required:

@@ -198,6 +198,16 @@ components:
           type: string
         auto_ssl_enabled:
           type: boolean
+        certificate:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
+        key:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
       required:
         - domain
     updatePagesDomainRequest:
@@ -205,3 +215,13 @@ components:
       properties:
         auto_ssl_enabled:
           type: boolean
+        certificate:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
+        key:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string

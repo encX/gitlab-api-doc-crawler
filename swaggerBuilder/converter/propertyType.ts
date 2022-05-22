@@ -10,11 +10,16 @@ export function asPropertyType(_type: string): SchemaObject | undefined {
   if (type === "string" || type === "boolean" || type === "number" || type === "integer") return { type };
 
   if (intOrStr.test(type)) return { oneOf: [{ type: "integer" }, { type: "string" }] };
+  if (type === "file/string") return { oneOf: [{ type: "string", format: "binary" }, { type: "string" }] };
+  if (type === "file") return { type: "string", format: "binary" };
 
   if (type === "float") return { type: "number" };
-  // if (type === "hash") return { type: "string" }; // hash = key[someprop] = val
+  // hash = key[someprop] = primitive val
+  if (type === "hash" || type === "object") return { type: "object", additionalProperties: true };
   if (strArr.test(type)) return { type: "array", items: { type: "string" } };
   if (intArr.test(type)) return { type: "array", items: { type: "integer" } };
   if (type === "datetime") return { type: "string", format: "date-time" };
   if (type === "date") return { type: "string", format: "date" };
+  // todo: type "array" defaults to string[] // could be more specified by descrption/name
+  if (type === "array" || type === "array[string]") return { type: "array", items: { type: "string" } };
 }

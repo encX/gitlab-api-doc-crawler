@@ -782,10 +782,34 @@ components:
           type: integer
         rule_type:
           type: string
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
+        protected_branch_ids:
+          type: array
+          items:
+            type: string
         report_type:
           type: string
+        scanners:
+          type: array
+          items:
+            type: string
+        severity_levels:
+          type: array
+          items:
+            type: string
         vulnerabilities_allowed:
           type: integer
+        vulnerability_states:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -796,8 +820,32 @@ components:
           type: string
         approvals_required:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
+        protected_branch_ids:
+          type: array
+          items:
+            type: string
+        scanners:
+          type: array
+          items:
+            type: string
+        severity_levels:
+          type: array
+          items:
+            type: string
         vulnerabilities_allowed:
           type: integer
+        vulnerability_states:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -1067,6 +1115,14 @@ components:
           type: integer
         approval_project_rule_id:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -1077,6 +1133,14 @@ components:
           type: string
         approvals_required:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required

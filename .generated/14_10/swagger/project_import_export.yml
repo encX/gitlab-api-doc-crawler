@@ -157,6 +157,9 @@ components:
       properties:
         description:
           type: string
+        upload:
+          type: object
+          additionalProperties: true
         'upload[url]':
           type: string
         'upload[http_method]':
@@ -210,6 +213,9 @@ components:
           type: string
         overwrite:
           type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
       required:
         - file
         - path
@@ -253,6 +259,9 @@ components:
           type: string
         overwrite:
           type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
       required:
         - url
         - path

@@ -41,7 +41,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/protectRepositoryEnvironmentsResponse'
+                $ref: '#/components/schemas/protectRepositoryEnvironmentsRequest'
       requestBody:
         content:
           application/json:
@@ -147,43 +147,16 @@ components:
       properties:
         name:
           type: string
-        required_approval_count:
-          type: integer
-      required:
-        - name
-        - deploy_access_levels
-    protectRepositoryEnvironmentsResponse:
-      type: object
-      properties:
-        name:
-          type: string
         deploy_access_levels:
           type: array
           items:
-            type: object
-            properties:
-              access_level:
-                type: integer
-              access_level_description:
-                type: string
-              user_id:
-                type: string
-              group_id:
-                type: integer
+            type: string
         required_approval_count:
           type: integer
         approval_rules:
           type: array
           items:
-            type: object
-            properties:
-              user_id:
-                type: string
-              group_id:
-                type: integer
-              access_level:
-                type: string
-              access_level_description:
-                type: string
-              required_approvals:
-                type: integer
+            type: string
+      required:
+        - name
+        - deploy_access_levels

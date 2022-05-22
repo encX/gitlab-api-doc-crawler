@@ -82,6 +82,8 @@ export class Endpoint {
       }
     });
 
+    // todo: search for foo, foo[bar], foo[baz] and merge too foo { bar: , baz: }
+
     const required = nonPathParams.filter((a) => a.required).map<string>((a) => a.name);
 
     const schemaName = `${this.operationId}Request`;

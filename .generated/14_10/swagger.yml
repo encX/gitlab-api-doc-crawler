@@ -11275,7 +11275,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/uploadMetricImageRequest'
+              $ref: '#/components/schemas/updateMetricImageRequest'
       tags:
         - issues
     delete:
@@ -19857,7 +19857,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/protectRepositoryEnvironmentsResponse'
+                $ref: '#/components/schemas/protectRepositoryEnvironmentsRequest'
       requestBody:
         content:
           application/json:
@@ -24733,6 +24733,9 @@ components:
       properties:
         name:
           type: string
+        config_project:
+          type: object
+          additionalProperties: true
         config_project.id:
           type: integer
         config_project.description:
@@ -26186,6 +26189,9 @@ components:
       properties:
         body:
           type: string
+        position:
+          type: object
+          additionalProperties: true
         'position[base_sha]':
           type: string
         'position[start_sha]':
@@ -26237,6 +26243,9 @@ components:
           type: string
         created_at:
           type: string
+        position:
+          type: object
+          additionalProperties: true
         'position[base_sha]':
           type: string
         'position[start_sha]':
@@ -28026,6 +28035,14 @@ components:
           type: boolean
         selective_sync_type:
           type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
         minimum_reverification_interval:
           type: integer
       required:
@@ -28162,6 +28179,14 @@ components:
           type: boolean
         selective_sync_type:
           type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
         minimum_reverification_interval:
           type: integer
       required:
@@ -28920,6 +28945,10 @@ components:
       properties:
         name:
           type: string
+        scopes:
+          type: array
+          items:
+            type: string
         access_level:
           type: integer
         expires_at:
@@ -29290,6 +29319,9 @@ components:
           type: boolean
         environment_scope:
           type: string
+        filter:
+          type: object
+          additionalProperties: true
       required:
         - value
     listGroupMilestonesResponse:
@@ -33279,6 +33311,9 @@ components:
     uploadMetricImageRequest:
       type: object
       properties:
+        file:
+          type: string
+          format: binary
         url:
           type: string
         url_text:
@@ -33317,6 +33352,13 @@ components:
             type: string
           url:
             type: string
+    updateMetricImageRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        url_text:
+          type: string
     getIssuesStatisticsResponse:
       type: object
       properties:
@@ -35255,10 +35297,34 @@ components:
           type: integer
         rule_type:
           type: string
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
+        protected_branch_ids:
+          type: array
+          items:
+            type: string
         report_type:
           type: string
+        scanners:
+          type: array
+          items:
+            type: string
+        severity_levels:
+          type: array
+          items:
+            type: string
         vulnerabilities_allowed:
           type: integer
+        vulnerability_states:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -35269,8 +35335,32 @@ components:
           type: string
         approvals_required:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
+        protected_branch_ids:
+          type: array
+          items:
+            type: string
+        scanners:
+          type: array
+          items:
+            type: string
+        severity_levels:
+          type: array
+          items:
+            type: string
         vulnerabilities_allowed:
           type: integer
+        vulnerability_states:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -35458,6 +35548,14 @@ components:
           type: integer
         approval_project_rule_id:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -35468,6 +35566,14 @@ components:
           type: string
         approvals_required:
           type: integer
+        user_ids:
+          type: array
+          items:
+            type: string
+        group_ids:
+          type: array
+          items:
+            type: string
       required:
         - name
         - approvals_required
@@ -37896,6 +38002,16 @@ components:
           type: string
         auto_ssl_enabled:
           type: boolean
+        certificate:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
+        key:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
       required:
         - domain
     updatePagesDomainRequest:
@@ -37903,6 +38019,16 @@ components:
       properties:
         auto_ssl_enabled:
           type: boolean
+        certificate:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
+        key:
+          oneOf:
+            - type: string
+              format: binary
+            - type: string
     listPersonalAccessTokensResponse:
       type: array
       items:
@@ -38342,6 +38468,10 @@ components:
       properties:
         ref:
           type: string
+        variables:
+          type: array
+          items:
+            type: string
       required:
         - ref
     getCurrentPlanLimitsResponse:
@@ -38806,6 +38936,9 @@ components:
       properties:
         description:
           type: string
+        upload:
+          type: object
+          additionalProperties: true
         'upload[url]':
           type: string
         'upload[http_method]':
@@ -38859,6 +38992,9 @@ components:
           type: string
         overwrite:
           type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
       required:
         - file
         - path
@@ -38902,6 +39038,9 @@ components:
           type: string
         overwrite:
           type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
       required:
         - url
         - path
@@ -40098,6 +40237,9 @@ components:
           type: string
         ci_config_path:
           type: string
+        container_expiration_policy_attributes:
+          type: object
+          additionalProperties: true
         container_registry_access_level:
           type: string
         container_registry_enabled:
@@ -40178,10 +40320,18 @@ components:
           type: boolean
         squash_option:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
         template_name:
           type: string
         template_project_id:
           type: integer
+        topics:
+          type: array
+          items:
+            type: string
         use_custom_template:
           type: boolean
         visibility:
@@ -40303,8 +40453,16 @@ components:
           type: string
         suggestion_commit_message:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
         template_name:
           type: string
+        topics:
+          type: array
+          items:
+            type: string
         use_custom_template:
           type: boolean
         visibility:
@@ -40344,6 +40502,9 @@ components:
           type: integer
         ci_forward_deployment_enabled:
           type: boolean
+        container_expiration_policy_attributes:
+          type: object
+          additionalProperties: true
         container_registry_access_level:
           type: string
         container_registry_enabled:
@@ -40446,6 +40607,14 @@ components:
           type: string
         suggestion_commit_message:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
         visibility:
           type: string
         wiki_access_level:
@@ -41426,6 +41595,18 @@ components:
           type: integer
         allow_force_push:
           type: boolean
+        allowed_to_push:
+          type: array
+          items:
+            type: string
+        allowed_to_merge:
+          type: array
+          items:
+            type: string
+        allowed_to_unprotect:
+          type: array
+          items:
+            type: string
         code_owner_approval_required:
           type: boolean
       required:
@@ -41502,46 +41683,19 @@ components:
       properties:
         name:
           type: string
-        required_approval_count:
-          type: integer
-      required:
-        - name
-        - deploy_access_levels
-    protectRepositoryEnvironmentsResponse:
-      type: object
-      properties:
-        name:
-          type: string
         deploy_access_levels:
           type: array
           items:
-            type: object
-            properties:
-              access_level:
-                type: integer
-              access_level_description:
-                type: string
-              user_id:
-                type: string
-              group_id:
-                type: integer
+            type: string
         required_approval_count:
           type: integer
         approval_rules:
           type: array
           items:
-            type: object
-            properties:
-              user_id:
-                type: string
-              group_id:
-                type: integer
-              access_level:
-                type: string
-              access_level_description:
-                type: string
-              required_approvals:
-                type: integer
+            type: string
+      required:
+        - name
+        - deploy_access_levels
     listProtectedTagsResponse:
       type: array
       items:
@@ -42515,6 +42669,10 @@ components:
           type: boolean
         paused:
           type: boolean
+        tag_list:
+          type: array
+          items:
+            type: string
         run_untagged:
           type: boolean
         locked:
@@ -42738,6 +42896,9 @@ components:
           type: string
         description:
           type: string
+        info:
+          type: object
+          additionalProperties: true
         active:
           type: boolean
         paused:
@@ -43739,6 +43900,9 @@ components:
       properties:
         name:
           type: string
+        avatar:
+          type: string
+          format: binary
         description:
           type: string
     exportServicePingSqlQueriesResponse:
@@ -44405,6 +44569,10 @@ components:
         expires_at:
           type: string
           format: date
+        scopes:
+          type: array
+          items:
+            type: string
       required:
         - name
         - scopes

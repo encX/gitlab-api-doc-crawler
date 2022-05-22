@@ -1073,10 +1073,16 @@ components:
     createNewMergeRequestThreadRequest:
       type: object
       properties:
+        'position[line_range][start]':
+          type: object
+          additionalProperties: true
         'position[line_range][start][line_code]':
           type: string
         'position[line_range][start][type]':
           type: string
+        'position[line_range][end]':
+          type: object
+          additionalProperties: true
         'position[line_range][end][line_code]':
           type: string
         'position[line_range][end][type]':
@@ -1107,6 +1113,9 @@ components:
           type: string
         created_at:
           type: string
+        position:
+          type: object
+          additionalProperties: true
         'position[base_sha]':
           type: string
         'position[start_sha]':

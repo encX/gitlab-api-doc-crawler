@@ -578,6 +578,10 @@ components:
           type: boolean
         paused:
           type: boolean
+        tag_list:
+          type: array
+          items:
+            type: string
         run_untagged:
           type: boolean
         locked:
@@ -801,6 +805,9 @@ components:
           type: string
         description:
           type: string
+        info:
+          type: object
+          additionalProperties: true
         active:
           type: boolean
         paused:

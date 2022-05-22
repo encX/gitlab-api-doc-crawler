@@ -1859,6 +1859,10 @@ components:
         expires_at:
           type: string
           format: date
+        scopes:
+          type: array
+          items:
+            type: string
       required:
         - name
         - scopes

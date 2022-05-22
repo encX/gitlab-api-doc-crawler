@@ -1916,6 +1916,9 @@ components:
           type: string
         ci_config_path:
           type: string
+        container_expiration_policy_attributes:
+          type: object
+          additionalProperties: true
         container_registry_access_level:
           type: string
         container_registry_enabled:
@@ -1996,10 +1999,18 @@ components:
           type: boolean
         squash_option:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
         template_name:
           type: string
         template_project_id:
           type: integer
+        topics:
+          type: array
+          items:
+            type: string
         use_custom_template:
           type: boolean
         visibility:
@@ -2121,8 +2132,16 @@ components:
           type: string
         suggestion_commit_message:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
         template_name:
           type: string
+        topics:
+          type: array
+          items:
+            type: string
         use_custom_template:
           type: boolean
         visibility:
@@ -2162,6 +2181,9 @@ components:
           type: integer
         ci_forward_deployment_enabled:
           type: boolean
+        container_expiration_policy_attributes:
+          type: object
+          additionalProperties: true
         container_registry_access_level:
           type: string
         container_registry_enabled:
@@ -2264,6 +2286,14 @@ components:
           type: string
         suggestion_commit_message:
           type: string
+        tag_list:
+          type: array
+          items:
+            type: string
+        topics:
+          type: array
+          items:
+            type: string
         visibility:
           type: string
         wiki_access_level:

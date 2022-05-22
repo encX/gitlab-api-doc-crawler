@@ -1352,7 +1352,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/uploadMetricImageRequest'
+              $ref: '#/components/schemas/updateMetricImageRequest'
       tags:
         - issues
     delete:
@@ -3059,6 +3059,9 @@ components:
     uploadMetricImageRequest:
       type: object
       properties:
+        file:
+          type: string
+          format: binary
         url:
           type: string
         url_text:
@@ -3097,3 +3100,10 @@ components:
             type: string
           url:
             type: string
+    updateMetricImageRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        url_text:
+          type: string

@@ -216,6 +216,18 @@ components:
           type: integer
         allow_force_push:
           type: boolean
+        allowed_to_push:
+          type: array
+          items:
+            type: string
+        allowed_to_merge:
+          type: array
+          items:
+            type: string
+        allowed_to_unprotect:
+          type: array
+          items:
+            type: string
         code_owner_approval_required:
           type: boolean
       required:
