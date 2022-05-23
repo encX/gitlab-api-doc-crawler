@@ -1,0 +1,55 @@
+<mxfile host="65bd71144e">
+    <diagram id="RPXA6CBJJ550cxHUIo1A" name="Page-1">
+        <mxGraphModel dx="842" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#F0F0F0" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="2" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="2" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;p style=&quot;font-size: 14px ; line-height: 1&quot;&gt;&lt;b&gt;read page list&lt;br&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(230 , 219 , 116)&quot;&gt;api_resources.html&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="120" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="10" target="17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="10" target="23" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;p style=&quot;font-size: 14px ; line-height: 1&quot;&gt;&lt;b&gt;parse pages as intermediate api models&lt;br&gt;&lt;/b&gt;&lt;br&gt;(doc corrections happens here)&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="350" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="7" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="7" target="21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;p style=&quot;font-size: 14px ; line-height: 1&quot;&gt;&lt;b&gt;read pages from list&lt;br&gt;&lt;/b&gt;&lt;span style=&quot;color: rgb(230 , 219 , 116)&quot;&gt;*.html&lt;/span&gt;&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="235" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=14;" parent="1" source="17" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;p style=&quot;font-size: 14px ; line-height: 1&quot;&gt;&lt;b&gt;convert&amp;nbsp;&lt;/b&gt;&lt;b&gt;intermediate&lt;/b&gt;&lt;b&gt;&amp;nbsp;models to swagger&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;font-size: 14px ; line-height: 1&quot;&gt;(further corrections + swagger alignment)&lt;/p&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;labelBackgroundColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="470" width="280" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="cache/api_resources" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontFamily=Iosevka;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="565" y="125" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="cache/*" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontFamily=Iosevka;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="240" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="specs/*" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontFamily=Iosevka;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="355" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="swagger.yml [main]&lt;br&gt;swagger/* [per-page]" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontFamily=Iosevka;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="467.5" width="170" height="85" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

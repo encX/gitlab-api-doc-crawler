@@ -1,7 +1,12 @@
 # GitLab API doc crawler
-Crawl GitLab API doc for swagger generation and further API clients generation
+Crawl GitLab API doc for OpenAPI spec generation.  
+GitLab doesn't provide official Swagger/OpenAPI nor official API client in any language neither.  
 
-Still work in progress
+With 885 endpoint (not including pages with weird arrangement that I can't parse)
+I can do it myself.
+
+### Crawling/Generation process
+![process](doc/process.png)
 
 ### Run instruction
 #### Prerequisite 
@@ -10,7 +15,7 @@ Still work in progress
 Recommend to also use VSCode and install official Deno extension for the best development experiences.  
 Deno options and launch settings are preconfigured for VSCode.
 
-To run via command line
+Or run via command line
 ```shell
 $ deno run --allow-all index.ts
 ```
