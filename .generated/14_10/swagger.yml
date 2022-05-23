@@ -964,64 +964,10 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
-        - name: name
-          in: query
-          required: false
-          schema:
             type: string
-        - name: config_project
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.id
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: config_project.description
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_by_user_id
-          in: query
-          required: false
-          schema:
-            type: integer
       responses:
         '200':
           description: successful operation
@@ -1038,9 +984,10 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         '200':
           description: successful operation
@@ -1063,62 +1010,14 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
-        - name: name
-          in: query
-          required: false
-          schema:
             type: string
-        - name: config_project
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.id
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: config_project.description
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_by_user_id
-          in: query
-          required: false
+        - name: agent_id
+          in: path
+          description: ID of the agent
+          required: true
           schema:
             type: integer
       responses:
@@ -1233,7 +1132,13 @@ paths:
       summary: Create a commit with multiple files and actions
       description: Create a commit by posting a JSON payload
       operationId: createACommitWithMultipleFilesAndActions
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation
@@ -3245,7 +3150,19 @@ paths:
         Creates a new thread to a single project merge request. This is similar to creating a note but other comments
         (replies) can be added to it later.
       operationId: createNewMergeRequestThread
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a merge request
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: successful operation
@@ -7699,12 +7616,6 @@ paths:
         - name: cn
           in: path
           description: The CN of an LDAP group
-          required: true
-          schema:
-            type: string
-        - name: provider
-          in: query
-          description: LDAP provider for the LDAP group link
           required: true
           schema:
             type: string
@@ -18262,7 +18173,13 @@ paths:
       summary: New vulnerability
       description: Creates a new vulnerability.
       operationId: newVulnerability
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project which the authenticated user is a member of
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation
@@ -24429,27 +24346,8 @@ components:
       properties:
         name:
           type: string
-        config_project:
-          type: object
-          additionalProperties: true
-        config_project.id:
-          type: integer
-        config_project.description:
-          type: string
-        config_project.name:
-          type: string
-        config_project.name_with_namespace:
-          type: string
-        config_project.path:
-          type: string
-        config_project.path_with_namespace:
-          type: string
-        config_project.created_at:
-          type: string
-        created_at:
-          type: string
-        created_by_user_id:
-          type: integer
+      required:
+        - name
     listRepositoryCommitsResponse:
       type: array
       items:
@@ -24487,23 +24385,34 @@ components:
     createACommitWithMultipleFilesAndActionsRequest:
       type: object
       properties:
-        action:
+        branch:
           type: string
-        file_path:
+        commit_message:
           type: string
-        previous_path:
+        start_branch:
           type: string
-        content:
+        start_sha:
           type: string
-        encoding:
+        start_project:
+          oneOf:
+            - type: integer
+            - type: string
+        'actions[]':
+          type: array
+          items:
+            type: string
+        author_email:
           type: string
-        last_commit_id:
+        author_name:
           type: string
-        execute_filemode:
+        stats:
+          type: boolean
+        force:
           type: boolean
       required:
-        - action
-        - file_path
+        - branch
+        - commit_message
+        - 'actions[]'
     createACommitWithMultipleFilesAndActionsResponse:
       type: object
       properties:
@@ -39117,7 +39026,13 @@ components:
         $ref: '#/components/schemas/newVulnerabilityResponse'
     newVulnerabilityRequest:
       type: object
-      properties: {}
+      properties:
+        finding_id:
+          oneOf:
+            - type: integer
+            - type: string
+      required:
+        - finding_id
     newVulnerabilityResponse:
       type: object
       properties:

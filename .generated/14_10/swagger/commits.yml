@@ -84,7 +84,13 @@ paths:
       summary: Create a commit with multiple files and actions
       description: Create a commit by posting a JSON payload
       operationId: createACommitWithMultipleFilesAndActions
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation
@@ -517,23 +523,34 @@ components:
     createACommitWithMultipleFilesAndActionsRequest:
       type: object
       properties:
-        action:
+        branch:
           type: string
-        file_path:
+        commit_message:
           type: string
-        previous_path:
+        start_branch:
           type: string
-        content:
+        start_sha:
           type: string
-        encoding:
+        start_project:
+          oneOf:
+            - type: integer
+            - type: string
+        'actions[]':
+          type: array
+          items:
+            type: string
+        author_email:
           type: string
-        last_commit_id:
+        author_name:
           type: string
-        execute_filemode:
+        stats:
+          type: boolean
+        force:
           type: boolean
       required:
-        - action
-        - file_path
+        - branch
+        - commit_message
+        - 'actions[]'
     createACommitWithMultipleFilesAndActionsResponse:
       type: object
       properties:

@@ -28,7 +28,13 @@ paths:
       summary: New vulnerability
       description: Creates a new vulnerability.
       operationId: newVulnerability
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project which the authenticated user is a member of
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation
@@ -151,7 +157,13 @@ components:
             type: string
     newVulnerabilityRequest:
       type: object
-      properties: {}
+      properties:
+        finding_id:
+          oneOf:
+            - type: integer
+            - type: string
+      required:
+        - finding_id
     newVulnerabilityResponse:
       type: object
       properties:

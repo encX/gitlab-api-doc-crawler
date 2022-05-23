@@ -84,29 +84,16 @@
       ],
       "attributes": [
         {
-          "name": "author",
-          "type": "The authenticated user",
-          "required": false
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project which the authenticated user is a member of"
         },
         {
-          "name": "title",
-          "type": "The name attribute of a Vulnerability Finding",
-          "required": false
-        },
-        {
-          "name": "state",
-          "type": "opened",
-          "required": false
-        },
-        {
-          "name": "severity",
-          "type": "The severity attribute of a Vulnerability Finding",
-          "required": false
-        },
-        {
-          "name": "confidence",
-          "type": "The confidence attribute of a Vulnerability Finding",
-          "required": false
+          "name": "finding_id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID of a Vulnerability Finding to create the new Vulnerability from"
         }
       ],
       "response": {

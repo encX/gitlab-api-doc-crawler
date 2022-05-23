@@ -1095,40 +1095,118 @@
       ],
       "attributes": [
         {
-          "name": "position[line_range][start]",
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a merge request"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of the thread"
+        },
+        {
+          "name": "commit_id",
+          "type": "string",
+          "required": false,
+          "description": "SHA referencing commit to start this thread on"
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "Date time string, ISO 8601 formatted, such as 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
+        },
+        {
+          "name": "position",
           "type": "hash",
           "required": false,
-          "description": "Multiline note starting line"
+          "description": "Position when creating a diff note"
         },
         {
-          "name": "position[line_range][start][line_code]",
+          "name": "position[base_sha]",
           "type": "string",
           "required": true,
-          "description": "Line code for the start line"
+          "description": "Base commit SHA in the source branch"
         },
         {
-          "name": "position[line_range][start][type]",
+          "name": "position[start_sha]",
           "type": "string",
           "required": true,
-          "description": "Use new for lines added by this commit, otherwise old."
+          "description": "SHA referencing commit in target branch"
         },
         {
-          "name": "position[line_range][end]",
+          "name": "position[head_sha]",
+          "type": "string",
+          "required": true,
+          "description": "SHA referencing HEAD of this merge request"
+        },
+        {
+          "name": "position[position_type]",
+          "type": "string",
+          "required": true,
+          "description": "Type of the position reference’, allowed values: text or image"
+        },
+        {
+          "name": "position[new_path]",
+          "type": "string",
+          "required": false,
+          "description": "File path after change"
+        },
+        {
+          "name": "position[new_line]",
+          "type": "integer",
+          "required": false,
+          "description": "Line number after change (for text diff notes)"
+        },
+        {
+          "name": "position[old_path]",
+          "type": "string",
+          "required": false,
+          "description": "File path before change"
+        },
+        {
+          "name": "position[old_line]",
+          "type": "integer",
+          "required": false,
+          "description": "Line number before change (for text diff notes)"
+        },
+        {
+          "name": "position[line_range]",
           "type": "hash",
           "required": false,
-          "description": "Multiline note ending line"
+          "description": "Line range for a multi-line diff note"
         },
         {
-          "name": "position[line_range][end][line_code]",
-          "type": "string",
-          "required": true,
-          "description": "Line code for the end line"
+          "name": "position[width]",
+          "type": "integer",
+          "required": false,
+          "description": "Width of the image (for image diff notes)"
         },
         {
-          "name": "position[line_range][end][type]",
-          "type": "string",
-          "required": true,
-          "description": "Use new for lines added by this commit, otherwise old."
+          "name": "position[height]",
+          "type": "integer",
+          "required": false,
+          "description": "Height of the image (for image diff notes)"
+        },
+        {
+          "name": "position[x]",
+          "type": "float",
+          "required": false,
+          "description": "X coordinate (for image diff notes)"
+        },
+        {
+          "name": "position[y]",
+          "type": "float",
+          "required": false,
+          "description": "Y coordinate (for image diff notes)"
         }
       ],
       "response": null

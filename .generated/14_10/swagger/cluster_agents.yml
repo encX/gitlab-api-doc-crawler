@@ -11,64 +11,10 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
-        - name: name
-          in: query
-          required: false
-          schema:
             type: string
-        - name: config_project
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.id
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: config_project.description
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_by_user_id
-          in: query
-          required: false
-          schema:
-            type: integer
       responses:
         '200':
           description: successful operation
@@ -85,9 +31,10 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         '200':
           description: successful operation
@@ -110,62 +57,14 @@ paths:
       parameters:
         - name: id
           in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
           required: true
           schema:
-            type: integer
-        - name: name
-          in: query
-          required: false
-          schema:
             type: string
-        - name: config_project
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.id
-          in: query
-          required: false
-          schema:
-            type: integer
-        - name: config_project.description
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.name_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.path_with_namespace
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: config_project.created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_at
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: created_by_user_id
-          in: query
-          required: false
+        - name: agent_id
+          in: path
+          description: ID of the agent
+          required: true
           schema:
             type: integer
       responses:
@@ -268,24 +167,5 @@ components:
       properties:
         name:
           type: string
-        config_project:
-          type: object
-          additionalProperties: true
-        config_project.id:
-          type: integer
-        config_project.description:
-          type: string
-        config_project.name:
-          type: string
-        config_project.name_with_namespace:
-          type: string
-        config_project.path:
-          type: string
-        config_project.path_with_namespace:
-          type: string
-        config_project.created_at:
-          type: string
-        created_at:
-          type: string
-        created_by_user_id:
-          type: integer
+      required:
+        - name

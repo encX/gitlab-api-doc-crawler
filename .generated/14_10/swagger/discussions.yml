@@ -615,7 +615,19 @@ paths:
         Creates a new thread to a single project merge request. This is similar to creating a note but other comments
         (replies) can be added to it later.
       operationId: createNewMergeRequestThread
-      parameters: []
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a merge request
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: successful operation
@@ -1073,25 +1085,48 @@ components:
     createNewMergeRequestThreadRequest:
       type: object
       properties:
-        'position[line_range][start]':
+        body:
+          type: string
+        commit_id:
+          type: string
+        created_at:
+          type: string
+        position:
           type: object
           additionalProperties: true
-        'position[line_range][start][line_code]':
+        'position[base_sha]':
           type: string
-        'position[line_range][start][type]':
+        'position[start_sha]':
           type: string
-        'position[line_range][end]':
+        'position[head_sha]':
+          type: string
+        'position[position_type]':
+          type: string
+        'position[new_path]':
+          type: string
+        'position[new_line]':
+          type: integer
+        'position[old_path]':
+          type: string
+        'position[old_line]':
+          type: integer
+        'position[line_range]':
           type: object
           additionalProperties: true
-        'position[line_range][end][line_code]':
-          type: string
-        'position[line_range][end][type]':
-          type: string
+        'position[width]':
+          type: integer
+        'position[height]':
+          type: integer
+        'position[x]':
+          type: number
+        'position[y]':
+          type: number
       required:
-        - 'position[line_range][start][line_code]'
-        - 'position[line_range][start][type]'
-        - 'position[line_range][end][line_code]'
-        - 'position[line_range][end][type]'
+        - body
+        - 'position[base_sha]'
+        - 'position[start_sha]'
+        - 'position[head_sha]'
+        - 'position[position_type]'
     resolveAMergeRequestThreadRequest:
       type: object
       properties:

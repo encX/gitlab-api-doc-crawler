@@ -25,7 +25,7 @@ export class ApiBuilder {
   }
 
   withAttributes(attributes: Attribute[]): ApiBuilder {
-    this.api.attributes = attributes;
+    if (this.api.attributes.length === 0) this.api.attributes = attributes;
     return this;
   }
 

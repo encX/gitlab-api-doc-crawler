@@ -120,46 +120,70 @@
       ],
       "attributes": [
         {
-          "name": "action",
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "branch",
           "type": "string",
           "required": true,
-          "description": "The action to perform, create, delete, move, update, chmod"
+          "description": "Name of the branch to commit into. To create a new branch, also provide either start_branch or start_sha, and optionally start_project."
         },
         {
-          "name": "file_path",
+          "name": "commit_message",
           "type": "string",
           "required": true,
-          "description": "Full path to the file. Ex. lib/class.rb"
+          "description": "Commit message"
         },
         {
-          "name": "previous_path",
+          "name": "start_branch",
           "type": "string",
           "required": false,
-          "description": "Original full path to the file being moved. Ex. lib/class1.rb. Only considered for move action."
+          "description": "Name of the branch to start the new branch from"
         },
         {
-          "name": "content",
+          "name": "start_sha",
           "type": "string",
           "required": false,
-          "description": "File content, required for all except delete, chmod, and move. Move actions that do not specify content preserve the existing file content, and any other value of content overwrites the file content."
+          "description": "SHA of the commit to start the new branch from"
         },
         {
-          "name": "encoding",
+          "name": "start_project",
+          "type": "integer/string",
+          "required": false,
+          "description": "The project ID or URL-encoded path of the project to start the new branch from. Defaults to the value of id."
+        },
+        {
+          "name": "actions[]",
+          "type": "array",
+          "required": true,
+          "description": "An array of action hashes to commit as a batch. See the next table for what attributes it can take."
+        },
+        {
+          "name": "author_email",
           "type": "string",
           "required": false,
-          "description": "text or base64. text is default."
+          "description": "Specify the commit author’s email address"
         },
         {
-          "name": "last_commit_id",
+          "name": "author_name",
           "type": "string",
           "required": false,
-          "description": "Last known file commit ID. Only considered in update, move, and delete actions."
+          "description": "Specify the commit author’s name"
         },
         {
-          "name": "execute_filemode",
+          "name": "stats",
           "type": "boolean",
           "required": false,
-          "description": "When true/false enables/disables the execute flag on the file. Only considered for chmod action."
+          "description": "Include commit stats. Default is true"
+        },
+        {
+          "name": "force",
+          "type": "boolean",
+          "required": false,
+          "description": "When true overwrites the target branch with a new commit based on the start_branch or start_sha"
         }
       ],
       "response": {

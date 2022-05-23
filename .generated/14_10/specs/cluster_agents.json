@@ -15,63 +15,9 @@
       "attributes": [
         {
           "name": "id",
-          "type": "integer",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project",
-          "type": "object",
-          "required": false
-        },
-        {
-          "name": "config_project.id",
-          "type": "integer",
-          "required": false
-        },
-        {
-          "name": "config_project.description",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_by_user_id",
-          "type": "integer",
-          "required": false
+          "type": "integer or string",
+          "required": true,
+          "description": "ID or URL-encoded path of the project maintained by the authenticated user"
         }
       ],
       "response": [
@@ -119,63 +65,15 @@
       "attributes": [
         {
           "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "ID or URL-encoded path of the project maintained by the authenticated user"
+        },
+        {
+          "name": "agent_id",
           "type": "integer",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project",
-          "type": "object",
-          "required": false
-        },
-        {
-          "name": "config_project.id",
-          "type": "integer",
-          "required": false
-        },
-        {
-          "name": "config_project.description",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_by_user_id",
-          "type": "integer",
-          "required": false
+          "required": true,
+          "description": "ID of the agent"
         }
       ],
       "response": {
@@ -206,63 +104,15 @@
       "attributes": [
         {
           "name": "id",
-          "type": "integer",
-          "required": false
+          "type": "integer or string",
+          "required": true,
+          "description": "ID or URL-encoded path of the project maintained by the authenticated user"
         },
         {
           "name": "name",
           "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project",
-          "type": "object",
-          "required": false
-        },
-        {
-          "name": "config_project.id",
-          "type": "integer",
-          "required": false
-        },
-        {
-          "name": "config_project.description",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.name_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.path_with_namespace",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "config_project.created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_at",
-          "type": "string",
-          "required": false
-        },
-        {
-          "name": "created_by_user_id",
-          "type": "integer",
-          "required": false
+          "required": true,
+          "description": "Name for the agent"
         }
       ],
       "response": {
