@@ -43,7 +43,7 @@ In each version contains
 - [x] Make corrections to page parsing up to 90%
 - [x] Generate and freeze
   - [x] 14.10
-  - [ ] 15.0
+  - [x] 15.0
 - [ ] Put specs to a separated repo and crowdsource hand corrections
 - [ ] Generate GitLabKit REST API clients
   - [ ] .net
