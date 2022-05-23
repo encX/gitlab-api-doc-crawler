@@ -14,3 +14,8 @@ To run via command line
 ```shell
 $ deno run --allow-all index.ts
 ```
+
+Run tests
+```shell
+$ deno test
+```

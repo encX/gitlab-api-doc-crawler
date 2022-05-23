@@ -1,7 +1,7 @@
 export function operationIDify(text: string): string {
   const out = text
     .replace(/[’'"]s/g, "")
-    .replace(/[-()/]/g, " ")
+    .replace(/[-()/,]/g, " ")
     .replace(/ +/g, " ")
     .trim()
     .split(" ")

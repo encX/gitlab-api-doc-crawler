@@ -458,6 +458,262 @@ paths:
                 $ref: '#/components/schemas/getASingleAvatarUrlResponse'
       tags:
         - avatar
+  '/projects/{id}/issues/{issue_iid}/award_emoji':
+    get:
+      summary: List an awardable’s award emojis
+      description: Get a list of all award emojis for a specified awardable.
+      operationId: listAnAwardableAwardEmojis
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid/merge_request_iid/snippet_id
+          in: query
+          description: 'ID (iid for merge requests/issues, id for snippets) of an awardable.'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAnAwardableAwardEmojisResponse'
+      tags:
+        - award_emoji
+    post:
+      summary: Award a new emoji
+      description: Create an award emoji on the specified awardable.
+      operationId: awardANewEmoji
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/awardANewEmojiRequest'
+      tags:
+        - award_emoji
+  '/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}':
+    get:
+      summary: Get single award emoji
+      description: 'Get a single award emoji from an issue, snippet, or merge request.'
+      operationId: getSingleAwardEmoji
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid/merge_request_iid/snippet_id
+          in: query
+          description: 'ID (iid for merge requests/issues, id for snippets) of an awardable.'
+          required: true
+          schema:
+            type: integer
+        - name: award_id
+          in: path
+          description: ID of the award emoji.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
+      tags:
+        - award_emoji
+    delete:
+      summary: Delete an award emoji
+      description: Sometimes it’s just not meant to be and you need to remove the award.
+      operationId: deleteAnAwardEmoji
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid/merge_request_iid/snippet_id
+          in: query
+          description: 'ID (iid for merge requests/issues, id for snippets) of an awardable.'
+          required: true
+          schema:
+            type: integer
+        - name: award_id
+          in: path
+          description: ID of an award emoji.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - award_emoji
+  '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji':
+    get:
+      summary: List a comment’s award emojis
+      description: Get all award emojis for a comment (note).
+      operationId: listACommentAwardEmojis
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: Internal ID of an issue.
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: ID of a comment (note).
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAnAwardableAwardEmojisResponse'
+      tags:
+        - award_emoji
+    post:
+      summary: Award a new emoji on a comment
+      description: Create an award emoji on the specified comment (note).
+      operationId: awardANewEmojiOnAComment
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: Internal ID of an issue.
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: ID of a comment (note).
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/awardANewEmojiOnACommentRequest'
+      tags:
+        - award_emoji
+  '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}':
+    get:
+      summary: Get an award emoji for a comment
+      description: Get a single award emoji for a comment (note).
+      operationId: getAnAwardEmojiForAComment
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: Internal ID of an issue.
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: ID of a comment (note).
+          required: true
+          schema:
+            type: integer
+        - name: award_id
+          in: path
+          description: ID of the award emoji.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleAwardEmojiResponse'
+      tags:
+        - award_emoji
+    delete:
+      summary: Delete an award emoji from a comment
+      description: Sometimes it’s just not meant to be and you need to remove the award.
+      operationId: deleteAnAwardEmojiFromAComment
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: Internal ID of an issue.
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: ID of a comment (note).
+          required: true
+          schema:
+            type: integer
+        - name: award_id
+          in: path
+          description: ID of an award_emoji.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - award_emoji
   '/projects/{id}/boards':
     get:
       summary: List project issue boards
@@ -12550,7 +12806,7 @@ paths:
       description: >-
         Gets a member of a group or project, including members inherited or invited through ancestor groups. See the
         corresponding endpoint to list all inherited members for details.
-      operationId: 'getAMemberOfAGroupOrProject,IncludingInheritedAndInvitedMembers'
+      operationId: getAMemberOfAGroupOrProjectIncludingInheritedAndInvitedMembers
       parameters:
         - name: id
           in: path
@@ -20258,7 +20514,7 @@ paths:
       description: >-
         This endpoint can be accessed without authentication if the repository is publicly accessible. Diffs can have an
         empty diff string if diff limits are reached.
-      operationId: 'compareBranches,TagsOrCommits'
+      operationId: compareBranchesTagsOrCommits
       parameters:
         - name: id
           in: path
@@ -20298,7 +20554,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/compareBranches,TagsOrCommitsResponse'
+                $ref: '#/components/schemas/compareBranchesTagsOrCommitsResponse'
       tags:
         - repositories
   '/projects/{id}/repository/contributors':
@@ -24028,6 +24284,59 @@ components:
       properties:
         avatar_url:
           type: string
+    listAnAwardableAwardEmojisResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/getSingleAwardEmojiResponse'
+    getSingleAwardEmojiResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        awardable_id:
+          type: integer
+        awardable_type:
+          type: string
+    awardANewEmojiRequest:
+      type: object
+      properties:
+        issue_iid/merge_request_iid/snippet_id:
+          type: integer
+        name:
+          type: string
+      required:
+        - issue_iid/merge_request_iid/snippet_id
+        - name
+    awardANewEmojiOnACommentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
     listProjectIssueBoardsResponse:
       type: array
       items:
@@ -41845,7 +42154,7 @@ components:
             type: string
           mode:
             type: string
-    'compareBranches,TagsOrCommitsResponse':
+    compareBranchesTagsOrCommitsResponse:
       type: object
       properties:
         commit:

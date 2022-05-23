@@ -6,6 +6,10 @@ Deno.test("operationIDify - normal", () => {
   assertEquals(operationIDify("Foo Bar Baz"), "fooBarBaz");
 });
 
+Deno.test("operationIDify - ,", () => {
+  assertEquals(operationIDify("Word, Another word"), "wordAnotherWord");
+});
+
 Deno.test("operationIDify - apostrophe U+0027 s", () => {
   assertEquals(operationIDify("List group’s runners"), "listGroupRunners");
 });

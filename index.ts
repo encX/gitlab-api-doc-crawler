@@ -16,11 +16,8 @@ await file.ensureDir("swagger");
 
 const swaggerBuilder = new SwaggerBuilder();
 
-const apiBlackList = ["award_emoji"];
-
 for await (const page of pages) {
   const pageSlug = page.path.replace(/\//g, "__").replace(/\.\w+$/, "");
-  if (apiBlackList.some((block) => pageSlug === block)) continue;
 
   const specPath = join("specs", `${pageSlug}.json`);
   await file.ensureFile(specPath);
