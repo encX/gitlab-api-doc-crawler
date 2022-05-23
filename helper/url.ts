@@ -10,6 +10,8 @@ class GLUrl {
 
   pageUrl(path: string): string {
     switch (settings.docVer) {
+      case DocVer.v15_0:
+        return `https://${join(this.host, "/15.0/ee/api/", path)}`;
       case DocVer.v14_10:
         return `https://${join(this.host, "/14.10/ee/api/", path)}`;
       case DocVer.v14_8:

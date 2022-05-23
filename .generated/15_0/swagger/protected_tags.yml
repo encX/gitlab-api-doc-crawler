@@ -1,0 +1,141 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / protected_tags'
+  version: '1.0'
+paths:
+  '/projects/{id}/protected_tags':
+    get:
+      summary: List protected tags
+      description: ''
+      operationId: listProtectedTags
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProtectedTagsResponse'
+      tags:
+        - protected_tags
+    post:
+      summary: Protect repository tags
+      description: Protects a single repository tag or several project repository tags using a wildcard protected tag.
+      operationId: protectRepositoryTags
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectRepositoryTagsRequest'
+      tags:
+        - protected_tags
+  '/projects/{id}/protected_tags/{name}':
+    get:
+      summary: Get a single protected tag or wildcard protected tag
+      description: ''
+      operationId: getASingleProtectedTagOrWildcardProtectedTag
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the tag or wildcard
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProtectedTagOrWildcardProtectedTagResponse'
+      tags:
+        - protected_tags
+    delete:
+      summary: Unprotect repository tags
+      description: Unprotects the given protected tag or wildcard protected tag.
+      operationId: unprotectRepositoryTags
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the tag
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - protected_tags
+components:
+  schemas:
+    listProtectedTagsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          create_access_levels:
+            type: array
+            items:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                access_level_description:
+                  type: string
+    getASingleProtectedTagOrWildcardProtectedTagResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        create_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+    protectRepositoryTagsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        create_access_level:
+          type: string
+      required:
+        - name

@@ -1,0 +1,180 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_level_variables'
+  version: '1.0'
+paths:
+  '/groups/{id}/variables':
+    get:
+      summary: List group variables
+      description: Get list of a group’s variables.
+      operationId: listGroupVariables
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a group or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listGroupVariablesResponse'
+      tags:
+        - group_level_variables
+    post:
+      summary: Create variable
+      description: Create a new variable.
+      operationId: createVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a group or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/showVariableDetailsResponse'
+      tags:
+        - group_level_variables
+  '/groups/{id}/variables/{key}':
+    get:
+      summary: Show variable details
+      description: Get the details of a group’s specific variable.
+      operationId: showVariableDetails
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a group or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      tags:
+        - group_level_variables
+    put:
+      summary: Update variable
+      description: Update a group’s variable.
+      operationId: updateVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a group or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateVariableRequest'
+      tags:
+        - group_level_variables
+    delete:
+      summary: Remove variable
+      description: Remove a group’s variable.
+      operationId: removeVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a group or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - group_level_variables
+components:
+  schemas:
+    listGroupVariablesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+          variable_type:
+            type: string
+          value:
+            type: string
+          protected:
+            type: boolean
+          masked:
+            type: boolean
+          environment_scope:
+            type: string
+    showVariableDetailsResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        variable_type:
+          type: string
+        value:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+    updateVariableRequest:
+      type: object
+      properties:
+        value:
+          type: string
+        variable_type:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+      required:
+        - value

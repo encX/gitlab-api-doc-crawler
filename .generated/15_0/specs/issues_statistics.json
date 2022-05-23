@@ -1,0 +1,496 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/issues_statistics.html",
+  "pageSlug": "issues_statistics",
+  "pageName": "Issues Statistics",
+  "apis": [
+    {
+      "name": "Get issues statistics",
+      "description": "Gets issues count statistics on all issues the authenticated user has access to. By default it returns only issues created by the current user. To get all issues, use parameter scope=all.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/issues_statistics"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?search=foo&in=title"
+        },
+        {
+          "method": "GET",
+          "path": "/issues_statistics?confidential=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label."
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone."
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me"
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter error is returned otherwise."
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the issues having the given iid"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search issues against their title and description"
+        },
+        {
+          "name": "in",
+          "type": "string",
+          "required": false,
+          "description": "Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        }
+      ],
+      "response": {
+        "statistics": {
+          "counts": {
+            "all": 20,
+            "closed": 5,
+            "opened": 15
+          }
+        }
+      }
+    },
+    {
+      "name": "Get group issues statistics",
+      "description": "Gets issues count statistics for given group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?search=issue+title+or+description"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues_statistics?confidential=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label."
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the issues having the given iid"
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone."
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter error is returned otherwise."
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search group issues against their title and description"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        }
+      ],
+      "response": {
+        "statistics": {
+          "counts": {
+            "all": 20,
+            "closed": 5,
+            "opened": 15
+          }
+        }
+      }
+    },
+    {
+      "name": "Get project issues statistics",
+      "description": "Gets issues count statistics for given project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?search=issue+title+or+description"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues_statistics?confidential=true"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the milestone having the given iid"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label."
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone."
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE assignee_username array should only contain a single value or an invalid parameter error is returned otherwise."
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search project issues against their title and description"
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        }
+      ],
+      "response": {
+        "statistics": {
+          "counts": {
+            "all": 20,
+            "closed": 5,
+            "opened": 15
+          }
+        }
+      }
+    }
+  ]
+}

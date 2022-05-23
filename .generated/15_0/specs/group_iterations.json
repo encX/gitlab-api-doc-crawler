@@ -1,0 +1,69 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/group_iterations.html",
+  "pageSlug": "group_iterations",
+  "pageName": "Group iterations",
+  "apis": [
+    {
+      "name": "List group iterations",
+      "description": "Returns a list of group iterations.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/iterations"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/iterations?state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/iterations?state=closed"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/iterations?title=1.0"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/iterations?search=version"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "‘Return opened, upcoming, current (previously started), closed, or all iterations. Filtering by started state is deprecated starting with 14.1, please use current instead.’"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Return only iterations with a title matching the provided string."
+        },
+        {
+          "name": "include_ancestors",
+          "type": "boolean",
+          "required": false,
+          "description": "Include iterations from parent group and its ancestors. Defaults to true."
+        }
+      ],
+      "response": [
+        {
+          "id": 53,
+          "iid": 13,
+          "sequence": 1,
+          "group_id": 5,
+          "title": "Iteration II",
+          "description": "Ipsum Lorem ipsum",
+          "state": 2,
+          "created_at": "2020-01-27T05:07:12.573Z",
+          "updated_at": "2020-01-27T05:07:12.573Z",
+          "due_date": "2020-02-01",
+          "start_date": "2020-02-14",
+          "web_url": "http://gitlab.example.com/groups/my-group/-/iterations/13"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/metrics_user_starred_dashboards.html",
+  "pageSlug": "metrics_user_starred_dashboards",
+  "pageName": "User-starred metrics dashboards",
+  "apis": [
+    {
+      "name": "Add a star to a dashboard",
+      "description": "",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/metrics/user_starred_dashboards"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "dashboard_path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded path to file defining the dashboard which should be marked as favorite."
+        }
+      ],
+      "response": {
+        "id": 5,
+        "dashboard_path": "config/prometheus/common_metrics.yml",
+        "user_id": 1,
+        "project_id": 20
+      }
+    },
+    {
+      "name": "Remove a star from a dashboard",
+      "description": "",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/metrics/user_starred_dashboards"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "dashboard_path",
+          "type": "string",
+          "required": false,
+          "description": "URL-encoded path to file defining the dashboard which should no longer be marked as favorite. When not supplied, all dashboards within given projects are removed from favorites."
+        }
+      ],
+      "response": {
+        "deleted_rows": 1
+      }
+    }
+  ]
+}

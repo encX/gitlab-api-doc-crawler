@@ -1,0 +1,232 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/deploy_keys.html",
+  "pageSlug": "deploy_keys",
+  "pageName": "Deploy keys",
+  "apis": [
+    {
+      "name": "List all deploy keys",
+      "description": "Get a list of all deploy keys across all projects of the GitLab instance. This endpoint requires administrator access and is not available on GitLab.com.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/deploy_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "public",
+          "type": "boolean",
+          "required": false,
+          "description": "Only return deploy keys that are public. Defaults to false."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "title": "Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "fingerprint": "7f:72:08:7d:0e:47:48:ec:37:79:b2:76:68:b5:87:65",
+          "created_at": "2013-10-02T10:12:29Z",
+          "projects_with_write_access": [
+            {
+              "id": 73,
+              "description": null,
+              "name": "project2",
+              "name_with_namespace": "Sidney Jones / project2",
+              "path": "project2",
+              "path_with_namespace": "sidney_jones/project2",
+              "created_at": "2021-10-25T18:33:17.550Z"
+            },
+            {
+              "id": 74,
+              "description": null,
+              "name": "project3",
+              "name_with_namespace": "Sidney Jones / project3",
+              "path": "project3",
+              "path_with_namespace": "sidney_jones/project3",
+              "created_at": "2021-10-25T18:33:17.666Z"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Another Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "fingerprint": "64:d3:73:d4:83:70:ab:41:96:68:d5:3d:a5:b0:34:ea",
+          "created_at": "2013-10-02T11:12:29Z",
+          "projects_with_write_access": []
+        }
+      ]
+    },
+    {
+      "name": "List project deploy keys",
+      "description": "Get a list of a project’s deploy keys.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deploy_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "title": "Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "created_at": "2013-10-02T10:12:29Z",
+          "can_push": false
+        },
+        {
+          "id": 3,
+          "title": "Another Public key",
+          "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+          "created_at": "2013-10-02T11:12:29Z",
+          "can_push": false
+        }
+      ]
+    },
+    {
+      "name": "Get a single deploy key",
+      "description": "Get a single key.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deploy_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the deploy key"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "Public key",
+        "key": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAiPWx6WM4lhHNedGfBpPJNPpZ7yKu+dnn1SJejgt4596k6YjzGGphH2TUxwKzxcKDKKezwkpfnxPkSMkuEspGRt/aZZ9wa++Oi7Qkr8prgHc4soW6NUlfDzpvZK2H5E7eQaSeP3SAwGmQKUFHCddNaP0L+hM7zhFNzjFvpaMgJw0=",
+        "created_at": "2013-10-02T10:12:29Z",
+        "can_push": false
+      }
+    },
+    {
+      "name": "Add deploy key",
+      "description": "Creates a new deploy key for a project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/deploy_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "New deploy key’s title"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "New deploy key"
+        },
+        {
+          "name": "can_push",
+          "type": "boolean",
+          "required": false,
+          "description": "Can deploy key push to the project’s repository"
+        }
+      ],
+      "response": {
+        "key": "ssh-rsa AAAA...",
+        "id": 12,
+        "title": "My deploy key",
+        "can_push": true,
+        "created_at": "2015-08-29T12:44:31.550Z"
+      }
+    },
+    {
+      "name": "Update deploy key",
+      "description": "Updates a deploy key for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/deploy_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "New deploy key’s title"
+        },
+        {
+          "name": "can_push",
+          "type": "boolean",
+          "required": false,
+          "description": "Can deploy key push to the project’s repository"
+        }
+      ],
+      "response": {
+        "id": 11,
+        "title": "New deploy key",
+        "key": "ssh-rsa AAAA...",
+        "created_at": "2015-08-29T12:44:31.550Z",
+        "can_push": true
+      }
+    },
+    {
+      "name": "Delete deploy key",
+      "description": "Removes a deploy key from the project. If the deploy key is used only for this project, it’s deleted from the system.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/deploy_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the deploy key"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

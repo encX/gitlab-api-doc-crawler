@@ -1,0 +1,133 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/protected_tags.html",
+  "pageSlug": "protected_tags",
+  "pageName": "Protected tags",
+  "apis": [
+    {
+      "name": "List protected tags",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_tags"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "name": "release-1-0",
+          "create_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get a single protected tag or wildcard protected tag",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_tags/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag or wildcard"
+        }
+      ],
+      "response": {
+        "name": "release-1-0",
+        "create_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Protect repository tags",
+      "description": "Protects a single repository tag or several project repository tags using a wildcard protected tag.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/protected_tags"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag or wildcard"
+        },
+        {
+          "name": "create_access_level",
+          "type": "string",
+          "required": false,
+          "description": "Access levels allowed to create (defaults: 40, Maintainer role)"
+        }
+      ],
+      "response": {
+        "name": "*-stable",
+        "create_access_levels": [
+          {
+            "access_level": 30,
+            "access_level_description": "Developers + Maintainers"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unprotect repository tags",
+      "description": "Unprotects the given protected tag or wildcard protected tag.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/protected_tags/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

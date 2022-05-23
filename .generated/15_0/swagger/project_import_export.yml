@@ -1,0 +1,403 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_import_export'
+  version: '1.0'
+paths:
+  '/projects/{id}/export':
+    post:
+      summary: Schedule an export
+      description: Start a new export.
+      operationId: scheduleAnExport
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduleAnExportResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scheduleAnExportRequest'
+      tags:
+        - project_import_export
+    get:
+      summary: Export status
+      description: Get the status of export.
+      operationId: exportStatus
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportStatusResponse'
+      tags:
+        - project_import_export
+  '/projects/{id}/export/download':
+    get:
+      summary: Export download
+      description: Download the finished export.
+      operationId: exportDownload
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_import_export
+  /projects/import:
+    post:
+      summary: Import a file
+      description: >-
+        To upload a file from your file system, use the --form argument. This causes cURL to post data using the header
+        Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded
+        by @. For example:
+      operationId: importAFile
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/importAFileResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/importAFileRequest'
+      tags:
+        - project_import_export
+  /projects/remote-import:
+    post:
+      summary: Import a file from a remote object storage
+      description: This endpoint is behind a feature flag that is enabled by default.
+      operationId: importAFileFromARemoteObjectStorage
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/importAFileFromARemoteObjectStorageResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/importAFileFromARemoteObjectStorageRequest'
+      tags:
+        - project_import_export
+  /projects/remote-import-s3:
+    post:
+      summary: Import a file from AWS S3
+      description: ''
+      operationId: importAFileFromAwsS3
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/importAFileFromARemoteObjectStorageResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/importAFileFromAwsS3Request'
+      tags:
+        - project_import_export
+  '/projects/{id}/import':
+    get:
+      summary: Import status
+      description: Get the status of an import.
+      operationId: importStatus
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/importStatusResponse'
+      tags:
+        - project_import_export
+components:
+  schemas:
+    scheduleAnExportRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        upload:
+          type: object
+          additionalProperties: true
+        'upload[url]':
+          type: string
+        'upload[http_method]':
+          type: string
+      required:
+        - 'upload[url]'
+    scheduleAnExportResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    exportStatusResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        export_status:
+          type: string
+        _links:
+          type: object
+          properties:
+            api_url:
+              type: string
+            web_url:
+              type: string
+    importAFileRequest:
+      type: object
+      properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
+        name:
+          type: string
+        file:
+          type: string
+        path:
+          type: string
+        overwrite:
+          type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
+      required:
+        - file
+        - path
+    importAFileResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        import_status:
+          type: string
+        correlation_id:
+          type: string
+        failed_relations:
+          type: array
+          items: {}
+    importAFileFromARemoteObjectStorageRequest:
+      type: object
+      properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
+        name:
+          type: string
+        url:
+          type: string
+        path:
+          type: string
+        overwrite:
+          type: boolean
+        override_params:
+          type: object
+          additionalProperties: true
+      required:
+        - url
+        - path
+    importAFileFromARemoteObjectStorageResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        import_status:
+          type: string
+        correlation_id:
+          type: string
+        failed_relations:
+          type: array
+          items: {}
+        import_error:
+          type: string
+    importAFileFromAwsS3Request:
+      type: object
+      properties:
+        namespace:
+          oneOf:
+            - type: integer
+            - type: string
+        name:
+          type: string
+        path:
+          type: string
+        region:
+          type: string
+        bucket_name:
+          type: string
+        file_key:
+          type: string
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+      required:
+        - path
+        - region
+        - bucket_name
+        - file_key
+        - access_key_id
+        - secret_access_key
+    importStatusResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        name:
+          type: string
+        name_with_namespace:
+          type: string
+        path:
+          type: string
+        path_with_namespace:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        import_status:
+          type: string
+        import_type:
+          type: string
+        correlation_id:
+          type: string
+        failed_relations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              created_at:
+                type: string
+                format: date-time
+              exception_class:
+                type: string
+              exception_message:
+                type: string
+              source:
+                type: string
+              relation_name:
+                type: string
+              line_number:
+                type: integer
+        stats:
+          type: object
+          properties:
+            fetched:
+              type: object
+              properties:
+                diff_note:
+                  type: integer
+                issue:
+                  type: integer
+                label:
+                  type: integer
+                note:
+                  type: integer
+                pull_request:
+                  type: integer
+                pull_request_merged_by:
+                  type: integer
+                pull_request_review:
+                  type: integer
+            imported:
+              type: object
+              properties:
+                diff_note:
+                  type: integer
+                issue:
+                  type: integer
+                label:
+                  type: integer
+                note:
+                  type: integer
+                pull_request:
+                  type: integer
+                pull_request_merged_by:
+                  type: integer
+                pull_request_review:
+                  type: integer

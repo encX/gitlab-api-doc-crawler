@@ -1,0 +1,564 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/group_boards.html",
+  "pageSlug": "group_boards",
+  "pageName": "Group issue boards",
+  "apis": [
+    {
+      "name": "List all group issue boards in a group",
+      "description": "Lists issue boards in the given group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/boards"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "group issue board",
+          "group": {
+            "id": 5,
+            "name": "Documentcloud",
+            "web_url": "http://example.com/groups/documentcloud"
+          },
+          "milestone": {
+            "id": 12,
+            "title": "10.0"
+          },
+          "lists": [
+            {
+              "id": 1,
+              "label": {
+                "name": "Testing",
+                "color": "#F0AD4E",
+                "description": null
+              },
+              "position": 1
+            },
+            {
+              "id": 2,
+              "label": {
+                "name": "Ready",
+                "color": "#FF0000",
+                "description": null
+              },
+              "position": 2
+            },
+            {
+              "id": 3,
+              "label": {
+                "name": "Production",
+                "color": "#FF5F00",
+                "description": null
+              },
+              "position": 3
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "group issue board",
+          "group": {
+            "id": 5,
+            "name": "Documentcloud",
+            "web_url": "http://example.com/groups/documentcloud"
+          },
+          "milestone": {
+            "id": 12,
+            "title": "10.0"
+          },
+          "lists": [
+            {
+              "id": 1,
+              "label": {
+                "name": "Testing",
+                "color": "#F0AD4E",
+                "description": null
+              },
+              "position": 1
+            },
+            {
+              "id": 2,
+              "label": {
+                "name": "Ready",
+                "color": "#FF0000",
+                "description": null
+              },
+              "position": 2
+            },
+            {
+              "id": 3,
+              "label": {
+                "name": "Production",
+                "color": "#FF5F00",
+                "description": null
+              },
+              "position": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Single group issue board",
+      "description": "Gets a single group issue board.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/boards/:board_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "group issue board",
+        "group": {
+          "id": 5,
+          "name": "Documentcloud",
+          "web_url": "http://example.com/groups/documentcloud"
+        },
+        "milestone": {
+          "id": 12,
+          "title": "10.0"
+        },
+        "lists": [
+          {
+            "id": 1,
+            "label": {
+              "name": "Testing",
+              "color": "#F0AD4E",
+              "description": null
+            },
+            "position": 1
+          },
+          {
+            "id": 2,
+            "label": {
+              "name": "Ready",
+              "color": "#FF0000",
+              "description": null
+            },
+            "position": 2
+          },
+          {
+            "id": 3,
+            "label": {
+              "name": "Production",
+              "color": "#FF5F00",
+              "description": null
+            },
+            "position": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "Create a group issue board",
+      "description": "Creates a group issue board.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/boards"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the new board"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "newboard",
+        "project": null,
+        "lists": [],
+        "group": {
+          "id": 5,
+          "name": "Documentcloud",
+          "web_url": "http://example.com/groups/documentcloud"
+        },
+        "milestone": null,
+        "assignee": null,
+        "labels": [],
+        "weight": null
+      }
+    },
+    {
+      "name": "Update a group issue board",
+      "description": "Updates a group issue board.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/boards/:board_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The new name of the board"
+        },
+        {
+          "name": "hide_backlog_list",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the Open list"
+        },
+        {
+          "name": "hide_closed_list",
+          "type": "boolean",
+          "required": false,
+          "description": "Hide the Closed list"
+        },
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "The assignee the board should be scoped to"
+        },
+        {
+          "name": "milestone_id",
+          "type": "integer",
+          "required": false,
+          "description": "The milestone the board should be scoped to"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names which the board should be scoped to"
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "The weight range from 0 to 9, to which the board should be scoped to"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "project": null,
+        "lists": [],
+        "name": "new_name",
+        "group": {
+          "id": 5,
+          "name": "Documentcloud",
+          "web_url": "http://example.com/groups/documentcloud"
+        },
+        "milestone": {
+          "id": 44,
+          "iid": 1,
+          "group_id": 5,
+          "title": "Group Milestone",
+          "description": "Group Milestone Desc",
+          "state": "active",
+          "created_at": "2018-07-03T07:15:19.271Z",
+          "updated_at": "2018-07-03T07:15:19.271Z",
+          "due_date": null,
+          "start_date": null,
+          "web_url": "http://example.com/groups/documentcloud/-/milestones/1"
+        },
+        "assignee": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://example.com/root"
+        },
+        "labels": [
+          {
+            "id": 11,
+            "name": "GroupLabel",
+            "color": "#428BCA",
+            "description": ""
+          }
+        ],
+        "weight": 4
+      }
+    },
+    {
+      "name": "Delete a group issue board",
+      "description": "Deletes a group issue board.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/boards/:board_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List group issue board lists",
+      "description": "Get a list of the board’s lists. Does not include open and closed lists",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/boards/:board_id/lists"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "label": {
+            "name": "Testing",
+            "color": "#F0AD4E",
+            "description": null
+          },
+          "position": 1
+        },
+        {
+          "id": 2,
+          "label": {
+            "name": "Ready",
+            "color": "#FF0000",
+            "description": null
+          },
+          "position": 2
+        },
+        {
+          "id": 3,
+          "label": {
+            "name": "Production",
+            "color": "#FF5F00",
+            "description": null
+          },
+          "position": 3
+        }
+      ]
+    },
+    {
+      "name": "Single group issue board list",
+      "description": "Get a single board list.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/boards/:board_id/lists/:list_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        },
+        {
+          "name": "list_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board’s list"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "label": {
+          "name": "Testing",
+          "color": "#F0AD4E",
+          "description": null
+        },
+        "position": 1
+      }
+    },
+    {
+      "name": "New group issue board list",
+      "description": "Creates an issue board list.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/boards/:board_id/lists"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        },
+        {
+          "name": "label_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a label"
+        }
+      ],
+      "response": {
+        "id": 9,
+        "label": null,
+        "position": 0,
+        "milestone": {
+          "id": 7,
+          "iid": 3,
+          "group_id": 12,
+          "title": "Milestone with due date",
+          "description": "",
+          "state": "active",
+          "created_at": "2017-09-03T07:16:28.596Z",
+          "updated_at": "2017-09-03T07:16:49.521Z",
+          "due_date": null,
+          "start_date": null,
+          "web_url": "https://gitlab.example.com/groups/issue-reproduce/-/milestones/3"
+        }
+      }
+    },
+    {
+      "name": "Edit group issue board list",
+      "description": "Updates an existing issue board list. This call is used to change list position.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/boards/:board_id/lists/:list_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        },
+        {
+          "name": "list_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board’s list"
+        },
+        {
+          "name": "position",
+          "type": "integer",
+          "required": true,
+          "description": "The position of the list"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "label": {
+          "name": "Testing",
+          "color": "#F0AD4E",
+          "description": null
+        },
+        "position": 1
+      }
+    },
+    {
+      "name": "Delete a group issue board list",
+      "description": "Only for administrators and group owners. Deletes the board list in question.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/boards/:board_id/lists/:list_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "board_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board"
+        },
+        {
+          "name": "list_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a board’s list"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / group_iterations'
+  version: '1.0'
+paths:
+  '/groups/{id}/iterations':
+    get:
+      summary: List group iterations
+      description: Returns a list of group iterations.
+      operationId: listGroupIterations
+      parameters:
+        - name: state
+          in: query
+          description: >-
+            ‘Return opened, upcoming, current (previously started), closed, or all iterations. Filtering by started
+            state is deprecated starting with 14.1, please use current instead.’
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Return only iterations with a title matching the provided string.
+          required: false
+          schema:
+            type: string
+        - name: include_ancestors
+          in: query
+          description: Include iterations from parent group and its ancestors. Defaults to true.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listGroupIterationsResponse'
+      tags:
+        - group_iterations
+components:
+  schemas:
+    listGroupIterationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          sequence:
+            type: integer
+          group_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          due_date:
+            type: string
+          start_date:
+            type: string
+          web_url:
+            type: string

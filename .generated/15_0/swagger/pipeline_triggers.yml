@@ -1,0 +1,180 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / pipeline_triggers'
+  version: '1.0'
+paths:
+  '/projects/{id}/triggers':
+    get:
+      summary: List project triggers
+      description: Get a list of project’s build triggers.
+      operationId: listProjectTriggers
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectTriggersResponse'
+      tags:
+        - pipeline_triggers
+    post:
+      summary: Create a project trigger
+      description: Create a trigger for a project.
+      operationId: createAProjectTrigger
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAProjectTriggerRequest'
+      tags:
+        - pipeline_triggers
+  '/projects/{id}/triggers/{trigger_id}':
+    get:
+      summary: Get trigger details
+      description: Get details of project’s build trigger.
+      operationId: getTriggerDetails
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
+      tags:
+        - pipeline_triggers
+    put:
+      summary: Update a project trigger
+      description: Update a trigger for a project.
+      operationId: updateAProjectTrigger
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAProjectTriggerRequest'
+      tags:
+        - pipeline_triggers
+    delete:
+      summary: Remove a project trigger
+      description: Remove a project’s build trigger.
+      operationId: removeAProjectTrigger
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - pipeline_triggers
+components:
+  schemas:
+    listProjectTriggersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          last_used:
+            type: string
+          token:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          owner:
+            type: string
+    getTriggerDetailsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        last_used:
+          type: string
+        token:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        owner:
+          type: string
+    createAProjectTriggerRequest:
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+        - description

@@ -1,0 +1,60 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/dependencies.html",
+  "pageSlug": "dependencies",
+  "pageName": "Dependencies",
+  "apis": [
+    {
+      "name": "List project dependencies",
+      "description": "Get a list of project dependencies. This API partially mirroring Dependency List feature. This list can be generated only for languages and package managers supported by Gemnasium.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/dependencies"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/dependencies?package_manager=maven"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/dependencies?package_manager=yarn,bundler"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "package_manager",
+          "type": "string array",
+          "required": false,
+          "description": "Returns dependencies belonging to specified package manager. Valid values: bundler, composer, conan, go, gradle, maven, npm, nuget, pip, pipenv, yarn, sbt, or setuptools."
+        }
+      ],
+      "response": [
+        {
+          "name": "rails",
+          "version": "5.0.1",
+          "package_manager": "bundler",
+          "dependency_file_path": "Gemfile.lock",
+          "vulnerabilities": [
+            {
+              "name": "DDoS",
+              "severity": "unknown"
+            }
+          ]
+        },
+        {
+          "name": "hanami",
+          "version": "1.3.1",
+          "package_manager": "bundler",
+          "dependency_file_path": "Gemfile.lock",
+          "vulnerabilities": []
+        }
+      ]
+    }
+  ]
+}

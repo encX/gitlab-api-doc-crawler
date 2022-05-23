@@ -1,0 +1,912 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/jobs.html",
+  "pageSlug": "jobs",
+  "pageName": "Jobs",
+  "apis": [
+    {
+      "name": "List project jobs",
+      "description": "Get a list of jobs in a project. Jobs are sorted in descending order of their IDs.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/jobs"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "scope",
+          "type": "string or array of strings",
+          "required": false,
+          "description": "Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed, success, canceled, skipped, or manual. All jobs are returned if scope is not provided."
+        }
+      ],
+      "response": [
+        {
+          "commit": {
+            "author_email": "admin@example.com",
+            "author_name": "Administrator",
+            "created_at": "2015-12-24T16:51:14.000+01:00",
+            "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "message": "Test the CI integration.",
+            "short_id": "0ff3ae19",
+            "title": "Test the CI integration."
+          },
+          "coverage": null,
+          "allow_failure": false,
+          "created_at": "2015-12-24T15:51:21.802Z",
+          "started_at": "2015-12-24T17:54:27.722Z",
+          "finished_at": "2015-12-24T17:54:27.895Z",
+          "duration": 0.173,
+          "queued_duration": 0.01,
+          "artifacts_file": {
+            "filename": "artifacts.zip",
+            "size": 1000
+          },
+          "artifacts": [
+            {
+              "file_type": "archive",
+              "size": 1000,
+              "filename": "artifacts.zip",
+              "file_format": "zip"
+            },
+            {
+              "file_type": "metadata",
+              "size": 186,
+              "filename": "metadata.gz",
+              "file_format": "gzip"
+            },
+            {
+              "file_type": "trace",
+              "size": 1500,
+              "filename": "job.log",
+              "file_format": "raw"
+            },
+            {
+              "file_type": "junit",
+              "size": 750,
+              "filename": "junit.xml.gz",
+              "file_format": "gzip"
+            }
+          ],
+          "artifacts_expire_at": "2016-01-23T17:54:27.895Z",
+          "tag_list": [
+            "docker runner",
+            "ubuntu18"
+          ],
+          "id": 7,
+          "name": "teaspoon",
+          "pipeline": {
+            "id": 6,
+            "project_id": 1,
+            "ref": "main",
+            "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "status": "pending"
+          },
+          "ref": "main",
+          "runner": null,
+          "stage": "test",
+          "status": "failed",
+          "failure_reason": "script_failure",
+          "tag": false,
+          "web_url": "https://example.com/foo/bar/-/jobs/7",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          }
+        },
+        {
+          "commit": {
+            "author_email": "admin@example.com",
+            "author_name": "Administrator",
+            "created_at": "2015-12-24T16:51:14.000+01:00",
+            "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "message": "Test the CI integration.",
+            "short_id": "0ff3ae19",
+            "title": "Test the CI integration."
+          },
+          "coverage": null,
+          "allow_failure": false,
+          "created_at": "2015-12-24T15:51:21.727Z",
+          "started_at": "2015-12-24T17:54:24.729Z",
+          "finished_at": "2015-12-24T17:54:24.921Z",
+          "duration": 0.192,
+          "queued_duration": 0.023,
+          "artifacts_expire_at": "2016-01-23T17:54:24.921Z",
+          "tag_list": [
+            "docker runner",
+            "win10-2004"
+          ],
+          "id": 6,
+          "name": "rspec:other",
+          "pipeline": {
+            "id": 6,
+            "project_id": 1,
+            "ref": "main",
+            "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "status": "pending"
+          },
+          "ref": "main",
+          "artifacts": [],
+          "runner": null,
+          "stage": "test",
+          "status": "failed",
+          "failure_reason": "stuck_or_timeout_failure",
+          "tag": false,
+          "web_url": "https://example.com/foo/bar/-/jobs/6",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "List pipeline jobs",
+      "description": "Get a list of jobs for a pipeline.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/pipelines/:pipeline_id/jobs"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "pipeline_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a pipeline. Can also be obtained in CI jobs via the predefined CI variable CI_PIPELINE_ID."
+        },
+        {
+          "name": "scope",
+          "type": "string or array of strings",
+          "required": false,
+          "description": "Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed, success, canceled, skipped, or manual. All jobs are returned if scope is not provided."
+        },
+        {
+          "name": "include_retried",
+          "type": "boolean",
+          "required": false,
+          "description": "Include retried jobs in the response. Defaults to false. Introduced in GitLab 13.9."
+        }
+      ],
+      "response": [
+        {
+          "commit": {
+            "author_email": "admin@example.com",
+            "author_name": "Administrator",
+            "created_at": "2015-12-24T16:51:14.000+01:00",
+            "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "message": "Test the CI integration.",
+            "short_id": "0ff3ae19",
+            "title": "Test the CI integration."
+          },
+          "coverage": null,
+          "allow_failure": false,
+          "created_at": "2015-12-24T15:51:21.727Z",
+          "started_at": "2015-12-24T17:54:24.729Z",
+          "finished_at": "2015-12-24T17:54:24.921Z",
+          "duration": 0.192,
+          "queued_duration": 0.023,
+          "artifacts_expire_at": "2016-01-23T17:54:24.921Z",
+          "tag_list": [
+            "docker runner",
+            "ubuntu18"
+          ],
+          "id": 6,
+          "name": "rspec:other",
+          "pipeline": {
+            "id": 6,
+            "project_id": 1,
+            "ref": "main",
+            "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "status": "pending"
+          },
+          "ref": "main",
+          "artifacts": [],
+          "runner": null,
+          "stage": "test",
+          "status": "failed",
+          "failure_reason": "stuck_or_timeout_failure",
+          "tag": false,
+          "web_url": "https://example.com/foo/bar/-/jobs/6",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          }
+        },
+        {
+          "commit": {
+            "author_email": "admin@example.com",
+            "author_name": "Administrator",
+            "created_at": "2015-12-24T16:51:14.000+01:00",
+            "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "message": "Test the CI integration.",
+            "short_id": "0ff3ae19",
+            "title": "Test the CI integration."
+          },
+          "coverage": null,
+          "allow_failure": false,
+          "created_at": "2015-12-24T15:51:21.802Z",
+          "started_at": "2015-12-24T17:54:27.722Z",
+          "finished_at": "2015-12-24T17:54:27.895Z",
+          "duration": 0.173,
+          "queued_duration": 0.023,
+          "artifacts_file": {
+            "filename": "artifacts.zip",
+            "size": 1000
+          },
+          "artifacts": [
+            {
+              "file_type": "archive",
+              "size": 1000,
+              "filename": "artifacts.zip",
+              "file_format": "zip"
+            },
+            {
+              "file_type": "metadata",
+              "size": 186,
+              "filename": "metadata.gz",
+              "file_format": "gzip"
+            },
+            {
+              "file_type": "trace",
+              "size": 1500,
+              "filename": "job.log",
+              "file_format": "raw"
+            },
+            {
+              "file_type": "junit",
+              "size": 750,
+              "filename": "junit.xml.gz",
+              "file_format": "gzip"
+            }
+          ],
+          "artifacts_expire_at": "2016-01-23T17:54:27.895Z",
+          "tag_list": [
+            "docker runner",
+            "ubuntu18"
+          ],
+          "id": 7,
+          "name": "teaspoon",
+          "pipeline": {
+            "id": 6,
+            "project_id": 1,
+            "ref": "main",
+            "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "status": "pending"
+          },
+          "ref": "main",
+          "runner": null,
+          "stage": "test",
+          "status": "failed",
+          "failure_reason": "script_failure",
+          "tag": false,
+          "web_url": "https://example.com/foo/bar/-/jobs/7",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "List pipeline bridges",
+      "description": "Get a list of bridge jobs for a pipeline.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/pipelines/:pipeline_id/bridges"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "pipeline_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a pipeline."
+        },
+        {
+          "name": "scope",
+          "type": "string or array of strings",
+          "required": false,
+          "description": "Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed, success, canceled, skipped, or manual. All jobs are returned if scope is not provided."
+        }
+      ],
+      "response": [
+        {
+          "commit": {
+            "author_email": "admin@example.com",
+            "author_name": "Administrator",
+            "created_at": "2015-12-24T16:51:14.000+01:00",
+            "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "message": "Test the CI integration.",
+            "short_id": "0ff3ae19",
+            "title": "Test the CI integration."
+          },
+          "coverage": null,
+          "allow_failure": false,
+          "created_at": "2015-12-24T15:51:21.802Z",
+          "started_at": "2015-12-24T17:54:27.722Z",
+          "finished_at": "2015-12-24T17:58:27.895Z",
+          "duration": 240,
+          "queued_duration": 0.123,
+          "id": 7,
+          "name": "teaspoon",
+          "pipeline": {
+            "id": 6,
+            "project_id": 1,
+            "ref": "main",
+            "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+            "status": "pending",
+            "created_at": "2015-12-24T15:50:16.123Z",
+            "updated_at": "2015-12-24T18:00:44.432Z",
+            "web_url": "https://example.com/foo/bar/pipelines/6"
+          },
+          "ref": "main",
+          "stage": "test",
+          "status": "pending",
+          "tag": false,
+          "web_url": "https://example.com/foo/bar/-/jobs/7",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          },
+          "downstream_pipeline": {
+            "id": 5,
+            "sha": "f62a4b2fb89754372a346f24659212eb8da13601",
+            "ref": "main",
+            "status": "pending",
+            "created_at": "2015-12-24T17:54:27.722Z",
+            "updated_at": "2015-12-24T17:58:27.896Z",
+            "web_url": "https://example.com/diaspora/diaspora-client/pipelines/5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get job token’s job",
+      "description": "Retrieve the job that generated a job token.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/job"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "created_at": "2015-12-24T15:51:21.880Z",
+        "started_at": "2015-12-24T17:54:30.733Z",
+        "finished_at": "2015-12-24T17:54:31.198Z",
+        "duration": 0.465,
+        "queued_duration": 0.123,
+        "artifacts_expire_at": "2016-01-23T17:54:31.198Z",
+        "id": 8,
+        "name": "rubocop",
+        "pipeline": {
+          "id": 6,
+          "project_id": 1,
+          "ref": "main",
+          "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "status": "pending"
+        },
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "status": "failed",
+        "failure_reason": "script_failure",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/8",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://gitlab.dev/root",
+          "created_at": "2015-12-21T13:14:24.077Z",
+          "bio": null,
+          "location": null,
+          "public_email": "",
+          "skype": "",
+          "linkedin": "",
+          "twitter": "",
+          "website_url": "",
+          "organization": ""
+        }
+      }
+    },
+    {
+      "name": "Get GitLab agent by CI_JOB_TOKEN",
+      "description": "Retrieve the job that generated the CI_JOB_TOKEN, along with a list of allowed agents.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/job/allowed_agents"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "CI_JOB_TOKEN",
+          "type": "string",
+          "required": false,
+          "description": "Token value associated with the GitLab-provided CI_JOB_TOKEN variable."
+        }
+      ],
+      "response": {
+        "allowed_agents": [
+          {
+            "id": 1,
+            "config_project": {
+              "id": 1,
+              "description": null,
+              "name": "project1",
+              "name_with_namespace": "John Doe2 / project1",
+              "path": "project1",
+              "path_with_namespace": "namespace1/project1",
+              "created_at": "2021-03-26T14:51:50.579Z"
+            }
+          }
+        ],
+        "job": {
+          "id": 1,
+          "name": "test",
+          "stage": "test",
+          "project_id": 1,
+          "project_name": "project1"
+        },
+        "pipeline": {
+          "id": 1,
+          "project_id": 1,
+          "sha": "b83d6e391c22777fca1ed3012fce84f633d7fed0",
+          "ref": "main",
+          "status": "pending",
+          "created_at": "2021-03-26T14:51:51.107Z",
+          "updated_at": "2021-03-26T14:51:51.107Z",
+          "web_url": "http://localhost/namespace1/project1/-/pipelines/1"
+        },
+        "project": {
+          "id": 1,
+          "description": null,
+          "name": "project1",
+          "name_with_namespace": "John Doe2 / project1",
+          "path": "project1",
+          "path_with_namespace": "namespace1/project1",
+          "created_at": "2021-03-26T14:51:50.579Z"
+        },
+        "user": {
+          "id": 2,
+          "name": "John Doe3",
+          "username": "user2",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/10fc7f102b",
+          "web_url": "http://localhost/user2"
+        }
+      }
+    },
+    {
+      "name": "Get a single job",
+      "description": "Get a single job of a project",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/jobs/:job_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        }
+      ],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "created_at": "2015-12-24T15:51:21.880Z",
+        "started_at": "2015-12-24T17:54:30.733Z",
+        "finished_at": "2015-12-24T17:54:31.198Z",
+        "duration": 0.465,
+        "queued_duration": 0.01,
+        "artifacts_expire_at": "2016-01-23T17:54:31.198Z",
+        "tag_list": [
+          "docker runner",
+          "macos-10.15"
+        ],
+        "id": 8,
+        "name": "rubocop",
+        "pipeline": {
+          "id": 6,
+          "project_id": 1,
+          "ref": "main",
+          "sha": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "status": "pending"
+        },
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "status": "failed",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/8",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://gitlab.dev/root",
+          "created_at": "2015-12-21T13:14:24.077Z",
+          "bio": null,
+          "location": null,
+          "public_email": "",
+          "skype": "",
+          "linkedin": "",
+          "twitter": "",
+          "website_url": "",
+          "organization": ""
+        }
+      }
+    },
+    {
+      "name": "Get a log file",
+      "description": "Get a log (trace) of a specific job of a project:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/jobs/:job_id/trace"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Cancel a job",
+      "description": "Cancel a single job of a project",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/jobs/:job_id/cancel"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        }
+      ],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "created_at": "2016-01-11T10:13:33.506Z",
+        "started_at": "2016-01-11T10:14:09.526Z",
+        "finished_at": null,
+        "duration": 8,
+        "queued_duration": 0.01,
+        "id": 42,
+        "name": "rubocop",
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "status": "canceled",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/42",
+        "user": null
+      }
+    },
+    {
+      "name": "Retry a job",
+      "description": "Retry a single job of a project",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/jobs/:job_id/retry"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        }
+      ],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "created_at": "2016-01-11T10:13:33.506Z",
+        "started_at": null,
+        "finished_at": null,
+        "duration": null,
+        "queued_duration": 0.01,
+        "id": 42,
+        "name": "rubocop",
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "status": "pending",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/42",
+        "user": null
+      }
+    },
+    {
+      "name": "Erase a job",
+      "description": "Erase a single job of a project (remove job artifacts and a job log)",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/jobs/:job_id/erase"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        }
+      ],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "download_url": null,
+        "id": 42,
+        "name": "rubocop",
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "created_at": "2016-01-11T10:13:33.506Z",
+        "started_at": "2016-01-11T10:13:33.506Z",
+        "finished_at": "2016-01-11T10:15:10.506Z",
+        "duration": 97,
+        "queued_duration": 0.01,
+        "status": "failed",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/42",
+        "user": null
+      }
+    },
+    {
+      "name": "Run a job",
+      "description": "Triggers a manual action to start a job.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/jobs/:job_id/play"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "job_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of a job."
+        },
+        {
+          "name": "job_variables_attributes",
+          "type": "array of hashes",
+          "required": false,
+          "description": "An array containing the custom variables available to the job. Introduced in GitLab 14.9."
+        }
+      ],
+      "response": {
+        "commit": {
+          "author_email": "admin@example.com",
+          "author_name": "Administrator",
+          "created_at": "2015-12-24T16:51:14.000+01:00",
+          "id": "0ff3ae198f8601a285adcf5c0fff204ee6fba5fd",
+          "message": "Test the CI integration.",
+          "short_id": "0ff3ae19",
+          "title": "Test the CI integration."
+        },
+        "coverage": null,
+        "allow_failure": false,
+        "created_at": "2016-01-11T10:13:33.506Z",
+        "started_at": null,
+        "finished_at": null,
+        "duration": null,
+        "queued_duration": 0.01,
+        "id": 42,
+        "name": "rubocop",
+        "ref": "main",
+        "artifacts": [],
+        "runner": null,
+        "stage": "test",
+        "status": "pending",
+        "tag": false,
+        "web_url": "https://example.com/foo/bar/-/jobs/42",
+        "user": null,
+        "job_variables_attributes": [
+          {
+            "key": "TEST_VAR_1",
+            "value": "test1"
+          },
+          {
+            "key": "TEST_VAR_2",
+            "value": "test2"
+          }
+        ]
+      }
+    }
+  ]
+}

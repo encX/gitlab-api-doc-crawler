@@ -1,0 +1,189 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / feature_flag_user_lists'
+  version: '1.0'
+paths:
+  '/projects/{id}/feature_flags_user_lists':
+    get:
+      summary: List all feature flag user lists for a project
+      description: Gets all feature flag user lists for the requested project.
+      operationId: listAllFeatureFlagUserListsForAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Return user lists matching the search criteria.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllFeatureFlagUserListsForAProjectResponse'
+      tags:
+        - feature_flag_user_lists
+    post:
+      summary: Create a feature flag user list
+      description: Creates a feature flag user list.
+      operationId: createAFeatureFlagUserList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAFeatureFlagUserListRequest'
+      tags:
+        - feature_flag_user_lists
+  '/projects/{id}/feature_flags_user_lists/{iid}':
+    get:
+      summary: Get a feature flag user list
+      description: Gets a feature flag user list.
+      operationId: getAFeatureFlagUserList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: iid
+          in: path
+          description: The internal ID of the project’s feature flag user list.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
+      tags:
+        - feature_flag_user_lists
+    put:
+      summary: Update a feature flag user list
+      description: Updates a feature flag user list.
+      operationId: updateAFeatureFlagUserList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: iid
+          in: path
+          description: The internal ID of the project’s feature flag user list.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAFeatureFlagUserListResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAFeatureFlagUserListRequest'
+      tags:
+        - feature_flag_user_lists
+    delete:
+      summary: Delete feature flag user list
+      description: Deletes a feature flag user list.
+      operationId: deleteFeatureFlagUserList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: iid
+          in: path
+          description: The internal ID of the project’s feature flag user list
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - feature_flag_user_lists
+components:
+  schemas:
+    listAllFeatureFlagUserListsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          user_xids:
+            type: string
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+    createAFeatureFlagUserListRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+      required:
+        - name
+        - user_xids
+    createAFeatureFlagUserListResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        user_xids:
+          type: string
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time

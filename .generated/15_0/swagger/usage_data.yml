@@ -1,0 +1,35 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / usage_data'
+  version: '1.0'
+paths:
+  /usage_data/metric_definitions:
+    get:
+      summary: Export metric definitions as a single YAML file
+      description: 'Export all metric definitions as a single YAML file, similar to the Metrics Dictionary, for easier importing.'
+      operationId: exportMetricDefinitionsAsASingleYamlFile
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - usage_data
+  /usage_data/queries:
+    get:
+      summary: Export Service Ping SQL queries
+      description: This action is available only for the GitLab instance Administrator users.
+      operationId: exportServicePingSqlQueries
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exportServicePingSqlQueriesResponse'
+      tags:
+        - usage_data
+components:
+  schemas:
+    exportServicePingSqlQueriesResponse:
+      type: string

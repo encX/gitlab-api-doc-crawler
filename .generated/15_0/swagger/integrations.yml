@@ -1,0 +1,1899 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / integrations'
+  version: '1.0'
+paths:
+  '/projects/{id}/integrations':
+    get:
+      summary: List all active integrations
+      description: Get a list of all active project integrations.
+      operationId: listAllActiveIntegrations
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllActiveIntegrationsResponse'
+      tags:
+        - integrations
+  '/projects/{id}/integrations/asana':
+    put:
+      summary: Create/Edit Asana integration
+      description: Set Asana integration for a project.
+      operationId: createEditAsanaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditAsanaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Asana integration
+      description: Disable the Asana integration for a project. Integration settings are preserved.
+      operationId: disableAsanaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Asana integration settings
+      description: Get Asana integration settings for a project.
+      operationId: getAsanaIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/assembla':
+    put:
+      summary: Create/Edit Assembla integration
+      description: Set Assembla integration for a project.
+      operationId: createEditAssemblaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditAssemblaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Assembla integration
+      description: Disable the Assembla integration for a project. Integration settings are preserved.
+      operationId: disableAssemblaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Assembla integration settings
+      description: Get Assembla integration settings for a project.
+      operationId: getAssemblaIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/bamboo':
+    put:
+      summary: Create/Edit Atlassian Bamboo CI integration
+      description: Set Atlassian Bamboo CI integration for a project.
+      operationId: createEditAtlassianBambooCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditAtlassianBambooCiIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Atlassian Bamboo CI integration
+      description: Disable the Atlassian Bamboo CI integration for a project. Integration settings are preserved.
+      operationId: disableAtlassianBambooCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Atlassian Bamboo CI integration settings
+      description: Get Atlassian Bamboo CI integration settings for a project.
+      operationId: getAtlassianBambooCiIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/bugzilla':
+    put:
+      summary: Create/Edit Bugzilla integration
+      description: Set Bugzilla integration for a project.
+      operationId: createEditBugzillaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditBugzillaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Bugzilla integration
+      description: Disable the Bugzilla integration for a project. Integration settings are preserved.
+      operationId: disableBugzillaIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Bugzilla integration settings
+      description: Get Bugzilla integration settings for a project.
+      operationId: getBugzillaIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/buildkite':
+    put:
+      summary: Create/Edit Buildkite integration
+      description: Set Buildkite integration for a project.
+      operationId: createEditBuildkiteIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditBuildkiteIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Buildkite integration
+      description: Disable the Buildkite integration for a project. Integration settings are preserved.
+      operationId: disableBuildkiteIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Buildkite integration settings
+      description: Get Buildkite integration settings for a project.
+      operationId: getBuildkiteIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/campfire':
+    put:
+      summary: Create/Edit Campfire integration
+      description: Set Campfire integration for a project.
+      operationId: createEditCampfireIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditCampfireIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Campfire integration
+      description: Disable the Campfire integration for a project. Integration settings are preserved.
+      operationId: disableCampfireIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Campfire integration settings
+      description: Get Campfire integration settings for a project.
+      operationId: getCampfireIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/datadog':
+    put:
+      summary: Create/Edit Datadog integration
+      description: Set Datadog integration for a project.
+      operationId: createEditDatadogIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditDatadogIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Datadog integration
+      description: Disable the Datadog integration for a project. Integration settings are preserved.
+      operationId: disableDatadogIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Datadog integration settings
+      description: Get Datadog integration settings for a project.
+      operationId: getDatadogIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/unify-circuit':
+    put:
+      summary: Create/Edit Unify Circuit integration
+      description: Set Unify Circuit integration for a project.
+      operationId: createEditUnifyCircuitIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditUnifyCircuitIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Unify Circuit integration
+      description: Disable the Unify Circuit integration for a project. Integration settings are preserved.
+      operationId: disableUnifyCircuitIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Unify Circuit integration settings
+      description: Get Unify Circuit integration settings for a project.
+      operationId: getUnifyCircuitIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/webex-teams':
+    put:
+      summary: Create/Edit Webex Teams integration
+      description: Set Webex Teams integration for a project.
+      operationId: createEditWebexTeamsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditUnifyCircuitIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Webex Teams integration
+      description: Disable the Webex Teams integration for a project. Integration settings are preserved.
+      operationId: disableWebexTeamsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Webex Teams integration settings
+      description: Get Webex Teams integration settings for a project.
+      operationId: getWebexTeamsIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/custom-issue-tracker':
+    put:
+      summary: Create/Edit Custom Issue Tracker integration
+      description: Set Custom Issue Tracker integration for a project.
+      operationId: createEditCustomIssueTrackerIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditBugzillaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Custom Issue Tracker integration
+      description: Disable the Custom Issue Tracker integration for a project. Integration settings are preserved.
+      operationId: disableCustomIssueTrackerIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Custom Issue Tracker integration settings
+      description: Get Custom Issue Tracker integration settings for a project.
+      operationId: getCustomIssueTrackerIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/discord':
+    put:
+      summary: Create/Edit Discord integration
+      description: Set Discord integration for a project.
+      operationId: createEditDiscordIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditDiscordIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Discord integration
+      description: Disable the Discord integration for a project. Integration settings are preserved.
+      operationId: disableDiscordIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Discord integration settings
+      description: Get Discord integration settings for a project.
+      operationId: getDiscordIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/drone-ci':
+    put:
+      summary: Create/Edit Drone CI integration
+      description: Set Drone CI integration for a project.
+      operationId: createEditDroneCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditDroneCiIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Drone CI integration
+      description: Disable the Drone CI integration for a project. Integration settings are preserved.
+      operationId: disableDroneCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Drone CI integration settings
+      description: Get Drone CI integration settings for a project.
+      operationId: getDroneCiIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/emails-on-push':
+    put:
+      summary: Create/Edit Emails on Push integration
+      description: Set Emails on Push integration for a project.
+      operationId: createEditEmailsOnPushIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditEmailsOnPushIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Emails on Push integration
+      description: Disable the Emails on Push integration for a project. Integration settings are preserved.
+      operationId: disableEmailsOnPushIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Emails on Push integration settings
+      description: Get Emails on Push integration settings for a project.
+      operationId: getEmailsOnPushIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/ewm':
+    put:
+      summary: Create/Edit EWM integration
+      description: Set EWM integration for a project.
+      operationId: createEditEwmIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditBugzillaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable EWM integration
+      description: Disable the EWM integration for a project. Integration settings are preserved.
+      operationId: disableEwmIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get EWM integration settings
+      description: Get EWM integration settings for a project.
+      operationId: getEwmIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/confluence':
+    put:
+      summary: Create/Edit Confluence integration
+      description: Set Confluence integration for a project.
+      operationId: createEditConfluenceIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditConfluenceIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Confluence integration
+      description: Disable the Confluence integration for a project. Integration settings are preserved.
+      operationId: disableConfluenceIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Confluence integration settings
+      description: Get Confluence integration settings for a project.
+      operationId: getConfluenceIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/external-wiki':
+    put:
+      summary: Create/Edit External wiki integration
+      description: Set External wiki integration for a project.
+      operationId: createEditExternalWikiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditExternalWikiIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable External wiki integration
+      description: Disable the External wiki integration for a project. Integration settings are preserved.
+      operationId: disableExternalWikiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get External wiki integration settings
+      description: Get External wiki integration settings for a project.
+      operationId: getExternalWikiIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/flowdock':
+    put:
+      summary: Create/Edit Flowdock integration
+      description: Set Flowdock integration for a project.
+      operationId: createEditFlowdockIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditFlowdockIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Flowdock integration
+      description: Disable the Flowdock integration for a project. Integration settings are preserved.
+      operationId: disableFlowdockIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Flowdock integration settings
+      description: Get Flowdock integration settings for a project.
+      operationId: getFlowdockIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/github':
+    put:
+      summary: Create/Edit GitHub integration
+      description: Set GitHub integration for a project.
+      operationId: createEditGithubIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditGithubIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable GitHub integration
+      description: Disable the GitHub integration for a project. Integration settings are preserved.
+      operationId: disableGithubIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get GitHub integration settings
+      description: Get GitHub integration settings for a project.
+      operationId: getGithubIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/hangouts-chat':
+    put:
+      summary: Create/Edit Hangouts Chat integration
+      description: Set Hangouts Chat integration for a project.
+      operationId: createEditHangoutsChatIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditHangoutsChatIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Hangouts Chat integration
+      description: Disable the Hangouts Chat integration for a project. Integration settings are preserved.
+      operationId: disableHangoutsChatIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Hangouts Chat integration settings
+      description: Get Hangouts Chat integration settings for a project.
+      operationId: getHangoutsChatIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/irker':
+    put:
+      summary: Create/Edit Irker (IRC gateway) integration
+      description: Set Irker (IRC gateway) integration for a project.
+      operationId: createEditIrkerIrcGatewayIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditIrkerIrcGatewayIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Irker (IRC gateway) integration
+      description: Disable the Irker (IRC gateway) integration for a project. Integration settings are preserved.
+      operationId: disableIrkerIrcGatewayIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Irker (IRC gateway) integration settings
+      description: Get Irker (IRC gateway) integration settings for a project.
+      operationId: getIrkerIrcGatewayIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/jira':
+    get:
+      summary: Get Jira integration settings
+      description: Get Jira integration settings for a project.
+      operationId: getJiraIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    put:
+      summary: Create/Edit Jira integration
+      description: Set Jira integration for a project.
+      operationId: createEditJiraIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditJiraIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Jira integration
+      description: Disable the Jira integration for a project. Integration settings are preserved.
+      operationId: disableJiraIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/slack-slash-commands':
+    get:
+      summary: Get Slack Slash Command integration settings
+      description: Get Slack Slash Command integration settings for a project.
+      operationId: getSlackSlashCommandIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSlackSlashCommandIntegrationSettingsResponse'
+      tags:
+        - integrations
+    put:
+      summary: Create/Edit Slack Slash Commands integration
+      description: Set Slack Slash Command for a project.
+      operationId: createEditSlackSlashCommandsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditFlowdockIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Slack Slash Command integration
+      description: Disable the Slack Slash Command integration for a project. Integration settings are preserved.
+      operationId: disableSlackSlashCommandIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/mattermost-slash-commands':
+    get:
+      summary: Get Mattermost Slash Command integration settings
+      description: Get Mattermost Slash Command integration settings for a project.
+      operationId: getMattermostSlashCommandIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    put:
+      summary: Create/Edit Mattermost Slash Command integration
+      description: Set Mattermost Slash Command for a project.
+      operationId: createEditMattermostSlashCommandIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditMattermostSlashCommandIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Mattermost Slash Command integration
+      description: Disable the Mattermost Slash Command integration for a project. Integration settings are preserved.
+      operationId: disableMattermostSlashCommandIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/packagist':
+    put:
+      summary: Create/Edit Packagist integration
+      description: Set Packagist integration for a project.
+      operationId: createEditPackagistIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditPackagistIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Packagist integration
+      description: Disable the Packagist integration for a project. Integration settings are preserved.
+      operationId: disablePackagistIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Packagist integration settings
+      description: Get Packagist integration settings for a project.
+      operationId: getPackagistIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/pipelines-email':
+    put:
+      summary: Create/Edit Pipeline-Emails integration
+      description: Set Pipeline-Emails integration for a project.
+      operationId: createEditPipelineEmailsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditPipelineEmailsIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Pipeline-Emails integration
+      description: Disable the Pipeline-Emails integration for a project. Integration settings are preserved.
+      operationId: disablePipelineEmailsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Pipeline-Emails integration settings
+      description: Get Pipeline-Emails integration settings for a project.
+      operationId: getPipelineEmailsIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/pivotaltracker':
+    put:
+      summary: Create/Edit Pivotal Tracker integration
+      description: Set Pivotal Tracker integration for a project.
+      operationId: createEditPivotalTrackerIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditPivotalTrackerIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Pivotal Tracker integration
+      description: Disable the Pivotal Tracker integration for a project. Integration settings are preserved.
+      operationId: disablePivotalTrackerIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Pivotal Tracker integration settings
+      description: Get Pivotal Tracker integration settings for a project.
+      operationId: getPivotalTrackerIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/prometheus':
+    put:
+      summary: Create/Edit Prometheus integration
+      description: Set Prometheus integration for a project.
+      operationId: createEditPrometheusIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditPrometheusIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Prometheus integration
+      description: Disable the Prometheus integration for a project. Integration settings are preserved.
+      operationId: disablePrometheusIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Prometheus integration settings
+      description: Get Prometheus integration settings for a project.
+      operationId: getPrometheusIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/pushover':
+    put:
+      summary: Create/Edit Pushover integration
+      description: Set Pushover integration for a project.
+      operationId: createEditPushoverIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditPushoverIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Pushover integration
+      description: Disable the Pushover integration for a project. Integration settings are preserved.
+      operationId: disablePushoverIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Pushover integration settings
+      description: Get Pushover integration settings for a project.
+      operationId: getPushoverIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/redmine':
+    put:
+      summary: Create/Edit Redmine integration
+      description: Set Redmine integration for a project.
+      operationId: createEditRedmineIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditBugzillaIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Redmine integration
+      description: Disable the Redmine integration for a project. Integration settings are preserved.
+      operationId: disableRedmineIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Redmine integration settings
+      description: Get Redmine integration settings for a project.
+      operationId: getRedmineIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/slack':
+    put:
+      summary: Create/Edit Slack integration
+      description: Set Slack integration for a project.
+      operationId: createEditSlackIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditSlackIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Slack integration
+      description: Disable the Slack integration for a project. Integration settings are preserved.
+      operationId: disableSlackIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Slack integration settings
+      description: Get Slack integration settings for a project.
+      operationId: getSlackIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/microsoft-teams':
+    put:
+      summary: Create/Edit Microsoft Teams integration
+      description: Set Microsoft Teams integration for a project.
+      operationId: createEditMicrosoftTeamsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditHangoutsChatIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Microsoft Teams integration
+      description: Disable the Microsoft Teams integration for a project. Integration settings are preserved.
+      operationId: disableMicrosoftTeamsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Microsoft Teams integration settings
+      description: Get Microsoft Teams integration settings for a project.
+      operationId: getMicrosoftTeamsIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/mattermost':
+    put:
+      summary: Create/Edit Mattermost notifications integration
+      description: Set Mattermost notifications integration for a project.
+      operationId: createEditMattermostNotificationsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditMattermostNotificationsIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Mattermost notifications integration
+      description: Disable the Mattermost notifications integration for a project. Integration settings are preserved.
+      operationId: disableMattermostNotificationsIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Mattermost notifications integration settings
+      description: Get Mattermost notifications integration settings for a project.
+      operationId: getMattermostNotificationsIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/teamcity':
+    put:
+      summary: Create/Edit JetBrains TeamCity CI integration
+      description: Set JetBrains TeamCity CI integration for a project.
+      operationId: createEditJetbrainsTeamcityCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditJetbrainsTeamcityCiIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable JetBrains TeamCity CI integration
+      description: Disable the JetBrains TeamCity CI integration for a project. Integration settings are preserved.
+      operationId: disableJetbrainsTeamcityCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get JetBrains TeamCity CI integration settings
+      description: Get JetBrains TeamCity CI integration settings for a project.
+      operationId: getJetbrainsTeamcityCiIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/jenkins':
+    put:
+      summary: Create/Edit Jenkins CI integration
+      description: Set Jenkins CI integration for a project.
+      operationId: createEditJenkinsCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditJenkinsCiIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable Jenkins CI integration
+      description: Disable the Jenkins CI integration for a project. Integration settings are preserved.
+      operationId: disableJenkinsCiIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Jenkins CI integration settings
+      description: Get Jenkins CI integration settings for a project.
+      operationId: getJenkinsCiIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/jenkins-deprecated':
+    put:
+      summary: Create/Edit Jenkins CI (Deprecated) integration
+      description: Set Jenkins CI (Deprecated) integration for a project.
+      operationId: createEditJenkinsCiDeprecatedIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    delete:
+      summary: Disable Jenkins CI (Deprecated) integration
+      description: Disable the Jenkins CI (Deprecated) integration for a project. Integration settings are preserved.
+      operationId: disableJenkinsCiDeprecatedIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get Jenkins CI (Deprecated) integration settings
+      description: Get Jenkins CI (Deprecated) integration settings for a project.
+      operationId: getJenkinsCiDeprecatedIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/mock-ci':
+    put:
+      summary: Create/Edit MockCI integration
+      description: Set MockCI integration for a project.
+      operationId: createEditMockciIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditMockciIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable MockCI integration
+      description: Disable the MockCI integration for a project. Integration settings are preserved.
+      operationId: disableMockciIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get MockCI integration settings
+      description: Get MockCI integration settings for a project.
+      operationId: getMockciIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+  '/projects/{id}/integrations/youtrack':
+    put:
+      summary: Create/Edit YouTrack integration
+      description: Set YouTrack integration for a project.
+      operationId: createEditYoutrackIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEditYoutrackIntegrationRequest'
+      tags:
+        - integrations
+    delete:
+      summary: Disable YouTrack integration
+      description: Disable the YouTrack integration for a project. Integration settings are preserved.
+      operationId: disableYoutrackIntegration
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+    get:
+      summary: Get YouTrack integration settings
+      description: Get YouTrack integration settings for a project.
+      operationId: getYoutrackIntegrationSettings
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - integrations
+components:
+  schemas:
+    listAllActiveIntegrationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          slug:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          active:
+            type: boolean
+          commit_events:
+            type: boolean
+          push_events:
+            type: boolean
+          issues_events:
+            type: boolean
+          confidential_issues_events:
+            type: boolean
+          merge_requests_events:
+            type: boolean
+          tag_push_events:
+            type: boolean
+          note_events:
+            type: boolean
+          confidential_note_events:
+            type: boolean
+          pipeline_events:
+            type: boolean
+          wiki_page_events:
+            type: boolean
+          job_events:
+            type: boolean
+          comment_on_event_enabled:
+            type: boolean
+    createEditAsanaIntegrationRequest:
+      type: object
+      properties:
+        api_key:
+          type: string
+        restrict_to_branch:
+          type: string
+    createEditAssemblaIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        subdomain:
+          type: string
+    createEditAtlassianBambooCiIntegrationRequest:
+      type: object
+      properties:
+        bamboo_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+        build_key:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+    createEditBugzillaIntegrationRequest:
+      type: object
+      properties:
+        new_issue_url:
+          type: string
+        issues_url:
+          type: string
+        project_url:
+          type: string
+    createEditBuildkiteIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        project_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+        push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+    createEditCampfireIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        subdomain:
+          type: string
+        room:
+          type: string
+    createEditDatadogIntegrationRequest:
+      type: object
+      properties:
+        api_key:
+          type: string
+        api_url:
+          type: string
+        datadog_env:
+          type: string
+        datadog_service:
+          type: string
+        datadog_site:
+          type: string
+        datadog_tags:
+          type: string
+    createEditUnifyCircuitIntegrationRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+        notify_only_broken_pipelines:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+    createEditDiscordIntegrationRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+    createEditDroneCiIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        drone_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+        push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+    createEditEmailsOnPushIntegrationRequest:
+      type: object
+      properties:
+        recipients:
+          type: string
+        disable_diffs:
+          type: boolean
+        send_from_committer_email:
+          type: boolean
+        push_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+    createEditConfluenceIntegrationRequest:
+      type: object
+      properties:
+        confluence_url:
+          type: string
+    createEditExternalWikiIntegrationRequest:
+      type: object
+      properties:
+        external_wiki_url:
+          type: string
+    createEditFlowdockIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+    createEditGithubIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        repository_url:
+          type: string
+        static_context:
+          type: boolean
+    createEditHangoutsChatIntegrationRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+        notify_only_broken_pipelines:
+          type: boolean
+        notify_only_default_branch:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+    createEditIrkerIrcGatewayIntegrationRequest:
+      type: object
+      properties:
+        recipients:
+          type: string
+        default_irc_uri:
+          type: string
+        server_host:
+          type: string
+        server_port:
+          type: integer
+        colorize_messages:
+          type: boolean
+    createEditJiraIntegrationRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        api_url:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        active:
+          type: boolean
+        jira_issue_transition_automatic:
+          type: boolean
+        jira_issue_transition_id:
+          type: string
+        commit_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        comment_on_event_enabled:
+          type: boolean
+      required:
+        - url
+        - username
+        - password
+    getSlackSlashCommandIntegrationSettingsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        active:
+          type: boolean
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        note_events:
+          type: boolean
+        job_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        comment_on_event_enabled:
+          type: boolean
+        properties:
+          type: object
+          properties:
+            token:
+              type: string
+    createEditMattermostSlashCommandIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        username:
+          type: string
+      required:
+        - token
+    createEditPackagistIntegrationRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        token:
+          type: string
+        server:
+          type: boolean
+        push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+      required:
+        - username
+        - token
+    createEditPipelineEmailsIntegrationRequest:
+      type: object
+      properties:
+        recipients:
+          type: string
+        add_pusher:
+          type: boolean
+        notify_only_broken_pipelines:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+        notify_only_default_branch:
+          type: boolean
+        pipeline_events:
+          type: boolean
+      required:
+        - recipients
+    createEditPivotalTrackerIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        restrict_to_branch:
+          type: boolean
+    createEditPrometheusIntegrationRequest:
+      type: object
+      properties:
+        api_url:
+          type: string
+        google_iap_audience_client_id:
+          type: string
+        google_iap_service_account_json:
+          type: string
+    createEditPushoverIntegrationRequest:
+      type: object
+      properties:
+        api_key:
+          type: string
+        user_key:
+          type: string
+        priority:
+          type: string
+        device:
+          type: string
+        sound:
+          type: string
+    createEditSlackIntegrationRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+        username:
+          type: string
+        channel:
+          type: string
+        notify_only_broken_pipelines:
+          type: boolean
+        notify_only_default_branch:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+        commit_events:
+          type: boolean
+        confidential_issue_channel:
+          type: string
+        confidential_issues_events:
+          type: boolean
+        confidential_note_channel:
+          type: string
+        confidential_note_events:
+          type: boolean
+        deployment_channel:
+          type: string
+        deployment_events:
+          type: boolean
+        issue_channel:
+          type: string
+        issues_events:
+          type: boolean
+        job_events:
+          type: boolean
+        merge_request_channel:
+          type: string
+        merge_requests_events:
+          type: boolean
+        note_channel:
+          type: string
+        note_events:
+          type: boolean
+        pipeline_channel:
+          type: string
+        pipeline_events:
+          type: boolean
+        push_channel:
+          type: string
+        push_events:
+          type: boolean
+        tag_push_channel:
+          type: string
+        tag_push_events:
+          type: boolean
+        wiki_page_channel:
+          type: string
+        wiki_page_events:
+          type: boolean
+    createEditMattermostNotificationsIntegrationRequest:
+      type: object
+      properties:
+        webhook:
+          type: string
+        username:
+          type: string
+        channel:
+          type: string
+        notify_only_broken_pipelines:
+          type: boolean
+        notify_only_default_branch:
+          type: boolean
+        branches_to_be_notified:
+          type: string
+        push_events:
+          type: boolean
+        issues_events:
+          type: boolean
+        confidential_issues_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        note_events:
+          type: boolean
+        confidential_note_events:
+          type: boolean
+        pipeline_events:
+          type: boolean
+        wiki_page_events:
+          type: boolean
+        push_channel:
+          type: string
+        issue_channel:
+          type: string
+        confidential_issue_channel:
+          type: string
+        merge_request_channel:
+          type: string
+        note_channel:
+          type: string
+        confidential_note_channel:
+          type: string
+        tag_push_channel:
+          type: string
+        pipeline_channel:
+          type: string
+        wiki_page_channel:
+          type: string
+    createEditJetbrainsTeamcityCiIntegrationRequest:
+      type: object
+      properties:
+        teamcity_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+        build_type:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+    createEditJenkinsCiIntegrationRequest:
+      type: object
+      properties:
+        jenkins_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+        project_name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+    createEditMockciIntegrationRequest:
+      type: object
+      properties:
+        mock_service_url:
+          type: string
+        enable_ssl_verification:
+          type: boolean
+    createEditYoutrackIntegrationRequest:
+      type: object
+      properties:
+        issues_url:
+          type: string
+        project_url:
+          type: string

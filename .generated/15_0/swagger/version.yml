@@ -1,0 +1,29 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / version'
+  version: '1.0'
+paths:
+  /version:
+    get:
+      summary: Version API
+      description: Retrieve version information for this GitLab instance. Responds 200 OK for authenticated users.
+      operationId: versionApi
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionApiResponse'
+      tags:
+        - version
+components:
+  schemas:
+    versionApiResponse:
+      type: object
+      properties:
+        version:
+          type: string
+        revision:
+          type: string

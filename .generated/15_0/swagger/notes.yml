@@ -1,0 +1,838 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / notes'
+  version: '1.0'
+paths:
+  '/projects/{id}/issues/{issue_iid}/notes':
+    get:
+      summary: List project issue notes
+      description: Gets a list of all notes for a single issue.
+      operationId: listProjectIssueNotes
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The IID of an issue
+          required: true
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Return issue notes sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: Return issue notes ordered by created_at or updated_at fields. Default is created_at
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectIssueNotesResponse'
+      tags:
+        - notes
+    post:
+      summary: Create new issue note
+      description: Creates a new note to a single project issue.
+      operationId: createNewIssueNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The IID of an issue.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewIssueNoteRequest'
+      tags:
+        - notes
+  '/projects/{id}/issues/{issue_iid}/notes/{note_id}':
+    get:
+      summary: Get single issue note
+      description: Returns a single note for a specific project issue
+      operationId: getSingleIssueNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The IID of a project issue
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of an issue note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+    put:
+      summary: Modify existing issue note
+      description: Modify existing note of an issue.
+      operationId: modifyExistingIssueNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The IID of an issue.
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
+      tags:
+        - notes
+    delete:
+      summary: Delete an issue note
+      description: Deletes an existing note of an issue.
+      operationId: deleteAnIssueNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The IID of an issue
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+  '/projects/{id}/snippets/{snippet_id}/notes':
+    get:
+      summary: List all snippet notes
+      description: Gets a list of all notes for a single snippet. Snippet notes are comments users can post to a snippet.
+      operationId: listAllSnippetNotes
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project snippet
+          required: true
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Return snippet notes sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: Return snippet notes ordered by created_at or updated_at fields. Default is created_at
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+    post:
+      summary: Create new snippet note
+      description: >-
+        Creates a new note for a single snippet. Snippet notes are user comments on snippets. If you create a note where
+        the body only contains an Award Emoji, GitLab returns this object.
+      operationId: createNewSnippetNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a snippet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewSnippetNoteRequest'
+      tags:
+        - notes
+  '/projects/{id}/snippets/{snippet_id}/notes/{note_id}':
+    get:
+      summary: Get single snippet note
+      description: Returns a single note for a given snippet.
+      operationId: getSingleSnippetNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project snippet
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a snippet note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleSnippetNoteResponse'
+      tags:
+        - notes
+    put:
+      summary: Modify existing snippet note
+      description: Modify existing note of a snippet.
+      operationId: modifyExistingSnippetNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a snippet
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a snippet note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyExistingSnippetNoteRequest'
+      tags:
+        - notes
+    delete:
+      summary: Delete a snippet note
+      description: Deletes an existing note of a snippet.
+      operationId: deleteASnippetNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a snippet
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+  '/projects/{id}/merge_requests/{merge_request_iid}/notes':
+    get:
+      summary: List all merge request notes
+      description: Gets a list of all notes for a single merge request.
+      operationId: listAllMergeRequestNotes
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a project merge request
+          required: true
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Return merge request notes sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: Return merge request notes ordered by created_at or updated_at fields. Default is created_at
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+    post:
+      summary: Create new merge request note
+      description: >-
+        Creates a new note for a single merge request. If you create a note where the body only contains an Award Emoji,
+        GitLab returns this object.
+      operationId: createNewMergeRequestNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a project merge request
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewMergeRequestNoteRequest'
+      tags:
+        - notes
+  '/projects/{id}/merge_requests/{merge_request_iid}/notes/{note_id}':
+    get:
+      summary: Get single merge request note
+      description: Returns a single note for a given merge request.
+      operationId: getSingleMergeRequestNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a project merge request
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a merge request note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleMergeRequestNoteResponse'
+      tags:
+        - notes
+    put:
+      summary: Modify existing merge request note
+      description: Modify existing note of a merge request.
+      operationId: modifyExistingMergeRequestNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a project merge request
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
+      tags:
+        - notes
+    delete:
+      summary: Delete a merge request note
+      description: Deletes an existing note of a merge request.
+      operationId: deleteAMergeRequestNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: merge_request_iid
+          in: path
+          description: The IID of a merge request
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+  '/groups/{id}/epics/{epic_id}/notes':
+    get:
+      summary: List all epic notes
+      description: Gets a list of all notes for a single epic. Epic notes are comments users can post to an epic.
+      operationId: listAllEpicNotes
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: epic_id
+          in: path
+          description: The ID of a group epic
+          required: true
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Return epic notes sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: Return epic notes ordered by created_at or updated_at fields. Default is created_at
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+    post:
+      summary: Create new epic note
+      description: >-
+        Creates a new note for a single epic. Epic notes are comments users can post to an epic. If you create a note
+        where the body only contains an Award Emoji, GitLab returns this object.
+      operationId: createNewEpicNote
+      parameters:
+        - name: epic_id
+          in: path
+          description: The ID of an epic
+          required: true
+          schema:
+            type: integer
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
+      tags:
+        - notes
+  '/groups/{id}/epics/{epic_id}/notes/{note_id}':
+    get:
+      summary: Get single epic note
+      description: Returns a single note for a given epic.
+      operationId: getSingleEpicNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: epic_id
+          in: path
+          description: The ID of an epic
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSingleEpicNoteResponse'
+      tags:
+        - notes
+    put:
+      summary: Modify existing epic note
+      description: Modify existing note of an epic.
+      operationId: modifyExistingEpicNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: epic_id
+          in: path
+          description: The ID of an epic
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
+      tags:
+        - notes
+    delete:
+      summary: Delete an epic note
+      description: Deletes an existing note of an epic.
+      operationId: deleteAnEpicNote
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group
+          required: true
+          schema:
+            type: string
+        - name: epic_id
+          in: path
+          description: The ID of an epic
+          required: true
+          schema:
+            type: integer
+        - name: note_id
+          in: path
+          description: The ID of a note
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - notes
+components:
+  schemas:
+    listProjectIssueNotesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          body:
+            type: string
+          attachment:
+            type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              username:
+                type: string
+              email:
+                type: string
+              name:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          system:
+            type: boolean
+          noteable_id:
+            type: integer
+          noteable_type:
+            type: string
+          noteable_iid:
+            type: integer
+          resolvable:
+            type: boolean
+          confidential:
+            type: boolean
+    createNewIssueNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        confidential:
+          type: boolean
+        created_at:
+          type: string
+      required:
+        - body
+    modifyExistingIssueNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        confidential:
+          type: boolean
+    getSingleSnippetNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+    createNewSnippetNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        created_at:
+          type: string
+      required:
+        - body
+    modifyExistingSnippetNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+      required:
+        - body
+    getSingleMergeRequestNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        body:
+          type: string
+        attachment:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        system:
+          type: boolean
+        noteable_id:
+          type: integer
+        noteable_type:
+          type: string
+        noteable_iid:
+          type: integer
+        resolvable:
+          type: boolean
+        confidential:
+          type: boolean
+    createNewMergeRequestNoteRequest:
+      type: object
+      properties:
+        body:
+          type: string
+        created_at:
+          type: string
+        merge_request_diff_sha:
+          type: string
+      required:
+        - body
+    getSingleEpicNoteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        expires_at:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        confidential:
+          type: boolean

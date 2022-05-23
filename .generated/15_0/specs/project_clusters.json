@@ -1,0 +1,463 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/project_clusters.html",
+  "pageSlug": "project_clusters",
+  "pageName": "Project clusters",
+  "apis": [
+    {
+      "name": "List project clusters",
+      "description": "Returns a list of project clusters.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/clusters"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "id": 18,
+          "name": "cluster-1",
+          "domain": "example.com",
+          "created_at": "2019-01-02T20:18:12.563Z",
+          "managed": true,
+          "enabled": true,
+          "provider_type": "user",
+          "platform_type": "kubernetes",
+          "environment_scope": "*",
+          "cluster_type": "project_type",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/4249f4df72b..",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "platform_kubernetes": {
+            "api_url": "https://104.197.68.152",
+            "namespace": "cluster-1-namespace",
+            "authorization_type": "rbac",
+            "ca_cert": "-----BEGIN CERTIFICATE-----\r\nhFiK1L61owwDQYJKoZIhvcNAQELBQAw\r\nLzEtMCsGA1UEAxMkZDA1YzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM4ZDBj\r\nMB4XDTE4MTIyNzIwMDM1MVoXDTIzMTIyNjIxMDM1MVowLzEtMCsGA1UEAxMkZDA1\r\nYzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM.......-----END CERTIFICATE-----"
+          },
+          "management_project": {
+            "id": 2,
+            "description": null,
+            "name": "project2",
+            "name_with_namespace": "John Doe8 / project2",
+            "path": "project2",
+            "path_with_namespace": "namespace2/project2",
+            "created_at": "2019-10-11T02:55:54.138Z"
+          }
+        },
+        {
+          "id": 19,
+          "name": "cluster-2"
+        }
+      ]
+    },
+    {
+      "name": "Get a single project cluster",
+      "description": "Gets a single project cluster.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/clusters/:cluster_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "cluster_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the cluster"
+        }
+      ],
+      "response": {
+        "id": 18,
+        "name": "cluster-1",
+        "domain": "example.com",
+        "created_at": "2019-01-02T20:18:12.563Z",
+        "managed": true,
+        "enabled": true,
+        "provider_type": "user",
+        "platform_type": "kubernetes",
+        "environment_scope": "*",
+        "cluster_type": "project_type",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/4249f4df72b..",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "platform_kubernetes": {
+          "api_url": "https://104.197.68.152",
+          "namespace": "cluster-1-namespace",
+          "authorization_type": "rbac",
+          "ca_cert": "-----BEGIN CERTIFICATE-----\r\nhFiK1L61owwDQYJKoZIhvcNAQELBQAw\r\nLzEtMCsGA1UEAxMkZDA1YzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM4ZDBj\r\nMB4XDTE4MTIyNzIwMDM1MVoXDTIzMTIyNjIxMDM1MVowLzEtMCsGA1UEAxMkZDA1\r\nYzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM.......-----END CERTIFICATE-----"
+        },
+        "management_project": {
+          "id": 2,
+          "description": null,
+          "name": "project2",
+          "name_with_namespace": "John Doe8 / project2",
+          "path": "project2",
+          "path_with_namespace": "namespace2/project2",
+          "created_at": "2019-10-11T02:55:54.138Z"
+        },
+        "project": {
+          "id": 26,
+          "description": "",
+          "name": "project-with-clusters-api",
+          "name_with_namespace": "Administrator / project-with-clusters-api",
+          "path": "project-with-clusters-api",
+          "path_with_namespace": "root/project-with-clusters-api",
+          "created_at": "2019-01-02T20:13:32.600Z",
+          "default_branch": null,
+          "tag_list": [],
+          "topics": [],
+          "ssh_url_to_repo": "ssh://gitlab.example.com/root/project-with-clusters-api.git",
+          "http_url_to_repo": "https://gitlab.example.com/root/project-with-clusters-api.git",
+          "web_url": "https://gitlab.example.com/root/project-with-clusters-api",
+          "readme_url": null,
+          "avatar_url": null,
+          "star_count": 0,
+          "forks_count": 0,
+          "last_activity_at": "2019-01-02T20:13:32.600Z",
+          "namespace": {
+            "id": 1,
+            "name": "root",
+            "path": "root",
+            "kind": "user",
+            "full_path": "root",
+            "parent_id": null
+          }
+        }
+      }
+    },
+    {
+      "name": "Add existing cluster to project",
+      "description": "Adds an existing Kubernetes cluster to the project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/clusters/user"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the cluster"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": false,
+          "description": "The base domain of the cluster"
+        },
+        {
+          "name": "management_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of the management project for the cluster"
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if cluster is active or not, defaults to true"
+        },
+        {
+          "name": "managed",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if GitLab manages namespaces and service accounts for this cluster. Defaults to true"
+        },
+        {
+          "name": "platform_kubernetes_attributes[api_url]",
+          "type": "string",
+          "required": true,
+          "description": "The URL to access the Kubernetes API"
+        },
+        {
+          "name": "platform_kubernetes_attributes[token]",
+          "type": "string",
+          "required": true,
+          "description": "The token to authenticate against Kubernetes"
+        },
+        {
+          "name": "platform_kubernetes_attributes[ca_cert]",
+          "type": "string",
+          "required": false,
+          "description": "TLS certificate. Required if API is using a self-signed TLS certificate."
+        },
+        {
+          "name": "platform_kubernetes_attributes[namespace]",
+          "type": "string",
+          "required": false,
+          "description": "The unique namespace related to the project"
+        },
+        {
+          "name": "platform_kubernetes_attributes[authorization_type]",
+          "type": "string",
+          "required": false,
+          "description": "The cluster authorization type: rbac, abac or unknown_authorization. Defaults to rbac."
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The associated environment to the cluster. Defaults to *"
+        }
+      ],
+      "response": {
+        "id": 24,
+        "name": "cluster-5",
+        "created_at": "2019-01-03T21:53:40.610Z",
+        "managed": true,
+        "enabled": true,
+        "provider_type": "user",
+        "platform_type": "kubernetes",
+        "environment_scope": "*",
+        "cluster_type": "project_type",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/4249f4df72b..",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "platform_kubernetes": {
+          "api_url": "https://35.111.51.20",
+          "namespace": "cluster-5-namespace",
+          "authorization_type": "rbac",
+          "ca_cert": "-----BEGIN CERTIFICATE-----\r\nhFiK1L61owwDQYJKoZIhvcNAQELBQAw\r\nLzEtMCsGA1UEAxMkZDA1YzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM4ZDBj\r\nMB4XDTE4MTIyNzIwMDM1MVoXDTIzMTIyNjIxMDM1MVowLzEtMCsGA1UEAxMkZDA1\r\nYzQ1YjctNzdiMS00NDY0LThjNmEtMTQ0ZDJkZjM.......-----END CERTIFICATE-----"
+        },
+        "management_project": null,
+        "project": {
+          "id": 26,
+          "description": "",
+          "name": "project-with-clusters-api",
+          "name_with_namespace": "Administrator / project-with-clusters-api",
+          "path": "project-with-clusters-api",
+          "path_with_namespace": "root/project-with-clusters-api",
+          "created_at": "2019-01-02T20:13:32.600Z",
+          "default_branch": null,
+          "tag_list": [],
+          "topics": [],
+          "ssh_url_to_repo": "ssh:://gitlab.example.com/root/project-with-clusters-api.git",
+          "http_url_to_repo": "https://gitlab.example.com/root/project-with-clusters-api.git",
+          "web_url": "https://gitlab.example.com/root/project-with-clusters-api",
+          "readme_url": null,
+          "avatar_url": null,
+          "star_count": 0,
+          "forks_count": 0,
+          "last_activity_at": "2019-01-02T20:13:32.600Z",
+          "namespace": {
+            "id": 1,
+            "name": "root",
+            "path": "root",
+            "kind": "user",
+            "full_path": "root",
+            "parent_id": null
+          }
+        }
+      }
+    },
+    {
+      "name": "Edit project cluster",
+      "description": "Updates an existing project cluster.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/clusters/:cluster_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "cluster_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the cluster"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the cluster"
+        },
+        {
+          "name": "domain",
+          "type": "string",
+          "required": false,
+          "description": "The base domain of the cluster"
+        },
+        {
+          "name": "management_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of the management project for the cluster"
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if cluster is active or not"
+        },
+        {
+          "name": "managed",
+          "type": "boolean",
+          "required": false,
+          "description": "Determines if GitLab manages namespaces and service accounts for this cluster"
+        },
+        {
+          "name": "platform_kubernetes_attributes[api_url]",
+          "type": "string",
+          "required": false,
+          "description": "The URL to access the Kubernetes API"
+        },
+        {
+          "name": "platform_kubernetes_attributes[token]",
+          "type": "string",
+          "required": false,
+          "description": "The token to authenticate against Kubernetes"
+        },
+        {
+          "name": "platform_kubernetes_attributes[ca_cert]",
+          "type": "string",
+          "required": false,
+          "description": "TLS certificate. Required if API is using a self-signed TLS certificate."
+        },
+        {
+          "name": "platform_kubernetes_attributes[namespace]",
+          "type": "string",
+          "required": false,
+          "description": "The unique namespace related to the project"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The associated environment to the cluster"
+        }
+      ],
+      "response": {
+        "id": 24,
+        "name": "new-cluster-name",
+        "domain": "new-domain.com",
+        "created_at": "2019-01-03T21:53:40.610Z",
+        "managed": true,
+        "enabled": true,
+        "provider_type": "user",
+        "platform_type": "kubernetes",
+        "environment_scope": "*",
+        "cluster_type": "project_type",
+        "user": {
+          "id": 1,
+          "name": "Administrator",
+          "username": "root",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/4249f4df72b..",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "platform_kubernetes": {
+          "api_url": "https://new-api-url.com",
+          "namespace": "cluster-5-namespace",
+          "authorization_type": "rbac",
+          "ca_cert": null
+        },
+        "management_project": {
+          "id": 2,
+          "description": null,
+          "name": "project2",
+          "name_with_namespace": "John Doe8 / project2",
+          "path": "project2",
+          "path_with_namespace": "namespace2/project2",
+          "created_at": "2019-10-11T02:55:54.138Z"
+        },
+        "project": {
+          "id": 26,
+          "description": "",
+          "name": "project-with-clusters-api",
+          "name_with_namespace": "Administrator / project-with-clusters-api",
+          "path": "project-with-clusters-api",
+          "path_with_namespace": "root/project-with-clusters-api",
+          "created_at": "2019-01-02T20:13:32.600Z",
+          "default_branch": null,
+          "tag_list": [],
+          "topics": [],
+          "ssh_url_to_repo": "ssh:://gitlab.example.com/root/project-with-clusters-api.git",
+          "http_url_to_repo": "https://gitlab.example.com/root/project-with-clusters-api.git",
+          "web_url": "https://gitlab.example.com/root/project-with-clusters-api",
+          "readme_url": null,
+          "avatar_url": null,
+          "star_count": 0,
+          "forks_count": 0,
+          "last_activity_at": "2019-01-02T20:13:32.600Z",
+          "namespace": {
+            "id": 1,
+            "name": "root",
+            "path": "root",
+            "kind": "user",
+            "full_path": "root",
+            "parent_id": null
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete project cluster",
+      "description": "Deletes an existing project cluster. Does not remove existing resources within the connected Kubernetes cluster.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/clusters/:cluster_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "cluster_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the cluster"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

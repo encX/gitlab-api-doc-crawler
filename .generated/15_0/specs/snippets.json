@@ -1,0 +1,451 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/snippets.html",
+  "pageSlug": "snippets",
+  "pageName": "Code snippets",
+  "apis": [
+    {
+      "name": "List all snippets for a user",
+      "description": "Get a list of the current user’s snippets.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 42,
+          "title": "Voluptatem iure ut qui aut et consequatur quaerat.",
+          "file_name": "mclaughlin.rb",
+          "description": null,
+          "visibility": "internal",
+          "author": {
+            "id": 22,
+            "name": "User 0",
+            "username": "user0",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/52e4ce24a915fb7e51e1ad3b57f4b00a?s=80&d=identicon",
+            "web_url": "http://example.com/user0"
+          },
+          "updated_at": "2018-09-18T01:12:26.383Z",
+          "created_at": "2018-09-18T01:12:26.383Z",
+          "project_id": null,
+          "web_url": "http://example.com/snippets/42",
+          "raw_url": "http://example.com/snippets/42/raw"
+        },
+        {
+          "id": 41,
+          "title": "Ut praesentium non et atque.",
+          "file_name": "ondrickaemard.rb",
+          "description": null,
+          "visibility": "internal",
+          "author": {
+            "id": 22,
+            "name": "User 0",
+            "username": "user0",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/52e4ce24a915fb7e51e1ad3b57f4b00a?s=80&d=identicon",
+            "web_url": "http://example.com/user0"
+          },
+          "updated_at": "2018-09-18T01:12:26.360Z",
+          "created_at": "2018-09-18T01:12:26.360Z",
+          "project_id": 1,
+          "web_url": "http://example.com/gitlab-org/gitlab-test/snippets/41",
+          "raw_url": "http://example.com/gitlab-org/gitlab-test/snippets/41/raw"
+        }
+      ]
+    },
+    {
+      "name": "Get a single snippet",
+      "description": "Get a single snippet.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet to retrieve."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "test",
+        "file_name": "add.rb",
+        "description": "Ruby test snippet",
+        "visibility": "private",
+        "author": {
+          "id": 1,
+          "username": "john_smith",
+          "email": "john@example.com",
+          "name": "John Smith",
+          "state": "active",
+          "created_at": "2012-05-23T08:00:58Z"
+        },
+        "expires_at": null,
+        "updated_at": "2012-06-28T10:52:04Z",
+        "created_at": "2012-06-28T10:52:04Z",
+        "project_id": null,
+        "web_url": "http://example.com/snippets/1",
+        "raw_url": "http://example.com/snippets/1/raw"
+      }
+    },
+    {
+      "name": "Single snippet contents",
+      "description": "Get a single snippet’s raw contents.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets/:id/raw"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet to retrieve."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Snippet repository file content",
+      "description": "Returns the raw file content as plain text.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets/:id/files/:ref/:file_path/raw"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet to retrieve."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": true,
+          "description": "Reference to a tag, branch or commit."
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "required": true,
+          "description": "URL-encoded path to the file."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Create new snippet",
+      "description": "Create a new snippet.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/snippets"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "Title of a snippet"
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use files instead. Name of a snippet file"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use files instead. Content of a snippet"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description of a snippet"
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "Snippet’s visibility"
+        },
+        {
+          "name": "files",
+          "type": "array of hashes",
+          "required": false,
+          "description": "An array of snippet files"
+        },
+        {
+          "name": "files:file_path",
+          "type": "string",
+          "required": true,
+          "description": "File path of the snippet file"
+        },
+        {
+          "name": "files:content",
+          "type": "string",
+          "required": true,
+          "description": "Content of the snippet file"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "This is a snippet",
+        "description": "Hello World snippet",
+        "visibility": "internal",
+        "author": {
+          "id": 1,
+          "username": "john_smith",
+          "email": "john@example.com",
+          "name": "John Smith",
+          "state": "active",
+          "created_at": "2012-05-23T08:00:58Z"
+        },
+        "expires_at": null,
+        "updated_at": "2012-06-28T10:52:04Z",
+        "created_at": "2012-06-28T10:52:04Z",
+        "project_id": null,
+        "web_url": "http://example.com/snippets/1",
+        "raw_url": "http://example.com/snippets/1/raw",
+        "ssh_url_to_repo": "ssh://git@gitlab.example.com:snippets/1.git",
+        "http_url_to_repo": "https://gitlab.example.com/snippets/1.git",
+        "file_name": "test.txt",
+        "files": [
+          {
+            "content": "Hello world",
+            "file_path": "test.txt"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Update snippet",
+      "description": "Update an existing snippet.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/snippets/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet to update"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "Title of a snippet"
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use files instead. Name of a snippet file"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use files instead. Content of a snippet"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description of a snippet"
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "required": false,
+          "description": "Snippet’s visibility"
+        },
+        {
+          "name": "files",
+          "type": "array of hashes",
+          "required": false,
+          "description": "An array of snippet files. Required when updating snippets with multiple files."
+        },
+        {
+          "name": "files:action",
+          "type": "string",
+          "required": true,
+          "description": "Type of action to perform on the file, one of: create, update, delete, move"
+        },
+        {
+          "name": "files:file_path",
+          "type": "string",
+          "required": false,
+          "description": "File path of the snippet file"
+        },
+        {
+          "name": "files:previous_path",
+          "type": "string",
+          "required": false,
+          "description": "Previous path of the snippet file"
+        },
+        {
+          "name": "files:content",
+          "type": "string",
+          "required": false,
+          "description": "Content of the snippet file"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "title": "foo",
+        "description": "description of snippet",
+        "visibility": "internal",
+        "author": {
+          "id": 1,
+          "username": "john_smith",
+          "email": "john@example.com",
+          "name": "John Smith",
+          "state": "active",
+          "created_at": "2012-05-23T08:00:58Z"
+        },
+        "expires_at": null,
+        "updated_at": "2012-06-28T10:52:04Z",
+        "created_at": "2012-06-28T10:52:04Z",
+        "project_id": null,
+        "web_url": "http://example.com/snippets/1",
+        "raw_url": "http://example.com/snippets/1/raw",
+        "ssh_url_to_repo": "ssh://git@gitlab.example.com:snippets/1.git",
+        "http_url_to_repo": "https://gitlab.example.com/snippets/1.git",
+        "file_name": "renamed.md",
+        "files": [
+          {
+            "action": "move",
+            "previous_path": "test.txt",
+            "file_path": "renamed.md"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Delete snippet",
+      "description": "Delete an existing snippet.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/snippets/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet to delete."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List all public snippets",
+      "description": "List all public snippets.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets/public"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "per_page",
+          "type": "integer",
+          "required": false,
+          "description": "Number of snippets to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "description": "Page to retrieve."
+        }
+      ],
+      "response": [
+        {
+          "author": {
+            "avatar_url": "http://www.gravatar.com/avatar/edaf55a9e363ea263e3b981d09e0f7f7?s=80&d=identicon",
+            "id": 12,
+            "name": "Libby Rolfson",
+            "state": "active",
+            "username": "elton_wehner",
+            "web_url": "http://example.com/elton_wehner"
+          },
+          "created_at": "2016-11-25T16:53:34.504Z",
+          "file_name": "oconnerrice.rb",
+          "id": 49,
+          "title": "Ratione cupiditate et laborum temporibus.",
+          "updated_at": "2016-11-25T16:53:34.504Z",
+          "project_id": null,
+          "web_url": "http://example.com/snippets/49",
+          "raw_url": "http://example.com/snippets/49/raw"
+        },
+        {
+          "author": {
+            "avatar_url": "http://www.gravatar.com/avatar/36583b28626de71061e6e5a77972c3bd?s=80&d=identicon",
+            "id": 16,
+            "name": "Llewellyn Flatley",
+            "state": "active",
+            "username": "adaline",
+            "web_url": "http://example.com/adaline"
+          },
+          "created_at": "2016-11-25T16:53:34.479Z",
+          "file_name": "muellershields.rb",
+          "id": 48,
+          "title": "Minus similique nesciunt vel fugiat qui ullam sunt.",
+          "updated_at": "2016-11-25T16:53:34.479Z",
+          "project_id": null,
+          "web_url": "http://example.com/snippets/48",
+          "raw_url": "http://example.com/snippets/49/raw",
+          "visibility": "public"
+        }
+      ]
+    },
+    {
+      "name": "Get user agent details",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/snippets/:id/user_agent_detail"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "ID of snippet."
+        }
+      ],
+      "response": {
+        "user_agent": "AppleWebKit/537.36",
+        "ip_address": "127.0.0.1",
+        "akismet_submitted": false
+      }
+    }
+  ]
+}

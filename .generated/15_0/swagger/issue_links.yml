@@ -1,0 +1,314 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / issue_links'
+  version: '1.0'
+paths:
+  '/projects/{id}/issues/{issue_iid}/links':
+    get:
+      summary: List issue relations
+      description: >-
+        Get a list of a given issue’s linked issues, sorted by the relationship creation datetime (ascending). Issues
+        are filtered according to the user authorizations.
+      operationId: listIssueRelations
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The internal ID of a project’s issue
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listIssueRelationsResponse'
+      tags:
+        - issue_links
+    post:
+      summary: Create an issue link
+      description: Creates a two-way relation between two issues. The user must be allowed to update both issues to succeed.
+      operationId: createAnIssueLink
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The internal ID of a project’s issue
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnIssueLinkResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnIssueLinkRequest'
+      tags:
+        - issue_links
+  '/projects/{id}/issues/{issue_iid}/links/{issue_link_id}':
+    delete:
+      summary: Delete an issue link
+      description: 'Deletes an issue link, thus removes the two-way relationship.'
+      operationId: deleteAnIssueLink
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: issue_iid
+          in: path
+          description: The internal ID of a project’s issue
+          required: true
+          schema:
+            type: integer
+        - name: issue_link_id
+          in: path
+          description: The ID of an issue relationship
+          required: true
+          schema:
+            type: string
+        - name: link_type
+          in: query
+          description: 'The type of the relation (relates_to, blocks, is_blocked_by), defaults to relates_to'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnIssueLinkResponse'
+      tags:
+        - issue_links
+components:
+  schemas:
+    listIssueRelationsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          issue_link_id:
+            type: integer
+          project_id:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          title:
+            type: string
+          state:
+            type: string
+          assignees:
+            type: array
+            items: {}
+          assignee:
+            type: string
+          labels:
+            type: array
+            items:
+              type: string
+          author:
+            type: object
+            properties:
+              name:
+                type: string
+              avatar_url:
+                type: string
+              state:
+                type: string
+              web_url:
+                type: string
+              id:
+                type: integer
+              username:
+                type: string
+          description:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          milestone:
+            type: string
+          user_notes_count:
+            type: integer
+          due_date:
+            type: string
+          web_url:
+            type: string
+          confidential:
+            type: boolean
+          weight:
+            type: string
+          link_type:
+            type: string
+          link_created_at:
+            type: string
+            format: date-time
+          link_updated_at:
+            type: string
+            format: date-time
+    createAnIssueLinkRequest:
+      type: object
+      properties:
+        target_project_id:
+          oneOf:
+            - type: integer
+            - type: string
+        target_issue_iid:
+          oneOf:
+            - type: integer
+            - type: string
+        link_type:
+          type: string
+      required:
+        - target_project_id
+        - target_issue_iid
+    createAnIssueLinkResponse:
+      type: object
+      properties:
+        source_issue:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            project_id:
+              type: integer
+            created_at:
+              type: string
+              format: date-time
+            title:
+              type: string
+            state:
+              type: string
+            assignees:
+              type: array
+              items: {}
+            assignee:
+              type: string
+            labels:
+              type: array
+              items:
+                type: string
+            author:
+              type: object
+              properties:
+                name:
+                  type: string
+                avatar_url:
+                  type: string
+                state:
+                  type: string
+                web_url:
+                  type: string
+                id:
+                  type: integer
+                username:
+                  type: string
+            description:
+              type: string
+            updated_at:
+              type: string
+              format: date-time
+            milestone:
+              type: string
+            subscribed:
+              type: boolean
+            user_notes_count:
+              type: integer
+            due_date:
+              type: string
+            web_url:
+              type: string
+            confidential:
+              type: boolean
+            weight:
+              type: string
+        target_issue:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            project_id:
+              type: integer
+            created_at:
+              type: string
+              format: date-time
+            title:
+              type: string
+            state:
+              type: string
+            assignees:
+              type: array
+              items: {}
+            assignee:
+              type: string
+            labels:
+              type: array
+              items:
+                type: string
+            author:
+              type: object
+              properties:
+                name:
+                  type: string
+                avatar_url:
+                  type: string
+                state:
+                  type: string
+                web_url:
+                  type: string
+                id:
+                  type: integer
+                username:
+                  type: string
+            description:
+              type: string
+            updated_at:
+              type: string
+              format: date-time
+            milestone:
+              type: string
+            subscribed:
+              type: boolean
+            user_notes_count:
+              type: integer
+            due_date:
+              type: string
+            web_url:
+              type: string
+            confidential:
+              type: boolean
+            weight:
+              type: string
+        link_type:
+          type: string

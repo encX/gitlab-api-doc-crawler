@@ -1,0 +1,334 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_snippets'
+  version: '1.0'
+paths:
+  '/projects/{id}/snippets':
+    get:
+      summary: List snippets
+      description: Get a list of project snippets.
+      operationId: listSnippets
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_snippets
+    post:
+      summary: Create new snippet
+      description: Creates a new project snippet. The user must have permission to create new snippets.
+      operationId: createNewSnippet
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createNewSnippetResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewSnippetRequest'
+      tags:
+        - project_snippets
+  '/projects/{id}/snippets/{snippet_id}':
+    get:
+      summary: Single snippet
+      description: Get a single project snippet.
+      operationId: singleSnippet
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project’s snippet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleSnippetResponse'
+      tags:
+        - project_snippets
+    put:
+      summary: Update snippet
+      description: Updates an existing project snippet. The user must have permission to change an existing snippet.
+      operationId: updateSnippet
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project’s snippet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createNewSnippetResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateSnippetRequest'
+      tags:
+        - project_snippets
+    delete:
+      summary: Delete snippet
+      description: >-
+        Deletes an existing project snippet. This returns a 204 No Content status code if the operation was successfully
+        or 404 if the resource was not found.
+      operationId: deleteSnippet
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project’s snippet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_snippets
+  '/projects/{id}/snippets/{snippet_id}/raw':
+    get:
+      summary: Snippet content
+      description: Returns the raw project snippet as plain text.
+      operationId: snippetContent
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project’s snippet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_snippets
+  '/projects/{id}/snippets/{snippet_id}/files/{ref}/{file_path}/raw':
+    get:
+      summary: Snippet repository file content
+      description: Returns the raw file content as plain text.
+      operationId: snippetRepositoryFileContent
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a project’s snippet
+          required: true
+          schema:
+            type: integer
+        - name: ref
+          in: path
+          description: 'The name of a branch, tag or commit e.g. master'
+          required: true
+          schema:
+            type: string
+        - name: file_path
+          in: path
+          description: 'The URL-encoded path to the file, e.g. snippet%2Erb'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_snippets
+  '/projects/{id}/snippets/{snippet_id}/user_agent_detail':
+    get:
+      summary: Get user agent details
+      description: Available only for users with administrator access.
+      operationId: getUserAgentDetails
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: snippet_id
+          in: path
+          description: The ID of a snippet
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getUserAgentDetailsResponse'
+      tags:
+        - project_snippets
+components:
+  schemas:
+    singleSnippetResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        file_name:
+          type: string
+        description:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            email:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        project_id:
+          type: integer
+        web_url:
+          type: string
+        raw_url:
+          type: string
+    createNewSnippetRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        file_name:
+          type: string
+        content:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        'files:file_path':
+          type: string
+        'files:content':
+          type: string
+      required:
+        - title
+        - 'files:file_path'
+        - 'files:content'
+    createNewSnippetResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_path:
+                type: string
+              content:
+                type: string
+    updateSnippetRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        file_name:
+          type: string
+        content:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        'files:action':
+          type: string
+        'files:file_path':
+          type: string
+        'files:previous_path':
+          type: string
+        'files:content':
+          type: string
+      required:
+        - 'files:action'
+    getUserAgentDetailsResponse:
+      type: object
+      properties:
+        user_agent:
+          type: string
+        ip_address:
+          type: string
+        akismet_submitted:
+          type: boolean

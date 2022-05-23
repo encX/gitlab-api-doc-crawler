@@ -2,7 +2,7 @@
 Crawl GitLab API doc for OpenAPI spec generation.  
 GitLab doesn't provide official Swagger/OpenAPI nor official API client in any language neither.  
 
-With 885 endpoint (not including pages with weird arrangement that I can't parse)
+With 895 endpoint (as of GitLab 15.0, not including pages with weird arrangement that I can't parse)
 I can do it myself.
 
 ## Crawling/Generation process
@@ -43,7 +43,7 @@ In each version contains
 - [x] Make corrections to page parsing up to 90%
 - [x] Generate and freeze
   - [x] 14.10
-  - [ ] 15.0-pre?
+  - [ ] 15.0
 - [ ] Put specs to a separated repo and crowdsource hand corrections
 - [ ] Generate GitLabKit REST API clients
   - [ ] .net

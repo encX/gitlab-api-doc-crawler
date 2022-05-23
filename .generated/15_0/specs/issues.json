@@ -1,0 +1,2889 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/issues.html",
+  "pageSlug": "issues",
+  "pageName": "Issues",
+  "apis": [
+    {
+      "name": "List issues",
+      "description": "Get all issues the authenticated user has access to. By default it returns only issues created by the current user. To get all issues, use parameter scope=all.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/issues"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?confidential=true"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?search=foo&in=title"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?state=closed"
+        },
+        {
+          "method": "GET",
+          "path": "/issues?state=opened"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks."
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the issues having the given iid"
+        },
+        {
+          "name": "in",
+          "type": "string",
+          "required": false,
+          "description": "Modify the scope of the search attribute. title, description, or a string joining them with comma. Default is title,description"
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "required": false,
+          "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)"
+        },
+        {
+          "name": "iteration_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "iteration_title",
+          "type": "string",
+          "required": false,
+          "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive."
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Using None or Any will be deprecated in the future. Please use milestone_id attribute instead. milestone and milestone_id are mutually exclusive."
+        },
+        {
+          "name": "milestone_id",
+          "type": "string",
+          "required": false,
+          "description": "Returns issues assigned to milestones with a given timebox value (None, Any, Upcoming, and Started). None lists all issues with no milestone. Any lists all issues that have an assigned milestone. Upcoming lists all issues assigned to milestones due in the future. Started lists all issues assigned to open, started milestones. milestone and milestone_id are mutually exclusive. (Introduced in GitLab 14.3)"
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "non_archived",
+          "type": "boolean",
+          "required": false,
+          "description": "Return issues only from non-archived projects. If false, the response returns issues from both archived and non-archived projects. Default is true. (Introduced in GitLab 13.0)"
+        },
+        {
+          "name": "not",
+          "type": "Hash",
+          "required": false,
+          "description": "Return issues that do not match the parameters supplied. Accepts: assignee_id, assignee_username, author_id, author_username, iids, iteration_id, iteration_title, labels, milestone, milestone_id and weight."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return issues ordered by created_at, due_date, label_priority, milestone_due, popularity, priority, relative_position, title, updated_at, or weight fields. Default is created_at."
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to created_by_me."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search issues against their title and description"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return issues sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Return all issues or just those that are opened or closed"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned."
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab 12.7"
+        }
+      ],
+      "response": [
+        {
+          "state": "opened",
+          "description": "Ratione dolores corrupti mollitia soluta quia.",
+          "health_status": "on_track"
+        },
+        {
+          "state": "opened",
+          "description": "Ratione dolores corrupti mollitia soluta quia.",
+          "weight": null
+        },
+        {
+          "state": "opened",
+          "description": "Ratione dolores corrupti mollitia soluta quia.",
+          "author": {
+            "state": "active",
+            "id": 18,
+            "web_url": "https://gitlab.example.com/eileen.lowe",
+            "name": "Alexandra Bashirian",
+            "avatar_url": null,
+            "username": "eileen.lowe"
+          },
+          "milestone": {
+            "project_id": 1,
+            "description": "Ducimus nam enim ex consequatur cumque ratione.",
+            "state": "closed",
+            "due_date": null,
+            "iid": 2,
+            "created_at": "2016-01-04T15:31:39.996Z",
+            "title": "v4.0",
+            "id": 17,
+            "updated_at": "2016-01-04T15:31:39.996Z"
+          },
+          "project_id": 1,
+          "assignees": [
+            {
+              "state": "active",
+              "id": 1,
+              "name": "Administrator",
+              "web_url": "https://gitlab.example.com/root",
+              "avatar_url": null,
+              "username": "root"
+            }
+          ],
+          "assignee": {
+            "state": "active",
+            "id": 1,
+            "name": "Administrator",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root"
+          },
+          "type": "ISSUE",
+          "updated_at": "2016-01-04T15:31:51.081Z",
+          "closed_at": null,
+          "closed_by": null,
+          "id": 76,
+          "title": "Consequatur vero maxime deserunt laboriosam est voluptas dolorem.",
+          "created_at": "2016-01-04T15:31:51.081Z",
+          "moved_to_id": null,
+          "iid": 6,
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "user_notes_count": 1,
+          "due_date": "2016-07-22",
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/6",
+          "references": {
+            "short": "#6",
+            "relative": "my-group/my-project#6",
+            "full": "my-group/my-project#6"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/1/issues/76",
+            "notes": "http://gitlab.example.com/api/v4/projects/1/issues/76/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/76/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/1"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "List group issues",
+      "description": "Get a list of a group’s issues.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?confidential=true"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?search=issue+title+or+description"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?state=closed"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/issues?state=opened"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks."
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the issues having the given iid"
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "required": false,
+          "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)"
+        },
+        {
+          "name": "iteration_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "iteration_title",
+          "type": "string",
+          "required": false,
+          "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive."
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone."
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "non_archived",
+          "type": "boolean",
+          "required": false,
+          "description": "Return issues from non archived projects. Default is true. (Introduced in GitLab 12.8)"
+        },
+        {
+          "name": "not",
+          "type": "Hash",
+          "required": false,
+          "description": "Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, my_reaction_emoji, search, in"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority, milestone_due, popularity, weight fields. Default is created_at"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search group issues against their title and description"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return issues sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Return all issues or just those that are opened or closed"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned."
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. The description_html attribute was introduced in GitLab 12.7"
+        }
+      ],
+      "response": [
+        {
+          "project_id": 4,
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "health_status": "at_risk"
+        },
+        {
+          "project_id": 4,
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "weight": null
+        },
+        {
+          "project_id": 4,
+          "milestone": {
+            "due_date": null,
+            "project_id": 4,
+            "state": "closed",
+            "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+            "iid": 3,
+            "id": 11,
+            "title": "v3.0",
+            "created_at": "2016-01-04T15:31:39.788Z",
+            "updated_at": "2016-01-04T15:31:39.788Z"
+          },
+          "author": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "state": "closed",
+          "iid": 1,
+          "assignees": [
+            {
+              "avatar_url": null,
+              "web_url": "https://gitlab.example.com/lennie",
+              "state": "active",
+              "username": "lennie",
+              "id": 9,
+              "name": "Dr. Luella Kovacek"
+            }
+          ],
+          "assignee": {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          },
+          "type": "ISSUE",
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "id": 41,
+          "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+          "updated_at": "2016-01-04T15:31:46.176Z",
+          "created_at": "2016-01-04T15:31:46.176Z",
+          "closed_at": null,
+          "closed_by": null,
+          "user_notes_count": 1,
+          "due_date": null,
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+          "references": {
+            "short": "#1",
+            "relative": "my-project#1",
+            "full": "my-group/my-project#1"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/4/issues/41",
+            "notes": "http://gitlab.example.com/api/v4/projects/4/issues/41/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/4/issues/41/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/4"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "List project issues",
+      "description": "Get a list of a project’s issues.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?assignee_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?author_id=5"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?confidential=true"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?iids[]=42&iids[]=43"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?labels=foo"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?labels=foo,bar"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?labels=foo,bar&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?milestone=1.0.0"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?milestone=1.0.0&state=opened"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?my_reaction_emoji=star"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?search=issue+title+or+description"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?state=closed"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues?state=opened"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee."
+        },
+        {
+          "name": "assignee_username",
+          "type": "string array",
+          "required": false,
+          "description": "Return issues assigned to the given username. Similar to assignee_id and mutually exclusive with assignee_id. In GitLab CE, the assignee_username array should only contain a single value. Otherwise, an invalid parameter error is returned."
+        },
+        {
+          "name": "author_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues created by the given user id. Mutually exclusive with author_username. Combine with scope=all or scope=assigned_to_me."
+        },
+        {
+          "name": "author_username",
+          "type": "string",
+          "required": false,
+          "description": "Return issues created by the given username. Similar to author_id and mutually exclusive with author_id."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter confidential or public issues."
+        },
+        {
+          "name": "created_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "created_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "description": "Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next_month_and_previous_two_weeks."
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues associated with the given epic ID. None returns issues that are not associated with an epic. Any returns issues that are associated with an epic. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "iids[]",
+          "type": "integer array",
+          "required": false,
+          "description": "Return only the issues having the given iid"
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "required": false,
+          "description": "Filter to a given type of issue. One of issue, incident, or test_case. (Introduced in GitLab 13.12)"
+        },
+        {
+          "name": "iteration_id",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. Mutually exclusive with iteration_title. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "iteration_title",
+          "type": "string",
+          "required": false,
+          "description": "Return issues assigned to the iteration with the given title. Similar to iteration_id and mutually exclusive with iteration_id. (Introduced in GitLab 13.6)"
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of label names, issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive."
+        },
+        {
+          "name": "milestone",
+          "type": "string",
+          "required": false,
+          "description": "The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone."
+        },
+        {
+          "name": "my_reaction_emoji",
+          "type": "string",
+          "required": false,
+          "description": "Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction."
+        },
+        {
+          "name": "not",
+          "type": "Hash",
+          "required": false,
+          "description": "Return issues that do not match the parameters supplied. Accepts: labels, milestone, author_id, author_username, assignee_id, assignee_username, my_reaction_emoji, search, in"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return issues ordered by created_at, updated_at, priority, due_date, relative_position, label_priority, milestone_due, popularity, weight fields. Default is created_at"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Return issues for the given scope: created_by_me, assigned_to_me or all. Defaults to all."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search project issues against their title and description"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return issues sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Return all issues or just those that are opened or closed"
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned."
+        },
+        {
+          "name": "with_labels_details",
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the response returns more details for each label in labels field: :name, :color, :description, :description_html, :text_color. Default is false. description_html was introduced in GitLab 12.7"
+        }
+      ],
+      "response": [
+        {
+          "project_id": 4,
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "health_status": "at_risk"
+        },
+        {
+          "project_id": 4,
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "weight": null
+        },
+        {
+          "project_id": 4,
+          "milestone": {
+            "due_date": null,
+            "project_id": 4,
+            "state": "closed",
+            "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+            "iid": 3,
+            "id": 11,
+            "title": "v3.0",
+            "created_at": "2016-01-04T15:31:39.788Z",
+            "updated_at": "2016-01-04T15:31:39.788Z"
+          },
+          "author": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
+          "description": "Omnis vero earum sunt corporis dolor et placeat.",
+          "state": "closed",
+          "iid": 1,
+          "assignees": [
+            {
+              "avatar_url": null,
+              "web_url": "https://gitlab.example.com/lennie",
+              "state": "active",
+              "username": "lennie",
+              "id": 9,
+              "name": "Dr. Luella Kovacek"
+            }
+          ],
+          "assignee": {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          },
+          "type": "ISSUE",
+          "labels": [
+            "foo",
+            "bar"
+          ],
+          "upvotes": 4,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "id": 41,
+          "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+          "updated_at": "2016-01-04T15:31:46.176Z",
+          "created_at": "2016-01-04T15:31:46.176Z",
+          "closed_at": "2016-01-05T15:31:46.176Z",
+          "closed_by": {
+            "state": "active",
+            "web_url": "https://gitlab.example.com/root",
+            "avatar_url": null,
+            "username": "root",
+            "id": 1,
+            "name": "Administrator"
+          },
+          "user_notes_count": 1,
+          "due_date": "2016-07-22",
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+          "references": {
+            "short": "#1",
+            "relative": "#1",
+            "full": "my-group/my-project#1"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "has_tasks": true,
+          "task_status": "10 of 15 tasks completed",
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "_links": {
+            "self": "http://gitlab.example.com/api/v4/projects/4/issues/41",
+            "notes": "http://gitlab.example.com/api/v4/projects/4/issues/41/notes",
+            "award_emoji": "http://gitlab.example.com/api/v4/projects/4/issues/41/award_emoji",
+            "project": "http://gitlab.example.com/api/v4/projects/4"
+          },
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "Single issue",
+      "description": "Only for administrators. Get a single issue.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/issues/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the issue"
+        }
+      ],
+      "response": {
+        "project_id": 4,
+        "description": "Omnis vero earum sunt corporis dolor et placeat.",
+        "weight": null,
+        "id": 1,
+        "milestone": {
+          "due_date": null,
+          "project_id": 4,
+          "state": "closed",
+          "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+          "iid": 3,
+          "id": 11,
+          "title": "v3.0",
+          "created_at": "2016-01-04T15:31:39.788Z",
+          "updated_at": "2016-01-04T15:31:39.788Z",
+          "closed_at": "2016-01-05T15:31:46.176Z"
+        },
+        "author": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "state": "closed",
+        "iid": 1,
+        "assignees": [
+          {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          }
+        ],
+        "assignee": {
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/lennie",
+          "state": "active",
+          "username": "lennie",
+          "id": 9,
+          "name": "Dr. Luella Kovacek"
+        },
+        "type": "ISSUE",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+        "updated_at": "2016-01-04T15:31:46.176Z",
+        "created_at": "2016-01-04T15:31:46.176Z",
+        "closed_at": null,
+        "closed_by": null,
+        "subscribed": false,
+        "user_notes_count": 1,
+        "due_date": null,
+        "web_url": "http://example.com/my-group/my-project/issues/1",
+        "references": {
+          "short": "#1",
+          "relative": "#1",
+          "full": "my-group/my-project#1"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        },
+        "has_tasks": false,
+        "_links": {
+          "self": "http://gitlab.example:3000/api/v4/projects/1/issues/1",
+          "notes": "http://gitlab.example:3000/api/v4/projects/1/issues/1/notes",
+          "award_emoji": "http://gitlab.example:3000/api/v4/projects/1/issues/1/award_emoji",
+          "project": "http://gitlab.example:3000/api/v4/projects/1"
+        },
+        "moved_to_id": null,
+        "service_desk_reply_to": "service.desk@gitlab.com"
+      }
+    },
+    {
+      "name": "Single project issue",
+      "description": "Get a single project issue.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "project_id": 4,
+        "description": "Omnis vero earum sunt corporis dolor et placeat.",
+        "epic_iid": 5,
+        "epic": {
+          "id": 42,
+          "iid": 5,
+          "title": "My epic epic",
+          "url": "/groups/h5bp/-/epics/5",
+          "group_id": 8
+        },
+        "weight": null,
+        "milestone": {
+          "due_date": null,
+          "project_id": 4,
+          "state": "closed",
+          "description": "Rerum est voluptatem provident consequuntur molestias similique ipsum dolor.",
+          "iid": 3,
+          "id": 11,
+          "title": "v3.0",
+          "created_at": "2016-01-04T15:31:39.788Z",
+          "updated_at": "2016-01-04T15:31:39.788Z",
+          "closed_at": "2016-01-05T15:31:46.176Z"
+        },
+        "author": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "state": "closed",
+        "iid": 1,
+        "assignees": [
+          {
+            "avatar_url": null,
+            "web_url": "https://gitlab.example.com/lennie",
+            "state": "active",
+            "username": "lennie",
+            "id": 9,
+            "name": "Dr. Luella Kovacek"
+          }
+        ],
+        "assignee": {
+          "avatar_url": null,
+          "web_url": "https://gitlab.example.com/lennie",
+          "state": "active",
+          "username": "lennie",
+          "id": 9,
+          "name": "Dr. Luella Kovacek"
+        },
+        "type": "ISSUE",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "id": 41,
+        "title": "Ut commodi ullam eos dolores perferendis nihil sunt.",
+        "updated_at": "2016-01-04T15:31:46.176Z",
+        "created_at": "2016-01-04T15:31:46.176Z",
+        "closed_at": null,
+        "closed_by": null,
+        "subscribed": false,
+        "user_notes_count": 1,
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/1",
+        "references": {
+          "short": "#1",
+          "relative": "#1",
+          "full": "my-group/my-project#1"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "New issue",
+      "description": "Creates a new project issue.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "assignee_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of the user to assign the issue to. Only appears on GitLab Free."
+        },
+        {
+          "name": "assignee_ids",
+          "type": "integer array",
+          "required": false,
+          "description": "The IDs of the users to assign the issue to."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Set an issue to be confidential. Default is false."
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of an issue. Limited to 1,048,576 characters."
+        },
+        {
+          "name": "discussion_to_resolve",
+          "type": "string",
+          "required": false,
+          "description": "The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge_request_to_resolve_discussions_of."
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "description": "The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the epic to add the issue to. Valid values are greater than or equal to 0."
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer",
+          "required": false,
+          "description": "IID of the epic to add the issue to. Valid values are greater than or equal to 0. (deprecated, scheduled for removal in API version 5)"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "iid",
+          "type": "integer/string",
+          "required": false,
+          "description": "The internal ID of the project’s issue (requires administrator or project owner rights)"
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of issue. One of issue, incident, or test_case. Default is issue."
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names for an issue"
+        },
+        {
+          "name": "merge_request_to_resolve_discussions_of",
+          "type": "integer",
+          "required": false,
+          "description": "The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values."
+        },
+        {
+          "name": "milestone_id",
+          "type": "integer",
+          "required": false,
+          "description": "The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue’s details."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "The title of an issue"
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "The weight of the issue. Valid values are greater than or equal to 0."
+        }
+      ],
+      "response": {
+        "project_id": 4,
+        "description": null,
+        "epic_iid": 5,
+        "epic": {
+          "id": 42,
+          "iid": 5,
+          "title": "My epic epic",
+          "url": "/groups/h5bp/-/epics/5",
+          "group_id": 8
+        },
+        "weight": null,
+        "id": 84,
+        "created_at": "2016-01-07T12:44:33.959Z",
+        "iid": 14,
+        "title": "Issues with auth",
+        "state": "opened",
+        "assignees": [],
+        "assignee": null,
+        "type": "ISSUE",
+        "labels": [
+          "bug"
+        ],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe",
+          "id": 18,
+          "username": "eileen.lowe"
+        },
+        "updated_at": "2016-01-07T12:44:33.959Z",
+        "closed_at": null,
+        "closed_by": null,
+        "milestone": null,
+        "subscribed": true,
+        "user_notes_count": 0,
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/14",
+        "references": {
+          "short": "#14",
+          "relative": "#14",
+          "full": "my-group/my-project#14"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Edit issue",
+      "description": "Updates an existing project issue. This call is also used to mark an issue as closed.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/issues/:issue_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "add_labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names to add to an issue."
+        },
+        {
+          "name": "assignee_ids",
+          "type": "integer array",
+          "required": false,
+          "description": "The ID of the users to assign the issue to. Set to 0 or provide an empty value to unassign all assignees."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Updates an issue to be confidential"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of an issue. Limited to 1,048,576 characters."
+        },
+        {
+          "name": "discussion_locked",
+          "type": "boolean",
+          "required": false,
+          "description": "Flag indicating if the issue’s discussion is locked. If the discussion is locked only project members can add or edit comments."
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "description": "The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the epic to add the issue to. Valid values are greater than or equal to 0."
+        },
+        {
+          "name": "epic_iid",
+          "type": "integer",
+          "required": false,
+          "description": "IID of the epic to add the issue to. Valid values are greater than or equal to 0. (deprecated, scheduled for removal in API version 5)"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "issue_type",
+          "type": "string",
+          "required": false,
+          "description": "Updates the type of issue. One of issue, incident, or test_case."
+        },
+        {
+          "name": "labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names for an issue. Set to an empty string to unassign all labels."
+        },
+        {
+          "name": "milestone_id",
+          "type": "integer",
+          "required": false,
+          "description": "The global ID of a milestone to assign the issue to. Set to 0 or provide an empty value to unassign a milestone."
+        },
+        {
+          "name": "remove_labels",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated label names to remove from an issue."
+        },
+        {
+          "name": "state_event",
+          "type": "string",
+          "required": false,
+          "description": "The state event of an issue. Set close to close the issue and reopen to reopen it"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "The title of an issue"
+        },
+        {
+          "name": "updated_at",
+          "type": "string",
+          "required": false,
+          "description": "When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z (requires administrator or project owner rights). Empty string or null values are not accepted."
+        },
+        {
+          "name": "weight",
+          "type": "integer",
+          "required": false,
+          "description": "The weight of the issue. Valid values are greater than or equal to 0. 0"
+        }
+      ],
+      "response": {
+        "project_id": 4,
+        "description": null,
+        "epic_iid": 5,
+        "epic": {
+          "id": 42,
+          "iid": 5,
+          "title": "My epic epic",
+          "url": "/groups/h5bp/-/epics/5",
+          "group_id": 8
+        },
+        "weight": null,
+        "created_at": "2016-01-07T12:46:01.410Z",
+        "author": {
+          "name": "Alexandra Bashirian",
+          "avatar_url": null,
+          "username": "eileen.lowe",
+          "id": 18,
+          "state": "active",
+          "web_url": "https://gitlab.example.com/eileen.lowe"
+        },
+        "state": "closed",
+        "title": "Issues with auth",
+        "updated_at": "2016-01-07T12:55:16.213Z",
+        "closed_at": "2016-01-08T12:55:16.213Z",
+        "closed_by": {
+          "state": "active",
+          "web_url": "https://gitlab.example.com/root",
+          "avatar_url": null,
+          "username": "root",
+          "id": 1,
+          "name": "Administrator"
+        },
+        "iid": 15,
+        "labels": [
+          "bug"
+        ],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "id": 85,
+        "assignees": [],
+        "assignee": null,
+        "milestone": null,
+        "subscribed": true,
+        "user_notes_count": 0,
+        "due_date": "2016-07-22",
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/15",
+        "references": {
+          "short": "#15",
+          "relative": "#15",
+          "full": "my-group/my-project#15"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Delete an issue",
+      "description": "Only for administrators and project owners. Deletes an issue.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/issues/:issue_iid"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Reorder an issue",
+      "description": "Reorders an issue, you can see the results when sorting issues manually",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/issues/:issue_iid/reorder"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of the project’s issue"
+        },
+        {
+          "name": "move_after_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of a project’s issue that should be placed after this issue"
+        },
+        {
+          "name": "move_before_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of a project’s issue that should be placed before this issue"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Move an issue",
+      "description": "Moves an issue to a different project. If the target project is the source project or the user has insufficient permissions, an error message with status code 400 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/move"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "to_project_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the new project"
+        }
+      ],
+      "response": {
+        "project_id": 5,
+        "description": "Repellat voluptas quibusdam voluptatem exercitationem.",
+        "epic_iid": 5,
+        "epic": {
+          "id": 42,
+          "iid": 5,
+          "title": "My epic epic",
+          "url": "/groups/h5bp/-/epics/5",
+          "group_id": 8
+        },
+        "weight": null,
+        "id": 92,
+        "iid": 11,
+        "title": "Sit voluptas tempora quisquam aut doloribus et.",
+        "state": "opened",
+        "created_at": "2016-04-05T21:41:45.652Z",
+        "updated_at": "2016-04-07T12:20:17.596Z",
+        "closed_at": null,
+        "closed_by": null,
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "milestone": null,
+        "assignees": [
+          {
+            "name": "Miss Monserrate Beier",
+            "username": "axel.block",
+            "id": 12,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/axel.block"
+          }
+        ],
+        "assignee": {
+          "name": "Miss Monserrate Beier",
+          "username": "axel.block",
+          "id": 12,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/axel.block"
+        },
+        "type": "ISSUE",
+        "author": {
+          "name": "Kris Steuber",
+          "username": "solon.cremin",
+          "id": 10,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/7a190fecbaa68212a4b68aeb6e3acd10?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/solon.cremin"
+        },
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/11",
+        "references": {
+          "short": "#11",
+          "relative": "#11",
+          "full": "my-group/my-project#11"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Clone an issue",
+      "description": "Clone the issue to given project. If the user has insufficient permissions, an error message with status code 400 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/clone"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": false,
+          "description": "ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": false,
+          "description": "Internal ID of a project’s issue."
+        },
+        {
+          "name": "to_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of the new project."
+        },
+        {
+          "name": "with_notes",
+          "type": "boolean",
+          "required": false,
+          "description": "Clone the issue with notes. Default is false."
+        }
+      ],
+      "response": {
+        "id": 290,
+        "iid": 1,
+        "project_id": 143,
+        "title": "foo",
+        "description": "closed",
+        "state": "opened",
+        "created_at": "2021-09-14T22:24:11.696Z",
+        "updated_at": "2021-09-14T22:24:11.696Z",
+        "closed_at": null,
+        "closed_by": null,
+        "labels": [],
+        "milestone": null,
+        "assignees": [
+          {
+            "id": 179,
+            "name": "John Doe2",
+            "username": "john",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/10fc7f102be8de7657fb4d80898bbfe3?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/john"
+          }
+        ],
+        "author": {
+          "id": 179,
+          "name": "John Doe2",
+          "username": "john",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/10fc7f102be8de7657fb4d80898bbfe3?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/john"
+        },
+        "type": "ISSUE",
+        "assignee": {
+          "id": 179,
+          "name": "John Doe2",
+          "username": "john",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/10fc7f102be8de7657fb4d80898bbfe3?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/john"
+        },
+        "user_notes_count": 1,
+        "merge_requests_count": 0,
+        "upvotes": 0,
+        "downvotes": 0,
+        "due_date": null,
+        "confidential": false,
+        "discussion_locked": null,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "web_url": "https://gitlab.example.com/namespace1/project2/-/issues/1",
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        },
+        "blocking_issues_count": 0,
+        "has_tasks": false,
+        "_links": {
+          "self": "https://gitlab.example.com/api/v4/projects/143/issues/1",
+          "notes": "https://gitlab.example.com/api/v4/projects/143/issues/1/notes",
+          "award_emoji": "https://gitlab.example.com/api/v4/projects/143/issues/1/award_emoji",
+          "project": "https://gitlab.example.com/api/v4/projects/143"
+        },
+        "references": {
+          "short": "#1",
+          "relative": "#1",
+          "full": "namespace1/project2#1"
+        },
+        "subscribed": true,
+        "moved_to_id": null,
+        "service_desk_reply_to": null
+      }
+    },
+    {
+      "name": "Subscribe to an issue",
+      "description": "Subscribes the authenticated user to an issue to receive notifications. If the user is already subscribed to the issue, the status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/subscribe"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "project_id": 5,
+        "description": "Repellat voluptas quibusdam voluptatem exercitationem.",
+        "epic_iid": 5,
+        "epic": {
+          "id": 42,
+          "iid": 5,
+          "title": "My epic epic",
+          "url": "/groups/h5bp/-/epics/5",
+          "group_id": 8
+        },
+        "weight": null,
+        "id": 92,
+        "iid": 11,
+        "title": "Sit voluptas tempora quisquam aut doloribus et.",
+        "state": "opened",
+        "created_at": "2016-04-05T21:41:45.652Z",
+        "updated_at": "2016-04-07T12:20:17.596Z",
+        "closed_at": null,
+        "closed_by": null,
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "milestone": null,
+        "assignees": [
+          {
+            "name": "Miss Monserrate Beier",
+            "username": "axel.block",
+            "id": 12,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/axel.block"
+          }
+        ],
+        "assignee": {
+          "name": "Miss Monserrate Beier",
+          "username": "axel.block",
+          "id": 12,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/46f6f7dc858ada7be1853f7fb96e81da?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/axel.block"
+        },
+        "type": "ISSUE",
+        "author": {
+          "name": "Kris Steuber",
+          "username": "solon.cremin",
+          "id": 10,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/7a190fecbaa68212a4b68aeb6e3acd10?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/solon.cremin"
+        },
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/11",
+        "references": {
+          "short": "#11",
+          "relative": "#11",
+          "full": "my-group/my-project#11"
+        },
+        "time_stats": {
+          "time_estimate": 0,
+          "total_time_spent": 0,
+          "human_time_estimate": null,
+          "human_total_time_spent": null
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "_links": {
+          "self": "http://gitlab.example.com/api/v4/projects/1/issues/2",
+          "notes": "http://gitlab.example.com/api/v4/projects/1/issues/2/notes",
+          "award_emoji": "http://gitlab.example.com/api/v4/projects/1/issues/2/award_emoji",
+          "project": "http://gitlab.example.com/api/v4/projects/1"
+        },
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Unsubscribe from an issue",
+      "description": "Unsubscribes the authenticated user from the issue to not receive notifications from it. If the user is not subscribed to the issue, the status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/unsubscribe"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "id": 93,
+        "iid": 12,
+        "project_id": 5,
+        "title": "Incidunt et rerum ea expedita iure quibusdam.",
+        "description": "Et cumque architecto sed aut ipsam.",
+        "state": "opened",
+        "created_at": "2016-04-05T21:41:45.217Z",
+        "updated_at": "2016-04-07T13:02:37.905Z",
+        "labels": [],
+        "upvotes": 4,
+        "downvotes": 0,
+        "merge_requests_count": 0,
+        "milestone": null,
+        "assignee": {
+          "name": "Edwardo Grady",
+          "username": "keyon",
+          "id": 21,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/3e6f06a86cf27fa8b56f3f74f7615987?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/keyon"
+        },
+        "type": "ISSUE",
+        "closed_at": null,
+        "closed_by": null,
+        "author": {
+          "name": "Vivian Hermann",
+          "username": "orville",
+          "id": 11,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/5224fd70153710e92fb8bcf79ac29d67?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/orville"
+        },
+        "subscribed": false,
+        "due_date": null,
+        "web_url": "http://gitlab.example.com/my-group/my-project/issues/12",
+        "references": {
+          "short": "#12",
+          "relative": "#12",
+          "full": "my-group/my-project#12"
+        },
+        "confidential": false,
+        "discussion_locked": false,
+        "issue_type": "issue",
+        "severity": "UNKNOWN",
+        "task_completion_status": {
+          "count": 0,
+          "completed_count": 0
+        }
+      }
+    },
+    {
+      "name": "Create a to-do item",
+      "description": "Manually creates a to-do item for the current user on an issue. If there already exists a to-do item for the user on that issue, status code 304 is returned.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/todo"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "id": 112,
+        "project": {
+          "id": 5,
+          "name": "GitLab CI/CD",
+          "name_with_namespace": "GitLab Org / GitLab CI/CD",
+          "path": "gitlab-ci",
+          "path_with_namespace": "gitlab-org/gitlab-ci"
+        },
+        "author": {
+          "name": "Administrator",
+          "username": "root",
+          "id": 1,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/root"
+        },
+        "action_name": "marked",
+        "target_type": "Issue",
+        "target": {
+          "id": 93,
+          "iid": 10,
+          "project_id": 5,
+          "title": "Vel voluptas atque dicta mollitia adipisci qui at.",
+          "description": "Tempora laboriosam sint magni sed voluptas similique.",
+          "state": "closed",
+          "created_at": "2016-06-17T07:47:39.486Z",
+          "updated_at": "2016-07-01T11:09:13.998Z",
+          "labels": [],
+          "milestone": {
+            "id": 26,
+            "iid": 1,
+            "project_id": 5,
+            "title": "v0.0",
+            "description": "Accusantium nostrum rerum quae quia quis nesciunt suscipit id.",
+            "state": "closed",
+            "created_at": "2016-06-17T07:47:33.832Z",
+            "updated_at": "2016-06-17T07:47:33.832Z",
+            "due_date": null
+          },
+          "assignees": [
+            {
+              "name": "Jarret O'Keefe",
+              "username": "francisca",
+              "id": 14,
+              "state": "active",
+              "avatar_url": "http://www.gravatar.com/avatar/a7fa515d53450023c83d62986d0658a8?s=80&d=identicon",
+              "web_url": "https://gitlab.example.com/francisca"
+            }
+          ],
+          "assignee": {
+            "name": "Jarret O'Keefe",
+            "username": "francisca",
+            "id": 14,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/a7fa515d53450023c83d62986d0658a8?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/francisca"
+          },
+          "type": "ISSUE",
+          "author": {
+            "name": "Maxie Medhurst",
+            "username": "craig_rutherford",
+            "id": 12,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/a0d477b3ea21970ce6ffcbb817b0b435?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/craig_rutherford"
+          },
+          "subscribed": true,
+          "user_notes_count": 7,
+          "upvotes": 0,
+          "downvotes": 0,
+          "merge_requests_count": 0,
+          "due_date": null,
+          "web_url": "http://gitlab.example.com/my-group/my-project/issues/10",
+          "references": {
+            "short": "#10",
+            "relative": "#10",
+            "full": "my-group/my-project#10"
+          },
+          "confidential": false,
+          "discussion_locked": false,
+          "issue_type": "issue",
+          "severity": "UNKNOWN",
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          }
+        },
+        "target_url": "https://gitlab.example.com/gitlab-org/gitlab-ci/issues/10",
+        "body": "Vel voluptas atque dicta mollitia adipisci qui at.",
+        "state": "pending",
+        "created_at": "2016-07-01T11:09:13.992Z"
+      }
+    },
+    {
+      "name": "Promote an issue to an epic",
+      "description": "Promotes an issue to an epic by adding a comment with the /promote quick action.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/notes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "required": true,
+          "description": "The content of a note. Must contain /promote at the start of a new line."
+        }
+      ],
+      "response": {
+        "id": 699,
+        "type": null,
+        "body": "Lets promote this to an epic",
+        "attachment": null,
+        "author": {
+          "id": 1,
+          "name": "Alexandra Bashirian",
+          "username": "eileen.lowe",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "https://gitlab.example.com/eileen.lowe"
+        },
+        "created_at": "2020-12-03T12:27:17.844Z",
+        "updated_at": "2020-12-03T12:27:17.844Z",
+        "system": false,
+        "noteable_id": 461,
+        "noteable_type": "Issue",
+        "resolvable": false,
+        "confidential": false,
+        "noteable_iid": 33,
+        "commands_changes": {
+          "promote_to_epic": true
+        }
+      }
+    },
+    {
+      "name": "Set a time estimate for an issue",
+      "description": "Sets an estimated time of work for this issue.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/time_estimate"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "duration",
+          "type": "string",
+          "required": true,
+          "description": "The duration in human format. e.g: 3h30m"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "human_time_estimate": "3h 30m",
+        "human_total_time_spent": null,
+        "time_estimate": 12600,
+        "total_time_spent": 0
+      }
+    },
+    {
+      "name": "Reset the time estimate for an issue",
+      "description": "Resets the estimated time for this issue to 0 seconds.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/reset_time_estimate"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "human_time_estimate": null,
+        "human_total_time_spent": null,
+        "time_estimate": 0,
+        "total_time_spent": 0
+      }
+    },
+    {
+      "name": "Add spent time for an issue",
+      "description": "Adds spent time for this issue",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/add_spent_time"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "duration",
+          "type": "string",
+          "required": true,
+          "description": "The duration in human format. e.g: 3h30m"
+        },
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "summary",
+          "type": "string",
+          "required": false,
+          "description": "A summary of how the time was spent"
+        }
+      ],
+      "response": {
+        "human_time_estimate": null,
+        "human_total_time_spent": "1h",
+        "time_estimate": 0,
+        "total_time_spent": 3600
+      }
+    },
+    {
+      "name": "Reset spent time for an issue",
+      "description": "Resets the total spent time for this issue to 0 seconds.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/reset_spent_time"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "human_time_estimate": null,
+        "human_total_time_spent": null,
+        "time_estimate": 0,
+        "total_time_spent": 0
+      }
+    },
+    {
+      "name": "Get time tracking stats",
+      "description": "If the project is private or the issue is confidential, you need to provide credentials to authorize. The preferred way to do this, is by using personal access tokens.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/time_stats"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "human_time_estimate": "2h",
+        "human_total_time_spent": "1h",
+        "time_estimate": 7200,
+        "total_time_spent": 3600
+      }
+    },
+    {
+      "name": "List merge requests related to issue",
+      "description": "Get all the merge requests that are related to the issue.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/related_merge_requests"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": [
+        {
+          "id": 29,
+          "iid": 11,
+          "project_id": 1,
+          "title": "Provident eius eos blanditiis consequatur neque odit.",
+          "description": "Ut consequatur ipsa aspernatur quisquam voluptatum fugit. Qui harum corporis quo fuga ut incidunt veritatis. Autem necessitatibus et harum occaecati nihil ea.\r\n\r\ntwitter/flight#8",
+          "state": "opened",
+          "created_at": "2018-09-18T14:36:15.510Z",
+          "updated_at": "2018-09-19T07:45:13.089Z",
+          "closed_by": null,
+          "closed_at": null,
+          "target_branch": "v2.x",
+          "source_branch": "so_long_jquery",
+          "user_notes_count": 9,
+          "upvotes": 0,
+          "downvotes": 0,
+          "author": {
+            "id": 14,
+            "name": "Verna Hills",
+            "username": "lawanda_reinger",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/de68a91aeab1cff563795fb98a0c2cc0?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/lawanda_reinger"
+          },
+          "assignee": {
+            "id": 19,
+            "name": "Jody Baumbach",
+            "username": "felipa.kuvalis",
+            "state": "active",
+            "avatar_url": "https://www.gravatar.com/avatar/6541fc75fc4e87e203529bd275fafd07?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/felipa.kuvalis"
+          },
+          "source_project_id": 1,
+          "target_project_id": 1,
+          "labels": [],
+          "draft": false,
+          "work_in_progress": false,
+          "milestone": {
+            "id": 27,
+            "iid": 2,
+            "project_id": 1,
+            "title": "v1.0",
+            "description": "Et tenetur voluptatem minima doloribus vero dignissimos vitae.",
+            "state": "active",
+            "created_at": "2018-09-18T14:35:44.353Z",
+            "updated_at": "2018-09-18T14:35:44.353Z",
+            "due_date": null,
+            "start_date": null,
+            "web_url": "https://gitlab.example.com/twitter/flight/milestones/2"
+          },
+          "merge_when_pipeline_succeeds": false,
+          "merge_status": "cannot_be_merged",
+          "sha": "3b7b528e9353295c1c125dad281ac5b5deae5f12",
+          "merge_commit_sha": null,
+          "squash_commit_sha": null,
+          "discussion_locked": null,
+          "should_remove_source_branch": null,
+          "force_remove_source_branch": false,
+          "reference": "!11",
+          "web_url": "https://gitlab.example.com/twitter/flight/merge_requests/4",
+          "references": {
+            "short": "!4",
+            "relative": "!4",
+            "full": "twitter/flight!4"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          },
+          "squash": false,
+          "task_completion_status": {
+            "count": 0,
+            "completed_count": 0
+          },
+          "changes_count": "10",
+          "latest_build_started_at": "2018-12-05T01:16:41.723Z",
+          "latest_build_finished_at": "2018-12-05T02:35:54.046Z",
+          "first_deployed_to_production_at": null,
+          "pipeline": {
+            "id": 38980952,
+            "sha": "81c6a84c7aebd45a1ac2c654aa87f11e32338e0a",
+            "ref": "test-branch",
+            "status": "success",
+            "web_url": "https://gitlab.com/gitlab-org/gitlab/pipelines/38980952"
+          },
+          "head_pipeline": {
+            "id": 38980952,
+            "sha": "81c6a84c7aebd45a1ac2c654aa87f11e32338e0a",
+            "ref": "test-branch",
+            "status": "success",
+            "web_url": "https://gitlab.example.com/twitter/flight/pipelines/38980952",
+            "before_sha": "3c738a37eb23cf4c0ed0d45d6ddde8aad4a8da51",
+            "tag": false,
+            "yaml_errors": null,
+            "user": {
+              "id": 19,
+              "name": "Jody Baumbach",
+              "username": "felipa.kuvalis",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/6541fc75fc4e87e203529bd275fafd07?s=80&d=identicon",
+              "web_url": "https://gitlab.example.com/felipa.kuvalis"
+            },
+            "created_at": "2018-12-05T01:16:13.342Z",
+            "updated_at": "2018-12-05T02:35:54.086Z",
+            "started_at": "2018-12-05T01:16:41.723Z",
+            "finished_at": "2018-12-05T02:35:54.046Z",
+            "committed_at": null,
+            "duration": 4436,
+            "coverage": "46.68",
+            "detailed_status": {
+              "icon": "status_warning",
+              "text": "passed",
+              "label": "passed with warnings",
+              "group": "success-with-warnings",
+              "tooltip": "passed",
+              "has_details": true,
+              "details_path": "/twitter/flight/pipelines/38",
+              "illustration": null,
+              "favicon": "https://gitlab.example.com/assets/ci_favicons/favicon_status_success-8451333011eee8ce9f2ab25dc487fe24a8758c694827a582f17f42b0a90446a2.png"
+            }
+          },
+          "diff_refs": {
+            "base_sha": "d052d768f0126e8cddf80afd8b1eb07f406a3fcb",
+            "head_sha": "81c6a84c7aebd45a1ac2c654aa87f11e32338e0a",
+            "start_sha": "d052d768f0126e8cddf80afd8b1eb07f406a3fcb"
+          },
+          "merge_error": null,
+          "user": {
+            "can_merge": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "List merge requests that close a particular issue on merge",
+      "description": "Get all merge requests that close a particular issue when merged.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/closed_by"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project issue"
+        }
+      ],
+      "response": [
+        {
+          "id": 6471,
+          "iid": 6432,
+          "project_id": 1,
+          "title": "add a test for cgi lexer options",
+          "description": "closes #11",
+          "state": "opened",
+          "created_at": "2017-04-06T18:33:34.168Z",
+          "updated_at": "2017-04-09T20:10:24.983Z",
+          "target_branch": "master",
+          "source_branch": "feature.custom-highlighting",
+          "upvotes": 0,
+          "downvotes": 0,
+          "author": {
+            "name": "Administrator",
+            "username": "root",
+            "id": 1,
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "https://gitlab.example.com/root"
+          },
+          "assignee": null,
+          "source_project_id": 1,
+          "target_project_id": 1,
+          "closed_at": null,
+          "closed_by": null,
+          "labels": [],
+          "draft": false,
+          "work_in_progress": false,
+          "milestone": null,
+          "merge_when_pipeline_succeeds": false,
+          "merge_status": "unchecked",
+          "sha": "5a62481d563af92b8e32d735f2fa63b94e806835",
+          "merge_commit_sha": null,
+          "squash_commit_sha": null,
+          "user_notes_count": 1,
+          "should_remove_source_branch": null,
+          "force_remove_source_branch": false,
+          "web_url": "https://gitlab.example.com/gitlab-org/gitlab-test/merge_requests/6432",
+          "reference": "!6432",
+          "references": {
+            "short": "!6432",
+            "relative": "!6432",
+            "full": "gitlab-org/gitlab-test!6432"
+          },
+          "time_stats": {
+            "time_estimate": 0,
+            "total_time_spent": 0,
+            "human_time_estimate": null,
+            "human_total_time_spent": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "Participants on issues",
+      "description": "If the project is private or the issue is confidential, you need to provide credentials to authorize. The preferred way to do this, is by using personal access tokens.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/participants"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "John Doe1",
+          "username": "user1",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/c922747a93b40d1ea88262bf1aebee62?s=80&d=identicon",
+          "web_url": "http://gitlab.example.com/user1"
+        },
+        {
+          "id": 5,
+          "name": "John Doe5",
+          "username": "user5",
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/4aea8cf834ed91844a2da4ff7ae6b491?s=80&d=identicon",
+          "web_url": "http://gitlab.example.com/user5"
+        }
+      ]
+    },
+    {
+      "name": "Get user agent details",
+      "description": "Available only for administrators.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/user_agent_detail"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": {
+        "user_agent": "AppleWebKit/537.36",
+        "ip_address": "127.0.0.1",
+        "akismet_submitted": false
+      }
+    },
+    {
+      "name": "Upload metric image",
+      "description": "Available only for Incident issues.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/metric_images"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "file",
+          "type": "file",
+          "required": true,
+          "description": "The image file to be uploaded"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": false,
+          "description": "The URL to view more metric information"
+        },
+        {
+          "name": "url_text",
+          "type": "string",
+          "required": false,
+          "description": "A description of the image or URL"
+        }
+      ],
+      "response": {
+        "id": 23,
+        "created_at": "2020-11-13T00:06:18.084Z",
+        "filename": "file.png",
+        "file_path": "/uploads/-/system/issuable_metric_image/file/23/file.png",
+        "url": "http://example.com",
+        "url_text": "Example website"
+      }
+    },
+    {
+      "name": "List metric images",
+      "description": "Available only for Incident issues.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/metric_images"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        }
+      ],
+      "response": [
+        {
+          "id": 17,
+          "created_at": "2020-11-12T20:07:58.156Z",
+          "filename": "sample_2054",
+          "file_path": "/uploads/-/system/issuable_metric_image/file/17/sample_2054.png",
+          "url": "example.com/metric"
+        },
+        {
+          "id": 18,
+          "created_at": "2020-11-12T20:14:26.441Z",
+          "filename": "sample_2054",
+          "file_path": "/uploads/-/system/issuable_metric_image/file/18/sample_2054.png",
+          "url": "example.com/metric"
+        }
+      ]
+    },
+    {
+      "name": "Update metric image",
+      "description": "Available only for Incident issues.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/issues/:issue_iid/metric_images/:image_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "image_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the image"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": false,
+          "description": "The URL to view more metric information"
+        },
+        {
+          "name": "url_text",
+          "type": "string",
+          "required": false,
+          "description": "A description of the image or URL"
+        }
+      ],
+      "response": {
+        "id": 23,
+        "created_at": "2020-11-13T00:06:18.084Z",
+        "filename": "file.png",
+        "file_path": "/uploads/-/system/issuable_metric_image/file/23/file.png",
+        "url": "http://example.com",
+        "url_text": "Example website"
+      }
+    },
+    {
+      "name": "Delete metric image",
+      "description": "Available only for Incident issues.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/issues/:issue_iid/metric_images/:image_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The internal ID of a project’s issue"
+        },
+        {
+          "name": "image_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the image"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / epic_links'
+  version: '1.0'
+paths:
+  '/groups/{id}/epics/{epic_iid}/epics':
+    get:
+      summary: List epics related to a given epic
+      description: Gets all child epics of an epic.
+      operationId: listEpicsRelatedToAGivenEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEpicsRelatedToAGivenEpicResponse'
+      tags:
+        - epic_links
+    post:
+      summary: Create and assign a child epic
+      description: Creates a new epic and associates it with provided parent epic. The response is LinkedEpic object.
+      operationId: createAndAssignAChildEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the (future parent) epic.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAndAssignAChildEpicResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAndAssignAChildEpicRequest'
+      tags:
+        - epic_links
+  '/groups/{id}/epics/{epic_iid}/epics/{child_epic_id}':
+    post:
+      summary: Assign a child epic
+      description: >-
+        Creates an association between two epics, designating one as the parent epic and the other as the child epic. A
+        parent epic can have multiple child epics. If the new child epic already belonged to another epic, it is
+        unassigned from that previous parent.
+      operationId: assignAChildEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: integer
+        - name: child_epic_id
+          in: path
+          description: >-
+            The global ID of the child epic. Internal ID can’t be used because they can conflict with epics from other
+            groups.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignAChildEpicResponse'
+      tags:
+        - epic_links
+    put:
+      summary: Re-order a child epic
+      description: ''
+      operationId: reOrderAChildEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: integer
+        - name: child_epic_id
+          in: path
+          description: >-
+            The global ID of the child epic. Internal ID can’t be used because they can conflict with epics from other
+            groups.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEpicsRelatedToAGivenEpicResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reOrderAChildEpicRequest'
+      tags:
+        - epic_links
+    delete:
+      summary: Unassign a child epic
+      description: Unassigns a child epic from a parent epic.
+      operationId: unassignAChildEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: integer
+        - name: child_epic_id
+          in: path
+          description: >-
+            The global ID of the child epic. Internal ID can’t be used because they can conflict with epics from other
+            groups.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignAChildEpicResponse'
+      tags:
+        - epic_links
+components:
+  schemas:
+    listEpicsRelatedToAGivenEpicResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          group_id:
+            type: integer
+          parent_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          start_date:
+            type: string
+          start_date_is_fixed:
+            type: boolean
+          start_date_fixed:
+            type: string
+          start_date_from_milestones:
+            type: string
+          start_date_from_inherited_source:
+            type: string
+          end_date:
+            type: string
+          due_date:
+            type: string
+          due_date_is_fixed:
+            type: boolean
+          due_date_fixed:
+            type: string
+          due_date_from_milestones:
+            type: string
+          due_date_from_inherited_source:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          labels:
+            type: array
+            items: {}
+    assignAChildEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        group_id:
+          type: integer
+        parent_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        start_date:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        start_date_fixed:
+          type: string
+        start_date_from_milestones:
+          type: string
+        start_date_from_inherited_source:
+          type: string
+        end_date:
+          type: string
+        due_date:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        due_date_fixed:
+          type: string
+        due_date_from_milestones:
+          type: string
+        due_date_from_inherited_source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        labels:
+          type: array
+          items: {}
+    createAndAssignAChildEpicRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        confidential:
+          type: boolean
+      required:
+        - title
+    createAndAssignAChildEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        title:
+          type: string
+        group_id:
+          type: integer
+        parent_id:
+          type: integer
+        has_children:
+          type: boolean
+        has_issues:
+          type: boolean
+        reference:
+          type: string
+        url:
+          type: string
+        relation_url:
+          type: string
+    reOrderAChildEpicRequest:
+      type: object
+      properties:
+        move_before_id:
+          type: integer
+        move_after_id:
+          type: integer

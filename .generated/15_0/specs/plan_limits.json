@@ -1,0 +1,182 @@
+{
+  "origin": "https://docs.gitlab.com/15.0/ee/api/plan_limits.html",
+  "pageSlug": "plan_limits",
+  "pageName": "Plan limits",
+  "apis": [
+    {
+      "name": "Get current plan limits",
+      "description": "List the current limits of a plan on the GitLab instance.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/application/plan_limits"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "plan_name",
+          "type": "string",
+          "required": false,
+          "description": "Name of the plan to get the limits from. Default: default."
+        }
+      ],
+      "response": {
+        "ci_pipeline_size": 0,
+        "ci_active_jobs": 0,
+        "ci_active_pipelines": 0,
+        "ci_project_subscriptions": 2,
+        "ci_pipeline_schedules": 10,
+        "ci_needs_size_limit": 50,
+        "ci_registered_group_runners": 1000,
+        "ci_registered_project_runners": 1000,
+        "conan_max_file_size": 3221225472,
+        "generic_packages_max_file_size": 5368709120,
+        "helm_max_file_size": 5242880,
+        "maven_max_file_size": 3221225472,
+        "npm_max_file_size": 524288000,
+        "nuget_max_file_size": 524288000,
+        "pypi_max_file_size": 3221225472,
+        "terraform_module_max_file_size": 1073741824,
+        "storage_size_limit": 15000
+      }
+    },
+    {
+      "name": "Change plan limits",
+      "description": "Modify the limits of a plan on the GitLab instance.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/application/plan_limits"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "plan_name",
+          "type": "string",
+          "required": true,
+          "description": "Name of the plan to update."
+        },
+        {
+          "name": "ci_pipeline_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of jobs in a single pipeline. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_active_jobs",
+          "type": "integer",
+          "required": false,
+          "description": "Total number of jobs in currently active pipelines. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_active_pipelines",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of active pipelines per project. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_project_subscriptions",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of pipeline subscriptions to and from a project. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_pipeline_schedules",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of pipeline schedules. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_needs_size_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of DAG dependencies that a job can have. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_registered_group_runners",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of runners registered per group. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "ci_registered_project_runners",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum number of runners registered per project. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "conan_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum Conan package file size in bytes."
+        },
+        {
+          "name": "generic_packages_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum generic package file size in bytes."
+        },
+        {
+          "name": "helm_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum Helm chart file size in bytes."
+        },
+        {
+          "name": "maven_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum Maven package file size in bytes."
+        },
+        {
+          "name": "npm_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum NPM package file size in bytes."
+        },
+        {
+          "name": "nuget_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum NuGet package file size in bytes."
+        },
+        {
+          "name": "pypi_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum PyPI package file size in bytes."
+        },
+        {
+          "name": "terraform_module_max_file_size",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum Terraform Module package file size in bytes."
+        },
+        {
+          "name": "storage_size_limit",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum storage size for the root namespace in megabytes."
+        }
+      ],
+      "response": {
+        "ci_pipeline_size": 0,
+        "ci_active_jobs": 0,
+        "ci_active_pipelines": 0,
+        "ci_project_subscriptions": 2,
+        "ci_pipeline_schedules": 10,
+        "ci_needs_size_limit": 50,
+        "ci_registered_group_runners": 1000,
+        "ci_registered_project_runners": 1000,
+        "conan_max_file_size": 3221225472,
+        "generic_packages_max_file_size": 5368709120,
+        "helm_max_file_size": 5242880,
+        "maven_max_file_size": 3221225472,
+        "npm_max_file_size": 524288000,
+        "nuget_max_file_size": 524288000,
+        "pypi_max_file_size": 3221225472,
+        "terraform_module_max_file_size": 1073741824
+      }
+    }
+  ]
+}
