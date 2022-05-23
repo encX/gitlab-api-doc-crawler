@@ -18,7 +18,10 @@ export class ResourceParser implements Parser<Resource[]> {
       .filter((u) => u && this.isResource(u))
       .map((u) => {
         const [method, _path] = u.split(/ +/);
-        const path = _path.replace(/https:\/\/gitlab.example.com\/api\/v4(.+)/, "$1").replace(/^(?!\/)(.+)/, "/$1");
+        const path = _path
+          .replace(/https:\/\/gitlab.example.com\/api\/v4(.+)/, "$1")
+          .replace(/^(?!\/)(.+)/, "/$1")
+          .replace("environments_id", "environment_id"); // fix for editAnExistingEnvironment
         return { method, path };
       });
   }
