@@ -38,3 +38,4 @@ $ deno test
   - [ ] python
   - [ ] Go
   - [ ] Rust
+  - [ ] Java
