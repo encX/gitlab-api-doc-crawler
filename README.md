@@ -44,7 +44,7 @@ In each version contains
 - [x] Generate and freeze
   - [x] 14.10
   - [x] 15.0
-- [ ] Put specs to a separated repo and crowdsource hand corrections
+- [x] Put specs to a separated repo and crowdsource hand corrections [here](https://github.com/encX/gitlab-rest-api-description)
 - [ ] Generate GitLabKit REST API clients
   - [ ] .net
   - [ ] JavaScript/TypeScript
