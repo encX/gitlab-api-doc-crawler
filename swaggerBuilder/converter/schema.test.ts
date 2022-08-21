@@ -1,5 +1,5 @@
 import { assertEquals, assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
-import { SchemaObject } from "../../types/OpenAPIV3.ts";
+import { NonArraySchemaObject, SchemaObject } from "../../types/OpenAPIV3.ts";
 import { makeSchemaFrom } from "./schema.ts";
 
 Deno.test("makeSchemaFrom - string", () => {
@@ -139,7 +139,7 @@ Deno.test("makeSchemaFrom - real example", () => {
     access_level: "ref_protected",
     maximum_timeout: 3600,
   });
-  const expected = {
+  const expected: NonArraySchemaObject = {
     type: "object",
     properties: {
       active: {

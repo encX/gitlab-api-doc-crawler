@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 import { Api } from "../types/models.ts";
-import { PathsObject } from "../types/OpenAPIV3.ts";
+import { NamedSchemaObject, PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";
 
 Deno.test("Endpoint converstion test - normal", () => {
@@ -74,7 +74,7 @@ const expectedPath: PathsObject = {
 };
 
 const expectedRequestBody = undefined;
-const expectedResponse = {
+const expectedResponse: NamedSchemaObject = {
   listOwnedRunnersResponse: {
     type: "array",
     items: {
