@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.139.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 import { Api } from "../types/models.ts";
 import { PathsObject } from "../types/OpenAPIV3.ts";
 import { Endpoint } from "./endpoint.ts";

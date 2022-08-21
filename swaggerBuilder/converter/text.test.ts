@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.139.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 
 import { operationIDify } from "./text.ts";
 

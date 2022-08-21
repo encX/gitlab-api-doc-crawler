@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from "https://deno.land/std@0.139.0/testing/asserts.ts";
+import { assertEquals, assertThrows } from "https://deno.land/std@0.152.0/testing/asserts.ts";
 import { SchemaObject } from "../../types/OpenAPIV3.ts";
 import { makeSchemaFrom } from "./schema.ts";
 

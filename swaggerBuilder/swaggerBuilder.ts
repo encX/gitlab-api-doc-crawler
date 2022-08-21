@@ -1,4 +1,4 @@
-import { stringify } from "https://deno.land/std@0.139.0/encoding/yaml.ts";
+import { stringify } from "https://deno.land/std@0.152.0/encoding/yaml.ts";
 import { file } from "../helper/file.ts";
 
 import { Api } from "../types/models.ts";

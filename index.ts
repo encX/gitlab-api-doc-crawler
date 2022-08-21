@@ -1,4 +1,4 @@
-import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.152.0/path/mod.ts";
 
 import { getPages } from "./parser/pagesListing.ts";
 import { PageParser } from "./parser/pageParser.ts";

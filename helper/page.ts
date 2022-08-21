@@ -1,5 +1,5 @@
 import { Cheerio, Root, cheerio } from "https://deno.land/x/cheerio@1.0.6/mod.ts";
-import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
+import { join } from "https://deno.land/std@0.152.0/path/mod.ts";
 
 import { file } from "./file.ts";
 

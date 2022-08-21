@@ -1,5 +1,5 @@
-import { ensureDir, ensureDirSync, ensureFile } from "https://deno.land/std@0.139.0/fs/mod.ts";
-import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
+import { ensureDir, ensureDirSync, ensureFile } from "https://deno.land/std@0.152.0/fs/mod.ts";
+import { join } from "https://deno.land/std@0.152.0/path/mod.ts";
 
 import * as settings from "../settings.ts";
 
