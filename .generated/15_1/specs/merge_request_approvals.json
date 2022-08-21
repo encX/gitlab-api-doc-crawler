@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/merge_request_approvals.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/merge_request_approvals.html",
   "pageSlug": "merge_request_approvals",
   "pageName": "Merge request approvals",
   "apis": [
@@ -160,7 +160,6 @@
               "ldap_access": null
             }
           ],
-          "applies_to_all_protected_branches": false,
           "protected_branches": [
             {
               "id": 1,
@@ -264,7 +263,6 @@
             "ldap_access": null
           }
         ],
-        "applies_to_all_protected_branches": false,
         "protected_branches": [
           {
             "id": 1,
@@ -316,12 +314,6 @@
           "description": "The name of the approval rule"
         },
         {
-          "name": "report_type",
-          "type": "string",
-          "required": false,
-          "description": "The report type required when the rule type is report_approver. The supported report types are: license_scanning and code_coverage."
-        },
-        {
           "name": "approvals_required",
           "type": "integer",
           "required": true,
@@ -352,10 +344,10 @@
           "description": "The IDs of protected branches to scope the rule by. To identify the ID, use the API."
         },
         {
-          "name": "applies_to_all_protected_branches",
-          "type": "boolean",
+          "name": "report_type",
+          "type": "string",
           "required": false,
-          "description": "Whether the rule is applied to all protected branches. If set to true, the value of protected_branch_ids is ignored. Default is false. Introduced in GitLab 15.3."
+          "description": "The report type required when the rule type is report_approver. The supported report types are: license_scanning and code_coverage."
         }
       ],
       "response": {
@@ -409,7 +401,6 @@
             "ldap_access": null
           }
         ],
-        "applies_to_all_protected_branches": false,
         "protected_branches": [
           {
             "id": 1,
@@ -489,12 +480,6 @@
           "type": "Array",
           "required": false,
           "description": "The IDs of protected branches to scope the rule by. To identify the ID, use the API."
-        },
-        {
-          "name": "applies_to_all_protected_branches",
-          "type": "boolean",
-          "required": false,
-          "description": "Whether the rule is applied to all protected branches. If set to true, the value of protected_branch_ids is ignored. Default is false. Introduced in GitLab 15.3."
         }
       ],
       "response": {
@@ -548,7 +533,6 @@
             "ldap_access": null
           }
         ],
-        "applies_to_all_protected_branches": false,
         "protected_branches": [
           {
             "id": 1,

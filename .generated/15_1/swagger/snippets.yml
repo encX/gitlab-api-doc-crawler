@@ -8,31 +8,7 @@ paths:
       summary: List all snippets for a user
       description: Get a list of the current user’s snippets.
       operationId: listAllSnippetsForAUser
-      parameters:
-        - name: per_page
-          in: query
-          description: Number of snippets to return per page.
-          required: false
-          schema:
-            type: integer
-        - name: page
-          in: query
-          description: Page to retrieve.
-          required: false
-          schema:
-            type: integer
-        - name: created_after
-          in: query
-          description: 'Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
-        - name: created_before
-          in: query
-          description: 'Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
+      parameters: []
       responses:
         '200':
           description: successful operation
@@ -187,18 +163,6 @@ paths:
           required: false
           schema:
             type: integer
-        - name: created_after
-          in: query
-          description: 'Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
-        - name: created_before
-          in: query
-          description: 'Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation

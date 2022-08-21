@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/integrations.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/integrations.html",
   "pageSlug": "integrations",
   "pageName": "Integrations",
   "apis": [
@@ -449,12 +449,6 @@
           "type": "string",
           "required": false,
           "description": "Custom tags in Datadog. Specify one tag per line in the format: key:value\\nkey2:value2 (Introduced in GitLab 14.8.)"
-        },
-        {
-          "name": "archive_trace_events",
-          "type": "boolean",
-          "required": false,
-          "description": "When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces (introduced in GitLab 15.3)"
         }
       ],
       "response": null
@@ -587,115 +581,6 @@
         {
           "method": "GET",
           "path": "/projects/:id/integrations/unify-circuit"
-        }
-      ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Create/Edit Pumble integration",
-      "description": "Set Pumble integration for a project.",
-      "resources": [
-        {
-          "method": "PUT",
-          "path": "/projects/:id/integrations/pumble"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "webhook",
-          "type": "string",
-          "required": false,
-          "description": "The Pumble webhook. For example, https://api.pumble.com/workspaces/x/...."
-        },
-        {
-          "name": "branches_to_be_notified",
-          "type": "string",
-          "required": false,
-          "description": "Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default is default."
-        },
-        {
-          "name": "confidential_issues_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for confidential issue events."
-        },
-        {
-          "name": "confidential_note_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for confidential note events."
-        },
-        {
-          "name": "issues_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for issue events."
-        },
-        {
-          "name": "merge_requests_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for merge request events."
-        },
-        {
-          "name": "note_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for note events."
-        },
-        {
-          "name": "notify_only_broken_pipelines",
-          "type": "boolean",
-          "required": false,
-          "description": "Send notifications for broken pipelines."
-        },
-        {
-          "name": "pipeline_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for pipeline events."
-        },
-        {
-          "name": "push_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for push events."
-        },
-        {
-          "name": "tag_push_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for tag push events."
-        },
-        {
-          "name": "wiki_page_events",
-          "type": "boolean",
-          "required": false,
-          "description": "Enable notifications for wiki page events."
-        }
-      ],
-      "response": null
-    },
-    {
-      "name": "Disable Pumble integration",
-      "description": "Disable the Pumble integration for a project. Integration settings are preserved.",
-      "resources": [
-        {
-          "method": "DELETE",
-          "path": "/projects/:id/integrations/pumble"
-        }
-      ],
-      "attributes": [],
-      "response": null
-    },
-    {
-      "name": "Get Pumble integration settings",
-      "description": "Get Pumble integration settings for a project.",
-      "resources": [
-        {
-          "method": "GET",
-          "path": "/projects/:id/integrations/pumble"
         }
       ],
       "attributes": [],
@@ -1661,6 +1546,12 @@
           "type": "string",
           "required": true,
           "description": "The Mattermost token"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "The username to use to post the message"
         }
       ],
       "response": null
@@ -1765,6 +1656,12 @@
           "type": "string",
           "required": true,
           "description": "Comma-separated list of recipient email addresses"
+        },
+        {
+          "name": "add_pusher",
+          "type": "boolean",
+          "required": false,
+          "description": "Add pusher to recipients list"
         },
         {
           "name": "notify_only_broken_pipelines",

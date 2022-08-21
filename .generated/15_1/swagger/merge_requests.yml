@@ -632,14 +632,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: approved_by_usernames
-          in: query
-          description: >-
-            Returns merge requests which have been approved by all the users with the given usernames (Max: 5). None
-            returns merge requests with no approvals. Any returns merge requests with an approval.
-          required: false
-          schema:
-            type: string
         - name: reviewer_id
           in: query
           description: >-
@@ -829,33 +821,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrParticipantsResponse'
-      tags:
-        - merge_requests
-  '/projects/{id}/merge_requests/{merge_request_iid}/reviewers':
-    get:
-      summary: Get single MR reviewers
-      description: Get a list of merge request reviewers.
-      operationId: getSingleMrReviewers
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user.
-          required: true
-          schema:
-            type: string
-        - name: merge_request_iid
-          in: path
-          description: The internal ID of the merge request.
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMrReviewersResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/commits':
@@ -1714,46 +1679,6 @@ components:
             type: string
           web_url:
             type: string
-    getSingleMrReviewersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          user:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          updated_state_by:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          state:
-            type: string
-          created_at:
-            type: string
-            format: date-time
     getSingleMrCommitsResponse:
       type: array
       items:

@@ -149,32 +149,6 @@ paths:
               $ref: '#/components/schemas/updateADeploymentRequest'
       tags:
         - deployments
-    delete:
-      summary: Delete a specific deployment
-      description: Delete a specific deployment that is not currently the last deployment for an environment or in a running state
-      operationId: deleteASpecificDeployment
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user
-          required: true
-          schema:
-            type: string
-        - name: deployment_id
-          in: path
-          description: The ID of the deployment
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASpecificDeploymentResponse'
-      tags:
-        - deployments
   '/projects/{id}/deployments/{deployment_id}/merge_requests':
     get:
       summary: List of merge requests associated with a deployment
@@ -570,7 +544,6 @@ components:
         - sha
         - ref
         - tag
-        - status
     createADeploymentResponse:
       type: object
       properties:
@@ -622,13 +595,6 @@ components:
       type: object
       properties:
         status:
-          type: string
-      required:
-        - status
-    deleteASpecificDeploymentResponse:
-      type: object
-      properties:
-        message:
           type: string
     approveOrRejectABlockedDeploymentRequest:
       type: object

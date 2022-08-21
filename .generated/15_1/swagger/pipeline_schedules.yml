@@ -139,33 +139,6 @@ paths:
                 $ref: '#/components/schemas/createANewPipelineScheduleResponse'
       tags:
         - pipeline_schedules
-  '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/pipelines':
-    get:
-      summary: Get all pipelines triggered by a pipeline schedule
-      description: Get all pipelines triggered by a pipeline schedule in a project.
-      operationId: getAllPipelinesTriggeredByAPipelineSchedule
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user.
-          required: true
-          schema:
-            type: string
-        - name: pipeline_schedule_id
-          in: path
-          description: The pipeline schedule ID.
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllPipelinesTriggeredByAPipelineScheduleResponse'
-      tags:
-        - pipeline_schedules
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership':
     post:
       summary: Take ownership of a pipeline schedule
@@ -428,33 +401,6 @@ components:
                 type: string
               value:
                 type: string
-    getAllPipelinesTriggeredByAPipelineScheduleResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          iid:
-            type: integer
-          project_id:
-            type: integer
-          status:
-            type: string
-          source:
-            type: string
-          ref:
-            type: string
-          sha:
-            type: string
-          web_url:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
     createANewPipelineScheduleRequest:
       type: object
       properties:

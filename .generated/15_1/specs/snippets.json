@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/snippets.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/snippets.html",
   "pageSlug": "snippets",
   "pageName": "Code snippets",
   "apis": [
@@ -12,32 +12,7 @@
           "path": "/snippets"
         }
       ],
-      "attributes": [
-        {
-          "name": "per_page",
-          "type": "integer",
-          "required": false,
-          "description": "Number of snippets to return per page."
-        },
-        {
-          "name": "page",
-          "type": "integer",
-          "required": false,
-          "description": "Page to retrieve."
-        },
-        {
-          "name": "created_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "created_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        }
-      ],
+      "attributes": [],
       "response": [
         {
           "id": 42,
@@ -407,18 +382,6 @@
           "type": "integer",
           "required": false,
           "description": "Page to retrieve."
-        },
-        {
-          "name": "created_after",
-          "type": "datetime",
-          "required": false,
-          "description": "Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
-        },
-        {
-          "name": "created_before",
-          "type": "datetime",
-          "required": false,
-          "description": "Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)"
         }
       ],
       "response": [

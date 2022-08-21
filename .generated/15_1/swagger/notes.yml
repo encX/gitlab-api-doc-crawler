@@ -536,7 +536,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createNewEpicNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
       tags:
         - notes
   '/groups/{id}/epics/{epic_id}/notes/{note_id}':
@@ -680,16 +680,12 @@ components:
             type: boolean
           confidential:
             type: boolean
-          internal:
-            type: boolean
     createNewIssueNoteRequest:
       type: object
       properties:
         body:
           type: string
         confidential:
-          type: boolean
-        internal:
           type: boolean
         created_at:
           type: string
@@ -794,8 +790,6 @@ components:
           type: boolean
         confidential:
           type: boolean
-        internal:
-          type: boolean
     createNewMergeRequestNoteRequest:
       type: object
       properties:
@@ -842,16 +836,3 @@ components:
           format: date-time
         confidential:
           type: boolean
-        internal:
-          type: boolean
-    createNewEpicNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        confidential:
-          type: boolean
-        internal:
-          type: boolean
-      required:
-        - body

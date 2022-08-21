@@ -306,42 +306,6 @@ paths:
           description: successful operation
       tags:
         - integrations
-  '/projects/{id}/integrations/pumble':
-    put:
-      summary: Create/Edit Pumble integration
-      description: Set Pumble integration for a project.
-      operationId: createEditPumbleIntegration
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/createEditUnifyCircuitIntegrationRequest'
-      tags:
-        - integrations
-    delete:
-      summary: Disable Pumble integration
-      description: Disable the Pumble integration for a project. Integration settings are preserved.
-      operationId: disablePumbleIntegration
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - integrations
-    get:
-      summary: Get Pumble integration settings
-      description: Get Pumble integration settings for a project.
-      operationId: getPumbleIntegrationSettings
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - integrations
   '/projects/{id}/integrations/webex-teams':
     put:
       summary: Create/Edit Webex Teams integration
@@ -873,7 +837,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createEditFlowdockIntegrationRequest'
+              $ref: '#/components/schemas/createEditMattermostSlashCommandIntegrationRequest'
       tags:
         - integrations
     delete:
@@ -1505,8 +1469,6 @@ components:
           type: string
         datadog_tags:
           type: string
-        archive_trace_events:
-          type: boolean
     createEditUnifyCircuitIntegrationRequest:
       type: object
       properties:
@@ -1702,6 +1664,15 @@ components:
           properties:
             token:
               type: string
+    createEditMattermostSlashCommandIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        username:
+          type: string
+      required:
+        - token
     createEditPackagistIntegrationRequest:
       type: object
       properties:
@@ -1725,6 +1696,8 @@ components:
       properties:
         recipients:
           type: string
+        add_pusher:
+          type: boolean
         notify_only_broken_pipelines:
           type: boolean
         branches_to_be_notified:

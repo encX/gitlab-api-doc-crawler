@@ -27,12 +27,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: without_projects
-          in: query
-          description: Limit results to topics without assigned projects.
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation

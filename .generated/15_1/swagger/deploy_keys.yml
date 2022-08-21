@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAllDeployKeysResponse'
+                $ref: '#/components/schemas/listDeployKeysForProjectResponse'
       tags:
         - deploy_keys
     post:
@@ -64,7 +64,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -139,7 +139,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -203,7 +203,57 @@ paths:
 components:
   schemas:
     listAllDeployKeysResponse:
-      type: string
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          fingerprint:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          projects_with_write_access:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                description:
+                  type: string
+                name:
+                  type: string
+                name_with_namespace:
+                  type: string
+                path:
+                  type: string
+                path_with_namespace:
+                  type: string
+                created_at:
+                  type: string
+                  format: date-time
+    listDeployKeysForProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          can_push:
+            type: boolean
     listProjectDeployKeysForUserResponse:
       type: array
       items:
@@ -223,8 +273,6 @@ components:
             type: string
           fingerprint:
             type: string
-          fingerprint_sha256:
-            type: string
     getASingleDeployKeyResponse:
       type: object
       properties:
@@ -233,10 +281,6 @@ components:
         title:
           type: string
         key:
-          type: string
-        fingerprint:
-          type: string
-        fingerprint_sha256:
           type: string
         created_at:
           type: string
@@ -255,20 +299,6 @@ components:
       required:
         - title
         - key
-    addDeployKeyResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        id:
-          type: integer
-        title:
-          type: string
-        can_push:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
     updateDeployKeyRequest:
       type: object
       properties:

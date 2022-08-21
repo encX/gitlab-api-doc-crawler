@@ -25,11 +25,9 @@ paths:
       tags:
         - project_level_variables
     post:
-      summary: Create a variable
-      description: >-
-        Create a new variable. If a variable with the same key already exists, the new variable must have a different
-        environment_scope. Otherwise, GitLab returns a message similar to: VARIABLE_NAME has already been taken.
-      operationId: createAVariable
+      summary: Create variable
+      description: Create a new variable.
+      operationId: createVariable
       parameters:
         - name: id
           in: path
@@ -43,21 +41,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/getASingleVariableResponse'
+              $ref: '#/components/schemas/showVariableDetailsResponse'
       tags:
         - project_level_variables
   '/projects/{id}/variables/{key}':
     get:
-      summary: Get a single variable
-      description: >-
-        Get the details of a single variable. If there are multiple variables with the same key, use filter to select
-        the correct environment_scope.
-      operationId: getASingleVariable
+      summary: Show variable details
+      description: Get the details of a project’s specific variable.
+      operationId: showVariableDetails
       parameters:
         - name: id
           in: path
@@ -83,15 +79,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       tags:
         - project_level_variables
     put:
-      summary: Update a variable
-      description: >-
-        Update a project’s variable. If there are multiple variables with the same key, use filter to select the correct
-        environment_scope.
-      operationId: updateAVariable
+      summary: Update variable
+      description: Update a project’s variable.
+      operationId: updateVariable
       parameters:
         - name: id
           in: path
@@ -111,20 +105,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAVariableRequest'
+              $ref: '#/components/schemas/updateVariableRequest'
       tags:
         - project_level_variables
     delete:
-      summary: Delete a variable
-      description: >-
-        Delete a project’s variable. If there are multiple variables with the same key, use filter to select the correct
-        environment_scope.
-      operationId: deleteAVariable
+      summary: Remove variable
+      description: Remove a project’s variable.
+      operationId: removeVariable
       parameters:
         - name: id
           in: path
@@ -168,7 +160,7 @@ components:
             type: boolean
           environment_scope:
             type: string
-    getASingleVariableResponse:
+    showVariableDetailsResponse:
       type: object
       properties:
         key:
@@ -183,7 +175,7 @@ components:
           type: boolean
         environment_scope:
           type: string
-    updateAVariableRequest:
+    updateVariableRequest:
       type: object
       properties:
         value:

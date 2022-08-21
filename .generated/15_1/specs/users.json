@@ -1,11 +1,11 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/users.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/users.html",
   "pageSlug": "users",
   "pageName": "Users",
   "apis": [
     {
       "name": "For normal users",
-      "description": "You can also search for users by name, username, or public email by using ?search=. For example. /users?search=John.",
+      "description": "You can also search for users by name, username or public email by using ?search=. For example. /users?search=John.",
       "resources": [
         {
           "method": "GET",
@@ -232,7 +232,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of a user"
+          "description": "The ID of a user"
         }
       ],
       "response": {
@@ -262,7 +262,7 @@
       }
     },
     {
-      "name": "For administrators",
+      "name": "For administrator",
       "description": "Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:",
       "resources": [
         {
@@ -279,7 +279,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of a user"
+          "description": "The ID of a user"
         }
       ],
       "response": {
@@ -358,11 +358,6 @@
       "attributes": [
         {
           "name": "admin",
-          "type": "No",
-          "required": false
-        },
-        {
-          "name": "auditor",
           "type": "No",
           "required": false
         },
@@ -525,11 +520,6 @@
           "required": false
         },
         {
-          "name": "auditor",
-          "type": "No",
-          "required": false
-        },
-        {
           "name": "avatar",
           "type": "No",
           "required": false
@@ -686,7 +676,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of a user"
+          "description": "The ID of a user"
         },
         {
           "name": "provider",
@@ -711,7 +701,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of a user"
+          "description": "The ID of a user"
         },
         {
           "name": "hard_delete",
@@ -723,7 +713,7 @@
       "response": null
     },
     {
-      "name": "For normal users",
+      "name": "List current user (for normal users)",
       "description": "Gets currently authenticated user.",
       "resources": [
         {
@@ -786,7 +776,7 @@
       }
     },
     {
-      "name": "For administrators",
+      "name": "List current user (for administrators)",
       "description": "",
       "resources": [
         {
@@ -799,7 +789,7 @@
           "name": "sudo",
           "type": "integer",
           "required": false,
-          "description": "ID of a user to make the call in their place"
+          "description": "the ID of a user to make the call in their place"
         }
       ],
       "response": {
@@ -886,7 +876,7 @@
           "name": "id_or_username",
           "type": "string",
           "required": true,
-          "description": "ID or username of the user to get a status of"
+          "description": "The ID or username of the user to get a status of"
         }
       ],
       "response": {
@@ -911,13 +901,13 @@
           "name": "emoji",
           "type": "string",
           "required": false,
-          "description": "Name of the emoji to use as status. If omitted speech_balloon is used. Emoji name can be one of the specified names in the Gemojione index."
+          "description": "The name of the emoji to use as status. If omitted speech_balloon is used. Emoji name can be one of the specified names in the Gemojione index."
         },
         {
           "name": "message",
           "type": "string",
           "required": false,
-          "description": "Message to set as a status. It can also contain emoji codes. Cannot exceed 100 characters."
+          "description": "The message to set as a status. It can also contain emoji codes."
         },
         {
           "name": "clear_status_after",
@@ -996,7 +986,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user to follow"
+          "description": "The ID of the user to follow"
         }
       ],
       "response": {
@@ -1026,7 +1016,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user to follow"
+          "description": "The ID of the user to follow"
         }
       ],
       "response": [
@@ -1131,7 +1121,7 @@
           "name": "id_or_username",
           "type": "string",
           "required": true,
-          "description": "ID or username of the user to get the SSH keys for."
+          "description": "The ID or username of the user to get the SSH keys for."
         }
       ],
       "response": null
@@ -1150,7 +1140,7 @@
           "name": "key_id",
           "type": "string",
           "required": true,
-          "description": "ID of an SSH key"
+          "description": "The ID of an SSH key"
         }
       ],
       "response": {
@@ -1204,19 +1194,19 @@
           "name": "title",
           "type": "string",
           "required": true,
-          "description": "New SSH key’s title"
+          "description": "new SSH key’s title"
         },
         {
           "name": "key",
           "type": "string",
           "required": true,
-          "description": "New SSH key"
+          "description": "new SSH key"
         },
         {
           "name": "expires_at",
           "type": "string",
           "required": false,
-          "description": "Expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
+          "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
         }
       ],
       "response": {
@@ -1253,19 +1243,19 @@
           "name": "title",
           "type": "string",
           "required": true,
-          "description": "New SSH key’s title"
+          "description": "new SSH key’s title"
         },
         {
           "name": "key",
           "type": "string",
           "required": true,
-          "description": "New SSH key"
+          "description": "new SSH key"
         },
         {
           "name": "expires_at",
           "type": "string",
           "required": false,
-          "description": "Expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
+          "description": "The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)"
         }
       ],
       "response": null
@@ -1346,7 +1336,7 @@
           "name": "key_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the GPG key"
+          "description": "The ID of the GPG key"
         }
       ],
       "response": {
@@ -1369,7 +1359,7 @@
           "name": "key",
           "type": "string",
           "required": true,
-          "description": "New GPG key"
+          "description": "The new GPG key"
         }
       ],
       "response": [
@@ -1394,7 +1384,7 @@
           "name": "key_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the GPG key"
+          "description": "The ID of the GPG key"
         }
       ],
       "response": null
@@ -1413,7 +1403,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         }
       ],
       "response": [
@@ -1438,13 +1428,13 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "key_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the GPG key"
+          "description": "The ID of the GPG key"
         }
       ],
       "response": {
@@ -1467,13 +1457,13 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "key_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the GPG key"
+          "description": "The ID of the GPG key"
         }
       ],
       "response": [
@@ -1498,13 +1488,13 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "key_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the GPG key"
+          "description": "The ID of the GPG key"
         }
       ],
       "response": null
@@ -1791,13 +1781,13 @@
           "name": "user_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "state",
           "type": "string",
           "required": false,
-          "description": "Filter tokens based on state (all, active, inactive)"
+          "description": "filter tokens based on state (all, active, inactive)"
         }
       ],
       "response": [
@@ -1878,13 +1868,13 @@
           "name": "user_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "impersonation_token_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the impersonation token"
+          "description": "The ID of the impersonation token"
         }
       ],
       "response": {
@@ -1915,25 +1905,25 @@
           "name": "user_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "name",
           "type": "string",
           "required": true,
-          "description": "Name of the impersonation token"
+          "description": "The name of the impersonation token"
         },
         {
           "name": "expires_at",
           "type": "date",
           "required": false,
-          "description": "Expiration date of the impersonation token in ISO format (YYYY-MM-DD)"
+          "description": "The expiration date of the impersonation token in ISO format (YYYY-MM-DD)"
         },
         {
           "name": "scopes",
           "type": "array",
           "required": true,
-          "description": "Array of scopes of the impersonation token (api, read_user)"
+          "description": "The array of scopes of the impersonation token (api, read_user)"
         }
       ],
       "response": {
@@ -1965,13 +1955,13 @@
           "name": "user_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "impersonation_token_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the impersonation token"
+          "description": "The ID of the impersonation token"
         }
       ],
       "response": null
@@ -1990,25 +1980,25 @@
           "name": "user_id",
           "type": "integer",
           "required": true,
-          "description": "ID of the user"
+          "description": "The ID of the user"
         },
         {
           "name": "name",
           "type": "string",
           "required": true,
-          "description": "Name of the personal access token"
+          "description": "The name of the personal access token"
         },
         {
           "name": "expires_at",
           "type": "date",
           "required": false,
-          "description": "Expiration date of the personal access token in ISO format (YYYY-MM-DD)"
+          "description": "The expiration date of the personal access token in ISO format (YYYY-MM-DD)"
         },
         {
           "name": "scopes",
           "type": "array",
           "required": true,
-          "description": "Array of scopes of the personal access token. See personal access token scopes for possible values."
+          "description": "The array of scopes of the personal access token. See personal access token scopes for possible values."
         }
       ],
       "response": {
@@ -2026,8 +2016,8 @@
       }
     },
     {
-      "name": "Get user activities",
-      "description": "Pre-requisite:",
+      "name": "Get user activities (administrator only)",
+      "description": "Get the last activity date for all users, sorted from oldest to newest.",
       "resources": [
         {
           "method": "GET",
@@ -2039,7 +2029,7 @@
           "name": "from",
           "type": "string",
           "required": false,
-          "description": "Date string in the format YEAR-MM-DD. For example, 2016-03-11. Defaults to 6 months ago."
+          "description": "Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11. Defaults to 6 months ago."
         }
       ],
       "response": [
@@ -2061,8 +2051,8 @@
       ]
     },
     {
-      "name": "User memberships",
-      "description": "Pre-requisite:",
+      "name": "User memberships (administrator only)",
+      "description": "Lists all projects and groups a user is a member of. This endpoint is available for administrators only. It returns the source_id, source_name, source_type and access_level of a membership. Source can be of type Namespace (representing a group) or Project. The response represents only direct memberships. Inherited memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For more details, read about the meaning of access level values.",
       "resources": [
         {
           "method": "GET",
@@ -2074,7 +2064,7 @@
           "name": "id",
           "type": "integer",
           "required": true,
-          "description": "ID of a specified user"
+          "description": "The ID of a specified user"
         },
         {
           "name": "type",
@@ -2097,25 +2087,6 @@
           "access_level": "20"
         }
       ]
-    },
-    {
-      "name": "Disable two factor authentication",
-      "description": "Pre-requisite:",
-      "resources": [
-        {
-          "method": "PATCH",
-          "path": "/users/:id/disable_two_factor"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer",
-          "required": true,
-          "description": "ID of the user"
-        }
-      ],
-      "response": null
     }
   ]
 }

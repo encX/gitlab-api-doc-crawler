@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/pipelines.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/pipelines.html",
   "pageSlug": "pipelines",
   "pageName": "Pipelines",
   "apis": [
@@ -329,7 +329,7 @@
           "name": "variables",
           "type": "array",
           "required": false,
-          "description": "An array of hashes containing the variables available in the pipeline, matching the structure [{ 'key': 'UPLOAD_TO_S3', 'variable_type': 'file', 'value': 'true' }, {'key': 'TEST', 'value': 'test variable'}]. If variable_type is excluded, it defaults to env_var."
+          "description": "An array containing the variables available in the pipeline, matching the structure [{ 'key': 'UPLOAD_TO_S3', 'variable_type': 'file', 'value': 'true' }, {'key': 'TEST', 'value': 'test variable'}]. If variable_type is excluded, it defaults to env_var."
         }
       ],
       "response": {

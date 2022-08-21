@@ -808,7 +808,7 @@ paths:
           description: successful operation
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions':
+  '/projects/{id}/commits/{commit_id}/discussions':
     get:
       summary: List project commit discussion items
       description: Gets a list of all discussion items for a single commit.
@@ -864,7 +864,7 @@ paths:
               $ref: '#/components/schemas/createNewCommitThreadRequest'
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}':
     get:
       summary: Get single commit discussion item
       description: Returns a single discussion item for a specific project commit
@@ -893,7 +893,7 @@ paths:
           description: successful operation
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}/notes':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing commit thread
       description: Adds a new note to the thread.
@@ -927,7 +927,7 @@ paths:
               $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify an existing commit thread note
       description: Modify or resolve an existing thread note of a commit.

@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/groups.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/groups.html",
   "pageSlug": "groups",
   "pageName": "Groups",
   "apis": [
@@ -676,7 +676,6 @@
           "open_issues_count": 10,
           "ci_default_git_depth": 50,
           "ci_forward_deployment_enabled": true,
-          "ci_allow_fork_pipelines_to_run_in_parent_project": true,
           "public_jobs": true,
           "build_timeout": 3600,
           "auto_cancel_pending_pipelines": "enabled",
@@ -1034,7 +1033,7 @@
           "name": "membership_lock",
           "type": "boolean",
           "required": false,
-          "description": "Users cannot be added to projects in this group."
+          "description": "Prevent adding new members to projects within this group."
         },
         {
           "name": "extra_shared_runners_minutes_limit",
@@ -1241,7 +1240,7 @@
           "name": "membership_lock",
           "type": "boolean",
           "required": false,
-          "description": "Users cannot be added to projects in this group."
+          "description": "Prevent adding new members to projects within this group."
         },
         {
           "name": "prevent_forking_outside_group",
@@ -1254,24 +1253,6 @@
           "type": "integer",
           "required": false,
           "description": "Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0."
-        },
-        {
-          "name": "unique_project_download_limit",
-          "type": "integer",
-          "required": false,
-          "description": "Maximum number of unique projects a user can download in the specified time period before they are banned. Available only on top-level groups. Default: 0, Maximum: 10,000."
-        },
-        {
-          "name": "unique_project_download_limit_interval_in_seconds",
-          "type": "integer",
-          "required": false,
-          "description": "Time period during which a user can download a maximum amount of projects before they are banned. Available only on top-level groups. Default: 0, Maximum: 864,000 seconds (10 days)."
-        },
-        {
-          "name": "unique_project_download_limit_allowlist",
-          "type": "array of strings",
-          "required": false,
-          "description": "List of usernames excluded from the unique project download limit. Available only on top-level groups. Default: [], Maximum: 100 usernames."
         }
       ],
       "response": {
@@ -1946,121 +1927,6 @@
           "type": "string",
           "required": true,
           "description": "LDAP provider for the LDAP group link"
-        }
-      ],
-      "response": null
-    },
-    {
-      "name": "List SAML group links",
-      "description": "Lists SAML group links.",
-      "resources": [
-        {
-          "method": "GET",
-          "path": "/groups/:id/saml_group_links"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "ID or URL-encoded path of the group"
-        }
-      ],
-      "response": [
-        {
-          "name": "saml-group-1",
-          "access_level": 10
-        },
-        {
-          "name": "saml-group-2",
-          "access_level": 40
-        }
-      ]
-    },
-    {
-      "name": "Get SAML group link",
-      "description": "Get a SAML group link for the group.",
-      "resources": [
-        {
-          "method": "GET",
-          "path": "/groups/:id/saml_group_links/:saml_group_name"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "ID or URL-encoded path of the group"
-        },
-        {
-          "name": "saml_group_name",
-          "type": "string",
-          "required": true,
-          "description": "Name of an SAML group"
-        }
-      ],
-      "response": {
-        "name": "saml-group-1",
-        "access_level": 10
-      }
-    },
-    {
-      "name": "Add SAML group link",
-      "description": "Adds a SAML group link for a group.",
-      "resources": [
-        {
-          "method": "POST",
-          "path": "/groups/:id/saml_group_links"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "ID or URL-encoded path of the group"
-        },
-        {
-          "name": "saml_group_name",
-          "type": "string",
-          "required": true,
-          "description": "Name of a SAML group"
-        },
-        {
-          "name": "access_level",
-          "type": "integer",
-          "required": true,
-          "description": "Minimum access level for members of the SAML group"
-        }
-      ],
-      "response": {
-        "name": "saml-group-1",
-        "access_level": 10
-      }
-    },
-    {
-      "name": "Delete SAML group link",
-      "description": "Deletes a SAML group link for the group.",
-      "resources": [
-        {
-          "method": "DELETE",
-          "path": "/groups/:id/saml_group_links/:saml_group_name"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "ID or URL-encoded path of the group"
-        },
-        {
-          "name": "saml_group_name",
-          "type": "string",
-          "required": true,
-          "description": "Name of an SAML group"
         }
       ],
       "response": null

@@ -78,13 +78,13 @@ paths:
         - users
   '/users/{id}':
     get:
-      summary: For administrators
+      summary: For administrator
       description: 'Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:'
-      operationId: forAdministrators
+      operationId: forAdministrator
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -94,7 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forAdministratorsResponse'
+                $ref: '#/components/schemas/forAdministratorResponse'
       tags:
         - users
     put:
@@ -126,7 +126,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -153,7 +153,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -170,13 +170,13 @@ paths:
         - users
   /user:
     get:
-      summary: For administrators
+      summary: List current user (for administrators)
       description: ''
-      operationId: forAdministrators
+      operationId: listCurrentUserForAdministrators
       parameters:
         - name: sudo
           in: query
-          description: ID of a user to make the call in their place
+          description: the ID of a user to make the call in their place
           required: false
           schema:
             type: integer
@@ -186,7 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forAdministratorsResponse'
+                $ref: '#/components/schemas/listCurrentUserForAdministratorsResponse'
       tags:
         - users
   /user/status:
@@ -231,7 +231,7 @@ paths:
       parameters:
         - name: id_or_username
           in: path
-          description: ID or username of the user to get a status of
+          description: The ID or username of the user to get a status of
           required: true
           schema:
             type: string
@@ -286,7 +286,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user to follow
+          description: The ID of the user to follow
           required: true
           schema:
             type: integer
@@ -307,7 +307,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user to follow
+          description: The ID of the user to follow
           required: true
           schema:
             type: integer
@@ -317,7 +317,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/followersAndFollowingResponse'
+                $ref: '#/components/schemas/forNormalUsersResponse'
       tags:
         - users
   /user_counts:
@@ -402,7 +402,7 @@ paths:
       parameters:
         - name: id_or_username
           in: path
-          description: ID or username of the user to get the SSH keys for.
+          description: The ID or username of the user to get the SSH keys for.
           required: true
           schema:
             type: string
@@ -419,7 +419,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of an SSH key
+          description: The ID of an SSH key
           required: true
           schema:
             type: string
@@ -563,7 +563,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -583,7 +583,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -600,7 +600,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -620,7 +620,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -648,13 +648,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -674,13 +674,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -921,13 +921,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: state
           in: query
-          description: 'Filter tokens based on state (all, active, inactive)'
+          description: 'filter tokens based on state (all, active, inactive)'
           required: false
           schema:
             type: string
@@ -949,7 +949,7 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -1011,13 +1011,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: impersonation_token_id
           in: path
-          description: ID of the impersonation token
+          description: The ID of the impersonation token
           required: true
           schema:
             type: integer
@@ -1037,13 +1037,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: impersonation_token_id
           in: path
-          description: ID of the impersonation token
+          description: The ID of the impersonation token
           required: true
           schema:
             type: integer
@@ -1062,7 +1062,7 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -1082,13 +1082,13 @@ paths:
         - users
   /user/activities:
     get:
-      summary: Get user activities
-      description: 'Pre-requisite:'
-      operationId: getUserActivities
+      summary: Get user activities (administrator only)
+      description: 'Get the last activity date for all users, sorted from oldest to newest.'
+      operationId: getUserActivitiesAdministratorOnly
       parameters:
         - name: from
           in: query
-          description: 'Date string in the format YEAR-MM-DD. For example, 2016-03-11. Defaults to 6 months ago.'
+          description: 'Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11. Defaults to 6 months ago.'
           required: false
           schema:
             type: string
@@ -1098,18 +1098,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getUserActivitiesResponse'
+                $ref: '#/components/schemas/getUserActivitiesAdministratorOnlyResponse'
       tags:
         - users
   '/users/{id}/memberships':
     get:
-      summary: User memberships
-      description: 'Pre-requisite:'
-      operationId: userMemberships
+      summary: User memberships (administrator only)
+      description: >-
+        Lists all projects and groups a user is a member of. This endpoint is available for administrators only. It
+        returns the source_id, source_name, source_type and access_level of a membership. Source can be of type
+        Namespace (representing a group) or Project. The response represents only direct memberships. Inherited
+        memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For
+        more details, read about the meaning of access level values.
+      operationId: userMembershipsAdministratorOnly
       parameters:
         - name: id
           in: path
-          description: ID of a specified user
+          description: The ID of a specified user
           required: true
           schema:
             type: integer
@@ -1125,29 +1130,276 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userMembershipsResponse'
-      tags:
-        - users
-  '/users/{id}/disable_two_factor':
-    patch:
-      summary: Disable two factor authentication
-      description: 'Pre-requisite:'
-      operationId: disableTwoFactorAuthentication
-      parameters:
-        - name: id
-          in: path
-          description: ID of the user
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
+                $ref: '#/components/schemas/userMembershipsAdministratorOnlyResponse'
       tags:
         - users
 components:
   schemas:
     forNormalUsersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    forAdministratorsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          email:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          is_admin:
+            type: boolean
+          bio:
+            type: string
+          location:
+            type: string
+          skype:
+            type: string
+          linkedin:
+            type: string
+          twitter:
+            type: string
+          website_url:
+            type: string
+          organization:
+            type: string
+          job_title:
+            type: string
+          last_sign_in_at:
+            type: string
+            format: date-time
+          confirmed_at:
+            type: string
+            format: date-time
+          theme_id:
+            type: integer
+          last_activity_on:
+            type: string
+          color_scheme_id:
+            type: integer
+          projects_limit:
+            type: integer
+          current_sign_in_at:
+            type: string
+            format: date-time
+          note:
+            type: string
+          identities:
+            type: array
+            items:
+              type: object
+              properties:
+                provider:
+                  type: string
+                extern_uid:
+                  type: string
+          can_create_group:
+            type: boolean
+          can_create_project:
+            type: boolean
+          two_factor_enabled:
+            type: boolean
+          external:
+            type: boolean
+          private_profile:
+            type: boolean
+          current_sign_in_ip:
+            type: string
+          last_sign_in_ip:
+            type: string
+          namespace_id:
+            type: integer
+    forUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        bio:
+          type: string
+        bot:
+          type: boolean
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        is_followed:
+          type: boolean
+    forAdministratorResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        shared_runners_minutes_limit:
+          type: integer
+        extra_shared_runners_minutes_limit:
+          type: integer
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        provisioned_by_group_id:
+          type: integer
+        is_auditor:
+          type: boolean
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        is_admin:
+          type: boolean
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        last_sign_in_at:
+          type: string
+          format: date-time
+        confirmed_at:
+          type: string
+          format: date-time
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+          format: date-time
+        note:
+          type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+        current_sign_in_ip:
+          type: string
+        last_sign_in_ip:
+          type: string
+        plan:
+          type: string
+        trial:
+          type: boolean
+        sign_in_count:
+          type: integer
+        namespace_id:
+          type: integer
+    userCreationRequest:
+      type: object
+      properties: {}
+    listCurrentUserForNormalUsersResponse:
       type: object
       properties:
         id:
@@ -1235,7 +1487,7 @@ components:
           type: boolean
         commit_email:
           type: string
-    forAdministratorsResponse:
+    listCurrentUserForAdministratorsResponse:
       type: object
       properties:
         id:
@@ -1321,59 +1573,6 @@ components:
           type: integer
         note:
           type: string
-    forUserResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        username:
-          type: string
-        name:
-          type: string
-        state:
-          type: string
-        avatar_url:
-          type: string
-        web_url:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        bio:
-          type: string
-        bot:
-          type: boolean
-        location:
-          type: string
-        public_email:
-          type: string
-        skype:
-          type: string
-        linkedin:
-          type: string
-        twitter:
-          type: string
-        website_url:
-          type: string
-        organization:
-          type: string
-        job_title:
-          type: string
-        pronouns:
-          type: string
-        work_information:
-          type: string
-        followers:
-          type: integer
-        following:
-          type: integer
-        local_time:
-          type: string
-        is_followed:
-          type: boolean
-    userCreationRequest:
-      type: object
-      properties: {}
     userStatusResponse:
       type: object
       properties:
@@ -1434,23 +1633,6 @@ components:
           type: string
         web_url:
           type: string
-    followersAndFollowingResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-          username:
-            type: string
-          state:
-            type: string
-          avatar_url:
-            type: string
-          web_url:
-            type: string
     userCountsResponse:
       type: object
       properties:
@@ -1738,7 +1920,7 @@ components:
           format: date-time
         token:
           type: string
-    getUserActivitiesResponse:
+    getUserActivitiesAdministratorOnlyResponse:
       type: array
       items:
         type: object
@@ -1750,7 +1932,7 @@ components:
           last_activity_at:
             type: string
             format: date-time
-    userMembershipsResponse:
+    userMembershipsAdministratorOnlyResponse:
       type: array
       items:
         type: object

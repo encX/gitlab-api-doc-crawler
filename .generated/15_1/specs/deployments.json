@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/deployments.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/deployments.html",
   "pageSlug": "deployments",
   "pageName": "Deployments",
   "apis": [
@@ -385,8 +385,8 @@
         {
           "name": "status",
           "type": "string",
-          "required": true,
-          "description": "The status to filter deployments by. One of running, success, failed, or canceled."
+          "required": false,
+          "description": "The status to filter deployments by. One of created, running, success, failed, or canceled."
         }
       ],
       "response": {
@@ -439,8 +439,8 @@
         {
           "name": "status",
           "type": "string",
-          "required": true,
-          "description": "The new status of the deployment. One of running, success, failed, or canceled."
+          "required": false,
+          "description": "The new status of the deployment. One of created, running, success, failed, or canceled."
         }
       ],
       "response": {
@@ -480,33 +480,6 @@
           "external_url": "https://about.gitlab.com"
         },
         "deployable": null
-      }
-    },
-    {
-      "name": "Delete a specific deployment",
-      "description": "Delete a specific deployment that is not currently the last deployment for an environment or in a running state",
-      "resources": [
-        {
-          "method": "DELETE",
-          "path": "/projects/:id/deployments/:deployment_id"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "id",
-          "type": "integer/string",
-          "required": true,
-          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
-        },
-        {
-          "name": "deployment_id",
-          "type": "integer",
-          "required": true,
-          "description": "The ID of the deployment"
-        }
-      ],
-      "response": {
-        "message": "202 Accepted"
       }
     },
     {

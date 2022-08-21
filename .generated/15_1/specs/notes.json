@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/notes.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/notes.html",
   "pageSlug": "notes",
   "pageName": "Notes",
   "apis": [
@@ -62,8 +62,7 @@
           "noteable_type": "Issue",
           "noteable_iid": 377,
           "resolvable": false,
-          "confidential": false,
-          "internal": false
+          "confidential": false
         },
         {
           "id": 305,
@@ -84,8 +83,7 @@
           "noteable_type": "Issue",
           "noteable_iid": 121,
           "resolvable": false,
-          "confidential": true,
-          "internal": true
+          "confidential": true
         }
       ]
     },
@@ -152,19 +150,13 @@
           "name": "confidential",
           "type": "boolean",
           "required": false,
-          "description": "Deprecated: will be removed in GitLab 16.0 and renamed to internal. The confidential flag of a note. Default is false."
-        },
-        {
-          "name": "internal",
-          "type": "boolean",
-          "required": false,
-          "description": "The internal flag of a note. Overrides confidential when both parameters are submitted. Default is false."
+          "description": "The confidential flag of a note. Default is false."
         },
         {
           "name": "created_at",
           "type": "string",
           "required": false,
-          "description": "Date time string, ISO 8601 formatted. It must be after 1970-01-01. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
+          "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
         }
       ],
       "response": null
@@ -524,8 +516,7 @@
         "noteable_type": "MergeRequest",
         "noteable_iid": 2,
         "resolvable": false,
-        "confidential": false,
-        "internal": false
+        "confidential": false
       }
     },
     {
@@ -730,8 +721,7 @@
         "expires_at": null,
         "updated_at": "2013-10-02T07:34:20Z",
         "created_at": "2013-10-02T07:34:20Z",
-        "confidential": false,
-        "internal": false
+        "confidential": false
       }
     },
     {
@@ -766,13 +756,7 @@
           "name": "confidential",
           "type": "boolean",
           "required": false,
-          "description": "Deprecated: will be removed in GitLab 16.0 and is renamed to internal. The confidential flag of a note. Default is false."
-        },
-        {
-          "name": "internal",
-          "type": "boolean",
-          "required": false,
-          "description": "The internal flag of a note. Overrides confidential when both parameters are submitted. Default is false."
+          "description": "The confidential flag of a note. Default is false."
         }
       ],
       "response": null

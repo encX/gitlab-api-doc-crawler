@@ -101,7 +101,6 @@ listProjectDeployments
 createADeployment
 getASpecificDeployment
 updateADeployment
-deleteASpecificDeployment
 listOfMergeRequestsAssociatedWithADeployment
 approveOrRejectABlockedDeployment
 listProjectIssueDiscussionItems
@@ -275,10 +274,6 @@ listLdapGroupLinks
 addLdapGroupLinkWithCnOrFilter
 deleteLdapGroupLinkWithCnOrFilter
 deleteLdapGroupLink
-listSamlGroupLinks
-addSamlGroupLink
-getSamlGroupLink
-deleteSamlGroupLink
 createALinkToShareAGroupWithAnotherGroup
 deleteLinkSharingGroupWithAnotherGroup
 getGroupPushRules
@@ -322,9 +317,6 @@ getDatadogIntegrationSettings
 createEditUnifyCircuitIntegration
 disableUnifyCircuitIntegration
 getUnifyCircuitIntegrationSettings
-createEditPumbleIntegration
-disablePumbleIntegration
-getPumbleIntegrationSettings
 createEditWebexTeamsIntegration
 disableWebexTeamsIntegration
 getWebexTeamsIntegrationSettings
@@ -531,7 +523,6 @@ getSingleMr
 updateMr
 deleteAMergeRequest
 getSingleMrParticipants
-getSingleMrReviewers
 getSingleMrCommits
 getSingleMrChanges
 listMrPipelines
@@ -552,7 +543,6 @@ addSpentTimeForAMergeRequest
 resetSpentTimeForAMergeRequest
 getTimeTrackingStats
 listMergeTrainsForAProject
-metadataApi
 createANewAnnotation
 addAStarToADashboard
 removeAStarFromADashboard
@@ -623,7 +613,6 @@ createANewPipelineSchedule
 getASinglePipelineSchedule
 editAPipelineSchedule
 deleteAPipelineSchedule
-getAllPipelinesTriggeredByAPipelineSchedule
 takeOwnershipOfAPipelineSchedule
 runAScheduledPipelineImmediately
 createANewPipelineScheduleVariable
@@ -669,10 +658,10 @@ importAFileFromARemoteObjectStorage
 importAFileFromAwsS3
 importStatus
 listProjectVariables
-createAVariable
-getASingleVariable
-updateAVariable
-deleteAVariable
+createVariable
+showVariableDetails
+updateVariable
+removeVariable
 retrieveAllProjectRepositoryStorageMoves
 scheduleRepositoryStorageMovesForAllProjectsOnAStorageShard
 retrieveAllRepositoryStorageMovesForAProject
@@ -845,11 +834,11 @@ exportMetricDefinitionsAsASingleYamlFile
 exportServicePingSqlQueries
 forAdministrators
 userCreation
-forAdministrators
+forAdministrator
 userModification
 userDeletion
 deleteAuthenticationIdentityFromUser
-forAdministrators
+listCurrentUserForAdministrators
 userStatus
 setUserStatus
 getTheStatusOfAUser
@@ -894,9 +883,8 @@ rejectUser
 getAnImpersonationTokenOfAUser
 revokeAnImpersonationToken
 createAPersonalAccessToken
-getUserActivities
-userMemberships
-disableTwoFactorAuthentication
+getUserActivitiesAdministratorOnly
+userMembershipsAdministratorOnly
 versionApi
 createNewMergeRequestThread
 singleVulnerability

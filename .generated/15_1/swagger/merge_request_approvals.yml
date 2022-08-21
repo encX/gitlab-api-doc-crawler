@@ -615,8 +615,6 @@ components:
                   type: string
                 ldap_access:
                   type: string
-          applies_to_all_protected_branches:
-            type: boolean
           protected_branches:
             type: array
             items:
@@ -735,8 +733,6 @@ components:
                 type: string
               ldap_access:
                 type: string
-        applies_to_all_protected_branches:
-          type: boolean
         protected_branches:
           type: array
           items:
@@ -782,8 +778,6 @@ components:
       properties:
         name:
           type: string
-        report_type:
-          type: string
         approvals_required:
           type: integer
         rule_type:
@@ -800,8 +794,8 @@ components:
           type: array
           items:
             type: string
-        applies_to_all_protected_branches:
-          type: boolean
+        report_type:
+          type: string
       required:
         - name
         - approvals_required
@@ -824,8 +818,6 @@ components:
           type: array
           items:
             type: string
-        applies_to_all_protected_branches:
-          type: boolean
       required:
         - name
         - approvals_required

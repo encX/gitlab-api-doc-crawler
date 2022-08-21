@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/protected_tags.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/protected_tags.html",
   "pageSlug": "protected_tags",
   "pageName": "Protected tags",
   "apis": [
@@ -92,12 +92,6 @@
           "type": "string",
           "required": false,
           "description": "Access levels allowed to create (defaults: 40, Maintainer role)"
-        },
-        {
-          "name": "allowed_to_create",
-          "type": "array",
-          "required": false,
-          "description": "Array of access levels allowed to create tags, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
         }
       ],
       "response": {

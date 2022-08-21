@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/repositories.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/repositories.html",
   "pageSlug": "repositories",
   "pageName": "Repositories",
   "apis": [
@@ -401,12 +401,6 @@
           "description": "The Git trailer to use for including commits, defaults to Changelog."
         },
         {
-          "name": "config_file",
-          "type": "string",
-          "required": false,
-          "description": "Path to the changelog configuration file in the project’s Git repository. Defaults to .gitlab/changelog_config.yml."
-        },
-        {
           "name": "file",
           "type": "string",
           "required": false,
@@ -460,12 +454,6 @@
           "type": "string",
           "required": false,
           "description": "The Git trailer to use for including commits, defaults to Changelog."
-        },
-        {
-          "name": "config_file",
-          "type": "string",
-          "required": false,
-          "description": "The path of changelog configuration file in the project’s Git repository, defaults to .gitlab/changelog_config.yml."
         }
       ],
       "response": {

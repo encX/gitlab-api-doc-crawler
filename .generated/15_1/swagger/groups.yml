@@ -848,101 +848,6 @@ paths:
           description: successful operation
       tags:
         - groups
-  '/groups/{id}/saml_group_links':
-    get:
-      summary: List SAML group links
-      description: Lists SAML group links.
-      operationId: listSamlGroupLinks
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listSamlGroupLinksResponse'
-      tags:
-        - groups
-    post:
-      summary: Add SAML group link
-      description: Adds a SAML group link for a group.
-      operationId: addSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSamlGroupLinkResponse'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/addSamlGroupLinkRequest'
-      tags:
-        - groups
-  '/groups/{id}/saml_group_links/{saml_group_name}':
-    get:
-      summary: Get SAML group link
-      description: Get a SAML group link for the group.
-      operationId: getSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-        - name: saml_group_name
-          in: path
-          description: Name of an SAML group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSamlGroupLinkResponse'
-      tags:
-        - groups
-    delete:
-      summary: Delete SAML group link
-      description: Deletes a SAML group link for the group.
-      operationId: deleteSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-        - name: saml_group_name
-          in: path
-          description: Name of an SAML group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - groups
   '/groups/{id}/share':
     post:
       summary: Create a link to share a group with another group
@@ -1438,8 +1343,6 @@ components:
             type: integer
           ci_forward_deployment_enabled:
             type: boolean
-          ci_allow_fork_pipelines_to_run_in_parent_project:
-            type: boolean
           public_jobs:
             type: boolean
           build_timeout:
@@ -1814,14 +1717,6 @@ components:
           type: boolean
         shared_runners_minutes_limit:
           type: integer
-        unique_project_download_limit:
-          type: integer
-        unique_project_download_limit_interval_in_seconds:
-          type: integer
-        unique_project_download_limit_allowlist:
-          type: array
-          items:
-            type: string
     updateGroupResponse:
       type: object
       properties:
@@ -2127,32 +2022,6 @@ components:
       required:
         - group_access
         - provider
-    listSamlGroupLinksResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          name:
-            type: string
-          access_level:
-            type: integer
-    getSamlGroupLinkResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        access_level:
-          type: integer
-    addSamlGroupLinkRequest:
-      type: object
-      properties:
-        saml_group_name:
-          type: string
-        access_level:
-          type: integer
-      required:
-        - saml_group_name
-        - access_level
     createALinkToShareAGroupWithAnotherGroupRequest:
       type: object
       properties:

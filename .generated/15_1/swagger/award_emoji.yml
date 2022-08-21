@@ -6,9 +6,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/award_emoji':
     get:
       summary: List an awardable’s award emojis
-      description: >-
-        Get a list of all award emojis for a specified awardable. This endpoint can be accessed without authentication
-        if the awardable is publicly accessible.
+      description: Get a list of all award emojis for a specified awardable.
       operationId: listAnAwardableAwardEmojis
       parameters:
         - name: id
@@ -60,9 +58,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}':
     get:
       summary: Get single award emoji
-      description: >-
-        Get a single award emoji from an issue, snippet, or merge request. This endpoint can be accessed without
-        authentication if the awardable is publicly accessible.
+      description: 'Get a single award emoji from an issue, snippet, or merge request.'
       operationId: getSingleAwardEmoji
       parameters:
         - name: id
@@ -123,9 +119,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji':
     get:
       summary: List a comment’s award emojis
-      description: >-
-        Get all award emojis for a comment (note). This endpoint can be accessed without authentication if the comment
-        is publicly accessible.
+      description: Get all award emojis for a comment (note).
       operationId: listACommentAwardEmojis
       parameters:
         - name: id
@@ -195,9 +189,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}':
     get:
       summary: Get an award emoji for a comment
-      description: >-
-        Get a single award emoji for a comment (note). This endpoint can be accessed without authentication if the
-        comment is publicly accessible.
+      description: Get a single award emoji for a comment (note).
       operationId: getAnAwardEmojiForAComment
       parameters:
         - name: id

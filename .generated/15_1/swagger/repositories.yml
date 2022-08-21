@@ -313,14 +313,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: config_file
-          in: query
-          description: >-
-            The path of changelog configuration file in the project’s Git repository, defaults to
-            .gitlab/changelog_config.yml.
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation
@@ -470,8 +462,6 @@ components:
         branch:
           type: string
         trailer:
-          type: string
-        config_file:
           type: string
         file:
           type: string

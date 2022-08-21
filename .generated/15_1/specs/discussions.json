@@ -1,5 +1,5 @@
 {
-  "origin": "https://docs.gitlab.com/ee/api/discussions.html",
+  "origin": "https://docs.gitlab.com/15.1/ee/api/discussions.html",
   "pageSlug": "discussions",
   "pageName": "Discussions",
   "apis": [
@@ -1389,7 +1389,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions"
+          "path": "/projects/:id/commits/:commit_id/discussions"
         }
       ],
       "attributes": [
@@ -1527,7 +1527,7 @@
       "resources": [
         {
           "method": "GET",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions/:discussion_id"
+          "path": "/projects/:id/commits/:commit_id/discussions/:discussion_id"
         }
       ],
       "attributes": [
@@ -1558,7 +1558,7 @@
       "resources": [
         {
           "method": "POST",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions"
+          "path": "/projects/:id/commits/:commit_id/discussions"
         }
       ],
       "attributes": [
@@ -1673,7 +1673,7 @@
       "resources": [
         {
           "method": "POST",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions/:discussion_id/notes"
+          "path": "/projects/:id/commits/:commit_id/discussions/:discussion_id/notes"
         }
       ],
       "attributes": [
@@ -1722,7 +1722,7 @@
       "resources": [
         {
           "method": "PUT",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions/:discussion_id/notes/:note_id"
+          "path": "/projects/:id/commits/:commit_id/discussions/:discussion_id/notes/:note_id"
         }
       ],
       "attributes": [
@@ -1765,7 +1765,7 @@
       "resources": [
         {
           "method": "DELETE",
-          "path": "/projects/:id/repository/commits/:commit_id/discussions/:discussion_id/notes/:note_id"
+          "path": "/projects/:id/commits/:commit_id/discussions/:discussion_id/notes/:note_id"
         }
       ],
       "attributes": [

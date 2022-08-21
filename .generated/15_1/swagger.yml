@@ -461,9 +461,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/award_emoji':
     get:
       summary: List an awardable’s award emojis
-      description: >-
-        Get a list of all award emojis for a specified awardable. This endpoint can be accessed without authentication
-        if the awardable is publicly accessible.
+      description: Get a list of all award emojis for a specified awardable.
       operationId: listAnAwardableAwardEmojis
       parameters:
         - name: id
@@ -515,9 +513,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/award_emoji/{award_id}':
     get:
       summary: Get single award emoji
-      description: >-
-        Get a single award emoji from an issue, snippet, or merge request. This endpoint can be accessed without
-        authentication if the awardable is publicly accessible.
+      description: 'Get a single award emoji from an issue, snippet, or merge request.'
       operationId: getSingleAwardEmoji
       parameters:
         - name: id
@@ -578,9 +574,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji':
     get:
       summary: List a comment’s award emojis
-      description: >-
-        Get all award emojis for a comment (note). This endpoint can be accessed without authentication if the comment
-        is publicly accessible.
+      description: Get all award emojis for a comment (note).
       operationId: listACommentAwardEmojis
       parameters:
         - name: id
@@ -650,9 +644,7 @@ paths:
   '/projects/{id}/issues/{issue_iid}/notes/{note_id}/award_emoji/{award_id}':
     get:
       summary: Get an award emoji for a comment
-      description: >-
-        Get a single award emoji for a comment (note). This endpoint can be accessed without authentication if the
-        comment is publicly accessible.
+      description: Get a single award emoji for a comment (note).
       operationId: getAnAwardEmojiForAComment
       parameters:
         - name: id
@@ -2391,7 +2383,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAllDeployKeysResponse'
+                $ref: '#/components/schemas/listDeployKeysForProjectResponse'
       tags:
         - deploy_keys
     post:
@@ -2411,7 +2403,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -2486,7 +2478,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/addDeployKeyResponse'
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
       requestBody:
         content:
           application/json:
@@ -2914,32 +2906,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/updateADeploymentRequest'
-      tags:
-        - deployments
-    delete:
-      summary: Delete a specific deployment
-      description: Delete a specific deployment that is not currently the last deployment for an environment or in a running state
-      operationId: deleteASpecificDeployment
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user
-          required: true
-          schema:
-            type: string
-        - name: deployment_id
-          in: path
-          description: The ID of the deployment
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deleteASpecificDeploymentResponse'
       tags:
         - deployments
   '/projects/{id}/deployments/{deployment_id}/merge_requests':
@@ -3790,7 +3756,7 @@ paths:
           description: successful operation
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions':
+  '/projects/{id}/commits/{commit_id}/discussions':
     get:
       summary: List project commit discussion items
       description: Gets a list of all discussion items for a single commit.
@@ -3846,7 +3812,7 @@ paths:
               $ref: '#/components/schemas/createNewCommitThreadRequest'
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}':
     get:
       summary: Get single commit discussion item
       description: Returns a single discussion item for a specific project commit
@@ -3875,7 +3841,7 @@ paths:
           description: successful operation
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}/notes':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes':
     post:
       summary: Add note to existing commit thread
       description: Adds a new note to the thread.
@@ -3909,7 +3875,7 @@ paths:
               $ref: '#/components/schemas/addNoteToExistingIssueThreadRequest'
       tags:
         - discussions
-  '/projects/{id}/repository/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
+  '/projects/{id}/commits/{commit_id}/discussions/{discussion_id}/notes/{note_id}':
     put:
       summary: Modify an existing commit thread note
       description: Modify or resolve an existing thread note of a commit.
@@ -8076,101 +8042,6 @@ paths:
           description: successful operation
       tags:
         - groups
-  '/groups/{id}/saml_group_links':
-    get:
-      summary: List SAML group links
-      description: Lists SAML group links.
-      operationId: listSamlGroupLinks
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listSamlGroupLinksResponse'
-      tags:
-        - groups
-    post:
-      summary: Add SAML group link
-      description: Adds a SAML group link for a group.
-      operationId: addSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSamlGroupLinkResponse'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/addSamlGroupLinkRequest'
-      tags:
-        - groups
-  '/groups/{id}/saml_group_links/{saml_group_name}':
-    get:
-      summary: Get SAML group link
-      description: Get a SAML group link for the group.
-      operationId: getSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-        - name: saml_group_name
-          in: path
-          description: Name of an SAML group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSamlGroupLinkResponse'
-      tags:
-        - groups
-    delete:
-      summary: Delete SAML group link
-      description: Deletes a SAML group link for the group.
-      operationId: deleteSamlGroupLink
-      parameters:
-        - name: id
-          in: path
-          description: ID or URL-encoded path of the group
-          required: true
-          schema:
-            type: string
-        - name: saml_group_name
-          in: path
-          description: Name of an SAML group
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - groups
   '/groups/{id}/share':
     post:
       summary: Create a link to share a group with another group
@@ -8837,42 +8708,6 @@ paths:
           description: successful operation
       tags:
         - integrations
-  '/projects/{id}/integrations/pumble':
-    put:
-      summary: Create/Edit Pumble integration
-      description: Set Pumble integration for a project.
-      operationId: createEditPumbleIntegration
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/createEditUnifyCircuitIntegrationRequest'
-      tags:
-        - integrations
-    delete:
-      summary: Disable Pumble integration
-      description: Disable the Pumble integration for a project. Integration settings are preserved.
-      operationId: disablePumbleIntegration
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - integrations
-    get:
-      summary: Get Pumble integration settings
-      description: Get Pumble integration settings for a project.
-      operationId: getPumbleIntegrationSettings
-      parameters: []
-      responses:
-        '200':
-          description: successful operation
-      tags:
-        - integrations
   '/projects/{id}/integrations/webex-teams':
     put:
       summary: Create/Edit Webex Teams integration
@@ -9404,7 +9239,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createEditFlowdockIntegrationRequest'
+              $ref: '#/components/schemas/createEditMattermostSlashCommandIntegrationRequest'
       tags:
         - integrations
     delete:
@@ -10476,7 +10311,7 @@ paths:
             type: integer
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the group owned by the authenticated user
+          description: The ID or URL-encoded path of the group owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10692,7 +10527,7 @@ paths:
             type: integer
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10834,7 +10669,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10881,7 +10716,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10907,7 +10742,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10938,7 +10773,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10961,7 +10796,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -10991,7 +10826,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11059,7 +10894,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11088,7 +10923,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11117,7 +10952,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11210,7 +11045,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11242,7 +11077,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11269,7 +11104,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11301,7 +11136,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11330,7 +11165,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11357,7 +11192,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11384,7 +11219,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11413,7 +11248,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11440,7 +11275,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11467,7 +11302,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11498,7 +11333,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11525,7 +11360,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -11562,7 +11397,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: The global ID or URL-encoded path of the project owned by the authenticated user
+          description: The ID or URL-encoded path of the project owned by the authenticated user
           required: true
           schema:
             type: string
@@ -12018,7 +11853,7 @@ paths:
           in: query
           description: >-
             Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed,
-            success, canceled, skipped, waiting_for_resource, or manual. All jobs are returned if scope is not provided.
+            success, canceled, skipped, or manual. All jobs are returned if scope is not provided.
           required: false
           schema:
             type: string
@@ -12053,7 +11888,7 @@ paths:
           in: query
           description: >-
             Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed,
-            success, canceled, skipped, waiting_for_resource, or manual. All jobs are returned if scope is not provided.
+            success, canceled, skipped, or manual. All jobs are returned if scope is not provided.
           required: false
           schema:
             type: string
@@ -12094,7 +11929,7 @@ paths:
           in: query
           description: >-
             Scope of jobs to show. Either one of or an array of the following: created, pending, running, failed,
-            success, canceled, skipped, waiting_for_resource, or manual. All jobs are returned if scope is not provided.
+            success, canceled, skipped, or manual. All jobs are returned if scope is not provided.
           required: false
           schema:
             type: string
@@ -12985,12 +12820,6 @@ paths:
         - name: user_ids
           in: query
           description: Filter the results on the given user IDs
-          required: false
-          schema:
-            type: string
-        - name: skip_users
-          in: query
-          description: Filter skipped users out of the results
           required: false
           schema:
             type: string
@@ -14534,14 +14363,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: approved_by_usernames
-          in: query
-          description: >-
-            Returns merge requests which have been approved by all the users with the given usernames (Max: 5). None
-            returns merge requests with no approvals. Any returns merge requests with an approval.
-          required: false
-          schema:
-            type: string
         - name: reviewer_id
           in: query
           description: >-
@@ -14731,33 +14552,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/getSingleMrParticipantsResponse'
-      tags:
-        - merge_requests
-  '/projects/{id}/merge_requests/{merge_request_iid}/reviewers':
-    get:
-      summary: Get single MR reviewers
-      description: Get a list of merge request reviewers.
-      operationId: getSingleMrReviewers
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user.
-          required: true
-          schema:
-            type: string
-        - name: merge_request_iid
-          in: path
-          description: The internal ID of the merge request.
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getSingleMrReviewersResponse'
       tags:
         - merge_requests
   '/projects/{id}/merge_requests/{merge_request_iid}/commits':
@@ -15354,51 +15148,6 @@ paths:
                 $ref: '#/components/schemas/listMergeTrainsForAProjectResponse'
       tags:
         - merge_trains
-  /metadata:
-    get:
-      summary: Metadata API
-      description: Retrieve metadata information for this GitLab instance.
-      operationId: metadataApi
-      parameters:
-        - name: version
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: revision
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: kas
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: kas.enabled
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: kas.externalUrl
-          in: query
-          required: false
-          schema:
-            type: string
-        - name: kas.version
-          in: query
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/metadataApiResponse'
-      tags:
-        - metadata
   '/environments/{id}/metrics_dashboard/annotations/':
     post:
       summary: Create a new annotation
@@ -16253,7 +16002,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createNewEpicNoteRequest'
+              $ref: '#/components/schemas/modifyExistingIssueNoteRequest'
       tags:
         - notes
   '/groups/{id}/epics/{epic_id}/notes/{note_id}':
@@ -17329,33 +17078,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/createANewPipelineScheduleResponse'
-      tags:
-        - pipeline_schedules
-  '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/pipelines':
-    get:
-      summary: Get all pipelines triggered by a pipeline schedule
-      description: Get all pipelines triggered by a pipeline schedule in a project.
-      operationId: getAllPipelinesTriggeredByAPipelineSchedule
-      parameters:
-        - name: id
-          in: path
-          description: The ID or URL-encoded path of the project owned by the authenticated user.
-          required: true
-          schema:
-            type: string
-        - name: pipeline_schedule_id
-          in: path
-          description: The pipeline schedule ID.
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getAllPipelinesTriggeredByAPipelineScheduleResponse'
       tags:
         - pipeline_schedules
   '/projects/{id}/pipeline_schedules/{pipeline_schedule_id}/take_ownership':
@@ -18570,11 +18292,9 @@ paths:
       tags:
         - project_level_variables
     post:
-      summary: Create a variable
-      description: >-
-        Create a new variable. If a variable with the same key already exists, the new variable must have a different
-        environment_scope. Otherwise, GitLab returns a message similar to: VARIABLE_NAME has already been taken.
-      operationId: createAVariable
+      summary: Create variable
+      description: Create a new variable.
+      operationId: createVariable
       parameters:
         - name: id
           in: path
@@ -18588,21 +18308,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/getASingleVariableResponse'
+              $ref: '#/components/schemas/showVariableDetailsResponse'
       tags:
         - project_level_variables
   '/projects/{id}/variables/{key}':
     get:
-      summary: Get a single variable
-      description: >-
-        Get the details of a single variable. If there are multiple variables with the same key, use filter to select
-        the correct environment_scope.
-      operationId: getASingleVariable
+      summary: Show variable details
+      description: Get the details of a project’s specific variable.
+      operationId: showVariableDetails
       parameters:
         - name: id
           in: path
@@ -18628,15 +18346,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       tags:
         - project_level_variables
     put:
-      summary: Update a variable
-      description: >-
-        Update a project’s variable. If there are multiple variables with the same key, use filter to select the correct
-        environment_scope.
-      operationId: updateAVariable
+      summary: Update variable
+      description: Update a project’s variable.
+      operationId: updateVariable
       parameters:
         - name: id
           in: path
@@ -18656,20 +18372,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getASingleVariableResponse'
+                $ref: '#/components/schemas/showVariableDetailsResponse'
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateAVariableRequest'
+              $ref: '#/components/schemas/updateVariableRequest'
       tags:
         - project_level_variables
     delete:
-      summary: Delete a variable
-      description: >-
-        Delete a project’s variable. If there are multiple variables with the same key, use filter to select the correct
-        environment_scope.
-      operationId: deleteAVariable
+      summary: Remove variable
+      description: Remove a project’s variable.
+      operationId: removeVariable
       parameters:
         - name: id
           in: path
@@ -21390,14 +21104,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: config_file
-          in: query
-          description: >-
-            The path of changelog configuration file in the project’s Git repository, defaults to
-            .gitlab/changelog_config.yml.
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation
@@ -22724,31 +22430,7 @@ paths:
       summary: List all snippets for a user
       description: Get a list of the current user’s snippets.
       operationId: listAllSnippetsForAUser
-      parameters:
-        - name: per_page
-          in: query
-          description: Number of snippets to return per page.
-          required: false
-          schema:
-            type: integer
-        - name: page
-          in: query
-          description: Page to retrieve.
-          required: false
-          schema:
-            type: integer
-        - name: created_after
-          in: query
-          description: 'Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
-        - name: created_before
-          in: query
-          description: 'Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
+      parameters: []
       responses:
         '200':
           description: successful operation
@@ -22903,18 +22585,6 @@ paths:
           required: false
           schema:
             type: integer
-        - name: created_after
-          in: query
-          description: 'Return snippets created after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
-        - name: created_before
-          in: query
-          description: 'Return snippets created before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation
@@ -23317,12 +22987,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: without_projects
-          in: query
-          description: Limit results to topics without assigned projects.
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation
@@ -23518,13 +23182,13 @@ paths:
         - users
   '/users/{id}':
     get:
-      summary: For administrators
+      summary: For administrator
       description: 'Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:'
-      operationId: forAdministrators
+      operationId: forAdministrator
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -23534,7 +23198,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forAdministratorsResponse'
+                $ref: '#/components/schemas/forAdministratorResponse'
       tags:
         - users
     put:
@@ -23566,7 +23230,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -23593,7 +23257,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of a user
+          description: The ID of a user
           required: true
           schema:
             type: integer
@@ -23610,13 +23274,13 @@ paths:
         - users
   /user:
     get:
-      summary: For administrators
+      summary: List current user (for administrators)
       description: ''
-      operationId: forAdministrators
+      operationId: listCurrentUserForAdministrators
       parameters:
         - name: sudo
           in: query
-          description: ID of a user to make the call in their place
+          description: the ID of a user to make the call in their place
           required: false
           schema:
             type: integer
@@ -23626,7 +23290,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/forAdministratorsResponse'
+                $ref: '#/components/schemas/listCurrentUserForAdministratorsResponse'
       tags:
         - users
   /user/status:
@@ -23671,7 +23335,7 @@ paths:
       parameters:
         - name: id_or_username
           in: path
-          description: ID or username of the user to get a status of
+          description: The ID or username of the user to get a status of
           required: true
           schema:
             type: string
@@ -23726,7 +23390,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user to follow
+          description: The ID of the user to follow
           required: true
           schema:
             type: integer
@@ -23747,7 +23411,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user to follow
+          description: The ID of the user to follow
           required: true
           schema:
             type: integer
@@ -23757,7 +23421,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/followersAndFollowingResponse'
+                $ref: '#/components/schemas/forNormalUsersResponse'
       tags:
         - users
   /user_counts:
@@ -23842,7 +23506,7 @@ paths:
       parameters:
         - name: id_or_username
           in: path
-          description: ID or username of the user to get the SSH keys for.
+          description: The ID or username of the user to get the SSH keys for.
           required: true
           schema:
             type: string
@@ -23859,7 +23523,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of an SSH key
+          description: The ID of an SSH key
           required: true
           schema:
             type: string
@@ -24003,7 +23667,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -24023,7 +23687,7 @@ paths:
       parameters:
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -24040,7 +23704,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -24060,7 +23724,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -24088,13 +23752,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -24114,13 +23778,13 @@ paths:
       parameters:
         - name: id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: key_id
           in: path
-          description: ID of the GPG key
+          description: The ID of the GPG key
           required: true
           schema:
             type: integer
@@ -24361,13 +24025,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: state
           in: query
-          description: 'Filter tokens based on state (all, active, inactive)'
+          description: 'filter tokens based on state (all, active, inactive)'
           required: false
           schema:
             type: string
@@ -24389,7 +24053,7 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -24451,13 +24115,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: impersonation_token_id
           in: path
-          description: ID of the impersonation token
+          description: The ID of the impersonation token
           required: true
           schema:
             type: integer
@@ -24477,13 +24141,13 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
         - name: impersonation_token_id
           in: path
-          description: ID of the impersonation token
+          description: The ID of the impersonation token
           required: true
           schema:
             type: integer
@@ -24502,7 +24166,7 @@ paths:
       parameters:
         - name: user_id
           in: path
-          description: ID of the user
+          description: The ID of the user
           required: true
           schema:
             type: integer
@@ -24522,13 +24186,13 @@ paths:
         - users
   /user/activities:
     get:
-      summary: Get user activities
-      description: 'Pre-requisite:'
-      operationId: getUserActivities
+      summary: Get user activities (administrator only)
+      description: 'Get the last activity date for all users, sorted from oldest to newest.'
+      operationId: getUserActivitiesAdministratorOnly
       parameters:
         - name: from
           in: query
-          description: 'Date string in the format YEAR-MM-DD. For example, 2016-03-11. Defaults to 6 months ago.'
+          description: 'Date string in the format YEAR-MONTH-DAY. For example, 2016-03-11. Defaults to 6 months ago.'
           required: false
           schema:
             type: string
@@ -24538,18 +24202,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getUserActivitiesResponse'
+                $ref: '#/components/schemas/getUserActivitiesAdministratorOnlyResponse'
       tags:
         - users
   '/users/{id}/memberships':
     get:
-      summary: User memberships
-      description: 'Pre-requisite:'
-      operationId: userMemberships
+      summary: User memberships (administrator only)
+      description: >-
+        Lists all projects and groups a user is a member of. This endpoint is available for administrators only. It
+        returns the source_id, source_name, source_type and access_level of a membership. Source can be of type
+        Namespace (representing a group) or Project. The response represents only direct memberships. Inherited
+        memberships, for example in subgroups, are not included. Access levels are represented by an integer value. For
+        more details, read about the meaning of access level values.
+      operationId: userMembershipsAdministratorOnly
       parameters:
         - name: id
           in: path
-          description: ID of a specified user
+          description: The ID of a specified user
           required: true
           schema:
             type: integer
@@ -24565,24 +24234,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/userMembershipsResponse'
-      tags:
-        - users
-  '/users/{id}/disable_two_factor':
-    patch:
-      summary: Disable two factor authentication
-      description: 'Pre-requisite:'
-      operationId: disableTwoFactorAuthentication
-      parameters:
-        - name: id
-          in: path
-          description: ID of the user
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: successful operation
+                $ref: '#/components/schemas/userMembershipsAdministratorOnlyResponse'
       tags:
         - users
   /version:
@@ -24992,7 +24644,9 @@ components:
           type: boolean
     changeLogoRequest:
       type: object
-      properties: {}
+      properties:
+        logo:
+          type: string
     changeLogoResponse:
       type: string
     createAnApplicationRequest:
@@ -26316,7 +25970,45 @@ components:
                 severity:
                   type: string
     listAllDeployKeysResponse:
-      type: string
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          fingerprint:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          projects_with_write_access:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                description:
+                  type: string
+                name:
+                  type: string
+                name_with_namespace:
+                  type: string
+                path:
+                  type: string
+                path_with_namespace:
+                  type: string
+                created_at:
+                  type: string
+                  format: date-time
+    listDeployKeysForProjectResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/getASingleDeployKeyResponse'
     listProjectDeployKeysForUserResponse:
       type: array
       items:
@@ -26336,8 +26028,6 @@ components:
             type: string
           fingerprint:
             type: string
-          fingerprint_sha256:
-            type: string
     getASingleDeployKeyResponse:
       type: object
       properties:
@@ -26346,10 +26036,6 @@ components:
         title:
           type: string
         key:
-          type: string
-        fingerprint:
-          type: string
-        fingerprint_sha256:
           type: string
         created_at:
           type: string
@@ -26368,20 +26054,6 @@ components:
       required:
         - title
         - key
-    addDeployKeyResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        id:
-          type: integer
-        title:
-          type: string
-        can_push:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
     updateDeployKeyRequest:
       type: object
       properties:
@@ -26811,7 +26483,6 @@ components:
         - sha
         - ref
         - tag
-        - status
     createADeploymentResponse:
       type: object
       properties:
@@ -26863,13 +26534,6 @@ components:
       type: object
       properties:
         status:
-          type: string
-      required:
-        - status
-    deleteASpecificDeploymentResponse:
-      type: object
-      properties:
-        message:
           type: string
     approveOrRejectABlockedDeploymentRequest:
       type: object
@@ -29406,32 +29070,6 @@ components:
             type: integer
           job_artifacts_verified_in_percentage:
             type: string
-          ci_secure_files_count:
-            type: integer
-          ci_secure_files_checksum_total_count:
-            type: integer
-          ci_secure_files_checksummed_count:
-            type: integer
-          ci_secure_files_checksum_failed_count:
-            type: integer
-          ci_secure_files_synced_count:
-            type: integer
-          ci_secure_files_failed_count:
-            type: integer
-          ci_secure_files_registry_count:
-            type: integer
-          ci_secure_files_verification_total_count:
-            type: integer
-          ci_secure_files_verified_count:
-            type: integer
-          ci_secure_files_verification_failed_count:
-            type: integer
-          ci_secure_files_synced_in_percentage:
-            type: string
-          ci_secure_files_verified_in_percentage:
-            type: string
-          ci_secure_files_synced_missing_on_primary_count:
-            type: integer
     retrieveStatusAboutASpecificGeoNodeResponse:
       type: object
       properties:
@@ -29721,32 +29359,6 @@ components:
           type: integer
         job_artifacts_verified_in_percentage:
           type: string
-        ci_secure_files_count:
-          type: integer
-        ci_secure_files_checksum_total_count:
-          type: integer
-        ci_secure_files_checksummed_count:
-          type: integer
-        ci_secure_files_checksum_failed_count:
-          type: integer
-        ci_secure_files_synced_count:
-          type: integer
-        ci_secure_files_failed_count:
-          type: integer
-        ci_secure_files_registry_count:
-          type: integer
-        ci_secure_files_verification_total_count:
-          type: integer
-        ci_secure_files_verified_count:
-          type: integer
-        ci_secure_files_verification_failed_count:
-          type: integer
-        ci_secure_files_synced_in_percentage:
-          type: string
-        ci_secure_files_verified_in_percentage:
-          type: string
-        ci_secure_files_synced_missing_on_primary_count:
-          type: integer
     retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNodeResponse:
       type: array
       items:
@@ -30165,7 +29777,7 @@ components:
     listGroupVariablesResponse:
       type: array
       items:
-        $ref: '#/components/schemas/getASingleVariableResponse'
+        $ref: '#/components/schemas/showVariableDetailsResponse'
     showVariableDetailsResponse:
       type: object
       properties:
@@ -30194,6 +29806,9 @@ components:
           type: boolean
         environment_scope:
           type: string
+        filter:
+          type: object
+          additionalProperties: true
       required:
         - value
     listGroupMilestonesResponse:
@@ -30786,8 +30401,6 @@ components:
             type: integer
           ci_forward_deployment_enabled:
             type: boolean
-          ci_allow_fork_pipelines_to_run_in_parent_project:
-            type: boolean
           public_jobs:
             type: boolean
           build_timeout:
@@ -31162,14 +30775,6 @@ components:
           type: boolean
         shared_runners_minutes_limit:
           type: integer
-        unique_project_download_limit:
-          type: integer
-        unique_project_download_limit_interval_in_seconds:
-          type: integer
-        unique_project_download_limit_allowlist:
-          type: array
-          items:
-            type: string
     updateGroupResponse:
       type: object
       properties:
@@ -31475,27 +31080,6 @@ components:
       required:
         - group_access
         - provider
-    listSamlGroupLinksResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/getSamlGroupLinkResponse'
-    getSamlGroupLinkResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        access_level:
-          type: integer
-    addSamlGroupLinkRequest:
-      type: object
-      properties:
-        saml_group_name:
-          type: string
-        access_level:
-          type: integer
-      required:
-        - saml_group_name
-        - access_level
     createALinkToShareAGroupWithAnotherGroupRequest:
       type: object
       properties:
@@ -31954,8 +31538,6 @@ components:
           type: string
         datadog_tags:
           type: string
-        archive_trace_events:
-          type: boolean
     createEditUnifyCircuitIntegrationRequest:
       type: object
       properties:
@@ -32151,6 +31733,15 @@ components:
           properties:
             token:
               type: string
+    createEditMattermostSlashCommandIntegrationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+        username:
+          type: string
+      required:
+        - token
     createEditPackagistIntegrationRequest:
       type: object
       properties:
@@ -32174,6 +31765,8 @@ components:
       properties:
         recipients:
           type: string
+        add_pusher:
+          type: boolean
         notify_only_broken_pipelines:
           type: boolean
         branches_to_be_notified:
@@ -36115,8 +35708,6 @@ components:
                 type: string
               ldap_access:
                 type: string
-        applies_to_all_protected_branches:
-          type: boolean
         protected_branches:
           type: array
           items:
@@ -36162,8 +35753,6 @@ components:
       properties:
         name:
           type: string
-        report_type:
-          type: string
         approvals_required:
           type: integer
         rule_type:
@@ -36180,8 +35769,8 @@ components:
           type: array
           items:
             type: string
-        applies_to_all_protected_branches:
-          type: boolean
+        report_type:
+          type: string
       required:
         - name
         - approvals_required
@@ -36204,8 +35793,6 @@ components:
           type: array
           items:
             type: string
-        applies_to_all_protected_branches:
-          type: boolean
       required:
         - name
         - approvals_required
@@ -36711,46 +36298,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/followAndUnfollowUsersResponse'
-    getSingleMrReviewersResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          user:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          updated_state_by:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-              username:
-                type: string
-              state:
-                type: string
-              avatar_url:
-                type: string
-              web_url:
-                type: string
-          state:
-            type: string
-          created_at:
-            type: string
-            format: date-time
     getSingleMrCommitsResponse:
       type: array
       items:
@@ -38118,22 +37665,6 @@ components:
             format: date-time
           duration:
             type: integer
-    metadataApiResponse:
-      type: object
-      properties:
-        version:
-          type: string
-        revision:
-          type: string
-        kas:
-          type: object
-          properties:
-            enabled:
-              type: boolean
-            externalUrl:
-              type: string
-            version:
-              type: string
     createANewAnnotationRequest:
       type: object
       properties:
@@ -38287,8 +37818,6 @@ components:
           type: string
         confidential:
           type: boolean
-        internal:
-          type: boolean
         created_at:
           type: string
       required:
@@ -38392,8 +37921,6 @@ components:
           type: boolean
         confidential:
           type: boolean
-        internal:
-          type: boolean
     createNewMergeRequestNoteRequest:
       type: object
       properties:
@@ -38440,19 +37967,6 @@ components:
           format: date-time
         confidential:
           type: boolean
-        internal:
-          type: boolean
-    createNewEpicNoteRequest:
-      type: object
-      properties:
-        body:
-          type: string
-        confidential:
-          type: boolean
-        internal:
-          type: boolean
-      required:
-        - body
     globalNotificationSettingsResponse:
       type: object
       properties:
@@ -39068,33 +38582,6 @@ components:
                 type: string
               value:
                 type: string
-    getAllPipelinesTriggeredByAPipelineScheduleResponse:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: integer
-          iid:
-            type: integer
-          project_id:
-            type: integer
-          status:
-            type: string
-          source:
-            type: string
-          ref:
-            type: string
-          sha:
-            type: string
-          web_url:
-            type: string
-          created_at:
-            type: string
-            format: date-time
-          updated_at:
-            type: string
-            format: date-time
     createANewPipelineScheduleRequest:
       type: object
       properties:
@@ -40357,40 +39844,7 @@ components:
     listProjectVariablesResponse:
       type: array
       items:
-        $ref: '#/components/schemas/getASingleVariableResponse'
-    getASingleVariableResponse:
-      type: object
-      properties:
-        key:
-          type: string
-        variable_type:
-          type: string
-        value:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-        environment_scope:
-          type: string
-    updateAVariableRequest:
-      type: object
-      properties:
-        value:
-          type: string
-        variable_type:
-          type: string
-        protected:
-          type: boolean
-        masked:
-          type: boolean
-        environment_scope:
-          type: string
-        filter:
-          type: object
-          additionalProperties: true
-      required:
-        - value
+        $ref: '#/components/schemas/showVariableDetailsResponse'
     retrieveAllProjectRepositoryStorageMovesResponse:
       type: array
       items:
@@ -40867,10 +40321,6 @@ components:
             type: integer
           ci_forward_deployment_enabled:
             type: boolean
-          ci_allow_fork_pipelines_to_run_in_parent_project:
-            type: boolean
-          ci_separated_caches:
-            type: boolean
           public_jobs:
             type: boolean
           shared_with_groups:
@@ -41289,10 +40739,6 @@ components:
         ci_default_git_depth:
           type: integer
         ci_forward_deployment_enabled:
-          type: boolean
-        ci_allow_fork_pipelines_to_run_in_parent_project:
-          type: boolean
-        ci_separated_caches:
           type: boolean
         public_jobs:
           type: boolean
@@ -41722,10 +41168,6 @@ components:
         ci_default_git_depth:
           type: integer
         ci_forward_deployment_enabled:
-          type: boolean
-        ci_allow_fork_pipelines_to_run_in_parent_project:
-          type: boolean
-        ci_separated_caches:
           type: boolean
         container_expiration_policy_attributes:
           type: object
@@ -42333,10 +41775,6 @@ components:
           type: integer
         ci_forward_deployment_enabled:
           type: boolean
-        ci_allow_fork_pipelines_to_run_in_parent_project:
-          type: boolean
-        ci_separated_caches:
-          type: boolean
         public_jobs:
           type: boolean
         shared_with_groups:
@@ -42560,214 +41998,7 @@ components:
             - type: integer
             - type: string
     transferAProjectToANewNamespaceResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        description:
-          type: string
-        name:
-          type: string
-        name_with_namespace:
-          type: string
-        path:
-          type: string
-        path_with_namespace:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        default_branch:
-          type: string
-        tag_list:
-          type: array
-          items: {}
-        topics:
-          type: array
-          items: {}
-        ssh_url_to_repo:
-          type: string
-        http_url_to_repo:
-          type: string
-        web_url:
-          type: string
-        readme_url:
-          type: string
-        avatar_url:
-          type: string
-        forks_count:
-          type: integer
-        star_count:
-          type: integer
-        last_activity_at:
-          type: string
-          format: date-time
-        namespace:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            path:
-              type: string
-            kind:
-              type: string
-            full_path:
-              type: string
-            parent_id:
-              type: string
-            avatar_url:
-              type: string
-            web_url:
-              type: string
-        container_registry_image_prefix:
-          type: string
-        _links:
-          type: object
-          properties:
-            self:
-              type: string
-            issues:
-              type: string
-            merge_requests:
-              type: string
-            repo_branches:
-              type: string
-            labels:
-              type: string
-            events:
-              type: string
-            members:
-              type: string
-        packages_enabled:
-          type: boolean
-        empty_repo:
-          type: boolean
-        archived:
-          type: boolean
-        visibility:
-          type: string
-        resolve_outdated_diff_discussions:
-          type: boolean
-        container_registry_enabled:
-          type: boolean
-        container_registry_access_level:
-          type: string
-        container_expiration_policy:
-          type: object
-          properties:
-            cadence:
-              type: string
-            enabled:
-              type: boolean
-            keep_n:
-              type: string
-            older_than:
-              type: string
-            name_regex:
-              type: string
-            name_regex_keep:
-              type: string
-            next_run_at:
-              type: string
-              format: date-time
-        issues_enabled:
-          type: boolean
-        merge_requests_enabled:
-          type: boolean
-        wiki_enabled:
-          type: boolean
-        jobs_enabled:
-          type: boolean
-        snippets_enabled:
-          type: boolean
-        service_desk_enabled:
-          type: boolean
-        service_desk_address:
-          type: string
-        can_create_merge_request_in:
-          type: boolean
-        issues_access_level:
-          type: string
-        repository_access_level:
-          type: string
-        merge_requests_access_level:
-          type: string
-        forking_access_level:
-          type: string
-        analytics_access_level:
-          type: string
-        wiki_access_level:
-          type: string
-        builds_access_level:
-          type: string
-        snippets_access_level:
-          type: string
-        pages_access_level:
-          type: string
-        security_and_compliance_access_level:
-          type: string
-        emails_disabled:
-          type: string
-        shared_runners_enabled:
-          type: boolean
-        lfs_enabled:
-          type: boolean
-        creator_id:
-          type: integer
-        import_status:
-          type: string
-        open_issues_count:
-          type: integer
-        ci_default_git_depth:
-          type: integer
-        public_jobs:
-          type: boolean
-        build_timeout:
-          type: integer
-        auto_cancel_pending_pipelines:
-          type: string
-        ci_config_path:
-          type: string
-        shared_with_groups:
-          type: array
-          items: {}
-        only_allow_merge_if_pipeline_succeeds:
-          type: boolean
-        allow_merge_on_skipped_pipeline:
-          type: string
-        restrict_user_defined_variables:
-          type: boolean
-        request_access_enabled:
-          type: boolean
-        only_allow_merge_if_all_discussions_are_resolved:
-          type: boolean
-        remove_source_branch_after_merge:
-          type: boolean
-        printing_merge_request_link_enabled:
-          type: boolean
-        merge_method:
-          type: string
-        squash_option:
-          type: string
-        suggestion_commit_message:
-          type: string
-        merge_commit_template:
-          type: string
-        auto_devops_enabled:
-          type: boolean
-        auto_devops_deploy_strategy:
-          type: string
-        autoclose_referenced_issues:
-          type: boolean
-        approvals_before_merge:
-          type: integer
-        mirror:
-          type: boolean
-        compliance_frameworks:
-          type: array
-          items: {}
+      type: string
     getThePathToRepositoryStorageResponse:
       type: array
       items:
@@ -42956,10 +42187,6 @@ components:
           type: string
         create_access_level:
           type: string
-        allowed_to_create:
-          type: array
-          items:
-            type: string
       required:
         - name
     listReleasesResponse:
@@ -43609,8 +42836,6 @@ components:
         branch:
           type: string
         trailer:
-          type: string
-        config_file:
           type: string
         file:
           type: string
@@ -44438,8 +43663,6 @@ components:
           type: integer
         container_registry_token_expire_delay:
           type: integer
-        package_registry_cleanup_policies_worker_capacity:
-          type: integer
         repository_storages:
           type: array
           items:
@@ -45163,6 +44386,257 @@ components:
     exportServicePingSqlQueriesResponse:
       type: string
     forNormalUsersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
+    forAdministratorsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          email:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          is_admin:
+            type: boolean
+          bio:
+            type: string
+          location:
+            type: string
+          skype:
+            type: string
+          linkedin:
+            type: string
+          twitter:
+            type: string
+          website_url:
+            type: string
+          organization:
+            type: string
+          job_title:
+            type: string
+          last_sign_in_at:
+            type: string
+            format: date-time
+          confirmed_at:
+            type: string
+            format: date-time
+          theme_id:
+            type: integer
+          last_activity_on:
+            type: string
+          color_scheme_id:
+            type: integer
+          projects_limit:
+            type: integer
+          current_sign_in_at:
+            type: string
+            format: date-time
+          note:
+            type: string
+          identities:
+            type: array
+            items:
+              type: object
+              properties:
+                provider:
+                  type: string
+                extern_uid:
+                  type: string
+          can_create_group:
+            type: boolean
+          can_create_project:
+            type: boolean
+          two_factor_enabled:
+            type: boolean
+          external:
+            type: boolean
+          private_profile:
+            type: boolean
+          current_sign_in_ip:
+            type: string
+          last_sign_in_ip:
+            type: string
+          namespace_id:
+            type: integer
+    forUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        bio:
+          type: string
+        bot:
+          type: boolean
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        is_followed:
+          type: boolean
+    forAdministratorResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        shared_runners_minutes_limit:
+          type: integer
+        extra_shared_runners_minutes_limit:
+          type: integer
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        provisioned_by_group_id:
+          type: integer
+        is_auditor:
+          type: boolean
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        is_admin:
+          type: boolean
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        last_sign_in_at:
+          type: string
+          format: date-time
+        confirmed_at:
+          type: string
+          format: date-time
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+          format: date-time
+        note:
+          type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+        current_sign_in_ip:
+          type: string
+        last_sign_in_ip:
+          type: string
+        plan:
+          type: string
+        trial:
+          type: boolean
+        sign_in_count:
+          type: integer
+        namespace_id:
+          type: integer
+    userCreationRequest:
+      type: object
+      properties: {}
+    listCurrentUserForNormalUsersResponse:
       type: object
       properties:
         id:
@@ -45250,7 +44724,7 @@ components:
           type: boolean
         commit_email:
           type: string
-    forAdministratorsResponse:
+    listCurrentUserForAdministratorsResponse:
       type: object
       properties:
         id:
@@ -45336,59 +44810,6 @@ components:
           type: integer
         note:
           type: string
-    forUserResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        username:
-          type: string
-        name:
-          type: string
-        state:
-          type: string
-        avatar_url:
-          type: string
-        web_url:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        bio:
-          type: string
-        bot:
-          type: boolean
-        location:
-          type: string
-        public_email:
-          type: string
-        skype:
-          type: string
-        linkedin:
-          type: string
-        twitter:
-          type: string
-        website_url:
-          type: string
-        organization:
-          type: string
-        job_title:
-          type: string
-        pronouns:
-          type: string
-        work_information:
-          type: string
-        followers:
-          type: integer
-        following:
-          type: integer
-        local_time:
-          type: string
-        is_followed:
-          type: boolean
-    userCreationRequest:
-      type: object
-      properties: {}
     userStatusResponse:
       type: object
       properties:
@@ -45449,10 +44870,6 @@ components:
           type: string
         web_url:
           type: string
-    followersAndFollowingResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/followAndUnfollowUsersResponse'
     userCountsResponse:
       type: object
       properties:
@@ -45691,7 +45108,7 @@ components:
           format: date-time
         token:
           type: string
-    getUserActivitiesResponse:
+    getUserActivitiesAdministratorOnlyResponse:
       type: array
       items:
         type: object
@@ -45703,7 +45120,7 @@ components:
           last_activity_at:
             type: string
             format: date-time
-    userMembershipsResponse:
+    userMembershipsAdministratorOnlyResponse:
       type: array
       items:
         type: object
