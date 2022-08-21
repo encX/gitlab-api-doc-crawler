@@ -1,4 +1,4 @@
-import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
+import { cheerio, TagElement } from "https://deno.land/x/cheerio@1.0.6/mod.ts";
 import { join } from "https://deno.land/std@0.139.0/path/mod.ts";
 
 import { Parser } from "../../types/Parser.ts";

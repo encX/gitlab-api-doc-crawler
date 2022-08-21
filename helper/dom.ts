@@ -1,5 +1,5 @@
-import { cheerio } from "https://deno.land/x/cheerio@1.0.4/mod.ts";
-import { TagElement, TextElement } from "https://deno.land/x/cheerio@1.0.4/types.ts";
+import { cheerio } from "https://deno.land/x/cheerio@1.0.6/mod.ts";
+import { TagElement, TextElement } from "https://deno.land/x/cheerio@1.0.6/types.ts";
 
 // Parsed element primarily consist of TagElements and TextElements
 export function getTagElem(elem: TagElement | TextElement | null): TagElement | undefined {
