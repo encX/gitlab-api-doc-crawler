@@ -1,0 +1,40 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/suggestions.html",
+  "pageSlug": "suggestions",
+  "pageName": "Suggestions",
+  "apis": [
+    {
+      "name": "Applying suggestions",
+      "description": "Applies a suggested patch in a merge request. Users must have at least the Developer role to perform such action.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/suggestions/:id/apply"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a suggestion"
+        },
+        {
+          "name": "commit_message",
+          "type": "string",
+          "required": false,
+          "description": "A custom commit message to use instead of the default generated message or the project’s default message"
+        }
+      ],
+      "response": {
+        "id": 36,
+        "from_line": 10,
+        "to_line": 10,
+        "applicable": false,
+        "applied": true,
+        "from_content": "        \"--talk-name=org.freedesktop.\",\n",
+        "to_content": "        \"--talk-name=org.free.\",\n        \"--talk-name=org.desktop.\",\n"
+      }
+    }
+  ]
+}

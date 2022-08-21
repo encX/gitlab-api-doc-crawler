@@ -1,0 +1,180 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / search'
+  version: '1.0'
+paths:
+  /search:
+    get:
+      summary: Advanced Search API
+      description: Search globally across the GitLab instance.
+      operationId: advancedSearchApi
+      parameters:
+        - name: scope
+          in: query
+          description: The scope to search in
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: The search query
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Filter by state. Issues and merge requests are supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: confidential
+          in: query
+          description: Filter by confidentiality. Issues scope is supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: >-
+            Allowed values are created_at only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: >-
+            Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - search
+  '/groups/{id}/search':
+    get:
+      summary: Group Search API
+      description: Search in the specified group.
+      operationId: groupSearchApi
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          description: The scope to search in
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: The search query
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Filter by state. Issues and merge requests are supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: confidential
+          in: query
+          description: Filter by confidentiality. Issues scope is supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: >-
+            Allowed values are created_at only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: >-
+            Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - search
+  '/projects/{id}/search':
+    get:
+      summary: Project Search API
+      description: Search in the specified project.
+      operationId: projectSearchApi
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: scope
+          in: query
+          description: The scope to search in
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: The search query
+          required: true
+          schema:
+            type: string
+        - name: ref
+          in: query
+          description: >-
+            The name of a repository branch or tag to search on. The project’s default branch is used by default. This
+            is only applicable for scopes: commits, blobs, and wiki_blobs.
+          required: false
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Filter by state. Issues and merge requests are supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: confidential
+          in: query
+          description: Filter by confidentiality. Issues scope is supported; it is ignored for other scopes.
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: >-
+            Allowed values are created_at only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: >-
+            Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in
+            descending order for basic search, or by the most relevant documents when using advanced search.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - search
+components:
+  schemas: {}

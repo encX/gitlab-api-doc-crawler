@@ -1,0 +1,933 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/runners.html",
+  "pageSlug": "runners",
+  "pageName": "Runners",
+  "apis": [
+    {
+      "name": "List owned runners",
+      "description": "Get a list of specific runners available to the user.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/runners"
+        },
+        {
+          "method": "GET",
+          "path": "/runners?scope=active"
+        },
+        {
+          "method": "GET",
+          "path": "/runners?type=project_type"
+        },
+        {
+          "method": "GET",
+          "path": "/runners?status=online"
+        },
+        {
+          "method": "GET",
+          "path": "/runners?paused=true"
+        },
+        {
+          "method": "GET",
+          "path": "/runners?tag_list=tag1,tag2"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused, online and offline; showing all runners if none provided"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "The type of runners to show, one of: instance_type, group_type, project_type"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "The status of runners to show, one of: online, offline, stale, and never_contacted. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to include only runners that are accepting or ignoring new jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of the runner’s tags"
+        }
+      ],
+      "response": [
+        {
+          "active": true,
+          "paused": false,
+          "description": "test-1-20150125",
+          "id": 6,
+          "ip_address": "127.0.0.1",
+          "is_shared": false,
+          "runner_type": "project_type",
+          "name": null,
+          "online": true,
+          "status": "online"
+        },
+        {
+          "active": true,
+          "paused": false,
+          "description": "test-2-20150125",
+          "id": 8,
+          "ip_address": "127.0.0.1",
+          "is_shared": false,
+          "runner_type": "group_type",
+          "name": null,
+          "online": false,
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "name": "List all runners",
+      "description": "Get a list of all runners in the GitLab instance (specific and shared). Access is restricted to users with administrator access.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/runners/all"
+        },
+        {
+          "method": "GET",
+          "path": "/runners/all?scope=online"
+        },
+        {
+          "method": "GET",
+          "path": "/runners/all?type=project_type"
+        },
+        {
+          "method": "GET",
+          "path": "/runners/all?status=online"
+        },
+        {
+          "method": "GET",
+          "path": "/runners/all?paused=true"
+        },
+        {
+          "method": "GET",
+          "path": "/runners/all?tag_list=tag1,tag2"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use type or status instead. The scope of runners to show, one of: specific, shared, active, paused, online and offline; showing all runners if none provided"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "The type of runners to show, one of: instance_type, group_type, project_type"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "The status of runners to show, one of: online, offline, stale, and never_contacted. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to include only runners that are accepting or ignoring new jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of the runner’s tags"
+        }
+      ],
+      "response": [
+        {
+          "active": true,
+          "paused": false,
+          "description": "shared-runner-1",
+          "id": 1,
+          "ip_address": "127.0.0.1",
+          "is_shared": true,
+          "runner_type": "instance_type",
+          "name": null,
+          "online": true,
+          "status": "online"
+        },
+        {
+          "active": true,
+          "paused": false,
+          "description": "shared-runner-2",
+          "id": 3,
+          "ip_address": "127.0.0.1",
+          "is_shared": true,
+          "runner_type": "instance_type",
+          "name": null,
+          "online": false,
+          "status": "offline"
+        },
+        {
+          "active": true,
+          "paused": false,
+          "description": "test-1-20150125",
+          "id": 6,
+          "ip_address": "127.0.0.1",
+          "is_shared": false,
+          "runner_type": "project_type",
+          "name": null,
+          "online": true,
+          "status": "paused"
+        },
+        {
+          "active": true,
+          "paused": false,
+          "description": "test-2-20150125",
+          "id": 8,
+          "ip_address": "127.0.0.1",
+          "is_shared": false,
+          "runner_type": "group_type",
+          "name": null,
+          "online": false,
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "name": "Get runner’s details",
+      "description": "Get details of a runner.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/runners/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        }
+      ],
+      "response": {
+        "active": true,
+        "paused": false,
+        "architecture": null,
+        "description": "test-1-20150125",
+        "id": 6,
+        "ip_address": "127.0.0.1",
+        "is_shared": false,
+        "runner_type": "project_type",
+        "contacted_at": "2016-01-25T16:39:48.066Z",
+        "name": null,
+        "online": true,
+        "status": "online",
+        "platform": null,
+        "projects": [
+          {
+            "id": 1,
+            "name": "GitLab Community Edition",
+            "name_with_namespace": "GitLab.org / GitLab Community Edition",
+            "path": "gitlab-foss",
+            "path_with_namespace": "gitlab-org/gitlab-foss"
+          }
+        ],
+        "revision": null,
+        "tag_list": [
+          "ruby",
+          "mysql"
+        ],
+        "version": null,
+        "access_level": "ref_protected",
+        "maximum_timeout": 3600
+      }
+    },
+    {
+      "name": "Update runner’s details",
+      "description": "Update details of a runner.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/runners/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "The description of a runner"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: Use :paused instead. Flag indicating whether the runner is allowed to receive jobs"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Flag indicating whether the runner should ignore new jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "array",
+          "required": false,
+          "description": "The list of tags for a runner; put array of tags, that should be finally assigned to a runner"
+        },
+        {
+          "name": "run_untagged",
+          "type": "boolean",
+          "required": false,
+          "description": "Flag indicating the runner can execute untagged jobs"
+        },
+        {
+          "name": "locked",
+          "type": "boolean",
+          "required": false,
+          "description": "Flag indicating the runner is locked"
+        },
+        {
+          "name": "access_level",
+          "type": "string",
+          "required": false,
+          "description": "The access_level of the runner; not_protected or ref_protected"
+        },
+        {
+          "name": "maximum_timeout",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum timeout set when this runner handles the job"
+        }
+      ],
+      "response": {
+        "active": true,
+        "architecture": null,
+        "description": "test-1-20150125-test",
+        "id": 6,
+        "ip_address": "127.0.0.1",
+        "is_shared": false,
+        "runner_type": "group_type",
+        "contacted_at": "2016-01-25T16:39:48.066Z",
+        "name": null,
+        "online": true,
+        "status": "online",
+        "platform": null,
+        "projects": [
+          {
+            "id": 1,
+            "name": "GitLab Community Edition",
+            "name_with_namespace": "GitLab.org / GitLab Community Edition",
+            "path": "gitlab-foss",
+            "path_with_namespace": "gitlab-org/gitlab-foss"
+          }
+        ],
+        "revision": null,
+        "tag_list": [
+          "ruby",
+          "mysql",
+          "tag1",
+          "tag2"
+        ],
+        "version": null,
+        "access_level": "ref_protected",
+        "maximum_timeout": null
+      }
+    },
+    {
+      "name": "List runner’s jobs",
+      "description": "List jobs that are being processed or were processed by the specified runner. The list of jobs is limited to projects where the user has at least the Reporter role.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/runners/:id/jobs"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "Status of the job; one of: running, success, failed, canceled"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Order jobs by id."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Sort jobs in asc or desc order (default: desc). Specify order_by as well, including for id."
+        }
+      ],
+      "response": [
+        {
+          "id": 2,
+          "ip_address": "127.0.0.1",
+          "status": "running",
+          "stage": "test",
+          "name": "test",
+          "ref": "master",
+          "tag": false,
+          "coverage": null,
+          "created_at": "2017-11-16T08:50:29.000Z",
+          "started_at": "2017-11-16T08:51:29.000Z",
+          "finished_at": "2017-11-16T08:53:29.000Z",
+          "duration": 120,
+          "user": {
+            "id": 1,
+            "name": "John Doe2",
+            "username": "user2",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/c922747a93b40d1ea88262bf1aebee62?s=80&d=identicon",
+            "web_url": "http://localhost/user2",
+            "created_at": "2017-11-16T18:38:46.000Z",
+            "bio": null,
+            "location": null,
+            "public_email": "",
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": null
+          },
+          "commit": {
+            "id": "97de212e80737a608d939f648d959671fb0a0142",
+            "short_id": "97de212e",
+            "title": "Update configuration\r",
+            "created_at": "2017-11-16T08:50:28.000Z",
+            "parent_ids": [
+              "1b12f15a11fc6e62177bef08f47bc7b5ce50b141",
+              "498214de67004b1da3d820901307bed2a68a8ef6"
+            ],
+            "message": "See merge request !123",
+            "author_name": "John Doe2",
+            "author_email": "user2@example.org",
+            "authored_date": "2017-11-16T08:50:27.000Z",
+            "committer_name": "John Doe2",
+            "committer_email": "user2@example.org",
+            "committed_date": "2017-11-16T08:50:27.000Z"
+          },
+          "pipeline": {
+            "id": 2,
+            "sha": "97de212e80737a608d939f648d959671fb0a0142",
+            "ref": "master",
+            "status": "running"
+          },
+          "project": {
+            "id": 1,
+            "description": null,
+            "name": "project1",
+            "name_with_namespace": "John Doe2 / project1",
+            "path": "project1",
+            "path_with_namespace": "namespace1/project1",
+            "created_at": "2017-11-16T18:38:46.620Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "List project’s runners",
+      "description": "List all runners available in the project, including from ancestor groups and any allowed shared runners.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners?scope=active"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners?type=project_type"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners/all?status=online"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners/all?paused=true"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/runners?tag_list=tag1,tag2"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated: Use type or status instead. The scope of specific runners to show, one of: active, paused, online and offline; showing all runners if none provided"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "The type of runners to show, one of: instance_type, group_type, project_type"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "The status of runners to show, one of: online, offline, stale, and never_contacted. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to include only runners that are accepting or ignoring new jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of the runner’s tags"
+        }
+      ],
+      "response": [
+        {
+          "active": true,
+          "paused": false,
+          "description": "test-2-20150125",
+          "id": 8,
+          "ip_address": "127.0.0.1",
+          "is_shared": false,
+          "runner_type": "project_type",
+          "name": null,
+          "online": false,
+          "status": "offline"
+        },
+        {
+          "active": true,
+          "paused": false,
+          "description": "development_runner",
+          "id": 5,
+          "ip_address": "127.0.0.1",
+          "is_shared": true,
+          "runner_type": "instance_type",
+          "name": null,
+          "online": true,
+          "status": "online"
+        }
+      ]
+    },
+    {
+      "name": "Enable a runner in project",
+      "description": "Enable an available specific runner in the project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/runners"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "runner_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        }
+      ],
+      "response": {
+        "active": true,
+        "description": "test-2016-02-01",
+        "id": 9,
+        "ip_address": "127.0.0.1",
+        "is_shared": false,
+        "runner_type": "project_type",
+        "name": null,
+        "online": true,
+        "status": "online"
+      }
+    },
+    {
+      "name": "Disable a runner from project",
+      "description": "Disable a specific runner from the project. It works only if the project isn’t the only project associated with the specified runner. If so, an error is returned. Use the call to delete a runner instead.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/runners/:runner_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "runner_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List group’s runners",
+      "description": "List all runners available in the group as well as its ancestor groups, including any allowed shared runners.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/runners"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/runners?type=group_type"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/runners/all?status=online"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/runners/all?paused=true"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/runners?tag_list=tag1,tag2"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the group owned by the authenticated user"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "required": false,
+          "description": "The type of runners to show, one of: instance_type, group_type, project_type. The project_type value is deprecated and will be removed in GitLab 15.0"
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "The status of runners to show, one of: online, offline, stale, and never_contacted. active and paused are also possible values which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to include only runners that are accepting or ignoring new jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of the runner’s tags"
+        }
+      ],
+      "response": [
+        {
+          "id": 3,
+          "description": "Shared",
+          "ip_address": "127.0.0.1",
+          "active": true,
+          "paused": false,
+          "is_shared": true,
+          "runner_type": "instance_type",
+          "name": "gitlab-runner",
+          "online": null,
+          "status": "never_contacted"
+        },
+        {
+          "id": 6,
+          "description": "Test",
+          "ip_address": "127.0.0.1",
+          "active": true,
+          "paused": false,
+          "is_shared": true,
+          "runner_type": "instance_type",
+          "name": "gitlab-runner",
+          "online": false,
+          "status": "offline"
+        },
+        {
+          "id": 8,
+          "description": "Test 2",
+          "ip_address": "127.0.0.1",
+          "active": true,
+          "paused": false,
+          "is_shared": false,
+          "runner_type": "group_type",
+          "name": "gitlab-runner",
+          "online": null,
+          "status": "never_contacted"
+        }
+      ]
+    },
+    {
+      "name": "Register a new runner",
+      "description": "Register a new runner for the instance.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/runners"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "Registration token"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Runner’s description"
+        },
+        {
+          "name": "info",
+          "type": "hash",
+          "required": false,
+          "description": "Runner’s metadata. You can include name, version, revision, platform, and architecture, but only version is displayed in the Admin Area of the UI"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: Use :paused instead. Whether the runner is allowed to receive jobs"
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should ignore new jobs"
+        },
+        {
+          "name": "locked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should be locked for current project"
+        },
+        {
+          "name": "run_untagged",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the runner should handle untagged jobs"
+        },
+        {
+          "name": "tag_list",
+          "type": "string array",
+          "required": false,
+          "description": "List of runner’s tags"
+        },
+        {
+          "name": "access_level",
+          "type": "string",
+          "required": false,
+          "description": "The access_level of the runner; not_protected or ref_protected"
+        },
+        {
+          "name": "maximum_timeout",
+          "type": "integer",
+          "required": false,
+          "description": "Maximum timeout set when this runner handles the job"
+        },
+        {
+          "name": "maintainer_note",
+          "type": "string",
+          "required": false,
+          "description": "Deprecated, see maintenance_note"
+        },
+        {
+          "name": "maintenance_note",
+          "type": "string",
+          "required": false,
+          "description": "Free-form maintenance notes for the runner (1024 characters)"
+        }
+      ],
+      "response": {
+        "id": 12345,
+        "token": "6337ff461c94fd3fa32ba3b1ff4125",
+        "token_expires_at": "2021-09-27T21:05:03.203Z"
+      }
+    },
+    {
+      "name": "Delete a runner by ID",
+      "description": "To delete the runner by ID, use your access token with the runner’s ID:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/runners/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner. The ID is visible in the UI under Settings > CI/CD. Expand Runners, and below the Remove Runner button is an ID preceded by the pound sign, for example, #6."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete a runner by authentication token",
+      "description": "To delete the runner by using its authentication token:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/runners"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "The runner’s authentication token."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Verify authentication for a registered runner",
+      "description": "Validates authentication credentials for a registered runner.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/runners/verify"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "Runner’s authentication token."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Reset instance’s runner registration token",
+      "description": "Resets the runner registration token for the GitLab instance.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/runners/reset_registration_token"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Reset project’s runner registration token",
+      "description": "Resets the runner registration token for a project.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/runners/reset_registration_token"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Reset group’s runner registration token",
+      "description": "Resets the runner registration token for a group.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/runners/reset_registration_token"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Reset runner’s authentication token by using the runner ID",
+      "description": "Resets the runner’s authentication token by using its runner ID.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/runners/:id/reset_authentication_token"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a runner"
+        }
+      ],
+      "response": {
+        "token": "6337ff461c94fd3fa32ba3b1ff4125",
+        "token_expires_at": "2021-09-27T21:05:03.203Z"
+      }
+    },
+    {
+      "name": "Reset runner’s authentication token by using the current token",
+      "description": "Resets the runner’s authentication token by using the current token’s value as an input.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/runners/reset_authentication_token"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "The current token of the runner"
+        }
+      ],
+      "response": {
+        "token": "6337ff461c94fd3fa32ba3b1ff4125",
+        "token_expires_at": "2021-09-27T21:05:03.203Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_badges'
+  version: '1.0'
+paths:
+  '/projects/{id}/badges':
+    get:
+      summary: List all badges of a project
+      description: Gets a list of a project’s badges and its group badges.
+      operationId: listAllBadgesOfAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Name of the badges to return (case-sensitive).
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllBadgesOfAProjectResponse'
+      tags:
+        - project_badges
+    post:
+      summary: Add a badge to a project
+      description: Adds a badge to a project.
+      operationId: addABadgeToAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addABadgeToAProjectResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addABadgeToAProjectRequest'
+      tags:
+        - project_badges
+  '/projects/{id}/badges/{badge_id}':
+    get:
+      summary: Get a badge of a project
+      description: Gets a badge of a project.
+      operationId: getABadgeOfAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: badge_id
+          in: path
+          description: The badge ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getABadgeOfAProjectResponse'
+      tags:
+        - project_badges
+    put:
+      summary: Edit a badge of a project
+      description: Updates a badge of a project.
+      operationId: editABadgeOfAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: badge_id
+          in: path
+          description: The badge ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addABadgeToAProjectResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addABadgeToAProjectRequest'
+      tags:
+        - project_badges
+    delete:
+      summary: Remove a badge from a project
+      description: Removes a badge from a project. Only project badges are removed by using this endpoint.
+      operationId: removeABadgeFromAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: badge_id
+          in: path
+          description: The badge ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_badges
+  '/projects/{id}/badges/render':
+    get:
+      summary: Preview a badge from a project
+      description: Returns how the link_url and image_url final URLs would be after resolving the placeholder interpolation.
+      operationId: previewABadgeFromAProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: link_url
+          in: query
+          description: URL of the badge link
+          required: true
+          schema:
+            type: string
+        - name: image_url
+          in: query
+          description: URL of the badge image
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/previewABadgeFromAProjectResponse'
+      tags:
+        - project_badges
+components:
+  schemas:
+    listAllBadgesOfAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          id:
+            type: integer
+          link_url:
+            type: string
+          image_url:
+            type: string
+          rendered_link_url:
+            type: string
+          rendered_image_url:
+            type: string
+          kind:
+            type: string
+    getABadgeOfAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    addABadgeToAProjectRequest:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        name:
+          type: string
+      required:
+        - link_url
+        - image_url
+    addABadgeToAProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        kind:
+          type: string
+    previewABadgeFromAProjectResponse:
+      type: object
+      properties:
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string

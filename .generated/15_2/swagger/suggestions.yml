@@ -1,0 +1,57 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / suggestions'
+  version: '1.0'
+paths:
+  '/suggestions/{id}/apply':
+    put:
+      summary: Applying suggestions
+      description: >-
+        Applies a suggested patch in a merge request. Users must have at least the Developer role to perform such
+        action.
+      operationId: applyingSuggestions
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a suggestion
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/applyingSuggestionsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/applyingSuggestionsRequest'
+      tags:
+        - suggestions
+components:
+  schemas:
+    applyingSuggestionsRequest:
+      type: object
+      properties:
+        commit_message:
+          type: string
+    applyingSuggestionsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        from_line:
+          type: integer
+        to_line:
+          type: integer
+        applicable:
+          type: boolean
+        applied:
+          type: boolean
+        from_content:
+          type: string
+        to_content:
+          type: string

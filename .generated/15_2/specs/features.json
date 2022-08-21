@@ -1,0 +1,226 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/features.html",
+  "pageSlug": "features",
+  "pageName": "Feature flags",
+  "apis": [
+    {
+      "name": "List all features",
+      "description": "Get a list of all persisted features, with its gate values.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/features"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "name": "experimental_feature",
+          "state": "off",
+          "gates": [
+            {
+              "key": "boolean",
+              "value": false
+            }
+          ],
+          "definition": null
+        },
+        {
+          "name": "my_user_feature",
+          "state": "on",
+          "gates": [
+            {
+              "key": "percentage_of_actors",
+              "value": 34
+            }
+          ],
+          "definition": {
+            "name": "my_user_feature",
+            "introduced_by_url": "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/40880",
+            "rollout_issue_url": "https://gitlab.com/gitlab-org/gitlab/-/issues/244905",
+            "group": "group::ci",
+            "type": "development",
+            "default_enabled": false
+          }
+        },
+        {
+          "name": "new_library",
+          "state": "on",
+          "gates": [
+            {
+              "key": "boolean",
+              "value": true
+            }
+          ],
+          "definition": null
+        }
+      ]
+    },
+    {
+      "name": "List all feature definitions",
+      "description": "Get a list of all feature definitions.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/features/definitions"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "name": "geo_pages_deployment_replication",
+          "introduced_by_url": "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/68662",
+          "rollout_issue_url": "https://gitlab.com/gitlab-org/gitlab/-/issues/337676",
+          "milestone": "14.3",
+          "log_state_changes": null,
+          "type": "development",
+          "group": "group::geo",
+          "default_enabled": true
+        },
+        {
+          "name": "analytics_devops_adoption_codeowners",
+          "introduced_by_url": "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/59874",
+          "rollout_issue_url": "https://gitlab.com/gitlab-org/gitlab/-/issues/328542",
+          "milestone": "13.12",
+          "log_state_changes": null,
+          "type": "development",
+          "group": "group::optimize",
+          "default_enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Set or create a feature",
+      "description": "Set a feature’s gate value. If a feature with the given name doesn’t exist yet, it’s created. The value can be a boolean, or an integer to indicate percentage of time.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/features/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "Name of the feature to create or update"
+        },
+        {
+          "name": "value",
+          "type": "integer/string",
+          "required": true,
+          "description": "true or false to enable/disable, or an integer for percentage of time"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": false,
+          "description": "percentage_of_actors or percentage_of_time (default)"
+        },
+        {
+          "name": "feature_group",
+          "type": "string",
+          "required": false,
+          "description": "A Feature group name"
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "required": false,
+          "description": "A GitLab username or comma-separated multiple usernames"
+        },
+        {
+          "name": "group",
+          "type": "string",
+          "required": false,
+          "description": "A GitLab group’s path, for example gitlab-org, or comma-separated multiple group paths"
+        },
+        {
+          "name": "namespace",
+          "type": "string",
+          "required": false,
+          "description": "A GitLab group or user namespace’s path, for example john-doe, or comma-separated multiple namespace paths. Introduced in GitLab 15.0."
+        },
+        {
+          "name": "project",
+          "type": "string",
+          "required": false,
+          "description": "A projects path, for example gitlab-org/gitlab-foss, or comma-separated multiple project paths"
+        },
+        {
+          "name": "force",
+          "type": "boolean",
+          "required": false,
+          "description": "Skip feature flag validation checks, such as a YAML definition"
+        }
+      ],
+      "response": {
+        "name": "new_library",
+        "state": "conditional",
+        "gates": [
+          {
+            "key": "boolean",
+            "value": false
+          },
+          {
+            "key": "percentage_of_time",
+            "value": 30
+          }
+        ],
+        "definition": {
+          "name": "my_user_feature",
+          "introduced_by_url": "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/40880",
+          "rollout_issue_url": "https://gitlab.com/gitlab-org/gitlab/-/issues/244905",
+          "group": "group::ci",
+          "type": "development",
+          "default_enabled": false
+        }
+      }
+    },
+    {
+      "name": "Set percentage of actors rollout",
+      "description": "Rollout to percentage of actors.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/features/my_user_feature?private_token=<your_access_token>"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "name": "my_user_feature",
+        "state": "conditional",
+        "gates": [
+          {
+            "key": "boolean",
+            "value": false
+          },
+          {
+            "key": "percentage_of_actors",
+            "value": 42
+          }
+        ],
+        "definition": {
+          "name": "my_user_feature",
+          "introduced_by_url": "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/40880",
+          "rollout_issue_url": "https://gitlab.com/gitlab-org/gitlab/-/issues/244905",
+          "group": "group::ci",
+          "type": "development",
+          "default_enabled": false
+        }
+      }
+    },
+    {
+      "name": "Delete a feature",
+      "description": "Removes a feature gate. Response is equal when the gate exists, or doesn’t.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/features/:name"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    }
+  ]
+}

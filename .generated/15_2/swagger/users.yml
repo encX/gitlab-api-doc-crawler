@@ -1,0 +1,1765 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / users'
+  version: '1.0'
+paths:
+  /users:
+    get:
+      summary: For administrators
+      description: 'Users on GitLab Premium or higher also see the group_saml provider option and provisioned_by_group_id parameter:'
+      operationId: forAdministrators
+      parameters:
+        - name: order_by
+          in: query
+          description: 'Return users ordered by id, name, username, created_at, or updated_at fields. Default is id'
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Return users sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: two_factor
+          in: query
+          description: >-
+            Filter users by Two-factor authentication. Filter values are enabled or disabled. By default it returns all
+            users
+          required: false
+          schema:
+            type: string
+        - name: without_projects
+          in: query
+          description: >-
+            Filter users without projects. Default is false, which means that all users are returned, with and without
+            projects.
+          required: false
+          schema:
+            type: string
+        - name: admins
+          in: query
+          description: Return only administrators. Default is false
+          required: false
+          schema:
+            type: string
+        - name: saml_provider_id
+          in: query
+          description: 'Return only users created by the specified SAML provider ID. If not included, it returns all users.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forAdministratorsResponse'
+      tags:
+        - users
+    post:
+      summary: User creation
+      description: >-
+        Creates a new user. Note only administrators can create new users. Either password, reset_password, or
+        force_random_password must be specified. If reset_password and force_random_password are both false, then
+        password is required.
+      operationId: userCreation
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreationRequest'
+      tags:
+        - users
+  '/users/{id}':
+    get:
+      summary: For administrators
+      description: 'Users on GitLab.com Premium or higher also see the group_saml option and provisioned_by_group_id parameter:'
+      operationId: forAdministrators
+      parameters:
+        - name: id
+          in: path
+          description: ID of a user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forAdministratorsResponse'
+      tags:
+        - users
+    put:
+      summary: User modification
+      description: Modifies an existing user. Only administrators can change attributes of a user.
+      operationId: userModification
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreationRequest'
+      tags:
+        - users
+    delete:
+      summary: User deletion
+      description: >-
+        Deletes a user. Available only for administrators. This returns a 204 No Content status code if the operation
+        was successfully, 404 if the resource was not found or 409 if the user cannot be soft deleted.
+      operationId: userDeletion
+      parameters:
+        - name: id
+          in: path
+          description: ID of a user
+          required: true
+          schema:
+            type: integer
+        - name: hard_delete
+          in: query
+          description: >-
+            If true, contributions that would usually be moved to Ghost User are deleted instead, as well as groups
+            owned solely by this user.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/identities/{provider}':
+    delete:
+      summary: Delete authentication identity from user
+      description: >-
+        Deletes a user’s authentication identity using the provider name associated with that identity. Available only
+        for administrators.
+      operationId: deleteAuthenticationIdentityFromUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of a user
+          required: true
+          schema:
+            type: integer
+        - name: provider
+          in: path
+          description: External provider name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  /user:
+    get:
+      summary: For administrators
+      description: ''
+      operationId: forAdministrators
+      parameters:
+        - name: sudo
+          in: query
+          description: ID of a user to make the call in their place
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/forAdministratorsResponse'
+      tags:
+        - users
+  /user/status:
+    get:
+      summary: User status
+      description: Get the status of the currently signed in user.
+      operationId: userStatus
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userStatusResponse'
+      tags:
+        - users
+    put:
+      summary: Set user status
+      description: Set the status of the current user.
+      operationId: setUserStatus
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/setUserStatusResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setUserStatusRequest'
+      tags:
+        - users
+  '/users/{id_or_username}/status':
+    get:
+      summary: Get the status of a user
+      description: Get the status of a user. This endpoint can be accessed without authentication.
+      operationId: getTheStatusOfAUser
+      parameters:
+        - name: id_or_username
+          in: path
+          description: ID or username of the user to get a status of
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userStatusResponse'
+      tags:
+        - users
+  /user/preferences:
+    get:
+      summary: Get user preferences
+      description: Get a list of currently authenticated user’s preferences.
+      operationId: getUserPreferences
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getUserPreferencesResponse'
+      tags:
+        - users
+    put:
+      summary: User preference modification
+      description: Update the current user’s preferences.
+      operationId: userPreferenceModification
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getUserPreferencesResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreationRequest'
+      tags:
+        - users
+  '/users/{id}/follow':
+    post:
+      summary: Follow and unfollow users
+      description: Follow a user.
+      operationId: followAndUnfollowUsers
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to follow
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/followAndUnfollowUsersResponse'
+      tags:
+        - users
+  '/users/{id}/followers':
+    get:
+      summary: Followers and following
+      description: Get the followers of a user.
+      operationId: followersAndFollowing
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to follow
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/followersAndFollowingResponse'
+      tags:
+        - users
+  /user_counts:
+    get:
+      summary: User counts
+      description: Get the counts (same as in top right menu) of the currently signed in user.
+      operationId: userCounts
+      parameters:
+        - name: assigned_issues
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: assigned_merge_requests
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: merge_requests
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: review_requested_merge_requests
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: todos
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userCountsResponse'
+      tags:
+        - users
+  /user/keys:
+    get:
+      summary: List SSH keys
+      description: Get a list of currently authenticated user’s SSH keys.
+      operationId: listSshKeys
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listSshKeysResponse'
+      tags:
+        - users
+    post:
+      summary: Add SSH key
+      description: Creates a new key owned by the currently authenticated user.
+      operationId: addSshKey
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addSshKeyResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addSshKeyRequest'
+      tags:
+        - users
+  '/users/{id_or_username}/keys':
+    get:
+      summary: List SSH keys for user
+      description: Get a list of a specified user’s SSH keys.
+      operationId: listSshKeysForUser
+      parameters:
+        - name: id_or_username
+          in: path
+          description: ID or username of the user to get the SSH keys for.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/user/keys/{key_id}':
+    get:
+      summary: Single SSH key
+      description: Get a single key.
+      operationId: singleSshKey
+      parameters:
+        - name: key_id
+          in: path
+          description: ID of an SSH key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleSshKeyResponse'
+      tags:
+        - users
+    delete:
+      summary: Delete SSH key for current user
+      description: >-
+        Deletes key owned by currently authenticated user. This returns a 204 No Content status code if the operation
+        was successfully or 404 if the resource was not found.
+      operationId: deleteSshKeyForCurrentUser
+      parameters:
+        - name: key_id
+          in: path
+          description: SSH key ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/keys/{key_id}':
+    get:
+      summary: Single SSH key for given user
+      description: Get a single key for a given user.
+      operationId: singleSshKeyForGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+        - name: key_id
+          in: path
+          description: SSH key ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleSshKeyResponse'
+      tags:
+        - users
+    delete:
+      summary: Delete SSH key for given user
+      description: Deletes key owned by a specified user. Available only for administrator.
+      operationId: deleteSshKeyForGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+        - name: key_id
+          in: path
+          description: SSH key ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/keys':
+    post:
+      summary: Add SSH key for user
+      description: Create new key owned by specified user. Available only for administrator.
+      operationId: addSshKeyForUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addSshKeyRequest'
+      tags:
+        - users
+  /user/gpg_keys:
+    get:
+      summary: List all GPG keys
+      description: Get a list of currently authenticated user’s GPG keys.
+      operationId: listAllGpgKeys
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
+      tags:
+        - users
+    post:
+      summary: Add a GPG key
+      description: Creates a new GPG key owned by the currently authenticated user.
+      operationId: addAGpgKey
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addAGpgKeyRequest'
+      tags:
+        - users
+  '/user/gpg_keys/{key_id}':
+    get:
+      summary: Get a specific GPG key
+      description: Get a specific GPG key of currently authenticated user.
+      operationId: getASpecificGpgKey
+      parameters:
+        - name: key_id
+          in: path
+          description: ID of the GPG key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASpecificGpgKeyResponse'
+      tags:
+        - users
+    delete:
+      summary: Delete a GPG key
+      description: Delete a GPG key owned by currently authenticated user.
+      operationId: deleteAGpgKey
+      parameters:
+        - name: key_id
+          in: path
+          description: ID of the GPG key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/gpg_keys':
+    get:
+      summary: List all GPG keys for given user
+      description: Get a list of a specified user’s GPG keys. This endpoint can be accessed without authentication.
+      operationId: listAllGpgKeysForGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
+      tags:
+        - users
+    post:
+      summary: Add a GPG key for a given user
+      description: Create new GPG key owned by the specified user. Available only for administrator.
+      operationId: addAGpgKeyForAGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllGpgKeysResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addAGpgKeyForAGivenUserRequest'
+      tags:
+        - users
+  '/users/{id}/gpg_keys/{key_id}':
+    get:
+      summary: Get a specific GPG key for a given user
+      description: >-
+        Get a specific GPG key for a given user. Introduced in GitLab 13.5, this endpoint can be accessed without
+        administrator authentication.
+      operationId: getASpecificGpgKeyForAGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+        - name: key_id
+          in: path
+          description: ID of the GPG key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASpecificGpgKeyResponse'
+      tags:
+        - users
+    delete:
+      summary: Delete a GPG key for a given user
+      description: Delete a GPG key owned by a specified user. Available only for administrator.
+      operationId: deleteAGpgKeyForAGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+        - name: key_id
+          in: path
+          description: ID of the GPG key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  /user/emails:
+    get:
+      summary: List emails
+      description: Get a list of currently authenticated user’s emails.
+      operationId: listEmails
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEmailsResponse'
+      tags:
+        - users
+    post:
+      summary: Add email
+      description: Creates a new email owned by the currently authenticated user.
+      operationId: addEmail
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addEmailResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addEmailRequest'
+      tags:
+        - users
+  '/users/{id}/emails':
+    get:
+      summary: List emails for user
+      description: Get a list of a specified user’s emails. Available only for administrator
+      operationId: listEmailsForUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+    post:
+      summary: Add email for user
+      description: Create new email owned by specified user. Available only for administrator
+      operationId: addEmailForUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addEmailForUserRequest'
+      tags:
+        - users
+  '/user/emails/{email_id}':
+    get:
+      summary: Single email
+      description: Get a single email.
+      operationId: singleEmail
+      parameters:
+        - name: email_id
+          in: path
+          description: Email ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleEmailResponse'
+      tags:
+        - users
+    delete:
+      summary: Delete email for current user
+      description: >-
+        Deletes email owned by currently authenticated user. This returns a 204 No Content status code if the operation
+        was successfully or 404 if the resource was not found.
+      operationId: deleteEmailForCurrentUser
+      parameters:
+        - name: email_id
+          in: path
+          description: Email ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/emails/{email_id}':
+    delete:
+      summary: Delete email for given user
+      description: Deletes email owned by a specified user. Available only for administrator.
+      operationId: deleteEmailForGivenUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+        - name: email_id
+          in: path
+          description: Email ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/block':
+    post:
+      summary: Block user
+      description: Blocks the specified user. Available only for administrator.
+      operationId: blockUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/unblock':
+    post:
+      summary: Unblock user
+      description: Unblocks the specified user. Available only for administrator.
+      operationId: unblockUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/deactivate':
+    post:
+      summary: Deactivate user
+      description: Deactivates the specified user. Available only for administrator.
+      operationId: deactivateUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/activate':
+    post:
+      summary: Activate user
+      description: Activates the specified user. Available only for administrator.
+      operationId: activateUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/ban':
+    post:
+      summary: Ban user
+      description: Bans the specified user. Available only for administrator.
+      operationId: banUser
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{id}/unban':
+    post:
+      summary: Unban user
+      description: Unbans the specified user. Available only for administrator.
+      operationId: unbanUser
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{user_id}/impersonation_tokens':
+    get:
+      summary: Get all impersonation tokens of a user
+      description: Requires administrator access.
+      operationId: getAllImpersonationTokensOfAUser
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+        - name: state
+          in: query
+          description: 'Filter tokens based on state (all, active, inactive)'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAllImpersonationTokensOfAUserResponse'
+      tags:
+        - users
+    post:
+      summary: Create an impersonation token
+      description: >-
+        Requires administrator access. Token values are returned once. Make sure you save it because you can’t access it
+        again.
+      operationId: createAnImpersonationToken
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnImpersonationTokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnImpersonationTokenRequest'
+      tags:
+        - users
+  '/users/{id}/approve':
+    post:
+      summary: Approve user
+      description: Approves the specified user. Available only for administrators.
+      operationId: approveUser
+      parameters:
+        - name: id
+          in: path
+          description: ID of specified user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approveUserResponse'
+      tags:
+        - users
+  '/users/{id}/reject':
+    post:
+      summary: Reject user
+      description: Rejects specified user that is pending approval. Available only for administrators.
+      operationId: rejectUser
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approveUserResponse'
+      tags:
+        - users
+  '/users/{user_id}/impersonation_tokens/{impersonation_token_id}':
+    get:
+      summary: Get an impersonation token of a user
+      description: It shows a user’s impersonation token.
+      operationId: getAnImpersonationTokenOfAUser
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+        - name: impersonation_token_id
+          in: path
+          description: ID of the impersonation token
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAnImpersonationTokenOfAUserResponse'
+      tags:
+        - users
+    delete:
+      summary: Revoke an impersonation token
+      description: Requires administrator access.
+      operationId: revokeAnImpersonationToken
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+        - name: impersonation_token_id
+          in: path
+          description: ID of the impersonation token
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+  '/users/{user_id}/personal_access_tokens':
+    post:
+      summary: Create a personal access token
+      description: >-
+        Use this API to create a new personal access token. Token values are returned once so, make sure you save it as
+        you can’t access it again. This API can only be used by GitLab administrators.
+      operationId: createAPersonalAccessToken
+      parameters:
+        - name: user_id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAPersonalAccessTokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnImpersonationTokenRequest'
+      tags:
+        - users
+  /user/activities:
+    get:
+      summary: Get user activities
+      description: 'Pre-requisite:'
+      operationId: getUserActivities
+      parameters:
+        - name: from
+          in: query
+          description: 'Date string in the format YEAR-MM-DD. For example, 2016-03-11. Defaults to 6 months ago.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getUserActivitiesResponse'
+      tags:
+        - users
+  '/users/{id}/memberships':
+    get:
+      summary: User memberships
+      description: 'Pre-requisite:'
+      operationId: userMemberships
+      parameters:
+        - name: id
+          in: path
+          description: ID of a specified user
+          required: true
+          schema:
+            type: integer
+        - name: type
+          in: query
+          description: Filter memberships by type. Can be either Project or Namespace
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userMembershipsResponse'
+      tags:
+        - users
+  '/users/{id}/disable_two_factor':
+    patch:
+      summary: Disable two factor authentication
+      description: 'Pre-requisite:'
+      operationId: disableTwoFactorAuthentication
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - users
+components:
+  schemas:
+    forNormalUsersResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        bot:
+          type: boolean
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        last_sign_in_at:
+          type: string
+          format: date-time
+        confirmed_at:
+          type: string
+          format: date-time
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+          format: date-time
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+    forAdministratorsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        is_admin:
+          type: boolean
+        bio:
+          type: string
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        last_sign_in_at:
+          type: string
+          format: date-time
+        confirmed_at:
+          type: string
+          format: date-time
+        theme_id:
+          type: integer
+        last_activity_on:
+          type: string
+        color_scheme_id:
+          type: integer
+        projects_limit:
+          type: integer
+        current_sign_in_at:
+          type: string
+          format: date-time
+        identities:
+          type: array
+          items:
+            type: object
+            properties:
+              provider:
+                type: string
+              extern_uid:
+                type: string
+        can_create_group:
+          type: boolean
+        can_create_project:
+          type: boolean
+        two_factor_enabled:
+          type: boolean
+        external:
+          type: boolean
+        private_profile:
+          type: boolean
+        commit_email:
+          type: string
+        current_sign_in_ip:
+          type: string
+        last_sign_in_ip:
+          type: string
+        namespace_id:
+          type: integer
+        note:
+          type: string
+    forUserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        bio:
+          type: string
+        bot:
+          type: boolean
+        location:
+          type: string
+        public_email:
+          type: string
+        skype:
+          type: string
+        linkedin:
+          type: string
+        twitter:
+          type: string
+        website_url:
+          type: string
+        organization:
+          type: string
+        job_title:
+          type: string
+        pronouns:
+          type: string
+        work_information:
+          type: string
+        followers:
+          type: integer
+        following:
+          type: integer
+        local_time:
+          type: string
+        is_followed:
+          type: boolean
+    userCreationRequest:
+      type: object
+      properties: {}
+    userStatusResponse:
+      type: object
+      properties:
+        emoji:
+          type: string
+        availability:
+          type: string
+        message:
+          type: string
+        message_html:
+          type: string
+        clear_status_at:
+          type: string
+    setUserStatusRequest:
+      type: object
+      properties:
+        emoji:
+          type: string
+        message:
+          type: string
+        clear_status_after:
+          type: string
+    setUserStatusResponse:
+      type: object
+      properties:
+        emoji:
+          type: string
+        message:
+          type: string
+        message_html:
+          type: string
+        clear_status_at:
+          type: string
+          format: date-time
+    getUserPreferencesResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        view_diffs_file_by_file:
+          type: boolean
+        show_whitespace_in_diffs:
+          type: boolean
+    followAndUnfollowUsersResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        avatar_url:
+          type: string
+        web_url:
+          type: string
+    followersAndFollowingResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          username:
+            type: string
+          state:
+            type: string
+          avatar_url:
+            type: string
+          web_url:
+            type: string
+    userCountsResponse:
+      type: object
+      properties:
+        merge_requests:
+          type: integer
+        assigned_issues:
+          type: integer
+        assigned_merge_requests:
+          type: integer
+        review_requested_merge_requests:
+          type: integer
+        todos:
+          type: integer
+    listSshKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          key:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+    singleSshKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    addSshKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        key:
+          type: string
+        expires_at:
+          type: string
+      required:
+        - title
+        - key
+    addSshKeyResponse:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            fingerprint:
+              type: array
+              items:
+                type: string
+            key:
+              type: array
+              items:
+                type: string
+        title:
+          type: string
+        key:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+    listAllGpgKeysResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          key:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+    getASpecificGpgKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    addAGpgKeyRequest:
+      type: object
+      properties:
+        key:
+          type: string
+      required:
+        - key
+    addAGpgKeyForAGivenUserRequest:
+      type: object
+      properties:
+        key_id:
+          type: integer
+      required:
+        - key_id
+    listEmailsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          email:
+            type: string
+          confirmed_at:
+            type: string
+            format: date-time
+    singleEmailResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        confirmed_at:
+          type: string
+          format: date-time
+    addEmailRequest:
+      type: object
+      properties:
+        email:
+          type: string
+      required:
+        - email
+    addEmailResponse:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            email:
+              type: array
+              items:
+                type: string
+        id:
+          type: integer
+        email:
+          type: string
+        confirmed_at:
+          type: string
+          format: date-time
+    addEmailForUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        skip_confirmation:
+          type: boolean
+      required:
+        - email
+    getAllImpersonationTokensOfAUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          active:
+            type: boolean
+          user_id:
+            type: integer
+          scopes:
+            type: array
+            items:
+              type: string
+          revoked:
+            type: boolean
+          name:
+            type: string
+          id:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          impersonation:
+            type: boolean
+          expires_at:
+            type: string
+            format: date-time
+    approveUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    getAnImpersonationTokenOfAUserResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        revoked:
+          type: boolean
+        name:
+          type: string
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        impersonation:
+          type: boolean
+        expires_at:
+          type: string
+          format: date-time
+    createAnImpersonationTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date
+        scopes:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - scopes
+    createAnImpersonationTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        revoked:
+          type: boolean
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        token:
+          type: string
+        active:
+          type: boolean
+        impersonation:
+          type: boolean
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+    createAPersonalAccessTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        scopes:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: integer
+        active:
+          type: boolean
+        expires_at:
+          type: string
+          format: date-time
+        token:
+          type: string
+    getUserActivitiesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          username:
+            type: string
+          last_activity_on:
+            type: string
+          last_activity_at:
+            type: string
+            format: date-time
+    userMembershipsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          source_id:
+            type: integer
+          source_name:
+            type: string
+          source_type:
+            type: string
+          access_level:
+            type: string

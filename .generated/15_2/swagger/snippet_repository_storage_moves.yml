@@ -1,0 +1,238 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / snippet_repository_storage_moves'
+  version: '1.0'
+paths:
+  /snippet_repository_storage_moves:
+    get:
+      summary: Retrieve all snippet repository storage moves
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
+      operationId: retrieveAllSnippetRepositoryStorageMoves
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveAllSnippetRepositoryStorageMovesResponse'
+      tags:
+        - snippet_repository_storage_moves
+    post:
+      summary: Schedule repository storage moves for all snippets on a storage shard
+      description: Schedules repository storage moves for each snippet repository stored on the source storage shard.
+      operationId: scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShard
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShardRequest'
+      tags:
+        - snippet_repository_storage_moves
+  '/snippets/{snippet_id}/repository_storage_moves':
+    get:
+      summary: Retrieve all repository storage moves for a snippet
+      description: 'By default, GET requests return 20 results at a time because the API results are paginated.'
+      operationId: retrieveAllRepositoryStorageMovesForASnippet
+      parameters:
+        - name: snippet_id
+          in: path
+          description: ID of the snippet.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveAllSnippetRepositoryStorageMovesResponse'
+      tags:
+        - snippet_repository_storage_moves
+    post:
+      summary: Schedule a repository storage move for a snippet
+      description: 'Supported attributes:'
+      operationId: scheduleARepositoryStorageMoveForASnippet
+      parameters:
+        - name: snippet_id
+          in: path
+          description: ID of the snippet.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scheduleARepositoryStorageMoveForASnippetRequest'
+      tags:
+        - snippet_repository_storage_moves
+  '/snippet_repository_storage_moves/{repository_storage_id}':
+    get:
+      summary: Get a single snippet repository storage move
+      description: 'Supported attributes:'
+      operationId: getASingleSnippetRepositoryStorageMove
+      parameters:
+        - name: repository_storage_id
+          in: path
+          description: ID of the snippet repository storage move.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
+      tags:
+        - snippet_repository_storage_moves
+  '/snippets/{snippet_id}/repository_storage_moves/{repository_storage_id}':
+    get:
+      summary: Get a single repository storage move for a snippet
+      description: 'Supported attributes:'
+      operationId: getASingleRepositoryStorageMoveForASnippet
+      parameters:
+        - name: snippet_id
+          in: path
+          description: ID of the snippet.
+          required: true
+          schema:
+            type: integer
+        - name: repository_storage_id
+          in: path
+          description: ID of the snippet repository storage move.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleSnippetRepositoryStorageMoveResponse'
+      tags:
+        - snippet_repository_storage_moves
+components:
+  schemas:
+    retrieveAllSnippetRepositoryStorageMovesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          created_at:
+            type: string
+            format: date-time
+          state:
+            type: string
+          source_storage_name:
+            type: string
+          destination_storage_name:
+            type: string
+          snippet:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              visibility:
+                type: string
+              updated_at:
+                type: string
+                format: date-time
+              created_at:
+                type: string
+                format: date-time
+              project_id:
+                type: string
+              web_url:
+                type: string
+              raw_url:
+                type: string
+              ssh_url_to_repo:
+                type: string
+              http_url_to_repo:
+                type: string
+    getASingleSnippetRepositoryStorageMoveResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        state:
+          type: string
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+        snippet:
+          type: object
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            visibility:
+              type: string
+            updated_at:
+              type: string
+              format: date-time
+            created_at:
+              type: string
+              format: date-time
+            project_id:
+              type: string
+            web_url:
+              type: string
+            raw_url:
+              type: string
+            ssh_url_to_repo:
+              type: string
+            http_url_to_repo:
+              type: string
+    scheduleARepositoryStorageMoveForASnippetRequest:
+      type: object
+      properties:
+        destination_storage_name:
+          type: string
+    scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShardRequest:
+      type: object
+      properties:
+        source_storage_name:
+          type: string
+        destination_storage_name:
+          type: string
+      required:
+        - source_storage_name
+    scheduleRepositoryStorageMovesForAllSnippetsOnAStorageShardResponse:
+      type: object
+      properties:
+        message:
+          type: string

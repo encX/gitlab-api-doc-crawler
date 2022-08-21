@@ -1,0 +1,103 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/personal_access_tokens.html",
+  "pageSlug": "personal_access_tokens",
+  "pageName": "Personal access tokens",
+  "apis": [
+    {
+      "name": "List personal access tokens",
+      "description": "Get a list of personal access tokens.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/personal_access_tokens"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "user_id",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID of the user to filter by"
+        }
+      ],
+      "response": [
+        {
+          "id": 4,
+          "name": "Test Token",
+          "revoked": false,
+          "created_at": "2020-07-23T14:31:47.729Z",
+          "scopes": [
+            "api"
+          ],
+          "user_id": 3,
+          "last_used_at": "2021-10-06T17:58:37.550Z",
+          "active": true,
+          "expires_at": null
+        },
+        {
+          "id": 4,
+          "name": "Test Token",
+          "revoked": false,
+          "created_at": "2020-07-23T14:31:47.729Z",
+          "scopes": [
+            "api"
+          ],
+          "user_id": 24,
+          "last_used_at": "2021-10-06T17:58:37.550Z",
+          "active": true,
+          "expires_at": null
+        }
+      ]
+    },
+    {
+      "name": "Get single personal access token by ID",
+      "description": "Get a single personal access token by its ID. Users can get their own tokens. Administrators can get any token.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/personal_access_tokens/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "ID of personal access token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Using a personal access token ID",
+      "description": "Revoke a personal access token using its ID.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/personal_access_tokens/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "ID of personal access token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Using a request header",
+      "description": "Revokes a personal access token that is passed in using a request header.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/personal_access_tokens/self"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    }
+  ]
+}

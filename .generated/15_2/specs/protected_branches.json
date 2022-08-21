@@ -1,0 +1,285 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/protected_branches.html",
+  "pageSlug": "protected_branches",
+  "pageName": "Protected branches",
+  "apis": [
+    {
+      "name": "List protected branches",
+      "description": "Gets a list of protected branches from a project as they are defined in the UI. If a wildcard is set, it is returned instead of the exact name of the branches that match that wildcard.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_branches"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Name or part of the name of protected branches to be searched for"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "master",
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "user_id": null,
+              "group_id": null,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": null,
+              "user_id": null,
+              "group_id": 1234,
+              "access_level_description": "Example Merge Group"
+            }
+          ],
+          "allow_force_push": false,
+          "code_owner_approval_required": false
+        },
+        {
+          "id": 1,
+          "name": "master",
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "allow_force_push": false,
+          "code_owner_approval_required": false
+        },
+        {
+          "id": 1,
+          "name": "release/*",
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers"
+            }
+          ],
+          "allow_force_push": false,
+          "code_owner_approval_required": false
+        }
+      ]
+    },
+    {
+      "name": "Get a single protected branch or wildcard protected branch",
+      "description": "Gets a single protected branch or wildcard protected branch.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch or wildcard"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "master",
+        "push_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Protect repository branches",
+      "description": "Protects a single repository branch or several project repository branches using a wildcard protected branch.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/protected_branches"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch or wildcard"
+        },
+        {
+          "name": "push_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to push (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "merge_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to merge (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "unprotect_access_level",
+          "type": "integer",
+          "required": false,
+          "description": "Access levels allowed to unprotect (defaults: 40, Maintainer role)"
+        },
+        {
+          "name": "allow_force_push",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow all users with push access to force push. (default: false)"
+        },
+        {
+          "name": "allowed_to_push",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to push, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "allowed_to_merge",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to merge, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "allowed_to_unprotect",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to unprotect, with each described by a hash of the form {user_id: integer}, {group_id: integer}, or {access_level: integer}"
+        },
+        {
+          "name": "code_owner_approval_required",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "*-stable",
+        "push_access_levels": [
+          {
+            "access_level": 30,
+            "access_level_description": "Developers + Maintainers"
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "access_level": 30,
+            "access_level_description": "Developers + Maintainers"
+          }
+        ],
+        "unprotect_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers"
+          }
+        ],
+        "allow_force_push": false,
+        "code_owner_approval_required": false
+      }
+    },
+    {
+      "name": "Unprotect repository branches",
+      "description": "Unprotects the given protected branch or wildcard protected branch.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Require code owner approvals for a single branch",
+      "description": "Update the “code owner approval required” option for the given protected branch.",
+      "resources": [
+        {
+          "method": "PATCH",
+          "path": "/projects/:id/protected_branches/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch"
+        },
+        {
+          "name": "code_owner_approval_required",
+          "type": "boolean",
+          "required": false,
+          "description": "Prevent pushes to this branch if it matches an item in the CODEOWNERS file. (defaults: false)"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

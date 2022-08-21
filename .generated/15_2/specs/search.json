@@ -1,0 +1,172 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/search.html",
+  "pageSlug": "search",
+  "pageName": "Search",
+  "apis": [
+    {
+      "name": "Advanced Search API",
+      "description": "Search globally across the GitLab instance.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Group Search API",
+      "description": "Search in the specified group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Project Search API",
+      "description": "Search in the specified project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/search"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "required": true,
+          "description": "The scope to search in"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": true,
+          "description": "The search query"
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": false,
+          "description": "The name of a repository branch or tag to search on. The project’s default branch is used by default. This is only applicable for scopes: commits, blobs, and wiki_blobs."
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "required": false,
+          "description": "Filter by state. Issues and merge requests are supported; it is ignored for other scopes."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Filter by confidentiality. Issues scope is supported; it is ignored for other scopes."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are created_at only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Allowed values are asc or desc only. If this is not set, the results are either sorted by created_at in descending order for basic search, or by the most relevant documents when using advanced search."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

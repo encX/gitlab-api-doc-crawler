@@ -1,0 +1,290 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / deploy_keys'
+  version: '1.0'
+paths:
+  /deploy_keys:
+    get:
+      summary: List all deploy keys
+      description: >-
+        Get a list of all deploy keys across all projects of the GitLab instance. This endpoint requires administrator
+        access and is not available on GitLab.com.
+      operationId: listAllDeployKeys
+      parameters:
+        - name: public
+          in: query
+          description: Only return deploy keys that are public. Defaults to false.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllDeployKeysResponse'
+      tags:
+        - deploy_keys
+  '/projects/{id}/deploy_keys':
+    get:
+      summary: List deploy keys for project
+      description: Get a list of a project’s deploy keys.
+      operationId: listDeployKeysForProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllDeployKeysResponse'
+      tags:
+        - deploy_keys
+    post:
+      summary: Add deploy key
+      description: Creates a new deploy key for a project.
+      operationId: addDeployKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addDeployKeyResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addDeployKeyRequest'
+      tags:
+        - deploy_keys
+  '/users/{id_or_username}/project_deploy_keys':
+    get:
+      summary: List project deploy keys for user
+      description: >-
+        Get a list of a specified user (requestee) and the authenticated user’s (requester) common project deploy keys.
+        It lists only the enabled project keys from the common projects of requester and requestee.
+      operationId: listProjectDeployKeysForUser
+      parameters:
+        - name: id_or_username
+          in: path
+          description: The ID or username of the user to get the project deploy keys for.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectDeployKeysForUserResponse'
+      tags:
+        - deploy_keys
+  '/projects/{id}/deploy_keys/{key_id}':
+    get:
+      summary: Get a single deploy key
+      description: Get a single key.
+      operationId: getASingleDeployKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key_id
+          in: path
+          description: The ID of the deploy key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleDeployKeyResponse'
+      tags:
+        - deploy_keys
+    put:
+      summary: Update deploy key
+      description: Updates a deploy key for a project.
+      operationId: updateDeployKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addDeployKeyResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateDeployKeyRequest'
+      tags:
+        - deploy_keys
+    delete:
+      summary: Delete deploy key
+      description: >-
+        Removes a deploy key from the project. If the deploy key is used only for this project, it’s deleted from the
+        system.
+      operationId: deleteDeployKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key_id
+          in: path
+          description: The ID of the deploy key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - deploy_keys
+  '/projects/{id}/deploy_keys/{key_id}/enable':
+    post:
+      summary: Enable a deploy key
+      description: >-
+        Enables a deploy key for a project so this can be used. Returns the enabled key, with a status code 201 when
+        successful.
+      operationId: enableADeployKey
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key_id
+          in: path
+          description: The ID of the deploy key
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/enableADeployKeyResponse'
+      tags:
+        - deploy_keys
+components:
+  schemas:
+    listAllDeployKeysResponse:
+      type: string
+    listProjectDeployKeysForUserResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          title:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          expires_at:
+            type: string
+            format: date-time
+          key:
+            type: string
+          fingerprint:
+            type: string
+          fingerprint_sha256:
+            type: string
+    getASingleDeployKeyResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        key:
+          type: string
+        fingerprint:
+          type: string
+        fingerprint_sha256:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        can_push:
+          type: boolean
+    addDeployKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        key:
+          type: string
+        can_push:
+          type: boolean
+      required:
+        - title
+        - key
+    addDeployKeyResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        id:
+          type: integer
+        title:
+          type: string
+        can_push:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+    updateDeployKeyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        can_push:
+          type: boolean
+    enableADeployKeyResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        id:
+          type: integer
+        title:
+          type: string
+        created_at:
+          type: string
+          format: date-time

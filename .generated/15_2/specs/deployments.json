@@ -1,0 +1,553 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/deployments.html",
+  "pageSlug": "deployments",
+  "pageName": "Deployments",
+  "apis": [
+    {
+      "name": "List project deployments",
+      "description": "Get a list of deployments in a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deployments"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return deployments ordered by either one of id, iid, created_at, updated_at or ref fields. Default is id."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return deployments sorted in asc or desc order. Default is asc."
+        },
+        {
+          "name": "updated_after",
+          "type": "datetime",
+          "required": false,
+          "description": "Return deployments updated after the specified date. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+        },
+        {
+          "name": "updated_before",
+          "type": "datetime",
+          "required": false,
+          "description": "Return deployments updated before the specified date. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "required": false,
+          "description": "The name of the environment to filter deployments by."
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "description": "The status to filter deployments by. One of created, running, success, failed, canceled, blocked."
+        }
+      ],
+      "response": [
+        {
+          "created_at": "2016-08-11T07:36:40.222Z",
+          "updated_at": "2016-08-11T07:38:12.414Z",
+          "status": "created",
+          "deployable": {
+            "commit": {
+              "author_email": "admin@example.com",
+              "author_name": "Administrator",
+              "created_at": "2016-08-11T09:36:01.000+02:00",
+              "id": "99d03678b90d914dbb1b109132516d71a4a03ea8",
+              "message": "Merge branch 'new-title' into 'main'\r\n\r\nUpdate README\r\n\r\n\r\n\r\nSee merge request !1",
+              "short_id": "99d03678",
+              "title": "Merge branch 'new-title' into 'main'\r"
+            },
+            "coverage": null,
+            "created_at": "2016-08-11T07:36:27.357Z",
+            "finished_at": "2016-08-11T07:36:39.851Z",
+            "id": 657,
+            "name": "deploy",
+            "ref": "main",
+            "runner": null,
+            "stage": "deploy",
+            "started_at": null,
+            "status": "success",
+            "tag": false,
+            "user": {
+              "id": 1,
+              "name": "Administrator",
+              "username": "root",
+              "state": "active",
+              "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+              "web_url": "http://gitlab.dev/root",
+              "created_at": "2015-12-21T13:14:24.077Z",
+              "bio": null,
+              "location": null,
+              "public_email": "",
+              "skype": "",
+              "linkedin": "",
+              "twitter": "",
+              "website_url": "",
+              "organization": ""
+            },
+            "pipeline": {
+              "created_at": "2016-08-11T02:12:10.222Z",
+              "id": 36,
+              "ref": "main",
+              "sha": "99d03678b90d914dbb1b109132516d71a4a03ea8",
+              "status": "success",
+              "updated_at": "2016-08-11T02:12:10.222Z",
+              "web_url": "http://gitlab.dev/root/project/pipelines/12"
+            }
+          },
+          "environment": {
+            "external_url": "https://about.gitlab.com",
+            "id": 9,
+            "name": "production"
+          },
+          "id": 41,
+          "iid": 1,
+          "ref": "main",
+          "sha": "99d03678b90d914dbb1b109132516d71a4a03ea8",
+          "user": {
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "id": 1,
+            "name": "Administrator",
+            "state": "active",
+            "username": "root",
+            "web_url": "http://localhost:3000/root"
+          }
+        },
+        {
+          "created_at": "2016-08-11T11:32:35.444Z",
+          "updated_at": "2016-08-11T11:34:01.123Z",
+          "status": "created",
+          "deployable": {
+            "commit": {
+              "author_email": "admin@example.com",
+              "author_name": "Administrator",
+              "created_at": "2016-08-11T13:28:26.000+02:00",
+              "id": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+              "message": "Merge branch 'rename-readme' into 'main'\r\n\r\nRename README\r\n\r\n\r\n\r\nSee merge request !2",
+              "short_id": "a91957a8",
+              "title": "Merge branch 'rename-readme' into 'main'\r"
+            },
+            "coverage": null,
+            "created_at": "2016-08-11T11:32:24.456Z",
+            "finished_at": "2016-08-11T11:32:35.145Z",
+            "id": 664,
+            "name": "deploy",
+            "ref": "main",
+            "runner": null,
+            "stage": "deploy",
+            "started_at": null,
+            "status": "success",
+            "tag": false,
+            "user": {
+              "id": 1,
+              "name": "Administrator",
+              "username": "root",
+              "state": "active",
+              "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+              "web_url": "http://gitlab.dev/root",
+              "created_at": "2015-12-21T13:14:24.077Z",
+              "bio": null,
+              "location": null,
+              "public_email": "",
+              "skype": "",
+              "linkedin": "",
+              "twitter": "",
+              "website_url": "",
+              "organization": ""
+            },
+            "pipeline": {
+              "created_at": "2016-08-11T07:43:52.143Z",
+              "id": 37,
+              "ref": "main",
+              "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+              "status": "success",
+              "updated_at": "2016-08-11T07:43:52.143Z",
+              "web_url": "http://gitlab.dev/root/project/pipelines/13"
+            }
+          },
+          "environment": {
+            "external_url": "https://about.gitlab.com",
+            "id": 9,
+            "name": "production"
+          },
+          "id": 42,
+          "iid": 2,
+          "ref": "main",
+          "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+          "user": {
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "id": 1,
+            "name": "Administrator",
+            "state": "active",
+            "username": "root",
+            "web_url": "http://localhost:3000/root"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get a specific deployment",
+      "description": "When the unified approval setting is configured, deployments created by users on GitLab Premium or higher include the approvals and pending_approval_count properties:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deployments/:deployment_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "deployment_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the deployment"
+        }
+      ],
+      "response": {
+        "approval_summary": {
+          "rules": [
+            {
+              "user_id": null,
+              "group_id": 134,
+              "access_level": null,
+              "access_level_description": "qa-group",
+              "required_approvals": 1,
+              "deployment_approvals": []
+            },
+            {
+              "user_id": null,
+              "group_id": 135,
+              "access_level": null,
+              "access_level_description": "security-group",
+              "required_approvals": 2,
+              "deployment_approvals": [
+                {
+                  "user": {
+                    "id": 100,
+                    "username": "security-user-1",
+                    "name": "security user-1",
+                    "state": "active",
+                    "avatar_url": "https://www.gravatar.com/avatar/e130fcd3a1681f41a3de69d10841afa9?s=80&d=identicon",
+                    "web_url": "http://localhost:3000/security-user-1"
+                  },
+                  "status": "approved",
+                  "created_at": "2022-04-11T03:37:03.058Z",
+                  "comment": null
+                }
+              ]
+            }
+          ]
+        },
+        "status": "success",
+        "pending_approval_count": 0,
+        "approvals": [
+          {
+            "user": {
+              "id": 49,
+              "username": "project_6_bot",
+              "name": "****",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/e83ac685f68ea07553ad3054c738c709?s=80&d=identicon",
+              "web_url": "http://localhost:3000/project_6_bot"
+            },
+            "status": "approved",
+            "created_at": "2022-02-24T20:22:30.097Z",
+            "comment": "Looks good to me"
+          }
+        ],
+        "id": 42,
+        "iid": 2,
+        "ref": "main",
+        "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+        "created_at": "2016-08-11T11:32:35.444Z",
+        "updated_at": "2016-08-11T11:34:01.123Z",
+        "user": {
+          "name": "Administrator",
+          "username": "root",
+          "id": 1,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://localhost:3000/root"
+        },
+        "environment": {
+          "id": 9,
+          "name": "production",
+          "external_url": "https://about.gitlab.com"
+        },
+        "deployable": {
+          "id": 664,
+          "status": "success",
+          "stage": "deploy",
+          "name": "deploy",
+          "ref": "main",
+          "tag": false,
+          "coverage": null,
+          "created_at": "2016-08-11T11:32:24.456Z",
+          "started_at": null,
+          "finished_at": "2016-08-11T11:32:35.145Z",
+          "user": {
+            "id": 1,
+            "name": "Administrator",
+            "username": "root",
+            "state": "active",
+            "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+            "web_url": "http://gitlab.dev/root",
+            "created_at": "2015-12-21T13:14:24.077Z",
+            "bio": null,
+            "location": null,
+            "skype": "",
+            "linkedin": "",
+            "twitter": "",
+            "website_url": "",
+            "organization": ""
+          },
+          "commit": {
+            "id": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+            "short_id": "a91957a8",
+            "title": "Merge branch 'rename-readme' into 'main'\r",
+            "author_name": "Administrator",
+            "author_email": "admin@example.com",
+            "created_at": "2016-08-11T13:28:26.000+02:00",
+            "message": "Merge branch 'rename-readme' into 'main'\r\n\r\nRename README\r\n\r\n\r\n\r\nSee merge request !2"
+          },
+          "pipeline": {
+            "created_at": "2016-08-11T07:43:52.143Z",
+            "id": 42,
+            "ref": "main",
+            "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+            "status": "success",
+            "updated_at": "2016-08-11T07:43:52.143Z",
+            "web_url": "http://gitlab.dev/root/project/pipelines/5"
+          },
+          "runner": null
+        }
+      }
+    },
+    {
+      "name": "Create a deployment",
+      "description": "Deployments created by users on GitLab Premium or higher include the approvals and pending_approval_count properties:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/deployments"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "environment",
+          "type": "string",
+          "required": true,
+          "description": "The name of the environment to create the deployment for."
+        },
+        {
+          "name": "sha",
+          "type": "string",
+          "required": true,
+          "description": "The SHA of the commit that is deployed."
+        },
+        {
+          "name": "ref",
+          "type": "string",
+          "required": true,
+          "description": "The name of the branch or tag that is deployed."
+        },
+        {
+          "name": "tag",
+          "type": "boolean",
+          "required": true,
+          "description": "A boolean that indicates if the deployed ref is a tag (true) or not (false)."
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true,
+          "description": "The status to filter deployments by. One of running, success, failed, or canceled."
+        }
+      ],
+      "response": {
+        "status": "success",
+        "pending_approval_count": 0,
+        "approvals": [],
+        "id": 42,
+        "iid": 2,
+        "ref": "main",
+        "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+        "created_at": "2016-08-11T11:32:35.444Z",
+        "user": {
+          "name": "Administrator",
+          "username": "root",
+          "id": 1,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://localhost:3000/root"
+        },
+        "environment": {
+          "id": 9,
+          "name": "production",
+          "external_url": "https://about.gitlab.com"
+        },
+        "deployable": null
+      }
+    },
+    {
+      "name": "Update a deployment",
+      "description": "Deployments created by users on GitLab Premium or higher include the approvals and pending_approval_count properties:",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/deployments/:deployment_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "deployment_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the deployment to update."
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true,
+          "description": "The new status of the deployment. One of running, success, failed, or canceled."
+        }
+      ],
+      "response": {
+        "status": "success",
+        "pending_approval_count": 0,
+        "approvals": [
+          {
+            "user": {
+              "id": 49,
+              "username": "project_6_bot",
+              "name": "****",
+              "state": "active",
+              "avatar_url": "https://www.gravatar.com/avatar/e83ac685f68ea07553ad3054c738c709?s=80&d=identicon",
+              "web_url": "http://localhost:3000/project_6_bot"
+            },
+            "status": "approved",
+            "created_at": "2022-02-24T20:22:30.097Z",
+            "comment": "Looks good to me"
+          }
+        ],
+        "id": 42,
+        "iid": 2,
+        "ref": "main",
+        "sha": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
+        "created_at": "2016-08-11T11:32:35.444Z",
+        "user": {
+          "name": "Administrator",
+          "username": "root",
+          "id": 1,
+          "state": "active",
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon",
+          "web_url": "http://localhost:3000/root"
+        },
+        "environment": {
+          "id": 9,
+          "name": "production",
+          "external_url": "https://about.gitlab.com"
+        },
+        "deployable": null
+      }
+    },
+    {
+      "name": "List of merge requests associated with a deployment",
+      "description": "This API retrieves the list of merge requests shipped with a given deployment:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/deployments/:deployment_id/merge_requests"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Approve or reject a blocked deployment",
+      "description": "See Deployment Approvals for more information about this feature.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/deployments/:deployment_id/approval"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "deployment_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the deployment."
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true,
+          "description": "The status of the approval (either approved or rejected)."
+        },
+        {
+          "name": "comment",
+          "type": "string",
+          "required": false,
+          "description": "A comment to go with the approval"
+        },
+        {
+          "name": "represented_as",
+          "type": "string",
+          "required": false,
+          "description": "The name of the User/Group/Role to use for the approval, when the user belongs to multiple approval rules."
+        }
+      ],
+      "response": {
+        "user": {
+          "id": 100,
+          "username": "security-user-1",
+          "name": "security user-1",
+          "state": "active",
+          "avatar_url": "https://www.gravatar.com/avatar/e130fcd3a1681f41a3de69d10841afa9?s=80&d=identicon",
+          "web_url": "http://localhost:3000/security-user-1"
+        },
+        "status": "approved",
+        "created_at": "2022-02-24T20:22:30.097Z",
+        "comment": "Looks good to me"
+      }
+    }
+  ]
+}

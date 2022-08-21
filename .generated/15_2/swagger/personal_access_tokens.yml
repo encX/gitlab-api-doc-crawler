@@ -1,0 +1,99 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / personal_access_tokens'
+  version: '1.0'
+paths:
+  /personal_access_tokens:
+    get:
+      summary: List personal access tokens
+      description: Get a list of personal access tokens.
+      operationId: listPersonalAccessTokens
+      parameters:
+        - name: user_id
+          in: query
+          description: The ID of the user to filter by
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listPersonalAccessTokensResponse'
+      tags:
+        - personal_access_tokens
+  '/personal_access_tokens/{id}':
+    get:
+      summary: Get single personal access token by ID
+      description: Get a single personal access token by its ID. Users can get their own tokens. Administrators can get any token.
+      operationId: getSinglePersonalAccessTokenById
+      parameters:
+        - name: id
+          in: path
+          description: ID of personal access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - personal_access_tokens
+    delete:
+      summary: Using a personal access token ID
+      description: Revoke a personal access token using its ID.
+      operationId: usingAPersonalAccessTokenId
+      parameters:
+        - name: id
+          in: path
+          description: ID of personal access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - personal_access_tokens
+  /personal_access_tokens/self:
+    delete:
+      summary: Using a request header
+      description: Revokes a personal access token that is passed in using a request header.
+      operationId: usingARequestHeader
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - personal_access_tokens
+components:
+  schemas:
+    listPersonalAccessTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          revoked:
+            type: boolean
+          created_at:
+            type: string
+            format: date-time
+          scopes:
+            type: array
+            items:
+              type: string
+          user_id:
+            type: integer
+          last_used_at:
+            type: string
+            format: date-time
+          active:
+            type: boolean
+          expires_at:
+            type: string

@@ -1,0 +1,131 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / custom_attributes'
+  version: '1.0'
+paths:
+  '/users/{id}/custom_attributes':
+    get:
+      summary: List custom attributes
+      description: Get all custom attributes on a resource.
+      operationId: listCustomAttributes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a resource
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listCustomAttributesResponse'
+      tags:
+        - custom_attributes
+  '/users/{id}/custom_attributes/{key}':
+    get:
+      summary: Single custom attribute
+      description: Get a single custom attribute on a resource.
+      operationId: singleCustomAttribute
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a resource
+          required: true
+          schema:
+            type: integer
+        - name: key
+          in: path
+          description: The key of the custom attribute
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleCustomAttributeResponse'
+      tags:
+        - custom_attributes
+    put:
+      summary: Set custom attribute
+      description: 'Set a custom attribute on a resource. The attribute is updated if it already exists, or newly created otherwise.'
+      operationId: setCustomAttribute
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a resource
+          required: true
+          schema:
+            type: integer
+        - name: key
+          in: path
+          description: The key of the custom attribute
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleCustomAttributeResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/setCustomAttributeRequest'
+      tags:
+        - custom_attributes
+    delete:
+      summary: Delete custom attribute
+      description: Delete a custom attribute on a resource.
+      operationId: deleteCustomAttribute
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a resource
+          required: true
+          schema:
+            type: integer
+        - name: key
+          in: path
+          description: The key of the custom attribute
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - custom_attributes
+components:
+  schemas:
+    listCustomAttributesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+          value:
+            type: string
+    singleCustomAttributeResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    setCustomAttributeRequest:
+      type: object
+      properties:
+        value:
+          type: string
+      required:
+        - value

@@ -1,0 +1,90 @@
+{
+  "origin": "https://docs.gitlab.com/15.2/ee/api/applications.html",
+  "pageSlug": "applications",
+  "pageName": "Applications",
+  "apis": [
+    {
+      "name": "Create an application",
+      "description": "Create an application by posting a JSON payload.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/applications"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "Name of the application."
+        },
+        {
+          "name": "redirect_uri",
+          "type": "string",
+          "required": true,
+          "description": "Redirect URI of the application."
+        },
+        {
+          "name": "scopes",
+          "type": "string",
+          "required": true,
+          "description": "Scopes of the application. You can specify multiple scopes by separating each scope using a space."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "application_id": "5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737",
+        "application_name": "MyApplication",
+        "secret": "ee1dd64b6adc89cf7e2c23099301ccc2c61b441064e9324d963c46902a85ec34",
+        "callback_url": "http://redirect.uri",
+        "confidential": true
+      }
+    },
+    {
+      "name": "List all applications",
+      "description": "List all registered applications.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/applications"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "application_id": "5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737",
+          "application_name": "MyApplication",
+          "callback_url": "http://redirect.uri",
+          "confidential": true
+        }
+      ]
+    },
+    {
+      "name": "Delete an application",
+      "description": "Delete a specific application.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/applications/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the application (not the application_id)."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

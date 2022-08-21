@@ -1,0 +1,821 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / epics'
+  version: '1.0'
+paths:
+  '/groups/{id}/epics':
+    get:
+      summary: List epics for a group
+      description: Gets all epics of the requested group and its subgroups.
+      operationId: listEpicsForAGroup
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: author_id
+          in: query
+          description: Return epics created by the given user id
+          required: false
+          schema:
+            type: integer
+        - name: author_username
+          in: query
+          description: Return epics created by the user with the given username. Available in GitLab 14.7 and later
+          required: false
+          schema:
+            type: string
+        - name: labels
+          in: query
+          description: >-
+            Return epics matching a comma-separated list of labels names. Label names from the epic group or a parent
+            group can be used
+          required: false
+          schema:
+            type: string
+        - name: with_labels_details
+          in: query
+          description: >-
+            If true, response returns more details for each label in labels field: :name, :color, :description,
+            :description_html, :text_color. Default is false. Available in GitLab 12.7 and later
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: 'Return epics ordered by created_at, updated_at, or title fields. Default is created_at'
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: Return epics sorted in asc or desc order. Default is desc
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search epics against their title and description
+          required: false
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: 'Search epics against their state, possible filters: opened, closed and all, default: all'
+          required: false
+          schema:
+            type: string
+        - name: created_after
+          in: query
+          description: 'Return epics created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
+          required: false
+          schema:
+            type: string
+        - name: created_before
+          in: query
+          description: 'Return epics created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
+          required: false
+          schema:
+            type: string
+        - name: updated_after
+          in: query
+          description: 'Return epics updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
+          required: false
+          schema:
+            type: string
+        - name: updated_before
+          in: query
+          description: 'Return epics updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)'
+          required: false
+          schema:
+            type: string
+        - name: include_ancestor_groups
+          in: query
+          description: Include epics from the requested group’s ancestors. Default is false
+          required: false
+          schema:
+            type: string
+        - name: include_descendant_groups
+          in: query
+          description: Include epics from the requested group’s descendants. Default is true
+          required: false
+          schema:
+            type: string
+        - name: my_reaction_emoji
+          in: query
+          description: >-
+            Return epics reacted by the authenticated user by the given emoji. None returns epics not given a reaction.
+            Any returns epics given at least one reaction. Available in GitLab 13.0 and later
+          required: false
+          schema:
+            type: string
+        - name: not
+          in: query
+          description: >-
+            Return epics that do not match the parameters supplied. Accepts: author_id, author_username (GitLab 14.7 and
+            later) and labels. Available in GitLab 14.6 and later
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEpicsForAGroupResponse'
+      tags:
+        - epics
+    post:
+      summary: New epic
+      description: Creates a new epic.
+      operationId: newEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/newEpicResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/newEpicRequest'
+      tags:
+        - epics
+  '/groups/{id}/epics/{epic_iid}':
+    get:
+      summary: Single epic
+      description: Gets a single epic
+      operationId: singleEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/singleEpicResponse'
+      tags:
+        - epics
+    put:
+      summary: Update epic
+      description: Updates an epic.
+      operationId: updateEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateEpicResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateEpicRequest'
+      tags:
+        - epics
+    delete:
+      summary: Delete epic
+      description: Deletes an epic
+      operationId: deleteEpic
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of the epic.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - epics
+  '/groups/{id}/epics/{epic_iid}/todo':
+    post:
+      summary: Create a to-do item
+      description: >-
+        Manually creates a to-do item for the current user on an epic. If there already exists a to-do item for the user
+        on that epic, status code 304 is returned.
+      operationId: createAToDoItem
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: epic_iid
+          in: path
+          description: The internal ID of a group’s epic
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAToDoItemResponse'
+      tags:
+        - epics
+components:
+  schemas:
+    listEpicsForAGroupResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          group_id:
+            type: integer
+          parent_id:
+            type: integer
+          parent_iid:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          state:
+            type: string
+          confidential:
+            type: string
+          web_url:
+            type: string
+          reference:
+            type: string
+          references:
+            type: object
+            properties:
+              short:
+                type: string
+              relative:
+                type: string
+              full:
+                type: string
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          start_date:
+            type: string
+          start_date_is_fixed:
+            type: boolean
+          start_date_fixed:
+            type: string
+          start_date_from_milestones:
+            type: string
+          start_date_from_inherited_source:
+            type: string
+          end_date:
+            type: string
+          due_date:
+            type: string
+          due_date_is_fixed:
+            type: boolean
+          due_date_fixed:
+            type: string
+          due_date_from_milestones:
+            type: string
+          due_date_from_inherited_source:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          updated_at:
+            type: string
+            format: date-time
+          closed_at:
+            type: string
+            format: date-time
+          labels:
+            type: array
+            items: {}
+          upvotes:
+            type: integer
+          downvotes:
+            type: integer
+          color:
+            type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              epic_issues:
+                type: string
+              group:
+                type: string
+              parent:
+                type: string
+    singleEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        group_id:
+          type: integer
+        parent_id:
+          type: string
+        parent_iid:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        web_url:
+          type: string
+        reference:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        start_date:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        start_date_fixed:
+          type: string
+        start_date_from_milestones:
+          type: string
+        start_date_from_inherited_source:
+          type: string
+        end_date:
+          type: string
+        due_date:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        due_date_fixed:
+          type: string
+        due_date_from_milestones:
+          type: string
+        due_date_from_inherited_source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        color:
+          type: string
+        subscribed:
+          type: boolean
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            epic_issues:
+              type: string
+            group:
+              type: string
+            parent:
+              type: string
+    newEpicRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        labels:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+        confidential:
+          type: boolean
+        created_at:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        start_date_fixed:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        due_date_fixed:
+          type: string
+        parent_id:
+          oneOf:
+            - type: integer
+            - type: string
+      required:
+        - title
+    newEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        group_id:
+          type: integer
+        parent_id:
+          type: integer
+        parent_iid:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        confidential:
+          type: string
+        web_url:
+          type: string
+        reference:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            avatar_url:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            id:
+              type: integer
+            username:
+              type: string
+        start_date:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        start_date_fixed:
+          type: string
+        start_date_from_milestones:
+          type: string
+        start_date_from_inherited_source:
+          type: string
+        end_date:
+          type: string
+        due_date:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        due_date_fixed:
+          type: string
+        due_date_from_milestones:
+          type: string
+        due_date_from_inherited_source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        color:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            epic_issues:
+              type: string
+            group:
+              type: string
+            parent:
+              type: string
+    updateEpicRequest:
+      type: object
+      properties:
+        add_labels:
+          type: string
+        confidential:
+          type: boolean
+        description:
+          type: string
+        due_date_fixed:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        labels:
+          type: string
+        parent_id:
+          oneOf:
+            - type: integer
+            - type: string
+        remove_labels:
+          type: string
+        start_date_fixed:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        state_event:
+          type: string
+        title:
+          type: string
+        updated_at:
+          type: string
+        color:
+          type: string
+    updateEpicResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        group_id:
+          type: integer
+        parent_id:
+          type: integer
+        parent_iid:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        confidential:
+          type: string
+        web_url:
+          type: string
+        reference:
+          type: string
+        references:
+          type: object
+          properties:
+            short:
+              type: string
+            relative:
+              type: string
+            full:
+              type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            avatar_url:
+              type: string
+            state:
+              type: string
+            web_url:
+              type: string
+            id:
+              type: integer
+            username:
+              type: string
+        start_date:
+          type: string
+        start_date_is_fixed:
+          type: boolean
+        start_date_fixed:
+          type: string
+        start_date_from_milestones:
+          type: string
+        start_date_from_inherited_source:
+          type: string
+        end_date:
+          type: string
+        due_date:
+          type: string
+        due_date_is_fixed:
+          type: boolean
+        due_date_fixed:
+          type: string
+        due_date_from_milestones:
+          type: string
+        due_date_from_inherited_source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+        labels:
+          type: array
+          items: {}
+        upvotes:
+          type: integer
+        downvotes:
+          type: integer
+        color:
+          type: string
+    createAToDoItemResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        group:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            path:
+              type: string
+            kind:
+              type: string
+            full_path:
+              type: string
+            parent_id:
+              type: string
+        author:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            id:
+              type: integer
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        action_name:
+          type: string
+        target_type:
+          type: string
+        target:
+          type: object
+          properties:
+            id:
+              type: integer
+            iid:
+              type: integer
+            group_id:
+              type: integer
+            title:
+              type: string
+            description:
+              type: string
+            author:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                username:
+                  type: string
+                state:
+                  type: string
+                avatar_url:
+                  type: string
+                web_url:
+                  type: string
+            web_url:
+              type: string
+            reference:
+              type: string
+            references:
+              type: object
+              properties:
+                short:
+                  type: string
+                relative:
+                  type: string
+                full:
+                  type: string
+            start_date:
+              type: string
+            end_date:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+            closed_at:
+              type: string
+              format: date-time
+        target_url:
+          type: string
+        body:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+          format: date-time

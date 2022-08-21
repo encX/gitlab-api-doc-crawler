@@ -1,0 +1,195 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_level_variables'
+  version: '1.0'
+paths:
+  '/projects/{id}/variables':
+    get:
+      summary: List project variables
+      description: Get list of a project’s variables.
+      operationId: listProjectVariables
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectVariablesResponse'
+      tags:
+        - project_level_variables
+    post:
+      summary: Create variable
+      description: Create a new variable.
+      operationId: createVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/showVariableDetailsResponse'
+      tags:
+        - project_level_variables
+  '/projects/{id}/variables/{key}':
+    get:
+      summary: Show variable details
+      description: Get the details of a project’s specific variable.
+      operationId: showVariableDetails
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'Available filters: [environment_scope]. See the filter parameter details.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      tags:
+        - project_level_variables
+    put:
+      summary: Update variable
+      description: Update a project’s variable.
+      operationId: updateVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateVariableRequest'
+      tags:
+        - project_level_variables
+    delete:
+      summary: Remove variable
+      description: Remove a project’s variable.
+      operationId: removeVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'Available filters: [environment_scope]. See the filter parameter details.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_level_variables
+components:
+  schemas:
+    listProjectVariablesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          variable_type:
+            type: string
+          key:
+            type: string
+          value:
+            type: string
+          protected:
+            type: boolean
+          masked:
+            type: boolean
+          environment_scope:
+            type: string
+    showVariableDetailsResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        variable_type:
+          type: string
+        value:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+    updateVariableRequest:
+      type: object
+      properties:
+        value:
+          type: string
+        variable_type:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+        filter:
+          type: object
+          additionalProperties: true
+      required:
+        - value
