@@ -1,0 +1,144 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / instance_level_ci_variables'
+  version: '1.0'
+paths:
+  /admin/ci/variables:
+    get:
+      summary: List all instance variables
+      description: Get the list of all instance-level variables.
+      operationId: listAllInstanceVariables
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAllInstanceVariablesResponse'
+      tags:
+        - instance_level_ci_variables
+    post:
+      summary: Create instance variable
+      description: Create a new instance-level variable.
+      operationId: createInstanceVariable
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
+      tags:
+        - instance_level_ci_variables
+  '/admin/ci/variables/{key}':
+    get:
+      summary: Show instance variable details
+      description: Get the details of a specific instance-level variable.
+      operationId: showInstanceVariableDetails
+      parameters:
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
+      tags:
+        - instance_level_ci_variables
+    put:
+      summary: Update instance variable
+      description: Update an instance-level variable.
+      operationId: updateInstanceVariable
+      parameters:
+        - name: key
+          in: path
+          description: The key of a variable.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showInstanceVariableDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateInstanceVariableRequest'
+      tags:
+        - instance_level_ci_variables
+    delete:
+      summary: Remove instance variable
+      description: Remove an instance-level variable.
+      operationId: removeInstanceVariable
+      parameters:
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - instance_level_ci_variables
+components:
+  schemas:
+    listAllInstanceVariablesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+          variable_type:
+            type: string
+          value:
+            type: string
+          protected:
+            type: boolean
+          masked:
+            type: boolean
+    showInstanceVariableDetailsResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        variable_type:
+          type: string
+        value:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+    updateInstanceVariableRequest:
+      type: object
+      properties:
+        value:
+          type: string
+        variable_type:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+      required:
+        - value

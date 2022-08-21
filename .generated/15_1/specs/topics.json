@@ -1,0 +1,220 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/topics.html",
+  "pageSlug": "topics",
+  "pageName": "Topics",
+  "apis": [
+    {
+      "name": "List topics",
+      "description": "Returns a list of project topics in the GitLab instance ordered by number of associated projects.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/topics"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "description": "Page to retrieve. Defaults to 1."
+        },
+        {
+          "name": "per_page",
+          "type": "integer",
+          "required": false,
+          "description": "Number of records to return per page. Defaults to 20."
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "required": false,
+          "description": "Search topics against their name."
+        },
+        {
+          "name": "without_projects",
+          "type": "boolean",
+          "required": false,
+          "description": "Limit results to topics without assigned projects."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "gitlab",
+          "title": "GitLab",
+          "description": "GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more.",
+          "total_projects_count": 1000,
+          "avatar_url": "http://www.gravatar.com/avatar/a0d477b3ea21970ce6ffcbb817b0b435?s=80&d=identicon"
+        },
+        {
+          "id": 3,
+          "name": "git",
+          "title": "Git",
+          "description": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
+          "total_projects_count": 900,
+          "avatar_url": "http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=80&d=identicon"
+        },
+        {
+          "id": 2,
+          "name": "git-lfs",
+          "title": "Git LFS",
+          "description": null,
+          "total_projects_count": 300,
+          "avatar_url": null
+        }
+      ]
+    },
+    {
+      "name": "Get a topic",
+      "description": "Get a project topic by ID.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "gitlab",
+        "title": "GitLab",
+        "description": "GitLab is an open source end-to-end software development platform with built-in version control, issue tracking, code review, CI/CD, and more.",
+        "total_projects_count": 1000,
+        "avatar_url": "http://www.gravatar.com/avatar/a0d477b3ea21970ce6ffcbb817b0b435?s=80&d=identicon"
+      }
+    },
+    {
+      "name": "List projects assigned to a topic",
+      "description": "Use the Projects API to list all projects assigned to a specific topic.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects?topic=<topic_name>"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create a project topic",
+      "description": "Create a new project topic. Only available to administrators.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/topics"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Slug (name)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "Title"
+        },
+        {
+          "name": "avatar",
+          "type": "file",
+          "required": false,
+          "description": "Avatar"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "topic1",
+        "title": "Topic 1",
+        "description": null,
+        "total_projects_count": 0,
+        "avatar_url": null
+      }
+    },
+    {
+      "name": "Update a project topic",
+      "description": "Update a project topic. Only available to administrators.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        },
+        {
+          "name": "avatar",
+          "type": "file",
+          "required": false,
+          "description": "Avatar"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Description"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "Slug (name)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "Title"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "name": "topic1",
+        "title": "Topic 1",
+        "description": null,
+        "total_projects_count": 0,
+        "avatar_url": null
+      }
+    },
+    {
+      "name": "Delete a project topic",
+      "description": "You must be an administrator to delete a project. When you delete a project topic, you also delete the topic assignment for projects.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/topics/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": false,
+          "description": "ID of project topic"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

@@ -1,0 +1,361 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / cluster_agents'
+  version: '1.0'
+paths:
+  '/projects/{id}/cluster_agents':
+    get:
+      summary: List the agents for a project
+      description: Returns the list of agents registered for the project.
+      operationId: listTheAgentsForAProject
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listTheAgentsForAProjectResponse'
+      tags:
+        - cluster_agents
+    post:
+      summary: Register an agent with a project
+      description: Registers an agent to the project.
+      operationId: registerAnAgentWithAProject
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registerAnAgentWithAProjectRequest'
+      tags:
+        - cluster_agents
+  '/projects/{id}/cluster_agents/{agent_id}':
+    get:
+      summary: Get details about an agent
+      description: Gets a single agent details.
+      operationId: getDetailsAboutAnAgent
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getDetailsAboutAnAgentResponse'
+      tags:
+        - cluster_agents
+    delete:
+      summary: Delete a registered agent
+      description: Deletes an existing agent registration.
+      operationId: deleteARegisteredAgent
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - cluster_agents
+  '/projects/{id}/cluster_agents/{agent_id}/tokens':
+    get:
+      summary: List tokens for an agent
+      description: Returns a list of tokens for an agent.
+      operationId: listTokensForAnAgent
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listTokensForAnAgentResponse'
+      tags:
+        - cluster_agents
+    post:
+      summary: Create an agent token
+      description: Creates a new token for an agent.
+      operationId: createAnAgentToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnAgentTokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnAgentTokenRequest'
+      tags:
+        - cluster_agents
+  '/projects/{id}/cluster_agents/{agent_id}/tokens/{token_id}':
+    get:
+      summary: Get a single agent token
+      description: Gets a single agent token.
+      operationId: getASingleAgentToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent.
+          required: true
+          schema:
+            type: integer
+        - name: token_id
+          in: path
+          description: ID of the token.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleAgentTokenResponse'
+      tags:
+        - cluster_agents
+    delete:
+      summary: Revoke an agent token
+      description: Revokes an agent token.
+      operationId: revokeAnAgentToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project maintained by the authenticated user.
+          required: true
+          schema:
+            type: string
+        - name: agent_id
+          in: path
+          description: ID of the agent.
+          required: true
+          schema:
+            type: integer
+        - name: token_id
+          in: path
+          description: ID of the token.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - cluster_agents
+components:
+  schemas:
+    listTheAgentsForAProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          config_project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+          created_at:
+            type: string
+            format: date-time
+          created_by_user_id:
+            type: integer
+    getDetailsAboutAnAgentResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        config_project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        created_at:
+          type: string
+          format: date-time
+        created_by_user_id:
+          type: integer
+    registerAnAgentWithAProjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    listTokensForAnAgentResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          description:
+            type: string
+          agent_id:
+            type: integer
+          status:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          created_by_user_id:
+            type: integer
+    getASingleAgentTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        agent_id:
+          type: integer
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        created_by_user_id:
+          type: integer
+        last_used_at:
+          type: string
+    createAnAgentTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - name
+    createAnAgentTokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        agent_id:
+          type: integer
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        created_by_user_id:
+          type: integer
+        last_used_at:
+          type: string
+        token:
+          type: string

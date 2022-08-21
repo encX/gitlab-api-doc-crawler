@@ -1,0 +1,377 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/container_registry.html",
+  "pageSlug": "container_registry",
+  "pageName": "Container Registry",
+  "apis": [
+    {
+      "name": "Change the visibility of the Container Registry",
+      "description": "This controls who can view the Container Registry.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project accessible by the authenticated user."
+        },
+        {
+          "name": "container_registry_access_level",
+          "type": "string",
+          "required": false,
+          "description": "The desired visibility of the Container Registry. One of enabled (default), private, or disabled."
+        }
+      ],
+      "response": {
+        "id": 5,
+        "name": "Project 5",
+        "container_registry_access_level": "private"
+      }
+    },
+    {
+      "name": "Within a project",
+      "description": "Get a list of registry repositories in a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/registry/repositories"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project accessible by the authenticated user."
+        },
+        {
+          "name": "tags",
+          "type": "boolean",
+          "required": false,
+          "description": "If the parameter is included as true, each repository includes an array of \"tags\" in the response."
+        },
+        {
+          "name": "tags_count",
+          "type": "boolean",
+          "required": false,
+          "description": "If the parameter is included as true, each repository includes \"tags_count\" in the response (Introduced in GitLab 13.1)."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "",
+          "path": "group/project",
+          "project_id": 9,
+          "location": "gitlab.example.com:5000/group/project",
+          "created_at": "2019-01-10T13:38:57.391Z",
+          "cleanup_policy_started_at": "2020-01-10T15:40:57.391Z"
+        },
+        {
+          "id": 2,
+          "name": "releases",
+          "path": "group/project/releases",
+          "project_id": 9,
+          "location": "gitlab.example.com:5000/group/project/releases",
+          "created_at": "2019-01-10T13:39:08.229Z",
+          "cleanup_policy_started_at": "2020-08-17T03:12:35.489Z"
+        }
+      ]
+    },
+    {
+      "name": "Within a group",
+      "description": "Get a list of registry repositories in a group.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/registry/repositories"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group accessible by the authenticated user."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "name": "",
+          "path": "group/project",
+          "project_id": 9,
+          "location": "gitlab.example.com:5000/group/project",
+          "created_at": "2019-01-10T13:38:57.391Z",
+          "cleanup_policy_started_at": "2020-08-17T03:12:35.489Z"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "path": "group/other_project",
+          "project_id": 11,
+          "location": "gitlab.example.com:5000/group/other_project",
+          "created_at": "2019-01-10T13:39:08.229Z",
+          "cleanup_policy_started_at": "2020-01-10T15:40:57.391Z"
+        }
+      ]
+    },
+    {
+      "name": "Get details of a single repository",
+      "description": "Get details of a registry repository.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/registry/repositories/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of the registry repository accessible by the authenticated user."
+        },
+        {
+          "name": "tags",
+          "type": "boolean",
+          "required": false,
+          "description": "If the parameter is included as true, the response includes an array of \"tags\"."
+        },
+        {
+          "name": "tags_count",
+          "type": "boolean",
+          "required": false,
+          "description": "If the parameter is included as true, the response includes \"tags_count\"."
+        },
+        {
+          "name": "size",
+          "type": "boolean",
+          "required": false,
+          "description": "If the parameter is included as true, the response includes \"size\". This is the deduplicated size of all images within the repository. Deduplication eliminates extra copies of identical data. For example, if you upload the same image twice, the Container Registry stores only one copy. This field is only available on GitLab.com for repositories created after 2021-11-04."
+        }
+      ],
+      "response": {
+        "id": 2,
+        "name": "",
+        "path": "group/project",
+        "project_id": 9,
+        "location": "gitlab.example.com:5000/group/project",
+        "created_at": "2019-01-10T13:38:57.391Z",
+        "cleanup_policy_started_at": "2020-08-17T03:12:35.489Z",
+        "tags_count": 1,
+        "tags": [
+          {
+            "name": "0.0.1",
+            "path": "group/project:0.0.1",
+            "location": "gitlab.example.com:5000/group/project:0.0.1"
+          }
+        ],
+        "size": 2818413
+      }
+    },
+    {
+      "name": "Delete registry repository",
+      "description": "Delete a repository in registry.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/registry/repositories/:repository_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "repository_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of registry repository."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Within a project",
+      "description": "Get a list of tags for given registry repository.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/registry/repositories/:repository_id/tags"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project accessible by the authenticated user."
+        },
+        {
+          "name": "repository_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of registry repository."
+        }
+      ],
+      "response": [
+        {
+          "name": "A",
+          "path": "group/project:A",
+          "location": "gitlab.example.com:5000/group/project:A"
+        },
+        {
+          "name": "latest",
+          "path": "group/project:latest",
+          "location": "gitlab.example.com:5000/group/project:latest"
+        }
+      ]
+    },
+    {
+      "name": "Get details of a registry repository tag",
+      "description": "Get details of a registry repository tag.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/registry/repositories/:repository_id/tags/:tag_name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project accessible by the authenticated user."
+        },
+        {
+          "name": "repository_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of registry repository."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The name of tag."
+        }
+      ],
+      "response": {
+        "name": "v10.0.0",
+        "path": "group/project:latest",
+        "location": "gitlab.example.com:5000/group/project:latest",
+        "revision": "e9ed9d87c881d8c2fd3a31b41904d01ba0b836e7fd15240d774d811a1c248181",
+        "short_revision": "e9ed9d87c",
+        "digest": "sha256:c3490dcf10ffb6530c1303522a1405dfaf7daecd8f38d3e6a1ba19ea1f8a1751",
+        "created_at": "2019-01-06T16:49:51.272+00:00",
+        "total_size": 350224384
+      }
+    },
+    {
+      "name": "Delete a registry repository tag",
+      "description": "Delete a registry repository tag.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/registry/repositories/:repository_id/tags/:tag_name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "repository_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of registry repository."
+        },
+        {
+          "name": "tag_name",
+          "type": "string",
+          "required": true,
+          "description": "The name of tag."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete registry repository tags in bulk",
+      "description": "Delete registry repository tags in bulk based on given criteria.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/registry/repositories/:repository_id/tags"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "repository_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of registry repository."
+        },
+        {
+          "name": "name_regex",
+          "type": "string",
+          "required": false,
+          "description": "The re2 regex of the name to delete. To delete all tags specify .*. Note: name_regex is deprecated in favor of name_regex_delete. This field is validated."
+        },
+        {
+          "name": "name_regex_delete",
+          "type": "string",
+          "required": true,
+          "description": "The re2 regex of the name to delete. To delete all tags specify .*. This field is validated."
+        },
+        {
+          "name": "name_regex_keep",
+          "type": "string",
+          "required": false,
+          "description": "The re2 regex of the name to keep. This value overrides any matches from name_regex_delete. This field is validated. Note: setting to .* results in a no-op."
+        },
+        {
+          "name": "keep_n",
+          "type": "integer",
+          "required": false,
+          "description": "The amount of latest tags of given name to keep."
+        },
+        {
+          "name": "older_than",
+          "type": "string",
+          "required": false,
+          "description": "Tags to delete that are older than the given time, written in human readable form 1h, 1d, 1month."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Listing all container repositories",
+      "description": "To list all container repositories on your GitLab instance, administrator credentials are required:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/v2/_catalog"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    }
+  ]
+}

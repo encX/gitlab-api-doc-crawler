@@ -1,0 +1,201 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_access_tokens'
+  version: '1.0'
+paths:
+  '/projects/{id}/access_tokens':
+    get:
+      summary: List project access tokens
+      description: Get a list of project access tokens.
+      operationId: listProjectAccessTokens
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectAccessTokensResponse'
+      tags:
+        - project_access_tokens
+    post:
+      summary: Create a project access token
+      description: Create a project access token.
+      operationId: createAProjectAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAProjectAccessTokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAProjectAccessTokenRequest'
+      tags:
+        - project_access_tokens
+  '/projects/{id}/access_tokens/{token_id}':
+    get:
+      summary: Get a project access token
+      description: Get a project access token by ID.
+      operationId: getAProjectAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: token_id
+          in: path
+          description: ID of the project access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAProjectAccessTokenResponse'
+      tags:
+        - project_access_tokens
+    delete:
+      summary: Revoke a project access token
+      description: Revoke a project access token.
+      operationId: revokeAProjectAccessToken
+      parameters:
+        - name: id
+          in: path
+          description: ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: token_id
+          in: path
+          description: ID of the project access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_access_tokens
+components:
+  schemas:
+    listProjectAccessTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          user_id:
+            type: integer
+          scopes:
+            type: array
+            items:
+              type: string
+          name:
+            type: string
+          expires_at:
+            type: string
+            format: date-time
+          id:
+            type: integer
+          active:
+            type: boolean
+          created_at:
+            type: string
+            format: date-time
+          revoked:
+            type: boolean
+          access_level:
+            type: integer
+    getAProjectAccessTokenResponse:
+      type: object
+      properties:
+        user_id:
+          type: integer
+        scopes:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+        id:
+          type: integer
+        active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        revoked:
+          type: boolean
+        access_level:
+          type: integer
+        last_used_at:
+          type: string
+          format: date-time
+    createAProjectAccessTokenRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        access_level:
+          type: integer
+        expires_at:
+          type: string
+          format: date
+      required:
+        - name
+        - scopes
+    createAProjectAccessTokenResponse:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+        active:
+          type: boolean
+        name:
+          type: string
+        revoked:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        user_id:
+          type: integer
+        id:
+          type: integer
+        expires_at:
+          type: string
+          format: date-time
+        token:
+          type: string
+        access_level:
+          type: integer

@@ -1,0 +1,203 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_level_variables'
+  version: '1.0'
+paths:
+  '/projects/{id}/variables':
+    get:
+      summary: List project variables
+      description: Get list of a project’s variables.
+      operationId: listProjectVariables
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectVariablesResponse'
+      tags:
+        - project_level_variables
+    post:
+      summary: Create a variable
+      description: >-
+        Create a new variable. If a variable with the same key already exists, the new variable must have a different
+        environment_scope. Otherwise, GitLab returns a message similar to: VARIABLE_NAME has already been taken.
+      operationId: createAVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleVariableResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getASingleVariableResponse'
+      tags:
+        - project_level_variables
+  '/projects/{id}/variables/{key}':
+    get:
+      summary: Get a single variable
+      description: >-
+        Get the details of a single variable. If there are multiple variables with the same key, use filter to select
+        the correct environment_scope.
+      operationId: getASingleVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'Available filters: [environment_scope]. See the filter parameter details.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleVariableResponse'
+      tags:
+        - project_level_variables
+    put:
+      summary: Update a variable
+      description: >-
+        Update a project’s variable. If there are multiple variables with the same key, use filter to select the correct
+        environment_scope.
+      operationId: updateAVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleVariableResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAVariableRequest'
+      tags:
+        - project_level_variables
+    delete:
+      summary: Delete a variable
+      description: >-
+        Delete a project’s variable. If there are multiple variables with the same key, use filter to select the correct
+        environment_scope.
+      operationId: deleteAVariable
+      parameters:
+        - name: id
+          in: path
+          description: The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          description: The key of a variable
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          description: 'Available filters: [environment_scope]. See the filter parameter details.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_level_variables
+components:
+  schemas:
+    listProjectVariablesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          variable_type:
+            type: string
+          key:
+            type: string
+          value:
+            type: string
+          protected:
+            type: boolean
+          masked:
+            type: boolean
+          environment_scope:
+            type: string
+    getASingleVariableResponse:
+      type: object
+      properties:
+        key:
+          type: string
+        variable_type:
+          type: string
+        value:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+    updateAVariableRequest:
+      type: object
+      properties:
+        value:
+          type: string
+        variable_type:
+          type: string
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        environment_scope:
+          type: string
+        filter:
+          type: object
+          additionalProperties: true
+      required:
+        - value

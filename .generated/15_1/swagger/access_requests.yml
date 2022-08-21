@@ -1,0 +1,160 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / access_requests'
+  version: '1.0'
+paths:
+  '/groups/{id}/access_requests':
+    get:
+      summary: List access requests for a group or project
+      description: Gets a list of access requests viewable by the authenticated user.
+      operationId: listAccessRequestsForAGroupOrProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessRequestsForAGroupOrProjectResponse'
+      tags:
+        - access_requests
+    post:
+      summary: Request access to a group or project
+      description: Requests access for the authenticated user to a group or project.
+      operationId: requestAccessToAGroupOrProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the group or project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestAccessToAGroupOrProjectResponse'
+      tags:
+        - access_requests
+  '/groups/{id}/access_requests/{user_id}/approve':
+    put:
+      summary: Approve an access request
+      description: Approves an access request for the given user.
+      operationId: approveAnAccessRequest
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          description: The user ID of the access requester
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/approveAnAccessRequestResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/approveAnAccessRequestRequest'
+      tags:
+        - access_requests
+  '/groups/{id}/access_requests/{user_id}':
+    delete:
+      summary: Deny an access request
+      description: Denies an access request for the given user.
+      operationId: denyAnAccessRequest
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          description: The user ID of the access requester
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - access_requests
+components:
+  schemas:
+    listAccessRequestsForAGroupOrProjectResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          username:
+            type: string
+          name:
+            type: string
+          state:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          requested_at:
+            type: string
+            format: date-time
+    requestAccessToAGroupOrProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        requested_at:
+          type: string
+          format: date-time
+    approveAnAccessRequestRequest:
+      type: object
+      properties:
+        access_level:
+          type: integer
+    approveAnAccessRequestResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        name:
+          type: string
+        state:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        access_level:
+          type: integer

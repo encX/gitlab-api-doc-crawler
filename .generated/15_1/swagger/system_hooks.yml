@@ -1,0 +1,154 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / system_hooks'
+  version: '1.0'
+paths:
+  /hooks:
+    get:
+      summary: List system hooks
+      description: Get a list of all system hooks.
+      operationId: listSystemHooks
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listSystemHooksResponse'
+      tags:
+        - system_hooks
+    post:
+      summary: Add new system hook
+      description: Add a new system hook.
+      operationId: addNewSystemHook
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listSystemHooksResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addNewSystemHookRequest'
+      tags:
+        - system_hooks
+  '/hooks/{id}':
+    get:
+      summary: Get system hook
+      description: Get a system hook by its ID.
+      operationId: getSystemHook
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the hook
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listSystemHooksResponse'
+      tags:
+        - system_hooks
+    post:
+      summary: Test system hook
+      description: ''
+      operationId: testSystemHook
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the hook
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testSystemHookResponse'
+      tags:
+        - system_hooks
+    delete:
+      summary: Delete system hook
+      description: Deletes a system hook.
+      operationId: deleteSystemHook
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the hook
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - system_hooks
+components:
+  schemas:
+    listSystemHooksResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          url:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          push_events:
+            type: boolean
+          tag_push_events:
+            type: boolean
+          merge_requests_events:
+            type: boolean
+          repository_update_events:
+            type: boolean
+          enable_ssl_verification:
+            type: boolean
+    addNewSystemHookRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        token:
+          type: string
+        push_events:
+          type: boolean
+        tag_push_events:
+          type: boolean
+        merge_requests_events:
+          type: boolean
+        repository_update_events:
+          type: boolean
+        enable_ssl_verification:
+          type: boolean
+      required:
+        - url
+    testSystemHookResponse:
+      type: object
+      properties:
+        project_id:
+          type: integer
+        owner_email:
+          type: string
+        owner_name:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+        event_name:
+          type: string

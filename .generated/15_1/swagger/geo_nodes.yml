@@ -1,0 +1,1169 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / geo_nodes'
+  version: '1.0'
+paths:
+  /geo_nodes:
+    post:
+      summary: Create a new Geo node
+      description: Creates a new Geo node.
+      operationId: createANewGeoNode
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createANewGeoNodeResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createANewGeoNodeRequest'
+      tags:
+        - geo_nodes
+    get:
+      summary: Retrieve configuration about all Geo nodes
+      description: ''
+      operationId: retrieveConfigurationAboutAllGeoNodes
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveConfigurationAboutAllGeoNodesResponse'
+      tags:
+        - geo_nodes
+  '/geo_nodes/{id}':
+    get:
+      summary: Retrieve configuration about a specific Geo node
+      description: ''
+      operationId: retrieveConfigurationAboutASpecificGeoNode
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveConfigurationAboutASpecificGeoNodeResponse'
+      tags:
+        - geo_nodes
+    put:
+      summary: Edit a Geo node
+      description: Updates settings of an existing Geo node.
+      operationId: editAGeoNode
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Geo node.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createANewGeoNodeResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/editAGeoNodeRequest'
+      tags:
+        - geo_nodes
+    delete:
+      summary: Delete a Geo node
+      description: Removes the Geo node.
+      operationId: deleteAGeoNode
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Geo node.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - geo_nodes
+  '/geo_nodes/{id}/repair':
+    post:
+      summary: Repair a Geo node
+      description: To repair the OAuth authentication of a Geo node.
+      operationId: repairAGeoNode
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repairAGeoNodeResponse'
+      tags:
+        - geo_nodes
+  /geo_nodes/status:
+    get:
+      summary: Retrieve status about all Geo nodes
+      description: ''
+      operationId: retrieveStatusAboutAllGeoNodes
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveStatusAboutAllGeoNodesResponse'
+      tags:
+        - geo_nodes
+  '/geo_nodes/{id}/status':
+    get:
+      summary: Retrieve status about a specific Geo node
+      description: ''
+      operationId: retrieveStatusAboutASpecificGeoNode
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveStatusAboutASpecificGeoNodeResponse'
+      tags:
+        - geo_nodes
+  /geo_nodes/current/failures:
+    get:
+      summary: Retrieve project sync or verification failures that occurred on the current node
+      description: This only works on a secondary node.
+      operationId: retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNode
+      parameters:
+        - name: type
+          in: query
+          description: Type of failed objects (repository/wiki)
+          required: false
+          schema:
+            type: string
+        - name: failure_type
+          in: query
+          description: Type of failures (sync/checksum_mismatch/verification)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNodeResponse'
+      tags:
+        - geo_nodes
+components:
+  schemas:
+    createANewGeoNodeRequest:
+      type: object
+      properties:
+        primary:
+          type: boolean
+        enabled:
+          type: boolean
+        name:
+          type: string
+        url:
+          type: string
+        internal_url:
+          type: string
+        files_max_capacity:
+          type: integer
+        repos_max_capacity:
+          type: integer
+        verification_max_capacity:
+          type: integer
+        container_repositories_max_capacity:
+          type: integer
+        sync_object_storage:
+          type: boolean
+        selective_sync_type:
+          type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
+        minimum_reverification_interval:
+          type: integer
+      required:
+        - name
+        - url
+    createANewGeoNodeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        internal_url:
+          type: string
+        primary:
+          type: boolean
+        enabled:
+          type: boolean
+        current:
+          type: boolean
+        files_max_capacity:
+          type: integer
+        repos_max_capacity:
+          type: integer
+        verification_max_capacity:
+          type: integer
+        selective_sync_type:
+          type: string
+        selective_sync_shards:
+          type: array
+          items: {}
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: integer
+        minimum_reverification_interval:
+          type: integer
+        container_repositories_max_capacity:
+          type: integer
+        sync_object_storage:
+          type: boolean
+        clone_protocol:
+          type: string
+        web_edit_url:
+          type: string
+        web_geo_projects_url:
+          type: string
+        web_geo_replication_details_url:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            status:
+              type: string
+            repair:
+              type: string
+    retrieveConfigurationAboutAllGeoNodesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          url:
+            type: string
+          internal_url:
+            type: string
+          primary:
+            type: boolean
+          enabled:
+            type: boolean
+          current:
+            type: boolean
+          files_max_capacity:
+            type: integer
+          repos_max_capacity:
+            type: integer
+          container_repositories_max_capacity:
+            type: integer
+          verification_max_capacity:
+            type: integer
+          selective_sync_type:
+            type: string
+          selective_sync_shards:
+            type: array
+            items: {}
+          selective_sync_namespace_ids:
+            type: array
+            items:
+              type: integer
+          minimum_reverification_interval:
+            type: integer
+          clone_protocol:
+            type: string
+          web_edit_url:
+            type: string
+          _links:
+            type: object
+            properties:
+              self:
+                type: string
+              status:
+                type: string
+              repair:
+                type: string
+    retrieveConfigurationAboutASpecificGeoNodeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        internal_url:
+          type: string
+        primary:
+          type: boolean
+        enabled:
+          type: boolean
+        current:
+          type: boolean
+        files_max_capacity:
+          type: integer
+        repos_max_capacity:
+          type: integer
+        container_repositories_max_capacity:
+          type: integer
+        verification_max_capacity:
+          type: integer
+        selective_sync_type:
+          type: string
+        selective_sync_shards:
+          type: array
+          items: {}
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: integer
+        minimum_reverification_interval:
+          type: integer
+        clone_protocol:
+          type: string
+        web_edit_url:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            status:
+              type: string
+            repair:
+              type: string
+    editAGeoNodeRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        name:
+          type: string
+        url:
+          type: string
+        internal_url:
+          type: string
+        files_max_capacity:
+          type: integer
+        repos_max_capacity:
+          type: integer
+        verification_max_capacity:
+          type: integer
+        container_repositories_max_capacity:
+          type: integer
+        sync_object_storage:
+          type: boolean
+        selective_sync_type:
+          type: string
+        selective_sync_shards:
+          type: array
+          items:
+            type: string
+        selective_sync_namespace_ids:
+          type: array
+          items:
+            type: string
+        minimum_reverification_interval:
+          type: integer
+      required:
+        - name
+        - url
+    repairAGeoNodeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        internal_url:
+          type: string
+        primary:
+          type: boolean
+        enabled:
+          type: boolean
+        current:
+          type: boolean
+        files_max_capacity:
+          type: integer
+        repos_max_capacity:
+          type: integer
+        container_repositories_max_capacity:
+          type: integer
+        verification_max_capacity:
+          type: integer
+        clone_protocol:
+          type: string
+        web_edit_url:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+            status:
+              type: string
+            repair:
+              type: string
+    retrieveStatusAboutAllGeoNodesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          geo_node_id:
+            type: integer
+          healthy:
+            type: boolean
+          health:
+            type: string
+          health_status:
+            type: string
+          missing_oauth_application:
+            type: boolean
+          db_replication_lag_seconds:
+            type: string
+          lfs_objects_count:
+            type: integer
+          lfs_objects_checksum_total_count:
+            type: integer
+          lfs_objects_checksummed_count:
+            type: integer
+          lfs_objects_checksum_failed_count:
+            type: integer
+          lfs_objects_synced_count:
+            type: string
+          lfs_objects_failed_count:
+            type: string
+          lfs_objects_registry_count:
+            type: string
+          lfs_objects_verification_total_count:
+            type: string
+          lfs_objects_verified_count:
+            type: string
+          lfs_objects_verification_failed_count:
+            type: string
+          lfs_objects_synced_in_percentage:
+            type: string
+          lfs_objects_verified_in_percentage:
+            type: string
+          job_artifacts_count:
+            type: integer
+          job_artifacts_synced_count:
+            type: integer
+          job_artifacts_failed_count:
+            type: integer
+          job_artifacts_synced_missing_on_primary_count:
+            type: integer
+          job_artifacts_synced_in_percentage:
+            type: string
+          container_repositories_count:
+            type: integer
+          container_repositories_synced_count:
+            type: string
+          container_repositories_failed_count:
+            type: string
+          container_repositories_synced_in_percentage:
+            type: string
+          design_repositories_count:
+            type: integer
+          design_repositories_synced_count:
+            type: string
+          design_repositories_failed_count:
+            type: string
+          design_repositories_synced_in_percentage:
+            type: string
+          projects_count:
+            type: integer
+          repositories_count:
+            type: integer
+          repositories_failed_count:
+            type: string
+          repositories_synced_count:
+            type: string
+          repositories_synced_in_percentage:
+            type: string
+          wikis_count:
+            type: integer
+          wikis_failed_count:
+            type: string
+          wikis_synced_count:
+            type: string
+          wikis_synced_in_percentage:
+            type: string
+          replication_slots_count:
+            type: integer
+          replication_slots_used_count:
+            type: integer
+          replication_slots_used_in_percentage:
+            type: string
+          replication_slots_max_retained_wal_bytes:
+            type: integer
+          repositories_checked_count:
+            type: integer
+          repositories_checked_failed_count:
+            type: integer
+          repositories_checked_in_percentage:
+            type: string
+          repositories_checksummed_count:
+            type: integer
+          repositories_checksum_failed_count:
+            type: integer
+          repositories_checksummed_in_percentage:
+            type: string
+          wikis_checksummed_count:
+            type: integer
+          wikis_checksum_failed_count:
+            type: integer
+          wikis_checksummed_in_percentage:
+            type: string
+          repositories_verified_count:
+            type: integer
+          repositories_verification_failed_count:
+            type: integer
+          repositories_verified_in_percentage:
+            type: string
+          repositories_checksum_mismatch_count:
+            type: integer
+          wikis_verified_count:
+            type: integer
+          wikis_verification_failed_count:
+            type: integer
+          wikis_verified_in_percentage:
+            type: string
+          wikis_checksum_mismatch_count:
+            type: integer
+          repositories_retrying_verification_count:
+            type: integer
+          wikis_retrying_verification_count:
+            type: integer
+          last_event_id:
+            type: integer
+          last_event_timestamp:
+            type: integer
+          cursor_last_event_id:
+            type: string
+          cursor_last_event_timestamp:
+            type: integer
+          last_successful_status_check_timestamp:
+            type: integer
+          version:
+            type: string
+          revision:
+            type: string
+          merge_request_diffs_count:
+            type: integer
+          merge_request_diffs_checksum_total_count:
+            type: integer
+          merge_request_diffs_checksummed_count:
+            type: integer
+          merge_request_diffs_checksum_failed_count:
+            type: integer
+          merge_request_diffs_synced_count:
+            type: string
+          merge_request_diffs_failed_count:
+            type: string
+          merge_request_diffs_registry_count:
+            type: string
+          merge_request_diffs_verification_total_count:
+            type: string
+          merge_request_diffs_verified_count:
+            type: string
+          merge_request_diffs_verification_failed_count:
+            type: string
+          merge_request_diffs_synced_in_percentage:
+            type: string
+          merge_request_diffs_verified_in_percentage:
+            type: string
+          package_files_count:
+            type: integer
+          package_files_checksum_total_count:
+            type: integer
+          package_files_checksummed_count:
+            type: integer
+          package_files_checksum_failed_count:
+            type: integer
+          package_files_synced_count:
+            type: string
+          package_files_failed_count:
+            type: string
+          package_files_registry_count:
+            type: string
+          package_files_verification_total_count:
+            type: string
+          package_files_verified_count:
+            type: string
+          package_files_verification_failed_count:
+            type: string
+          package_files_synced_in_percentage:
+            type: string
+          package_files_verified_in_percentage:
+            type: string
+          pages_deployments_count:
+            type: integer
+          pages_deployments_checksum_total_count:
+            type: integer
+          pages_deployments_checksummed_count:
+            type: integer
+          pages_deployments_checksum_failed_count:
+            type: integer
+          pages_deployments_synced_count:
+            type: string
+          pages_deployments_failed_count:
+            type: string
+          pages_deployments_registry_count:
+            type: string
+          pages_deployments_verification_total_count:
+            type: string
+          pages_deployments_verified_count:
+            type: string
+          pages_deployments_verification_failed_count:
+            type: string
+          pages_deployments_synced_in_percentage:
+            type: string
+          pages_deployments_verified_in_percentage:
+            type: string
+          terraform_state_versions_count:
+            type: integer
+          terraform_state_versions_checksum_total_count:
+            type: integer
+          terraform_state_versions_checksummed_count:
+            type: integer
+          terraform_state_versions_checksum_failed_count:
+            type: integer
+          terraform_state_versions_synced_count:
+            type: string
+          terraform_state_versions_failed_count:
+            type: string
+          terraform_state_versions_registry_count:
+            type: string
+          terraform_state_versions_verification_total_count:
+            type: string
+          terraform_state_versions_verified_count:
+            type: string
+          terraform_state_versions_verification_failed_count:
+            type: string
+          terraform_state_versions_synced_in_percentage:
+            type: string
+          terraform_state_versions_verified_in_percentage:
+            type: string
+          snippet_repositories_count:
+            type: integer
+          snippet_repositories_checksum_total_count:
+            type: integer
+          snippet_repositories_checksummed_count:
+            type: integer
+          snippet_repositories_checksum_failed_count:
+            type: integer
+          snippet_repositories_synced_count:
+            type: string
+          snippet_repositories_failed_count:
+            type: string
+          snippet_repositories_registry_count:
+            type: string
+          snippet_repositories_verification_total_count:
+            type: string
+          snippet_repositories_verified_count:
+            type: string
+          snippet_repositories_verification_failed_count:
+            type: string
+          snippet_repositories_synced_in_percentage:
+            type: string
+          snippet_repositories_verified_in_percentage:
+            type: string
+          group_wiki_repositories_count:
+            type: integer
+          group_wiki_repositories_checksum_total_count:
+            type: integer
+          group_wiki_repositories_checksummed_count:
+            type: integer
+          group_wiki_repositories_checksum_failed_count:
+            type: integer
+          group_wiki_repositories_synced_count:
+            type: string
+          group_wiki_repositories_failed_count:
+            type: string
+          group_wiki_repositories_registry_count:
+            type: string
+          group_wiki_repositories_verification_total_count:
+            type: string
+          group_wiki_repositories_verified_count:
+            type: string
+          group_wiki_repositories_verification_failed_count:
+            type: string
+          group_wiki_repositories_synced_in_percentage:
+            type: string
+          group_wiki_repositories_verified_in_percentage:
+            type: string
+          pipeline_artifacts_count:
+            type: integer
+          pipeline_artifacts_checksum_total_count:
+            type: integer
+          pipeline_artifacts_checksummed_count:
+            type: integer
+          pipeline_artifacts_checksum_failed_count:
+            type: integer
+          pipeline_artifacts_synced_count:
+            type: string
+          pipeline_artifacts_failed_count:
+            type: string
+          pipeline_artifacts_registry_count:
+            type: string
+          pipeline_artifacts_verification_total_count:
+            type: string
+          pipeline_artifacts_verified_count:
+            type: string
+          pipeline_artifacts_verification_failed_count:
+            type: string
+          pipeline_artifacts_synced_in_percentage:
+            type: string
+          pipeline_artifacts_verified_in_percentage:
+            type: string
+          uploads_count:
+            type: integer
+          uploads_synced_count:
+            type: string
+          uploads_failed_count:
+            type: integer
+          uploads_registry_count:
+            type: string
+          uploads_synced_in_percentage:
+            type: string
+          uploads_checksum_total_count:
+            type: integer
+          uploads_checksummed_count:
+            type: integer
+          uploads_checksum_failed_count:
+            type: string
+          uploads_verification_total_count:
+            type: string
+          uploads_verified_count:
+            type: string
+          uploads_verification_failed_count:
+            type: string
+          uploads_verified_in_percentage:
+            type: string
+          job_artifacts_checksum_total_count:
+            type: integer
+          job_artifacts_checksummed_count:
+            type: integer
+          job_artifacts_checksum_failed_count:
+            type: integer
+          job_artifacts_registry_count:
+            type: integer
+          job_artifacts_verification_total_count:
+            type: integer
+          job_artifacts_verified_count:
+            type: integer
+          job_artifacts_verification_failed_count:
+            type: integer
+          job_artifacts_verified_in_percentage:
+            type: string
+          ci_secure_files_count:
+            type: integer
+          ci_secure_files_checksum_total_count:
+            type: integer
+          ci_secure_files_checksummed_count:
+            type: integer
+          ci_secure_files_checksum_failed_count:
+            type: integer
+          ci_secure_files_synced_count:
+            type: integer
+          ci_secure_files_failed_count:
+            type: integer
+          ci_secure_files_registry_count:
+            type: integer
+          ci_secure_files_verification_total_count:
+            type: integer
+          ci_secure_files_verified_count:
+            type: integer
+          ci_secure_files_verification_failed_count:
+            type: integer
+          ci_secure_files_synced_in_percentage:
+            type: string
+          ci_secure_files_verified_in_percentage:
+            type: string
+          ci_secure_files_synced_missing_on_primary_count:
+            type: integer
+    retrieveStatusAboutASpecificGeoNodeResponse:
+      type: object
+      properties:
+        geo_node_id:
+          type: integer
+        healthy:
+          type: boolean
+        health:
+          type: string
+        health_status:
+          type: string
+        missing_oauth_application:
+          type: boolean
+        db_replication_lag_seconds:
+          type: integer
+        lfs_objects_count:
+          type: integer
+        lfs_objects_checksum_total_count:
+          type: integer
+        lfs_objects_checksummed_count:
+          type: integer
+        lfs_objects_checksum_failed_count:
+          type: integer
+        lfs_objects_synced_count:
+          type: string
+        lfs_objects_failed_count:
+          type: string
+        lfs_objects_registry_count:
+          type: string
+        lfs_objects_verification_total_count:
+          type: string
+        lfs_objects_verified_count:
+          type: string
+        lfs_objects_verification_failed_count:
+          type: string
+        lfs_objects_synced_in_percentage:
+          type: string
+        lfs_objects_verified_in_percentage:
+          type: string
+        job_artifacts_count:
+          type: integer
+        job_artifacts_synced_count:
+          type: integer
+        job_artifacts_failed_count:
+          type: integer
+        job_artifacts_synced_missing_on_primary_count:
+          type: integer
+        job_artifacts_synced_in_percentage:
+          type: string
+        container_repositories_count:
+          type: integer
+        container_repositories_synced_count:
+          type: string
+        container_repositories_failed_count:
+          type: string
+        container_repositories_synced_in_percentage:
+          type: string
+        design_repositories_count:
+          type: integer
+        design_repositories_synced_count:
+          type: string
+        design_repositories_failed_count:
+          type: string
+        design_repositories_synced_in_percentage:
+          type: string
+        projects_count:
+          type: integer
+        repositories_count:
+          type: integer
+        repositories_failed_count:
+          type: integer
+        repositories_synced_count:
+          type: integer
+        repositories_synced_in_percentage:
+          type: string
+        wikis_count:
+          type: integer
+        wikis_failed_count:
+          type: integer
+        wikis_synced_count:
+          type: integer
+        wikis_synced_in_percentage:
+          type: string
+        replication_slots_count:
+          type: string
+        replication_slots_used_count:
+          type: string
+        replication_slots_used_in_percentage:
+          type: string
+        replication_slots_max_retained_wal_bytes:
+          type: string
+        last_event_id:
+          type: integer
+        last_event_timestamp:
+          type: integer
+        cursor_last_event_id:
+          type: integer
+        cursor_last_event_timestamp:
+          type: integer
+        last_successful_status_check_timestamp:
+          type: integer
+        version:
+          type: string
+        revision:
+          type: string
+        merge_request_diffs_count:
+          type: integer
+        merge_request_diffs_checksum_total_count:
+          type: integer
+        merge_request_diffs_checksummed_count:
+          type: integer
+        merge_request_diffs_checksum_failed_count:
+          type: integer
+        merge_request_diffs_synced_count:
+          type: integer
+        merge_request_diffs_failed_count:
+          type: integer
+        merge_request_diffs_registry_count:
+          type: integer
+        merge_request_diffs_verification_total_count:
+          type: integer
+        merge_request_diffs_verified_count:
+          type: integer
+        merge_request_diffs_verification_failed_count:
+          type: integer
+        merge_request_diffs_synced_in_percentage:
+          type: string
+        merge_request_diffs_verified_in_percentage:
+          type: string
+        package_files_count:
+          type: integer
+        package_files_checksum_total_count:
+          type: integer
+        package_files_checksummed_count:
+          type: integer
+        package_files_checksum_failed_count:
+          type: integer
+        package_files_synced_count:
+          type: integer
+        package_files_failed_count:
+          type: integer
+        package_files_registry_count:
+          type: integer
+        package_files_verification_total_count:
+          type: integer
+        package_files_verified_count:
+          type: integer
+        package_files_verification_failed_count:
+          type: integer
+        package_files_synced_in_percentage:
+          type: string
+        package_files_verified_in_percentage:
+          type: string
+        terraform_state_versions_count:
+          type: integer
+        terraform_state_versions_checksum_total_count:
+          type: integer
+        terraform_state_versions_checksummed_count:
+          type: integer
+        terraform_state_versions_checksum_failed_count:
+          type: integer
+        terraform_state_versions_synced_count:
+          type: integer
+        terraform_state_versions_failed_count:
+          type: integer
+        terraform_state_versions_registry_count:
+          type: integer
+        terraform_state_versions_verification_total_count:
+          type: integer
+        terraform_state_versions_verified_count:
+          type: integer
+        terraform_state_versions_verification_failed_count:
+          type: integer
+        terraform_state_versions_synced_in_percentage:
+          type: string
+        terraform_state_versions_verified_in_percentage:
+          type: string
+        snippet_repositories_count:
+          type: integer
+        snippet_repositories_checksum_total_count:
+          type: integer
+        snippet_repositories_checksummed_count:
+          type: integer
+        snippet_repositories_checksum_failed_count:
+          type: integer
+        snippet_repositories_synced_count:
+          type: integer
+        snippet_repositories_failed_count:
+          type: integer
+        snippet_repositories_registry_count:
+          type: integer
+        snippet_repositories_verification_total_count:
+          type: integer
+        snippet_repositories_verified_count:
+          type: integer
+        snippet_repositories_verification_failed_count:
+          type: integer
+        snippet_repositories_synced_in_percentage:
+          type: string
+        snippet_repositories_verified_in_percentage:
+          type: string
+        group_wiki_repositories_count:
+          type: integer
+        group_wiki_repositories_checksum_total_count:
+          type: integer
+        group_wiki_repositories_checksummed_count:
+          type: integer
+        group_wiki_repositories_checksum_failed_count:
+          type: integer
+        group_wiki_repositories_synced_count:
+          type: integer
+        group_wiki_repositories_failed_count:
+          type: integer
+        group_wiki_repositories_registry_count:
+          type: integer
+        group_wiki_repositories_verification_total_count:
+          type: integer
+        group_wiki_repositories_verified_count:
+          type: integer
+        group_wiki_repositories_verification_failed_count:
+          type: integer
+        group_wiki_repositories_synced_in_percentage:
+          type: string
+        group_wiki_repositories_verified_in_percentage:
+          type: string
+        pipeline_artifacts_count:
+          type: integer
+        pipeline_artifacts_checksum_total_count:
+          type: integer
+        pipeline_artifacts_checksummed_count:
+          type: integer
+        pipeline_artifacts_checksum_failed_count:
+          type: integer
+        pipeline_artifacts_synced_count:
+          type: integer
+        pipeline_artifacts_failed_count:
+          type: integer
+        pipeline_artifacts_registry_count:
+          type: integer
+        pipeline_artifacts_verification_total_count:
+          type: integer
+        pipeline_artifacts_verified_count:
+          type: integer
+        pipeline_artifacts_verification_failed_count:
+          type: integer
+        pipeline_artifacts_synced_in_percentage:
+          type: string
+        pipeline_artifacts_verified_in_percentage:
+          type: string
+        uploads_count:
+          type: integer
+        uploads_synced_count:
+          type: string
+        uploads_failed_count:
+          type: integer
+        uploads_registry_count:
+          type: string
+        uploads_synced_in_percentage:
+          type: string
+        uploads_checksum_total_count:
+          type: integer
+        uploads_checksummed_count:
+          type: integer
+        uploads_checksum_failed_count:
+          type: string
+        uploads_verification_total_count:
+          type: string
+        uploads_verified_count:
+          type: string
+        uploads_verification_failed_count:
+          type: string
+        uploads_verified_in_percentage:
+          type: string
+        job_artifacts_checksum_total_count:
+          type: integer
+        job_artifacts_checksummed_count:
+          type: integer
+        job_artifacts_checksum_failed_count:
+          type: integer
+        job_artifacts_registry_count:
+          type: integer
+        job_artifacts_verification_total_count:
+          type: integer
+        job_artifacts_verified_count:
+          type: integer
+        job_artifacts_verification_failed_count:
+          type: integer
+        job_artifacts_verified_in_percentage:
+          type: string
+        ci_secure_files_count:
+          type: integer
+        ci_secure_files_checksum_total_count:
+          type: integer
+        ci_secure_files_checksummed_count:
+          type: integer
+        ci_secure_files_checksum_failed_count:
+          type: integer
+        ci_secure_files_synced_count:
+          type: integer
+        ci_secure_files_failed_count:
+          type: integer
+        ci_secure_files_registry_count:
+          type: integer
+        ci_secure_files_verification_total_count:
+          type: integer
+        ci_secure_files_verified_count:
+          type: integer
+        ci_secure_files_verification_failed_count:
+          type: integer
+        ci_secure_files_synced_in_percentage:
+          type: string
+        ci_secure_files_verified_in_percentage:
+          type: string
+        ci_secure_files_synced_missing_on_primary_count:
+          type: integer
+    retrieveProjectSyncOrVerificationFailuresThatOccurredOnTheCurrentNodeResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          project_id:
+            type: integer
+          last_repository_synced_at:
+            type: string
+            format: date-time
+          last_repository_successful_sync_at:
+            type: string
+            format: date-time
+          last_wiki_synced_at:
+            type: string
+            format: date-time
+          last_wiki_successful_sync_at:
+            type: string
+            format: date-time
+          repository_retry_count:
+            type: string
+          wiki_retry_count:
+            type: integer
+          last_repository_sync_failure:
+            type: string
+          last_wiki_sync_failure:
+            type: string
+          last_repository_verification_failure:
+            type: string
+          last_wiki_verification_failure:
+            type: string
+          repository_verification_checksum_sha:
+            type: string
+          wiki_verification_checksum_sha:
+            type: string
+          repository_checksum_mismatch:
+            type: boolean
+          wiki_checksum_mismatch:
+            type: boolean

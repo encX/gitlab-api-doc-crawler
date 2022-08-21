@@ -1,0 +1,150 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/error_tracking.html",
+  "pageSlug": "error_tracking",
+  "pageName": "Error Tracking",
+  "apis": [
+    {
+      "name": "Get Error Tracking settings",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/error_tracking/settings"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": {
+        "active": true,
+        "project_name": "sample sentry project",
+        "sentry_external_url": "https://sentry.io/myawesomeproject/project",
+        "api_url": "https://sentry.io/api/0/projects/myawesomeproject/project",
+        "integrated": false
+      }
+    },
+    {
+      "name": "Enable or disable the Error Tracking project settings",
+      "description": "The API allows you to enable or disable the Error Tracking settings for a project. Only for users with the Maintainer role for the project.",
+      "resources": [
+        {
+          "method": "PATCH",
+          "path": "/projects/:id/error_tracking/settings"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": true,
+          "description": "Pass true to enable the already configured error tracking settings or false to disable it."
+        },
+        {
+          "name": "integrated",
+          "type": "boolean",
+          "required": false,
+          "description": "Pass true to enable the integrated error tracking backend. Available in GitLab 14.2 and later."
+        }
+      ],
+      "response": {
+        "active": true,
+        "project_name": "sample sentry project",
+        "sentry_external_url": "https://sentry.io/myawesomeproject/project",
+        "api_url": "https://sentry.io/api/0/projects/myawesomeproject/project",
+        "integrated": false
+      }
+    },
+    {
+      "name": "List project client keys",
+      "description": "",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/error_tracking/client_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "active": true,
+          "public_key": "glet_aa77551d849c083f76d0bc545ed053a3",
+          "sentry_dsn": "https://glet_aa77551d849c083f76d0bc545ed053a3@gitlab.example.com/api/v4/error_tracking/collector/5"
+        },
+        {
+          "id": 3,
+          "active": true,
+          "public_key": "glet_0ff98b1d849c083f76d0bc545ed053a3",
+          "sentry_dsn": "https://glet_0ff98b1d849c083f76d0bc545ed053a3@gitlab.example.com/api/v4/error_tracking/collector/5"
+        }
+      ]
+    },
+    {
+      "name": "Create a client key",
+      "description": "Creates a new client key for a project. The public key attribute is generated automatically.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/error_tracking/client_keys"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        }
+      ],
+      "response": {
+        "id": 3,
+        "active": true,
+        "public_key": "glet_0ff98b1d849c083f76d0bc545ed053a3",
+        "sentry_dsn": "https://glet_0ff98b1d849c083f76d0bc545ed053a3@gitlab.example.com/api/v4/error_tracking/collector/5"
+      }
+    },
+    {
+      "name": "Delete a client key",
+      "description": "Removes a client key from the project.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/error_tracking/client_keys/:key_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "key_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the client key."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

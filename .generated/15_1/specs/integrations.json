@@ -1,0 +1,2846 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/integrations.html",
+  "pageSlug": "integrations",
+  "pageName": "Integrations",
+  "apis": [
+    {
+      "name": "List all active integrations",
+      "description": "Get a list of all active project integrations.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 75,
+          "title": "Jenkins CI",
+          "slug": "jenkins",
+          "created_at": "2019-11-20T11:20:25.297Z",
+          "updated_at": "2019-11-20T12:24:37.498Z",
+          "active": true,
+          "commit_events": true,
+          "push_events": true,
+          "issues_events": true,
+          "confidential_issues_events": true,
+          "merge_requests_events": true,
+          "tag_push_events": false,
+          "note_events": true,
+          "confidential_note_events": true,
+          "pipeline_events": true,
+          "wiki_page_events": true,
+          "job_events": true,
+          "comment_on_event_enabled": true
+        },
+        {
+          "id": 76,
+          "title": "Alerts endpoint",
+          "slug": "alerts",
+          "created_at": "2019-11-20T11:20:25.297Z",
+          "updated_at": "2019-11-20T12:24:37.498Z",
+          "active": true,
+          "commit_events": true,
+          "push_events": true,
+          "issues_events": true,
+          "confidential_issues_events": true,
+          "merge_requests_events": true,
+          "tag_push_events": true,
+          "note_events": true,
+          "confidential_note_events": true,
+          "pipeline_events": true,
+          "wiki_page_events": true,
+          "job_events": true,
+          "comment_on_event_enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Create/Edit Asana integration",
+      "description": "Set Asana integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/asana"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "api_key",
+          "type": "string",
+          "required": false,
+          "description": "User API token. User must have access to task. All comments are attributed to this user."
+        },
+        {
+          "name": "restrict_to_branch",
+          "type": "string",
+          "required": false,
+          "description": "Comma-separated list of branches to be are automatically inspected. Leave blank to include all branches."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Asana integration",
+      "description": "Disable the Asana integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/asana"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Asana integration settings",
+      "description": "Get Asana integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/asana"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Assembla integration",
+      "description": "Set Assembla integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/assembla"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "The authentication token"
+        },
+        {
+          "name": "subdomain",
+          "type": "string",
+          "required": false,
+          "description": "The subdomain setting"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Assembla integration",
+      "description": "Disable the Assembla integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/assembla"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Assembla integration settings",
+      "description": "Get Assembla integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/assembla"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Atlassian Bamboo CI integration",
+      "description": "Set Atlassian Bamboo CI integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/bamboo"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "bamboo_url",
+          "type": "string",
+          "required": false,
+          "description": "Bamboo root URL. For example, https://bamboo.example.com."
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable SSL verification. Defaults to true (enabled)."
+        },
+        {
+          "name": "build_key",
+          "type": "string",
+          "required": false,
+          "description": "Bamboo build plan key like KEY"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "A user with API access, if applicable"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "required": false,
+          "description": "Password of the user"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Atlassian Bamboo CI integration",
+      "description": "Disable the Atlassian Bamboo CI integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/bamboo"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Atlassian Bamboo CI integration settings",
+      "description": "Get Atlassian Bamboo CI integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/bamboo"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Bugzilla integration",
+      "description": "Set Bugzilla integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/bugzilla"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "new_issue_url",
+          "type": "string",
+          "required": false,
+          "description": "New Issue URL"
+        },
+        {
+          "name": "issues_url",
+          "type": "string",
+          "required": false,
+          "description": "Issue URL"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "Project URL"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Bugzilla integration",
+      "description": "Disable the Bugzilla integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/bugzilla"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Bugzilla integration settings",
+      "description": "Get Bugzilla integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/bugzilla"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Buildkite integration",
+      "description": "Set Buildkite integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/buildkite"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Buildkite project GitLab token"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "Pipeline URL. For example, https://buildkite.com/example/pipeline"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "DEPRECATED: This parameter has no effect since SSL verification is always enabled"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Buildkite integration",
+      "description": "Disable the Buildkite integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/buildkite"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Buildkite integration settings",
+      "description": "Get Buildkite integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/buildkite"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Campfire integration",
+      "description": "Set Campfire integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/campfire"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Campfire API token. To find it, log into Campfire and select My info."
+        },
+        {
+          "name": "subdomain",
+          "type": "string",
+          "required": false,
+          "description": "Campfire subdomain. Text between https:// and .campfirenow.com when you’re logged in."
+        },
+        {
+          "name": "room",
+          "type": "string",
+          "required": false,
+          "description": "Campfire room. The last part of the URL when you’re in a room."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Campfire integration",
+      "description": "Disable the Campfire integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/campfire"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Campfire integration settings",
+      "description": "Get Campfire integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/campfire"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Datadog integration",
+      "description": "Set Datadog integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/datadog"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "api_key",
+          "type": "string",
+          "required": false,
+          "description": "API key used for authentication with Datadog."
+        },
+        {
+          "name": "api_url",
+          "type": "string",
+          "required": false,
+          "description": "(Advanced) The full URL for your Datadog site"
+        },
+        {
+          "name": "datadog_env",
+          "type": "string",
+          "required": false,
+          "description": "For self-managed deployments, set the env% tag for all the data sent to Datadog."
+        },
+        {
+          "name": "datadog_service",
+          "type": "string",
+          "required": false,
+          "description": "Tag all data from this GitLab instance in Datadog. Useful when managing several self-managed deployments"
+        },
+        {
+          "name": "datadog_site",
+          "type": "string",
+          "required": false,
+          "description": "The Datadog site to send data to. To send data to the EU site, use datadoghq.eu"
+        },
+        {
+          "name": "datadog_tags",
+          "type": "string",
+          "required": false,
+          "description": "Custom tags in Datadog. Specify one tag per line in the format: key:value\\nkey2:value2 (Introduced in GitLab 14.8.)"
+        },
+        {
+          "name": "archive_trace_events",
+          "type": "boolean",
+          "required": false,
+          "description": "When enabled, job logs are collected by Datadog and displayed along with pipeline execution traces (introduced in GitLab 15.3)"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Datadog integration",
+      "description": "Disable the Datadog integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/datadog"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Datadog integration settings",
+      "description": "Get Datadog integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/datadog"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Unify Circuit integration",
+      "description": "Set Unify Circuit integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/unify-circuit"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Unify Circuit webhook. For example, https://circuit.com/rest/v2/webhooks/incoming/...."
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Unify Circuit integration",
+      "description": "Disable the Unify Circuit integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/unify-circuit"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Unify Circuit integration settings",
+      "description": "Get Unify Circuit integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/unify-circuit"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Pumble integration",
+      "description": "Set Pumble integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/pumble"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Pumble webhook. For example, https://api.pumble.com/workspaces/x/...."
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are all, default, protected, and default_and_protected. The default is default."
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events."
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events."
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events."
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events."
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events."
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines."
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events."
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events."
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events."
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Pumble integration",
+      "description": "Disable the Pumble integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/pumble"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Pumble integration settings",
+      "description": "Get Pumble integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/pumble"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Webex Teams integration",
+      "description": "Set Webex Teams integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/webex-teams"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Webex Teams webhook. For example, https://api.ciscospark.com/v1/webhooks/incoming/...."
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Webex Teams integration",
+      "description": "Disable the Webex Teams integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/webex-teams"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Webex Teams integration settings",
+      "description": "Get Webex Teams integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/webex-teams"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Custom Issue Tracker integration",
+      "description": "Set Custom Issue Tracker integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/custom-issue-tracker"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "new_issue_url",
+          "type": "string",
+          "required": false,
+          "description": "New Issue URL"
+        },
+        {
+          "name": "issues_url",
+          "type": "string",
+          "required": false,
+          "description": "Issue URL"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "Project URL"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Custom Issue Tracker integration",
+      "description": "Disable the Custom Issue Tracker integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/custom-issue-tracker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Custom Issue Tracker integration settings",
+      "description": "Get Custom Issue Tracker integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/custom-issue-tracker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Discord integration",
+      "description": "Set Discord integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/discord"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "Discord webhook. For example, https://discord.com/api/webhooks/…"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Discord integration",
+      "description": "Disable the Discord integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/discord"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Discord integration settings",
+      "description": "Get Discord integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/discord"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Drone CI integration",
+      "description": "Set Drone CI integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/drone-ci"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Drone CI project specific token"
+        },
+        {
+          "name": "drone_url",
+          "type": "string",
+          "required": false,
+          "description": "http://drone.example.com"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable SSL verification. Defaults to true (enabled)."
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Drone CI integration",
+      "description": "Disable the Drone CI integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/drone-ci"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Drone CI integration settings",
+      "description": "Get Drone CI integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/drone-ci"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Emails on Push integration",
+      "description": "Set Emails on Push integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/emails-on-push"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "recipients",
+          "type": "string",
+          "required": false,
+          "description": "Emails separated by whitespace"
+        },
+        {
+          "name": "disable_diffs",
+          "type": "boolean",
+          "required": false,
+          "description": "Disable code diffs"
+        },
+        {
+          "name": "send_from_committer_email",
+          "type": "boolean",
+          "required": false,
+          "description": "Send from committer"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. Notifications are always fired for tag pushes. The default value is “all”"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Emails on Push integration",
+      "description": "Disable the Emails on Push integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/emails-on-push"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Emails on Push integration settings",
+      "description": "Get Emails on Push integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/emails-on-push"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit EWM integration",
+      "description": "Set EWM integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/ewm"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "new_issue_url",
+          "type": "string",
+          "required": false,
+          "description": "The URL to create an issue in EWM"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "The URL to the project in EWM"
+        },
+        {
+          "name": "issues_url",
+          "type": "string",
+          "required": false,
+          "description": "The URL to view an issue in EWM. Must contain :id"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable EWM integration",
+      "description": "Disable the EWM integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/ewm"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get EWM integration settings",
+      "description": "Get EWM integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/ewm"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Confluence integration",
+      "description": "Set Confluence integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/confluence"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "confluence_url",
+          "type": "string",
+          "required": false,
+          "description": "The URL of the Confluence Cloud Workspace hosted on atlassian.net."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Confluence integration",
+      "description": "Disable the Confluence integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/confluence"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Confluence integration settings",
+      "description": "Get Confluence integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/confluence"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit External wiki integration",
+      "description": "Set External wiki integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/external-wiki"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "external_wiki_url",
+          "type": "string",
+          "required": false,
+          "description": "The URL of the external wiki"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable External wiki integration",
+      "description": "Disable the External wiki integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/external-wiki"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get External wiki integration settings",
+      "description": "Get External wiki integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/external-wiki"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Flowdock integration",
+      "description": "Set Flowdock integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/flowdock"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Flowdock Git source token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Flowdock integration",
+      "description": "Disable the Flowdock integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/flowdock"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Flowdock integration settings",
+      "description": "Get Flowdock integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/flowdock"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit GitHub integration",
+      "description": "Set GitHub integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/github"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "GitHub API token with repo:status OAuth scope"
+        },
+        {
+          "name": "repository_url",
+          "type": "string",
+          "required": false,
+          "description": "GitHub repository URL"
+        },
+        {
+          "name": "static_context",
+          "type": "boolean",
+          "required": false,
+          "description": "Append instance name instead of branch to status check name"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable GitHub integration",
+      "description": "Disable the GitHub integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/github"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get GitHub integration settings",
+      "description": "Get GitHub integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/github"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Hangouts Chat integration",
+      "description": "Set Hangouts Chat integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/hangouts-chat"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Hangouts Chat webhook. For example, https://chat.googleapis.com/v1/spaces...."
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "notify_only_default_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Hangouts Chat integration",
+      "description": "Disable the Hangouts Chat integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/hangouts-chat"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Hangouts Chat integration settings",
+      "description": "Get Hangouts Chat integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/hangouts-chat"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Irker (IRC gateway) integration",
+      "description": "Set Irker (IRC gateway) integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/irker"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "recipients",
+          "type": "string",
+          "required": false,
+          "description": "Recipients/channels separated by whitespaces"
+        },
+        {
+          "name": "default_irc_uri",
+          "type": "string",
+          "required": false,
+          "description": "irc://irc.network.net:6697/"
+        },
+        {
+          "name": "server_host",
+          "type": "string",
+          "required": false,
+          "description": "localhost"
+        },
+        {
+          "name": "server_port",
+          "type": "integer",
+          "required": false,
+          "description": "6659"
+        },
+        {
+          "name": "colorize_messages",
+          "type": "boolean",
+          "required": false,
+          "description": "Colorize messages"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Irker (IRC gateway) integration",
+      "description": "Disable the Irker (IRC gateway) integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/irker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Irker (IRC gateway) integration settings",
+      "description": "Get Irker (IRC gateway) integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/irker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Jira integration settings",
+      "description": "Get Jira integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/jira"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Jira integration",
+      "description": "Set Jira integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/jira"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "description": "The URL to the Jira project which is being linked to this GitLab project. For example, https://jira.example.com."
+        },
+        {
+          "name": "api_url",
+          "type": "string",
+          "required": false,
+          "description": "The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "description": "The username of the user created to be used with GitLab/Jira."
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "required": true,
+          "description": "The password of the user created to be used with GitLab/Jira."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "description": "Activates or deactivates the integration. Defaults to false (deactivated)."
+        },
+        {
+          "name": "jira_issue_transition_automatic",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable automatic issue transitions. Takes precedence over jira_issue_transition_id if enabled. Defaults to false"
+        },
+        {
+          "name": "jira_issue_transition_id",
+          "type": "string",
+          "required": false,
+          "description": "The ID of one or more transitions for custom issue transitions. Ignored if jira_issue_transition_automatic is enabled. Defaults to a blank string, which disables custom transitions."
+        },
+        {
+          "name": "commit_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for commit events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "comment_on_event_enabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable comments inside Jira issues on each GitLab event (commit / merge request)"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Jira integration",
+      "description": "Disable the Jira integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/jira"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Slack Slash Command integration settings",
+      "description": "Get Slack Slash Command integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/slack-slash-commands"
+        }
+      ],
+      "attributes": [],
+      "response": {
+        "id": 4,
+        "title": "Slack slash commands",
+        "slug": "slack-slash-commands",
+        "created_at": "2017-06-27T05:51:39-07:00",
+        "updated_at": "2017-06-27T05:51:39-07:00",
+        "active": true,
+        "push_events": true,
+        "issues_events": true,
+        "confidential_issues_events": true,
+        "merge_requests_events": true,
+        "tag_push_events": true,
+        "note_events": true,
+        "job_events": true,
+        "pipeline_events": true,
+        "comment_on_event_enabled": false,
+        "properties": {
+          "token": "<your_access_token>"
+        }
+      }
+    },
+    {
+      "name": "Create/Edit Slack Slash Commands integration",
+      "description": "Set Slack Slash Command for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/slack-slash-commands"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "The Slack token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Slack Slash Command integration",
+      "description": "Disable the Slack Slash Command integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/slack-slash-commands"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Mattermost Slash Command integration settings",
+      "description": "Get Mattermost Slash Command integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/mattermost-slash-commands"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Mattermost Slash Command integration",
+      "description": "Set Mattermost Slash Command for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/mattermost-slash-commands"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "The Mattermost token"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Mattermost Slash Command integration",
+      "description": "Disable the Mattermost Slash Command integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/mattermost-slash-commands"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Packagist integration",
+      "description": "Set Packagist integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/packagist"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "description": "The username of a Packagist account"
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "required": true,
+          "description": "API token to the Packagist server"
+        },
+        {
+          "name": "server",
+          "type": "boolean",
+          "required": false,
+          "description": "URL of the Packagist server. Leave blank for default: https://packagist.org"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Packagist integration",
+      "description": "Disable the Packagist integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/packagist"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Packagist integration settings",
+      "description": "Get Packagist integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/packagist"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Pipeline-Emails integration",
+      "description": "Set Pipeline-Emails integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/pipelines-email"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "recipients",
+          "type": "string",
+          "required": true,
+          "description": "Comma-separated list of recipient email addresses"
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Notify only broken pipelines"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected. The default value is “default”"
+        },
+        {
+          "name": "notify_only_default_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications only for the default branch (introduced in GitLab 12.0)"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Pipeline-Emails integration",
+      "description": "Disable the Pipeline-Emails integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/pipelines-email"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Pipeline-Emails integration settings",
+      "description": "Get Pipeline-Emails integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/pipelines-email"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Pivotal Tracker integration",
+      "description": "Set Pivotal Tracker integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/pivotaltracker"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "The Pivotal Tracker token"
+        },
+        {
+          "name": "restrict_to_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "Comma-separated list of branches to automatically inspect. Leave blank to include all branches."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Pivotal Tracker integration",
+      "description": "Disable the Pivotal Tracker integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/pivotaltracker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Pivotal Tracker integration settings",
+      "description": "Get Pivotal Tracker integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/pivotaltracker"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Prometheus integration",
+      "description": "Set Prometheus integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/prometheus"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "api_url",
+          "type": "string",
+          "required": false,
+          "description": "Prometheus API Base URL. For example, http://prometheus.example.com/."
+        },
+        {
+          "name": "google_iap_audience_client_id",
+          "type": "string",
+          "required": false,
+          "description": "Client ID of the IAP secured resource (looks like IAP_CLIENT_ID.apps.googleusercontent.com)"
+        },
+        {
+          "name": "google_iap_service_account_json",
+          "type": "string",
+          "required": false,
+          "description": "credentials.json file for your service account, like { “type”: “service_account”, “project_id”: … }"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Prometheus integration",
+      "description": "Disable the Prometheus integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/prometheus"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Prometheus integration settings",
+      "description": "Get Prometheus integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/prometheus"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Pushover integration",
+      "description": "Set Pushover integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/pushover"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "api_key",
+          "type": "string",
+          "required": false,
+          "description": "Your application key"
+        },
+        {
+          "name": "user_key",
+          "type": "string",
+          "required": false,
+          "description": "Your user key"
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "required": false,
+          "description": "The priority"
+        },
+        {
+          "name": "device",
+          "type": "string",
+          "required": false,
+          "description": "Leave blank for all active devices"
+        },
+        {
+          "name": "sound",
+          "type": "string",
+          "required": false,
+          "description": "The sound of the notification"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Pushover integration",
+      "description": "Disable the Pushover integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/pushover"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Pushover integration settings",
+      "description": "Get Pushover integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/pushover"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Redmine integration",
+      "description": "Set Redmine integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/redmine"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "new_issue_url",
+          "type": "string",
+          "required": false,
+          "description": "New Issue URL"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "Project URL"
+        },
+        {
+          "name": "issues_url",
+          "type": "string",
+          "required": false,
+          "description": "Issue URL"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Redmine integration",
+      "description": "Disable the Redmine integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/redmine"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Redmine integration settings",
+      "description": "Get Redmine integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/redmine"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Slack integration",
+      "description": "Set Slack integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/slack"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "https://hooks.slack.com/services/..."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "username"
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "required": false,
+          "description": "Default channel to use if others are not configured"
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "notify_only_default_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "commit_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for commit events"
+        },
+        {
+          "name": "confidential_issue_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive confidential issues events notifications"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "confidential_note_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive confidential note events notifications"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "deployment_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive deployment events notifications"
+        },
+        {
+          "name": "deployment_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for deployment events"
+        },
+        {
+          "name": "issue_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive issues events notifications"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "job_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for job events"
+        },
+        {
+          "name": "merge_request_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive merge request events notifications"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "note_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive note events notifications"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "pipeline_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive pipeline events notifications"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "push_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive push events notifications"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "tag_push_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive tag push events notifications"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "wiki_page_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive wiki page events notifications"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Slack integration",
+      "description": "Disable the Slack integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/slack"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Slack integration settings",
+      "description": "Get Slack integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/slack"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Microsoft Teams integration",
+      "description": "Set Microsoft Teams integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/microsoft-teams"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Microsoft Teams webhook. For example, https://outlook.office.com/webhook/..."
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "notify_only_default_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Microsoft Teams integration",
+      "description": "Disable the Microsoft Teams integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/microsoft-teams"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Microsoft Teams integration settings",
+      "description": "Get Microsoft Teams integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/microsoft-teams"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Mattermost notifications integration",
+      "description": "Set Mattermost notifications integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/mattermost"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "webhook",
+          "type": "string",
+          "required": false,
+          "description": "The Mattermost webhook. For example, http://mattermost_host/hooks/..."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "username"
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "required": false,
+          "description": "Default channel to use if others are not configured"
+        },
+        {
+          "name": "notify_only_broken_pipelines",
+          "type": "boolean",
+          "required": false,
+          "description": "Send notifications for broken pipelines"
+        },
+        {
+          "name": "notify_only_default_branch",
+          "type": "boolean",
+          "required": false,
+          "description": "DEPRECATED: This parameter has been replaced with branches_to_be_notified"
+        },
+        {
+          "name": "branches_to_be_notified",
+          "type": "string",
+          "required": false,
+          "description": "Branches to send notifications for. Valid options are “all”, “default”, “protected”, and “default_and_protected”. The default value is “default”"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for issue events"
+        },
+        {
+          "name": "confidential_issues_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential issue events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events"
+        },
+        {
+          "name": "note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for note events"
+        },
+        {
+          "name": "confidential_note_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for confidential note events"
+        },
+        {
+          "name": "pipeline_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for pipeline events"
+        },
+        {
+          "name": "wiki_page_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for wiki page events"
+        },
+        {
+          "name": "push_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive push events notifications"
+        },
+        {
+          "name": "issue_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive issues events notifications"
+        },
+        {
+          "name": "confidential_issue_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive confidential issues events notifications"
+        },
+        {
+          "name": "merge_request_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive merge request events notifications"
+        },
+        {
+          "name": "note_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive note events notifications"
+        },
+        {
+          "name": "confidential_note_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive confidential note events notifications"
+        },
+        {
+          "name": "tag_push_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive tag push events notifications"
+        },
+        {
+          "name": "pipeline_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive pipeline events notifications"
+        },
+        {
+          "name": "wiki_page_channel",
+          "type": "string",
+          "required": false,
+          "description": "The name of the channel to receive wiki page events notifications"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Mattermost notifications integration",
+      "description": "Disable the Mattermost notifications integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/mattermost"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Mattermost notifications integration settings",
+      "description": "Get Mattermost notifications integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/mattermost"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit JetBrains TeamCity CI integration",
+      "description": "Set JetBrains TeamCity CI integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/teamcity"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "teamcity_url",
+          "type": "string",
+          "required": false,
+          "description": "TeamCity root URL. For example, https://teamcity.example.com"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable SSL verification. Defaults to true (enabled)."
+        },
+        {
+          "name": "build_type",
+          "type": "string",
+          "required": false,
+          "description": "Build configuration ID"
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "A user with permissions to trigger a manual build"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "required": false,
+          "description": "The password of the user"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable JetBrains TeamCity CI integration",
+      "description": "Disable the JetBrains TeamCity CI integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/teamcity"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get JetBrains TeamCity CI integration settings",
+      "description": "Get JetBrains TeamCity CI integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/teamcity"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Jenkins CI integration",
+      "description": "Set Jenkins CI integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/jenkins"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "jenkins_url",
+          "type": "string",
+          "required": false,
+          "description": "Jenkins URL like http://jenkins.example.com."
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable SSL verification. Defaults to true (enabled)."
+        },
+        {
+          "name": "project_name",
+          "type": "string",
+          "required": false,
+          "description": "The URL-friendly project name. Example: my_project_name."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": false,
+          "description": "Username for authentication with the Jenkins server, if authentication is required by the server."
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "required": false,
+          "description": "Password for authentication with the Jenkins server, if authentication is required by the server."
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for push events."
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for merge request events."
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable notifications for tag push events."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable Jenkins CI integration",
+      "description": "Disable the Jenkins CI integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/jenkins"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Jenkins CI integration settings",
+      "description": "Get Jenkins CI integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/jenkins"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit Jenkins CI (Deprecated) integration",
+      "description": "Set Jenkins CI (Deprecated) integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/jenkins-deprecated"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Disable Jenkins CI (Deprecated) integration",
+      "description": "Disable the Jenkins CI (Deprecated) integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/jenkins-deprecated"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get Jenkins CI (Deprecated) integration settings",
+      "description": "Get Jenkins CI (Deprecated) integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/jenkins-deprecated"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit MockCI integration",
+      "description": "Set MockCI integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/mock-ci"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "mock_service_url",
+          "type": "string",
+          "required": false,
+          "description": "http://localhost:4004"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable SSL verification. Defaults to true (enabled)."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable MockCI integration",
+      "description": "Disable the MockCI integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/mock-ci"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get MockCI integration settings",
+      "description": "Get MockCI integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/mock-ci"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Create/Edit YouTrack integration",
+      "description": "Set YouTrack integration for a project.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/integrations/youtrack"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "issues_url",
+          "type": "string",
+          "required": false,
+          "description": "Issue URL"
+        },
+        {
+          "name": "project_url",
+          "type": "string",
+          "required": false,
+          "description": "Project URL"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Disable YouTrack integration",
+      "description": "Disable the YouTrack integration for a project. Integration settings are preserved.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/integrations/youtrack"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    },
+    {
+      "name": "Get YouTrack integration settings",
+      "description": "Get YouTrack integration settings for a project.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/integrations/youtrack"
+        }
+      ],
+      "attributes": [],
+      "response": null
+    }
+  ]
+}

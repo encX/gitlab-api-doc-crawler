@@ -1,0 +1,58 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/metadata.html",
+  "pageSlug": "metadata",
+  "pageName": "Metadata",
+  "apis": [
+    {
+      "name": "Metadata API",
+      "description": "Retrieve metadata information for this GitLab instance.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/metadata"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "version",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "revision",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "kas",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "kas.enabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "kas.externalUrl",
+          "type": "string or null",
+          "required": false
+        },
+        {
+          "name": "kas.version",
+          "type": "string or null",
+          "required": false
+        }
+      ],
+      "response": {
+        "version": "15.2-pre",
+        "revision": "c401a659d0c",
+        "kas": {
+          "enabled": true,
+          "externalUrl": "grpc://gitlab.example.com:8150",
+          "version": "15.0.0"
+        }
+      }
+    }
+  ]
+}

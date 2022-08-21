@@ -1,0 +1,43 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / markdown'
+  version: '1.0'
+paths:
+  /markdown:
+    post:
+      summary: Render an arbitrary Markdown document
+      description: 'Response example:'
+      operationId: renderAnArbitraryMarkdownDocument
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/renderAnArbitraryMarkdownDocumentResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/renderAnArbitraryMarkdownDocumentRequest'
+      tags:
+        - markdown
+components:
+  schemas:
+    renderAnArbitraryMarkdownDocumentRequest:
+      type: object
+      properties:
+        text:
+          type: string
+        gfm:
+          type: boolean
+        project:
+          type: string
+      required:
+        - text
+    renderAnArbitraryMarkdownDocumentResponse:
+      type: object
+      properties:
+        html:
+          type: string

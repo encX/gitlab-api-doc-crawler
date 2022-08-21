@@ -1,0 +1,242 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/project_level_variables.html",
+  "pageSlug": "project_level_variables",
+  "pageName": "Project-level variables",
+  "apis": [
+    {
+      "name": "List project variables",
+      "description": "Get list of a project’s variables.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/variables"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user"
+        }
+      ],
+      "response": [
+        {
+          "variable_type": "env_var",
+          "key": "TEST_VARIABLE_1",
+          "value": "TEST_1",
+          "protected": false,
+          "masked": true,
+          "environment_scope": "*"
+        },
+        {
+          "variable_type": "env_var",
+          "key": "TEST_VARIABLE_2",
+          "value": "TEST_2",
+          "protected": false,
+          "masked": false,
+          "environment_scope": "*"
+        }
+      ]
+    },
+    {
+      "name": "Get a single variable",
+      "description": "Get the details of a single variable. If there are multiple variables with the same key, use filter to select the correct environment_scope.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        },
+        {
+          "name": "filter",
+          "type": "hash",
+          "required": false,
+          "description": "Available filters: [environment_scope]. See the filter parameter details."
+        }
+      ],
+      "response": {
+        "key": "TEST_VARIABLE_1",
+        "variable_type": "env_var",
+        "value": "TEST_1",
+        "protected": false,
+        "masked": true,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Create a variable",
+      "description": "Create a new variable. If a variable with the same key already exists, the new variable must have a different environment_scope. Otherwise, GitLab returns a message similar to: VARIABLE_NAME has already been taken.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/variables"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable; must have no more than 255 characters; only A-Z, a-z, 0-9, and _ are allowed"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable"
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file"
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected. Default: false"
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked. Default: false"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The environment_scope of the variable. Default: *"
+        }
+      ],
+      "response": {
+        "variable_type": "env_var",
+        "key": "NEW_VARIABLE",
+        "value": "new value",
+        "protected": false,
+        "masked": false,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Update a variable",
+      "description": "Update a project’s variable. If there are multiple variables with the same key, use filter to select the correct environment_scope.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of a variable"
+        },
+        {
+          "name": "variable_type",
+          "type": "string",
+          "required": false,
+          "description": "The type of a variable. Available types are: env_var (default) and file"
+        },
+        {
+          "name": "protected",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is protected"
+        },
+        {
+          "name": "masked",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the variable is masked"
+        },
+        {
+          "name": "environment_scope",
+          "type": "string",
+          "required": false,
+          "description": "The environment_scope of the variable"
+        },
+        {
+          "name": "filter",
+          "type": "hash",
+          "required": false,
+          "description": "Available filters: [environment_scope]. See the filter parameter details."
+        }
+      ],
+      "response": {
+        "variable_type": "env_var",
+        "key": "NEW_VARIABLE",
+        "value": "updated value",
+        "protected": true,
+        "masked": false,
+        "environment_scope": "*"
+      }
+    },
+    {
+      "name": "Delete a variable",
+      "description": "Delete a project’s variable. If there are multiple variables with the same key, use filter to select the correct environment_scope.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/variables/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID of a project or URL-encoded NAMESPACE/PROJECT_NAME of the project owned by the authenticated user"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of a variable"
+        },
+        {
+          "name": "filter",
+          "type": "hash",
+          "required": false,
+          "description": "Available filters: [environment_scope]. See the filter parameter details."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

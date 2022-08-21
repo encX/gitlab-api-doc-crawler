@@ -1,0 +1,190 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / broadcast_messages'
+  version: '1.0'
+paths:
+  /broadcast_messages:
+    get:
+      summary: Get all broadcast messages
+      description: List all broadcast messages.
+      operationId: getAllBroadcastMessages
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAllBroadcastMessagesResponse'
+      tags:
+        - broadcast_messages
+    post:
+      summary: Create a broadcast message
+      description: Create a new broadcast message.
+      operationId: createABroadcastMessage
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createABroadcastMessageRequest'
+      tags:
+        - broadcast_messages
+  '/broadcast_messages/{id}':
+    get:
+      summary: Get a specific broadcast message
+      description: Get a specific broadcast message.
+      operationId: getASpecificBroadcastMessage
+      parameters:
+        - name: id
+          in: path
+          description: ID of broadcast message to retrieve.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
+      tags:
+        - broadcast_messages
+    put:
+      summary: Update a broadcast message
+      description: Update an existing broadcast message.
+      operationId: updateABroadcastMessage
+      parameters:
+        - name: id
+          in: path
+          description: ID of broadcast message to update.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASpecificBroadcastMessageResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createABroadcastMessageRequest'
+      tags:
+        - broadcast_messages
+    delete:
+      summary: Delete a broadcast message
+      description: Delete a broadcast message.
+      operationId: deleteABroadcastMessage
+      parameters:
+        - name: id
+          in: path
+          description: ID of broadcast message to delete.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - broadcast_messages
+components:
+  schemas:
+    getAllBroadcastMessagesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          message:
+            type: string
+          starts_at:
+            type: string
+            format: date-time
+          ends_at:
+            type: string
+            format: date-time
+          color:
+            type: string
+          font:
+            type: string
+          id:
+            type: integer
+          active:
+            type: boolean
+          target_access_levels:
+            type: array
+            items:
+              type: integer
+          target_path:
+            type: string
+          broadcast_type:
+            type: string
+          dismissable:
+            type: boolean
+    getASpecificBroadcastMessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        color:
+          type: string
+        font:
+          type: string
+        id:
+          type: integer
+        active:
+          type: boolean
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+    createABroadcastMessageRequest:
+      type: object
+      properties:
+        message:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        color:
+          type: string
+        font:
+          type: string
+        target_access_levels:
+          type: array
+          items:
+            type: integer
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: boolean
+      required:
+        - message

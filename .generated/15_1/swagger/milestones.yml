@@ -1,0 +1,298 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / milestones'
+  version: '1.0'
+paths:
+  '/projects/{id}/milestones':
+    get:
+      summary: List project milestones
+      description: Returns a list of project milestones.
+      operationId: listProjectMilestones
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: 'iids[]'
+          in: query
+          description: 'Return only the milestones having the given iid (Note: ignored if include_parent_milestones is set as true)'
+          required: false
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: Return only active or closed milestones
+          required: false
+          schema:
+            type: string
+        - name: title
+          in: query
+          description: Return only the milestones having the given title
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Return only milestones with a title or description matching the provided string
+          required: false
+          schema:
+            type: string
+        - name: include_parent_milestones
+          in: query
+          description: Include group milestones from parent group and its ancestors. Introduced in GitLab 13.4
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectMilestonesResponse'
+      tags:
+        - milestones
+    post:
+      summary: Create new milestone
+      description: Creates a new project milestone.
+      operationId: createNewMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createNewMilestoneRequest'
+      tags:
+        - milestones
+  '/projects/{id}/milestones/{milestone_id}':
+    get:
+      summary: Get single milestone
+      description: Gets a single project milestone.
+      operationId: getSingleMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+    put:
+      summary: Edit milestone
+      description: Updates an existing project milestone.
+      operationId: editMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/editMilestoneRequest'
+      tags:
+        - milestones
+    delete:
+      summary: Delete project milestone
+      description: Only for users with at least the Reporter role in the project.
+      operationId: deleteProjectMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+  '/projects/{id}/milestones/{milestone_id}/issues':
+    get:
+      summary: Get all issues assigned to a single milestone
+      description: Gets all issues assigned to a single project milestone.
+      operationId: getAllIssuesAssignedToASingleMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+  '/projects/{id}/milestones/{milestone_id}/merge_requests':
+    get:
+      summary: Get all merge requests assigned to a single milestone
+      description: Gets all merge requests assigned to a single project milestone.
+      operationId: getAllMergeRequestsAssignedToASingleMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+  '/projects/{id}/milestones/{milestone_id}/promote':
+    post:
+      summary: Promote project milestone to a group milestone
+      description: Only for users with at least the Reporter role in the group.
+      operationId: promoteProjectMilestoneToAGroupMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+  '/projects/{id}/milestones/{milestone_id}/burndown_events':
+    get:
+      summary: Get all burndown chart events for a single milestone
+      description: Gets all burndown chart events for a single milestone.
+      operationId: getAllBurndownChartEventsForASingleMilestone
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: milestone_id
+          in: path
+          description: The ID of the project’s milestone
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - milestones
+components:
+  schemas:
+    listProjectMilestonesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          iid:
+            type: integer
+          project_id:
+            type: integer
+          title:
+            type: string
+          description:
+            type: string
+          due_date:
+            type: string
+          start_date:
+            type: string
+          state:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          created_at:
+            type: string
+            format: date-time
+          expired:
+            type: boolean
+    createNewMilestoneRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+        start_date:
+          type: string
+      required:
+        - title
+    editMilestoneRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+        start_date:
+          type: string
+        state_event:
+          type: string

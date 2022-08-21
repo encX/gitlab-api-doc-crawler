@@ -1,0 +1,203 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/invitations.html",
+  "pageSlug": "invitations",
+  "pageName": "Invitations",
+  "apis": [
+    {
+      "name": "Add a member to a group or project",
+      "description": "Adds a new member. You can specify a user ID or invite a user by email.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/invitations"
+        },
+        {
+          "method": "POST",
+          "path": "/projects/:id/invitations"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project or group owned by the authenticated user"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": false,
+          "description": "The email of the new member or multiple emails separated by commas."
+        },
+        {
+          "name": "user_id",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID of the new member or multiple IDs separated by commas. Introduced in GitLab 14.10."
+        },
+        {
+          "name": "access_level",
+          "type": "integer",
+          "required": true,
+          "description": "A valid access level"
+        },
+        {
+          "name": "expires_at",
+          "type": "string",
+          "required": false,
+          "description": "A date string in the format YEAR-MONTH-DAY"
+        },
+        {
+          "name": "invite_source",
+          "type": "string",
+          "required": false,
+          "description": "The source of the invitation that starts the member creation process. See this issue."
+        },
+        {
+          "name": "tasks_to_be_done",
+          "type": "array of strings",
+          "required": false,
+          "description": "Tasks the inviter wants the member to focus on. The tasks are added as issues to a specified project. The possible values are: ci, code and issues. If specified, requires tasks_project_id. Introduced in GitLab 14.6"
+        },
+        {
+          "name": "tasks_project_id",
+          "type": "integer",
+          "required": false,
+          "description": "The project ID in which to create the task issues. If specified, requires tasks_to_be_done. Introduced in GitLab 14.6"
+        }
+      ],
+      "response": {
+        "status": "success",
+        "message": {
+          "test@example.com": "Invite email has already been taken",
+          "test2@example.com": "User already exists in source",
+          "test_username": "Access level is not included in the list"
+        }
+      }
+    },
+    {
+      "name": "List all invitations pending for a group or project",
+      "description": "Gets a list of invited group or project members viewable by the authenticated user. Returns invitations to direct members only, and not through inherited ancestors’ groups.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/invitations"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/invitations"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project or group owned by the authenticated user"
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "description": "Page to retrieve"
+        },
+        {
+          "name": "per_page",
+          "type": "integer",
+          "required": false,
+          "description": "Number of member invitations to return per page"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false,
+          "description": "A query string to search for invited members by invite email. Query text must match email address exactly. When empty, returns all invitations."
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "invite_email": "member@example.org",
+          "created_at": "2020-10-22T14:13:35Z",
+          "access_level": 30,
+          "expires_at": "2020-11-22T14:13:35Z",
+          "user_name": "Raymond Smith",
+          "created_by_name": "Administrator"
+        }
+      ]
+    },
+    {
+      "name": "Update an invitation to a group or project",
+      "description": "Updates a pending invitation’s access level or access expiry date.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/invitations/:email"
+        },
+        {
+          "method": "PUT",
+          "path": "/projects/:id/invitations/:email"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project or group owned by the authenticated user."
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": true,
+          "description": "The email address to which the invitation was previously sent."
+        },
+        {
+          "name": "access_level",
+          "type": "integer",
+          "required": false,
+          "description": "A valid access level (defaults: 30, the Developer role)."
+        },
+        {
+          "name": "expires_at",
+          "type": "string",
+          "required": false,
+          "description": "A date string in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)."
+        }
+      ],
+      "response": {
+        "expires_at": "2012-10-22T14:13:35Z",
+        "access_level": 40
+      }
+    },
+    {
+      "name": "Delete an invitation to a group or project",
+      "description": "Deletes a pending invitation by email address.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/invitations/:email"
+        },
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/invitations/:email"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project or group owned by the authenticated user"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": true,
+          "description": "The email address to which the invitation was previously sent"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

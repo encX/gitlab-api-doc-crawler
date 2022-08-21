@@ -1,0 +1,277 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / protected_branches'
+  version: '1.0'
+paths:
+  '/projects/{id}/protected_branches':
+    get:
+      summary: List protected branches
+      description: >-
+        Gets a list of protected branches from a project as they are defined in the UI. If a wildcard is set, it is
+        returned instead of the exact name of the branches that match that wildcard.
+      operationId: listProtectedBranches
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Name or part of the name of protected branches to be searched for
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProtectedBranchesResponse'
+      tags:
+        - protected_branches
+    post:
+      summary: Protect repository branches
+      description: Protects a single repository branch or several project repository branches using a wildcard protected branch.
+      operationId: protectRepositoryBranches
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/protectRepositoryBranchesResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/protectRepositoryBranchesRequest'
+      tags:
+        - protected_branches
+  '/projects/{id}/protected_branches/{name}':
+    get:
+      summary: Get a single protected branch or wildcard protected branch
+      description: Gets a single protected branch or wildcard protected branch.
+      operationId: getASingleProtectedBranchOrWildcardProtectedBranch
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the branch or wildcard
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProtectedBranchOrWildcardProtectedBranchResponse'
+      tags:
+        - protected_branches
+    delete:
+      summary: Unprotect repository branches
+      description: Unprotects the given protected branch or wildcard protected branch.
+      operationId: unprotectRepositoryBranches
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - protected_branches
+    patch:
+      summary: Require code owner approvals for a single branch
+      description: Update the “code owner approval required” option for the given protected branch.
+      operationId: requireCodeOwnerApprovalsForASingleBranch
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: path
+          description: The name of the branch
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requireCodeOwnerApprovalsForASingleBranchRequest'
+      tags:
+        - protected_branches
+components:
+  schemas:
+    listProtectedBranchesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          push_access_levels:
+            type: array
+            items:
+              type: object
+              properties:
+                access_level:
+                  type: integer
+                user_id:
+                  type: string
+                group_id:
+                  type: string
+                access_level_description:
+                  type: string
+          merge_access_levels:
+            type: array
+            items:
+              type: object
+              properties:
+                access_level:
+                  type: string
+                user_id:
+                  type: string
+                group_id:
+                  type: integer
+                access_level_description:
+                  type: string
+          allow_force_push:
+            type: boolean
+          code_owner_approval_required:
+            type: boolean
+    getASingleProtectedBranchOrWildcardProtectedBranchResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        push_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+        merge_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+        allow_force_push:
+          type: boolean
+        code_owner_approval_required:
+          type: boolean
+    protectRepositoryBranchesRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        push_access_level:
+          type: integer
+        merge_access_level:
+          type: integer
+        unprotect_access_level:
+          type: integer
+        allow_force_push:
+          type: boolean
+        allowed_to_push:
+          type: array
+          items:
+            type: string
+        allowed_to_merge:
+          type: array
+          items:
+            type: string
+        allowed_to_unprotect:
+          type: array
+          items:
+            type: string
+        code_owner_approval_required:
+          type: boolean
+      required:
+        - name
+    protectRepositoryBranchesResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        push_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+        merge_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+        unprotect_access_levels:
+          type: array
+          items:
+            type: object
+            properties:
+              access_level:
+                type: integer
+              access_level_description:
+                type: string
+        allow_force_push:
+          type: boolean
+        code_owner_approval_required:
+          type: boolean
+    requireCodeOwnerApprovalsForASingleBranchRequest:
+      type: object
+      properties:
+        code_owner_approval_required:
+          type: boolean

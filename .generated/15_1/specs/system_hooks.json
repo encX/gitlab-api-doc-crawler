@@ -1,0 +1,171 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/system_hooks.html",
+  "pageSlug": "system_hooks",
+  "pageName": "System hooks",
+  "apis": [
+    {
+      "name": "List system hooks",
+      "description": "Get a list of all system hooks.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/hooks"
+        }
+      ],
+      "attributes": [],
+      "response": [
+        {
+          "id": 1,
+          "url": "https://gitlab.example.com/hook",
+          "created_at": "2016-10-31T12:32:15.192Z",
+          "push_events": true,
+          "tag_push_events": false,
+          "merge_requests_events": true,
+          "repository_update_events": true,
+          "enable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "name": "Get system hook",
+      "description": "Get a system hook by its ID.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/hooks/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the hook"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "url": "https://gitlab.example.com/hook",
+          "created_at": "2016-10-31T12:32:15.192Z",
+          "push_events": true,
+          "tag_push_events": false,
+          "merge_requests_events": true,
+          "repository_update_events": true,
+          "enable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "name": "Add new system hook",
+      "description": "Add a new system hook.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/hooks"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "description": "The hook URL"
+        },
+        {
+          "name": "token",
+          "type": "string",
+          "required": false,
+          "description": "Secret token to validate received payloads; this isn’t returned in the response"
+        },
+        {
+          "name": "push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, the hook fires on push events"
+        },
+        {
+          "name": "tag_push_events",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, the hook fires on new tags being pushed"
+        },
+        {
+          "name": "merge_requests_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on merge requests events"
+        },
+        {
+          "name": "repository_update_events",
+          "type": "boolean",
+          "required": false,
+          "description": "Trigger hook on repository update events"
+        },
+        {
+          "name": "enable_ssl_verification",
+          "type": "boolean",
+          "required": false,
+          "description": "Do SSL verification when triggering the hook"
+        }
+      ],
+      "response": [
+        {
+          "id": 1,
+          "url": "https://gitlab.example.com/hook",
+          "created_at": "2016-10-31T12:32:15.192Z",
+          "push_events": true,
+          "tag_push_events": false,
+          "merge_requests_events": true,
+          "repository_update_events": true,
+          "enable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "name": "Test system hook",
+      "description": "",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/hooks/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the hook"
+        }
+      ],
+      "response": {
+        "project_id": 1,
+        "owner_email": "example@gitlabhq.com",
+        "owner_name": "Someone",
+        "name": "Ruby",
+        "path": "ruby",
+        "event_name": "project_create"
+      }
+    },
+    {
+      "name": "Delete system hook",
+      "description": "Deletes a system hook.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/hooks/:id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of the hook"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

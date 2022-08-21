@@ -1,0 +1,358 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/project_import_export.html",
+  "pageSlug": "project_import_export",
+  "pageName": "Project import/export",
+  "apis": [
+    {
+      "name": "Schedule an export",
+      "description": "Start a new export.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/export"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Overrides the project description"
+        },
+        {
+          "name": "upload",
+          "type": "hash",
+          "required": false,
+          "description": "Hash that contains the information to upload the exported project to a web server"
+        },
+        {
+          "name": "upload[url]",
+          "type": "string",
+          "required": true,
+          "description": "The URL to upload the project"
+        },
+        {
+          "name": "upload[http_method]",
+          "type": "string",
+          "required": false,
+          "description": "The HTTP method to upload the exported project. Only PUT and POST methods allowed. Default is PUT"
+        }
+      ],
+      "response": {
+        "message": "202 Accepted"
+      }
+    },
+    {
+      "name": "Export status",
+      "description": "Get the status of export.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/export"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "description": "Itaque perspiciatis minima aspernatur corporis consequatur.",
+        "name": "Gitlab Test",
+        "name_with_namespace": "Gitlab Org / Gitlab Test",
+        "path": "gitlab-test",
+        "path_with_namespace": "gitlab-org/gitlab-test",
+        "created_at": "2017-08-29T04:36:44.383Z",
+        "export_status": "finished",
+        "_links": {
+          "api_url": "https://gitlab.example.com/api/v4/projects/1/export/download",
+          "web_url": "https://gitlab.example.com/gitlab-org/gitlab-test/download_export"
+        }
+      }
+    },
+    {
+      "name": "Export download",
+      "description": "Download the finished export.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/export/download"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Import a file",
+      "description": "To upload a file from your file system, use the --form argument. This causes cURL to post data using the header Content-Type: multipart/form-data. The file= parameter must point to a file on your file system and be preceded by @. For example:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/import"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "namespace",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the project to be imported. Defaults to the path of the project if not provided"
+        },
+        {
+          "name": "file",
+          "type": "string",
+          "required": true,
+          "description": "The file to be uploaded"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name and path for new project"
+        },
+        {
+          "name": "overwrite",
+          "type": "boolean",
+          "required": false,
+          "description": "If there is a project with the same path the import overwrites it. Default to false"
+        },
+        {
+          "name": "override_params",
+          "type": "Hash",
+          "required": false,
+          "description": "Supports all fields defined in the Project API"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "description": null,
+        "name": "api-project",
+        "name_with_namespace": "Administrator / api-project",
+        "path": "api-project",
+        "path_with_namespace": "root/api-project",
+        "created_at": "2018-02-13T09:05:58.023Z",
+        "import_status": "scheduled",
+        "correlation_id": "mezklWso3Za",
+        "failed_relations": []
+      }
+    },
+    {
+      "name": "Import a file from a remote object storage",
+      "description": "This endpoint is behind a feature flag that is enabled by default.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/remote-import"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "namespace",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the project to import. If not provided, defaults to the path of the project."
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "description": "URL for the file to import."
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": "Name and path for the new project."
+        },
+        {
+          "name": "overwrite",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to overwrite a project with the same path when importing. Defaults to false."
+        },
+        {
+          "name": "override_params",
+          "type": "Hash",
+          "required": false,
+          "description": "Supports all fields defined in the Project API."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "description": null,
+        "name": "remote-project",
+        "name_with_namespace": "Administrator / remote-project",
+        "path": "remote-project",
+        "path_with_namespace": "root/remote-project",
+        "created_at": "2018-02-13T09:05:58.023Z",
+        "import_status": "scheduled",
+        "correlation_id": "mezklWso3Za",
+        "failed_relations": [],
+        "import_error": null
+      }
+    },
+    {
+      "name": "Import a file from AWS S3",
+      "description": "This example imports from an Amazon S3 bucket, using a module that connects to Amazon S3:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/remote-import-s3"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "namespace",
+          "type": "integer/string",
+          "required": false,
+          "description": "The ID or path of the namespace to import the project to. Defaults to the current user’s namespace."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the project to import. If not provided, defaults to the path of the project."
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": "The full path of the new project."
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "required": true,
+          "description": "AWS S3 region name where the file is stored."
+        },
+        {
+          "name": "bucket_name",
+          "type": "string",
+          "required": true,
+          "description": "AWS S3 bucket name where the file is stored."
+        },
+        {
+          "name": "file_key",
+          "type": "string",
+          "required": true,
+          "description": "AWS S3 file key to identify the file."
+        },
+        {
+          "name": "access_key_id",
+          "type": "string",
+          "required": true,
+          "description": "AWS S3 access key ID.."
+        },
+        {
+          "name": "secret_access_key",
+          "type": "string",
+          "required": true,
+          "description": "AWS S3 secret access key."
+        }
+      ],
+      "response": {
+        "id": 1,
+        "description": null,
+        "name": "Sample project",
+        "name_with_namespace": "Administrator / sample-project",
+        "path": "sample-project",
+        "path_with_namespace": "root/sample-project",
+        "created_at": "2018-02-13T09:05:58.023Z",
+        "import_status": "scheduled",
+        "correlation_id": "mezklWso3Za",
+        "failed_relations": [],
+        "import_error": null
+      }
+    },
+    {
+      "name": "Import status",
+      "description": "Get the status of an import.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/import"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        }
+      ],
+      "response": {
+        "id": 1,
+        "description": "Itaque perspiciatis minima aspernatur corporis consequatur.",
+        "name": "Gitlab Test",
+        "name_with_namespace": "Gitlab Org / Gitlab Test",
+        "path": "gitlab-test",
+        "path_with_namespace": "gitlab-org/gitlab-test",
+        "created_at": "2017-08-29T04:36:44.383Z",
+        "import_status": "started",
+        "import_type": "github",
+        "correlation_id": "mezklWso3Za",
+        "failed_relations": [
+          {
+            "id": 42,
+            "created_at": "2020-04-02T14:48:59.526Z",
+            "exception_class": "RuntimeError",
+            "exception_message": "A failure occurred",
+            "source": "custom error context",
+            "relation_name": "merge_requests",
+            "line_number": 0
+          }
+        ],
+        "stats": {
+          "fetched": {
+            "diff_note": 19,
+            "issue": 3,
+            "label": 1,
+            "note": 3,
+            "pull_request": 2,
+            "pull_request_merged_by": 1,
+            "pull_request_review": 16
+          },
+          "imported": {
+            "diff_note": 19,
+            "issue": 3,
+            "label": 1,
+            "note": 3,
+            "pull_request": 2,
+            "pull_request_merged_by": 1,
+            "pull_request_review": 16
+          }
+        }
+      }
+    }
+  ]
+}

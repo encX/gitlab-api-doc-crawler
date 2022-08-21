@@ -1,0 +1,175 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/protected_environments.html",
+  "pageSlug": "protected_environments",
+  "pageName": "Protected environments",
+  "apis": [
+    {
+      "name": "List protected environments",
+      "description": "Gets a list of protected environments from a project:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_environments"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        }
+      ],
+      "response": [
+        {
+          "name": "production",
+          "deploy_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null,
+              "group_inheritance_type": 0
+            }
+          ],
+          "required_approval_count": 0
+        }
+      ]
+    },
+    {
+      "name": "Get a single protected environment",
+      "description": "Gets a single protected environment:",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/protected_environments/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the protected environment"
+        }
+      ],
+      "response": {
+        "name": "production",
+        "deploy_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "Maintainers",
+            "user_id": null,
+            "group_id": null,
+            "group_inheritance_type": 0
+          }
+        ],
+        "required_approval_count": 0
+      }
+    },
+    {
+      "name": "Protect repository environments",
+      "description": "Protects a single environment:",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/protected_environments"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the environment."
+        },
+        {
+          "name": "deploy_access_levels",
+          "type": "array",
+          "required": true,
+          "description": "Array of access levels allowed to deploy, with each described by a hash."
+        },
+        {
+          "name": "required_approval_count",
+          "type": "integer",
+          "required": false,
+          "description": "The number of approvals required to deploy to this environment. This is part of Deployment Approvals, which isn’t yet available for use. For details, see issue."
+        },
+        {
+          "name": "approval_rules",
+          "type": "array",
+          "required": false,
+          "description": "Array of access levels allowed to approve, with each described by a hash. See Multiple approval rules for more information."
+        }
+      ],
+      "response": {
+        "name": "production",
+        "deploy_access_levels": [
+          {
+            "access_level": 40,
+            "access_level_description": "protected-access-group",
+            "user_id": null,
+            "group_id": 9899826,
+            "group_inheritance_type": 0
+          }
+        ],
+        "required_approval_count": 0,
+        "approval_rules": [
+          {
+            "user_id": null,
+            "group_id": 134,
+            "access_level": null,
+            "access_level_description": "qa-group",
+            "required_approvals": 1,
+            "group_inheritance_type": 0
+          },
+          {
+            "user_id": null,
+            "group_id": 135,
+            "access_level": null,
+            "access_level_description": "security-group",
+            "required_approvals": 2,
+            "group_inheritance_type": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Unprotect environment",
+      "description": "Unprotects the given protected environment:",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/protected_environments/:name"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer/string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "description": "The name of the protected environment."
+        }
+      ],
+      "response": null
+    }
+  ]
+}

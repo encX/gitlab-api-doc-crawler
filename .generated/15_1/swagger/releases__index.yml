@@ -1,0 +1,742 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / releases__index'
+  version: '1.0'
+paths:
+  '/projects/{id}/releases':
+    get:
+      summary: List Releases
+      description: 'Paginated list of Releases, sorted by released_at.'
+      operationId: listReleases
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: The field to use as order. Either released_at (default) or created_at.
+          required: false
+          schema:
+            type: string
+        - name: sort
+          in: query
+          description: The direction of the order. Either desc (default) for descending order or asc for ascending order.
+          required: false
+          schema:
+            type: string
+        - name: include_html_description
+          in: query
+          description: 'If true, a response includes HTML rendered Markdown of the release description.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listReleasesResponse'
+      tags:
+        - releases__index
+    post:
+      summary: Create a release
+      description: Create a release. Developer level access to the project is required to create a release.
+      operationId: createARelease
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAReleaseResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAReleaseRequest'
+      tags:
+        - releases__index
+  '/projects/{id}/releases/{tag_name}':
+    get:
+      summary: Get a Release by a tag name
+      description: Get a Release for the given tag.
+      operationId: getAReleaseByATagName
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: tag_name
+          in: path
+          description: The Git tag the release is associated with.
+          required: true
+          schema:
+            type: string
+        - name: include_html_description
+          in: query
+          description: 'If true, a response includes HTML rendered Markdown of the release description.'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getAReleaseByATagNameResponse'
+      tags:
+        - releases__index
+    put:
+      summary: Update a release
+      description: Update a release. Developer level access to the project is required to update a release.
+      operationId: updateARelease
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: tag_name
+          in: path
+          description: The Git tag the release is associated with.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAReleaseResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAReleaseRequest'
+      tags:
+        - releases__index
+    delete:
+      summary: Delete a Release
+      description: >-
+        Delete a release. Deleting a release doesn’t delete the associated tag. Maintainer level access to the project
+        is required to delete a release.
+      operationId: deleteARelease
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: tag_name
+          in: path
+          description: The Git tag the release is associated with.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleteAReleaseResponse'
+      tags:
+        - releases__index
+  '/projects/{id}/releases/{tag_name}/evidence':
+    post:
+      summary: Collect release evidence
+      description: Create Evidence for an existing Release.
+      operationId: collectReleaseEvidence
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project.
+          required: true
+          schema:
+            type: string
+        - name: tag_name
+          in: path
+          description: The Git tag the release is associated with.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collectReleaseEvidenceResponse'
+      tags:
+        - releases__index
+components:
+  schemas:
+    listReleasesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          tag_name:
+            type: string
+          description:
+            type: string
+          name:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          released_at:
+            type: string
+            format: date-time
+          author:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          commit:
+            type: object
+            properties:
+              id:
+                type: string
+              short_id:
+                type: string
+              title:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+              parent_ids:
+                type: array
+                items:
+                  type: string
+              message:
+                type: string
+              author_name:
+                type: string
+              author_email:
+                type: string
+              authored_date:
+                type: string
+              committer_name:
+                type: string
+              committer_email:
+                type: string
+              committed_date:
+                type: string
+          milestones:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                iid:
+                  type: integer
+                project_id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                state:
+                  type: string
+                created_at:
+                  type: string
+                  format: date-time
+                updated_at:
+                  type: string
+                  format: date-time
+                due_date:
+                  type: string
+                start_date:
+                  type: string
+                web_url:
+                  type: string
+                issue_stats:
+                  type: object
+                  properties:
+                    total:
+                      type: integer
+                    closed:
+                      type: integer
+          commit_path:
+            type: string
+          tag_path:
+            type: string
+          assets:
+            type: object
+            properties:
+              count:
+                type: integer
+              sources:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    format:
+                      type: string
+                    url:
+                      type: string
+              links:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    external:
+                      type: boolean
+                    link_type:
+                      type: string
+              evidence_file_path:
+                type: string
+          evidences:
+            type: array
+            items:
+              type: object
+              properties:
+                sha:
+                  type: string
+                filepath:
+                  type: string
+                collected_at:
+                  type: string
+                  format: date-time
+    getAReleaseByATagNameResponse:
+      type: object
+      properties:
+        tag_name:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        released_at:
+          type: string
+          format: date-time
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        commit:
+          type: object
+          properties:
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            parent_ids:
+              type: array
+              items: {}
+            message:
+              type: string
+            author_name:
+              type: string
+            author_email:
+              type: string
+            authored_date:
+              type: string
+            committer_name:
+              type: string
+            committer_email:
+              type: string
+            committed_date:
+              type: string
+        milestones:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+              due_date:
+                type: string
+              start_date:
+                type: string
+              web_url:
+                type: string
+              issue_stats:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  closed:
+                    type: integer
+        commit_path:
+          type: string
+        tag_path:
+          type: string
+        assets:
+          type: object
+          properties:
+            count:
+              type: integer
+            sources:
+              type: array
+              items:
+                type: object
+                properties:
+                  format:
+                    type: string
+                  url:
+                    type: string
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  url:
+                    type: string
+                  external:
+                    type: boolean
+                  link_type:
+                    type: string
+        evidences:
+          type: array
+          items:
+            type: object
+            properties:
+              sha:
+                type: string
+              filepath:
+                type: string
+              collected_at:
+                type: string
+                format: date-time
+    createAReleaseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        tag_name:
+          type: string
+        tag_message:
+          type: string
+        description:
+          type: string
+        ref:
+          type: string
+        milestones:
+          type: array
+          items:
+            type: string
+        'assets:links':
+          type: array
+          items:
+            type: string
+        'assets:links:name':
+          type: string
+        'assets:links:url':
+          type: string
+        'assets:links:filepath':
+          type: string
+        'assets:links:link_type':
+          type: string
+        released_at:
+          type: string
+          format: date-time
+      required:
+        - tag_name
+    createAReleaseResponse:
+      type: object
+      properties:
+        tag_name:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        released_at:
+          type: string
+          format: date-time
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        commit:
+          type: object
+          properties:
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            parent_ids:
+              type: array
+              items:
+                type: string
+            message:
+              type: string
+            author_name:
+              type: string
+            author_email:
+              type: string
+            authored_date:
+              type: string
+            committer_name:
+              type: string
+            committer_email:
+              type: string
+            committed_date:
+              type: string
+        milestones:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              iid:
+                type: integer
+              project_id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              state:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+              due_date:
+                type: string
+              start_date:
+                type: string
+              web_url:
+                type: string
+              issue_stats:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  closed:
+                    type: integer
+        commit_path:
+          type: string
+        tag_path:
+          type: string
+        evidence_sha:
+          type: string
+        assets:
+          type: object
+          properties:
+            count:
+              type: integer
+            sources:
+              type: array
+              items:
+                type: object
+                properties:
+                  format:
+                    type: string
+                  url:
+                    type: string
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  url:
+                    type: string
+                  external:
+                    type: boolean
+                  link_type:
+                    type: string
+            evidence_file_path:
+              type: string
+    collectReleaseEvidenceResponse:
+      type: integer
+    updateAReleaseRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        milestones:
+          type: array
+          items:
+            type: string
+        released_at:
+          type: string
+          format: date-time
+    deleteAReleaseResponse:
+      type: object
+      properties:
+        tag_name:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        released_at:
+          type: string
+          format: date-time
+        author:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        commit:
+          type: object
+          properties:
+            id:
+              type: string
+            short_id:
+              type: string
+            title:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            parent_ids:
+              type: array
+              items: {}
+            message:
+              type: string
+            author_name:
+              type: string
+            author_email:
+              type: string
+            authored_date:
+              type: string
+            committer_name:
+              type: string
+            committer_email:
+              type: string
+            committed_date:
+              type: string
+        commit_path:
+          type: string
+        tag_path:
+          type: string
+        evidence_sha:
+          type: string
+        assets:
+          type: object
+          properties:
+            count:
+              type: integer
+            sources:
+              type: array
+              items:
+                type: object
+                properties:
+                  format:
+                    type: string
+                  url:
+                    type: string
+            links:
+              type: array
+              items: {}
+            evidence_file_path:
+              type: string

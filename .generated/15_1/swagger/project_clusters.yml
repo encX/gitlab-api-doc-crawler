@@ -1,0 +1,490 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / project_clusters'
+  version: '1.0'
+paths:
+  '/projects/{id}/clusters':
+    get:
+      summary: List project clusters
+      description: Returns a list of project clusters.
+      operationId: listProjectClusters
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectClustersResponse'
+      tags:
+        - project_clusters
+  '/projects/{id}/clusters/{cluster_id}':
+    get:
+      summary: Get a single project cluster
+      description: Gets a single project cluster.
+      operationId: getASingleProjectCluster
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: cluster_id
+          in: path
+          description: The ID of the cluster
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProjectClusterResponse'
+      tags:
+        - project_clusters
+    put:
+      summary: Edit project cluster
+      description: Updates an existing project cluster.
+      operationId: editProjectCluster
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: cluster_id
+          in: path
+          description: The ID of the cluster
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getASingleProjectClusterResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/editProjectClusterRequest'
+      tags:
+        - project_clusters
+    delete:
+      summary: Delete project cluster
+      description: Deletes an existing project cluster. Does not remove existing resources within the connected Kubernetes cluster.
+      operationId: deleteProjectCluster
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: cluster_id
+          in: path
+          description: The ID of the cluster
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - project_clusters
+  '/projects/{id}/clusters/user':
+    post:
+      summary: Add existing cluster to project
+      description: Adds an existing Kubernetes cluster to the project.
+      operationId: addExistingClusterToProject
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addExistingClusterToProjectResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addExistingClusterToProjectRequest'
+      tags:
+        - project_clusters
+components:
+  schemas:
+    listProjectClustersResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          domain:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          managed:
+            type: boolean
+          enabled:
+            type: boolean
+          provider_type:
+            type: string
+          platform_type:
+            type: string
+          environment_scope:
+            type: string
+          cluster_type:
+            type: string
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              username:
+                type: string
+              state:
+                type: string
+              avatar_url:
+                type: string
+              web_url:
+                type: string
+          platform_kubernetes:
+            type: object
+            properties:
+              api_url:
+                type: string
+              namespace:
+                type: string
+              authorization_type:
+                type: string
+              ca_cert:
+                type: string
+          management_project:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+    getASingleProjectClusterResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        domain:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        managed:
+          type: boolean
+        enabled:
+          type: boolean
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        platform_kubernetes:
+          type: object
+          properties:
+            api_url:
+              type: string
+            namespace:
+              type: string
+            authorization_type:
+              type: string
+            ca_cert:
+              type: string
+        management_project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            default_branch:
+              type: string
+            tag_list:
+              type: array
+              items: {}
+            topics:
+              type: array
+              items: {}
+            ssh_url_to_repo:
+              type: string
+            http_url_to_repo:
+              type: string
+            web_url:
+              type: string
+            readme_url:
+              type: string
+            avatar_url:
+              type: string
+            star_count:
+              type: integer
+            forks_count:
+              type: integer
+            last_activity_at:
+              type: string
+              format: date-time
+            namespace:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                path:
+                  type: string
+                kind:
+                  type: string
+                full_path:
+                  type: string
+                parent_id:
+                  type: string
+    addExistingClusterToProjectRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        management_project_id:
+          type: integer
+        enabled:
+          type: boolean
+        managed:
+          type: boolean
+        'platform_kubernetes_attributes[api_url]':
+          type: string
+        'platform_kubernetes_attributes[token]':
+          type: string
+        'platform_kubernetes_attributes[ca_cert]':
+          type: string
+        'platform_kubernetes_attributes[namespace]':
+          type: string
+        'platform_kubernetes_attributes[authorization_type]':
+          type: string
+        environment_scope:
+          type: string
+      required:
+        - name
+        - 'platform_kubernetes_attributes[api_url]'
+        - 'platform_kubernetes_attributes[token]'
+    addExistingClusterToProjectResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        managed:
+          type: boolean
+        enabled:
+          type: boolean
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            username:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        platform_kubernetes:
+          type: object
+          properties:
+            api_url:
+              type: string
+            namespace:
+              type: string
+            authorization_type:
+              type: string
+            ca_cert:
+              type: string
+        management_project:
+          type: string
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            description:
+              type: string
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            default_branch:
+              type: string
+            tag_list:
+              type: array
+              items: {}
+            topics:
+              type: array
+              items: {}
+            ssh_url_to_repo:
+              type: string
+            http_url_to_repo:
+              type: string
+            web_url:
+              type: string
+            readme_url:
+              type: string
+            avatar_url:
+              type: string
+            star_count:
+              type: integer
+            forks_count:
+              type: integer
+            last_activity_at:
+              type: string
+              format: date-time
+            namespace:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                path:
+                  type: string
+                kind:
+                  type: string
+                full_path:
+                  type: string
+                parent_id:
+                  type: string
+    editProjectClusterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        management_project_id:
+          type: integer
+        enabled:
+          type: boolean
+        managed:
+          type: boolean
+        'platform_kubernetes_attributes[api_url]':
+          type: string
+        'platform_kubernetes_attributes[token]':
+          type: string
+        'platform_kubernetes_attributes[ca_cert]':
+          type: string
+        'platform_kubernetes_attributes[namespace]':
+          type: string
+        environment_scope:
+          type: string

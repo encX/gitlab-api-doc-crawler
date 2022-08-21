@@ -1,0 +1,154 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/custom_attributes.html",
+  "pageSlug": "custom_attributes",
+  "pageName": "Custom attributes",
+  "apis": [
+    {
+      "name": "List custom attributes",
+      "description": "Get all custom attributes on a resource.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/custom_attributes"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/custom_attributes"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/custom_attributes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a resource"
+        }
+      ],
+      "response": [
+        {
+          "key": "location",
+          "value": "Antarctica"
+        },
+        {
+          "key": "role",
+          "value": "Developer"
+        }
+      ]
+    },
+    {
+      "name": "Single custom attribute",
+      "description": "Get a single custom attribute on a resource.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/users/:id/custom_attributes/:key"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/custom_attributes/:key"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/custom_attributes/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a resource"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of the custom attribute"
+        }
+      ],
+      "response": {
+        "key": "location",
+        "value": "Antarctica"
+      }
+    },
+    {
+      "name": "Set custom attribute",
+      "description": "Set a custom attribute on a resource. The attribute is updated if it already exists, or newly created otherwise.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/users/:id/custom_attributes/:key"
+        },
+        {
+          "method": "PUT",
+          "path": "/groups/:id/custom_attributes/:key"
+        },
+        {
+          "method": "PUT",
+          "path": "/projects/:id/custom_attributes/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a resource"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of the custom attribute"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the custom attribute"
+        }
+      ],
+      "response": {
+        "key": "location",
+        "value": "Greenland"
+      }
+    },
+    {
+      "name": "Delete custom attribute",
+      "description": "Delete a custom attribute on a resource.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/users/:id/custom_attributes/:key"
+        },
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/custom_attributes/:key"
+        },
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/custom_attributes/:key"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a resource"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "required": true,
+          "description": "The key of the custom attribute"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / metrics_dashboard_annotations'
+  version: '1.0'
+paths:
+  '/environments/{id}/metrics_dashboard/annotations/':
+    post:
+      summary: Create a new annotation
+      description: ''
+      operationId: createANewAnnotation
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createANewAnnotationResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createANewAnnotationRequest'
+      tags:
+        - metrics_dashboard_annotations
+components:
+  schemas:
+    createANewAnnotationRequest:
+      type: object
+      properties:
+        dashboard_path:
+          type: string
+        starting_at:
+          type: string
+        ending_at:
+          type: string
+        description:
+          type: string
+      required:
+        - dashboard_path
+        - starting_at
+        - description
+    createANewAnnotationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        starting_at:
+          type: string
+          format: date-time
+        ending_at:
+          type: string
+        dashboard_path:
+          type: string
+        description:
+          type: string
+        environment_id:
+          type: integer
+        cluster_id:
+          type: string

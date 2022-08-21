@@ -1,0 +1,49 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / statistics'
+  version: '1.0'
+paths:
+  /application/statistics:
+    get:
+      summary: Get current application statistics
+      description: >-
+        List the current statistics of the GitLab instance. You have to be an administrator in order to perform this
+        action.
+      operationId: getCurrentApplicationStatistics
+      parameters: []
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCurrentApplicationStatisticsResponse'
+      tags:
+        - statistics
+components:
+  schemas:
+    getCurrentApplicationStatisticsResponse:
+      type: object
+      properties:
+        forks:
+          type: string
+        issues:
+          type: string
+        merge_requests:
+          type: string
+        notes:
+          type: string
+        snippets:
+          type: string
+        ssh_keys:
+          type: string
+        milestones:
+          type: string
+        users:
+          type: string
+        groups:
+          type: string
+        projects:
+          type: string
+        active_users:
+          type: string

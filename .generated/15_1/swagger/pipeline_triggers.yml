@@ -1,0 +1,296 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / pipeline_triggers'
+  version: '1.0'
+paths:
+  '/projects/{id}/triggers':
+    get:
+      summary: List project trigger tokens
+      description: Get a list of a project’s pipeline trigger tokens.
+      operationId: listProjectTriggerTokens
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectTriggerTokensResponse'
+      tags:
+        - pipeline_triggers
+    post:
+      summary: Create a trigger token
+      description: Create a pipeline trigger for a project.
+      operationId: createATriggerToken
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerTokenDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createATriggerTokenRequest'
+      tags:
+        - pipeline_triggers
+  '/projects/{id}/triggers/{trigger_id}':
+    get:
+      summary: Get trigger token details
+      description: Get details of a project’s pipeline trigger.
+      operationId: getTriggerTokenDetails
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerTokenDetailsResponse'
+      tags:
+        - pipeline_triggers
+    put:
+      summary: Update a project trigger token
+      description: Update a pipeline trigger token for a project.
+      operationId: updateAProjectTriggerToken
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTriggerTokenDetailsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createATriggerTokenRequest'
+      tags:
+        - pipeline_triggers
+    delete:
+      summary: Remove a project trigger token
+      description: Remove a project’s pipeline trigger token.
+      operationId: removeAProjectTriggerToken
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: trigger_id
+          in: path
+          description: The trigger ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - pipeline_triggers
+  '/projects/{id}/trigger/pipeline':
+    post:
+      summary: Trigger a pipeline with a token
+      description: Trigger a pipeline by using a pipeline trigger token or a CI/CD job token for authentication.
+      operationId: triggerAPipelineWithAToken
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/triggerAPipelineWithATokenResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/triggerAPipelineWithATokenRequest'
+      tags:
+        - pipeline_triggers
+components:
+  schemas:
+    listProjectTriggerTokensResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          description:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+          last_used:
+            type: string
+          token:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          owner:
+            type: string
+    getTriggerTokenDetailsResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        last_used:
+          type: string
+        token:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        owner:
+          type: string
+    createATriggerTokenRequest:
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+        - description
+    triggerAPipelineWithATokenRequest:
+      type: object
+      properties:
+        ref:
+          type: string
+        token:
+          type: string
+        variables:
+          type: array
+          items:
+            type: string
+    triggerAPipelineWithATokenResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        iid:
+          type: integer
+        project_id:
+          type: integer
+        sha:
+          type: string
+        ref:
+          type: string
+        status:
+          type: string
+        source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        web_url:
+          type: string
+        before_sha:
+          type: string
+        tag:
+          type: boolean
+        yaml_errors:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            username:
+              type: string
+            name:
+              type: string
+            state:
+              type: string
+            avatar_url:
+              type: string
+            web_url:
+              type: string
+        started_at:
+          type: string
+        finished_at:
+          type: string
+        committed_at:
+          type: string
+        duration:
+          type: string
+        queued_duration:
+          type: string
+        coverage:
+          type: string
+        detailed_status:
+          type: object
+          properties:
+            icon:
+              type: string
+            text:
+              type: string
+            label:
+              type: string
+            group:
+              type: string
+            tooltip:
+              type: string
+            has_details:
+              type: boolean
+            details_path:
+              type: string
+            illustration:
+              type: string
+            favicon:
+              type: string

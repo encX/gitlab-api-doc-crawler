@@ -1,0 +1,521 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / boards'
+  version: '1.0'
+paths:
+  '/projects/{id}/boards':
+    get:
+      summary: List project issue boards
+      description: Lists project issue boards in the given project.
+      operationId: listProjectIssueBoards
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listProjectIssueBoardsResponse'
+      tags:
+        - boards
+    post:
+      summary: Create an issue board
+      description: Creates a project issue board.
+      operationId: createAnIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnIssueBoardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAnIssueBoardRequest'
+      tags:
+        - boards
+  '/projects/{id}/boards/{board_id}':
+    get:
+      summary: Show a single issue board
+      description: Get a single project issue board.
+      operationId: showASingleIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showASingleIssueBoardResponse'
+      tags:
+        - boards
+    put:
+      summary: Update an issue board
+      description: Updates a project issue board.
+      operationId: updateAnIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAnIssueBoardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateAnIssueBoardRequest'
+      tags:
+        - boards
+    delete:
+      summary: Delete an issue board
+      description: Deletes a project issue board.
+      operationId: deleteAnIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - boards
+  '/projects/{id}/boards/{board_id}/lists':
+    get:
+      summary: List board lists in a project issue board
+      description: Get a list of the board’s lists. Does not include open and closed lists.
+      operationId: listBoardListsInAProjectIssueBoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listBoardListsInAProjectIssueBoardResponse'
+      tags:
+        - boards
+    post:
+      summary: Create a board list
+      description: Creates a new issue board list.
+      operationId: createABoardList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showASingleBoardListResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createABoardListRequest'
+      tags:
+        - boards
+  '/projects/{id}/boards/{board_id}/lists/{list_id}':
+    get:
+      summary: Show a single board list
+      description: Get a single board list.
+      operationId: showASingleBoardList
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showASingleBoardListResponse'
+      tags:
+        - boards
+    put:
+      summary: Reorder a list in a board
+      description: Updates an existing issue board list. This call is used to change list position.
+      operationId: reorderAListInABoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/showASingleBoardListResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/reorderAListInABoardRequest'
+      tags:
+        - boards
+    delete:
+      summary: Delete a board list from a board
+      description: Only for administrators and project owners. Deletes a board list.
+      operationId: deleteABoardListFromABoard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project owned by the authenticated user
+          required: true
+          schema:
+            type: string
+        - name: board_id
+          in: path
+          description: The ID of a board
+          required: true
+          schema:
+            type: integer
+        - name: list_id
+          in: path
+          description: The ID of a board’s list
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+      tags:
+        - boards
+components:
+  schemas:
+    listProjectIssueBoardsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          name:
+            type: string
+          project:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              name_with_namespace:
+                type: string
+              path:
+                type: string
+              path_with_namespace:
+                type: string
+              http_url_to_repo:
+                type: string
+              web_url:
+                type: string
+          milestone:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+          lists:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                label:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    color:
+                      type: string
+                    description:
+                      type: string
+                position:
+                  type: integer
+                max_issue_count:
+                  type: integer
+                max_issue_weight:
+                  type: integer
+                limit_metric:
+                  type: string
+    showASingleIssueBoardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            http_url_to_repo:
+              type: string
+            web_url:
+              type: string
+        milestone:
+          type: object
+          properties:
+            id:
+              type: integer
+            title:
+              type: string
+        lists:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              label:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  color:
+                    type: string
+                  description:
+                    type: string
+              position:
+                type: integer
+              max_issue_count:
+                type: integer
+              max_issue_weight:
+                type: integer
+              limit_metric:
+                type: string
+    createAnIssueBoardRequest:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    createAnIssueBoardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        project:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            name_with_namespace:
+              type: string
+            path:
+              type: string
+            path_with_namespace:
+              type: string
+            http_url_to_repo:
+              type: string
+            web_url:
+              type: string
+        name:
+          type: string
+        lists:
+          type: array
+          items: {}
+        group:
+          type: string
+        milestone:
+          type: string
+        assignee:
+          type: string
+        labels:
+          type: array
+          items: {}
+        weight:
+          type: string
+    updateAnIssueBoardRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        assignee_id:
+          type: integer
+        milestone_id:
+          type: integer
+        labels:
+          type: string
+        weight:
+          type: integer
+    listBoardListsInAProjectIssueBoardResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          label:
+            type: object
+            properties:
+              name:
+                type: string
+              color:
+                type: string
+              description:
+                type: string
+          position:
+            type: integer
+          max_issue_count:
+            type: integer
+          max_issue_weight:
+            type: integer
+          limit_metric:
+            type: string
+    showASingleBoardListResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        label:
+          type: object
+          properties:
+            name:
+              type: string
+            color:
+              type: string
+            description:
+              type: string
+        position:
+          type: integer
+        max_issue_count:
+          type: integer
+        max_issue_weight:
+          type: integer
+        limit_metric:
+          type: string
+    createABoardListRequest:
+      type: object
+      properties:
+        label_id:
+          type: integer
+        assignee_id:
+          type: integer
+        milestone_id:
+          type: integer
+    reorderAListInABoardRequest:
+      type: object
+      properties:
+        position:
+          type: integer
+      required:
+        - position

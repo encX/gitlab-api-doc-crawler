@@ -1,0 +1,855 @@
+{
+  "origin": "https://docs.gitlab.com/ee/api/notes.html",
+  "pageSlug": "notes",
+  "pageName": "Notes",
+  "apis": [
+    {
+      "name": "List project issue notes",
+      "description": "Gets a list of all notes for a single issue.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/notes"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/notes?sort=asc&order_by=updated_at"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of an issue"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return issue notes sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return issue notes ordered by created_at or updated_at fields. Default is created_at"
+        }
+      ],
+      "response": [
+        {
+          "id": 302,
+          "body": "closed",
+          "attachment": null,
+          "author": {
+            "id": 1,
+            "username": "pipin",
+            "email": "admin@example.com",
+            "name": "Pip",
+            "state": "active",
+            "created_at": "2013-09-30T13:46:01Z"
+          },
+          "created_at": "2013-10-02T09:22:45Z",
+          "updated_at": "2013-10-02T10:22:45Z",
+          "system": true,
+          "noteable_id": 377,
+          "noteable_type": "Issue",
+          "noteable_iid": 377,
+          "resolvable": false,
+          "confidential": false,
+          "internal": false
+        },
+        {
+          "id": 305,
+          "body": "Text of the comment\r\n",
+          "attachment": null,
+          "author": {
+            "id": 1,
+            "username": "pipin",
+            "email": "admin@example.com",
+            "name": "Pip",
+            "state": "active",
+            "created_at": "2013-09-30T13:46:01Z"
+          },
+          "created_at": "2013-10-02T09:56:03Z",
+          "updated_at": "2013-10-02T09:56:03Z",
+          "system": true,
+          "noteable_id": 121,
+          "noteable_type": "Issue",
+          "noteable_iid": 121,
+          "resolvable": false,
+          "confidential": true,
+          "internal": true
+        }
+      ]
+    },
+    {
+      "name": "Get single issue note",
+      "description": "Returns a single note for a specific project issue",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/issues/:issue_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a project issue"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of an issue note"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Create new issue note",
+      "description": "Creates a new note to a single project issue.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/issues/:issue_iid/notes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of an issue."
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: will be removed in GitLab 16.0 and renamed to internal. The confidential flag of a note. Default is false."
+        },
+        {
+          "name": "internal",
+          "type": "boolean",
+          "required": false,
+          "description": "The internal flag of a note. Overrides confidential when both parameters are submitted. Default is false."
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "Date time string, ISO 8601 formatted. It must be after 1970-01-01. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Modify existing issue note",
+      "description": "Modify existing note of an issue.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/issues/:issue_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project."
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of an issue."
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note."
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": false,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: will be removed in GitLab 16.0. The confidential flag of a note. Default is false."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete an issue note",
+      "description": "Deletes an existing note of an issue.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/issues/:issue_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "issue_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of an issue"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List all snippet notes",
+      "description": "Gets a list of all notes for a single snippet. Snippet notes are comments users can post to a snippet.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/snippets/:snippet_id/notes"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/snippets/:snippet_id/notes?sort=asc&order_by=updated_at"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "snippet_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a project snippet"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return snippet notes sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return snippet notes ordered by created_at or updated_at fields. Default is created_at"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Get single snippet note",
+      "description": "Returns a single note for a given snippet.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/snippets/:snippet_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "snippet_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a project snippet"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a snippet note"
+        }
+      ],
+      "response": {
+        "id": 52,
+        "title": "Snippet",
+        "file_name": "snippet.rb",
+        "author": {
+          "id": 1,
+          "username": "pipin",
+          "email": "admin@example.com",
+          "name": "Pip",
+          "state": "active",
+          "created_at": "2013-09-30T13:46:01Z"
+        },
+        "expires_at": null,
+        "updated_at": "2013-10-02T07:34:20Z",
+        "created_at": "2013-10-02T07:34:20Z"
+      }
+    },
+    {
+      "name": "Create new snippet note",
+      "description": "Creates a new note for a single snippet. Snippet notes are user comments on snippets. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/snippets/:snippet_id/notes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "snippet_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a snippet"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Modify existing snippet note",
+      "description": "Modify existing note of a snippet.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/snippets/:snippet_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "snippet_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a snippet"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a snippet note"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete a snippet note",
+      "description": "Deletes an existing note of a snippet.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/snippets/:snippet_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "snippet_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a snippet"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List all merge request notes",
+      "description": "Gets a list of all notes for a single merge request.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes"
+        },
+        {
+          "method": "GET",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes?sort=asc&order_by=updated_at"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a project merge request"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return merge request notes sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return merge request notes ordered by created_at or updated_at fields. Default is created_at"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Get single merge request note",
+      "description": "Returns a single note for a given merge request.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a project merge request"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a merge request note"
+        }
+      ],
+      "response": {
+        "id": 301,
+        "body": "Comment for MR",
+        "attachment": null,
+        "author": {
+          "id": 1,
+          "username": "pipin",
+          "email": "admin@example.com",
+          "name": "Pip",
+          "state": "active",
+          "created_at": "2013-09-30T13:46:01Z"
+        },
+        "created_at": "2013-10-02T08:57:14Z",
+        "updated_at": "2013-10-02T08:57:14Z",
+        "system": false,
+        "noteable_id": 2,
+        "noteable_type": "MergeRequest",
+        "noteable_iid": 2,
+        "resolvable": false,
+        "confidential": false,
+        "internal": false
+      }
+    },
+    {
+      "name": "Create new merge request note",
+      "description": "Creates a new note for a single merge request. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a project merge request"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "created_at",
+          "type": "string",
+          "required": false,
+          "description": "Date time string, ISO 8601 formatted. Example: 2016-03-11T03:45:40Z (requires administrator or project/group owner rights)"
+        },
+        {
+          "name": "merge_request_diff_sha",
+          "type": "string",
+          "required": false,
+          "description": "Required for the /merge quick action. The SHA of the head commit, which ensures the merge request wasn’t updated after the API request was sent."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Modify existing merge request note",
+      "description": "Modify existing note of a merge request.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a project merge request"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": false,
+          "description": "The ID of a note"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: will be removed in GitLab 16.0. The confidential flag of a note. Default is false."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete a merge request note",
+      "description": "Deletes an existing note of a merge request.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/projects/:id/merge_requests/:merge_request_iid/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the project"
+        },
+        {
+          "name": "merge_request_iid",
+          "type": "integer",
+          "required": true,
+          "description": "The IID of a merge request"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "List all epic notes",
+      "description": "Gets a list of all notes for a single epic. Epic notes are comments users can post to an epic.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics/:epic_id/notes"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics/:epic_id/notes?sort=asc&order_by=updated_at"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a group epic"
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "required": false,
+          "description": "Return epic notes sorted in asc or desc order. Default is desc"
+        },
+        {
+          "name": "order_by",
+          "type": "string",
+          "required": false,
+          "description": "Return epic notes ordered by created_at or updated_at fields. Default is created_at"
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Get single epic note",
+      "description": "Returns a single note for a given epic.",
+      "resources": [
+        {
+          "method": "GET",
+          "path": "/groups/:id/epics/:epic_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of an epic"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        }
+      ],
+      "response": {
+        "id": 52,
+        "title": "Epic",
+        "file_name": "epic.rb",
+        "author": {
+          "id": 1,
+          "username": "pipin",
+          "email": "admin@example.com",
+          "name": "Pip",
+          "state": "active",
+          "created_at": "2013-09-30T13:46:01Z"
+        },
+        "expires_at": null,
+        "updated_at": "2013-10-02T07:34:20Z",
+        "created_at": "2013-10-02T07:34:20Z",
+        "confidential": false,
+        "internal": false
+      }
+    },
+    {
+      "name": "Create new epic note",
+      "description": "Creates a new note for a single epic. Epic notes are comments users can post to an epic. If you create a note where the body only contains an Award Emoji, GitLab returns this object.",
+      "resources": [
+        {
+          "method": "POST",
+          "path": "/groups/:id/epics/:epic_id/notes"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of an epic"
+        },
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: will be removed in GitLab 16.0 and is renamed to internal. The confidential flag of a note. Default is false."
+        },
+        {
+          "name": "internal",
+          "type": "boolean",
+          "required": false,
+          "description": "The internal flag of a note. Overrides confidential when both parameters are submitted. Default is false."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Modify existing epic note",
+      "description": "Modify existing note of an epic.",
+      "resources": [
+        {
+          "method": "PUT",
+          "path": "/groups/:id/epics/:epic_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of an epic"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "required": true,
+          "description": "The content of a note. Limited to 1,000,000 characters."
+        },
+        {
+          "name": "confidential",
+          "type": "boolean",
+          "required": false,
+          "description": "Deprecated: will be removed in GitLab 16.0. The confidential flag of a note. Default is false."
+        }
+      ],
+      "response": null
+    },
+    {
+      "name": "Delete an epic note",
+      "description": "Deletes an existing note of an epic.",
+      "resources": [
+        {
+          "method": "DELETE",
+          "path": "/groups/:id/epics/:epic_id/notes/:note_id"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "id",
+          "type": "integer or string",
+          "required": true,
+          "description": "The ID or URL-encoded path of the group"
+        },
+        {
+          "name": "epic_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of an epic"
+        },
+        {
+          "name": "note_id",
+          "type": "integer",
+          "required": true,
+          "description": "The ID of a note"
+        }
+      ],
+      "response": null
+    }
+  ]
+}

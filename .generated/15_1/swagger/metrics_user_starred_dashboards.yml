@@ -1,0 +1,84 @@
+openapi: 3.0.2
+info:
+  title: 'GitLabKit: REST API / metrics_user_starred_dashboards'
+  version: '1.0'
+paths:
+  '/projects/{id}/metrics/user_starred_dashboards':
+    post:
+      summary: Add a star to a dashboard
+      description: ''
+      operationId: addAStarToADashboard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addAStarToADashboardResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addAStarToADashboardRequest'
+      tags:
+        - metrics_user_starred_dashboards
+    delete:
+      summary: Remove a star from a dashboard
+      description: ''
+      operationId: removeAStarFromADashboard
+      parameters:
+        - name: id
+          in: path
+          description: The ID or URL-encoded path of the project
+          required: true
+          schema:
+            type: string
+        - name: dashboard_path
+          in: query
+          description: >-
+            URL-encoded path to file defining the dashboard which should no longer be marked as favorite. When not
+            supplied, all dashboards within given projects are removed from favorites.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/removeAStarFromADashboardResponse'
+      tags:
+        - metrics_user_starred_dashboards
+components:
+  schemas:
+    addAStarToADashboardRequest:
+      type: object
+      properties:
+        dashboard_path:
+          type: string
+      required:
+        - dashboard_path
+    addAStarToADashboardResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        dashboard_path:
+          type: string
+        user_id:
+          type: integer
+        project_id:
+          type: integer
+    removeAStarFromADashboardResponse:
+      type: object
+      properties:
+        deleted_rows:
+          type: integer
